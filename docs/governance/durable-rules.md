@@ -39,6 +39,10 @@ dokumentierte Architekturentscheidung ersetzt werden.
   im Browser ausprobiert. Der Nachweis (Browser, geprüfter Ablauf und Ergebnis)
   steht in der Änderungs-Spec.
 - Jede fachliche Änderung startet mit einer eigenen Änderungsdokumentation.
+- Jede Story wird so geschnitten, dass sie einen für Benutzer im Browser
+  nachvollziehbaren Geschäftswert hinzufügt. Reine interne Verträge,
+  Datenbestände oder Grundlagen gehören nur als Teil einer solchen vertikalen
+  Scheibe in eine Story, nicht als alleiniger Liefergegenstand.
 
 ## Abhängigkeiten und Sicherheit
 
