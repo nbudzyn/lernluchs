@@ -19,7 +19,9 @@ Ergebnisse werden direkt hier festgehalten.
   Repository-Basispfad.
 - **REFACTOR:** Die Vite-Konfiguration liest den Wert mit `loadEnv`, sodass
   kein Node-Globaltyp oder eine neue Abhängigkeit erforderlich ist. Danach
-  sind `npm run check` und `npm run test:pages-build` grün.
+  sind `npm run check` und `npm run test:pages-build` grün. Der Test
+  normalisiert außerdem den von `configure-pages` gelieferten
+  Repository-Pfad ohne abschließenden Slash.
 
 ### 2. Gepinnter Build- und Deploy-Workflow
 
