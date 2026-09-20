@@ -22,7 +22,7 @@ module.exports = {
       to: { path: "^src/(app|verticals)/" },
     },
     ...[
-      "content-catalog",
+      "catalog",
       "learning-progress",
       "competency-profile",
       "learning-checks",

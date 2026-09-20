@@ -20,6 +20,13 @@ dokumentierte Architekturentscheidung ersetzt werden.
 
 - Fachlogik bleibt in klaren Vertikalen. Eine fachliche Änderung berührt
   höchstens zwei Vertikalen pro Commit.
+- Eine Vertikale verläuft von oben nach unten: Sie verantwortet ihre eigenen
+  Daten und deren Anzeige. `src/app` komponiert Vertikalen nur und enthält
+  keine fachliche Anzeige- oder Datenlogik.
+- Schnittstellen zwischen Vertikalen bleiben schmal und ausdrücklich
+  entworfen. Vertikalen verbergen ihre internen Daten, Hilfen und
+  Implementierungsdetails (Data Hiding); andere Vertikalen dürfen sich nur
+  auf ihren kleinen öffentlichen Vertrag stützen.
 - Architekturelle Ausnahmen benötigen eine eigene Spec, eine Begründung und
   zusätzliche automatisierte Architekturtests.
 - Öffentliche und stabile Verträge werden klein gehalten. Gemeinsamer Code

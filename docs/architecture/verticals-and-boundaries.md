@@ -47,6 +47,16 @@ und Browser-Integration. Sie enthält keine fachliche Lernlogik.
 Der gemeinsame Kern enthält nur stabile IDs, Datenschemata, Validierung und
 kleine technische Hilfen. Er enthält keine Geschäfts- oder Präsentationslogik.
 
+## Geplanter statischer Nachweis für Data Hiding
+
+Eine spätere Architektur-Änderung ergänzt einen statischen Test, der
+Vertikalgrenzen nicht nur als Importverbot, sondern auch als öffentliche
+Schnittstellen prüft: Vertikalen dürfen von außerhalb ausschließlich über
+einen kleinen, benannten Einstiegspunkt importiert werden. Direkte Importe
+interner Daten, Komponenten oder Hilfen einer anderen Vertikale müssen als
+Buildfehler scheitern. Die genaue Benennung und Struktur dieser Einstiegspunkte
+werden erst zusammen mit diesem Test und einer eigenen Spec festgelegt.
+
 ## Erlaubte Richtungen
 
 Präsentationsvertikalen dürfen lesend auf Inhaltskatalog und Lernfortschritt

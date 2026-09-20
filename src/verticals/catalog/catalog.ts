@@ -1,4 +1,4 @@
-import type { Catalog } from "../../shared/catalog/catalogContract";
+import type { Catalog } from "./catalogContract";
 
 function activeEditorial(reviewDueAt: string) {
   return {

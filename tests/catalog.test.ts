@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import { validateCatalog } from "../src/shared/catalog/validateCatalog";
-import type { CatalogItem } from "../src/shared/catalog/catalogContract";
-import { catalog } from "../src/verticals/content-catalog/catalog";
+import { validateCatalog } from "../src/verticals/catalog/validateCatalog";
+import type { CatalogItem } from "../src/verticals/catalog/catalogContract";
+import { catalog } from "../src/verticals/catalog/catalog";
 
 function completeItem(id: string): CatalogItem {
   return {
