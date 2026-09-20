@@ -13,6 +13,8 @@
     "validate:content": "vitest run tests/catalog.test.ts",
     "check:architecture": "depcruise --config dependency-cruiser.cjs \"src/**/*.ts\" \"src/**/*.tsx\" --output-type err",
     "build": "vite build && node scripts/verify-build.mjs",
+    "test:pages-build": "node scripts/test-pages-build.mjs",
+    "test:pages-workflow": "node scripts/verify-pages-workflow.mjs",
     "check": "npm run typecheck && npm test -- --run && npm run validate:content && npm run check:architecture && npm run build"
   },
   "dependencies": {
