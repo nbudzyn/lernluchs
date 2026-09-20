@@ -6,6 +6,7 @@ die für die konkrete Aufgabe gelten.
 | Wenn du … | lies zuerst |
 | --- | --- |
 | die App oder ihre Grenzen verstehen willst | [Produktvision](product/vision-and-scope.md) und [Zielarchitektur](architecture/target-architecture.md) |
+| die Reihenfolge geplanter Stories brauchst | [Story-Backlog](product/story-backlog.md) |
 | in einer Vertikalen implementierst | [Vertikalen und Grenzen](architecture/verticals-and-boundaries.md) und die passende Änderungs-Spec |
 | einen neuen Inhalt, eine Quelle, ein Video oder eine Frage pflegst | [Redaktionelle Richtlinie](content/editorial-policy.md) |
 | Tests, CI, Sicherheit oder Releases änderst | [Qualitätsstrategie](quality/verification-strategy.md) |

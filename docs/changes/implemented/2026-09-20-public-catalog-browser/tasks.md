@@ -91,7 +91,9 @@ werden direkt am jeweiligen Schritt ergänzt.
   Quellenlink erschien erst nach der Auswahl und besitzt den automatisiert
   geprüften HTTPS-`href`, `target="_blank"` und `rel="noreferrer"`. Der
   In-app-Browser stellte beim Aktivieren des `_blank`-Links keinen zweiten Tab
-  bereit; das tatsächliche externe Öffnen ist daher explizit Teil des noch
-  ausstehenden manuellen Browser-Tests des Users.
-- **Diff-Prüfung und Commit:** ausstehend; ein Commit ist erst nach dem
-  manuellen Browser-Test des Users zulässig.
+  bereit. Die Story wurde am 20.09.2026 auf ausdrückliche Anweisung des Users
+  archiviert; Details zum externen Öffnen, Browser und URL wurden nicht
+  überliefert und werden nicht nachträglich ergänzt.
+- **Diff-Prüfung und Commit:** Der veröffentlichte Release ist vom User
+  bestätigt; diese Story dokumentiert keinen nicht selbst ausgeführten
+  Git-Vorgang.

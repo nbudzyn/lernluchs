@@ -45,8 +45,8 @@ Ergebnisse werden direkt hier festgehalten.
   Produktionsbuild unter `http://127.0.0.1:4173/`; Übersicht,
   Themenauswahl, vollständige Lernkarte und Quellenaktion geprüft, keine
   Konsolenfehler.
-- **GitHub-Pages-Nachweis:** ausstehend; die berechtigte Person aktiviert
-  zuerst **Settings → Pages → GitHub Actions**, prüft danach die
-  Deployment-URL und dokumentiert Browser, URL und Ergebnis.
-- **Diff-Prüfung und Commit:** ausstehend; ein Commit erfolgt erst nach dem
-  manuellen Nachweis der Pages-URL.
+- **GitHub-Pages-Nachweis:** am 20.09.2026 durch die berechtigte Person
+  abgeschlossen und vom User bestätigt. URL und verwendeter Browser wurden
+  nicht überliefert und werden nicht nachträglich ergänzt.
+- **Diff-Prüfung und Commit:** liegen bei der berechtigten Person; diese
+  Änderung dokumentiert keinen nicht selbst ausgeführten Git-Vorgang.
