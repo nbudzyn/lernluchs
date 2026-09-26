@@ -1,23 +1,44 @@
 # Story-Backlog
 
-Dieses Backlog ordnet nur geplante, noch nicht aktive Stories. Unmittelbar vor
-der Umsetzung erhält jede Story eine eigene Änderungs-Spec unter
+Dieses Backlog enhält (nur) geplante, noch nicht aktive Stories in vorgesehener Umsetzungsreihenfolge. Unmittelbar vor der Umsetzung erhält
+jede Story eine eigene Änderungs-Spec unter
 `docs/changes/active/`; deren `tasks.md` dokumentiert RED → GREEN → REFACTOR.
 
-1. **Grundlagen-Lernchecks** — Quellengebundener Fragenpool sowie
-   Auswahlchecks mit Bestehen, Nichtbestehen, Erklärung und Wiederholung.
-   Vertikalen: Inhaltskatalog, Lernchecks.
-2. **Lokaler Fortschritt** — Check-Ergebnis als änderbaren Vorschlag zeigen
-   und bestätigten Fortschritt über Reload erhalten. Vertikalen: Lernchecks,
-   Lernfortschritt.
-3. **Kompetenzprofil** — Bestätigten Fortschritt je Thema nachvollziehbar
-   darstellen. Vertikale: Kompetenzprofil.
-4. **Grafische Landkarte** — Themen und Querverbindungen frei navigierbar
-   darstellen; die bestehende Listenansicht bleibt Fallback. Vertikalen:
-   Inhaltskatalog, Landkarte.
-5. **PWA und Offline** — Installation, versionierter Offline-Cache und
-   kontrollierte Updates für die Kernabläufe. Vertikale: PWA und
-   Zuverlässigkeit.
+## Nächsten Lernpfad ermitteln und einweben
 
-Die Quellen zu `AGENTS.md`, Research/Plan/Tasks und OpenSpec werden bis
-20.12.2026 erneut geprüft.
+Der Inhaltskatalog erhält einen nächsten Lernpfad. Der Lernpfad kann durchaus Teile eines bestehenden Lernpfads weiterverwenden; dann in
+derselben Reihenfolge, so dass sich ein "Wissensbaum" ergibt.
+
+Vertikalen: Inhaltskatalog
+
+## Grundlagenwissen überprüfen
+
+Quellengebundener Fragenpool sowie Auswahlchecks mit Bestehen, Nichtbestehen, Erklärung und Wiederholung.
+
+Vertikalen: Inhaltskatalog, Lernchecks
+
+## Lernfortschritt lokal speichern
+
+Check-Ergebnis als änderbaren Vorschlag zeigen und bestätigten Fortschritt über Reload erhalten.
+
+Vertikalen: Lernchecks, Lernfortschritt
+
+## Kompetenzen nach Themen einsehen
+
+Bestätigten Fortschritt je Thema nachvollziehbar darstellen.
+
+Vertikale: Kompetenzprofil
+
+## Themen auf einer Landkarte erkunden
+
+Themen und Querverbindungen frei navigierbar darstellen; die bestehende Listenansicht bleibt Fallback.
+
+Vertikalen: Inhaltskatalog, Landkarte
+
+## App installieren und offline nutzen
+
+Installation, versionierter Offline-Cache und kontrollierte Updates für die Kernabläufe.
+
+## Quallen erneut prüfen
+
+Die Quellen zu `AGENTS.md`, Research/Plan/Tasks und OpenSpec werden bis 20.12.2026 erneut geprüft.
