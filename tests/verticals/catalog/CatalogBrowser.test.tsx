@@ -6,13 +6,13 @@ import { CatalogBrowser } from "../../../src/verticals/catalog/CatalogBrowser";
 afterEach(cleanup);
 
 describe("CatalogBrowser", () => {
-  it("shows all twelve topics in one semantic text overview", () => {
+  it("shows all fifteen topics in one semantic text overview", () => {
     render(<CatalogBrowser />);
 
     expect(
       screen.getByRole("navigation", { name: "Lernthemen" }),
     ).toBeTruthy();
-    expect(screen.getAllByRole("button")).toHaveLength(12);
+    expect(screen.getAllByRole("button")).toHaveLength(15);
     expect(
       screen.getByRole("button", {
         name: "Mensch und KI: Verantwortung bleibt menschlich",
@@ -24,6 +24,27 @@ describe("CatalogBrowser", () => {
       }),
     ).toBeTruthy();
     expect(screen.getByRole("button", { name: "Webabläufe mit Playwright prüfen" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Kontext und Vertrauensgrenzen für Coding-Agenten" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Geheimnisse und sensible Daten beim KI-Einsatz schützen" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "KI-generierte Änderungen prüfen und übernehmen" })).toBeTruthy();
+  });
+
+  it.each([
+    ["Kontext und Vertrauensgrenzen für Coding-Agenten", "OWASP LLM01:2025 Prompt Injection"],
+    ["Geheimnisse und sensible Daten beim KI-Einsatz schützen", "OWASP LLM02:2025 Sensitive Information Disclosure"],
+    ["KI-generierte Änderungen prüfen und übernehmen", "Review AI-generated code - GitHub Docs"],
+  ])("shows the new card %s with content, metadata, and sources", (title, sourceTitle) => {
+    render(<CatalogBrowser />);
+    fireEvent.click(screen.getByRole("button", { name: title }));
+
+    expect(screen.getByRole("article", { name: title })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Problem" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Kernkonzept" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Java-/Web-Einsatz" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Wichtige Grenze" })).toBeTruthy();
+    expect(screen.getByText("Fachlich geprüft")).toBeTruthy();
+    expect(screen.getByText("Wiedervorlage")).toBeTruthy();
+    expect(screen.getByRole("link", { name: sourceTitle })).toBeTruthy();
   });
 
   it("shows the complete learning card after a user selects a topic", () => {

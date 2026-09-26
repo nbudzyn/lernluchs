@@ -77,7 +77,7 @@ describe("public content catalog", () => {
     expect(validateCatalog(catalog)).toEqual({ valid: true, errors: [] });
   });
 
-  it("weaves six new, sourced learning cards into one ordered catalog", () => {
+  it("preserves the six sourced cards from the second learning path in order", () => {
     const newIds = [
       "module-boundaries-and-public-interfaces",
       "tdd-for-domain-behavior",
@@ -86,22 +86,7 @@ describe("public content catalog", () => {
       "web-xss-and-safe-dom",
       "dependency-security-assessment",
     ];
-    expect(catalog.items.map((item) => item.id)).toEqual([
-      "human-ai-responsibility",
-      "problem-understanding-and-change-boundaries",
-      "agents-md",
-      "ears-requirements",
-      "module-boundaries-and-public-interfaces",
-      "research-plan-tasks",
-      "spec-driven-development-openspec",
-      "tdd-for-domain-behavior",
-      "archunit-for-java-architecture",
-      "playwright-for-web-flows",
-      "web-xss-and-safe-dom",
-      "dependency-security-assessment",
-    ]);
-    expect(new Set(catalog.items.map((item) => item.id)).size).toBe(12);
-    expect(catalog.items.filter((item) => newIds.includes(item.id))).toHaveLength(6);
+    expect(catalog.items.map((item) => item.id).filter((id) => newIds.includes(id))).toEqual(newIds);
     for (const item of catalog.items.filter((item) => newIds.includes(item.id))) {
       expect(item.learningCard.problem.trim()).not.toBe("");
       expect(item.learningCard.coreConcept.trim()).not.toBe("");
@@ -111,6 +96,51 @@ describe("public content catalog", () => {
       expect(item.editorial.publishedAt).toBe("2026-09-26");
       expect(item.editorial.reviewedAt).toBe("2026-09-26");
       expect(item.editorial.reviewDueAt).toBe("2027-03-26");
+      expect(item.sources.every((source) => source.checkedAt === "2026-09-26")).toBe(true);
+    }
+    expect(validateCatalog(catalog)).toEqual({ valid: true, errors: [] });
+  });
+
+  it("weaves three coding-agent cards into the fifteen-topic catalog", () => {
+    const newIds = [
+      "coding-agent-context-and-trust-boundaries",
+      "protect-secrets-and-sensitive-data-with-ai",
+      "review-and-accept-ai-generated-changes",
+    ];
+    const ids = catalog.items.map((item) => item.id);
+
+    expect(ids).toEqual([
+      "human-ai-responsibility",
+      "problem-understanding-and-change-boundaries",
+      "agents-md",
+      "coding-agent-context-and-trust-boundaries",
+      "protect-secrets-and-sensitive-data-with-ai",
+      "ears-requirements",
+      "module-boundaries-and-public-interfaces",
+      "research-plan-tasks",
+      "spec-driven-development-openspec",
+      "tdd-for-domain-behavior",
+      "archunit-for-java-architecture",
+      "playwright-for-web-flows",
+      "web-xss-and-safe-dom",
+      "dependency-security-assessment",
+      "review-and-accept-ai-generated-changes",
+    ]);
+    expect(new Set(ids).size).toBe(15);
+    for (const item of catalog.items.filter((item) => newIds.includes(item.id))) {
+      expect(item.title.trim()).not.toBe("");
+      expect(item.learningCard.problem.trim()).not.toBe("");
+      expect(item.learningCard.coreConcept.trim()).not.toBe("");
+      expect(item.learningCard.javaWebUse.trim()).not.toBe("");
+      expect(item.learningCard.boundary.trim()).not.toBe("");
+      expect(item.editorial).toMatchObject({
+        publishedAt: "2026-09-26",
+        reviewedAt: "2026-09-26",
+        reviewDueAt: "2027-03-26",
+        contentVersion: "1",
+        status: "active",
+      });
+      expect(item.sources.length).toBeGreaterThan(0);
       expect(item.sources.every((source) => source.checkedAt === "2026-09-26")).toBe(true);
     }
     expect(validateCatalog(catalog)).toEqual({ valid: true, errors: [] });

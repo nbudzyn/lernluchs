@@ -9,42 +9,6 @@ eine eigene Spec mit Begründung und Architekturtests. Zentrale Dokumente
 werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden
 Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Dritter Lernpfad
-
-Der Inhaltskatalog wird um den Lernpfad **Sicher mit Coding-Agenten arbeiten** erweitert:
-
-1. Mensch und KI: Verantwortung bleibt menschlich - vorhanden
-2. Problem verstehen und Änderungsgrenzen setzen - vorhanden
-3. AGENTS.md: dauerhafter Kontext für Coding-Agenten - vorhanden
-4. Kontext und Vertrauensgrenzen für Coding-Agenten - neu
-5. Geheimnisse und sensible Daten beim KI-Einsatz schützen - neu
-6. Research, Plan und Tasks trennen - vorhanden
-7. Fachverhalten mit TDD absichern - vorhanden
-8. KI-generierte Änderungen prüfen und übernehmen - neu
-
-Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert und erscheint nicht als eigener Abschnitt in der
-Oberfläche.
-
-Die drei neuen Lerninhalte werden als Lernkarten mit Quellen und Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an die
-vorhandenen Inhalte angeglichen. Dabei auch immer einen Blick auf die Notizen in der KI-Tool-Landkarte haben!
-
-Im selben Katalogupdate werden die Quellen der vorhandenen Karten zu
-`AGENTS.md`, Research/Plan/Tasks und OpenSpec bis spätestens 20.12.2026 erneut
-geprüft und bei Bedarf aktualisiert. Lernende erhalten damit neue und
-fachlich aktuelle Karten in einer Liste.
-
-Fragenpools gehören nicht zu dieser Story.
-
-Alle 15 Lerninhalte erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste. Sie werden über alle drei Lernpfade hinweg nach
-Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen Inhalte bleibt erhalten; die neuen
-Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der Inhalte des neuen Lernpfads bleibt
-erhalten.
-
-Vertikale: Inhaltskatalog
-
-Dokumentation nach Umsetzung: Den erweiterten Katalog und die sichtbaren
-Inhalte knapp im Produktstand ergänzen.
-
 ## Quellengebundene Grundlagenfragen im Browser beantworten
 
 Zu jeder der sechs Lernkarten des Grundlagenpfads können Lernende eine Auswahlfrage beantworten und anschließend Begründung und Quelle

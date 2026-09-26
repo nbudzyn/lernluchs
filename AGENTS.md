@@ -10,6 +10,8 @@ gesamte Dokumentation.
 - Arbeite pro Teil-Feature in der Reihenfolge RED → GREEN → REFACTOR. Halte den
   RED-Nachweis und die anschließend grüne Testsuite in der aktiven Spec fest.
 - Committe nur bei vollständig grüner Pflichtsuite.
+- Committe erst, nachdem der Nutzer die Änderung selbst manuell getestet und
+  das Ergebnis ausdrücklich bestätigt hat.
 - Ändere fachlich höchstens zwei Vertikalen pro Commit. Architekturausnahmen
   benötigen eine explizite Spec und Architekturtests.
 - Füge keine Abhängigkeit ohne begründete Freigabe in der Spec hinzu.

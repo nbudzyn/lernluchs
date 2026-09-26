@@ -11,7 +11,7 @@ function activeEditorial(reviewDueAt: string, publishedAt = "2026-09-20") {
 }
 
 export const catalog: Catalog = {
-  version: "2",
+  version: "3",
   items: [
     {
       id: "human-ai-responsibility",
@@ -85,6 +85,61 @@ export const catalog: Catalog = {
           type: "reference-site",
           language: "en",
           checkedAt: "2026-09-20",
+        },
+      ],
+    },
+    {
+      id: "coding-agent-context-and-trust-boundaries",
+      title: "Kontext und Vertrauensgrenzen für Coding-Agenten",
+      learningCard: {
+        language: "de",
+        problem:
+          "Ein Coding-Agent kann Anweisungen aus fremden Issues, Webseiten oder Dateien mit dem eigentlichen Auftrag verwechseln und dadurch unerwünschte Aktionen auslösen.",
+        coreConcept:
+          "Externe Inhalte bleiben Daten statt Anweisungen. Ihr Ursprung wird kenntlich gemacht; Werkzeugrechte werden auf die Aufgabe begrenzt und riskante Aktionen von Menschen geprüft.",
+        javaWebUse:
+          "Bei der Analyse eines Spring-Issues behandelt der Agent darin eingebettete Befehle nicht als Projektvorgabe und prüft Änderungen an Berechtigungen und Endpunkten gegen den vereinbarten Auftrag.",
+        boundary:
+          "Eine Warnung im Prompt oder eine Quellenmarkierung verhindert Prompt Injection nicht sicher. Rechtebegrenzung und Prüfungen müssen auch außerhalb des Modells greifen.",
+      },
+      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      sources: [{
+        title: "OWASP LLM01:2025 Prompt Injection",
+        url: "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+        type: "official-guide",
+        language: "en",
+        checkedAt: "2026-09-26",
+      }],
+    },
+    {
+      id: "protect-secrets-and-sensitive-data-with-ai",
+      title: "Geheimnisse und sensible Daten beim KI-Einsatz schützen",
+      learningCard: {
+        language: "de",
+        problem:
+          "Prompts, Dateien und Werkzeugausgaben können Zugangsdaten, personenbezogene Daten oder vertraulichen Code enthalten und so ungewollt weitergeben.",
+        coreConcept:
+          "Vor dem KI-Einsatz werden benötigte Daten minimiert und sensible Werte entfernt. Zugangsdaten bleiben in geeigneten Secret-Speichern; Agenten und Werkzeuge erhalten nur nötige Rechte.",
+        javaWebUse:
+          "Für die Fehlersuche an einem Spring-Dienst werden echte Tokens und Kundendaten aus Logs entfernt, bevor ein Agent sie erhält; Konfigurationsgeheimnisse bleiben außerhalb des Repositories.",
+        boundary:
+          "Eine bloße Anweisung zum Verschweigen schützt Daten nicht zuverlässig. Bei einem offengelegten Token muss der Zugang gesperrt oder der Token erneuert werden.",
+      },
+      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      sources: [
+        {
+          title: "OWASP LLM02:2025 Sensitive Information Disclosure",
+          url: "https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/",
+          type: "official-guide",
+          language: "en",
+          checkedAt: "2026-09-26",
+        },
+        {
+          title: "Keeping your API credentials secure - GitHub Docs",
+          url: "https://docs.github.com/en/rest/authentication/keeping-your-api-credentials-secure",
+          type: "official-guide",
+          language: "en",
+          checkedAt: "2026-09-26",
         },
       ],
     },
@@ -285,6 +340,29 @@ export const catalog: Catalog = {
           checkedAt: "2026-09-26",
         },
       ],
+    },
+    {
+      id: "review-and-accept-ai-generated-changes",
+      title: "KI-generierte Änderungen prüfen und übernehmen",
+      learningCard: {
+        language: "de",
+        problem:
+          "Ein plausibler KI-Patch kann Anforderungen verfehlen, Sicherheitsregeln verletzen oder unnötige Abhängigkeiten einführen.",
+        coreConcept:
+          "Menschen prüfen den Diff gegen Auftrag und Architektur, führen passende Tests und Sicherheitsprüfungen aus und entscheiden erst anhand der Ergebnisse über die Übernahme.",
+        javaWebUse:
+          "Bei einem geänderten Spring-Endpunkt werden Berechtigungsprüfung, Fehlerfälle und neue Bibliotheken im Diff kontrolliert und mit gezielten Java- und Browser-Tests geprüft.",
+        boundary:
+          "Grüne Tests und Scanner decken nur ihre geprüften Fälle ab. Sie ersetzen weder die fachliche Bewertung noch die menschliche Freigabe.",
+      },
+      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      sources: [{
+        title: "Review AI-generated code - GitHub Docs",
+        url: "https://docs.github.com/en/copilot/tutorials/review-ai-generated-code",
+        type: "official-guide",
+        language: "en",
+        checkedAt: "2026-09-26",
+      }],
     },
   ],
 };
