@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import type { Question } from "../../shared/question";
 import { catalog } from "./catalog";
 import type { CatalogItem, CatalogSource } from "./catalogContract";
 
@@ -31,8 +32,10 @@ function SourceGroup({
 
 export function CatalogBrowser({
   items = catalog.items,
+  onStartQuestions,
 }: {
   items?: CatalogItem[];
+  onStartQuestions?: (title: string, questions: Question[]) => void;
 }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selectedItem = items.find((item) => item.id === selectedId);
@@ -82,6 +85,14 @@ export function CatalogBrowser({
               >
                 {item.title}
               </button>
+              {item.questions && onStartQuestions && (
+                <button
+                  type="button"
+                  onClick={() => onStartQuestions(item.title, item.questions!)}
+                >
+                  Fragen starten: {item.title}
+                </button>
+              )}
             </li>
           ))}
         </ul>

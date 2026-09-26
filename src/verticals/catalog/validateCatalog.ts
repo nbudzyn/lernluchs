@@ -1,4 +1,5 @@
 import type { Catalog, CatalogValidation } from "./catalogContract";
+import { validateQuestionPool } from "./validateQuestionPool";
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 const editorialStatuses = new Set([
@@ -6,6 +7,14 @@ const editorialStatuses = new Set([
   "watching",
   "archived",
   "replaced",
+]);
+const foundationIds = new Set([
+  "human-ai-responsibility",
+  "problem-understanding-and-change-boundaries",
+  "agents-md",
+  "ears-requirements",
+  "research-plan-tasks",
+  "spec-driven-development-openspec",
 ]);
 
 function hasText(value: string): boolean {
@@ -59,6 +68,12 @@ export function validateCatalog(candidate: Catalog): CatalogValidation {
       ) {
         errors.push(`Invalid source for item: ${item.id}`);
       }
+    }
+
+    if (foundationIds.has(item.id)) {
+      if (!item.questions)
+        errors.push(`Missing question pool for item: ${item.id}`);
+      else errors.push(...validateQuestionPool(item, item.questions));
     }
   }
 

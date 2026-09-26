@@ -23,6 +23,13 @@ module.exports = {
       from: { path: "^src/shared/" },
       to: { path: "^src/(app|verticals)/" },
     },
+    {
+      name: "app-uses-public-vertical-entrypoints",
+      comment: "Die App importiert nur öffentliche Vertikal-Einstiegspunkte.",
+      severity: "error",
+      from: { path: "^src/app/" },
+      to: { path: "^src/verticals/(catalog|learning-checks)/(?!index\\.ts$)" },
+    },
     ...[
       "catalog",
       "learning-progress",

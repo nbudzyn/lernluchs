@@ -5,8 +5,12 @@
 Lernluchs ist eine clientseitige React-/TypeScript-Anwendung. Vite erzeugt
 statische Dateien für GitHub Pages. Ein versionierter, öffentlicher Katalog
 liefert Lernkarten, Quellen und redaktionelle Metadaten. Die App zeigt diese
-Inhalte in einer Liste an. Vitest prüft Verhalten und Katalog; dependency-cruiser
-prüft Importgrenzen und Zyklen.
+Inhalte in einer Liste an. Die App verbindet den Inhaltskatalog über seinen
+öffentlichen Einstiegspunkt mit der Lerncheck-Vertikale. Der Katalog enthält
+den quellengeprüften Fragenbestand; der Lerncheck hält Frageauswahl, Antworten
+und Ergebnis nur im React-Zustand. Vitest prüft Verhalten und Katalog,
+dependency-cruiser die Importgrenzen und Zyklen. Chromium-E2E-Tests prüfen
+den sichtbaren Ablauf auf Desktop und Smartphone.
 
 ## Dauerhafte Leitplanken
 

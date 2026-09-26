@@ -1,4 +1,8 @@
 import type { Catalog } from "./catalogContract";
+import foundationQuestions from "./foundationQuestions.json";
+
+type FoundationId = keyof typeof foundationQuestions;
+const questionsFor = (id: FoundationId) => foundationQuestions[id];
 
 function activeEditorial(reviewDueAt: string, publishedAt = "2026-09-20") {
   return {
@@ -15,6 +19,7 @@ export const catalog: Catalog = {
     {
       id: "human-ai-responsibility",
       title: "Mensch und KI: Verantwortung bleibt menschlich",
+      questions: questionsFor("human-ai-responsibility"),
       learningCard: {
         language: "de",
         problem:
@@ -41,6 +46,7 @@ export const catalog: Catalog = {
     {
       id: "problem-understanding-and-change-boundaries",
       title: "Problem verstehen und Änderungsgrenzen setzen",
+      questions: questionsFor("problem-understanding-and-change-boundaries"),
       learningCard: {
         language: "de",
         problem:
@@ -75,6 +81,7 @@ export const catalog: Catalog = {
     {
       id: "agents-md",
       title: "AGENTS.md: dauerhafter Kontext für Coding-Agenten",
+      questions: questionsFor("agents-md"),
       learningCard: {
         language: "de",
         problem:
@@ -169,6 +176,7 @@ export const catalog: Catalog = {
     {
       id: "ears-requirements",
       title: "EARS: Anforderungen präzise formulieren",
+      questions: questionsFor("ears-requirements"),
       learningCard: {
         language: "de",
         problem:
@@ -221,6 +229,7 @@ export const catalog: Catalog = {
     {
       id: "research-plan-tasks",
       title: "Research, Plan und Tasks trennen",
+      questions: questionsFor("research-plan-tasks"),
       learningCard: {
         language: "de",
         problem:
@@ -251,11 +260,21 @@ export const catalog: Catalog = {
           language: "en",
           checkedAt: "2026-09-26",
         },
+        {
+          title:
+            "Optimizing your AI usage to maximize efficiency and reduce cost",
+          url: "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
+        },
       ],
     },
     {
       id: "spec-driven-development-openspec",
       title: "Spec-Driven Development mit OpenSpec",
+      questions: questionsFor("spec-driven-development-openspec"),
       learningCard: {
         language: "de",
         problem:

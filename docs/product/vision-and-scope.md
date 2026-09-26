@@ -6,6 +6,13 @@ gemeinsamen Liste auswählen und dazu kurze Lernkarten mit Quellen und
 Aktualitätsangaben lesen. Die Inhalte werden redaktionell geprüft und als
 versionierter, nur lesbarer Katalog veröffentlicht.
 
+Für jede der sechs Grundlagenkarten stehen mindestens 25 quellengeprüfte
+Auswahlfragen bereit. Aus der Themenliste startet ein flüchtiger Durchlauf mit
+fünf zufällig ausgewählten Fragen. Nach der letzten Antwort zeigt die App
+richtige und gewählte falsche Antworten mit Begründungen und Quellenlinks.
+Ein Abbruch verwirft die Antworten; ein formaler Bestehensstatus wird noch
+nicht gespeichert.
+
 Die Liste enthält auch drei Karten zum sicheren Arbeiten mit Coding-Agenten:
 Vertrauensgrenzen für Kontext, Schutz sensibler Daten und Prüfung
 KI-generierter Änderungen. Lernpfade erscheinen noch nicht als eigene

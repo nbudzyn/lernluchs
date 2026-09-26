@@ -8,14 +8,17 @@ Die CI für Pull Requests und Pushes auf `main` installiert die festgeschriebene
 2. Type-Aware-Lint mit Oxlint und TypeScript 7; Warnungen lassen das Gate scheitern.
 3. TypeScript-Typprüfung.
 4. Unit- und Komponententests mit Vitest.
-5. Katalogvalidierung für eindeutige IDs, vollständige Lernkarten, redaktionelle Metadaten sowie HTTPS-Quellen mit Primär-/Sekundärgruppe, Sprache und Mengenbegrenzung.
-6. Architekturprüfung mit dependency-cruiser auf Importgrenzen und Zyklen.
-7. Produktionsbuild mit Prüfung der erzeugten Dateien.
-8. `npm audit --audit-level=high` für bekannte Schwachstellen.
+5. Katalogvalidierung für eindeutige IDs, vollständige Lernkarten, redaktionelle Metadaten, HTTPS-Quellen und je Grundlagenkarte mindestens 25 Fragen mit genau einer richtigen Antwort, Erklärungen und Quellenbezug.
+6. Architekturprüfung mit dependency-cruiser und einem Test der öffentlichen Vertikal-Einstiegspunkte.
+7. Lizenzprüfung der festgeschriebenen Abhängigkeiten. Unbekannte, GPL-, AGPL-, SSPL- und nicht quelloffene Lizenzen scheitern; LGPL und MPL brauchen eine dokumentierte Einzelfallfreigabe.
+8. Produktionsbuild mit Prüfung der erzeugten Dateien.
+9. Chromium-E2E-Tests für Fragenablauf, Ergebnis, Abbruch und Quellenlink-Ausfall, je zur Hälfte mit Desktop- und Smartphone-Viewport.
+10. `npm audit --audit-level=high` für bekannte Schwachstellen.
 
 Der GitHub-Pages-Workflow baut bei einem Push auf `main` die statische App mit `npm run check`, prüft den Pages-Basispfad und lädt nur
-`dist/` hoch. `npm run check` umfasst die Punkte 1 bis 7; das Audit läuft derzeit im separaten CI-Workflow und ist keine Voraussetzung
-für den Pages-Deploy-Job.
+`dist/` hoch. `npm run check` umfasst die Punkte 1 bis 8; Browser-E2E und Audit
+laufen im separaten CI-Workflow und sind keine Voraussetzung für den
+Pages-Deploy-Job.
 
 ## Änderungsnachweis
 

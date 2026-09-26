@@ -35,6 +35,33 @@ function completeItem(id: string): CatalogItem {
 }
 
 describe("public content catalog", () => {
+  it("contains at least 25 validated questions for each foundation card", () => {
+    const foundationIds = [
+      "human-ai-responsibility",
+      "problem-understanding-and-change-boundaries",
+      "agents-md",
+      "ears-requirements",
+      "research-plan-tasks",
+      "spec-driven-development-openspec",
+    ];
+    for (const id of foundationIds) {
+      const item = catalog.items.find((candidate) => candidate.id === id);
+      expect(item?.questions?.length).toBeGreaterThanOrEqual(25);
+    }
+    expect(validateCatalog(catalog)).toEqual({ valid: true, errors: [] });
+  });
+  it("includes the phase-separation source for Research, Plan and Tasks", () => {
+    const item = catalog.items.find(
+      (candidate) => candidate.id === "research-plan-tasks",
+    );
+    expect(
+      item?.sources.some(
+        (source) =>
+          source.url ===
+          "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage",
+      ),
+    ).toBe(true);
+  });
   it("requires a primary source, at most ten sources, and a supported language", () => {
     const item = completeItem("source-rules");
     expect(

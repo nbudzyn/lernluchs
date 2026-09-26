@@ -7,8 +7,17 @@ Importregeln werden mit dependency-cruiser als Buildfehler geprüft.
 
 Der Inhaltskatalog verantwortet den versionierten, öffentlich lesbaren Bestand
 aus Lernkarten, Quellen und Aktualitätsmetadaten sowie dessen Anzeige. Er
-enthält keinen persönlichen Zustand und hängt von keiner anderen Vertikale ab.
-`src/app` setzt die Anzeige zusammen, ohne fachliche Kataloglogik zu übernehmen.
+enthält auch die geprüften Fragen der sechs Grundlagenkarten, aber keinen
+persönlichen Zustand und hängt von keiner anderen Vertikale ab. Sein
+öffentlicher Einstiegspunkt exportiert die Themenliste und den Kartentyp.
+
+## Bestehende Vertikale: Lernchecks
+
+Der Lerncheck erhält die Fragen der gewählten Karte über seinen öffentlichen
+Einstiegspunkt. Er wählt fünf verschiedene Fragen, mischt die Optionen und
+verwaltet Antworten und Ergebnis flüchtig. Die Vertikale importiert keine
+Katalogdaten. `src/app` verbindet die beiden Einstiegspunkte und hält nur die
+aktuell gewählte Karte, ohne fachliche Logik zu übernehmen.
 
 ## Übergreifende Grenzen
 
@@ -17,7 +26,6 @@ nur über kleine, ausdrücklich entworfene öffentliche Verträge darauf zu.
 Gemeinsamer Code enthält lediglich stabile IDs, Datenschemata, Validierung
 und kleine technische Hilfen, keine Geschäfts- oder Präsentationslogik.
 
-Weitere Vertikalen und ein statischer Nachweis ihrer öffentlichen Einstiegspunkte
-werden zusammen mit nutzbaren Funktionen im [Story-Backlog](../product/story-backlog.md)
-geplant. Erst nach ihrer Umsetzung werden Verantwortung und erlaubte
-Abhängigkeitsrichtungen hier ergänzt.
+Ein Architekturtest und dependency-cruiser verhindern direkte App-Importe aus
+internen Dateien der beiden Vertikalen. Weitere Vertikalen werden im
+[Story-Backlog](../product/story-backlog.md) geplant.

@@ -1,3 +1,5 @@
+import type { Question } from "../../shared/question";
+
 export type EditorialStatus = "active" | "watching" | "archived" | "replaced";
 
 export type SourceType =
@@ -34,6 +36,7 @@ export type EditorialMetadata = {
 export type CatalogItem = {
   id: string;
   title: string;
+  questions?: Question[];
   learningCard: LearningCard;
   editorial: EditorialMetadata;
   sources: CatalogSource[];
