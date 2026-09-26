@@ -4,16 +4,50 @@ Dieses Backlog enhält (nur) geplante, noch nicht aktive Stories in vorgesehener
 jede Story eine eigene Änderungs-Spec unter
 `docs/changes/active/`; deren `tasks.md` dokumentiert RED → GREEN → REFACTOR.
 
-## Nächsten Lernpfad ermitteln und einweben
+## Nächsten Lernpfad einweben
 
-Der Inhaltskatalog erhält einen nächsten Lernpfad. Der Lernpfad kann durchaus Teile eines bestehenden Lernpfads weiterverwenden; dann in
-derselben Reihenfolge, so dass sich ein "Wissensbaum" ergibt.
+Der Inhaltskatalog wird um diesen Lernpfad erweitert:
 
-Vertikalen: Inhaltskatalog
+1. Problem verstehen und Änderungsgrenzen setzen - vorhanden
+2. EARS: Anforderungen präzise formulieren - vorhanden
+3. Modulgrenzen und öffentliche Schnittstellen gestalten - neu
+4. Fachverhalten mit TDD absichern - neu
+5. Java-Architekturregeln mit ArchUnit prüfen - neu
+6. Webabläufe mit Playwright prüfen - neu
+7. Web-Sicherheitsrisiken wie XSS und unsichere DOM-Nutzung erkennen - neu
+8. Abhängigkeiten und Sicherheitslücken risikobasiert bewerten - neu
+
+Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert
+und erscheint nicht als eigener Abschnitt in der Oberfläche.
+
+Die sechs neuen Lerninhalte werden als Lernkarten mit Quellen und
+Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an die
+vorhandenen Inhalte angeglichen. Fragenpools gehören nicht zu dieser Story.
+
+Alle zwölf Lerninhalte erscheinen genau einmal in einer gemeinsamen,
+ungruppierten Liste. Sie werden über beide Lernpfade hinweg nach Grundlagen,
+mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge der
+sechs vorhandenen Inhalte bleibt erhalten; die neuen Inhalte werden passend
+dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der
+acht Inhalte des neuen Lernpfads bleibt erhalten.
+
+Vertikale: Inhaltskatalog
+
+## Fragenpools für Lerninhalte kuratieren
+
+Für alle Lerninhalte, denen noch Fragen fehlen, einen ausreichend großen,
+quellengebundenen Fragenpool erstellen, damit Wiederholungen unterschiedliche
+Fragensätze nutzen können. Fragen prüfen konkrete Aussagen aus dem jeweiligen
+Lerninhalt und seiner Lernkarte; Allgemeinplätze sind unzulässig. Jede
+Antwortoption erhält eine Begründung und einen Quellenbezug. Die Fragen werden
+vor dem Commit unabhängig fachlich geprüft.
+
+Vertikale: Inhaltskatalog
 
 ## Grundlagenwissen überprüfen
 
-Quellengebundener Fragenpool sowie Auswahlchecks mit Bestehen, Nichtbestehen, Erklärung und Wiederholung.
+Auswahlchecks aus den kuratierten Fragenpools mit Bestehen, Nichtbestehen,
+Erklärung und Wiederholung anbieten.
 
 Vertikalen: Inhaltskatalog, Lernchecks
 

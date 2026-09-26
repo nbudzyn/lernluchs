@@ -3,6 +3,12 @@
 Dieses Glossar erklärt die Begriffe, wie sie in den aktuellen Produkt- und Architekturdokumenten verwendet werden. Neue Stories können die
 Begriffe bei Bedarf präzisieren; fachliche Änderungen werden in der jeweiligen Spec geklärt.
 
+## Fragenpool
+
+Eine kuratierte Sammlung quellengebundener Auswahlfragen zu einem Lerninhalt.
+Ein Lerncheck kann daraus unterschiedliche Fragensätze für Wiederholungen
+zusammenstellen.
+
 ## Inhaltskatalog
 
 Der versionierte, öffentlich lesbare Bestand an Themen, Begriffen, Lernkarten, Quellen und weiteren Lerninhalten. Er enthält keinen
@@ -26,6 +32,11 @@ Möglichkeit zur Wiederholung.
 Der persönliche, lokal im Browser gespeicherte Zustand, etwa bestätigte Kompetenzen und Check-Ergebnisse. Er ist vom Inhaltskatalog getrennt
 und bleibt bei Inhaltsupdates erhalten.
 
+## Lerninhalt
+
+Ein einzelner Schritt in einem Lernpfad. Der Grundlagenpfad von Version 0 besteht beispielsweise aus Lerninhalten zu Mensch-KI-Verantwortung,
+Anforderungen und Spec-Driven Development.
+
 ## Lernkarte
 
 Eine kurze Lerneinheit zu einem Lerninhalt mit Quellen und Angaben zur Aktualität.
@@ -33,11 +44,6 @@ Eine kurze Lerneinheit zu einem Lerninhalt mit Quellen und Angaben zur Aktualit�
 ## Lernpfad
 
 Eine empfohlene Folge von Lerninhalten. Er bietet Orientierung, sperrt aber keine Themen außerhalb des Pfads.
-
-## Lerninhalt
-
-Ein einzelner Schritt in einem Lernpfad. Der Grundlagenpfad von Version 0 besteht beispielsweise aus Lerninhalten zu Mensch-KI-Verantwortung,
-Anforderungen und Spec-Driven Development.
 
 ## Thema
 

@@ -36,11 +36,6 @@ Rechercheausgangspunkt, keine Autorität.
 
 ## Lernchecks
 
-Fragen prüfen konkrete Aussagen, die ausschließlich aus dem jeweiligen Thema
-und seiner Lernkarte ableitbar sind; Allgemeinplätze sind unzulässig.
-
-- Ein Thema besitzt einen ausreichend großen, kuratierten Fragenpool, damit
-  Wiederholungen einen anderen Satz erhalten können.
 - Es gibt keinen Zeitdruck.
 - Alle ausgewählten Antworten müssen korrekt sein. Andernfalls ist der Check
   nicht bestanden.
@@ -48,8 +43,6 @@ und seiner Lernkarte ableitbar sind; Allgemeinplätze sind unzulässig.
   passende Lernkarte bzw. Quelle sofort.
 - Ein bestandener Check schlägt einen Kompetenzfortschritt vor. Der Benutzer
   bestätigt oder korrigiert ihn sichtbar.
-- Jede Antwortoption besitzt eine Begründung und Quellenbezug. Vor dem Commit
-  werden Fragen unabhängig fachlich geprüft.
 
 ## Fehler- und Aktualitätshinweise
 
