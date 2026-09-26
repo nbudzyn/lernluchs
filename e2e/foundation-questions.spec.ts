@@ -3,6 +3,16 @@ import type { Page } from "@playwright/test";
 
 import foundationQuestions from "../src/verticals/catalog/foundationQuestions.json" with { type: "json" };
 
+const foundationTitles: Record<keyof typeof foundationQuestions, string> = {
+  "human-ai-responsibility": "Mensch und KI: Verantwortung bleibt menschlich",
+  "problem-understanding-and-change-boundaries":
+    "Problem verstehen und Änderungsgrenzen setzen",
+  "agents-md": "AGENTS.md: dauerhafter Kontext für Coding-Agenten",
+  "ears-requirements": "EARS: Anforderungen präzise formulieren",
+  "research-plan-tasks": "Research, Plan und Tasks trennen",
+  "spec-driven-development-openspec": "Spec-Driven Development mit OpenSpec",
+};
+
 async function answerCurrent(page: Page, chooseCorrect: boolean) {
   const prompt = await page.getByRole("heading", { level: 2 }).textContent();
   const question = foundationQuestions["human-ai-responsibility"].find(
@@ -94,4 +104,56 @@ test("can cancel a run and return to the topic list", async ({ page }) => {
     page.getByRole("navigation", { name: "Lernthemen" }),
   ).toBeVisible();
   await expect(page.getByText("Frage 2 von 5")).toHaveCount(0);
+});
+
+test("each foundation pool shows sourced answer explanations", async ({
+  page,
+}) => {
+  for (const [poolId, questions] of Object.entries(foundationQuestions)) {
+    const title = foundationTitles[poolId as keyof typeof foundationQuestions];
+    await page.goto("/");
+    await page
+      .getByRole("button", { name: `Fragen starten: ${title}` })
+      .click();
+
+    let wrongAnswer: (typeof questions)[number]["options"][number] | undefined;
+    for (let index = 0; index < 5; index += 1) {
+      const prompt = await page
+        .getByRole("heading", { level: 2 })
+        .textContent();
+      const question = questions.find(
+        (candidate) => candidate.prompt === prompt,
+      );
+      if (!question)
+        throw new Error(`Unknown question in ${poolId}: ${prompt}`);
+      const buttons = page
+        .getByRole("group", { name: "Antwortoptionen" })
+        .getByRole("button");
+      const count = await buttons.count();
+      expect(count).toBeGreaterThanOrEqual(3);
+      expect(count).toBeLessThanOrEqual(5);
+      const answer = question.options.find(
+        (option) => option.correct !== (index === 0),
+      );
+      if (!answer) throw new Error(`Missing answer for ${question.id}`);
+      if (index === 0) wrongAnswer = answer;
+      await page
+        .getByRole("group", { name: "Antwortoptionen" })
+        .getByRole("button", { name: answer.text, exact: true })
+        .click();
+    }
+
+    if (!wrongAnswer) throw new Error(`Missing wrong answer for ${poolId}`);
+    await expect(
+      page.getByText(wrongAnswer.explanation, { exact: false }),
+    ).toBeVisible();
+    const firstResult = page.getByRole("listitem").first();
+    await expect(
+      firstResult.getByRole("link", { name: "Quelle öffnen" }),
+    ).toHaveCount(2);
+    await expect(firstResult.getByRole("link").last()).toHaveAttribute(
+      "href",
+      wrongAnswer.sourceUrl,
+    );
+  }
 });
