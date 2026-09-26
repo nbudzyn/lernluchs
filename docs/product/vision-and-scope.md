@@ -14,7 +14,7 @@ sperren nie Themen.
 
 ## Version 0: benutzbarer Durchstich
 
-Version 0 enthält einen Grundlagenpfad mit folgenden Stationen:
+Version 0 enthält einen Grundlagenpfad mit folgenden Lerninhalten:
 
 1. Verantwortung von Mensch und KI.
 2. Problemverständnis und Änderungsgrenzen.
@@ -23,7 +23,7 @@ Version 0 enthält einen Grundlagenpfad mit folgenden Stationen:
 5. Research, Plan und Tasks.
 6. Spec-Driven Development mit OpenSpec als Pilot.
 
-Zu jeder Station gehören eine kurze Lernkarte, Quellen und
+Zu jedem Lerninhalt gehören eine kurze Lernkarte, Quellen und
 Aktualitätsinformationen sowie ein Auswahl-Lerncheck. Die Karte ist auf Handy
 und Desktop nutzbar; bestätigter Fortschritt bleibt lokal erhalten.
 
