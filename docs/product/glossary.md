@@ -47,6 +47,14 @@ Eine kurze Lerneinheit zu einem Lerninhalt mit Quellen und Angaben zur Aktualit�
 
 Eine empfohlene Folge von Lerninhalten. Er bietet Orientierung, sperrt aber keine Themen außerhalb des Pfads.
 
+## Primärquelle
+
+Eine Originalveröffentlichung oder die Dokumentation eines Urhebers zu seiner eigenen Methode, seinem Produkt oder seinem Vorgehen. Sie belegt die ursprüngliche Aussage unmittelbar.
+
+## Sekundärquelle
+
+Eine fremde Zusammenfassung, Erklärung oder Bewertung einer ursprünglichen Aussage, Methode oder Dokumentation. Sie ordnet eine Primärquelle ein, ersetzt sie aber nicht als Beleg für deren ursprüngliche Aussage.
+
 ## Thema
 
 Ein fachlicher Gegenstand im Inhaltskatalog. Themen können auf der Landkarte angezeigt, durch Querverbindungen verknüpft und im

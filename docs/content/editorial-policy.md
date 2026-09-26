@@ -31,3 +31,6 @@ geprüft. Konkurrenztechnologien werden einbezogen, wenn sie die Einordnung
 verändern könnten. Die Prüfung dokumentiert Quelle, Datum, Unsicherheiten und
 ggf. bewusste Auslassungen. Die bestehende Tool-Landkarte ist dafür ein
 Rechercheausgangspunkt, keine Autorität.
+
+Für Auswahl, Ergänzung und Ersatz von Quellen gelten die
+[Quellenregeln](source-selection.md).

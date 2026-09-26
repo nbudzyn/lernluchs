@@ -4,58 +4,73 @@ Dieses Backlog enthält nur geplante, noch nicht aktive Stories in vorgesehener 
 jede Story eine eigene Änderungs-Spec unter
 `docs/changes/active/`; diese dokumentiert RED → GREEN → REFACTOR.
 
-Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht
-eine eigene Spec mit Begründung und Architekturtests. Zentrale Dokumente
-werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden
-Entscheidungen und nachgewiesenen Prüfungen ergänzt.
+Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
+Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
 ## Quellengebundene Grundlagenfragen im Browser beantworten
 
 Zu jeder der sechs Lernkarten des Grundlagenpfads können Lernende eine Auswahlfrage beantworten und anschließend Begründung und Quelle
-einsehen. Dafür werden ausreichend viele fachlich unterschiedliche Fragen für spätere Wiederholungen kuratiert. Jede Frage prüft eine
-konkrete Aussage der Karte; jede Antwortoption erhält eine Begründung und einen Quellenbezug. Fragen und Antworten werden unabhängig
-fachlich geprüft, versioniert und zusammen mit dem öffentlichen Katalog validiert. Ein optionaler externer Quellenlink öffnet sich nur nach
-bewusster Aktion und sein Ausfall verhindert das Lesen und Beantworten der Frage nicht.
+einsehen. Dafür werden ausreichend viele fachlich unterschiedliche Fragen für spätere Wiederholungen kuratiert.
+
+- Jede Frage prüft einen Fakt oder eine klare Empfehlung (Best Practice) oder das beispielhafte, klare Ergebnis einer Trade-off-Abwägung.
+  Basis sind die Quellen (vorrangig Primärquellen) des Lerninhalts, der durch die Karte repräsentiert ist.
+- Jede Antwortoption erhält eine Begründung und einen Quellenbezug
+- Fragen und Antworten werden unabhängig fachlich geprüft und zusammen mit dem öffentlichen Katalog validiert.
+- Ein Quellenlink öffnet sich nur nach bewusster Aktion und sein Ausfall verhindert das Lesen und Beantworten der Frage nicht.
+- Widersprechen sich Primär- und Sekundärquellen deutlich, ist der Primärquelle Vorrang einzuräumen.
 
 Die sechs Grundlagenkarten behandeln Mensch-KI-Verantwortung, Problemverständnis,
-`AGENTS.md`, EARS, Research/Plan/Tasks und OpenSpec. Diese Story liefert den
-ersten sichtbaren Fragenablauf; Bestehenslogik und Wiederholung folgen in der
-nächsten Story. Mit diesem ersten neuen Browserablauf beginnen auch
-Browser-E2E-Prüfungen in CI. Format-/Lint- und Lizenzprüfungen werden als ausführbare CI-Gates ergänzt und nach grünem Nachweis in der
-Qualitätsstrategie dokumentiert. Ein Architekturtest prüft kleine öffentliche
-Vertikal-Einstiegspunkte und verbietet direkte Importe interner Daten oder
-Komponenten. Neue Abhängigkeiten erfordern eine begründete Freigabe in der
-späteren Änderungs-Spec.
+`AGENTS.md`, EARS, Research/Plan/Tasks und OpenSpec. Diese Story liefert den ersten sichtbaren Fragenablauf; Bestehenslogik und Wiederholung
+folgen in der nächsten Story.
+
+Mit diesem ersten neuen Browserablauf beginnen auch Browser-E2E-Prüfungen (Integrationstests) in CI.
+
+Lizenzprüfungen werden als ausführbare CI-Gates ergänzt und nach grünem Nachweis in der Qualitätsstrategie dokumentiert.
+
+Ein Architekturtest prüft kleine öffentliche Vertikal-Einstiegspunkte und verbietet direkte Importe interner Daten oder Komponenten. Neue
+Abhängigkeiten erfordern eine begründete Freigabe in der späteren Änderungs-Spec.
 
 Vertikalen: Inhaltskatalog, Lernchecks
 
-Dokumentation nach Umsetzung: Fragenablauf, Lerncheck-Vertikale und die
-tatsächlich grünen CI-Gates knapp in Produktstand, Architektur und
+Dokumentation nach Umsetzung: Fragenablauf, Lerncheck-Vertikale und die tatsächlich grünen CI-Gates knapp in Produktstand, Architektur und
 Qualitätsstrategie ergänzen.
+
+## Durch die Oberfläche und Bedienung motiviert, aber nicht abgelenkt werden
+
+Die Oberfläche soll motivierend, aber nicht ablenkend sein.
+
+- Ein einheitliches Farbschema soll angenehm anzuschauen sein, Texte sollen gut lesbar sein (automatisch Light Mode und Dark Mode nach
+  Auswahl des Betriebssystems / des Browsers).
+    - Farben vorsehen (Story-Backlog) für erfolgreiche Lernchecks und ggf. für Fehlantworten
+- Schriftgröße etwas größer als bisher
+- Kein vertikales Scrollen!
+- Horizontales Scrollen sollte eher selten nötig sein
+- Auf dem PC mit Tasten bedienbar
+- Auch auf Handy gut bedienbar
+- Barrierefrei
+- Der Inhalt steht im Vordergrund. Bedienelemente und statische Texte sollen wenig Platz verschwenden
+- Es soll nicht nach "AI Slop" aussehen.
 
 ## Lernchecks bestehen und mit anderem Fragensatz wiederholen
 
 Lernende absolvieren Auswahlchecks ohne Zeitdruck. Nur vollständig korrekte Antworten bestehen. Nach Nichtbestehen erscheinen sofort Lösung,
-Begründung und die passende Lernkarte beziehungsweise Quelle; ein neuer Versuch nutzt einen anderen Fragensatz.
-Bestehen erzeugt einen Fortschrittsvorschlag, speichert ihn aber noch nicht. Browser-E2E-Tests prüfen
-Bestehen, Nichtbestehen und Wiederholung.
+Begründung und die passende Lernkarte beziehungsweise Quelle; ein neuer Versuch nutzt einen anderen Fragensatz. Bestehen erzeugt einen
+Fortschrittsvorschlag, speichert ihn aber noch nicht. Browser-E2E-Tests prüfen Bestehen, Nichtbestehen und Wiederholung.
 
 Vertikalen: Inhaltskatalog, Lernchecks
 
-Dokumentation nach Umsetzung: Bestehens- und Wiederholungsregeln knapp in
-redaktioneller Richtlinie und Produktstand ergänzen.
+Dokumentation nach Umsetzung: Bestehens- und Wiederholungsregeln knapp in redaktioneller Richtlinie und Produktstand ergänzen.
 
 ## Lernfortschritt nach einem Check bestätigen und lokal speichern
 
 Ein bestandener Check zeigt einen sichtbaren, änderbaren Fortschrittsvorschlag. Nur die bewusste Bestätigung speichert den Wert in IndexedDB
 unter der dauerhaften Themen-ID. Fortschritt enthält keine Zugangsdaten, bleibt nach Reload erhalten und ist vom öffentlichen, nur lesbaren
-Katalog getrennt. Neue Inhaltsversionen oder fehlerhafte externe Quellen löschen bestätigten Fortschritt nicht. Der Browser-E2E-Test deckt
-Bestätigung, Korrektur, Reload und Inhaltsversionswechsel ab.
+Katalog getrennt. Katalogänderungen oder fehlerhafte externe Quellen löschen bestätigten Fortschritt nicht. Der Browser-E2E-Test deckt
+Bestätigung, Korrektur, Reload und Katalogänderungen ab.
 
 Vertikalen: Lernchecks, Lernfortschritt
 
-Dokumentation nach Umsetzung: Lokale Speicherung, Datenfluss und
-Bestätigungsregel knapp in Produktstand und Architektur ergänzen.
+Dokumentation nach Umsetzung: Lokale Speicherung, Datenfluss und Bestätigungsregel knapp in Produktstand und Architektur ergänzen.
 
 ## Kompetenzen aus bestätigtem Fortschritt anzeigen
 
@@ -65,8 +80,7 @@ nach einem Reload.
 
 Vertikalen: Lernfortschritt, Kompetenzprofil
 
-Dokumentation nach Umsetzung: Kompetenzanzeige und ihren Datenfluss knapp in
-Produktstand und Architektur ergänzen.
+Dokumentation nach Umsetzung: Kompetenzanzeige und ihren Datenfluss knapp in Produktstand und Architektur ergänzen.
 
 ## Themen auf einer Landkarte erkunden
 
@@ -75,25 +89,27 @@ ohne Sperre auswählen. Die vorhandene zugängliche Liste bleibt als Fallback nu
 Katalog und bestätigten Fortschritt nur über kleine öffentliche Verträge und delegiert Änderungen an die zuständige Vertikale.
 Browser-E2E-Tests prüfen Auswahl, Querverbindung und Listenfallback.
 
+Falls wir inzwischen den 01.12.2026 oder später haben, werden in dieser Story die Quellen der vorhandenen Karten zu `AGENTS.md`,
+Research/Plan/Tasks und OpenSpec erneut fachlich geprüft und bei Bedarf aktualisiert. - Falls Datum noch nicht erreicht, dann diesen Auftrag
+in die nächste Story verschieben.
+
 Vertikalen: Inhaltskatalog, Landkarte
 
-Dokumentation nach Umsetzung: Landkarte, Fallback und Vertikalgrenzen knapp in
-Produktstand und Architektur ergänzen.
+Dokumentation nach Umsetzung: Landkarte, Fallback und Vertikalgrenzen knapp in Produktstand und Architektur ergänzen.
 
 ## App installieren und Kernabläufe offline nutzen
 
 Nach dem ersten erfolgreichen Laden ist die öffentliche GitHub-Pages-App installierbar und zeigt offline Landkarte, Liste, Lernkarten,
-Lernchecks und bereits bestätigten Fortschritt. Der versionierte Service-Worker-Cache hält App und Katalog einschließlich Fragen pro
-Inhaltsversion zusammen; Updates mischen keine Versionen und überschreiben keinen lokalen Fortschritt. Der öffentliche Build enthält nur App
+Lernchecks und bereits bestätigten Fortschritt. Der versionierte Service-Worker-Cache hält App und Katalog einschließlich Fragen je Build
+zusammen; Updates mischen keine Build-Stände und überschreiben keinen lokalen Fortschritt. Der öffentliche Build enthält nur App
 und Katalog, keine persönlichen Daten oder extern nachgeladenen Laufzeitressourcen. Externe Quellen können offline als nicht verfügbar
 erscheinen und öffnen sich nur nach bewusster Aktion. Browser- und PWA-Prüfungen decken Erstladen, Offline-Nutzung und kontrollierte Updates
 ab. Die neuen PWA-/Offline-Gates werden nach grünem Nachweis in der Qualitätsstrategie dokumentiert.
 
 Vertikale: PWA/Zuverlässigkeit
 
-Dokumentation nach Umsetzung: Installation, Offline-Grenzen, Cache-Strategie
-und tatsächlich grüne Prüfungen knapp in Produktstand, Architektur und
-Qualitätsstrategie ergänzen.
+Dokumentation nach Umsetzung: Installation, Offline-Grenzen, Cache-Strategie und tatsächlich grüne Prüfungen knapp in Produktstand,
+Architektur und Qualitätsstrategie ergänzen.
 
 ## Kernabläufe und Release auf Zielbrowsern abnehmen
 
@@ -114,8 +130,16 @@ Nachweis beschreibt die Qualitätsstrategie die tatsächlich eingerichteten Gate
 
 Vertikale: PWA/Zuverlässigkeit
 
-Dokumentation nach Umsetzung: Unterstützte Browser, nachgewiesene Abläufe und
-Release-Gates knapp in Produktstand und Qualitätsstrategie ergänzen.
+Dokumentation nach Umsetzung: Unterstützte Browser, nachgewiesene Abläufe und Release-Gates knapp in Produktstand und Qualitätsstrategie
+ergänzen.
+
+## Kuratierte Quellen für den zweiten Lernpfad ergänzen
+
+Die sechs zusätzlichen Karten aus „Änderungen gestalten und absichern“ erhalten Quellen.
+
+Es gelten die [Regeln zur Quellenauswahl](../content/source-selection.md).
+
+Vertikalen: Inhaltskatalog
 
 ## Lernchecks für den zweiten Lernpfad ergänzen
 
@@ -125,8 +149,15 @@ Browser-Tests zeigen den Lernnutzen für diesen Pfad.
 
 Vertikalen: Inhaltskatalog, Lernchecks
 
-Dokumentation nach Umsetzung: Fragenumfang des zweiten Pfads knapp im
-Produktstand und in der redaktionellen Richtlinie ergänzen.
+Dokumentation nach Umsetzung: Fragenumfang des zweiten Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
+
+## Kuratierte Quellen für den dritten Lernpfad ergänzen
+
+Die drei neuen Karten aus „Sicher mit Coding-Agenten arbeiten“ erhalten Quellen.
+
+Es gelten die [Regeln zur Quellenauswahl](../content/source-selection.md).
+
+Vertikalen: Inhaltskatalog
 
 ## Lernchecks für den dritten Lernpfad ergänzen
 
@@ -136,8 +167,7 @@ Lernnutzen für diesen Pfad.
 
 Vertikalen: Inhaltskatalog, Lernchecks
 
-Dokumentation nach Umsetzung: Fragenumfang des dritten Pfads knapp im
-Produktstand und in der redaktionellen Richtlinie ergänzen.
+Dokumentation nach Umsetzung: Fragenumfang des dritten Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
 
 ## Vierter Lernpfad
 
@@ -155,9 +185,9 @@ Der Inhaltskatalog wird um den Lernpfad **Java-/Web-Code technisch analysieren u
 Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert und erscheint nicht als eigener Abschnitt in der
 Oberfläche.
 
-Die vier neuen Lerninhalte werden als Lernkarten mit Quellen und Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an die
-vorhandenen Inhalte angeglichen. Dabei auch immer einen Blick auf die Notizen in der KI-Tool-Landkarte haben! Bei Context7 werden Angaben
-mit der Originaldokumentation der konkreten Bibliotheksversion abgeglichen.
+Die vier neuen Lerninhalte werden als Lernkarten mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten ausformuliert, fachlich
+geprüft und strukturell an die vorhandenen Inhalte angeglichen. Dabei auch immer einen Blick auf die Notizen in der KI-Tool-Landkarte haben!
+Bei Context7 werden Angaben mit der Originaldokumentation der konkreten Bibliotheksversion abgeglichen.
 
 Fragenpools gehören nicht zu dieser Story.
 
@@ -178,8 +208,7 @@ zeigen den Lernnutzen für diesen Pfad.
 
 Vertikalen: Inhaltskatalog, Lernchecks
 
-Dokumentation nach Umsetzung: Fragenumfang des vierten Pfads knapp im
-Produktstand und in der redaktionellen Richtlinie ergänzen.
+Dokumentation nach Umsetzung: Fragenumfang des vierten Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
 
 ## Fünfter Lernpfad
 
@@ -197,7 +226,7 @@ Der Inhaltskatalog wird um den Lernpfad **Parallele Coding-Agenten kritisch erpr
 Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert und erscheint nicht als eigener Abschnitt in der
 Oberfläche. Die Lern-App führt keine Coding-Agenten aus.
 
-Die sechs neuen Lerninhalte werden als Lernkarten mit Quellen und Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an
+Die sechs neuen Lerninhalte werden als Lernkarten mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an
 die vorhandenen Inhalte angeglichen. Die [KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausgangspunkt. Die Karten
 benennen Voraussetzungen, Grenzen und Gegenbeispiele. Die Karte zur Bewertung beschreibt einen kontrollierten Vergleich von
 Ergebnisqualität, Dauer, Kosten und Review-Aufwand mit einem seriellen Ablauf. Fragenpools gehören nicht zu dieser Story.
@@ -219,8 +248,7 @@ zeigen den Lernnutzen für diesen Pfad.
 
 Vertikalen: Inhaltskatalog, Lernchecks
 
-Dokumentation nach Umsetzung: Fragenumfang des fünften Pfads knapp im
-Produktstand und in der redaktionellen Richtlinie ergänzen.
+Dokumentation nach Umsetzung: Fragenumfang des fünften Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
 
 ## Lernpfade in Anzeige berücksichtigen
 
@@ -284,124 +312,121 @@ Die Anwendung kennt Lernpfade.
 Lernpfade werden in der Anzeige berücksichtigt. Man kann die Anzeige auf einen oder mehrere Lernpfade filtern - oder man zeigt alternativ
 alle Lernpfade an.
 
-Beim Aufbau des sichtbaren Filters werden die benötigten Pfadbegriffe im
-Glossar mit genau einem englischen Begriff ergänzt. Betroffene englische
-Bezeichner werden innerhalb der höchstens zwei berührten Vertikalen
-vereinheitlicht, ohne Fachlogik zu ändern. Weitere Begriffe werden erst in der
-jeweils betroffenen fachlichen Story vereinheitlicht.
+Beim Aufbau des sichtbaren Filters werden die benötigten Pfadbegriffe im Glossar mit genau einem englischen Begriff ergänzt. Betroffene
+englische Bezeichner werden innerhalb der höchstens zwei berührten Vertikalen vereinheitlicht, ohne Fachlogik zu ändern. Weitere Begriffe
+werden erst in der jeweils betroffenen fachlichen Story vereinheitlicht.
 
 Vertikalen: Inhaltskatalog, Lernpfade
 
-Dokumentation nach Umsetzung: Pfadmodell, Filterverhalten und neue Begriffe
-knapp in Produktstand, Architektur und Glossar ergänzen.
+Dokumentation nach Umsetzung: Pfadmodell, Filterverhalten und neue Begriffe knapp in Produktstand, Architektur und Glossar ergänzen.
 
 ## Quellen und Videos gezielt erkunden
 
-Lernende sehen je Lernkarte, welche Quellen und Videos verfügbar sind, erkennen
-deren Typ und Aktualität und öffnen externe Angebote nur nach bewusster Aktion.
-Die redaktionelle Pflege bleibt im öffentlichen Katalog; die App bietet keine
-Inhaltsbearbeitung. Ein ausgefallener externer Link blockiert die Lernkarte
-nicht. Browser-Tests prüfen Anzeige und Öffnung.
+Lernende sehen je Lernkarte, welche Quellen und Videos verfügbar sind, erkennen deren Typ und Aktualität und öffnen externe Angebote nur
+nach bewusster Aktion. Die redaktionelle Pflege bleibt im öffentlichen Katalog; die App bietet keine Inhaltsbearbeitung. Ein ausgefallener
+externer Link blockiert die Lernkarte nicht. Browser-Tests prüfen Anzeige und Öffnung.
 
 Vertikale: Inhaltskatalog
 
-Dokumentation nach Umsetzung: Tatsächliche Quell- und Videodaten, Pflege und
-Öffnungsverhalten knapp in Produktstand und redaktioneller Richtlinie ergänzen.
+Dokumentation nach Umsetzung: Tatsächliche Quell- und Videodaten, Pflege und Öffnungsverhalten knapp in Produktstand und redaktioneller
+Richtlinie ergänzen.
 
 ## Aktualisierte und ersetzte Lernkarten nachvollziehen
 
-Lernende erkennen bei einer geänderten oder ersetzten Karte Version,
-fachliches Prüfdatum und gegebenenfalls einen Nachfolger. Eine archivierte
-Karte bleibt lesbar, damit frühere Lernschritte nachvollziehbar sind.
-Redaktionell werden fachliche Prüfung und bloße Textänderung getrennt erfasst.
-Tests prüfen Versionswechsel und Nachfolgerhinweis.
+Lernende erkennen bei einer geänderten oder ersetzten Karte das fachliche Prüfdatum und gegebenenfalls einen Nachfolger. Eine archivierte
+Karte bleibt lesbar, damit frühere Lernschritte nachvollziehbar sind. Redaktionell werden fachliche Prüfung und bloße Textänderung getrennt
+erfasst. Tests prüfen Archivierung und Nachfolgerhinweis.
 
 Vertikale: Inhaltskatalog
 
-Dokumentation nach Umsetzung: Versions- und Archivierungsregeln knapp in
-Produktstand und redaktioneller Richtlinie ergänzen.
+Dokumentation nach Umsetzung: Archivierungs- und Nachfolgerregeln knapp in Produktstand und redaktioneller Richtlinie ergänzen.
 
 ## Persönliche Hinweise zu Lerninhalten festhalten
 
-Lernende können zu einer Karte eine lokale Notiz oder einen Fehler- und
-Aktualitätshinweis festhalten und später wiederfinden. Hinweise enthalten
-Themen-ID, Inhaltsversion, Datum und kurze Begründung; sie bleiben ohne
-bewussten Export auf dem Gerät und gelangen nicht nach Git. Browser-Tests
-prüfen Speichern, Wiederfinden und Trennung vom öffentlichen Katalog.
+Lernende können zu einer Karte eine lokale Notiz oder einen Fehler- und Aktualitätshinweis festhalten und später wiederfinden. Hinweise
+enthalten Themen-ID, Datum und kurze Begründung; sie bleiben ohne bewussten Export auf dem Gerät und gelangen nicht nach
+Git. Browser-Tests prüfen Speichern, Wiederfinden und Trennung vom öffentlichen Katalog.
 
 Vertikalen: Inhaltskatalog, Lernfortschritt
 
-Dokumentation nach Umsetzung: Lokale Hinweise und ihren Datenfluss knapp in
-Produktstand, Architektur und redaktioneller Richtlinie ergänzen.
+Dokumentation nach Umsetzung: Lokale Hinweise und ihren Datenfluss knapp in Produktstand, Architektur und redaktioneller Richtlinie
+ergänzen.
 
 ## Lernziele aus dem eigenen Fortschritt setzen
 
-Lernende können für ein Thema ein persönliches Ziel setzen, ändern und
-abschließen. Das Ziel zeigt den bestätigten Fortschritt, ohne ihn zu ersetzen,
-und bleibt nach Reload erhalten. Browser-Tests prüfen diese Abläufe.
+Lernende können für ein Thema ein persönliches Ziel setzen, ändern und abschließen. Das Ziel zeigt den bestätigten Fortschritt, ohne ihn zu
+ersetzen, und bleibt nach Reload erhalten. Browser-Tests prüfen diese Abläufe.
 
 Vertikalen: Lernfortschritt, Lernziele
 
-Dokumentation nach Umsetzung: Lernziele und ihre Beziehung zum Fortschritt
-knapp in Produktstand und Architektur ergänzen.
+Dokumentation nach Umsetzung: Lernziele und ihre Beziehung zum Fortschritt knapp in Produktstand und Architektur ergänzen.
 
 ## Termine für Lernziele planen
 
-Lernende können einem Ziel einen lokalen Termin geben, ändern oder entfernen
-und fällige Ziele in der App erkennen. Termine werden nicht öffentlich
-übertragen. Browser-Tests prüfen Fälligkeit und Änderungen.
+Lernende können einem Ziel einen lokalen Termin geben, ändern oder entfernen und fällige Ziele in der App erkennen. Termine werden nicht
+öffentlich übertragen. Browser-Tests prüfen Fälligkeit und Änderungen.
 
 Vertikale: Lernziele
 
-Dokumentation nach Umsetzung: Terminverhalten knapp in Produktstand und
-Architektur ergänzen.
+Dokumentation nach Umsetzung: Terminverhalten knapp in Produktstand und Architektur ergänzen.
 
 ## Erinnerungen für fällige Lernziele einstellen
 
-Lernende können für ein Ziel eine Erinnerung ein- und ausschalten. Fällige
-Erinnerungen erscheinen beim Öffnen der App, ohne Zeitdruck oder Streaks.
-Browser-Tests prüfen Anzeige und Abschalten.
+Lernende können für ein Ziel eine Erinnerung ein- und ausschalten. Fällige Erinnerungen erscheinen beim Öffnen der App, ohne Zeitdruck oder
+Streaks. Browser-Tests prüfen Anzeige und Abschalten.
 
 Vertikale: Lernziele
 
-Dokumentation nach Umsetzung: Erinnerungsregeln knapp in Produktstand und
-Architektur ergänzen.
+Dokumentation nach Umsetzung: Erinnerungsregeln knapp in Produktstand und Architektur ergänzen.
 
 ## Benachrichtigungen für Erinnerungen erlauben
 
-Lernende können Benachrichtigungen für bestehende Erinnerungen ausdrücklich
-aktivieren und wieder deaktivieren. Ohne Berechtigung bleiben Erinnerungen in
-der App sichtbar. Die Änderungs-Spec klärt Browserunterstützung und den
-gewählten Mechanismus; Tests prüfen Zustimmung und Fallback.
+Lernende können Benachrichtigungen für bestehende Erinnerungen ausdrücklich aktivieren und wieder deaktivieren. Ohne Berechtigung bleiben
+Erinnerungen in der App sichtbar. Die Änderungs-Spec klärt Browserunterstützung und den gewählten Mechanismus; Tests prüfen Zustimmung und
+Fallback.
 
 Vertikalen: Lernziele, PWA/Zuverlässigkeit
 
-Dokumentation nach Umsetzung: Berechtigungen, unterstützte Browser und
-Fallback knapp in Produktstand, Architektur und Qualitätsstrategie ergänzen.
+Dokumentation nach Umsetzung: Berechtigungen, unterstützte Browser und Fallback knapp in Produktstand, Architektur und Qualitätsstrategie
+ergänzen.
 
 ## Persönliche Daten exportieren und wiederherstellen
 
-Lernende können Fortschritt, Ziele und Hinweise bewusst als Datei exportieren
-und auf einem Gerät wieder importieren. Vor dem Import sehen sie, welche
-Daten ersetzt oder zusammengeführt würden, und bestätigen die Aktion.
-Ungültige Dateien verändern keine vorhandenen Daten. Browser-Tests prüfen
-Export, Vorschau, Import und Fehlerfall.
+Lernende können Fortschritt, Ziele und Hinweise bewusst als Datei exportieren und auf einem Gerät wieder importieren. Vor dem Import sehen
+sie, welche Daten ersetzt oder zusammengeführt würden, und bestätigen die Aktion. Ungültige Dateien verändern keine vorhandenen Daten.
+Browser-Tests prüfen Export, Vorschau, Import und Fehlerfall.
 
 Vertikalen: Lernfortschritt, PWA/Zuverlässigkeit
 
-Dokumentation nach Umsetzung: Exportformat, Importregeln und Datenschutz
-knapp in Produktstand und Architektur ergänzen.
+Dokumentation nach Umsetzung: Exportformat, Importregeln und Datenschutz knapp in Produktstand und Architektur ergänzen.
+
+## Inhaltsversionen von Lernkarten und gelerntem Stand berücksichtigen
+
+Erst mit dieser Story erhalten Lernkarten beziehungsweise Lerninhalte fachliche Inhaltsversionen. Jede Änderung an einer Karte erzeugt eine
+neue Inhaltsversion. Zusätzliche Fragen dürfen jederzeit zu einer bestehenden Inhaltsversion hinzukommen, ohne deren Nummer zu ändern.
+Quellen und Fragen sind jeweils einer konkreten Inhaltsversion zugeordnet.
+
+Wird eine Karte beantwortet, wird die zugehörige Inhaltsversion beim Speichern des Lernstands mitgeführt. Die Anzeige unterscheidet, ob
+eine Karte in der aktuellen Inhaltsversion oder nur in einer älteren gelernt wurde. Ein späterer Versionswechsel löscht den bisherigen
+Lernstand nicht. **Offene Frage für die spätere Spec:** Wird die Version schon nach jeder Antwort oder erst nach bewusster Bestätigung
+dauerhaft gespeichert? Die Änderungs-Spec legt außerdem die genaue Versions- und Migrationsregel fest, auch für Lernstand ohne bisherige
+Inhaltsversion und für reine Quellenänderungen. Browser-Tests prüfen Lernen, Versionswechsel, ältere Lernstände und zusätzliche Fragen ohne
+Versionswechsel.
+
+Bis zur Umsetzung dieser Story gibt es keine fachlichen Inhaltsversionen. Eine technische App- oder Katalog-Buildnummer ist davon getrennt.
+Die betroffenen Vertikalen Inhaltskatalog, Lernchecks und Lernfortschritt werden für die Umsetzung in Schritte mit höchstens zwei Vertikalen
+pro fachlichem Commit geschnitten.
+
+Dokumentation nach Umsetzung: Versionsregeln und Bezug von Fragen, Quellen und Lernstand knapp in Produktstand, Architektur und
+redaktioneller Richtlinie ergänzen.
 
 ## Persönlichen Zustand ohne Login zwischen Geräten synchronisieren
 
-Lernende können ihren bestätigten persönlichen Zustand bewusst zwischen
-Geräten abgleichen, ohne Login oder serverseitige Benutzerverwaltung. Die
-Änderungs-Spec prüft vor der Implementierung eine sichere, praktikable Lösung
-und legt Zustimmung, Konfliktbehandlung, Löschung und Ausfallverhalten fest.
-Die bestehende lokale Nutzung bleibt unabhängig von einer Verbindung möglich.
+Lernende können ihren bestätigten persönlichen Zustand bewusst zwischen Geräten abgleichen, ohne Login oder serverseitige
+Benutzerverwaltung. Die Änderungs-Spec prüft vor der Implementierung eine sichere, praktikable Lösung und legt Zustimmung,
+Konfliktbehandlung, Löschung und Ausfallverhalten fest. Die bestehende lokale Nutzung bleibt unabhängig von einer Verbindung möglich.
 Browser-Tests prüfen Abgleich, Konflikt und Offline-Fallback.
 
 Vertikalen: Lernfortschritt, PWA/Zuverlässigkeit
 
-Dokumentation nach Umsetzung: Tatsächlichen Datenfluss, Grenzen und
-Sicherheitsentscheidung knapp in Produktstand und Architektur ergänzen.
+Dokumentation nach Umsetzung: Tatsächlichen Datenfluss, Grenzen und Sicherheitsentscheidung knapp in Produktstand und Architektur ergänzen.
