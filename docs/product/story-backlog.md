@@ -7,16 +7,52 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Lernchecks bestehen und mit anderem Fragensatz wiederholen
+## Lernchecks bestehen
 
-Lernende absolvieren Auswahlchecks ohne Zeitdruck. Nur vollständig korrekte Antworten bestehen. Bestehen erzeugt einen
-Fortschrittsvorschlag, speichert ihn aber noch nicht.
+Am Ende eines Fragendurchlaufs, wenn die Zusammenfassung angezeigt wird und der User alle Fragen des Durchlaufs richtig beantwortet hat,
+besteht er diesen Lerninhalt (die Lernkarte).
+
+- Der User erhält oben in der Übersicht eine klare Anzeige, dass er bestanden hat, verbunden mit einem kurzen Glückwunsch.
+- Der Glückwunsch wird zufällig aus einer Liste von 50 Glückwünschen ausgewählt.
+    - Die Liste enthält sowohl klassische Glückwünsche ("Herzlichen Glückwunsch!"), bestärkende Formeln ("Toll gemacht!" - wir vermeiden
+      "du" und "Sie"!) als auch entsprechende Wortspiele zu KI ("Na, was ein KInderspiel").
+- Hat der User nicht bestanden gibt es keine negative Meldung! (Kein "Leider nicht bestanden" o.Ä.!) Auch kein Glückwunsch.
+- Verlässt der User die Seite, kann er jederzeit wieder einen Fragendurchlauf starten.
 
 Browser-E2E-Tests prüfen Bestehen, Nichtbestehen und Wiederholung.
 
-Vertikalen: Inhaltskatalog, Lernchecks
+Abgrenzung:
 
-Dokumentation nach Umsetzung: Bestehens- und Wiederholungsregeln knapp in redaktioneller Richtlinie und Produktstand ergänzen.
+- Das Bestehen wird (noch) nicht gespeichert.
+- Keine lokale Datenhaltung nötig.
+
+Vertikalen: Lernchecks
+
+## Bestehen lokal speichern
+
+Hat der User einen Lerncheck bestanden, wird das Bestehen lokal unter der dauerhaften Lerninhalts-ID / Lernkarten-ID gespeichert
+(Lernstand).
+
+- Der Lernstand bleibt nach Reload erhalten.
+- Katalogänderungen oder fehlerhafte externe Quellen löschen den Lernstand nicht.
+
+Der Browser-E2E-Test deckt Speichern und Katalogänderungen ab.
+
+Vertikalen: Lernchecks, Lernfortschritt (neue Vertikale! Lernchecks ist vom Lernfortschritt abhängig - aber nicht umgekehrt!)
+
+Dokumentation nach Umsetzung: Lokale Speicherung knapp in Produktstand und Architektur ergänzen; neue Vertikale ergänzen
+
+## Nichtbestehen auf Wunsch lokal speichern
+
+Hat der User einen Lerncheck zu Ende durchgeführunt und NICHT bestanden, erhält er beim Verlassen der Übersicht eine Rückfrage: "Lerninhalt
+auf nicht bestanden zurücksetzen?"
+
+- (NUR) wenn der User das bestätigt, wird das Bestehen dieses Lerninhalts lokal wieder gelöscht. Alle anderen Elemente des Lernstands
+  bleiben erhalten!
+
+Der Browser-E2E-Test deckt Nichtbestehen mit und ohne Löschen des Lernstands UND DEN ERHALT ANDERER, BEREITS BESTANDENER LERNINHALTE ab.
+
+Vertikalen: Lernchecks, Lernfortschritt
 
 ## Bereits gestellte Fragen je Karte lokal merken
 
@@ -31,17 +67,6 @@ Fragenablauf nutzbar. Browser-E2E-Tests prüfen mehrere Durchläufe, Ausschöpfu
 Vertikalen: Inhaltskatalog, Lernchecks
 
 Dokumentation nach Umsetzung: Lokale Fragehistorie und Zyklusregel knapp in Produktstand und Architektur ergänzen.
-
-## Lernfortschritt nach einem Check bestätigen und lokal speichern
-
-Ein bestandener Check zeigt einen sichtbaren, änderbaren Fortschrittsvorschlag. Nur die bewusste Bestätigung speichert den Wert in IndexedDB
-unter der dauerhaften Themen-ID. Fortschritt enthält keine Zugangsdaten, bleibt nach Reload erhalten und ist vom öffentlichen, nur lesbaren
-Katalog getrennt. Katalogänderungen oder fehlerhafte externe Quellen löschen bestätigten Fortschritt nicht. Der Browser-E2E-Test deckt
-Bestätigung, Korrektur, Reload und Katalogänderungen ab.
-
-Vertikalen: Lernchecks, Lernfortschritt
-
-Dokumentation nach Umsetzung: Lokale Speicherung, Datenfluss und Bestätigungsregel knapp in Produktstand und Architektur ergänzen.
 
 ## Kompetenzen aus bestätigtem Fortschritt anzeigen
 

@@ -1,7 +1,6 @@
 # Lernluchs
 
-Lernluchs ist eine öffentliche, statische Lernanwendung. Derzeit lassen sich
-zwölf Lernkarten mit Quellen und Aktualitätsangaben im Browser lesen.
+Lernluchs ist eine öffentliche, statische Lernanwendung rund um KI.
 
 Öffentlich erreichbar unter https://nbudzyn.github.io/lernluchs/.
 
@@ -12,9 +11,8 @@ zwölf Lernkarten mit Quellen und Aktualitätsangaben im Browser lesen.
 3. [Dauerhafte Vorgaben](docs/governance/durable-rules.md) – gelten bei jeder Änderung.
 4. [Änderungs-Workflow](docs/changes/README.md) – für jedes neue Teil-Feature.
 
-Die [KI-Tool-Landkarte](docs/content/ki-tool-landkarte.md) dient als
-Rechercheausgangspunkt. Vor der Übernahme einer Aussage in die App wird sie
-nach der [redaktionellen Richtlinie](docs/content/editorial-policy.md) geprüft.
+Die [KI-Tool-Landkarte](docs/content/ki-tool-landkarte.md) dient als Rechercheausgangspunkt. Vor der Übernahme einer Aussage in die App wird
+sie nach der [redaktionellen Richtlinie](docs/content/editorial-policy.md) geprüft.
 
 Der eigene Code erhält die Lizenz [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0). Für fremde Quellen, Videos und Markenzeichen
 werden keine Lizenzrechte beansprucht; sie werden nur korrekt referenziert.
