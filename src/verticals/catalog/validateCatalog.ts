@@ -1,7 +1,12 @@
 import type { Catalog, CatalogValidation } from "./catalogContract";
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
-const editorialStatuses = new Set(["active", "watching", "archived", "replaced"]);
+const editorialStatuses = new Set([
+  "active",
+  "watching",
+  "archived",
+  "replaced",
+]);
 
 function hasText(value: string): boolean {
   return value.trim().length > 0;
@@ -31,14 +36,16 @@ export function validateCatalog(candidate: Catalog): CatalogValidation {
       !datePattern.test(item.editorial.publishedAt) ||
       !datePattern.test(item.editorial.reviewedAt) ||
       !datePattern.test(item.editorial.reviewDueAt) ||
-      !hasText(item.editorial.contentVersion) ||
       !editorialStatuses.has(item.editorial.status)
     ) {
       errors.push(`Invalid editorial metadata for item: ${item.id}`);
     }
 
-    if (item.sources.length === 0) {
-      errors.push(`Missing source for item: ${item.id}`);
+    if (!item.sources.some((source) => source.origin === "primary")) {
+      errors.push(`Missing primary source for item: ${item.id}`);
+    }
+    if (item.sources.length > 10) {
+      errors.push(`Too many sources for item: ${item.id}`);
     }
 
     for (const source of item.sources) {
@@ -46,7 +53,8 @@ export function validateCatalog(candidate: Catalog): CatalogValidation {
         !hasText(source.title) ||
         !source.url.startsWith("https://") ||
         !hasText(source.type) ||
-        !hasText(source.language) ||
+        !["primary", "secondary"].includes(source.origin) ||
+        !["de", "en"].includes(source.language) ||
         !datePattern.test(source.checkedAt)
       ) {
         errors.push(`Invalid source for item: ${item.id}`);

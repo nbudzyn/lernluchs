@@ -19,7 +19,6 @@ function completeItem(id: string): CatalogItem {
       publishedAt: "2026-09-20",
       reviewedAt: "2026-09-20",
       reviewDueAt: "2027-03-20",
-      contentVersion: "1",
       status: "active",
     },
     sources: [
@@ -27,6 +26,7 @@ function completeItem(id: string): CatalogItem {
         title: "Quelle",
         url: "https://example.test/source",
         type: "official-guide",
+        origin: "primary",
         language: "en",
         checkedAt: "2026-09-20",
       },
@@ -35,6 +35,56 @@ function completeItem(id: string): CatalogItem {
 }
 
 describe("public content catalog", () => {
+  it("requires a primary source, at most ten sources, and a supported language", () => {
+    const item = completeItem("source-rules");
+    expect(
+      validateCatalog({
+        version: "1",
+        items: [
+          { ...item, sources: [{ ...item.sources[0], origin: "secondary" }] },
+        ],
+      }).valid,
+    ).toBe(false);
+    expect(
+      validateCatalog({
+        version: "1",
+        items: [
+          {
+            ...item,
+            sources: Array.from({ length: 11 }, (_, index) => ({
+              ...item.sources[0],
+              url: `https://example.test/${index}`,
+            })),
+          },
+        ],
+      }).valid,
+    ).toBe(false);
+    expect(
+      validateCatalog({
+        version: "1",
+        items: [
+          {
+            ...item,
+            sources: [{ ...item.sources[0], language: "fr" as "en" }],
+          },
+        ],
+      }).valid,
+    ).toBe(false);
+    expect(
+      validateCatalog({
+        version: "1",
+        items: [
+          {
+            ...item,
+            sources: [
+              item.sources[0],
+              { ...item.sources[0], origin: "other" as "secondary" },
+            ],
+          },
+        ],
+      }).valid,
+    ).toBe(false);
+  });
   it("contains six complete, editorially checked foundation topics", () => {
     const foundationIds = [
       "human-ai-responsibility",
@@ -44,9 +94,15 @@ describe("public content catalog", () => {
       "research-plan-tasks",
       "spec-driven-development-openspec",
     ];
-    expect(catalog.items.map((item) => item.id).filter((id) => foundationIds.includes(id))).toEqual(foundationIds);
+    expect(
+      catalog.items
+        .map((item) => item.id)
+        .filter((id) => foundationIds.includes(id)),
+    ).toEqual(foundationIds);
 
-    for (const item of catalog.items.filter((item) => foundationIds.includes(item.id))) {
+    for (const item of catalog.items.filter((item) =>
+      foundationIds.includes(item.id),
+    )) {
       expect(item).toMatchObject({
         title: expect.any(String),
         learningCard: {
@@ -58,19 +114,17 @@ describe("public content catalog", () => {
         },
         editorial: {
           publishedAt: "2026-09-20",
-          reviewedAt: "2026-09-20",
+          reviewedAt: "2026-09-26",
           reviewDueAt: expect.stringMatching(/^202[67]-\d{2}-\d{2}$/),
-          contentVersion: "1",
           status: "active",
         },
-        sources: [
-          expect.objectContaining({
-            title: expect.any(String),
-            url: expect.stringMatching(/^https:\/\//),
-            type: expect.any(String),
-            language: expect.any(String),
-          }),
-        ],
+      });
+      expect(item.sources.length).toBeGreaterThan(0);
+      expect(item.sources[0]).toMatchObject({
+        title: expect.any(String),
+        url: expect.stringMatching(/^https:\/\//),
+        origin: "primary",
+        language: expect.stringMatching(/^(de|en)$/),
       });
     }
 
@@ -86,8 +140,12 @@ describe("public content catalog", () => {
       "web-xss-and-safe-dom",
       "dependency-security-assessment",
     ];
-    expect(catalog.items.map((item) => item.id).filter((id) => newIds.includes(id))).toEqual(newIds);
-    for (const item of catalog.items.filter((item) => newIds.includes(item.id))) {
+    expect(
+      catalog.items.map((item) => item.id).filter((id) => newIds.includes(id)),
+    ).toEqual(newIds);
+    for (const item of catalog.items.filter((item) =>
+      newIds.includes(item.id),
+    )) {
       expect(item.learningCard.problem.trim()).not.toBe("");
       expect(item.learningCard.coreConcept.trim()).not.toBe("");
       expect(item.learningCard.javaWebUse.trim()).not.toBe("");
@@ -96,7 +154,9 @@ describe("public content catalog", () => {
       expect(item.editorial.publishedAt).toBe("2026-09-26");
       expect(item.editorial.reviewedAt).toBe("2026-09-26");
       expect(item.editorial.reviewDueAt).toBe("2027-03-26");
-      expect(item.sources.every((source) => source.checkedAt === "2026-09-26")).toBe(true);
+      expect(
+        item.sources.every((source) => source.checkedAt === "2026-09-26"),
+      ).toBe(true);
     }
     expect(validateCatalog(catalog)).toEqual({ valid: true, errors: [] });
   });
@@ -127,7 +187,12 @@ describe("public content catalog", () => {
       "review-and-accept-ai-generated-changes",
     ]);
     expect(new Set(ids).size).toBe(15);
-    for (const item of catalog.items.filter((item) => newIds.includes(item.id))) {
+    expect(
+      catalog.items.every((item) => !("contentVersion" in item.editorial)),
+    ).toBe(true);
+    for (const item of catalog.items.filter((item) =>
+      newIds.includes(item.id),
+    )) {
       expect(item.title.trim()).not.toBe("");
       expect(item.learningCard.problem.trim()).not.toBe("");
       expect(item.learningCard.coreConcept.trim()).not.toBe("");
@@ -137,11 +202,12 @@ describe("public content catalog", () => {
         publishedAt: "2026-09-26",
         reviewedAt: "2026-09-26",
         reviewDueAt: "2027-03-26",
-        contentVersion: "1",
         status: "active",
       });
       expect(item.sources.length).toBeGreaterThan(0);
-      expect(item.sources.every((source) => source.checkedAt === "2026-09-26")).toBe(true);
+      expect(
+        item.sources.every((source) => source.checkedAt === "2026-09-26"),
+      ).toBe(true);
     }
     expect(validateCatalog(catalog)).toEqual({ valid: true, errors: [] });
   });
@@ -159,13 +225,11 @@ describe("public content catalog", () => {
     expect(
       validateCatalog({
         version: "1",
-        items: [
-          { ...completeItem("missing-source"), sources: [] },
-        ],
+        items: [{ ...completeItem("missing-source"), sources: [] }],
       }),
     ).toEqual({
       valid: false,
-      errors: ["Missing source for item: missing-source"],
+      errors: ["Missing primary source for item: missing-source"],
     });
   });
 });

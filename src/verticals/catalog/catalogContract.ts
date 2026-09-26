@@ -11,7 +11,8 @@ export type CatalogSource = {
   title: string;
   url: string;
   type: SourceType;
-  language: string;
+  origin: "primary" | "secondary";
+  language: "de" | "en";
   checkedAt: string;
 };
 
@@ -27,7 +28,6 @@ export type EditorialMetadata = {
   publishedAt: string;
   reviewedAt: string;
   reviewDueAt: string;
-  contentVersion: string;
   status: EditorialStatus;
 };
 

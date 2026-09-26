@@ -18,11 +18,11 @@ Jeder veröffentlichte Inhalt besitzt eine dauerhafte ID und mindestens:
 - Veröffentlichungsdatum.
 - Datum der letzten fachlichen Prüfung.
 - Termin, zu dem eine erneute Prüfung fällig ist.
-- Inhaltsversion.
 - Quellen mit Typ und Sprache.
 - Status: aktiv, beobachten, archiviert oder ersetzt.
 
-Der Status und die Inhaltsversion machen den veröffentlichten Stand kenntlich.
+Der Status macht den veröffentlichten Stand kenntlich. Fachliche Inhaltsversionen
+werden erst mit der dafür vorgesehenen Story eingeführt.
 
 ## Fachliche Qualitätsprüfung
 

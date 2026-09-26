@@ -3,9 +3,8 @@ import type { Catalog } from "./catalogContract";
 function activeEditorial(reviewDueAt: string, publishedAt = "2026-09-20") {
   return {
     publishedAt,
-    reviewedAt: publishedAt,
+    reviewedAt: "2026-09-26",
     reviewDueAt,
-    contentVersion: "1",
     status: "active" as const,
   };
 }
@@ -30,11 +29,12 @@ export const catalog: Catalog = {
       editorial: activeEditorial("2027-03-20"),
       sources: [
         {
-          title: "NIST AI Risk Management Framework 1.0",
-          url: "https://doi.org/10.6028/NIST.AI.100-1",
+          title: "NIST AI RMF Core",
+          url: "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
           type: "official-publication",
+          origin: "primary",
           language: "en",
-          checkedAt: "2026-09-20",
+          checkedAt: "2026-09-26",
         },
       ],
     },
@@ -58,8 +58,17 @@ export const catalog: Catalog = {
           title: "How OpenAI uses Codex",
           url: "https://openai.com/business/guides-and-resources/how-openai-uses-codex/",
           type: "official-guide",
+          origin: "primary",
           language: "en",
-          checkedAt: "2026-09-20",
+          checkedAt: "2026-09-26",
+        },
+        {
+          title: "Best practices for using GitHub Copilot to work on tasks",
+          url: "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
         },
       ],
     },
@@ -83,8 +92,17 @@ export const catalog: Catalog = {
           title: "AGENTS.md",
           url: "https://agents.md/",
           type: "reference-site",
+          origin: "primary",
           language: "en",
-          checkedAt: "2026-09-20",
+          checkedAt: "2026-09-26",
+        },
+        {
+          title: "Use custom instructions in VS Code",
+          url: "https://code.visualstudio.com/docs/agent-customization/custom-instructions",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
         },
       ],
     },
@@ -103,13 +121,16 @@ export const catalog: Catalog = {
           "Eine Warnung im Prompt oder eine Quellenmarkierung verhindert Prompt Injection nicht sicher. Rechtebegrenzung und Prüfungen müssen auch außerhalb des Modells greifen.",
       },
       editorial: activeEditorial("2027-03-26", "2026-09-26"),
-      sources: [{
-        title: "OWASP LLM01:2025 Prompt Injection",
-        url: "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
-        type: "official-guide",
-        language: "en",
-        checkedAt: "2026-09-26",
-      }],
+      sources: [
+        {
+          title: "OWASP LLM01:2025 Prompt Injection",
+          url: "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
+        },
+      ],
     },
     {
       id: "protect-secrets-and-sensitive-data-with-ai",
@@ -131,6 +152,7 @@ export const catalog: Catalog = {
           title: "OWASP LLM02:2025 Sensitive Information Disclosure",
           url: "https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/",
           type: "official-guide",
+          origin: "primary",
           language: "en",
           checkedAt: "2026-09-26",
         },
@@ -138,6 +160,7 @@ export const catalog: Catalog = {
           title: "Keeping your API credentials secure - GitHub Docs",
           url: "https://docs.github.com/en/rest/authentication/keeping-your-api-credentials-secure",
           type: "official-guide",
+          origin: "primary",
           language: "en",
           checkedAt: "2026-09-26",
         },
@@ -160,11 +183,12 @@ export const catalog: Catalog = {
       editorial: activeEditorial("2027-03-20"),
       sources: [
         {
-          title: "EARS (Easy Approach to Requirements Syntax)",
-          url: "https://ieeexplore.ieee.org/document/5328600",
-          type: "conference-paper",
+          title: "EARS: Easy Approach to Requirements Syntax",
+          url: "https://alistairmavin.com/ears/",
+          type: "official-guide",
+          origin: "primary",
           language: "en",
-          checkedAt: "2026-09-20",
+          checkedAt: "2026-09-26",
         },
       ],
     },
@@ -173,19 +197,26 @@ export const catalog: Catalog = {
       title: "Modulgrenzen und öffentliche Schnittstellen gestalten",
       learningCard: {
         language: "de",
-        problem: "Ohne klare Modulgrenzen greifen Änderungen auf interne Details anderer Teile zu und ziehen unerwartete Folgen nach sich.",
-        coreConcept: "Ein Modul verbirgt interne Daten und Implementierung. Andere Module nutzen einen kleinen, ausdrücklich festgelegten öffentlichen Vertrag.",
-        javaWebUse: "In Java kann ein Modul mit module-info.java nur benötigte Pakete exportieren; ein Web-Frontend kann fachliche Bereiche über benannte Einstiegspunkte verbinden.",
-        boundary: "Ein öffentliches Paket ist noch kein guter Vertrag: exportierte Typen und Abhängigkeiten müssen bewusst klein und stabil bleiben.",
+        problem:
+          "Ohne klare Modulgrenzen greifen Änderungen auf interne Details anderer Teile zu und ziehen unerwartete Folgen nach sich.",
+        coreConcept:
+          "Ein Modul verbirgt interne Daten und Implementierung. Andere Module nutzen einen kleinen, ausdrücklich festgelegten öffentlichen Vertrag.",
+        javaWebUse:
+          "In Java kann ein Modul mit module-info.java nur benötigte Pakete exportieren; ein Web-Frontend kann fachliche Bereiche über benannte Einstiegspunkte verbinden.",
+        boundary:
+          "Ein öffentliches Paket ist noch kein guter Vertrag: exportierte Typen und Abhängigkeiten müssen bewusst klein und stabil bleiben.",
       },
       editorial: activeEditorial("2027-03-26", "2026-09-26"),
-      sources: [{
-        title: "Modules - Dev.java",
-        url: "https://dev.java/learn/organizing/modules/",
-        type: "official-guide",
-        language: "en",
-        checkedAt: "2026-09-26",
-      }],
+      sources: [
+        {
+          title: "Modules - Dev.java",
+          url: "https://dev.java/learn/organizing/modules/",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
+        },
+      ],
     },
     {
       id: "research-plan-tasks",
@@ -207,8 +238,18 @@ export const catalog: Catalog = {
           title: "How OpenAI uses Codex",
           url: "https://openai.com/business/guides-and-resources/how-openai-uses-codex/",
           type: "official-guide",
+          origin: "primary",
           language: "en",
-          checkedAt: "2026-09-20",
+          checkedAt: "2026-09-26",
+        },
+        {
+          title:
+            "Research, plan, and iterate on code changes with Copilot cloud agent",
+          url: "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
         },
       ],
     },
@@ -222,18 +263,35 @@ export const catalog: Catalog = {
         coreConcept:
           "Spec-Driven Development hält die vereinbarte Änderung als versionierte Artefakte fest; OpenSpec organisiert dafür unter anderem Proposal, Spezifikation, Design und Tasks in einem Änderungsordner.",
         javaWebUse:
-          "Für eine neue Java-Funktion beschreibt ein Proposal Nutzen und Nicht-Ziele, das Design den Vertrag und die Tasks führen kleine, getestete Umsetzungsschritte.",
+          "Für eine neue Java-Funktion beschreibt ein Proposal Nutzen und Nicht-Ziele, die Spezifikation prüfbares Verhalten, ein bei Bedarf angelegtes Design technische Entscheidungen und Tasks kleine, getestete Umsetzungsschritte.",
         boundary:
           "OpenSpec ist kein Korrektheitsbeweis und keine Pflicht für jede kleine Änderung; als Werkzeugwahl muss es gegen Alternativen geprüft und seine Telemetrieeinstellung bewusst konfiguriert werden.",
       },
       editorial: activeEditorial("2026-12-20"),
       sources: [
         {
-          title: "Fission-AI/OpenSpec",
-          url: "https://github.com/Fission-AI/OpenSpec",
-          type: "repository",
+          title: "OpenSpec Quickstart",
+          url: "https://openspec.dev/docs/quickstart",
+          type: "official-guide",
+          origin: "primary",
           language: "en",
-          checkedAt: "2026-09-20",
+          checkedAt: "2026-09-26",
+        },
+        {
+          title: "OpenSpec spec-driven schema",
+          url: "https://openspec.dev/docs/schemas/spec-driven",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
+        },
+        {
+          title: "OpenSpec CLI documentation",
+          url: "https://github.com/Fission-AI/OpenSpec/blob/main/docs/cli.md",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
         },
       ],
     },
@@ -242,86 +300,127 @@ export const catalog: Catalog = {
       title: "Fachverhalten mit TDD absichern",
       learningCard: {
         language: "de",
-        problem: "Ohne prüfbare Beispiele kann eine Änderung fachliches Verhalten unbemerkt verschieben.",
-        coreConcept: "TDD beginnt mit einem fehlschlagenden Test für das nächste Verhalten, ergänzt nur genug Code für einen grünen Test und verbessert danach die Struktur bei weiter grünen Tests.",
-        javaWebUse: "Für eine Java-Bestellregel wird zuerst ein JUnit-Test für einen Grenzfall geschrieben, dann die Regel implementiert und anschließend bei grüner Suite refaktoriert.",
-        boundary: "Grüne Tests beweisen nur die geprüften Fälle; fehlende oder falsch erwartete Fachregeln bleiben möglich.",
+        problem:
+          "Ohne prüfbare Beispiele kann eine Änderung fachliches Verhalten unbemerkt verschieben.",
+        coreConcept:
+          "TDD beginnt mit einem fehlschlagenden Test für das nächste Verhalten, ergänzt nur genug Code für einen grünen Test und verbessert danach die Struktur bei weiter grünen Tests.",
+        javaWebUse:
+          "Für eine Java-Bestellregel wird zuerst ein JUnit-Test für einen Grenzfall geschrieben, dann die Regel implementiert und anschließend bei grüner Suite refaktoriert.",
+        boundary:
+          "Grüne Tests beweisen nur die geprüften Fälle; fehlende oder falsch erwartete Fachregeln bleiben möglich.",
       },
       editorial: activeEditorial("2027-03-26", "2026-09-26"),
-      sources: [{
-        title: "Test Driven Development - Martin Fowler",
-        url: "https://martinfowler.com/bliki/TestDrivenDevelopment.html",
-        type: "official-guide",
-        language: "en",
-        checkedAt: "2026-09-26",
-      }],
+      sources: [
+        {
+          title: "Canon TDD - Kent Beck",
+          url: "https://newsletter.kentbeck.com/p/canon-tdd",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
+        },
+        {
+          title: "Test Driven Development - Martin Fowler",
+          url: "https://martinfowler.com/bliki/TestDrivenDevelopment.html",
+          type: "official-guide",
+          origin: "secondary",
+          language: "en",
+          checkedAt: "2026-09-26",
+        },
+      ],
     },
     {
       id: "archunit-for-java-architecture",
       title: "Java-Architekturregeln mit ArchUnit prüfen",
       learningCard: {
         language: "de",
-        problem: "Vereinbarte Paket- und Schichtgrenzen können bei späteren Codeänderungen unbemerkt verletzt werden.",
-        coreConcept: "ArchUnit formuliert Architekturregeln als automatisierte Tests über Java-Klassen und ihre Abhängigkeiten.",
-        javaWebUse: "Ein ArchUnit-Test kann prüfen, dass Web-Controller nicht direkt auf Persistenzklassen zugreifen oder dass definierte Pakete keine Zyklen bilden.",
-        boundary: "ArchUnit erkennt die formulierten Strukturverstöße, aber weder fachlich falsches Verhalten noch Regeln, die nie als Test beschrieben wurden.",
+        problem:
+          "Vereinbarte Paket- und Schichtgrenzen können bei späteren Codeänderungen unbemerkt verletzt werden.",
+        coreConcept:
+          "ArchUnit formuliert Architekturregeln als automatisierte Tests über Java-Klassen und ihre Abhängigkeiten.",
+        javaWebUse:
+          "Ein ArchUnit-Test kann prüfen, dass Web-Controller nicht direkt auf Persistenzklassen zugreifen oder dass definierte Pakete keine Zyklen bilden.",
+        boundary:
+          "ArchUnit erkennt die formulierten Strukturverstöße, aber weder fachlich falsches Verhalten noch Regeln, die nie als Test beschrieben wurden.",
       },
       editorial: activeEditorial("2027-03-26", "2026-09-26"),
-      sources: [{
-        title: "ArchUnit User Guide",
-        url: "https://www.archunit.org/userguide/html/000_Index.html",
-        type: "official-guide",
-        language: "en",
-        checkedAt: "2026-09-26",
-      }],
+      sources: [
+        {
+          title: "ArchUnit User Guide",
+          url: "https://www.archunit.org/userguide/html/000_Index.html",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
+        },
+      ],
     },
     {
       id: "playwright-for-web-flows",
       title: "Webabläufe mit Playwright prüfen",
       learningCard: {
         language: "de",
-        problem: "Komponenten- und Unit-Tests übersehen Fehler im Zusammenspiel von Oberfläche, Navigation und Browser.",
-        coreConcept: "Playwright führt Webabläufe im Browser aus und prüft sichtbares Verhalten mit Locators und wiederholenden Assertions.",
-        javaWebUse: "Ein Test öffnet eine Lernkarte im Browser und prüft, dass Überschrift, Inhalt und Quellen sichtbar werden.",
-        boundary: "Ein Browser-Test deckt nur den geprüften Ablauf und die gewählten Browser ab; fachliche Regeln brauchen weiterhin gezielte Tests.",
+        problem:
+          "Komponenten- und Unit-Tests übersehen Fehler im Zusammenspiel von Oberfläche, Navigation und Browser.",
+        coreConcept:
+          "Playwright führt Webabläufe im Browser aus und prüft sichtbares Verhalten mit Locators und wiederholenden Assertions.",
+        javaWebUse:
+          "Ein Test öffnet eine Lernkarte im Browser und prüft, dass Überschrift, Inhalt und Quellen sichtbar werden.",
+        boundary:
+          "Ein Browser-Test deckt nur den geprüften Ablauf und die gewählten Browser ab; fachliche Regeln brauchen weiterhin gezielte Tests.",
       },
       editorial: activeEditorial("2027-03-26", "2026-09-26"),
-      sources: [{
-        title: "Playwright Test Assertions",
-        url: "https://playwright.dev/docs/test-assertions",
-        type: "official-guide",
-        language: "en",
-        checkedAt: "2026-09-26",
-      }],
+      sources: [
+        {
+          title: "Playwright Test Assertions",
+          url: "https://playwright.dev/docs/test-assertions",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
+        },
+      ],
     },
     {
       id: "web-xss-and-safe-dom",
-      title: "Web-Sicherheitsrisiken wie XSS und unsichere DOM-Nutzung erkennen",
+      title:
+        "Web-Sicherheitsrisiken wie XSS und unsichere DOM-Nutzung erkennen",
       learningCard: {
         language: "de",
-        problem: "Ungeprüfte Daten können beim Einfügen in HTML oder unsichere DOM-Schnittstellen als ausführbarer Code interpretiert werden.",
-        coreConcept: "XSS-Schutz verlangt eine zum Ausgabekontext passende Behandlung der Daten; für reinen Text sind sichere DOM-Schnittstellen wie textContent geeignet.",
-        javaWebUse: "Ein Web-Frontend zeigt einen eingegebenen Hinweis als Text an, statt ihn mit innerHTML in die Seite einzusetzen.",
-        boundary: "textContent schützt diesen Textkontext, aber nicht automatisch URLs, HTML-Attribute oder andere Ausgabekontexte.",
+        problem:
+          "Ungeprüfte Daten können beim Einfügen in HTML oder unsichere DOM-Schnittstellen als ausführbarer Code interpretiert werden.",
+        coreConcept:
+          "XSS-Schutz verlangt eine zum Ausgabekontext passende Behandlung der Daten; für reinen Text sind sichere DOM-Schnittstellen wie textContent geeignet.",
+        javaWebUse:
+          "Ein Web-Frontend zeigt einen eingegebenen Hinweis als Text an, statt ihn mit innerHTML in die Seite einzusetzen.",
+        boundary:
+          "textContent schützt diesen Textkontext, aber nicht automatisch URLs, HTML-Attribute oder andere Ausgabekontexte.",
       },
       editorial: activeEditorial("2027-03-26", "2026-09-26"),
-      sources: [{
-        title: "OWASP Cross Site Scripting Prevention Cheat Sheet",
-        url: "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html",
-        type: "official-guide",
-        language: "en",
-        checkedAt: "2026-09-26",
-      }],
+      sources: [
+        {
+          title: "OWASP Cross Site Scripting Prevention Cheat Sheet",
+          url: "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
+        },
+      ],
     },
     {
       id: "dependency-security-assessment",
       title: "Abhängigkeiten und Sicherheitslücken risikobasiert bewerten",
       learningCard: {
         language: "de",
-        problem: "Eine neue oder aktualisierte Bibliothek kann bekannte Schwachstellen, Lizenzkonflikte oder unnötige Angriffsfläche einführen.",
-        coreConcept: "Abhängigkeiten werden nach Nutzen, Einsatzbereich, bekannten Schwachstellen, Lizenz und Wartung bewertet; Funde werden nach Auswirkung und Erreichbarkeit priorisiert.",
-        javaWebUse: "Vor einem npm- oder Maven-Update prüft ein Team den Dependency-Diff, bekannte Advisories und die Nutzung der betroffenen Bibliothek im eigenen Webdienst.",
-        boundary: "Ein unauffälliger Scan belegt keine Sicherheit: Datenbanken können Lücken haben und ein Fund muss im konkreten Einsatz eingeordnet werden.",
+        problem:
+          "Eine neue oder aktualisierte Bibliothek kann bekannte Schwachstellen, Lizenzkonflikte oder unnötige Angriffsfläche einführen.",
+        coreConcept:
+          "Abhängigkeiten werden nach Nutzen, Einsatzbereich, bekannten Schwachstellen, Lizenz und Wartung bewertet; Funde werden nach Auswirkung und Erreichbarkeit priorisiert.",
+        javaWebUse:
+          "Vor einem npm- oder Maven-Update prüft ein Team den Dependency-Diff, bekannte Advisories und die Nutzung der betroffenen Bibliothek im eigenen Webdienst.",
+        boundary:
+          "Ein unauffälliger Scan belegt keine Sicherheit: Datenbanken können Lücken haben und ein Fund muss im konkreten Einsatz eingeordnet werden.",
       },
       editorial: activeEditorial("2027-03-26", "2026-09-26"),
       sources: [
@@ -329,6 +428,7 @@ export const catalog: Catalog = {
           title: "Concise Guide for Evaluating Open Source Software - OpenSSF",
           url: "https://best.openssf.org/Concise-Guide-for-Evaluating-Open-Source-Software.html",
           type: "official-guide",
+          origin: "primary",
           language: "en",
           checkedAt: "2026-09-26",
         },
@@ -336,6 +436,7 @@ export const catalog: Catalog = {
           title: "Dependency review - GitHub Docs",
           url: "https://docs.github.com/en/code-security/concepts/supply-chain-security/dependency-review",
           type: "official-guide",
+          origin: "primary",
           language: "en",
           checkedAt: "2026-09-26",
         },
@@ -356,13 +457,16 @@ export const catalog: Catalog = {
           "Grüne Tests und Scanner decken nur ihre geprüften Fälle ab. Sie ersetzen weder die fachliche Bewertung noch die menschliche Freigabe.",
       },
       editorial: activeEditorial("2027-03-26", "2026-09-26"),
-      sources: [{
-        title: "Review AI-generated code - GitHub Docs",
-        url: "https://docs.github.com/en/copilot/tutorials/review-ai-generated-code",
-        type: "official-guide",
-        language: "en",
-        checkedAt: "2026-09-26",
-      }],
+      sources: [
+        {
+          title: "Review AI-generated code - GitHub Docs",
+          url: "https://docs.github.com/en/copilot/tutorials/review-ai-generated-code",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
+        },
+      ],
     },
   ],
 };

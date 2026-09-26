@@ -8,6 +8,8 @@ const workflow = await readFile(
 for (const requiredSnippet of [
   "npm ci",
   "npm run typecheck",
+  "npm run format:check",
+  "npm run lint",
   "npm test -- --run",
   "npm run validate:content",
   "npm run check:architecture",

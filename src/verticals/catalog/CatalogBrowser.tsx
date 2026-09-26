@@ -1,10 +1,41 @@
 import { useState } from "react";
 
 import { catalog } from "./catalog";
+import type { CatalogItem, CatalogSource } from "./catalogContract";
 
-export function CatalogBrowser() {
+function SourceGroup({
+  title,
+  sources,
+}: {
+  title: string;
+  sources: CatalogSource[];
+}) {
+  if (sources.length === 0) return null;
+
+  return (
+    <section>
+      <h4>{title}</h4>
+      <ul>
+        {sources.map((source) => (
+          <li key={source.url}>
+            <a href={source.url} rel="noreferrer" target="_blank">
+              {source.title}
+              {source.language === "de" ? " [DE]" : ""}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+export function CatalogBrowser({
+  items = catalog.items,
+}: {
+  items?: CatalogItem[];
+}) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const selectedItem = catalog.items.find((item) => item.id === selectedId);
+  const selectedItem = items.find((item) => item.id === selectedId);
   const cardSections = selectedItem
     ? [
         ["Problem", selectedItem.learningCard.problem],
@@ -15,11 +46,26 @@ export function CatalogBrowser() {
     : [];
   const editorialEntries = selectedItem
     ? [
-        { label: "Veröffentlicht", value: selectedItem.editorial.publishedAt, isDate: true },
-        { label: "Fachlich geprüft", value: selectedItem.editorial.reviewedAt, isDate: true },
-        { label: "Wiedervorlage", value: selectedItem.editorial.reviewDueAt, isDate: true },
-        { label: "Inhaltsversion", value: selectedItem.editorial.contentVersion, isDate: false },
-        { label: "Status", value: selectedItem.editorial.status, isDate: false },
+        {
+          label: "Veröffentlicht",
+          value: selectedItem.editorial.publishedAt,
+          isDate: true,
+        },
+        {
+          label: "Fachlich geprüft",
+          value: selectedItem.editorial.reviewedAt,
+          isDate: true,
+        },
+        {
+          label: "Wiedervorlage",
+          value: selectedItem.editorial.reviewDueAt,
+          isDate: true,
+        },
+        {
+          label: "Status",
+          value: selectedItem.editorial.status,
+          isDate: false,
+        },
       ]
     : [];
 
@@ -27,7 +73,7 @@ export function CatalogBrowser() {
     <>
       <nav aria-label="Lernthemen">
         <ul>
-          {catalog.items.map((item) => (
+          {items.map((item) => (
             <li key={item.id}>
               <button
                 aria-pressed={item.id === selectedId}
@@ -72,15 +118,18 @@ export function CatalogBrowser() {
 
           <section>
             <h3>Quellen</h3>
-            <ul>
-              {selectedItem.sources.map((source) => (
-                <li key={source.url}>
-                  <a href={source.url} rel="noreferrer" target="_blank">
-                    {source.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <SourceGroup
+              title="Primärquellen"
+              sources={selectedItem.sources.filter(
+                (source) => source.origin === "primary",
+              )}
+            />
+            <SourceGroup
+              title="Sekundärquellen"
+              sources={selectedItem.sources.filter(
+                (source) => source.origin === "secondary",
+              )}
+            />
           </section>
         </article>
       )}

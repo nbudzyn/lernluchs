@@ -8,8 +8,6 @@ describe("App", () => {
     render(<App />);
 
     expect(screen.getByRole("heading", { name: "Lernluchs" })).toBeTruthy();
-    expect(
-      screen.getByRole("navigation", { name: "Lernthemen" }),
-    ).toBeTruthy();
+    expect(screen.getByRole("navigation", { name: "Lernthemen" })).toBeTruthy();
   });
 });
