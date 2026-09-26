@@ -17,37 +17,50 @@ Der Inhaltskatalog wird um diesen Lernpfad erweitert:
 7. Web-Sicherheitsrisiken wie XSS und unsichere DOM-Nutzung erkennen - neu
 8. Abhängigkeiten und Sicherheitslücken risikobasiert bewerten - neu
 
-Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert
-und erscheint nicht als eigener Abschnitt in der Oberfläche.
+Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert und erscheint nicht als eigener Abschnitt in der
+Oberfläche.
 
-Die sechs neuen Lerninhalte werden als Lernkarten mit Quellen und
-Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an die
-vorhandenen Inhalte angeglichen. Fragenpools gehören nicht zu dieser Story.
+Die sechs neuen Lerninhalte werden als Lernkarten mit Quellen und Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an
+die vorhandenen Inhalte angeglichen. Fragenpools gehören nicht zu dieser Story.
 
-Alle zwölf Lerninhalte erscheinen genau einmal in einer gemeinsamen,
-ungruppierten Liste. Sie werden über beide Lernpfade hinweg nach Grundlagen,
-mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge der
-sechs vorhandenen Inhalte bleibt erhalten; die neuen Inhalte werden passend
-dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der
-acht Inhalte des neuen Lernpfads bleibt erhalten.
+Alle zwölf Lerninhalte erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste. Sie werden über beide Lernpfade hinweg nach
+Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge der sechs vorhandenen Inhalte bleibt erhalten; die
+neuen Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der acht Inhalte des neuen Lernpfads
+bleibt erhalten.
 
 Vertikale: Inhaltskatalog
 
+## Glossar um englische Übersetzungen ergänzen und englische Begriffe vereinheitlichen
+
+Jeder Begriff im Glossar wird in der Überschrift um einen einzigen englischen Begriff ergänzt:
+``Ding (thing)``
+Wo englische Begriffe verwendet werden (Dateinamen, Verzeichnisnamen, Code): Sicherstellen, dass einheitlich diese englischen Begriffe
+verwendet werden.
+
+- Kürzungen (wenn der Kontext klar ist) sind möglich, z.B. statt ``Indian food``: ``food``.
+
+Außerdem prüfen, ob Begriffe im Glossar fehlen und ggf. eine Story anlegen (als nächste Story einsortieren), um das Glossar zu ergänzen und
+außerdem dann (in der anderen Story) genau diese englischen Begriffe einheitlich zu verwenden.
+
+Abgrenzung:
+
+- Keine Übersetzungen: Deutsch bleibt Deutsch, Englisch bleibt Englisch
+- Keine logischen Code-Änderungen
+
+Maximal zwei Vertikalen - wenn es weitere Vertikalen gibt: Weitere Stories anlegen.
+
 ## Fragenpools für Lerninhalte kuratieren
 
-Für alle Lerninhalte, denen noch Fragen fehlen, einen ausreichend großen,
-quellengebundenen Fragenpool erstellen, damit Wiederholungen unterschiedliche
-Fragensätze nutzen können. Fragen prüfen konkrete Aussagen aus dem jeweiligen
-Lerninhalt und seiner Lernkarte; Allgemeinplätze sind unzulässig. Jede
-Antwortoption erhält eine Begründung und einen Quellenbezug. Die Fragen werden
-vor dem Commit unabhängig fachlich geprüft.
+Für alle Lerninhalte, denen noch Fragen fehlen, einen ausreichend großen, quellengebundenen Fragenpool erstellen, damit Wiederholungen
+unterschiedliche Fragensätze nutzen können. Fragen prüfen konkrete Aussagen aus dem jeweiligen Lerninhalt und seiner Lernkarte;
+Allgemeinplätze sind unzulässig. Jede Antwortoption erhält eine Begründung und einen Quellenbezug. Die Fragen werden vor dem Commit
+unabhängig fachlich geprüft.
 
 Vertikale: Inhaltskatalog
 
 ## Grundlagenwissen überprüfen
 
-Auswahlchecks aus den kuratierten Fragenpools mit Bestehen, Nichtbestehen,
-Erklärung und Wiederholung anbieten.
+Auswahlchecks aus den kuratierten Fragenpools mit Bestehen, Nichtbestehen, Erklärung und Wiederholung anbieten.
 
 Vertikalen: Inhaltskatalog, Lernchecks
 
