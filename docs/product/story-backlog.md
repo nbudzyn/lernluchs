@@ -7,34 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Quellengebundene Grundlagenfragen im Browser beantworten
-
-Zu jeder der sechs Lernkarten des Grundlagenpfads können Lernende eine Auswahlfrage beantworten und anschließend Begründung und Quelle
-einsehen. Dafür werden ausreichend viele fachlich unterschiedliche Fragen für spätere Wiederholungen kuratiert.
-
-- Jede Frage prüft einen Fakt oder eine klare Empfehlung (Best Practice) oder das beispielhafte, klare Ergebnis einer Trade-off-Abwägung.
-  Basis sind die Quellen (vorrangig Primärquellen) des Lerninhalts, der durch die Karte repräsentiert ist.
-- Jede Antwortoption erhält eine Begründung und einen Quellenbezug
-- Fragen und Antworten werden unabhängig fachlich geprüft und zusammen mit dem öffentlichen Katalog validiert.
-- Ein Quellenlink öffnet sich nur nach bewusster Aktion und sein Ausfall verhindert das Lesen und Beantworten der Frage nicht.
-- Widersprechen sich Primär- und Sekundärquellen deutlich, ist der Primärquelle Vorrang einzuräumen.
-
-Die sechs Grundlagenkarten behandeln Mensch-KI-Verantwortung, Problemverständnis,
-`AGENTS.md`, EARS, Research/Plan/Tasks und OpenSpec. Diese Story liefert den ersten sichtbaren Fragenablauf; Bestehenslogik und Wiederholung
-folgen in der nächsten Story.
-
-Mit diesem ersten neuen Browserablauf beginnen auch Browser-E2E-Prüfungen (Integrationstests) in CI.
-
-Lizenzprüfungen werden als ausführbare CI-Gates ergänzt und nach grünem Nachweis in der Qualitätsstrategie dokumentiert.
-
-Ein Architekturtest prüft kleine öffentliche Vertikal-Einstiegspunkte und verbietet direkte Importe interner Daten oder Komponenten. Neue
-Abhängigkeiten erfordern eine begründete Freigabe in der späteren Änderungs-Spec.
-
-Vertikalen: Inhaltskatalog, Lernchecks
-
-Dokumentation nach Umsetzung: Fragenablauf, Lerncheck-Vertikale und die tatsächlich grünen CI-Gates knapp in Produktstand, Architektur und
-Qualitätsstrategie ergänzen.
-
 ## Durch die Oberfläche und Bedienung motiviert, aber nicht abgelenkt werden
 
 Die Oberfläche soll motivierend, aber nicht ablenkend sein.
@@ -60,6 +32,18 @@ Fortschrittsvorschlag, speichert ihn aber noch nicht. Browser-E2E-Tests prüfen 
 Vertikalen: Inhaltskatalog, Lernchecks
 
 Dokumentation nach Umsetzung: Bestehens- und Wiederholungsregeln knapp in redaktioneller Richtlinie und Produktstand ergänzen.
+
+## Bereits gestellte Fragen je Karte lokal merken
+
+Die App merkt sich auf dem Gerät je Karte, welche Fragen bereits gestellt wurden. Neue Durchläufe bevorzugen ausschließlich noch nicht
+gestellte Fragen, bis der Pool der Karte ausgeschöpft ist. Danach beginnt ein neuer Zyklus. Innerhalb eines Durchlaufs erscheint keine
+Frage doppelt. Die spätere Änderungs-Spec legt fest, wann eine abgebrochene Frage als gestellt gilt, wie ein Rest von weniger als fünf
+Fragen mit dem nächsten Zyklus verbunden wird und wie veraltete Fragen-IDs nach Katalogänderungen behandelt werden. Ohne gespeicherten
+Stand bleibt der Fragenablauf nutzbar. Browser-E2E-Tests prüfen mehrere Durchläufe, Ausschöpfung, Neustart und Abbruch.
+
+Vertikalen: Inhaltskatalog, Lernchecks
+
+Dokumentation nach Umsetzung: Lokale Fragehistorie und Zyklusregel knapp in Produktstand und Architektur ergänzen.
 
 ## Lernfortschritt nach einem Check bestätigen und lokal speichern
 
@@ -144,8 +128,10 @@ Vertikalen: Inhaltskatalog
 ## Lernchecks für den zweiten Lernpfad ergänzen
 
 Die sechs zusätzlichen Karten aus „Änderungen gestalten und absichern“ erhalten quellengebundene Fragenpools und die bereits vorhandenen
-Auswahlchecks einschließlich Erklärung und Wiederholung. Fragen prüfen konkrete Kartenaussagen und werden unabhängig fachlich geprüft.
-Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+Auswahlchecks einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Karte und vertiefende Details ihrer
+Quellen; sie werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+
+Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
 
 Vertikalen: Inhaltskatalog, Lernchecks
 
@@ -162,8 +148,10 @@ Vertikalen: Inhaltskatalog
 ## Lernchecks für den dritten Lernpfad ergänzen
 
 Die drei neuen Karten aus „Sicher mit Coding-Agenten arbeiten“ erhalten quellengebundene Fragenpools und Auswahlchecks einschließlich
-Erklärung und Wiederholung. Fragen prüfen konkrete Kartenaussagen und werden unabhängig fachlich geprüft. Browser-Tests zeigen den
-Lernnutzen für diesen Pfad.
+Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Karte und vertiefende Details ihrer Quellen; sie werden
+unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+
+Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
 
 Vertikalen: Inhaltskatalog, Lernchecks
 
@@ -203,8 +191,10 @@ Dokumentation nach Umsetzung: Den neuen Kartenbestand knapp im Produktstand erg�
 ## Lernchecks für den vierten Lernpfad ergänzen
 
 Die vier neuen Karten aus „Java-/Web-Code technisch analysieren und modernisieren“ erhalten quellengebundene Fragenpools und Auswahlchecks
-einschließlich Erklärung und Wiederholung. Fragen prüfen konkrete Kartenaussagen und werden unabhängig fachlich geprüft. Browser-Tests
-zeigen den Lernnutzen für diesen Pfad.
+einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Karte und vertiefende Details ihrer Quellen; sie
+werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+
+Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
 
 Vertikalen: Inhaltskatalog, Lernchecks
 
@@ -243,8 +233,10 @@ Dokumentation nach Umsetzung: Den neuen Kartenbestand knapp im Produktstand erg�
 ## Lernchecks für den fünften Lernpfad ergänzen
 
 Die sechs neuen Karten aus „Parallele Coding-Agenten kritisch erproben“ erhalten quellengebundene Fragenpools und Auswahlchecks
-einschließlich Erklärung und Wiederholung. Fragen prüfen konkrete Kartenaussagen und werden unabhängig fachlich geprüft. Browser-Tests
-zeigen den Lernnutzen für diesen Pfad.
+einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Karte und vertiefende Details ihrer Quellen; sie
+werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+
+Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
 
 Vertikalen: Inhaltskatalog, Lernchecks
 

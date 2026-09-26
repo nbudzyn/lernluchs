@@ -34,3 +34,6 @@ Rechercheausgangspunkt, keine Autorität.
 
 Für Auswahl, Ergänzung und Ersatz von Quellen gelten die
 [Quellenregeln](source-selection.md).
+
+Für neue quellengebundene Auswahlfragen gelten die
+[Regeln zur Fragenerstellung und Prüfung](question-authoring.md).
