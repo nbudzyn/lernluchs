@@ -7,58 +7,12 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Bessere Falschantworten in allen vorhandenen Lernchecks
-
-Alle Falschantworten der derzeit sechs Fragenpools mit insgesamt 150 Fragen werden nach dem Verfahren in
-[Regeln für Auswahlfragen](../content/question-authoring.md) durch plausible, eindeutig falsche Distraktoren ersetzt. Pro Frage
-bleiben genau eine richtige Antwort und insgesamt drei bis fünf plausible Optionen; die Zahl wird nicht mit schwachen
-Fülloptionen erreicht. Auch allgemein sinnvolle Aussagen dürfen nur als Distraktoren dienen, wenn sie die konkrete Frage
-eindeutig nicht beantworten. Jeder Distraktor erhält eine kurze Erklärung seines Ausschlussgrundes und einen passenden
-Quellenbezug.
-
-Die vorhandenen Fragen und richtigen Antworten bleiben im fachlichen Kern erhalten und dürfen für Eindeutigkeit und
-Verständlichkeit umformuliert werden. Eine Frage darf durch Angaben zu Akteur, Zeitpunkt, Einsatzsituation oder gesuchter
-Ursache präzisiert werden, nicht durch einen Verweis auf ein bestimmtes Dokument, Kapitel oder dessen Formulierung. Die
-Frage darf die richtige Antwort nicht sprachlich verraten. Bleibt sie mit den vorhandenen Kartenquellen und im Kern
-gleicher Antwort mehrdeutig, wird sie durch eine neue, quellengebundene Frage zur selben Karte ersetzt. Für überarbeitete
-Fragen bleiben die IDs stabil; echte Ersatzfragen erhalten neue IDs. Nach der Prüfung bleiben je Pool mindestens 25
-fachlich unterschiedliche, gültige Fragen.
-
-Jede Frage samt richtiger Antwort, allen Distraktoren, Erklärungen und Quellenbezügen wird gegen die Originalquellen
-geprüft. Für alle betroffenen Pools wird anschließend der in den Fragenregeln vorgesehene kopierbare Prüf-Prompt erstellt;
-der Nutzer führt die unabhängige externe KI-Prüfung aus. Beanstandungen werden vor der Integration geklärt oder durch
-erneut geprüfte Fragen ersetzt. Die Validierung umfasst insbesondere eindeutige IDs, genau eine richtige Antwort, drei
-bis fünf Optionen und vollständige Erklärungen und Quellenbezüge.
-
-Abgrenzung:
-
-- Lernkartentexte und die den Karten zugeordneten Quellen bleiben unverändert. Fragen, Antwortoptionen, Erklärungen und
-  Verweise auf die bestehenden Quellen dürfen angepasst werden.
-- Für Karten ohne bestehenden Fragenpool werden keine Fragen erzeugt.
-
-Vertikalen: Lernchecks
-
-## Durch die Oberfläche und Bedienung motiviert, aber nicht abgelenkt werden
-
-Die Oberfläche soll motivierend, aber nicht ablenkend sein.
-
-- Ein einheitliches Farbschema soll angenehm anzuschauen sein, Texte sollen gut lesbar sein (automatisch Light Mode und Dark Mode nach
-  Auswahl des Betriebssystems / des Browsers).
-    - Farben vorsehen (Story-Backlog) für erfolgreiche Lernchecks und ggf. für Fehlantworten
-- Schriftgröße etwas größer als bisher
-- Kein vertikales Scrollen!
-- Horizontales Scrollen sollte eher selten nötig sein
-- Auf dem PC mit Tasten bedienbar
-- Auch auf Handy gut bedienbar
-- Barrierefrei
-- Der Inhalt steht im Vordergrund. Bedienelemente und statische Texte sollen wenig Platz verschwenden
-- Es soll nicht nach "AI Slop" aussehen.
-
 ## Lernchecks bestehen und mit anderem Fragensatz wiederholen
 
-Lernende absolvieren Auswahlchecks ohne Zeitdruck. Nur vollständig korrekte Antworten bestehen. Nach Nichtbestehen erscheinen sofort Lösung,
-Begründung und die passende Lernkarte beziehungsweise Quelle; ein neuer Versuch nutzt einen anderen Fragensatz. Bestehen erzeugt einen
-Fortschrittsvorschlag, speichert ihn aber noch nicht. Browser-E2E-Tests prüfen Bestehen, Nichtbestehen und Wiederholung.
+Lernende absolvieren Auswahlchecks ohne Zeitdruck. Nur vollständig korrekte Antworten bestehen. Bestehen erzeugt einen
+Fortschrittsvorschlag, speichert ihn aber noch nicht.
+
+Browser-E2E-Tests prüfen Bestehen, Nichtbestehen und Wiederholung.
 
 Vertikalen: Inhaltskatalog, Lernchecks
 
@@ -68,8 +22,10 @@ Dokumentation nach Umsetzung: Bestehens- und Wiederholungsregeln knapp in redakt
 
 Die App merkt sich auf dem Gerät je Karte, welche Fragen bereits gestellt wurden. Neue Durchläufe bevorzugen ausschließlich noch nicht
 gestellte Fragen, bis der Pool der Karte ausgeschöpft ist. Danach beginnt ein neuer Zyklus. Innerhalb eines Durchlaufs erscheint keine Frage
-doppelt. Die spätere Änderungs-Spec legt fest, wann eine abgebrochene Frage als gestellt gilt, wie ein Rest von weniger als fünf Fragen mit
-dem nächsten Zyklus verbunden wird und wie veraltete Fragen-IDs nach Katalogänderungen behandelt werden. Ohne gespeicherten Stand bleibt der
+doppelt.
+
+Die spätere Änderungs-Spec legt fest, wann eine abgebrochene Frage als gestellt gilt, wie ein Rest von weniger als fünf Fragen mit dem
+nächsten Zyklus verbunden wird und wie veraltete Fragen-IDs nach Katalogänderungen behandelt werden. Ohne gespeicherten Stand bleibt der
 Fragenablauf nutzbar. Browser-E2E-Tests prüfen mehrere Durchläufe, Ausschöpfung, Neustart und Abbruch.
 
 Vertikalen: Inhaltskatalog, Lernchecks
@@ -96,6 +52,22 @@ nach einem Reload.
 Vertikalen: Lernfortschritt, Kompetenzprofil
 
 Dokumentation nach Umsetzung: Kompetenzanzeige und ihren Datenfluss knapp in Produktstand und Architektur ergänzen.
+
+## Durch die Oberfläche und Bedienung motiviert, aber nicht abgelenkt werden
+
+Die Oberfläche soll motivierend, aber nicht ablenkend sein.
+
+- Ein einheitliches Farbschema soll angenehm anzuschauen sein, Texte sollen gut lesbar sein (automatisch Light Mode und Dark Mode nach
+  Auswahl des Betriebssystems / des Browsers).
+    - Farben vorsehen (Story-Backlog) für erfolgreiche Lernchecks und ggf. für Fehlantworten
+- Schriftgröße etwas größer als bisher
+- Kein vertikales Scrollen!
+- Horizontales Scrollen sollte eher selten nötig sein
+- Auf dem PC mit Tasten bedienbar
+- Auch auf Handy gut bedienbar
+- Barrierefrei
+- Der Inhalt steht im Vordergrund. Bedienelemente und statische Texte sollen wenig Platz verschwenden
+- Es soll nicht nach "AI Slop" aussehen.
 
 ## Themen auf einer Landkarte erkunden
 
