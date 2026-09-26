@@ -1,9 +1,9 @@
 import type { Catalog } from "./catalogContract";
 
-function activeEditorial(reviewDueAt: string) {
+function activeEditorial(reviewDueAt: string, publishedAt = "2026-09-20") {
   return {
-    publishedAt: "2026-09-20",
-    reviewedAt: "2026-09-20",
+    publishedAt,
+    reviewedAt: publishedAt,
     reviewDueAt,
     contentVersion: "1",
     status: "active" as const,
@@ -11,7 +11,7 @@ function activeEditorial(reviewDueAt: string) {
 }
 
 export const catalog: Catalog = {
-  version: "1",
+  version: "2",
   items: [
     {
       id: "human-ai-responsibility",
@@ -114,6 +114,25 @@ export const catalog: Catalog = {
       ],
     },
     {
+      id: "module-boundaries-and-public-interfaces",
+      title: "Modulgrenzen und öffentliche Schnittstellen gestalten",
+      learningCard: {
+        language: "de",
+        problem: "Ohne klare Modulgrenzen greifen Änderungen auf interne Details anderer Teile zu und ziehen unerwartete Folgen nach sich.",
+        coreConcept: "Ein Modul verbirgt interne Daten und Implementierung. Andere Module nutzen einen kleinen, ausdrücklich festgelegten öffentlichen Vertrag.",
+        javaWebUse: "In Java kann ein Modul mit module-info.java nur benötigte Pakete exportieren; ein Web-Frontend kann fachliche Bereiche über benannte Einstiegspunkte verbinden.",
+        boundary: "Ein öffentliches Paket ist noch kein guter Vertrag: exportierte Typen und Abhängigkeiten müssen bewusst klein und stabil bleiben.",
+      },
+      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      sources: [{
+        title: "Modules - Dev.java",
+        url: "https://dev.java/learn/organizing/modules/",
+        type: "official-guide",
+        language: "en",
+        checkedAt: "2026-09-26",
+      }],
+    },
+    {
       id: "research-plan-tasks",
       title: "Research, Plan und Tasks trennen",
       learningCard: {
@@ -160,6 +179,110 @@ export const catalog: Catalog = {
           type: "repository",
           language: "en",
           checkedAt: "2026-09-20",
+        },
+      ],
+    },
+    {
+      id: "tdd-for-domain-behavior",
+      title: "Fachverhalten mit TDD absichern",
+      learningCard: {
+        language: "de",
+        problem: "Ohne prüfbare Beispiele kann eine Änderung fachliches Verhalten unbemerkt verschieben.",
+        coreConcept: "TDD beginnt mit einem fehlschlagenden Test für das nächste Verhalten, ergänzt nur genug Code für einen grünen Test und verbessert danach die Struktur bei weiter grünen Tests.",
+        javaWebUse: "Für eine Java-Bestellregel wird zuerst ein JUnit-Test für einen Grenzfall geschrieben, dann die Regel implementiert und anschließend bei grüner Suite refaktoriert.",
+        boundary: "Grüne Tests beweisen nur die geprüften Fälle; fehlende oder falsch erwartete Fachregeln bleiben möglich.",
+      },
+      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      sources: [{
+        title: "Test Driven Development - Martin Fowler",
+        url: "https://martinfowler.com/bliki/TestDrivenDevelopment.html",
+        type: "official-guide",
+        language: "en",
+        checkedAt: "2026-09-26",
+      }],
+    },
+    {
+      id: "archunit-for-java-architecture",
+      title: "Java-Architekturregeln mit ArchUnit prüfen",
+      learningCard: {
+        language: "de",
+        problem: "Vereinbarte Paket- und Schichtgrenzen können bei späteren Codeänderungen unbemerkt verletzt werden.",
+        coreConcept: "ArchUnit formuliert Architekturregeln als automatisierte Tests über Java-Klassen und ihre Abhängigkeiten.",
+        javaWebUse: "Ein ArchUnit-Test kann prüfen, dass Web-Controller nicht direkt auf Persistenzklassen zugreifen oder dass definierte Pakete keine Zyklen bilden.",
+        boundary: "ArchUnit erkennt die formulierten Strukturverstöße, aber weder fachlich falsches Verhalten noch Regeln, die nie als Test beschrieben wurden.",
+      },
+      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      sources: [{
+        title: "ArchUnit User Guide",
+        url: "https://www.archunit.org/userguide/html/000_Index.html",
+        type: "official-guide",
+        language: "en",
+        checkedAt: "2026-09-26",
+      }],
+    },
+    {
+      id: "playwright-for-web-flows",
+      title: "Webabläufe mit Playwright prüfen",
+      learningCard: {
+        language: "de",
+        problem: "Komponenten- und Unit-Tests übersehen Fehler im Zusammenspiel von Oberfläche, Navigation und Browser.",
+        coreConcept: "Playwright führt Webabläufe im Browser aus und prüft sichtbares Verhalten mit Locators und wiederholenden Assertions.",
+        javaWebUse: "Ein Test öffnet eine Lernkarte im Browser und prüft, dass Überschrift, Inhalt und Quellen sichtbar werden.",
+        boundary: "Ein Browser-Test deckt nur den geprüften Ablauf und die gewählten Browser ab; fachliche Regeln brauchen weiterhin gezielte Tests.",
+      },
+      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      sources: [{
+        title: "Playwright Test Assertions",
+        url: "https://playwright.dev/docs/test-assertions",
+        type: "official-guide",
+        language: "en",
+        checkedAt: "2026-09-26",
+      }],
+    },
+    {
+      id: "web-xss-and-safe-dom",
+      title: "Web-Sicherheitsrisiken wie XSS und unsichere DOM-Nutzung erkennen",
+      learningCard: {
+        language: "de",
+        problem: "Ungeprüfte Daten können beim Einfügen in HTML oder unsichere DOM-Schnittstellen als ausführbarer Code interpretiert werden.",
+        coreConcept: "XSS-Schutz verlangt eine zum Ausgabekontext passende Behandlung der Daten; für reinen Text sind sichere DOM-Schnittstellen wie textContent geeignet.",
+        javaWebUse: "Ein Web-Frontend zeigt einen eingegebenen Hinweis als Text an, statt ihn mit innerHTML in die Seite einzusetzen.",
+        boundary: "textContent schützt diesen Textkontext, aber nicht automatisch URLs, HTML-Attribute oder andere Ausgabekontexte.",
+      },
+      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      sources: [{
+        title: "OWASP Cross Site Scripting Prevention Cheat Sheet",
+        url: "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html",
+        type: "official-guide",
+        language: "en",
+        checkedAt: "2026-09-26",
+      }],
+    },
+    {
+      id: "dependency-security-assessment",
+      title: "Abhängigkeiten und Sicherheitslücken risikobasiert bewerten",
+      learningCard: {
+        language: "de",
+        problem: "Eine neue oder aktualisierte Bibliothek kann bekannte Schwachstellen, Lizenzkonflikte oder unnötige Angriffsfläche einführen.",
+        coreConcept: "Abhängigkeiten werden nach Nutzen, Einsatzbereich, bekannten Schwachstellen, Lizenz und Wartung bewertet; Funde werden nach Auswirkung und Erreichbarkeit priorisiert.",
+        javaWebUse: "Vor einem npm- oder Maven-Update prüft ein Team den Dependency-Diff, bekannte Advisories und die Nutzung der betroffenen Bibliothek im eigenen Webdienst.",
+        boundary: "Ein unauffälliger Scan belegt keine Sicherheit: Datenbanken können Lücken haben und ein Fund muss im konkreten Einsatz eingeordnet werden.",
+      },
+      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      sources: [
+        {
+          title: "Concise Guide for Evaluating Open Source Software - OpenSSF",
+          url: "https://best.openssf.org/Concise-Guide-for-Evaluating-Open-Source-Software.html",
+          type: "official-guide",
+          language: "en",
+          checkedAt: "2026-09-26",
+        },
+        {
+          title: "Dependency review - GitHub Docs",
+          url: "https://docs.github.com/en/code-security/concepts/supply-chain-security/dependency-review",
+          type: "official-guide",
+          language: "en",
+          checkedAt: "2026-09-26",
         },
       ],
     },

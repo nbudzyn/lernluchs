@@ -2,33 +2,7 @@
 
 Dieses Backlog enhält (nur) geplante, noch nicht aktive Stories in vorgesehener Umsetzungsreihenfolge. Unmittelbar vor der Umsetzung erhält
 jede Story eine eigene Änderungs-Spec unter
-`docs/changes/active/`; deren `tasks.md` dokumentiert RED → GREEN → REFACTOR.
-
-## Nächsten Lernpfad einweben
-
-Der Inhaltskatalog wird um diesen Lernpfad erweitert:
-
-1. Problem verstehen und Änderungsgrenzen setzen - vorhanden
-2. EARS: Anforderungen präzise formulieren - vorhanden
-3. Modulgrenzen und öffentliche Schnittstellen gestalten - neu
-4. Fachverhalten mit TDD absichern - neu
-5. Java-Architekturregeln mit ArchUnit prüfen - neu
-6. Webabläufe mit Playwright prüfen - neu
-7. Web-Sicherheitsrisiken wie XSS und unsichere DOM-Nutzung erkennen - neu
-8. Abhängigkeiten und Sicherheitslücken risikobasiert bewerten - neu
-
-Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert und erscheint nicht als eigener Abschnitt in der
-Oberfläche.
-
-Die sechs neuen Lerninhalte werden als Lernkarten mit Quellen und Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an
-die vorhandenen Inhalte angeglichen. Fragenpools gehören nicht zu dieser Story.
-
-Alle zwölf Lerninhalte erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste. Sie werden über beide Lernpfade hinweg nach
-Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge der sechs vorhandenen Inhalte bleibt erhalten; die
-neuen Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der acht Inhalte des neuen Lernpfads
-bleibt erhalten.
-
-Vertikale: Inhaltskatalog
+`docs/changes/active/`; diese dokumentiert RED → GREEN → REFACTOR.
 
 ## Glossar um englische Übersetzungen ergänzen und englische Begriffe vereinheitlichen
 
@@ -48,6 +22,36 @@ Abgrenzung:
 - Keine logischen Code-Änderungen
 
 Maximal zwei Vertikalen - wenn es weitere Vertikalen gibt: Weitere Stories anlegen.
+
+## Lernpfade in Anzeige berücksichtigen
+
+Die Anwendung kennt Lernpfade.
+
+- Neue Vertikale, die vom Inhaltskatalog abhängig ist, aber nicht umgekehrt?
+- Bisher gibt es zwei Lernpfade:
+
+  **Grundlagenpfad**
+
+  1. Mensch und KI: Verantwortung bleibt menschlich
+  2. Problem verstehen und Änderungsgrenzen setzen
+  3. AGENTS.md: dauerhafter Kontext für Coding-Agenten
+  4. EARS: Anforderungen präzise formulieren
+  5. Research, Plan und Tasks trennen
+  6. Spec-Driven Development mit OpenSpec
+
+  **Änderungen gestalten und absichern**
+
+  1. Problem verstehen und Änderungsgrenzen setzen
+  2. EARS: Anforderungen präzise formulieren
+  3. Modulgrenzen und öffentliche Schnittstellen gestalten
+  4. Fachverhalten mit TDD absichern
+  5. Java-Architekturregeln mit ArchUnit prüfen
+  6. Webabläufe mit Playwright prüfen
+  7. Web-Sicherheitsrisiken wie XSS und unsichere DOM-Nutzung erkennen
+  8. Abhängigkeiten und Sicherheitslücken risikobasiert bewerten
+
+Lernpfade werden in der Anzeige berücksichtigt. Man kann die Anzeige auf einen oder mehrere Lernpfade filtern - oder man zeigt alternativ
+alle Lernpfade an.
 
 ## Fragenpools für Lerninhalte kuratieren
 

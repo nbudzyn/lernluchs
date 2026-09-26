@@ -8,7 +8,7 @@ gesamte Dokumentation.
 
 - Implementiere kein Teil-Feature ohne aktive Spec.
 - Arbeite pro Teil-Feature in der Reihenfolge RED → GREEN → REFACTOR. Halte den
-  RED-Nachweis und die anschließend grüne Testsuite in `tasks.md` fest.
+  RED-Nachweis und die anschließend grüne Testsuite in der aktiven Spec fest.
 - Committe nur bei vollständig grüner Pflichtsuite.
 - Ändere fachlich höchstens zwei Vertikalen pro Commit. Architekturausnahmen
   benötigen eine explizite Spec und Architekturtests.

@@ -1,5 +1,3 @@
 # Aktive Änderungen
 
-Dieser Ordner enthält nur noch nicht veröffentlichte Änderungs-Specs. Eine neue
-Änderung beginnt mit einem eigenen Unterordner gemäß
-[Änderungs-Workflow](../README.md).
+Hier liegen noch nicht abgeschlossene Änderungs-Specs als einzelne Dateien ohne Nummer oder Datumsstempel. Format und Abschluss stehen im [Änderungs-Workflow](../README.md).

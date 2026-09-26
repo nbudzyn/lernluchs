@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import { validateCatalog } from "../src/verticals/catalog/validateCatalog";
-import type { CatalogItem } from "../src/verticals/catalog/catalogContract";
-import { catalog } from "../src/verticals/catalog/catalog";
+import { validateCatalog } from "../../../src/verticals/catalog/validateCatalog";
+import type { CatalogItem } from "../../../src/verticals/catalog/catalogContract";
+import { catalog } from "../../../src/verticals/catalog/catalog";
 
 function completeItem(id: string): CatalogItem {
   return {
@@ -36,16 +36,17 @@ function completeItem(id: string): CatalogItem {
 
 describe("public content catalog", () => {
   it("contains six complete, editorially checked foundation topics", () => {
-    expect(catalog.items.map((item) => item.id)).toEqual([
+    const foundationIds = [
       "human-ai-responsibility",
       "problem-understanding-and-change-boundaries",
       "agents-md",
       "ears-requirements",
       "research-plan-tasks",
       "spec-driven-development-openspec",
-    ]);
+    ];
+    expect(catalog.items.map((item) => item.id).filter((id) => foundationIds.includes(id))).toEqual(foundationIds);
 
-    for (const item of catalog.items) {
+    for (const item of catalog.items.filter((item) => foundationIds.includes(item.id))) {
       expect(item).toMatchObject({
         title: expect.any(String),
         learningCard: {
@@ -73,6 +74,45 @@ describe("public content catalog", () => {
       });
     }
 
+    expect(validateCatalog(catalog)).toEqual({ valid: true, errors: [] });
+  });
+
+  it("weaves six new, sourced learning cards into one ordered catalog", () => {
+    const newIds = [
+      "module-boundaries-and-public-interfaces",
+      "tdd-for-domain-behavior",
+      "archunit-for-java-architecture",
+      "playwright-for-web-flows",
+      "web-xss-and-safe-dom",
+      "dependency-security-assessment",
+    ];
+    expect(catalog.items.map((item) => item.id)).toEqual([
+      "human-ai-responsibility",
+      "problem-understanding-and-change-boundaries",
+      "agents-md",
+      "ears-requirements",
+      "module-boundaries-and-public-interfaces",
+      "research-plan-tasks",
+      "spec-driven-development-openspec",
+      "tdd-for-domain-behavior",
+      "archunit-for-java-architecture",
+      "playwright-for-web-flows",
+      "web-xss-and-safe-dom",
+      "dependency-security-assessment",
+    ]);
+    expect(new Set(catalog.items.map((item) => item.id)).size).toBe(12);
+    expect(catalog.items.filter((item) => newIds.includes(item.id))).toHaveLength(6);
+    for (const item of catalog.items.filter((item) => newIds.includes(item.id))) {
+      expect(item.learningCard.problem.trim()).not.toBe("");
+      expect(item.learningCard.coreConcept.trim()).not.toBe("");
+      expect(item.learningCard.javaWebUse.trim()).not.toBe("");
+      expect(item.learningCard.boundary.trim()).not.toBe("");
+      expect(item.sources.length).toBeGreaterThan(0);
+      expect(item.editorial.publishedAt).toBe("2026-09-26");
+      expect(item.editorial.reviewedAt).toBe("2026-09-26");
+      expect(item.editorial.reviewDueAt).toBe("2027-03-26");
+      expect(item.sources.every((source) => source.checkedAt === "2026-09-26")).toBe(true);
+    }
     expect(validateCatalog(catalog)).toEqual({ valid: true, errors: [] });
   });
 

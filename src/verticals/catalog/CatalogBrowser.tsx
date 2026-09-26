@@ -25,7 +25,7 @@ export function CatalogBrowser() {
 
   return (
     <>
-      <nav aria-label="Grundlagen-Themen">
+      <nav aria-label="Lernthemen">
         <ul>
           {catalog.items.map((item) => (
             <li key={item.id}>

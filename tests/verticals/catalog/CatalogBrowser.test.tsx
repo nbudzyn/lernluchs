@@ -1,18 +1,18 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 
-import { CatalogBrowser } from "../src/verticals/catalog/CatalogBrowser";
+import { CatalogBrowser } from "../../../src/verticals/catalog/CatalogBrowser";
 
 afterEach(cleanup);
 
 describe("CatalogBrowser", () => {
-  it("shows all six foundation topics in a semantic text overview", () => {
+  it("shows all twelve topics in one semantic text overview", () => {
     render(<CatalogBrowser />);
 
     expect(
-      screen.getByRole("navigation", { name: "Grundlagen-Themen" }),
+      screen.getByRole("navigation", { name: "Lernthemen" }),
     ).toBeTruthy();
-    expect(screen.getAllByRole("button")).toHaveLength(6);
+    expect(screen.getAllByRole("button")).toHaveLength(12);
     expect(
       screen.getByRole("button", {
         name: "Mensch und KI: Verantwortung bleibt menschlich",
@@ -23,6 +23,7 @@ describe("CatalogBrowser", () => {
         name: "Spec-Driven Development mit OpenSpec",
       }),
     ).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Webabläufe mit Playwright prüfen" })).toBeTruthy();
   });
 
   it("shows the complete learning card after a user selects a topic", () => {

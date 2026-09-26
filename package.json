@@ -10,7 +10,7 @@
     "dev": "vite",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "validate:content": "vitest run tests/catalog.test.ts",
+    "validate:content": "vitest run tests/verticals/catalog/catalog.test.ts",
     "check:architecture": "depcruise --config dependency-cruiser.cjs \"src/**/*.ts\" \"src/**/*.tsx\" --output-type err",
     "build": "vite build && node scripts/verify-build.mjs",
     "test:pages-build": "node scripts/test-pages-build.mjs",

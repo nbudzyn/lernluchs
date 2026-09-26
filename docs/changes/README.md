@@ -1,48 +1,9 @@
 # Änderungs-Specs und Archiv
 
-Jede fachliche oder architektonische Änderung erhält vor der Implementierung einen eigenen Ordner. Das verhindert, dass Annahmen aus alten
-Änderungen in neue Features hineinwirken.
+Jede fachliche oder architektonische Änderung erhält vor der Implementierung **eine** Datei direkt unter `active/`. Der englische Dateiname ist kurz, eindeutig und ohne Datum oder Nummer, zum Beispiel `weave-next-learning-path.md`.
 
-## Verzeichnisstruktur
+Die Spec hält knapp fest: Ziel und Nicht-Ziele, betroffene Vertikalen, nötige Entscheidungen und Risiken, prüfbare Abnahme sowie pro Teil-Feature RED → GREEN → REFACTOR. RED-Grund, grüne Prüfungen, Quellenprüfung bei Inhalten und der lokale Browsernachweis (Browser, Ablauf, Ergebnis) werden während der Arbeit in derselben Datei ergänzt. Vor einem Commit bleiben keine offenen Platzhalter.
 
-```text
-doc/changes/
-  active/<yyyy-mm-dd-kurzer-name>/
-    proposal.md
-    design.md
-    tasks.md
-    acceptance.md
-  implemented/<yyyy-mm-dd-kurzer-name>/
-    proposal.md
-    design.md
-    tasks.md
-    acceptance.md
-```
+Nach fertiger Änderung, grünen Prüfungen und manueller Prüfung wird die vollständig ausgefüllte Datei direkt nach `implemented/` verschoben. Dort erhält sie die nächste vierstellige Nummer, zum Beispiel `0005-weave-next-learning-path.md`. Die Nummer zeigt die Reihenfolge des Abschlusses; Datum und Commit-Kennung stehen nicht in der Datei. Archivierte Specs werden nicht nachträglich umgeschrieben. Spätere Korrekturen bekommen eine neue Spec.
 
-Nach erfolgreicher Veröffentlichung wandert der vollständige Ordner unverändert von `active/` nach `implemented/`. Er wird nicht
-umgeschrieben; spätere Korrekturen erhalten eine neue Änderungs-Spec. So bleibt nachvollziehbar, welche Absicht zu welchem Zeitpunkt
-implementiert wurde.
-
-## Inhalt einer aktiven Änderung
-
-### `proposal.md`
-
-Nutzen, Problem, Nicht-Ziele, betroffene Vertikalen und Akzeptanzkriterien.
-
-### `design.md`
-
-Entscheidungen, Datenvertragsänderungen, erlaubte Importpfade, Risiken, Datenschutz-/Sicherheitsauswirkungen und Alternativen.
-
-### `tasks.md`
-
-Kleine RED → GREEN → REFACTOR-Schritte. Jeder Schritt hält den anfangs fehlschlagenden Test, die grüne Prüfung und notwendiges Refactoring
-fest.
-
-### `acceptance.md`
-
-Ausführbare Nachweise: Tests, manuelle Geräteprüfung, Quellenprüfung bei Inhaltsänderungen und Ergebnis der Abhängigkeitsprüfung.
-
-## Commit-Regeln
-
-Ein fachlicher Commit bezieht sich auf eine, höchstens zwei Vertikalen. Die zugehörige Änderungs-Spec ist Teil derselben nachvollziehbaren
-Änderung. Architekturänderungen dürfen breiter sein, benötigen aber eine explizite Begründung und Architekturtests.
+Die Verschiebung und die fachliche Änderung gehören zum selben Commit. Ein fachlicher Commit betrifft höchstens zwei Vertikalen; breitere Architekturausnahmen brauchen eine ausdrückliche Begründung und Architekturtests. Unmittelbar vor jedem Commit gelten die [dauerhaften Vorgaben](../governance/durable-rules.md).
