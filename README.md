@@ -1,23 +1,20 @@
 # Lernluchs
 
-Lernluchs ist eine öffentliche, statische und installierbare PWA. Lerninhalte sind öffentlich; persönlicher Lernfortschritt bleibt lokal auf
-dem jeweiligen Gerät.
+Lernluchs ist eine öffentliche, statische Lernanwendung. Derzeit lassen sich
+zwölf Lernkarten mit Quellen und Aktualitätsangaben im Browser lesen.
 
 Öffentlich erreichbar unter https://nbudzyn.github.io/lernluchs/.
 
 ## Einstieg
 
 1. [Dokumentationsindex](docs/INDEX.md) – welches Dokument für welche Frage gelesen werden muss.
-2. [Produktvision und Version 0](docs/product/vision-and-scope.md) – für Produkt- und Inhaltsentscheidungen.
+2. [Produktstand](docs/product/vision-and-scope.md) – für den aktuellen Funktionsumfang.
 3. [Dauerhafte Vorgaben](docs/governance/durable-rules.md) – gelten bei jeder Änderung.
 4. [Änderungs-Workflow](docs/changes/README.md) – für jedes neue Teil-Feature.
 
-## Übernahme in das neue Repository
-
-Beim Anlegen des öffentlichen Repositories wird dieser Ordner als Repository- Wurzel übernommen. Die bestehende private Datei
-`KI-Tool-Landkarte-2026-09-20.md` wird dann nach
-`docs/content/ki-tool-landkarte.md` kopiert. Vor ihrer inhaltlichen Nutzung in der App sind ihre Aussagen gemäß der redaktionellen
-Richtlinie erneut zu prüfen; sie ist eine Ausgangsquelle, keine ungeprüfte Datenquelle.
+Die [KI-Tool-Landkarte](docs/content/ki-tool-landkarte.md) dient als
+Rechercheausgangspunkt. Vor der Übernahme einer Aussage in die App wird sie
+nach der [redaktionellen Richtlinie](docs/content/editorial-policy.md) geprüft.
 
 Der eigene Code erhält die Lizenz [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0). Für fremde Quellen, Videos und Markenzeichen
 werden keine Lizenzrechte beansprucht; sie werden nur korrekt referenziert.

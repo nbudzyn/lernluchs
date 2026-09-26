@@ -5,16 +5,16 @@ dokumentierte Architekturentscheidung ersetzt werden.
 
 ## Produkt und Datenschutz
 
-- Die Anwendung ist eine öffentliche, statische PWA auf GitHub Pages.
-- Es gibt keinen Login, keine serverseitige Benutzerverwaltung und keine
-  Synchronisation in Version 0.
-- Persönlicher Lernfortschritt, Notizen und lokale Fehlermeldungen werden nur
-  im Browser-Speicher des jeweiligen Geräts geführt. Die App schreibt nicht in
-  Git.
+- Die Anwendung ist öffentlich und wird als statische App auf GitHub Pages
+  bereitgestellt.
+- Es gibt keinen Login und keine serverseitige Benutzerverwaltung.
+- Persönlicher Zustand bleibt bis zu einer eigens spezifizierten,
+  nutzergesteuerten Synchronisation auf dem jeweiligen Gerät. Die App schreibt
+  persönliche Daten nicht nach Git.
 - Es gibt keine Analytics, Tracker, Cookies zu Analyse- oder Marketingzwecken,
   Telemetrie, externen Fonts oder extern nachgeladenen Laufzeit-Skripte.
-- Externe Quellen und YouTube werden nur nach einer bewussten Nutzeraktion
-  geöffnet; ein eingebettetes Video ist kein Kernbestandteil der App.
+- Externe Quellen und Videos werden nur nach einer bewussten Nutzeraktion
+  geöffnet.
 
 ## Architektur und Änderungen
 

@@ -1,7 +1,8 @@
 # Glossar
 
-Dieses Glossar erklärt die Begriffe, wie sie in den aktuellen Produkt- und Architekturdokumenten verwendet werden. Neue Stories können die
-Begriffe bei Bedarf präzisieren; fachliche Änderungen werden in der jeweiligen Spec geklärt.
+Dieses Glossar erklärt bestehende und geplante Begriffe. Eine Definition
+behauptet nicht, dass die Funktion bereits umgesetzt ist. Neue Stories
+präzisieren Begriffe bei Bedarf in ihrer Spec.
 
 ## Fragenpool
 
@@ -34,8 +35,9 @@ und bleibt bei Inhaltsupdates erhalten.
 
 ## Lerninhalt
 
-Ein einzelner Schritt in einem Lernpfad. Der Grundlagenpfad von Version 0 besteht beispielsweise aus Lerninhalten zu Mensch-KI-Verantwortung,
-Anforderungen und Spec-Driven Development.
+Ein einzelner Schritt in einem Lernpfad. Ein geplanter Grundlagenpfad enthält
+beispielsweise Lerninhalte zu Mensch-KI-Verantwortung, Anforderungen und
+Spec-Driven Development.
 
 ## Lernkarte
 

@@ -1,9 +1,7 @@
 # Inhaltliche Ausgangslage
 
-Die vollständige Ausgangs-Landkarte wird beim Übertrag in das neue Repository
-als `ki-tool-landkarte.md` in diesem Ordner abgelegt. Sie ist bewusst getrennt
-von den redaktionell geprüften Daten, die später von der Anwendung gelesen
-werden.
+Die [KI-Tool-Landkarte](ki-tool-landkarte.md) ist eine Recherche-Notiz. Sie ist
+von den redaktionell geprüften Katalogdaten der Anwendung getrennt.
 
 Vor der Übernahme eines Themas in die App gelten die
 [redaktionellen Regeln](editorial-policy.md). Insbesondere sind
