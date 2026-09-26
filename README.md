@@ -11,8 +11,6 @@ dem jeweiligen Gerät.
 2. [Produktvision und Version 0](docs/product/vision-and-scope.md) – für Produkt- und Inhaltsentscheidungen.
 3. [Dauerhafte Vorgaben](docs/governance/durable-rules.md) – gelten bei jeder Änderung.
 4. [Änderungs-Workflow](docs/changes/README.md) – für jedes neue Teil-Feature.
-5. [Aktive Running-Skeleton-Spec](docs/changes/active/running-skeleton.md)
-   – der erste geplante Durchstich.
 
 ## Übernahme in das neue Repository
 

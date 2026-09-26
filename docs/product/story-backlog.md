@@ -4,6 +4,10 @@ Dieses Backlog enhält (nur) geplante, noch nicht aktive Stories in vorgesehener
 jede Story eine eigene Änderungs-Spec unter
 `docs/changes/active/`; diese dokumentiert RED → GREEN → REFACTOR.
 
+Die frühere breit angelegte Architekturausnahme für einen gemeinsamen Durchstich wird mit diesen getrennten Stories nicht fortgeführt.
+Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine spätere Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests.
+Stories mit neuen Prüfungen ergänzen die Qualitätsstrategie erst nach grünem Nachweis um die dann tatsächlich ausgeführten Checks.
+
 ## Dritter Lernpfad
 
 Der Inhaltskatalog wird um den Lernpfad **Sicher mit Coding-Agenten arbeiten** erweitert:
@@ -31,6 +35,102 @@ Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebe
 erhalten.
 
 Vertikale: Inhaltskatalog
+
+## Quellengebundene Grundlagenfragen im Browser beantworten
+
+Zu jeder der sechs Lernkarten des Grundlagenpfads können Lernende eine Auswahlfrage beantworten und anschließend Begründung und Quelle
+einsehen. Dafür werden ausreichend viele fachlich unterschiedliche Fragen für spätere Wiederholungen kuratiert. Jede Frage prüft eine
+konkrete Aussage der Karte; jede Antwortoption erhält eine Begründung und einen Quellenbezug. Fragen und Antworten werden unabhängig
+fachlich geprüft, versioniert und zusammen mit dem öffentlichen Katalog validiert. Ein optionaler externer Quellenlink öffnet sich nur nach
+bewusster Aktion und sein Ausfall verhindert das Lesen und Beantworten der Frage nicht.
+
+Die sechs Grundlagenkarten sind in der [Produktvision](vision-and-scope.md) festgelegt. Diese Story liefert den ersten sichtbaren
+Fragenablauf; Bestehenslogik und Wiederholung folgen in der nächsten Story. Mit diesem ersten neuen Browserablauf beginnen auch
+Browser-E2E-Prüfungen in CI. Format-/Lint- und Lizenzprüfungen werden als ausführbare CI-Gates ergänzt und nach grünem Nachweis in der
+Qualitätsstrategie dokumentiert. Neue Abhängigkeiten erfordern eine begründete Freigabe in der späteren Änderungs-Spec.
+
+Vertikalen: Inhaltskatalog, Lernchecks
+
+## Lernchecks bestehen und mit anderem Fragensatz wiederholen
+
+Lernende absolvieren Auswahlchecks ohne Zeitdruck. Nur vollständig korrekte Antworten bestehen. Nach Nichtbestehen erscheinen sofort
+Lösung, Begründung und die passende Lernkarte beziehungsweise Quelle; ein neuer Versuch nutzt einen anderen Fragensatz. Bestehen erzeugt
+einen Fortschrittsvorschlag, speichert ihn aber noch nicht. Browser-E2E-Tests prüfen Bestehen, Nichtbestehen und Wiederholung.
+
+Vertikalen: Inhaltskatalog, Lernchecks
+
+## Lernfortschritt nach einem Check bestätigen und lokal speichern
+
+Ein bestandener Check zeigt einen sichtbaren, änderbaren Fortschrittsvorschlag. Nur die bewusste Bestätigung speichert den Wert in
+IndexedDB unter der dauerhaften Themen-ID. Fortschritt enthält keine Zugangsdaten, bleibt nach Reload erhalten und ist vom öffentlichen,
+nur lesbaren Katalog getrennt. Neue Inhaltsversionen oder fehlerhafte externe Quellen löschen bestätigten Fortschritt nicht. Der
+Browser-E2E-Test deckt Bestätigung, Korrektur, Reload und Inhaltsversionswechsel ab.
+
+Vertikalen: Lernchecks, Lernfortschritt
+
+## Kompetenzen aus bestätigtem Fortschritt anzeigen
+
+Lernende sehen ihren bestätigten Fortschritt je Thema. Das Kompetenzprofil leitet seine Anzeige aus dem lokalen Fortschritt ab und
+speichert keine zweite fachliche Wahrheit. Es nutzt den schmalen öffentlichen Vertrag der Fortschritts-Vertikale; ein Browser-Test prüft
+die Anzeige nach einem Reload.
+
+Vertikalen: Lernfortschritt, Kompetenzprofil
+
+## Themen auf einer Landkarte erkunden
+
+Die sechs Grundlagenkarten erscheinen als frei navigierbare grafische Landkarte mit fachlichen Querverbindungen. Lernende können jedes
+Thema ohne Sperre auswählen. Die vorhandene zugängliche Liste bleibt als Fallback nutzbar, auch wenn die Grafik ausfällt. Die Landkarte
+liest Katalog und bestätigten Fortschritt nur über kleine öffentliche Verträge und delegiert Änderungen an die zuständige Vertikale.
+Browser-E2E-Tests prüfen Auswahl, Querverbindung und Listenfallback.
+
+Vertikalen: Inhaltskatalog, Landkarte
+
+## App installieren und Kernabläufe offline nutzen
+
+Nach dem ersten erfolgreichen Laden ist die öffentliche GitHub-Pages-App installierbar und zeigt offline Landkarte, Liste, Lernkarten,
+Lernchecks und bereits bestätigten Fortschritt. Der versionierte Service-Worker-Cache hält App und Katalog einschließlich Fragen pro
+Inhaltsversion zusammen; Updates mischen keine Versionen und überschreiben keinen lokalen Fortschritt. Der öffentliche Build enthält
+nur App und Katalog, keine persönlichen Daten oder extern nachgeladenen Laufzeitressourcen. Externe Quellen können offline als nicht
+verfügbar erscheinen und öffnen sich nur nach bewusster Aktion. Browser- und PWA-Prüfungen decken Erstladen, Offline-Nutzung und
+kontrollierte Updates ab. Die neuen PWA-/Offline-Gates werden nach grünem Nachweis in der Qualitätsstrategie dokumentiert.
+
+Vertikale: PWA/Zuverlässigkeit
+
+## Kernabläufe und Release auf Zielbrowsern abnehmen
+
+Lernende können die installierbare App auf den unterstützten Geräten durchgängig nutzen: ein Thema wählen, einen Lerncheck wiederholen,
+Fortschritt bestätigen und die Kerninhalte nach dem Erstladen offline öffnen.
+
+Die vollständige Pflichtsuite ist grün: Format, Lint, Typen, Inhalts- und Schema-Validierung, Unit- und Komponententests,
+Browser-E2E, Architekturgrenzen, bekannte Schwachstellen und unzulässige Lizenzen, Produktionsbuild sowie PWA-/Offline-Prüfung.
+Insbesondere werden Querverbindungen, Karten und Metadaten, Bestehen und Nichtbestehen mit anderem Fragensatz, bestätigter Fortschritt
+über Reload, Offline-Nutzung und der Ausfall eines optionalen Quellenlinks geprüft. Automatisierte Tests decken definierte Desktop- und
+mobile Viewports ab. Der GitHub-Pages-Release durchläuft dieselben Pflichtprüfungen; ein fehlendes oder fehlschlagendes Gate verhindert
+die Veröffentlichung. GitHub Dependency Review und Dependabot ergänzen die Abhängigkeitsprüfung; Updates werden getrennt getestet und
+bewusst freigegeben.
+
+Installation und Kernabläufe werden zusätzlich auf Samsung Internet/Android, Chrome und Firefox unter Windows 11 sowie Safari auf
+einem aktuellen iPhone geprüft. Browser, Version, Ablauf und Ergebnis werden in der Änderungs-Spec beziehungsweise dem Release-Nachweis
+dokumentiert. Die bereits eingerichtete GitHub-Pages-Bereitstellung wird mit der installierbaren Version erneut geprüft. Nach grünem
+Nachweis beschreibt die Qualitätsstrategie die tatsächlich eingerichteten Gates und Geräteprüfungen.
+
+Vertikale: PWA/Zuverlässigkeit
+
+## Lernchecks für den zweiten Lernpfad ergänzen
+
+Die sechs zusätzlichen Karten aus „Änderungen gestalten und absichern“ erhalten quellengebundene Fragenpools und die bereits vorhandenen
+Auswahlchecks einschließlich Erklärung und Wiederholung. Fragen prüfen konkrete Kartenaussagen und werden unabhängig fachlich geprüft.
+Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+
+Vertikalen: Inhaltskatalog, Lernchecks
+
+## Lernchecks für den dritten Lernpfad ergänzen
+
+Die drei neuen Karten aus „Sicher mit Coding-Agenten arbeiten“ erhalten quellengebundene Fragenpools und Auswahlchecks einschließlich
+Erklärung und Wiederholung. Fragen prüfen konkrete Kartenaussagen und werden unabhängig fachlich geprüft. Browser-Tests zeigen den
+Lernnutzen für diesen Pfad.
+
+Vertikalen: Inhaltskatalog, Lernchecks
 
 ## Vierter Lernpfad
 
@@ -61,6 +161,14 @@ erhalten.
 
 Vertikale: Inhaltskatalog
 
+## Lernchecks für den vierten Lernpfad ergänzen
+
+Die vier neuen Karten aus „Java-/Web-Code technisch analysieren und modernisieren“ erhalten quellengebundene Fragenpools und
+Auswahlchecks einschließlich Erklärung und Wiederholung. Fragen prüfen konkrete Kartenaussagen und werden unabhängig fachlich geprüft.
+Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+
+Vertikalen: Inhaltskatalog, Lernchecks
+
 ## Fünfter Lernpfad
 
 Der Inhaltskatalog wird um den Lernpfad **Parallele Coding-Agenten kritisch erproben** erweitert:
@@ -88,6 +196,14 @@ Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebe
 erhalten.
 
 Vertikale: Inhaltskatalog
+
+## Lernchecks für den fünften Lernpfad ergänzen
+
+Die sechs neuen Karten aus „Parallele Coding-Agenten kritisch erproben“ erhalten quellengebundene Fragenpools und Auswahlchecks
+einschließlich Erklärung und Wiederholung. Fragen prüfen konkrete Kartenaussagen und werden unabhängig fachlich geprüft. Browser-Tests
+zeigen den Lernnutzen für diesen Pfad.
+
+Vertikalen: Inhaltskatalog, Lernchecks
 
 ## Glossar um englische Übersetzungen ergänzen und englische Begriffe vereinheitlichen
 
@@ -170,43 +286,6 @@ Die Anwendung kennt Lernpfade.
 
 Lernpfade werden in der Anzeige berücksichtigt. Man kann die Anzeige auf einen oder mehrere Lernpfade filtern - oder man zeigt alternativ
 alle Lernpfade an.
-
-## Fragenpools für Lerninhalte kuratieren
-
-Für alle Lerninhalte, denen noch Fragen fehlen, einen ausreichend großen, quellengebundenen Fragenpool erstellen, damit Wiederholungen
-unterschiedliche Fragensätze nutzen können. Fragen prüfen konkrete Aussagen aus dem jeweiligen Lerninhalt und seiner Lernkarte;
-Allgemeinplätze sind unzulässig. Jede Antwortoption erhält eine Begründung und einen Quellenbezug. Die Fragen werden vor dem Commit
-unabhängig fachlich geprüft.
-
-Vertikale: Inhaltskatalog
-
-## Grundlagenwissen überprüfen
-
-Auswahlchecks aus den kuratierten Fragenpools mit Bestehen, Nichtbestehen, Erklärung und Wiederholung anbieten.
-
-Vertikalen: Inhaltskatalog, Lernchecks
-
-## Lernfortschritt lokal speichern
-
-Check-Ergebnis als änderbaren Vorschlag zeigen und bestätigten Fortschritt über Reload erhalten.
-
-Vertikalen: Lernchecks, Lernfortschritt
-
-## Kompetenzen nach Themen einsehen
-
-Bestätigten Fortschritt je Thema nachvollziehbar darstellen.
-
-Vertikale: Kompetenzprofil
-
-## Themen auf einer Landkarte erkunden
-
-Themen und Querverbindungen frei navigierbar darstellen; die bestehende Listenansicht bleibt Fallback.
-
-Vertikalen: Inhaltskatalog, Landkarte
-
-## App installieren und offline nutzen
-
-Installation, versionierter Offline-Cache und kontrollierte Updates für die Kernabläufe.
 
 ## Quallen erneut prüfen
 
