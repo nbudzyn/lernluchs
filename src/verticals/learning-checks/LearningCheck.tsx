@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 import type { Question } from "../../shared/question";
+import { congratulations } from "./congratulations";
+import "./LearningCheck.css";
 
 type Answer = { question: Question; optionId: string };
 
@@ -38,6 +40,7 @@ export function LearningCheck({
 }) {
   const [selected] = useState(() => chooseQuestions(questions, random));
   const [answers, setAnswers] = useState<Answer[]>([]);
+  const [congratulation, setCongratulation] = useState<string | null>(null);
   const current = selected[answers.length];
   const complete = answers.length === 5;
   const allCorrect = answers.every(
@@ -48,6 +51,15 @@ export function LearningCheck({
 
   function answer(optionId: string) {
     if (!current) return;
+    if (
+      answers.length === 4 &&
+      allCorrect &&
+      current.options.find((option) => option.id === optionId)?.correct
+    ) {
+      setCongratulation(
+        congratulations[Math.floor(random() * congratulations.length)],
+      );
+    }
     setAnswers((previous) => [...previous, { question: current, optionId }]);
   }
 
@@ -76,11 +88,17 @@ export function LearningCheck({
       )}
       {complete && (
         <>
-          <h2>
-            {allCorrect
-              ? "Alle Antworten richtig"
-              : "Nicht alle Antworten richtig"}
-          </h2>
+          {allCorrect ? (
+            <section
+              className="learning-check-celebration"
+              aria-label="Glückwunsch"
+            >
+              <h2>Lerncheck bestanden</h2>
+              <p role="status">{congratulation}</p>
+            </section>
+          ) : (
+            <h2>Antworten im Überblick</h2>
+          )}
           <ol>
             {answers.map(({ question, optionId }) => {
               const right = question.options.find((option) => option.correct)!;

@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
 import foundationQuestions from "../src/verticals/catalog/foundationQuestions.json" with { type: "json" };
+import { congratulations } from "../src/verticals/learning-checks/congratulations";
 
 const foundationTitles: Record<keyof typeof foundationQuestions, string> = {
   "human-ai-responsibility": "Mensch und KI: Verantwortung bleibt menschlich",
@@ -43,12 +44,16 @@ test("answers five questions correctly from the closed card and shows a summary"
   for (let index = 1; index <= 5; index += 1) {
     await expect(page.getByText(`Frage ${index} von 5`)).toBeVisible();
     await expect(page.getByRole("article")).toHaveCount(0);
+    await expect(page.getByRole("status")).toHaveCount(0);
     await answerCurrent(page, true);
   }
 
   await expect(
-    page.getByRole("heading", { name: "Alle Antworten richtig" }),
+    page.getByRole("heading", { name: "Lerncheck bestanden" }),
   ).toBeVisible();
+  const status = page.getByRole("status");
+  await expect(status).toHaveCount(1);
+  expect(congratulations).toContain(await status.textContent());
   await expect(page.getByRole("listitem")).toHaveCount(5);
   await expect(page.getByText(/^Gewählt:/)).toHaveCount(0);
   await expect(
@@ -58,6 +63,23 @@ test("answers five questions correctly from the closed card and shows a summary"
   await expect(
     page.getByRole("navigation", { name: "Lernthemen" }),
   ).toBeVisible();
+  await page
+    .getByRole("button", {
+      name: "Fragen starten: Mensch und KI: Verantwortung bleibt menschlich",
+    })
+    .click();
+  await expect(page.getByText("Frage 1 von 5")).toBeVisible();
+  await expect(page.getByRole("status")).toHaveCount(0);
+  await page.reload();
+  await expect(
+    page.getByRole("navigation", { name: "Lernthemen" }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", {
+      name: "Fragen starten: Mensch und KI: Verantwortung bleibt menschlich",
+    })
+    .click();
+  await expect(page.getByText("Frage 1 von 5")).toBeVisible();
 });
 
 test("shows a wrong choice and keeps the result readable when its source fails", async ({
@@ -73,8 +95,12 @@ test("shows a wrong choice and keeps the result readable when its source fails",
   for (let index = 0; index < 5; index += 1)
     await answerCurrent(page, index !== 0);
   await expect(
-    page.getByRole("heading", { name: "Nicht alle Antworten richtig" }),
+    page.getByRole("heading", { name: "Antworten im Überblick" }),
   ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Lerncheck bestanden" }),
+  ).toHaveCount(0);
+  await expect(page.getByRole("status")).toHaveCount(0);
   await expect(page.getByText(/^Gewählt:/)).toHaveCount(1);
   await expect(page.getByText(/^Richtig:/)).toHaveCount(5);
   const [popup] = await Promise.all([
@@ -83,7 +109,7 @@ test("shows a wrong choice and keeps the result readable when its source fails",
   ]);
   await popup.close();
   await expect(
-    page.getByRole("heading", { name: "Nicht alle Antworten richtig" }),
+    page.getByRole("heading", { name: "Antworten im Überblick" }),
   ).toBeVisible();
 });
 
