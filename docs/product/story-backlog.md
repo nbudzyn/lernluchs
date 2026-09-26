@@ -9,22 +9,79 @@ Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden E
 
 ## Lernchecks bestehen
 
-Am Ende eines Fragendurchlaufs, wenn die Zusammenfassung angezeigt wird und der User alle Fragen des Durchlaufs richtig beantwortet hat,
-besteht er diesen Lerninhalt (die Lernkarte).
+Ein abgeschlossener Fragendurchlauf zu einer Lernkarte gilt genau dann als bestanden, wenn alle fünf Fragen richtig beantwortet wurden.
+Damit gilt die Lernkarte für diesen Durchlauf als bestanden. Das Ergebnis erscheint erst mit der Antwortübersicht nach der fünften Antwort.
+Ein abgebrochener Durchlauf hat kein Ergebnis.
 
-- Der User erhält oben in der Übersicht eine klare Anzeige, dass er bestanden hat, verbunden mit einem kurzen Glückwunsch.
-- Der Glückwunsch wird zufällig aus einer Liste von 50 Glückwünschen ausgewählt.
-    - Die Liste enthält sowohl klassische Glückwünsche ("Herzlichen Glückwunsch!"), bestärkende Formeln ("Toll gemacht!" - wir vermeiden
-      "du" und "Sie"!) als auch entsprechende Wortspiele zu KI ("Na, was ein KInderspiel").
-- Hat der User nicht bestanden gibt es keine negative Meldung! (Kein "Leider nicht bestanden" o.Ä.!) Auch kein Glückwunsch.
-- Verlässt der User die Seite, kann er jederzeit wieder einen Fragendurchlauf starten.
+- Bei Bestehen steht oben in der Ergebnisansicht deutlich „Lerncheck bestanden“. Unmittelbar darunter, vor der Antwortübersicht, erscheint
+  genau ein zufällig ausgewählter Glückwunsch aus der folgenden Liste. Jeder der 50 Texte ist auswählbar. Die bestehende Antwortübersicht
+  mit Erklärungen und Quellen bleibt sichtbar.
+- Bei mindestens einer falschen Antwort steht an derselben Stelle die neutrale Überschrift „Antworten im Überblick“. Es erscheint weder
+  eine negative Bestehensmeldung noch ein Glückwunsch. Die gewählten falschen Antworten, richtigen Antworten und Erklärungen bleiben
+  sichtbar.
+- Nach dem Ergebnis führt „Zur Themenliste“ zurück zur Kartenauswahl; von dort kann ein neuer, unabhängiger Fragendurchlauf gestartet
+  werden. Das gilt auch nach einem Abbruch sowie nach dem Verlassen oder Neuladen der Seite. Ein zuvor ausgewählter Glückwunsch darf erneut
+  erscheinen.
 
-Browser-E2E-Tests prüfen Bestehen, Nichtbestehen und Wiederholung.
+Die 50 Texte sind kurz, wertschätzend und ohne direkte Anrede mit „du“ oder „Sie“. Einige spielen geistreich mit KI-Begriffen, ohne den
+Lernerfolg kleinzureden. Die Wortlaute für diese Story sind:
 
-Abgrenzung:
+1. Herzlichen Glückwunsch!
+2. Glückwunsch, das war stark!
+3. Bravo, alles richtig!
+4. Großartig gemacht!
+5. Fünf Richtige – wunderbar!
+6. Ein glänzender Abschluss!
+7. Geschafft – mit Bravour!
+8. Punktlandung!
+9. Das war überzeugend!
+10. Ein Ergebnis zum Freuen!
+11. Hervorragend!
+12. Tolle Leistung!
+13. Das kann sich sehen lassen!
+14. Fünf Fragen, fünf Treffer!
+15. Souverän gelöst!
+16. Alles richtig – wie schön!
+17. Volltreffer auf ganzer Linie!
+18. Fünfmal richtig – Chapeau!
+19. Ein rundum gelungener Durchlauf!
+20. Das sitzt!
+21. Ein guter Blick fürs Wesentliche!
+22. Klar gedacht, richtig entschieden.
+23. Fünf gute Entscheidungen hintereinander!
+24. Ein feiner Moment zum Feiern!
+25. Starke Entscheidungen, schöner Abschluss!
+26. Das verdient ein Lächeln.
+27. Eine Runde Applaus für diesen Durchlauf!
+28. Hier passt einfach alles.
+29. Ein Ergebnis wie aus einem Guss.
+30. Beste Mischung: Neugier und Klarheit.
+31. Ein starker Schlusspunkt!
+32. Das war ein guter Lauf!
+33. Fünfmal auf den Punkt.
+34. Ein Grund, kurz stolz zu sein.
+35. Wissen, das im richtigen Moment da ist.
+36. Das war aufmerksam und treffsicher!
+37. Ein kleiner Triumph zum Mitnehmen.
+38. So macht Lernen Freude!
+39. Ein schönes Stück Klarheit gewonnen.
+40. Die Antworten sitzen, der Moment gehört gefeiert!
+41. Künstliche Intelligenz? Hier glänzt die natürliche!
+42. Fünf Treffer – ein ziemlich guter Output!
+43. Der Prompt: nachdenken. Der Output: fünf Richtige.
+44. Kontext verstanden, Antworten getroffen!
+45. Keine Halluzination: Dieses Ergebnis ist echt.
+46. Mensch im Loop, Freude im Blick!
+47. Bestes Modell für heute: neugierig bleiben.
+48. Vom Input zum Aha – fünfmal geglückt!
+49. Ergebnis geprüft: Anlass zur Freude gefunden.
+50. KI kann unterstützen. Dieser Erfolg gehört dem Menschen.
 
-- Das Bestehen wird (noch) nicht gespeichert.
-- Keine lokale Datenhaltung nötig.
+Browser-E2E-Tests prüfen einen Durchlauf mit fünf richtigen Antworten samt Bestehensanzeige und genau einem Glückwunsch aus der Liste,
+einen Durchlauf mit mindestens einer falschen Antwort ohne Bestehensmeldung oder Glückwunsch sowie erneut gestartete Durchläufe nach
+Rückkehr zur Themenliste und nach einem Neuladen. Die Auswahl der Glückwünsche wird zusätzlich mit kontrolliertem Zufall getestet.
+
+Abgrenzung: Weder Bestehen noch Glückwunsch werden gespeichert. Es ist keine lokale Datenhaltung nötig.
 
 Vertikalen: Lernchecks
 
