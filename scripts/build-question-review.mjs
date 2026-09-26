@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 
-const base = "docs/changes/active/answer-source-backed-foundation-questions";
+const base =
+  "docs/changes/implemented/answer-source-backed-foundation-questions";
 const draft = readFileSync(`${base}/draft-questions.md`, "utf8");
 const wrongReasons = new Map(
   readFileSync(`${base}/wrong-explanations.md`, "utf8")

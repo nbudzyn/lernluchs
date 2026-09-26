@@ -28,6 +28,32 @@ redaktionelle Metadaten und die fachliche Prüfung der Karten gilt die [redaktio
 - Nach der unabhängigen Prüfung müssen pro betroffenem neuem Fragenpool mindestens 25 fachlich unterschiedliche, gültige Fragen
   verbleiben. Eine spätere Spec darf für ihren Umfang einen höheren Mindestbestand festlegen.
 
+## Plausible Falschantworten entwickeln
+
+1. Kläre Lernziel, Vorwissen der Zielgruppe und die genaue Aussage der Originalquelle. Formuliere die richtige Antwort und begründe,
+   warum sie unter den Bedingungen der Frage richtig ist.
+2. Suche bewusst nach weiteren Antworten, die auf die Frage ebenfalls zutreffen könnten. Ist die Frage dafür zu breit, präzisiere
+   Akteur, Zeitpunkt, Einsatzsituation oder die gesuchte Art von Ursache. Lernziel und richtige Antwort bleiben erhalten. Schränke
+   die Frage nicht durch Verweise auf ein bestimmtes Dokument, Kapitel oder dessen Formulierung ein und verrate die Lösung nicht
+   durch den Fragetext. Bleibt keine eindeutig richtige Antwort übrig, verwirf die Frage.
+3. Sammle unterschiedliche falsche Denkwege vor dem Schreiben der Optionen. Nutze vorrangig tatsächliche Fehler aus freiwilligen
+   Probeläufen oder anderen zulässig vorliegenden Lernendenantworten. Fehlen solche Daten, kennzeichne die Denkwege als
+   begründete Hypothesen, nicht als beobachtetes Nutzerverhalten.
+4. Formuliere aus jedem Denkweg einen Kandidaten und erzeuge zunächst mehr Kandidaten als benötigt. Fachlich benachbarte,
+   an sich sinnvolle Maßnahmen oder Ursachen können verlockend sein, wenn sie die konkrete Frage nicht beantworten. Vermeide
+   offensichtlich unsinnige Antworten, bloße Negationen und mehrere Varianten desselben Irrtums.
+5. Prüfe jeden Kandidaten einzeln: Welcher Denkfehler macht ihn plausibel? Warum ist er unter der genauen Frage falsch? Belegt
+   die Quelle diese Abgrenzung? Könnte eine fachkundige Person ihn dennoch begründet als richtig ansehen? Eine Aussage darf
+   außerhalb der Frage sinnvoll oder wahr sein; als Antwort auf diese Frage muss sie eindeutig falsch sein. Verwirf oder
+   überarbeite mehrdeutige Kandidaten und präzisiere nötigenfalls erneut die Frage.
+6. Wähle fachlich unterschiedliche Distraktoren und gleiche Antwortart, Konkretionsgrad und sprachliche Form aller Optionen an.
+   Entferne Hinweise durch Grammatik, auffällige Länge oder aus der Frage nur in der richtigen Antwort wiederholte Wörter.
+   Absolute Wörter wie „immer“, „nie“ oder „ausschließlich“ dürfen eine Falschantwort nicht schon ohne Fachwissen entlarven.
+7. Halte für jeden gewählten Distraktor den vermuteten Denkfehler, seinen Reiz, den eindeutigen Ausschlussgrund und den
+   tragenden Quellenbezug fest. Lasse ihn unabhängig auf fachliche Richtigkeit, Mehrdeutigkeit und Plausibilität prüfen. Wenn
+   freiwillige Probeläufe vorliegen, prüfe anschließend, welche Optionen tatsächlich gewählt wurden, und überarbeite schwache
+   Distraktoren. Die eigene Plausibilitätsvermutung ersetzt diesen Nachweis nicht.
+
 ## Unabhängig prüfen und validieren
 
 1. Prüfe jede Frage samt Lösung, allen Optionen, Erklärungen und Quellenbezügen fachlich gegen die Originalquellen. Dokumentiere Prüftag,

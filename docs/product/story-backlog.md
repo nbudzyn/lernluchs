@@ -7,6 +7,37 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Bessere Falschantworten in allen vorhandenen Lernchecks
+
+Alle Falschantworten der derzeit sechs Fragenpools mit insgesamt 150 Fragen werden nach dem Verfahren in
+[Regeln für Auswahlfragen](../content/question-authoring.md) durch plausible, eindeutig falsche Distraktoren ersetzt. Pro Frage
+bleiben genau eine richtige Antwort und insgesamt drei bis fünf plausible Optionen; die Zahl wird nicht mit schwachen
+Fülloptionen erreicht. Auch allgemein sinnvolle Aussagen dürfen nur als Distraktoren dienen, wenn sie die konkrete Frage
+eindeutig nicht beantworten. Jeder Distraktor erhält eine kurze Erklärung seines Ausschlussgrundes und einen passenden
+Quellenbezug.
+
+Die vorhandenen Fragen und richtigen Antworten bleiben im fachlichen Kern erhalten und dürfen für Eindeutigkeit und
+Verständlichkeit umformuliert werden. Eine Frage darf durch Angaben zu Akteur, Zeitpunkt, Einsatzsituation oder gesuchter
+Ursache präzisiert werden, nicht durch einen Verweis auf ein bestimmtes Dokument, Kapitel oder dessen Formulierung. Die
+Frage darf die richtige Antwort nicht sprachlich verraten. Bleibt sie mit den vorhandenen Kartenquellen und im Kern
+gleicher Antwort mehrdeutig, wird sie durch eine neue, quellengebundene Frage zur selben Karte ersetzt. Für überarbeitete
+Fragen bleiben die IDs stabil; echte Ersatzfragen erhalten neue IDs. Nach der Prüfung bleiben je Pool mindestens 25
+fachlich unterschiedliche, gültige Fragen.
+
+Jede Frage samt richtiger Antwort, allen Distraktoren, Erklärungen und Quellenbezügen wird gegen die Originalquellen
+geprüft. Für alle betroffenen Pools wird anschließend der in den Fragenregeln vorgesehene kopierbare Prüf-Prompt erstellt;
+der Nutzer führt die unabhängige externe KI-Prüfung aus. Beanstandungen werden vor der Integration geklärt oder durch
+erneut geprüfte Fragen ersetzt. Die Validierung umfasst insbesondere eindeutige IDs, genau eine richtige Antwort, drei
+bis fünf Optionen und vollständige Erklärungen und Quellenbezüge.
+
+Abgrenzung:
+
+- Lernkartentexte und die den Karten zugeordneten Quellen bleiben unverändert. Fragen, Antwortoptionen, Erklärungen und
+  Verweise auf die bestehenden Quellen dürfen angepasst werden.
+- Für Karten ohne bestehenden Fragenpool werden keine Fragen erzeugt.
+
+Vertikalen: Lernchecks
+
 ## Durch die Oberfläche und Bedienung motiviert, aber nicht abgelenkt werden
 
 Die Oberfläche soll motivierend, aber nicht ablenkend sein.
@@ -36,10 +67,10 @@ Dokumentation nach Umsetzung: Bestehens- und Wiederholungsregeln knapp in redakt
 ## Bereits gestellte Fragen je Karte lokal merken
 
 Die App merkt sich auf dem Gerät je Karte, welche Fragen bereits gestellt wurden. Neue Durchläufe bevorzugen ausschließlich noch nicht
-gestellte Fragen, bis der Pool der Karte ausgeschöpft ist. Danach beginnt ein neuer Zyklus. Innerhalb eines Durchlaufs erscheint keine
-Frage doppelt. Die spätere Änderungs-Spec legt fest, wann eine abgebrochene Frage als gestellt gilt, wie ein Rest von weniger als fünf
-Fragen mit dem nächsten Zyklus verbunden wird und wie veraltete Fragen-IDs nach Katalogänderungen behandelt werden. Ohne gespeicherten
-Stand bleibt der Fragenablauf nutzbar. Browser-E2E-Tests prüfen mehrere Durchläufe, Ausschöpfung, Neustart und Abbruch.
+gestellte Fragen, bis der Pool der Karte ausgeschöpft ist. Danach beginnt ein neuer Zyklus. Innerhalb eines Durchlaufs erscheint keine Frage
+doppelt. Die spätere Änderungs-Spec legt fest, wann eine abgebrochene Frage als gestellt gilt, wie ein Rest von weniger als fünf Fragen mit
+dem nächsten Zyklus verbunden wird und wie veraltete Fragen-IDs nach Katalogänderungen behandelt werden. Ohne gespeicherten Stand bleibt der
+Fragenablauf nutzbar. Browser-E2E-Tests prüfen mehrere Durchläufe, Ausschöpfung, Neustart und Abbruch.
 
 Vertikalen: Inhaltskatalog, Lernchecks
 
@@ -85,8 +116,8 @@ Dokumentation nach Umsetzung: Landkarte, Fallback und Vertikalgrenzen knapp in P
 
 Nach dem ersten erfolgreichen Laden ist die öffentliche GitHub-Pages-App installierbar und zeigt offline Landkarte, Liste, Lernkarten,
 Lernchecks und bereits bestätigten Fortschritt. Der versionierte Service-Worker-Cache hält App und Katalog einschließlich Fragen je Build
-zusammen; Updates mischen keine Build-Stände und überschreiben keinen lokalen Fortschritt. Der öffentliche Build enthält nur App
-und Katalog, keine persönlichen Daten oder extern nachgeladenen Laufzeitressourcen. Externe Quellen können offline als nicht verfügbar
+zusammen; Updates mischen keine Build-Stände und überschreiben keinen lokalen Fortschritt. Der öffentliche Build enthält nur App und
+Katalog, keine persönlichen Daten oder extern nachgeladenen Laufzeitressourcen. Externe Quellen können offline als nicht verfügbar
 erscheinen und öffnen sich nur nach bewusster Aktion. Browser- und PWA-Prüfungen decken Erstladen, Offline-Nutzung und kontrollierte Updates
 ab. Die neuen PWA-/Offline-Gates werden nach grünem Nachweis in der Qualitätsstrategie dokumentiert.
 
@@ -148,8 +179,8 @@ Vertikalen: Inhaltskatalog
 ## Lernchecks für den dritten Lernpfad ergänzen
 
 Die drei neuen Karten aus „Sicher mit Coding-Agenten arbeiten“ erhalten quellengebundene Fragenpools und Auswahlchecks einschließlich
-Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Karte und vertiefende Details ihrer Quellen; sie werden
-unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Karte und vertiefende Details ihrer Quellen; sie werden unabhängig
+fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
 
 Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
 
@@ -173,8 +204,9 @@ Der Inhaltskatalog wird um den Lernpfad **Java-/Web-Code technisch analysieren u
 Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert und erscheint nicht als eigener Abschnitt in der
 Oberfläche.
 
-Die vier neuen Lerninhalte werden als Lernkarten mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten ausformuliert, fachlich
-geprüft und strukturell an die vorhandenen Inhalte angeglichen. Dabei auch immer einen Blick auf die Notizen in der KI-Tool-Landkarte haben!
+Die vier neuen Lerninhalte werden als Lernkarten mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und
+Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen. Dabei auch immer einen Blick
+auf die Notizen in der KI-Tool-Landkarte haben!
 Bei Context7 werden Angaben mit der Originaldokumentation der konkreten Bibliotheksversion abgeglichen.
 
 Fragenpools gehören nicht zu dieser Story.
@@ -216,10 +248,11 @@ Der Inhaltskatalog wird um den Lernpfad **Parallele Coding-Agenten kritisch erpr
 Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert und erscheint nicht als eigener Abschnitt in der
 Oberfläche. Die Lern-App führt keine Coding-Agenten aus.
 
-Die sechs neuen Lerninhalte werden als Lernkarten mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an
-die vorhandenen Inhalte angeglichen. Die [KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausgangspunkt. Die Karten
-benennen Voraussetzungen, Grenzen und Gegenbeispiele. Die Karte zur Bewertung beschreibt einen kontrollierten Vergleich von
-Ergebnisqualität, Dauer, Kosten und Review-Aufwand mit einem seriellen Ablauf. Fragenpools gehören nicht zu dieser Story.
+Die sechs neuen Lerninhalte werden als Lernkarten mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und
+Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen.
+Die [KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausgangspunkt. Die Karten benennen Voraussetzungen, Grenzen und
+Gegenbeispiele. Die Karte zur Bewertung beschreibt einen kontrollierten Vergleich von Ergebnisqualität, Dauer, Kosten und Review-Aufwand mit
+einem seriellen Ablauf. Fragenpools gehören nicht zu dieser Story.
 
 Alle 25 Lerninhalte erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste. Sie werden über alle fünf Lernpfade hinweg nach
 Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen Inhalte bleibt erhalten; die neuen
@@ -336,8 +369,8 @@ Dokumentation nach Umsetzung: Archivierungs- und Nachfolgerregeln knapp in Produ
 ## Persönliche Hinweise zu Lerninhalten festhalten
 
 Lernende können zu einer Karte eine lokale Notiz oder einen Fehler- und Aktualitätshinweis festhalten und später wiederfinden. Hinweise
-enthalten Themen-ID, Datum und kurze Begründung; sie bleiben ohne bewussten Export auf dem Gerät und gelangen nicht nach
-Git. Browser-Tests prüfen Speichern, Wiederfinden und Trennung vom öffentlichen Katalog.
+enthalten Themen-ID, Datum und kurze Begründung; sie bleiben ohne bewussten Export auf dem Gerät und gelangen nicht nach Git. Browser-Tests
+prüfen Speichern, Wiederfinden und Trennung vom öffentlichen Katalog.
 
 Vertikalen: Inhaltskatalog, Lernfortschritt
 
@@ -398,10 +431,10 @@ Erst mit dieser Story erhalten Lernkarten beziehungsweise Lerninhalte fachliche 
 neue Inhaltsversion. Zusätzliche Fragen dürfen jederzeit zu einer bestehenden Inhaltsversion hinzukommen, ohne deren Nummer zu ändern.
 Quellen und Fragen sind jeweils einer konkreten Inhaltsversion zugeordnet.
 
-Wird eine Karte beantwortet, wird die zugehörige Inhaltsversion beim Speichern des Lernstands mitgeführt. Die Anzeige unterscheidet, ob
-eine Karte in der aktuellen Inhaltsversion oder nur in einer älteren gelernt wurde. Ein späterer Versionswechsel löscht den bisherigen
-Lernstand nicht. **Offene Frage für die spätere Spec:** Wird die Version schon nach jeder Antwort oder erst nach bewusster Bestätigung
-dauerhaft gespeichert? Die Änderungs-Spec legt außerdem die genaue Versions- und Migrationsregel fest, auch für Lernstand ohne bisherige
+Wird eine Karte beantwortet, wird die zugehörige Inhaltsversion beim Speichern des Lernstands mitgeführt. Die Anzeige unterscheidet, ob eine
+Karte in der aktuellen Inhaltsversion oder nur in einer älteren gelernt wurde. Ein späterer Versionswechsel löscht den bisherigen Lernstand
+nicht. **Offene Frage für die spätere Spec:** Wird die Version schon nach jeder Antwort oder erst nach bewusster Bestätigung dauerhaft
+gespeichert? Die Änderungs-Spec legt außerdem die genaue Versions- und Migrationsregel fest, auch für Lernstand ohne bisherige
 Inhaltsversion und für reine Quellenänderungen. Browser-Tests prüfen Lernen, Versionswechsel, ältere Lernstände und zusätzliche Fragen ohne
 Versionswechsel.
 
