@@ -7,9 +7,25 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Lernchecks für die ersten 4 Themen ohne Fragen
+
+Die ersten 4 Themen **ohne Fragen** erhalten ebenfalls nutzbare, quellengebundene Lernchecks. Bereits vorhandene Fragenpools bleiben
+unverändert.
+
+- In Reihenfolge der Themenliste
+
+Je neuem Themenpool gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md): mindestens 25 fachlich unterschiedliche,
+gültige Fragen mit Erklärungen und Quellenbezügen nach unabhängiger fachlicher Prüfung. Die Fragen prüfen den Schwerpunkt des Themas sowie
+passende vertiefende Details seiner Quellen. Elementare Browser-Tests sichern die Nutzung exemplarisch, nicht für jedes Thema einzeln.
+
+Vertikalen: Themen, Lernchecks (plus App und Shared bei Bedarf).
+
+Dokumentation nach Umsetzung: Produktstand und redaktionelle Richtlinie auf den tatsächlich erreichten Fragenbestand prüfen und knapp
+aktualisieren.
+
 ## Lernchecks für die übrigen Themen ohne Fragen
 
-Die 23 übrigen Themen ohne Fragen erhalten ebenfalls nutzbare, quellengebundene Lernchecks. Vor der Aktivierung wird diese Story bei Bedarf
+Die 19 übrigen Themen ohne Fragen erhalten ebenfalls nutzbare, quellengebundene Lernchecks. Vor der Aktivierung wird diese Story bei Bedarf
 in kleinere, fachlich zusammenhängende und im Browser einzeln abnehmbare Stories aufgeteilt. Bereits vorhandene Fragenpools bleiben
 unverändert.
 
@@ -21,6 +37,12 @@ Vertikalen: Themen, Lernchecks (plus App und Shared bei Bedarf).
 
 Dokumentation nach Umsetzung: Produktstand und redaktionelle Richtlinie auf den tatsächlich erreichten Fragenbestand prüfen und knapp
 aktualisieren.
+
+## NF: Bezeichnungen vereinheitlichen
+
+Wir haben nur wenige fachliche Dinge in der Anwendung. Die identifizieren und auf einheitliche Begriffe festlegen (mit einheitlichen)
+Übersetzungen. Die bisherigen "unscharfen Synonyme" (u.a. "Katalog" oder "Karte") aus dem Glossar entfernen und im Code umbenennen.
+(Ubiquitous Language)
 
 ## NF: Regelmäßig nachfragen
 
