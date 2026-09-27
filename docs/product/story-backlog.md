@@ -7,13 +7,81 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Themenliste auf die Lernpfade eines einzelnen Themas filtern
+
+In der Themenliste:
+Links vor jedem Thema X, DAS ZU MINDESTENS 1 LERNPFAD GEHÖRT, wird ein Icon angezeigt.
+
+- Per Klick auf das Icon wird die Themenliste gefiltert:
+    - Die Liste zeigt jetzt nur noch Themen, die zu einem der Lernpfade von Thema X gehören.
+    - Die GUI wird - falls nötig - so horizontal gescrollt, dass diese Themenzeile für den Nutzer weiterhin in der GUI sichtbar ist.
+        - Tatsächlich soll die Listenzeile in der Anzeige nach Möglichkeit horizontal (und vertikal) an derselben Stelle bleiben. Es wird
+          allerdings niemals Leerraum vor der Liste oder innerhalb der Liste eingefügt (sondern die Liste schnurrt horizontal zusammen).
+- Ein erneuter Klick AUF DASSELBE ICON hebt diese Filterung wieder auf.
+- Ein Klick AUF EIN ICON EINES ANDEREN THEMAS Y hingegen filtert die Themenliste nach den Lernpfaden von Y (und nicht mehr nach den
+  Lernpfaden von X).
+- Immer wenn die Liste nach einem oder mehreren Dingen Lernpfaden gefiltert ist, erscheint direkt unter der Liste eine Anzeige: "Themen
+  gefiltert nach Lernpfaden: <Namen der Lernpfade>"
+    - Die Namen der Lernpfade in dieser Anzeige sind sortiert. Lernpfade mit "Basic Themen" (oben in der Liste) stehen vor Lernpfaden mit
+      "Advanced Themen".
+
+Hat ein Thema keinen Lernpfad, wird das Icon nicht angezeigt.
+
+Sollten Themen später ihre Lernpfad-Zuordnungen wechseln, funktioniert die ganze Logik ganz genau so! Die Logik hängt nicht an den konkreten
+Themen! Der Test sollte nicht unnötig brüchig sein.
+
+Das Icon wird bei der Entwicklung KI-generiert (z.B. SVG, falls wir das schon so haben.). Kurzer Vermerk in einem neuen .md: Die Icons, die
+wir verwenden, generieren wir selbst, Technologie nennen.
+
+- Das Icon muss mit dem Themen-Listeneintrag ausgerichtet sein (horizontal mittig zum Eintrag).
+- Kein sichtbarer Button, sondern nur ein Icon, aber mit schlichter Klick-Visualisierung
+- Das Icon muss niedrig genug sein, dass die Listenzeilen NICHT horizontal auseinandergeschoben werden.
+
+Abgrenzung:
+
+- Die Themen und die Reihenfolge der Themen werden nicht verändert
+
+Vertikalen: Themen
+
+## Initial in einem Projekt angewendet / umfassend in einem Projekt umgesetzt
+
+Zusätzlich zu "nicht gelernt" / "gelernt" gibt es einen weiteren Status je Thema: Die Praxiserfahrung (--> Glossar!).
+
+Praxiserfahrung wird manuell angegeben - dazu gibt es in der Themenliste (--> Glossar!) ein weiteres Icon rechts neben dem Testfragen-Icon,
+das eine kleine Ansicht öffnet.
+
+- Die neue Ansicht ist gestaltet wie die Testfragen-Ansicht (Lernchecks)
+- Der Benutzer wählt dort manuell zwischen:
+    - Nicht angewendet
+    - Initial in einem Projekt angewendet
+    - Umfassend in einem Projekt umgesetzt
+    - In Leib und Blut übergegangen (bitte weniger emphatisch formuliert)
+- Es muss 1 Auswahl getroffen werden, die Auswahl wird sofort gespeichert
+- Alternativ kann der User auch abbrechen, denn bleibt die bisherige Auswahl erhalten.
+
+Implizit gilt für alle (alten und neuen) Themen: "Nicht angewendet"
+
+Die Praxiserfahrung wird (analog zum grünen Haken für "gelern") in der Themenliste durch ein Symbol angezeigt.
+
+- Nicht angewendet: Kein Symbol
+- Initial in einem Projekt angewendet: Symbol soundso
+- Umfassend in einem Projekt umgesetzt: Symbol soundso
+- In Leib und Blut übergegangen: Symbol soundso
+- Falls nötig werden Symbole nach den Projektregeln als Grafiken erzeugt (oder textuelle Zeichen in einer Farbe)
+
+## Details des Themas anzeigen wie modaler Dialog
+
+Details des Themas anzeigen wie modaler Dialog
+
+Vertikalen: Themen
+
 ## Nichtbestehen auf Wunsch lokal speichern
 
-Hat der User einen Lerncheck zu Ende durchgeführunt und NICHT bestanden, erhält er beim Verlassen der Übersicht eine Rückfrage: "Thema
-auf nicht bestanden zurücksetzen?"
+Hat der User einen Lerncheck zu Ende durchgeführunt und NICHT bestanden, erhält er beim Verlassen der Übersicht eine Rückfrage: "Thema auf
+nicht bestanden zurücksetzen?"
 
-- (NUR) wenn der User das bestätigt, wird das Bestehen dieses Themas lokal wieder gelöscht. Alle anderen Elemente des Lernstands
-  bleiben erhalten!
+- (NUR) wenn der User das bestätigt, wird das Bestehen dieses Themas lokal wieder gelöscht. Alle anderen Elemente des Lernstands bleiben
+  erhalten!
 
 Der Browser-E2E-Test deckt Nichtbestehen mit und ohne Löschen des Lernstands UND DEN ERHALT ANDERER, BEREITS BESTANDENER THEMEN ab.
 
@@ -22,8 +90,8 @@ Vertikalen: Lernchecks, Lernfortschritt
 ## Bereits gestellte Fragen je Thema lokal merken
 
 Die App merkt sich auf dem Gerät je Thema, welche Fragen bereits gestellt wurden. Neue Durchläufe bevorzugen ausschließlich noch nicht
-gestellte Fragen, bis der Pool des Themas ausgeschöpft ist. Danach beginnt ein neuer Zyklus. Innerhalb eines Durchlaufs erscheint keine Frage
-doppelt.
+gestellte Fragen, bis der Pool des Themas ausgeschöpft ist. Danach beginnt ein neuer Zyklus. Innerhalb eines Durchlaufs erscheint keine
+Frage doppelt.
 
 Die spätere Änderungs-Spec legt fest, wann eine abgebrochene Frage als gestellt gilt, wie ein Rest von weniger als fünf Fragen mit dem
 nächsten Zyklus verbunden wird und wie veraltete Fragen-IDs nach Katalogänderungen behandelt werden. Ohne gespeicherten Stand bleibt der
@@ -32,16 +100,6 @@ Fragenablauf nutzbar. Browser-E2E-Tests prüfen mehrere Durchläufe, Ausschöpfu
 Vertikalen: Themen, Lernchecks
 
 Dokumentation nach Umsetzung: Lokale Fragehistorie und Zyklusregel knapp in Produktstand und Architektur ergänzen.
-
-## Kompetenzen aus bestätigtem Fortschritt anzeigen
-
-Lernende sehen ihren bestätigten Fortschritt je Thema. Das Kompetenzprofil leitet seine Anzeige aus dem lokalen Fortschritt ab und speichert
-keine zweite fachliche Wahrheit. Es nutzt den schmalen öffentlichen Vertrag der Fortschritts-Vertikale; ein Browser-Test prüft die Anzeige
-nach einem Reload.
-
-Vertikalen: Lernfortschritt, Kompetenzprofil
-
-Dokumentation nach Umsetzung: Kompetenzanzeige und ihren Datenfluss knapp in Produktstand und Architektur ergänzen.
 
 ## Durch die Oberfläche und Bedienung motiviert, aber nicht abgelenkt werden
 
@@ -166,9 +224,9 @@ Die Vertikale Themen wird um den Lernpfad **Java-/Web-Code technisch analysieren
 Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert und erscheint nicht als eigener Abschnitt in der
 Oberfläche.
 
-Die vier neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und
-Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen. Dabei auch immer einen Blick
-auf die Notizen in der KI-Tool-Landkarte haben!
+Die vier neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten
+ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen. Dabei auch immer einen Blick auf die Notizen in der
+KI-Tool-Landkarte haben!
 Bei Context7 werden Angaben mit der Originaldokumentation der konkreten Bibliotheksversion abgeglichen.
 
 Fragenpools gehören nicht zu dieser Story.
@@ -210,8 +268,8 @@ Die Vertikale Themen wird um den Lernpfad **Parallele Coding-Agenten kritisch er
 Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert und erscheint nicht als eigener Abschnitt in der
 Oberfläche. Die Lern-App führt keine Coding-Agenten aus.
 
-Die sechs neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und
-Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen.
+Die sechs neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten
+ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen.
 Die [KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausgangspunkt. Die Themen benennen Voraussetzungen, Grenzen und
 Gegenbeispiele. Das Thema zur Bewertung beschreibt einen kontrollierten Vergleich von Ergebnisqualität, Dauer, Kosten und Review-Aufwand mit
 einem seriellen Ablauf. Fragenpools gehören nicht zu dieser Story.
@@ -309,8 +367,8 @@ Dokumentation nach Umsetzung: Pfadmodell, Filterverhalten und neue Begriffe knap
 
 ## Quellen und Videos gezielt erkunden
 
-Lernende sehen je Thema, welche Quellen und Videos verfügbar sind, erkennen deren Typ und Aktualität und öffnen externe Angebote nur
-nach bewusster Aktion. Die redaktionelle Pflege bleibt im öffentlichen Katalog; die App bietet keine Inhaltsbearbeitung. Ein ausgefallener
+Lernende sehen je Thema, welche Quellen und Videos verfügbar sind, erkennen deren Typ und Aktualität und öffnen externe Angebote nur nach
+bewusster Aktion. Die redaktionelle Pflege bleibt im öffentlichen Katalog; die App bietet keine Inhaltsbearbeitung. Ein ausgefallener
 externer Link blockiert das Thema nicht. Browser-Tests prüfen Anzeige und Öffnung.
 
 Vertikale: Themen
@@ -389,9 +447,9 @@ Dokumentation nach Umsetzung: Exportformat, Importregeln und Datenschutz knapp i
 
 ## Inhaltsversionen von Themen und gelerntem Stand berücksichtigen
 
-Erst mit dieser Story erhalten Themen fachliche Inhaltsversionen. Jede Änderung an einem Thema erzeugt eine
-neue Inhaltsversion. Zusätzliche Fragen dürfen jederzeit zu einer bestehenden Inhaltsversion hinzukommen, ohne deren Nummer zu ändern.
-Quellen und Fragen sind jeweils einer konkreten Inhaltsversion zugeordnet.
+Erst mit dieser Story erhalten Themen fachliche Inhaltsversionen. Jede Änderung an einem Thema erzeugt eine neue Inhaltsversion. Zusätzliche
+Fragen dürfen jederzeit zu einer bestehenden Inhaltsversion hinzukommen, ohne deren Nummer zu ändern. Quellen und Fragen sind jeweils einer
+konkreten Inhaltsversion zugeordnet.
 
 Wird ein Thema beantwortet, wird die zugehörige Inhaltsversion beim Speichern des Lernstands mitgeführt. Die Anzeige unterscheidet, ob ein
 Thema in der aktuellen Inhaltsversion oder nur in einer älteren gelernt wurde. Ein späterer Versionswechsel löscht den bisherigen Lernstand
@@ -401,8 +459,8 @@ Inhaltsversion und für reine Quellenänderungen. Browser-Tests prüfen Lernen, 
 Versionswechsel.
 
 Bis zur Umsetzung dieser Story gibt es keine fachlichen Inhaltsversionen. Eine technische App- oder Katalog-Buildnummer ist davon getrennt.
-Die betroffenen Vertikalen Themen, Lernchecks und Lernfortschritt werden für die Umsetzung in Schritte mit höchstens zwei Vertikalen
-pro fachlichem Commit geschnitten.
+Die betroffenen Vertikalen Themen, Lernchecks und Lernfortschritt werden für die Umsetzung in Schritte mit höchstens zwei Vertikalen pro
+fachlichem Commit geschnitten.
 
 Dokumentation nach Umsetzung: Versionsregeln und Bezug von Fragen, Quellen und Lernstand knapp in Produktstand, Architektur und
 redaktioneller Richtlinie ergänzen.
