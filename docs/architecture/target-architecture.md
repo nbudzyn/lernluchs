@@ -11,6 +11,8 @@ den quellengeprüften Fragenbestand; der Lerncheck hält Frageauswahl, Antworten
 und Ergebnis nur im React-Zustand. Vitest prüft Verhalten und Katalog,
 dependency-cruiser die Importgrenzen und Zyklen. Chromium-E2E-Tests prüfen
 den sichtbaren Ablauf auf Desktop und Smartphone.
+E2E-Dateien gehören der prüfenden Vertikale oder bei vertikalübergreifenden
+Abläufen `app`; gemeinsame Testhilfen liegen unter `e2e/shared/`.
 
 ## Dauerhafte Leitplanken
 

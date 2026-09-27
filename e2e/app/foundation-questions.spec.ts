@@ -1,8 +1,8 @@
 import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
-import foundationQuestions from "../src/verticals/topics/foundationQuestions.json" with { type: "json" };
-import { congratulations } from "../src/verticals/learning-checks/congratulations";
+import foundationQuestions from "../../src/verticals/topics/foundationQuestions.json" with { type: "json" };
+import { congratulations } from "../../src/verticals/learning-checks/congratulations";
 
 const foundationTitles: Record<keyof typeof foundationQuestions, string> = {
   "human-ai-responsibility": "Mensch und KI: Verantwortung bleibt menschlich",

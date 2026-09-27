@@ -13,6 +13,10 @@ for (const requiredSnippet of [
   "npm test -- --run",
   "npm run validate:content",
   "npm run check:architecture",
+  "npm run check:vertical-scope",
+  "fetch-depth: 0",
+  "BASE_SHA:",
+  "HEAD_SHA:",
   "npm run build",
   "npm audit --audit-level=high",
 ]) {

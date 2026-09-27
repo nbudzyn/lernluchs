@@ -12,6 +12,8 @@ for (const requiredSnippet of [
   "actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b",
   "id: pages",
   "npm run check",
+  "npm run check:vertical-scope",
+  "fetch-depth: 0",
   "PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}",
   "npm run test:pages-build",
   "actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b",
