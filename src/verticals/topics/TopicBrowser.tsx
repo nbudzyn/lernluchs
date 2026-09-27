@@ -33,9 +33,11 @@ function SourceGroup({
 
 export function TopicBrowser({
   items = topics.items,
+  learnedTopicIds = [],
   onStartQuestions,
 }: {
   items?: Topic[];
+  learnedTopicIds?: string[];
   onStartQuestions?: (id: string, title: string, questions: Question[]) => void;
 }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -87,6 +89,15 @@ export function TopicBrowser({
                 >
                   {item.title}
                 </button>
+                {item.questions && learnedTopicIds.includes(item.id) && (
+                  <span
+                    className="learned-checkmark"
+                    role="img"
+                    aria-label="Gelernt"
+                  >
+                    ✓
+                  </span>
+                )}
                 {item.questions && onStartQuestions && (
                   <button
                     aria-label={`Fragen starten: ${item.title}`}

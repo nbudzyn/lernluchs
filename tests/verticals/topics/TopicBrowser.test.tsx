@@ -7,6 +7,22 @@ import { topics } from "../../../src/verticals/topics/topics";
 afterEach(cleanup);
 
 describe("TopicBrowser", () => {
+  it("marks only saved quiz topics as learned, including after a catalog change", () => {
+    const quizTopic = topics.items.find((item) => item.questions)!;
+    const plainTopic = topics.items.find((item) => !item.questions)!;
+    render(
+      <TopicBrowser
+        items={[plainTopic, quizTopic]}
+        learnedTopicIds={[quizTopic.id, plainTopic.id, "temporarily-missing"]}
+      />,
+    );
+    const rows = screen.getAllByRole("listitem");
+    expect(rows[0].textContent).not.toContain("✓");
+    expect(rows[1].textContent).toContain("✓");
+    expect(rows[1].textContent).not.toContain("Gelernt");
+    expect(screen.getByRole("img", { name: "Gelernt" })).toBeTruthy();
+  });
+
   it("shows an accessible icon button for each available learning check", () => {
     render(<TopicBrowser onStartQuestions={() => {}} />);
 

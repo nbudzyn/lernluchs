@@ -30,6 +30,7 @@ export function App() {
         />
       ) : (
         <TopicBrowser
+          learnedTopicIds={progress.learnedTopicIds}
           onStartQuestions={(id, title, questions) =>
             setActiveCheck({ id, title, questions })
           }

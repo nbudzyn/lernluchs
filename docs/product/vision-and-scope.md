@@ -10,8 +10,12 @@ Für jedes der sechs Grundlagenthemen stehen mindestens 25 quellengeprüfte
 Auswahlfragen bereit. Aus der Themenliste startet ein flüchtiger Durchlauf mit
 fünf zufällig ausgewählten Fragen. Nach der letzten Antwort zeigt die App
 richtige und gewählte falsche Antworten mit Begründungen und Quellenlinks.
-Ein Abbruch verwirft die Antworten; ein formaler Bestehensstatus wird noch
-nicht gespeichert.
+Ein Abbruch verwirft die Antworten. Fünf richtige Antworten speichern das Thema
+unter seiner dauerhaften ID lokal als „gelernt“. Die Themenliste zeigt dafür
+einen grünen, für Screenreader beschrifteten Haken. Der Lernstand bleibt nach
+Reload und einem späteren nicht bestandenen Durchlauf erhalten. Bei
+Speicherfehlern bleibt der Lerncheck nutzbar und meldet, dass das Ergebnis nicht
+dauerhaft gespeichert wurde.
 
 Die Liste enthält auch drei Themen zum sicheren Arbeiten mit Coding-Agenten:
 Vertrauensgrenzen für Kontext, Schutz sensibler Daten und Prüfung

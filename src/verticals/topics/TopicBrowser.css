@@ -4,6 +4,13 @@
   gap: 0.25rem;
 }
 
+.learned-checkmark {
+  align-self: center;
+  color: #167a34;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .quiz-start-button {
   display: inline-flex;
   align-items: center;
