@@ -127,6 +127,33 @@ describe("public content topics", () => {
       }).valid,
     ).toBe(false);
   });
+  it("curates current sources for every topic outside the foundation path", () => {
+    const foundationIds = new Set(topics.paths?.[0].topicIds);
+    const otherTopics = topics.items.filter(
+      (item) => !foundationIds.has(item.id),
+    );
+    expect(otherTopics).toHaveLength(10);
+    expect(otherTopics.map((item) => item.id)).toContain("focused-git-commits");
+    for (const item of otherTopics) {
+      expect(item.editorial.reviewedAt).toBe("2026-09-27");
+      expect(
+        item.sources.every((source) => source.checkedAt === "2026-09-27"),
+      ).toBe(true);
+    }
+    const sourcesFor = (id: string) =>
+      topics.items
+        .find((item) => item.id === id)
+        ?.sources.map((source) => source.url);
+    expect(sourcesFor("coding-agent-context-and-trust-boundaries")).toContain(
+      "https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/risks-and-mitigations",
+    );
+    expect(sourcesFor("module-boundaries-and-public-interfaces")).toContain(
+      "https://www.typescriptlang.org/docs/handbook/2/modules.html",
+    );
+    expect(sourcesFor("playwright-for-web-flows")).toContain(
+      "https://playwright.dev/docs/locators",
+    );
+  });
   it("contains six complete, editorially checked foundation topics", () => {
     const foundationIds = [
       "human-ai-responsibility",
@@ -194,10 +221,10 @@ describe("public content topics", () => {
       expect(item.content.boundary.trim()).not.toBe("");
       expect(item.sources.length).toBeGreaterThan(0);
       expect(item.editorial.publishedAt).toBe("2026-09-26");
-      expect(item.editorial.reviewedAt).toBe("2026-09-26");
-      expect(item.editorial.reviewDueAt).toBe("2027-03-26");
+      expect(item.editorial.reviewedAt).toBe("2026-09-27");
+      expect(item.editorial.reviewDueAt).toBe("2027-03-27");
       expect(
-        item.sources.every((source) => source.checkedAt === "2026-09-26"),
+        item.sources.every((source) => source.checkedAt === "2026-09-27"),
       ).toBe(true);
     }
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
@@ -243,13 +270,13 @@ describe("public content topics", () => {
       expect(item.content.boundary.trim()).not.toBe("");
       expect(item.editorial).toMatchObject({
         publishedAt: "2026-09-26",
-        reviewedAt: "2026-09-26",
-        reviewDueAt: "2027-03-26",
+        reviewedAt: "2026-09-27",
+        reviewDueAt: "2027-03-27",
         status: "active",
       });
       expect(item.sources.length).toBeGreaterThan(0);
       expect(
-        item.sources.every((source) => source.checkedAt === "2026-09-26"),
+        item.sources.every((source) => source.checkedAt === "2026-09-27"),
       ).toBe(true);
     }
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });

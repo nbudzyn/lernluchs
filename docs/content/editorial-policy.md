@@ -33,7 +33,8 @@ ggf. bewusste Auslassungen. Die bestehende Tool-Landkarte ist dafür ein
 Rechercheausgangspunkt, keine Autorität.
 
 Für Auswahl, Ergänzung und Ersatz von Quellen gelten die
-[Quellenregeln](source-selection.md).
+[Quellenregeln](source-selection.md). Jedes bestehende und neue Thema erhält
+kuratiert ausgewählte Quellen nach diesen Regeln.
 
 Für neue quellengebundene Auswahlfragen gelten die
 [Regeln zur Fragenerstellung und Prüfung](question-authoring.md).

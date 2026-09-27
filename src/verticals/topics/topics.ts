@@ -13,6 +13,13 @@ function activeEditorial(reviewDueAt: string, publishedAt = "2026-09-20") {
   };
 }
 
+function curatedEditorial() {
+  return {
+    ...activeEditorial("2027-03-27", "2026-09-26"),
+    reviewedAt: "2026-09-27",
+  };
+}
+
 export const topics: TopicCollection = {
   version: "4",
   paths: [
@@ -193,7 +200,7 @@ export const topics: TopicCollection = {
         boundary:
           "Eine Warnung im Prompt oder eine Quellenmarkierung verhindert Prompt Injection nicht sicher. Rechtebegrenzung und Prüfungen müssen auch außerhalb des Modells greifen.",
       },
-      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      editorial: curatedEditorial(),
       sources: [
         {
           title: "OWASP LLM01:2025 Prompt Injection",
@@ -201,7 +208,15 @@ export const topics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-09-26",
+          checkedAt: "2026-09-27",
+        },
+        {
+          title: "Risks and mitigations for GitHub Copilot cloud agent",
+          url: "https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/risks-and-mitigations",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-27",
         },
       ],
     },
@@ -219,7 +234,7 @@ export const topics: TopicCollection = {
         boundary:
           "Eine bloße Anweisung zum Verschweigen schützt Daten nicht zuverlässig. Bei einem offengelegten Token muss der Zugang gesperrt oder der Token erneuert werden.",
       },
-      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      editorial: curatedEditorial(),
       sources: [
         {
           title: "OWASP LLM02:2025 Sensitive Information Disclosure",
@@ -227,7 +242,7 @@ export const topics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-09-26",
+          checkedAt: "2026-09-27",
         },
         {
           title: "Keeping your API credentials secure - GitHub Docs",
@@ -235,7 +250,7 @@ export const topics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-09-26",
+          checkedAt: "2026-09-27",
         },
       ],
     },
@@ -341,7 +356,7 @@ export const topics: TopicCollection = {
         boundary:
           "Ein öffentliches Paket ist noch kein guter Vertrag: exportierte Typen und Abhängigkeiten müssen bewusst klein und stabil bleiben.",
       },
-      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      editorial: curatedEditorial(),
       sources: [
         {
           title: "Modules - Dev.java",
@@ -349,7 +364,15 @@ export const topics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-09-26",
+          checkedAt: "2026-09-27",
+        },
+        {
+          title: "Modules - TypeScript Handbook",
+          url: "https://www.typescriptlang.org/docs/handbook/2/modules.html",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-27",
         },
       ],
     },
@@ -367,7 +390,7 @@ export const topics: TopicCollection = {
         boundary:
           "Grüne Tests beweisen nur die geprüften Fälle; fehlende oder falsch erwartete Fachregeln bleiben möglich.",
       },
-      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      editorial: curatedEditorial(),
       sources: [
         {
           title: "Canon TDD - Kent Beck",
@@ -375,7 +398,7 @@ export const topics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-09-26",
+          checkedAt: "2026-09-27",
         },
         {
           title: "Test Driven Development - Martin Fowler",
@@ -383,7 +406,7 @@ export const topics: TopicCollection = {
           type: "official-guide",
           origin: "secondary",
           language: "en",
-          checkedAt: "2026-09-26",
+          checkedAt: "2026-09-27",
         },
       ],
     },
@@ -401,7 +424,7 @@ export const topics: TopicCollection = {
         boundary:
           "ArchUnit erkennt die formulierten Strukturverstöße, aber weder fachlich falsches Verhalten noch Regeln, die nie als Test beschrieben wurden.",
       },
-      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      editorial: curatedEditorial(),
       sources: [
         {
           title: "ArchUnit User Guide",
@@ -409,7 +432,7 @@ export const topics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-09-26",
+          checkedAt: "2026-09-27",
         },
       ],
     },
@@ -427,7 +450,7 @@ export const topics: TopicCollection = {
         boundary:
           "Ein Browser-Test deckt nur den geprüften Ablauf und die gewählten Browser ab; fachliche Regeln brauchen weiterhin gezielte Tests.",
       },
-      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      editorial: curatedEditorial(),
       sources: [
         {
           title: "Playwright Test Assertions",
@@ -435,7 +458,15 @@ export const topics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-09-26",
+          checkedAt: "2026-09-27",
+        },
+        {
+          title: "Playwright Locators",
+          url: "https://playwright.dev/docs/locators",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-27",
         },
       ],
     },
@@ -454,7 +485,7 @@ export const topics: TopicCollection = {
         boundary:
           "textContent schützt diesen Textkontext, aber nicht automatisch URLs, HTML-Attribute oder andere Ausgabekontexte.",
       },
-      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      editorial: curatedEditorial(),
       sources: [
         {
           title: "OWASP Cross Site Scripting Prevention Cheat Sheet",
@@ -462,7 +493,7 @@ export const topics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-09-26",
+          checkedAt: "2026-09-27",
         },
       ],
     },
@@ -480,7 +511,7 @@ export const topics: TopicCollection = {
         boundary:
           "Ein unauffälliger Scan belegt keine Sicherheit: Datenbanken können Lücken haben und ein Fund muss im konkreten Einsatz eingeordnet werden.",
       },
-      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      editorial: curatedEditorial(),
       sources: [
         {
           title: "Concise Guide for Evaluating Open Source Software - OpenSSF",
@@ -488,7 +519,7 @@ export const topics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-09-26",
+          checkedAt: "2026-09-27",
         },
         {
           title: "Dependency review - GitHub Docs",
@@ -496,7 +527,7 @@ export const topics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-09-26",
+          checkedAt: "2026-09-27",
         },
       ],
     },
@@ -514,7 +545,7 @@ export const topics: TopicCollection = {
         boundary:
           "Grüne Tests und Scanner decken nur ihre geprüften Fälle ab. Sie ersetzen weder die fachliche Bewertung noch die menschliche Freigabe.",
       },
-      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      editorial: curatedEditorial(),
       sources: [
         {
           title: "Review AI-generated code - GitHub Docs",
@@ -522,7 +553,7 @@ export const topics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-09-26",
+          checkedAt: "2026-09-27",
         },
       ],
     },
