@@ -5,6 +5,7 @@ die für die konkrete Aufgabe gelten.
 
 | Wenn du … | lies zuerst |
 | --- | --- |
+| zu Beginn einer Session den Entwicklungsablauf klären willst | [Entwicklungsablauf im Überblick](changes/development-flow.md) |
 | den aktuellen Funktionsumfang verstehen willst | [Produktstand](product/vision-and-scope.md) |
 | den aktuellen Aufbau oder Architekturgrenzen brauchst | [Architektur und Leitplanken](architecture/target-architecture.md) |
 | einen Begriff nachschlagen willst | [Glossar](product/glossary.md) |
