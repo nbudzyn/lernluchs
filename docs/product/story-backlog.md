@@ -7,38 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Lernchecks für alle Themen
-
-Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
-
-Die vier Themen des aktuellen Katalogs ohne Fragenpool erhalten quellengebundene Auswahlfragen:
-
-- „Kontext und Vertrauensgrenzen für Coding-Agenten“
-- „Geheimnisse und sensible Daten beim KI-Einsatz schützen“
-- „KI-generierte Änderungen prüfen und übernehmen“
-- „Git-Commits klein und nachvollziehbar halten“ (ohne Lernpfad)
-
-Für jedes dieser Themen bleiben nach der unabhängigen fachlichen Prüfung mindestens 25 gültige, fachlich unterschiedliche Fragen. Die
-Fragen prüfen den jeweiligen Schwerpunkt und vertiefende Details der zugeordneten Quellen. Beim Git-Thema prüfen sie insbesondere die
-Auswahl logisch zusammengehöriger Änderungen, den Einsatz der Staging Area und die Grenzen einer bloßen Größenregel. Die fachlichen
-Schwerpunkte der vier Themen bleiben voneinander und von den übrigen Themen abgegrenzt; Fragen wiederholen keine Aussagen eines anderen
-Themas unter anderem Namen.
-
-Die zwölf bereits vorhandenen Fragenpools bleiben unverändert. Bei der Quellenprüfung dürfen die vier betroffenen Themen und ihre Quellen
-gezielt sachlich korrigiert oder ergänzt werden, wenn dies für eindeutige, belegte Fragen oder zur Vermeidung fachlicher Überschneidungen
-nötig ist. Solche Änderungen werden begründet und fachlich geprüft.
-
-Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
-
-Die vorhandenen Auswahlchecks stehen nach Ergänzung für alle vier Themen zur Verfügung, einschließlich Erklärung, Quellenlink und
-Wiederholung. Browser-Tests zeigen den Lernnutzen exemplarisch für ein Thema des dritten Lernpfads und für das Thema
-ohne Lernpfad; sie hängen nicht von einem bestimmten zufällig gezogenen Fragensatz ab.
-
-Vertikalen: Themen, Lernchecks
-
-Dokumentation nach Umsetzung: Dass alle Themen des aktuellen Katalogs Fragen haben, knapp im Produktstand und in der redaktionellen
-Richtlinie ergänzen.
-
 ## Empfehlungen für AGENTS.md-Dateien hart prüfen
 
 Empfehlungen für AGENTS.md-Dateien aktuell ermitteln und mit Architektur-Tests (oder Commit-Hooks?) hart prüfen.
