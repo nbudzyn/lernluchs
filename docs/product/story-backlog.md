@@ -7,41 +7,13 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Themenliste auf die Lernpfade eines einzelnen Themas filtern
+## Lernchecks für das unzugeordnete Git-Thema ergänzen
 
-In der Themenliste:
-Links vor jedem Thema X, DAS ZU MINDESTENS 1 LERNPFAD GEHÖRT, wird ein Icon angezeigt.
+„Git-Commits klein und nachvollziehbar halten“ erhält später einen quellengebundenen Fragenpool und die vorhandenen Auswahlchecks einschließlich Erklärung und Wiederholung. Fragen prüfen die Auswahl logisch zusammengehöriger Änderungen, den Einsatz der Staging Area und die Grenzen einer bloßen Größenregel. Sie werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen auch für ein Thema ohne Lernpfad.
 
-- Per Klick auf das Icon wird die Themenliste gefiltert:
-    - Die Liste zeigt jetzt nur noch Themen, die zu einem der Lernpfade von Thema X gehören.
-    - Die GUI wird - falls nötig - so horizontal gescrollt, dass diese Themenzeile für den Nutzer weiterhin in der GUI sichtbar ist.
-        - Tatsächlich soll die Listenzeile in der Anzeige nach Möglichkeit horizontal (und vertikal) an derselben Stelle bleiben. Es wird
-          allerdings niemals Leerraum vor der Liste oder innerhalb der Liste eingefügt (sondern die Liste schnurrt horizontal zusammen).
-- Ein erneuter Klick AUF DASSELBE ICON hebt diese Filterung wieder auf.
-- Ein Klick AUF EIN ICON EINES ANDEREN THEMAS Y hingegen filtert die Themenliste nach den Lernpfaden von Y (und nicht mehr nach den
-  Lernpfaden von X).
-- Immer wenn die Liste nach einem oder mehreren Dingen Lernpfaden gefiltert ist, erscheint direkt unter der Liste eine Anzeige: "Themen
-  gefiltert nach Lernpfaden: <Namen der Lernpfade>"
-    - Die Namen der Lernpfade in dieser Anzeige sind sortiert. Lernpfade mit "Basic Themen" (oben in der Liste) stehen vor Lernpfaden mit
-      "Advanced Themen".
+Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
 
-Hat ein Thema keinen Lernpfad, wird das Icon nicht angezeigt.
-
-Sollten Themen später ihre Lernpfad-Zuordnungen wechseln, funktioniert die ganze Logik ganz genau so! Die Logik hängt nicht an den konkreten
-Themen! Der Test sollte nicht unnötig brüchig sein.
-
-Das Icon wird bei der Entwicklung KI-generiert (z.B. SVG, falls wir das schon so haben.). Kurzer Vermerk in einem neuen .md: Die Icons, die
-wir verwenden, generieren wir selbst, Technologie nennen.
-
-- Das Icon muss mit dem Themen-Listeneintrag ausgerichtet sein (horizontal mittig zum Eintrag).
-- Kein sichtbarer Button, sondern nur ein Icon, aber mit schlichter Klick-Visualisierung
-- Das Icon muss niedrig genug sein, dass die Listenzeilen NICHT horizontal auseinandergeschoben werden.
-
-Abgrenzung:
-
-- Die Themen und die Reihenfolge der Themen werden nicht verändert
-
-Vertikalen: Themen
+Vertikalen: Themen, Lernchecks
 
 ## Initial in einem Projekt angewendet / umfassend in einem Projekt umgesetzt
 
@@ -221,8 +193,8 @@ Die Vertikale Themen wird um den Lernpfad **Java-/Web-Code technisch analysieren
 7. Java-/Spring-Migrationen mit OpenRewrite durchführen - neu
 8. Webabläufe mit Playwright prüfen - vorhanden
 
-Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert und erscheint nicht als eigener Abschnitt in der
-Oberfläche.
+Der neue Lernpfad wird in den bereits vorhandenen Themenzuordnungen erfasst. Eine eigene Lernpfad-Auswahl in der Oberfläche folgt erst mit
+„Lernpfade in Anzeige berücksichtigen“.
 
 Die vier neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten
 ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen. Dabei auch immer einen Blick auf die Notizen in der
@@ -231,7 +203,7 @@ Bei Context7 werden Angaben mit der Originaldokumentation der konkreten Biblioth
 
 Fragenpools gehören nicht zu dieser Story.
 
-Alle 19 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste. Sie werden über alle vier Lernpfade hinweg nach
+Alle 20 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; dazu gehört weiterhin das Thema ohne Lernpfad. Sie werden über die vier Lernpfade hinweg nach
 Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen Inhalte bleibt erhalten; die neuen
 Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der Inhalte des neuen Lernpfads bleibt
 erhalten.
@@ -265,8 +237,8 @@ Die Vertikale Themen wird um den Lernpfad **Parallele Coding-Agenten kritisch er
 7. KI-generierte Änderungen prüfen und übernehmen - vorhanden
 8. Parallelität gegen einen seriellen Ablauf messen - neu
 
-Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert und erscheint nicht als eigener Abschnitt in der
-Oberfläche. Die Lern-App führt keine Coding-Agenten aus.
+Der neue Lernpfad wird in den bereits vorhandenen Themenzuordnungen erfasst. Eine eigene Lernpfad-Auswahl in der Oberfläche folgt erst mit
+„Lernpfade in Anzeige berücksichtigen“. Die Lern-App führt keine Coding-Agenten aus.
 
 Die sechs neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten
 ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen.
@@ -274,7 +246,7 @@ Die [KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausg
 Gegenbeispiele. Das Thema zur Bewertung beschreibt einen kontrollierten Vergleich von Ergebnisqualität, Dauer, Kosten und Review-Aufwand mit
 einem seriellen Ablauf. Fragenpools gehören nicht zu dieser Story.
 
-Alle 25 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste. Sie werden über alle fünf Lernpfade hinweg nach
+Alle 26 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; dazu gehört weiterhin das Thema ohne Lernpfad. Sie werden über die fünf Lernpfade hinweg nach
 Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen Inhalte bleibt erhalten; die neuen
 Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der Inhalte des neuen Lernpfads bleibt
 erhalten.
@@ -297,7 +269,8 @@ Dokumentation nach Umsetzung: Fragenumfang des fünften Pfads knapp im Produktst
 
 ## Lernpfade in Anzeige berücksichtigen
 
-Die Anwendung kennt Lernpfade.
+Die Anwendung kennt zu diesem Zeitpunkt bereits die fünf Lernpfade und die Zuordnungen ihrer Themen. Diese Story ergänzt die eigenständige
+Anzeige und Auswahl von Lernpfaden; sie führt die Pfaddaten nicht noch einmal ein.
 
 - Es gibt fünf Lernpfade:
 
