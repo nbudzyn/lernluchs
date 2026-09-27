@@ -7,20 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Empfehlungen für AGENTS.md-Dateien hart prüfen
-
-Empfehlungen für AGENTS.md-Dateien aktuell ermitteln und mit Architektur-Tests (oder Commit-Hooks?) hart prüfen.
-
-Erster Ansatz:
-
-- Keine AGENTS.md-Datei soll länger als 150 (?) Zeilen sein.
-- Es gibt eine AGENTS.md-Datei auf oberster Ebene
-- Es gibt keine weiteren AGENTS.md-Datei im Projekt.
-
-Auch CLAUDE.md anlegen, Verweis (mit @) auf AGENTS.md-Datei oder nur als Symlink.
-
-Außerdem einmal prüfen, ob es widersprüchliche Regeln im Projekt gibt.
-
 ## Vierter Lernpfad
 
 Die Vertikale Themen wird um den Lernpfad **Java-/Web-Code technisch analysieren und modernisieren** erweitert:
@@ -34,17 +20,17 @@ Die Vertikale Themen wird um den Lernpfad **Java-/Web-Code technisch analysieren
 7. Java-/Spring-Migrationen mit OpenRewrite durchführen - neu
 8. Webabläufe mit Playwright prüfen - vorhanden
 
-Der neue Lernpfad wird in den bereits vorhandenen Themenzuordnungen erfasst. Eine eigene Lernpfad-Auswahl in der Oberfläche folgt erst mit
-„Lernpfade in Anzeige berücksichtigen“.
+Der neue Lernpfad wird in den bereits vorhandenen Themenzuordnungen erfasst.
 
 Die vier neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten
 ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen. Dabei auch immer einen Blick auf die Notizen in der
 KI-Tool-Landkarte haben!
-Bei Context7 werden Angaben mit der Originaldokumentation der konkreten Bibliotheksversion abgeglichen.
+
+- Vor allem beim Context7 werden die Angaben mit der Originaldokumentation der konkreten Bibliotheksversion abgeglichen.
 
 Fragenpools gehören nicht zu dieser Story.
 
-Alle 20 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; dazu gehört weiterhin das Thema ohne Lernpfad. Sie werden
+Alle Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; dazu gehört weiterhin das Thema ohne Lernpfad. Sie werden
 über die vier Lernpfade hinweg nach Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen
 Inhalte bleibt erhalten; die neuen Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der Inhalte
 des neuen Lernpfads bleibt erhalten.
@@ -52,6 +38,17 @@ des neuen Lernpfads bleibt erhalten.
 Vertikale: Themen
 
 Dokumentation nach Umsetzung: Den neuen Themenbestand knapp im Produktstand ergänzen.
+
+## Fragenbestand in Vertikal learning-checks
+
+Fragenbestand aus der Vertikale topics in die Vertikale learning-checks verschieben.
+
+- Die Vertikale "Fragen" kennt durchaus die topics
+- Die Vertikale "Themen" (topics) kennt keine Fragen (zyklische Abhängikeit verhindern)
+    - Möglicherweise muss app die topics und die learning-checks miteinander verknüpfen, damit die Themenübersichts-GUI den Lerncheck
+      aufrufen kann.
+
+Nach Implementierung Dokumentation anpassen: Zumindest target-architecture, verticals-and-boundaries
 
 ## Lernchecks für den vierten Lernpfad ergänzen
 
@@ -84,8 +81,7 @@ Die Vertikale Themen wird um den Lernpfad **Parallele Coding-Agenten kritisch er
 7. KI-generierte Änderungen prüfen und übernehmen - vorhanden
 8. Parallelität gegen einen seriellen Ablauf messen - neu
 
-Der neue Lernpfad wird in den bereits vorhandenen Themenzuordnungen erfasst. Eine eigene Lernpfad-Auswahl in der Oberfläche folgt erst mit
-„Lernpfade in Anzeige berücksichtigen“. Die Lern-App führt keine Coding-Agenten aus.
+Der neue Lernpfad wird in den bereits vorhandenen Themenzuordnungen erfasst. Die Lern-App führt keine Coding-Agenten aus.
 
 Die sechs neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten
 ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen.
@@ -116,11 +112,14 @@ Vertikalen: Themen, Lernchecks
 
 Dokumentation nach Umsetzung: Fragenumfang des fünften Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
 
-## Weitere Lernpfade
+## Ausstehende Lernpfade
 
-Die Vertikale Themen wird um weitere Lernpfade erweitert. (Alle Themen aus der KI-Tool-Landkarte importieren und auf Lernpfade verteilen?)
+Die Vertikale Themen wird um weitere Lernpfade erweitert. Dazu werden alle Themen aus der KI-Tool-Landkarte importiert und auf Lernpfade
+verteilt. Auch Themen, die schon übernommen wurden, aber keinen Lernpfad haben, werden in einen Lernpfad aufgenommen.
 
-Die Lernpfade können neuen, aber auch schon existierende Themen verwenden.
+- AUSNAHME: Themen, die inhatlich ganz unklar sind (missverstandene Toolnamen, veraltete Konzepte o.Ä.)
+
+Die Lernpfade können neue, aber auch schon existierende Themen verwenden.
 
 - Die [KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausgangspunkt für neue Themen.
 - Neue Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten
@@ -142,7 +141,9 @@ Abgrenzung:
 
 Vertikale: Themen
 
-## Weitere Lernchecks
+## Ausstehende Lernchecks
+
+Story aufteilen und in Chargen zu je.... umsetzen?
 
 Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
 
@@ -157,6 +158,20 @@ Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-autho
 Vertikalen: Themen, Lernchecks
 
 Dokumentation nach Umsetzung: Kurz Produktstand und redaktionellen Richtlinie prüfen / grob aktualisieren.
+
+## Empfehlungen für AGENTS.md-Dateien hart prüfen
+
+Empfehlungen für AGENTS.md-Dateien aktuell ermitteln und mit Architektur-Tests (oder Commit-Hooks?) hart prüfen.
+
+Erster Ansatz:
+
+- Keine AGENTS.md-Datei soll länger als 150 (?) Zeilen sein.
+- Es gibt eine AGENTS.md-Datei auf oberster Ebene
+- Es gibt keine weiteren AGENTS.md-Datei im Projekt.
+
+Auch CLAUDE.md anlegen, Verweis (mit @) auf AGENTS.md-Datei oder nur als Symlink.
+
+Außerdem einmal prüfen, ob es widersprüchliche Regeln im Projekt gibt.
 
 ## Initial in einem Projekt angewendet / umfassend in einem Projekt umgesetzt
 
