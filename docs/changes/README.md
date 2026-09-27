@@ -55,9 +55,14 @@ Die Spec hält knapp fest: Ziel und Nicht-Ziele, betroffene Vertikalen, nötige 
   Unsicherheit. Mehrere Aussagen gebündelt prüfen; die redaktionellen
   Quellenregeln gelten weiterhin.
 - Pro Teil-Feature zuerst den gezielten RED-Test, dann GREEN und die betroffene
-  Testsuite ausführen. Die gesamte Pflichtsuite zur Abnahme und erneut vor dem
-  Commit ausführen. Dazwischen Prüfungen nur wiederholen, wenn Änderungen deren
-  Ergebnis beeinflussen können.
+  Testsuite ausführen. Die gesamte Pflichtsuite nach der letzten Änderung an
+  Code, Tests, Laufzeitinhalten, Konfiguration, Abhängigkeiten oder Prüfskripten
+  zur Abnahme ausführen. Dieser grüne Nachweis gilt auch für den Commit, wenn
+  danach ausschließlich Nachweise und Abnahmevermerk in der Änderungs-Spec
+  ergänzt und diese archiviert wurde. Bei weiteren Änderungen oder unklarem
+  Stand die Pflichtsuite erneut ausführen. Unmittelbar vor dem Commit den
+  Arbeitsbaum und den gestagten Diff auf unerwartete Änderungen und
+  Whitespace-Fehler prüfen.
 - Den lokalen Browsercheck auf einen vorher festgelegten, für die Story
   aussagekräftigen Ablauf konzentrieren. Automatisierte Desktop- und
   Mobiltests prüfen die übrige Breite. Unmittelbar vor jedem Commit den
