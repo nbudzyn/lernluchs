@@ -35,7 +35,7 @@ describe("the next four topics without learning checks", () => {
   });
 
   it("adds exactly these four learning checks to the existing catalog", () => {
-    expect(availableLearningCheckTopicIds).toHaveLength(31);
+    expect(availableLearningCheckTopicIds).toHaveLength(35);
     expect(
       nextFourTopicIds.every((id) =>
         availableLearningCheckTopicIds.includes(id),

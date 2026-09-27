@@ -7,6 +7,7 @@ import {
 import { fiveNewQuestions } from "./fiveNewQuestions";
 import { firstFourMissingQuestions } from "./firstFourMissingQuestions";
 import { nextFourMissingQuestions } from "./nextFourMissingQuestions";
+import { newFourQuestions } from "./newFourQuestions";
 import { remainingQuestions } from "./remainingQuestions";
 import { secondPathQuestions } from "./secondPathQuestions";
 
@@ -17,6 +18,7 @@ const questionPools: Record<string, Question[]> = {
   ...fiveNewQuestions,
   ...firstFourMissingQuestions,
   ...nextFourMissingQuestions,
+  ...newFourQuestions,
   "domain-language-and-complexity": domainLanguageQuestions,
   "project-documentation-and-checklists": projectDocumentationQuestions,
 };

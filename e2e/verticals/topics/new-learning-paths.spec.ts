@@ -35,7 +35,7 @@ const pathCases = [
 ] as const;
 
 for (const path of pathCases) {
-  test(`shows the ${path.name} path and sourced cards without new checks`, async ({
+  test(`shows the ${path.name} path with sourced cards and a learning check`, async ({
     page,
   }) => {
     await page.goto("/");
@@ -73,6 +73,6 @@ for (const path of pathCases) {
       page.getByRole("button", {
         name: `Fragen starten: ${path.startingTopic}`,
       }),
-    ).toHaveCount(0);
+    ).toHaveCount(1);
   });
 }

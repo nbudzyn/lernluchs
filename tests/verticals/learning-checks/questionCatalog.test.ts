@@ -9,8 +9,8 @@ import { validateQuestionPool } from "../../../src/verticals/learning-checks/val
 import { topics } from "../../../src/verticals/topics/topics";
 
 describe("learning-check question catalog", () => {
-  it("owns all 31 pools by stable topic ID", () => {
-    expect(availableLearningCheckTopicIds).toHaveLength(31);
+  it("owns all 35 pools by stable topic ID", () => {
+    expect(availableLearningCheckTopicIds).toHaveLength(35);
     expect(questionsForTopic("human-ai-responsibility")).toHaveLength(25);
     expect(questionsForTopic("focused-git-commits")).toHaveLength(25);
     expect(questionsForTopic("unknown-topic")).toBeUndefined();
