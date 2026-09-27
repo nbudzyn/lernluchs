@@ -5,8 +5,8 @@ einer gemeinsamen Liste auswählen und deren kurze Inhalte mit kuratierten Quell
 künftig ergänztes, erhält Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md). Die Inhalte werden redaktionell
 geprüft und als versionierter, nur lesbarer Katalog veröffentlicht.
 
-Für 23 Themen stehen quellengebundene Auswahlfragen bereit, auch für die Themen zu Fachsprache, Projektwissen, Git, OKF, Zielklärung,
-Legacy-Spezifikation, Standards und LLM-Fehlbarkeit. Die übrigen 23 Themen besitzen noch keine Fragenpools und bieten daher keinen Lerncheck an. Aus der
+Für 27 Themen stehen quellengebundene Auswahlfragen bereit, auch für die Themen zu Fachsprache, Projektwissen, Git, OKF, Zielklärung,
+Legacy-Spezifikation, Standards, LLM-Fehlbarkeit, Agentenkontext, Codegraphen, Tokenwerkzeugen und Coding-Agent-Oberflächen. Die übrigen 19 Themen besitzen noch keine Fragenpools und bieten daher keinen Lerncheck an. Aus der
 Themenliste startet ein flüchtiger Durchlauf mit fünf
 zufällig ausgewählten Fragen. Nach der letzten Antwort zeigt die App richtige und gewählte falsche Antworten mit Begründungen und
 Quellenlinks. Ein Abbruch verwirft die Antworten. Fünf richtige Antworten speichern das Thema unter seiner dauerhaften ID lokal als

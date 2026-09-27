@@ -230,6 +230,10 @@ export const expandedLearningTopics: Topic[] = [
         "https://developers.openai.com/blog/mastering-codex-remote-for-engineering",
         "official-publication",
       ),
+      primary(
+        "Managing context in GitHub Copilot CLI – GitHub Docs",
+        "https://docs.github.com/en/copilot/concepts/agents/copilot-cli/context-management",
+      ),
     ],
     "2026-12-27",
   ),

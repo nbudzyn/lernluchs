@@ -36,6 +36,19 @@ function completeItem(id: string): Topic {
 }
 
 describe("public content topics", () => {
+  it("links the context-management source used by the new learning check", () => {
+    const item = topics.items.find(
+      (candidate) => candidate.id === "context-selection-and-reset",
+    );
+    expect(
+      item?.sources.some(
+        (source) =>
+          source.url ===
+          "https://docs.github.com/en/copilot/concepts/agents/copilot-cli/context-management",
+      ),
+    ).toBe(true);
+  });
+
   it("rejects empty learning paths and topic IDs without a matching topic", () => {
     const result = validateTopics({
       version: "1",
