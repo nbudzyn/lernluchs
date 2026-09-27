@@ -7,28 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Lernchecks für 5 Themen ohne Fragen
-
-5 von den noch 28 Themen ohne Fragen erhalten ebenfalls nutzbare, quellengebundene Lernchecks. Vor der Aktivierung wird diese Story bei
-Bedarf in kleinere, fachlich zusammenhängende und im Browser einzeln abnehmbare Stories aufgeteilt. Bereits vorhandene Fragenpools bleiben
-unverändert.
-
-- Die ersten 5 Themen in Reihenfolge der Liste verwenden, die keine Fragen haben.
-
-Je neuem Themenpool gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md): mindestens 25 fachlich unterschiedliche,
-gültige Fragen mit Erklärungen und Quellenbezügen nach unabhängiger fachlicher Prüfung. Die Fragen prüfen den Schwerpunkt des Themas sowie
-passende vertiefende Details seiner Quellen. Elementare Browser-Tests sichern die Nutzung exemplarisch, nicht für jedes Thema einzeln.
-
-Vertikalen: Themen, Lernchecks (plus App und Shared bei Bedarf).
-
-Dokumentation nach Umsetzung: Produktstand und redaktionelle Richtlinie auf den tatsächlich erreichten Fragenbestand prüfen und knapp
-aktualisieren.
-
-Abgrenzung:
-
-- Keine Fragen bei Themen ändern, die schon Fragen haben
-- Die weiteren Themen (über die fünf hinaus) kommen später
-
 ## Lernchecks für die übrigen Themen ohne Fragen
 
 Die 23 übrigen Themen ohne Fragen erhalten ebenfalls nutzbare, quellengebundene Lernchecks. Vor der Aktivierung wird diese Story bei Bedarf

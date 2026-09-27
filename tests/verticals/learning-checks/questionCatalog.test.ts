@@ -9,8 +9,8 @@ import { validateQuestionPool } from "../../../src/verticals/learning-checks/val
 import { topics } from "../../../src/verticals/topics/topics";
 
 describe("learning-check question catalog", () => {
-  it("owns the existing sixteen and two new pools by stable topic ID", () => {
-    expect(availableLearningCheckTopicIds).toHaveLength(18);
+  it("owns the existing eighteen and five new pools by stable topic ID", () => {
+    expect(availableLearningCheckTopicIds).toHaveLength(23);
     expect(questionsForTopic("human-ai-responsibility")).toHaveLength(25);
     expect(questionsForTopic("focused-git-commits")).toHaveLength(25);
     expect(questionsForTopic("unknown-topic")).toBeUndefined();
@@ -29,6 +29,22 @@ describe("learning-check question catalog", () => {
     "dependency-security-assessment",
   ])("preserves the second-path pool for %s", (id) => {
     expect(questionsForTopic(id)).toHaveLength(25);
+  });
+
+  it.each([
+    "open-knowledge-format",
+    "goal-discovery-and-stop-criteria",
+    "design-and-legacy-specification",
+    "standards-and-constraint-rationale",
+    "llm-fallibility-and-counterchecks",
+  ])("offers a sourced new pool for %s", (id) => {
+    const topic = topics.items.find((item) => item.id === id)!;
+    const questions = questionsForTopic(id);
+    expect(questions).toHaveLength(25);
+    expect(validateQuestionPool(topic, questions!)).toEqual([]);
+    expect(new Set(questions!.map((question) => question.prompt)).size).toBe(
+      25,
+    );
   });
 
   it.each([

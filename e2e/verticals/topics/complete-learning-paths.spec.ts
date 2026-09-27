@@ -40,5 +40,5 @@ test("zeigt einen neuen Lernpfad und eine quellengebundene Karte", async ({
     page.getByRole("button", {
       name: "Fragen starten: Langlebiges Domänenwissen mit OKF strukturieren",
     }),
-  ).toHaveCount(0);
+  ).toBeVisible();
 });

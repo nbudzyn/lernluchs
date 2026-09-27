@@ -113,6 +113,11 @@ export const expandedLearningTopics: Topic[] = [
         "https://github.com/GoogleCloudPlatform/open-knowledge-format",
         "repository",
       ),
+      primary(
+        "Open Knowledge Format v0.2 – specification",
+        "https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md",
+        "official-publication",
+      ),
     ],
     "2026-12-27",
   ),
@@ -127,6 +132,18 @@ export const expandedLearningTopics: Topic[] = [
       primary(
         "Best practices for using GitHub Copilot to work on tasks",
         "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results",
+      ),
+      primary(
+        "GOV.UK Service Manual – How the discovery phase works",
+        "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works",
+      ),
+      primary(
+        "GOV.UK Service Manual – Writing user stories",
+        "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories",
+      ),
+      primary(
+        "GOV.UK Service Manual – Measuring the benefits of your service",
+        "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits",
       ),
     ],
   ),
@@ -158,6 +175,26 @@ export const expandedLearningTopics: Topic[] = [
         "https://owasp.org/projects/asvs",
         "reference-site",
       ),
+      primary(
+        "OWASP ASVS – repository and version guidance",
+        "https://github.com/OWASP/ASVS/blob/master/README.md",
+        "official-guide",
+      ),
+      primary(
+        "OWASP ASVS – scope and requirements",
+        "https://github.com/OWASP/ASVS/blob/master/5.0/en/0x03-What-is-the-ASVS.md",
+        "official-guide",
+      ),
+      primary(
+        "OWASP ASVS – assessment and certification",
+        "https://github.com/OWASP/ASVS/blob/master/5.0/en/0x04-Assessment_and_Certification.md",
+        "official-guide",
+      ),
+      primary(
+        "OWASP ASVS – changes from version 4",
+        "https://github.com/OWASP/ASVS/blob/master/5.0/en/0x05-For-Users-Of-4.0.md",
+        "official-guide",
+      ),
     ],
   ),
   card(
@@ -171,6 +208,11 @@ export const expandedLearningTopics: Topic[] = [
       primary(
         "NIST AI RMF Generative AI Profile",
         "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=958388",
+        "official-publication",
+      ),
+      primary(
+        "Towards understanding sycophancy in language models – Anthropic",
+        "https://www.anthropic.com/research/towards-understanding-sycophancy-in-language-models",
         "official-publication",
       ),
     ],
