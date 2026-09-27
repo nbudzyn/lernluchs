@@ -1,6 +1,6 @@
 # Unabhängige Fachprüfung: 150 Auswahlfragen in sechs Pools
 
-Prüfe **alle** folgenden Fragen gegen die jeweils verlinkten Originalquellen. Prüfe pro ID die Frage, die als richtig markierte Antwort, beide Distraktoren, jede Erklärung und jeden Quellenbezug. Suche besonders nach einer zweiten vertretbar richtigen Antwort, fachlich schwachen oder sprachlich verräterischen Distraktoren, doppelten Fehlvorstellungen und Behauptungen, die der verlinkte Quellabschnitt nicht trägt. Prüfe auch, ob die 25 Fragen je Pool fachlich verschieden sind. Die Lernkartenquellen dürfen nicht geändert werden.
+Prüfe **alle** folgenden Fragen gegen die jeweils verlinkten Originalquellen. Prüfe pro ID die Frage, die als richtig markierte Antwort, beide Distraktoren, jede Erklärung und jeden Quellenbezug. Suche besonders nach einer zweiten vertretbar richtigen Antwort, fachlich schwachen oder sprachlich verräterischen Distraktoren, doppelten Fehlvorstellungen und Behauptungen, die der verlinkte Quellabschnitt nicht trägt. Prüfe auch, ob die 25 Fragen je Pool fachlich verschieden sind. Die Themenquellen dürfen nicht geändert werden.
 
 Antworte nur mit einer **sehr kurzen Liste beanstandeter Fragen-IDs**, nach Pool geordnet. Wenn keine Beanstandung vorliegt, antworte `Keine Beanstandungen`. Eine nicht erreichbare Quelle gilt als Beanstandung der betroffenen IDs. Erfinde keine Quelleninhalte.
 

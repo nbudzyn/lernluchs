@@ -9,43 +9,49 @@ Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden E
 
 ## Bestehen lokal speichern
 
-Hat der User einen Lerncheck bestanden, wird das Bestehen lokal unter der dauerhaften Lerninhalts-ID / Lernkarten-ID gespeichert
-(Lernstand).
+Hat eine lernende Person alle fünf Fragen eines Lernchecks richtig beantwortet, wird das Bestehen sofort nach der fünften Antwort lokal
+unter der dauerhaften Themen-ID gespeichert. Die Themenliste zeigt hinter dem Namen eines bestandenen Themas einen grünen, auch ohne Farbe
+verständlichen Haken. Themen ohne Lerncheck erhalten keinen Haken allein aufgrund ihrer Anzeige im Katalog.
 
-Die Namen der Lerninhalte in der Liste ("Mensch und KI..." etc.) erhalten einen grünen Haken dahinter, wenn sie bestanden sind.
+- Der Lernstand bleibt nach Reload erhalten. Ein späterer nicht bestandener Durchlauf entfernt einen vorhandenen Bestehensstand nicht; die
+  ausdrücklich bestätigte Rücksetzung gehört zur nächsten Story.
+- Katalogänderungen, vorübergehend fehlende Themen und fehlerhafte externe Quellen löschen gespeicherte Bestehensstände nicht.
+- Ist lokales Speichern nicht möglich, bleibt der Lerncheck nutzbar und die App zeigt an, dass das Ergebnis nicht dauerhaft gespeichert
+  wurde. Sind die gespeicherten Lernstandsdaten beschädigt, entfernt die App den gesamten beschädigten Lernstand, beginnt mit leerem
+  Lernstand und zeigt die Rücksetzung an. Andere lokale Daten werden dadurch nicht gelöscht.
 
-- Der Lernstand bleibt nach Reload erhalten.
-- Katalogänderungen oder fehlerhafte externe Quellen löschen den Lernstand nicht.
+Die Umsetzung wird in Schritte mit höchstens zwei fachlichen Vertikalen pro Commit geschnitten: zuerst Bestehen und Speichern in Lernchecks
+und Lernfortschritt, danach die Anzeige in Themen und Lernfortschritt. Jeder Schritt liefert einen im Browser nachvollziehbaren Wert.
+Der Browser-E2E-Test deckt Speichern, Reload, Katalogänderungen und einen späteren nicht bestandenen Durchlauf ab; Tests prüfen außerdem
+Speicherfehler und beschädigte Daten.
 
-Der Browser-E2E-Test deckt Speichern und Katalogänderungen ab.
+Vertikalen: Lernchecks, Lernfortschritt (neu; Lernchecks hängt von Lernfortschritt ab, nicht umgekehrt), Themen
 
-Vertikalen: Lernchecks, Lernfortschritt (neue Vertikale! Lernchecks ist vom Lernfortschritt abhängig - aber nicht umgekehrt!)
-
-Dokumentation nach Umsetzung: Lokale Speicherung knapp in Produktstand und Architektur ergänzen; neue Vertikale ergänzen
+Dokumentation nach Umsetzung: Lokale Speicherung knapp in Produktstand und Architektur ergänzen; neue Vertikale dokumentieren.
 
 ## Nichtbestehen auf Wunsch lokal speichern
 
-Hat der User einen Lerncheck zu Ende durchgeführunt und NICHT bestanden, erhält er beim Verlassen der Übersicht eine Rückfrage: "Lerninhalt
+Hat der User einen Lerncheck zu Ende durchgeführunt und NICHT bestanden, erhält er beim Verlassen der Übersicht eine Rückfrage: "Thema
 auf nicht bestanden zurücksetzen?"
 
-- (NUR) wenn der User das bestätigt, wird das Bestehen dieses Lerninhalts lokal wieder gelöscht. Alle anderen Elemente des Lernstands
+- (NUR) wenn der User das bestätigt, wird das Bestehen dieses Themas lokal wieder gelöscht. Alle anderen Elemente des Lernstands
   bleiben erhalten!
 
-Der Browser-E2E-Test deckt Nichtbestehen mit und ohne Löschen des Lernstands UND DEN ERHALT ANDERER, BEREITS BESTANDENER LERNINHALTE ab.
+Der Browser-E2E-Test deckt Nichtbestehen mit und ohne Löschen des Lernstands UND DEN ERHALT ANDERER, BEREITS BESTANDENER THEMEN ab.
 
 Vertikalen: Lernchecks, Lernfortschritt
 
-## Bereits gestellte Fragen je Karte lokal merken
+## Bereits gestellte Fragen je Thema lokal merken
 
-Die App merkt sich auf dem Gerät je Karte, welche Fragen bereits gestellt wurden. Neue Durchläufe bevorzugen ausschließlich noch nicht
-gestellte Fragen, bis der Pool der Karte ausgeschöpft ist. Danach beginnt ein neuer Zyklus. Innerhalb eines Durchlaufs erscheint keine Frage
+Die App merkt sich auf dem Gerät je Thema, welche Fragen bereits gestellt wurden. Neue Durchläufe bevorzugen ausschließlich noch nicht
+gestellte Fragen, bis der Pool des Themas ausgeschöpft ist. Danach beginnt ein neuer Zyklus. Innerhalb eines Durchlaufs erscheint keine Frage
 doppelt.
 
 Die spätere Änderungs-Spec legt fest, wann eine abgebrochene Frage als gestellt gilt, wie ein Rest von weniger als fünf Fragen mit dem
 nächsten Zyklus verbunden wird und wie veraltete Fragen-IDs nach Katalogänderungen behandelt werden. Ohne gespeicherten Stand bleibt der
 Fragenablauf nutzbar. Browser-E2E-Tests prüfen mehrere Durchläufe, Ausschöpfung, Neustart und Abbruch.
 
-Vertikalen: Inhaltskatalog, Lernchecks
+Vertikalen: Themen, Lernchecks
 
 Dokumentation nach Umsetzung: Lokale Fragehistorie und Zyklusregel knapp in Produktstand und Architektur ergänzen.
 
@@ -77,22 +83,22 @@ Die Oberfläche soll motivierend, aber nicht ablenkend sein.
 
 ## Themen auf einer Landkarte erkunden
 
-Die sechs Grundlagenkarten erscheinen als frei navigierbare grafische Landkarte mit fachlichen Querverbindungen. Lernende können jedes Thema
+Die sechs Grundlagenthemen erscheinen als frei navigierbare grafische Landkarte mit fachlichen Querverbindungen. Lernende können jedes Thema
 ohne Sperre auswählen. Die vorhandene zugängliche Liste bleibt als Fallback nutzbar, auch wenn die Grafik ausfällt. Die Landkarte liest
 Katalog und bestätigten Fortschritt nur über kleine öffentliche Verträge und delegiert Änderungen an die zuständige Vertikale.
 Browser-E2E-Tests prüfen Auswahl, Querverbindung und Listenfallback.
 
-Falls wir inzwischen den 01.12.2026 oder später haben, werden in dieser Story die Quellen der vorhandenen Karten zu `AGENTS.md`,
+Falls wir inzwischen den 01.12.2026 oder später haben, werden in dieser Story die Quellen der vorhandenen Themen zu `AGENTS.md`,
 Research/Plan/Tasks und OpenSpec erneut fachlich geprüft und bei Bedarf aktualisiert. - Falls Datum noch nicht erreicht, dann diesen Auftrag
 in die nächste Story verschieben.
 
-Vertikalen: Inhaltskatalog, Landkarte
+Vertikalen: Themen, Landkarte
 
 Dokumentation nach Umsetzung: Landkarte, Fallback und Vertikalgrenzen knapp in Produktstand und Architektur ergänzen.
 
 ## App installieren und Kernabläufe offline nutzen
 
-Nach dem ersten erfolgreichen Laden ist die öffentliche GitHub-Pages-App installierbar und zeigt offline Landkarte, Liste, Lernkarten,
+Nach dem ersten erfolgreichen Laden ist die öffentliche GitHub-Pages-App installierbar und zeigt offline Landkarte, Liste, Themen,
 Lernchecks und bereits bestätigten Fortschritt. Der versionierte Service-Worker-Cache hält App und Katalog einschließlich Fragen je Build
 zusammen; Updates mischen keine Build-Stände und überschreiben keinen lokalen Fortschritt. Der öffentliche Build enthält nur App und
 Katalog, keine persönlichen Daten oder extern nachgeladenen Laufzeitressourcen. Externe Quellen können offline als nicht verfügbar
@@ -111,7 +117,7 @@ Fortschritt bestätigen und die Kerninhalte nach dem Erstladen offline öffnen.
 
 Die vollständige Pflichtsuite ist grün: Format, Lint, Typen, Inhalts- und Schema-Validierung, Unit- und Komponententests, Browser-E2E,
 Architekturgrenzen, bekannte Schwachstellen und unzulässige Lizenzen, Produktionsbuild sowie PWA-/Offline-Prüfung. Insbesondere werden
-Querverbindungen, Karten und Metadaten, Bestehen und Nichtbestehen mit anderem Fragensatz, bestätigter Fortschritt über Reload,
+Querverbindungen, Themen und Metadaten, Bestehen und Nichtbestehen mit anderem Fragensatz, bestätigter Fortschritt über Reload,
 Offline-Nutzung und der Ausfall eines optionalen Quellenlinks geprüft. Automatisierte Tests decken definierte Desktop- und mobile Viewports
 ab. Der GitHub-Pages-Release durchläuft dieselben Pflichtprüfungen; ein fehlendes oder fehlschlagendes Gate verhindert die Veröffentlichung.
 GitHub Dependency Review und Dependabot ergänzen die Abhängigkeitsprüfung; Updates werden getrennt getestet und bewusst freigegeben.
@@ -128,47 +134,47 @@ ergänzen.
 
 ## Kuratierte Quellen für den zweiten Lernpfad ergänzen
 
-Die sechs zusätzlichen Karten aus „Änderungen gestalten und absichern“ erhalten Quellen.
+Die sechs zusätzlichen Themen aus „Änderungen gestalten und absichern“ erhalten Quellen.
 
 Es gelten die [Regeln zur Quellenauswahl](../content/source-selection.md).
 
-Vertikalen: Inhaltskatalog
+Vertikalen: Themen
 
 ## Lernchecks für den zweiten Lernpfad ergänzen
 
-Die sechs zusätzlichen Karten aus „Änderungen gestalten und absichern“ erhalten quellengebundene Fragenpools und die bereits vorhandenen
-Auswahlchecks einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Karte und vertiefende Details ihrer
+Die sechs zusätzlichen Themen aus „Änderungen gestalten und absichern“ erhalten quellengebundene Fragenpools und die bereits vorhandenen
+Auswahlchecks einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer
 Quellen; sie werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
 
 Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
 
-Vertikalen: Inhaltskatalog, Lernchecks
+Vertikalen: Themen, Lernchecks
 
 Dokumentation nach Umsetzung: Fragenumfang des zweiten Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
 
 ## Kuratierte Quellen für den dritten Lernpfad ergänzen
 
-Die drei neuen Karten aus „Sicher mit Coding-Agenten arbeiten“ erhalten Quellen.
+Die drei neuen Themen aus „Sicher mit Coding-Agenten arbeiten“ erhalten Quellen.
 
 Es gelten die [Regeln zur Quellenauswahl](../content/source-selection.md).
 
-Vertikalen: Inhaltskatalog
+Vertikalen: Themen
 
 ## Lernchecks für den dritten Lernpfad ergänzen
 
-Die drei neuen Karten aus „Sicher mit Coding-Agenten arbeiten“ erhalten quellengebundene Fragenpools und Auswahlchecks einschließlich
-Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Karte und vertiefende Details ihrer Quellen; sie werden unabhängig
+Die drei neuen Themen aus „Sicher mit Coding-Agenten arbeiten“ erhalten quellengebundene Fragenpools und Auswahlchecks einschließlich
+Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie werden unabhängig
 fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
 
 Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
 
-Vertikalen: Inhaltskatalog, Lernchecks
+Vertikalen: Themen, Lernchecks
 
 Dokumentation nach Umsetzung: Fragenumfang des dritten Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
 
 ## Vierter Lernpfad
 
-Der Inhaltskatalog wird um den Lernpfad **Java-/Web-Code technisch analysieren und modernisieren** erweitert:
+Die Vertikale Themen wird um den Lernpfad **Java-/Web-Code technisch analysieren und modernisieren** erweitert:
 
 1. Git-Worktrees für isolierte Änderungen nutzen - neu
 2. Code mit Symbol- und Referenzsuche in IDE oder LSP erschließen - neu
@@ -182,37 +188,37 @@ Der Inhaltskatalog wird um den Lernpfad **Java-/Web-Code technisch analysieren u
 Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert und erscheint nicht als eigener Abschnitt in der
 Oberfläche.
 
-Die vier neuen Lerninhalte werden als Lernkarten mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und
+Die vier neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und
 Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen. Dabei auch immer einen Blick
 auf die Notizen in der KI-Tool-Landkarte haben!
 Bei Context7 werden Angaben mit der Originaldokumentation der konkreten Bibliotheksversion abgeglichen.
 
 Fragenpools gehören nicht zu dieser Story.
 
-Alle 19 Lerninhalte erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste. Sie werden über alle vier Lernpfade hinweg nach
+Alle 19 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste. Sie werden über alle vier Lernpfade hinweg nach
 Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen Inhalte bleibt erhalten; die neuen
 Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der Inhalte des neuen Lernpfads bleibt
 erhalten.
 
-Vertikale: Inhaltskatalog
+Vertikale: Themen
 
-Dokumentation nach Umsetzung: Den neuen Kartenbestand knapp im Produktstand ergänzen.
+Dokumentation nach Umsetzung: Den neuen Themenbestand knapp im Produktstand ergänzen.
 
 ## Lernchecks für den vierten Lernpfad ergänzen
 
-Die vier neuen Karten aus „Java-/Web-Code technisch analysieren und modernisieren“ erhalten quellengebundene Fragenpools und Auswahlchecks
-einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Karte und vertiefende Details ihrer Quellen; sie
+Die vier neuen Themen aus „Java-/Web-Code technisch analysieren und modernisieren“ erhalten quellengebundene Fragenpools und Auswahlchecks
+einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie
 werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
 
 Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
 
-Vertikalen: Inhaltskatalog, Lernchecks
+Vertikalen: Themen, Lernchecks
 
 Dokumentation nach Umsetzung: Fragenumfang des vierten Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
 
 ## Fünfter Lernpfad
 
-Der Inhaltskatalog wird um den Lernpfad **Parallele Coding-Agenten kritisch erproben** erweitert:
+Die Vertikale Themen wird um den Lernpfad **Parallele Coding-Agenten kritisch erproben** erweitert:
 
 1. Aufgaben und Abbruchkriterien für parallele Agenten festlegen - neu
 2. Git-Worktrees für isolierte Änderungen nutzen - vorhanden
@@ -226,30 +232,30 @@ Der Inhaltskatalog wird um den Lernpfad **Parallele Coding-Agenten kritisch erpr
 Der Lernpfad als solcher wird noch nicht als Objekt in der Software repräsentiert und erscheint nicht als eigener Abschnitt in der
 Oberfläche. Die Lern-App führt keine Coding-Agenten aus.
 
-Die sechs neuen Lerninhalte werden als Lernkarten mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und
+Die sechs neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und
 Aktualitätsmetadaten ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen.
-Die [KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausgangspunkt. Die Karten benennen Voraussetzungen, Grenzen und
-Gegenbeispiele. Die Karte zur Bewertung beschreibt einen kontrollierten Vergleich von Ergebnisqualität, Dauer, Kosten und Review-Aufwand mit
+Die [KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausgangspunkt. Die Themen benennen Voraussetzungen, Grenzen und
+Gegenbeispiele. Das Thema zur Bewertung beschreibt einen kontrollierten Vergleich von Ergebnisqualität, Dauer, Kosten und Review-Aufwand mit
 einem seriellen Ablauf. Fragenpools gehören nicht zu dieser Story.
 
-Alle 25 Lerninhalte erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste. Sie werden über alle fünf Lernpfade hinweg nach
+Alle 25 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste. Sie werden über alle fünf Lernpfade hinweg nach
 Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen Inhalte bleibt erhalten; die neuen
 Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der Inhalte des neuen Lernpfads bleibt
 erhalten.
 
-Vertikale: Inhaltskatalog
+Vertikale: Themen
 
-Dokumentation nach Umsetzung: Den neuen Kartenbestand knapp im Produktstand ergänzen.
+Dokumentation nach Umsetzung: Den neuen Themenbestand knapp im Produktstand ergänzen.
 
 ## Lernchecks für den fünften Lernpfad ergänzen
 
-Die sechs neuen Karten aus „Parallele Coding-Agenten kritisch erproben“ erhalten quellengebundene Fragenpools und Auswahlchecks
-einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Karte und vertiefende Details ihrer Quellen; sie
+Die sechs neuen Themen aus „Parallele Coding-Agenten kritisch erproben“ erhalten quellengebundene Fragenpools und Auswahlchecks
+einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie
 werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
 
 Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
 
-Vertikalen: Inhaltskatalog, Lernchecks
+Vertikalen: Themen, Lernchecks
 
 Dokumentation nach Umsetzung: Fragenumfang des fünften Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
 
@@ -319,38 +325,38 @@ Beim Aufbau des sichtbaren Filters werden die benötigten Pfadbegriffe im Glossa
 englische Bezeichner werden innerhalb der höchstens zwei berührten Vertikalen vereinheitlicht, ohne Fachlogik zu ändern. Weitere Begriffe
 werden erst in der jeweils betroffenen fachlichen Story vereinheitlicht.
 
-Vertikalen: Inhaltskatalog, Lernpfade
+Vertikalen: Themen, Lernpfade
 
 Dokumentation nach Umsetzung: Pfadmodell, Filterverhalten und neue Begriffe knapp in Produktstand, Architektur und Glossar ergänzen.
 
 ## Quellen und Videos gezielt erkunden
 
-Lernende sehen je Lernkarte, welche Quellen und Videos verfügbar sind, erkennen deren Typ und Aktualität und öffnen externe Angebote nur
+Lernende sehen je Thema, welche Quellen und Videos verfügbar sind, erkennen deren Typ und Aktualität und öffnen externe Angebote nur
 nach bewusster Aktion. Die redaktionelle Pflege bleibt im öffentlichen Katalog; die App bietet keine Inhaltsbearbeitung. Ein ausgefallener
-externer Link blockiert die Lernkarte nicht. Browser-Tests prüfen Anzeige und Öffnung.
+externer Link blockiert das Thema nicht. Browser-Tests prüfen Anzeige und Öffnung.
 
-Vertikale: Inhaltskatalog
+Vertikale: Themen
 
 Dokumentation nach Umsetzung: Tatsächliche Quell- und Videodaten, Pflege und Öffnungsverhalten knapp in Produktstand und redaktioneller
 Richtlinie ergänzen.
 
-## Aktualisierte und ersetzte Lernkarten nachvollziehen
+## Aktualisierte und ersetzte Themen nachvollziehen
 
-Lernende erkennen bei einer geänderten oder ersetzten Karte das fachliche Prüfdatum und gegebenenfalls einen Nachfolger. Eine archivierte
-Karte bleibt lesbar, damit frühere Lernschritte nachvollziehbar sind. Redaktionell werden fachliche Prüfung und bloße Textänderung getrennt
+Lernende erkennen bei einem geänderten oder ersetzten Thema das fachliche Prüfdatum und gegebenenfalls einen Nachfolger. Ein archiviertes
+Thema bleibt lesbar, damit frühere Lernschritte nachvollziehbar sind. Redaktionell werden fachliche Prüfung und bloße Textänderung getrennt
 erfasst. Tests prüfen Archivierung und Nachfolgerhinweis.
 
-Vertikale: Inhaltskatalog
+Vertikale: Themen
 
 Dokumentation nach Umsetzung: Archivierungs- und Nachfolgerregeln knapp in Produktstand und redaktioneller Richtlinie ergänzen.
 
-## Persönliche Hinweise zu Lerninhalten festhalten
+## Persönliche Hinweise zu Themen festhalten
 
-Lernende können zu einer Karte eine lokale Notiz oder einen Fehler- und Aktualitätshinweis festhalten und später wiederfinden. Hinweise
+Lernende können zu einem Thema eine lokale Notiz oder einen Fehler- und Aktualitätshinweis festhalten und später wiederfinden. Hinweise
 enthalten Themen-ID, Datum und kurze Begründung; sie bleiben ohne bewussten Export auf dem Gerät und gelangen nicht nach Git. Browser-Tests
 prüfen Speichern, Wiederfinden und Trennung vom öffentlichen Katalog.
 
-Vertikalen: Inhaltskatalog, Lernfortschritt
+Vertikalen: Themen, Lernfortschritt
 
 Dokumentation nach Umsetzung: Lokale Hinweise und ihren Datenfluss knapp in Produktstand, Architektur und redaktioneller Richtlinie
 ergänzen.
@@ -403,21 +409,21 @@ Vertikalen: Lernfortschritt, PWA/Zuverlässigkeit
 
 Dokumentation nach Umsetzung: Exportformat, Importregeln und Datenschutz knapp in Produktstand und Architektur ergänzen.
 
-## Inhaltsversionen von Lernkarten und gelerntem Stand berücksichtigen
+## Inhaltsversionen von Themen und gelerntem Stand berücksichtigen
 
-Erst mit dieser Story erhalten Lernkarten beziehungsweise Lerninhalte fachliche Inhaltsversionen. Jede Änderung an einer Karte erzeugt eine
+Erst mit dieser Story erhalten Themen fachliche Inhaltsversionen. Jede Änderung an einem Thema erzeugt eine
 neue Inhaltsversion. Zusätzliche Fragen dürfen jederzeit zu einer bestehenden Inhaltsversion hinzukommen, ohne deren Nummer zu ändern.
 Quellen und Fragen sind jeweils einer konkreten Inhaltsversion zugeordnet.
 
-Wird eine Karte beantwortet, wird die zugehörige Inhaltsversion beim Speichern des Lernstands mitgeführt. Die Anzeige unterscheidet, ob eine
-Karte in der aktuellen Inhaltsversion oder nur in einer älteren gelernt wurde. Ein späterer Versionswechsel löscht den bisherigen Lernstand
+Wird ein Thema beantwortet, wird die zugehörige Inhaltsversion beim Speichern des Lernstands mitgeführt. Die Anzeige unterscheidet, ob ein
+Thema in der aktuellen Inhaltsversion oder nur in einer älteren gelernt wurde. Ein späterer Versionswechsel löscht den bisherigen Lernstand
 nicht. **Offene Frage für die spätere Spec:** Wird die Version schon nach jeder Antwort oder erst nach bewusster Bestätigung dauerhaft
 gespeichert? Die Änderungs-Spec legt außerdem die genaue Versions- und Migrationsregel fest, auch für Lernstand ohne bisherige
 Inhaltsversion und für reine Quellenänderungen. Browser-Tests prüfen Lernen, Versionswechsel, ältere Lernstände und zusätzliche Fragen ohne
 Versionswechsel.
 
 Bis zur Umsetzung dieser Story gibt es keine fachlichen Inhaltsversionen. Eine technische App- oder Katalog-Buildnummer ist davon getrennt.
-Die betroffenen Vertikalen Inhaltskatalog, Lernchecks und Lernfortschritt werden für die Umsetzung in Schritte mit höchstens zwei Vertikalen
+Die betroffenen Vertikalen Themen, Lernchecks und Lernfortschritt werden für die Umsetzung in Schritte mit höchstens zwei Vertikalen
 pro fachlichem Commit geschnitten.
 
 Dokumentation nach Umsetzung: Versionsregeln und Bezug von Fragen, Quellen und Lernstand knapp in Produktstand, Architektur und

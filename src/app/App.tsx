@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { CatalogBrowser } from "../verticals/catalog";
+import { TopicBrowser } from "../verticals/topics";
 import { LearningCheck } from "../verticals/learning-checks";
 import type { Question } from "../verticals/learning-checks";
 
@@ -12,7 +12,7 @@ export function App() {
 
   return (
     <main>
-      <h1>Lernluchs</h1>
+      <h1>{activeCheck ? "Lernluchs" : "Lernluchs – Themen"}</h1>
       {activeCheck ? (
         <LearningCheck
           title={activeCheck.title}
@@ -20,7 +20,7 @@ export function App() {
           onExit={() => setActiveCheck(null)}
         />
       ) : (
-        <CatalogBrowser
+        <TopicBrowser
           onStartQuestions={(title, questions) =>
             setActiveCheck({ title, questions })
           }

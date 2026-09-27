@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { catalog } from "../../../src/verticals/catalog/catalog";
+import { topics } from "../../../src/verticals/topics/topics";
 
 const weakExamples: Record<string, string[]> = {
   "human-ai-responsibility": [
@@ -38,7 +38,7 @@ const weakExamples: Record<string, string[]> = {
 describe("foundation distractors", () => {
   for (const [itemId, examples] of Object.entries(weakExamples)) {
     it(`${itemId} replaces unrelated and easy-to-dismiss answers`, () => {
-      const questions = catalog.items.find(
+      const questions = topics.items.find(
         (item) => item.id === itemId,
       )?.questions;
       expect(questions?.length).toBeGreaterThanOrEqual(25);

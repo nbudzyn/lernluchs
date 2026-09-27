@@ -1,14 +1,14 @@
 import { describe, expect, it } from "vitest";
 
-import { validateCatalog } from "../../../src/verticals/catalog/validateCatalog";
-import type { CatalogItem } from "../../../src/verticals/catalog/catalogContract";
-import { catalog } from "../../../src/verticals/catalog/catalog";
+import { validateTopics } from "../../../src/verticals/topics/validateTopics";
+import type { Topic } from "../../../src/verticals/topics/topicContract";
+import { topics } from "../../../src/verticals/topics/topics";
 
-function completeItem(id: string): CatalogItem {
+function completeItem(id: string): Topic {
   return {
     id,
     title: "Testthema",
-    learningCard: {
+    content: {
       language: "de",
       problem: "Problem",
       coreConcept: "Kernkonzept",
@@ -34,7 +34,7 @@ function completeItem(id: string): CatalogItem {
   };
 }
 
-describe("public content catalog", () => {
+describe("public content topics", () => {
   it("contains at least 25 validated questions for each foundation card", () => {
     const foundationIds = [
       "human-ai-responsibility",
@@ -45,13 +45,13 @@ describe("public content catalog", () => {
       "spec-driven-development-openspec",
     ];
     for (const id of foundationIds) {
-      const item = catalog.items.find((candidate) => candidate.id === id);
+      const item = topics.items.find((candidate) => candidate.id === id);
       expect(item?.questions?.length).toBeGreaterThanOrEqual(25);
     }
-    expect(validateCatalog(catalog)).toEqual({ valid: true, errors: [] });
+    expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
   it("includes the phase-separation source for Research, Plan and Tasks", () => {
-    const item = catalog.items.find(
+    const item = topics.items.find(
       (candidate) => candidate.id === "research-plan-tasks",
     );
     expect(
@@ -65,7 +65,7 @@ describe("public content catalog", () => {
   it("requires a primary source, at most ten sources, and a supported language", () => {
     const item = completeItem("source-rules");
     expect(
-      validateCatalog({
+      validateTopics({
         version: "1",
         items: [
           { ...item, sources: [{ ...item.sources[0], origin: "secondary" }] },
@@ -73,7 +73,7 @@ describe("public content catalog", () => {
       }).valid,
     ).toBe(false);
     expect(
-      validateCatalog({
+      validateTopics({
         version: "1",
         items: [
           {
@@ -87,7 +87,7 @@ describe("public content catalog", () => {
       }).valid,
     ).toBe(false);
     expect(
-      validateCatalog({
+      validateTopics({
         version: "1",
         items: [
           {
@@ -98,7 +98,7 @@ describe("public content catalog", () => {
       }).valid,
     ).toBe(false);
     expect(
-      validateCatalog({
+      validateTopics({
         version: "1",
         items: [
           {
@@ -122,17 +122,17 @@ describe("public content catalog", () => {
       "spec-driven-development-openspec",
     ];
     expect(
-      catalog.items
+      topics.items
         .map((item) => item.id)
         .filter((id) => foundationIds.includes(id)),
     ).toEqual(foundationIds);
 
-    for (const item of catalog.items.filter((item) =>
+    for (const item of topics.items.filter((item) =>
       foundationIds.includes(item.id),
     )) {
       expect(item).toMatchObject({
         title: expect.any(String),
-        learningCard: {
+        content: {
           language: "de",
           problem: expect.any(String),
           coreConcept: expect.any(String),
@@ -155,7 +155,7 @@ describe("public content catalog", () => {
       });
     }
 
-    expect(validateCatalog(catalog)).toEqual({ valid: true, errors: [] });
+    expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
   it("preserves the six sourced cards from the second learning path in order", () => {
@@ -168,15 +168,15 @@ describe("public content catalog", () => {
       "dependency-security-assessment",
     ];
     expect(
-      catalog.items.map((item) => item.id).filter((id) => newIds.includes(id)),
+      topics.items.map((item) => item.id).filter((id) => newIds.includes(id)),
     ).toEqual(newIds);
-    for (const item of catalog.items.filter((item) =>
+    for (const item of topics.items.filter((item) =>
       newIds.includes(item.id),
     )) {
-      expect(item.learningCard.problem.trim()).not.toBe("");
-      expect(item.learningCard.coreConcept.trim()).not.toBe("");
-      expect(item.learningCard.javaWebUse.trim()).not.toBe("");
-      expect(item.learningCard.boundary.trim()).not.toBe("");
+      expect(item.content.problem.trim()).not.toBe("");
+      expect(item.content.coreConcept.trim()).not.toBe("");
+      expect(item.content.javaWebUse.trim()).not.toBe("");
+      expect(item.content.boundary.trim()).not.toBe("");
       expect(item.sources.length).toBeGreaterThan(0);
       expect(item.editorial.publishedAt).toBe("2026-09-26");
       expect(item.editorial.reviewedAt).toBe("2026-09-26");
@@ -185,16 +185,16 @@ describe("public content catalog", () => {
         item.sources.every((source) => source.checkedAt === "2026-09-26"),
       ).toBe(true);
     }
-    expect(validateCatalog(catalog)).toEqual({ valid: true, errors: [] });
+    expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
-  it("weaves three coding-agent cards into the fifteen-topic catalog", () => {
+  it("weaves three coding-agent cards into the fifteen-topic topics", () => {
     const newIds = [
       "coding-agent-context-and-trust-boundaries",
       "protect-secrets-and-sensitive-data-with-ai",
       "review-and-accept-ai-generated-changes",
     ];
-    const ids = catalog.items.map((item) => item.id);
+    const ids = topics.items.map((item) => item.id);
 
     expect(ids).toEqual([
       "human-ai-responsibility",
@@ -215,16 +215,16 @@ describe("public content catalog", () => {
     ]);
     expect(new Set(ids).size).toBe(15);
     expect(
-      catalog.items.every((item) => !("contentVersion" in item.editorial)),
+      topics.items.every((item) => !("contentVersion" in item.editorial)),
     ).toBe(true);
-    for (const item of catalog.items.filter((item) =>
+    for (const item of topics.items.filter((item) =>
       newIds.includes(item.id),
     )) {
       expect(item.title.trim()).not.toBe("");
-      expect(item.learningCard.problem.trim()).not.toBe("");
-      expect(item.learningCard.coreConcept.trim()).not.toBe("");
-      expect(item.learningCard.javaWebUse.trim()).not.toBe("");
-      expect(item.learningCard.boundary.trim()).not.toBe("");
+      expect(item.content.problem.trim()).not.toBe("");
+      expect(item.content.coreConcept.trim()).not.toBe("");
+      expect(item.content.javaWebUse.trim()).not.toBe("");
+      expect(item.content.boundary.trim()).not.toBe("");
       expect(item.editorial).toMatchObject({
         publishedAt: "2026-09-26",
         reviewedAt: "2026-09-26",
@@ -236,12 +236,12 @@ describe("public content catalog", () => {
         item.sources.every((source) => source.checkedAt === "2026-09-26"),
       ).toBe(true);
     }
-    expect(validateCatalog(catalog)).toEqual({ valid: true, errors: [] });
+    expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
   it("rejects duplicate content IDs", () => {
     expect(
-      validateCatalog({
+      validateTopics({
         version: "1",
         items: [completeItem("duplicate"), completeItem("duplicate")],
       }),
@@ -250,7 +250,7 @@ describe("public content catalog", () => {
 
   it("rejects a topic without an editorial source", () => {
     expect(
-      validateCatalog({
+      validateTopics({
         version: "1",
         items: [{ ...completeItem("missing-source"), sources: [] }],
       }),

@@ -28,10 +28,10 @@ module.exports = {
       comment: "Die App importiert nur öffentliche Vertikal-Einstiegspunkte.",
       severity: "error",
       from: { path: "^src/app/" },
-      to: { path: "^src/verticals/(catalog|learning-checks)/(?!index\\.ts$)" },
+      to: { path: "^src/verticals/(topics|learning-checks)/(?!index\\.ts$)" },
     },
     ...[
-      "catalog",
+      "topics",
       "learning-progress",
       "competency-profile",
       "learning-checks",

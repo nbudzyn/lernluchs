@@ -1,4 +1,4 @@
-import type { Catalog, CatalogValidation } from "./catalogContract";
+import type { TopicCollection, TopicValidation } from "./topicContract";
 import { validateQuestionPool } from "./validateQuestionPool";
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
@@ -21,7 +21,7 @@ function hasText(value: string): boolean {
   return value.trim().length > 0;
 }
 
-export function validateCatalog(candidate: Catalog): CatalogValidation {
+export function validateTopics(candidate: TopicCollection): TopicValidation {
   const seenIds = new Set<string>();
   const errors: string[] = [];
 
@@ -33,12 +33,12 @@ export function validateCatalog(candidate: Catalog): CatalogValidation {
 
     if (
       !hasText(item.title) ||
-      !hasText(item.learningCard.problem) ||
-      !hasText(item.learningCard.coreConcept) ||
-      !hasText(item.learningCard.javaWebUse) ||
-      !hasText(item.learningCard.boundary)
+      !hasText(item.content.problem) ||
+      !hasText(item.content.coreConcept) ||
+      !hasText(item.content.javaWebUse) ||
+      !hasText(item.content.boundary)
     ) {
-      errors.push(`Incomplete learning card for item: ${item.id}`);
+      errors.push(`Incomplete topic: ${item.id}`);
     }
 
     if (

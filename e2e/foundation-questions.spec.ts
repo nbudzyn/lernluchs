@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
-import foundationQuestions from "../src/verticals/catalog/foundationQuestions.json" with { type: "json" };
+import foundationQuestions from "../src/verticals/topics/foundationQuestions.json" with { type: "json" };
 import { congratulations } from "../src/verticals/learning-checks/congratulations";
 
 const foundationTitles: Record<keyof typeof foundationQuestions, string> = {
@@ -19,6 +19,9 @@ test("each icon button starts the corresponding learning check", async ({
 }) => {
   for (const title of Object.values(foundationTitles)) {
     await page.goto("/");
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Lernluchs – Themen" }),
+    ).toBeVisible();
     const button = page.getByRole("button", {
       name: `Fragen starten: ${title}`,
     });
@@ -26,6 +29,9 @@ test("each icon button starts the corresponding learning check", async ({
     await expect(button.locator("svg[aria-hidden='true']")).toBeVisible();
     await button.focus();
     await page.keyboard.press("Enter");
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Lernluchs" }),
+    ).toBeVisible();
     await expect(
       page.getByRole("heading", { name: `${title}: Fragen` }),
     ).toBeVisible();
@@ -79,7 +85,7 @@ async function answerCurrent(page: Page, chooseCorrect: boolean) {
     .click();
 }
 
-test("answers five questions correctly from the closed card and shows a summary", async ({
+test("answers five questions correctly from the topic list and shows a summary", async ({
   page,
 }) => {
   await page.goto("/");

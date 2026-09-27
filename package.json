@@ -13,7 +13,7 @@
     "lint": "oxlint --type-aware --deny-warnings src tests e2e scripts vite.config.ts playwright.config.ts dependency-cruiser.cjs",
     "test": "vitest",
     "test:e2e": "playwright test",
-    "validate:content": "vitest run tests/verticals/catalog/catalog.test.ts",
+    "validate:content": "vitest run tests/verticals/topics/topics.test.ts",
     "check:architecture": "depcruise --config dependency-cruiser.cjs \"src/**/*.ts\" \"src/**/*.tsx\" --output-type err",
     "check:licenses": "node scripts/check-licenses.mjs",
     "build": "vite build && node scripts/verify-build.mjs",

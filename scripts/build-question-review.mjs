@@ -66,7 +66,7 @@ for (const card of ["H", "A", "E", "P", "R", "S"]) {
 const prompt = [
   "# Unabhängige fachliche Prüfung der Grundlagenfragen",
   "",
-  "Bitte prüfe alle 150 Fragen unabhängig anhand der jeweils angegebenen Originalquelle. Prüfe insbesondere fachliche Richtigkeit, genau eine richtige Antwort, plausible falsche Optionen, voneinander unterschiedliche Fakten innerhalb jeder Karte, Überschneidungen zwischen Karten, die Erklärungen jeder Option und ob die konkrete Quelle die Aussage wirklich trägt. Verwende nur die verlinkten Originalquellen als Beleg; wenn eine Seite nicht erreichbar ist, kennzeichne die Frage als ungeprüft. Gib ausschließlich eine sehr kurze Liste beanstandeter IDs mit je einem knappen Grund zurück. Wenn nichts zu beanstanden ist, antworte: Keine Beanstandungen.",
+  "Bitte prüfe alle 150 Fragen unabhängig anhand der jeweils angegebenen Originalquelle. Prüfe insbesondere fachliche Richtigkeit, genau eine richtige Antwort, plausible falsche Optionen, voneinander unterschiedliche Fakten innerhalb jedes Themas, Überschneidungen zwischen Themen, die Erklärungen jeder Option und ob die konkrete Quelle die Aussage wirklich trägt. Verwende nur die verlinkten Originalquellen als Beleg; wenn eine Seite nicht erreichbar ist, kennzeichne die Frage als ungeprüft. Gib ausschließlich eine sehr kurze Liste beanstandeter IDs mit je einem knappen Grund zurück. Wenn nichts zu beanstanden ist, antworte: Keine Beanstandungen.",
   "",
   ...questions.flatMap(
     ({
@@ -144,8 +144,8 @@ if (process.argv.includes("--integrate")) {
     });
   }
   writeFileSync(
-    "src/verticals/catalog/foundationQuestions.json",
+    "src/verticals/topics/foundationQuestions.json",
     `${JSON.stringify(byCard, null, 2)}\n`,
   );
-  console.log("Reviewed questions integrated into the catalog data file.");
+  console.log("Reviewed questions integrated into the topics data file.");
 }

@@ -7,13 +7,20 @@ const appFiles = import.meta.glob("../../src/app/**/*.{ts,tsx}", {
   eager: true,
 }) as Record<string, string>;
 
+const legacyVerticalFiles = import.meta.glob(
+  "../../src/verticals/catalog/**/*",
+);
+
 describe("public vertical entrypoints", () => {
-  it("keeps app imports out of catalog and learning-check internals", () => {
+  it("uses the topics vertical instead of the legacy directory", () => {
+    expect(Object.keys(legacyVerticalFiles)).toEqual([]);
+  });
+  it("keeps app imports out of topics and learning-check internals", () => {
     const violations = Object.entries(appFiles).flatMap(([path, contents]) => {
       return [...contents.matchAll(/from\s+["']([^"']+)["']/g)]
         .map((match) => match[1])
         .filter((specifier) =>
-          /verticals\/(catalog|learning-checks)\//.test(specifier),
+          /verticals\/(topics|learning-checks)\//.test(specifier),
         )
         .map((specifier) => `${path}: ${specifier}`);
     });

@@ -1,21 +1,21 @@
 # Quellengebundene Auswahlfragen erstellen und prüfen
 
-Diese Regeln gelten für jede Story, die neue Fragen für Lernkarten erstellt. Die jeweilige Änderungs-Spec bestimmt die betroffenen Karten
-und den Fragenablauf. Für die Auswahl oder Änderung von Kartenquellen gelten zusätzlich die [Quellenregeln](source-selection.md); für
-redaktionelle Metadaten und die fachliche Prüfung der Karten gilt die [redaktionelle Richtlinie](editorial-policy.md).
+Diese Regeln gelten für jede Story, die neue Fragen für Themen erstellt. Die jeweilige Änderungs-Spec bestimmt die betroffenen Themen
+und den Fragenablauf. Für die Auswahl oder Änderung von Themenquellen gelten zusätzlich die [Quellenregeln](source-selection.md); für
+redaktionelle Metadaten und die fachliche Prüfung der Themen gilt die [redaktionelle Richtlinie](editorial-policy.md).
 
 ## Fragen finden und abgrenzen
 
-- Leite Fragen aus den Quellen der jeweiligen Karte ab, vorrangig aus Primärquellen. Prüfe die Originalseite auf Aktualität, Erreichbarkeit
+- Leite Fragen aus den Quellen des jeweiligen Themas ab, vorrangig aus Primärquellen. Prüfe die Originalseite auf Aktualität, Erreichbarkeit
   und darauf, ob sie genau die gefragte Aussage trägt. Bei deutlichem Widerspruch zwischen Primär- und Sekundärquelle hat die Primärquelle
   Vorrang; halte verbleibende Unsicherheit fest.
 - Frage nach einem belegten Fakt, einer klaren Empfehlung oder dem beispielhaft eindeutigen Ergebnis einer Trade-off-Abwägung. Vertiefende
   Details aus Quellen sind erwünscht, wenn sie für KI-gestützte Java-/Web-Entwicklung relevant sind. Setze kein Wissen voraus, das weder
-  die Karte noch ihre zugeordneten Quellen tragen.
-- Halte die fachlichen Schwerpunkte der Karten getrennt. Fragen innerhalb eines Pools sollen fachlich unterschiedlich sein und nicht
+  das Thema noch die ihm zugeordneten Quellen tragen.
+- Halte die fachlichen Schwerpunkte der Themen getrennt. Fragen innerhalb eines Pools sollen fachlich unterschiedlich sein und nicht
   dieselbe Aussage nur umformulieren.
-- Ergänze oder ersetze Quellen und korrigiere eine Karte bei Bedarf gezielt nach den Quellenregeln. Vermeide dadurch schwammige Karten und
-  Überschneidungen mit anderen Karten.
+- Ergänze oder ersetze Quellen und korrigiere ein Thema bei Bedarf gezielt nach den Quellenregeln. Vermeide dadurch schwammige Themen und
+  Überschneidungen mit anderen Themen.
 
 ## Frage und Antworten formulieren
 
@@ -58,7 +58,7 @@ redaktionelle Metadaten und die fachliche Prüfung der Karten gilt die [redaktio
 
 1. Prüfe jede Frage samt Lösung, allen Optionen, Erklärungen und Quellenbezügen fachlich gegen die Originalquellen. Dokumentiere Prüftag,
    Quellen, Unsicherheiten, bewusst ausgelassene Aspekte und begründete Quellenänderungen in der Änderungs-Spec.
-2. Erstelle für eine unabhängige externe KI-Prüfung einen kopierbaren Prompt mit **allen Fragen der betroffenen Karten** einschließlich
+2. Erstelle für eine unabhängige externe KI-Prüfung einen kopierbaren Prompt mit **allen Fragen der betroffenen Themen** einschließlich
    stabiler Fragen-IDs, Optionen, richtiger Antwort, Erklärung je Option und Quellen-URLs. Der Prompt soll fachliche Fehler, mehrdeutige
    Antworten, schwache Ablenkungen und unzutreffende Quellenbezüge prüfen und nur eine sehr kurze Liste beanstandeter Fragen-IDs
    zurückgeben. Der Nutzer führt diese Prüfung aus und gibt das Ergebnis zurück.

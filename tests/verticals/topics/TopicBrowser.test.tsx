@@ -1,16 +1,16 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 
-import { CatalogBrowser } from "../../../src/verticals/catalog/CatalogBrowser";
-import { catalog } from "../../../src/verticals/catalog/catalog";
+import { TopicBrowser } from "../../../src/verticals/topics/TopicBrowser";
+import { topics } from "../../../src/verticals/topics/topics";
 
 afterEach(cleanup);
 
-describe("CatalogBrowser", () => {
+describe("TopicBrowser", () => {
   it("shows an accessible icon button for each available learning check", () => {
-    render(<CatalogBrowser onStartQuestions={() => {}} />);
+    render(<TopicBrowser onStartQuestions={() => {}} />);
 
-    const quizItems = catalog.items.filter((item) => item.questions);
+    const quizItems = topics.items.filter((item) => item.questions);
     expect(quizItems).toHaveLength(6);
     for (const item of quizItems) {
       const label = `Fragen starten: ${item.title}`;
@@ -22,7 +22,7 @@ describe("CatalogBrowser", () => {
   });
 
   it("shows all fifteen topics in one semantic text overview", () => {
-    render(<CatalogBrowser />);
+    render(<TopicBrowser />);
 
     expect(screen.getByRole("navigation", { name: "Lernthemen" })).toBeTruthy();
     expect(screen.getAllByRole("button")).toHaveLength(15);
@@ -72,7 +72,7 @@ describe("CatalogBrowser", () => {
   ])(
     "shows the new card %s with content, metadata, and sources",
     (title, sourceTitle) => {
-      render(<CatalogBrowser />);
+      render(<TopicBrowser />);
       fireEvent.click(screen.getByRole("button", { name: title }));
 
       expect(screen.getByRole("article", { name: title })).toBeTruthy();
@@ -91,8 +91,8 @@ describe("CatalogBrowser", () => {
     },
   );
 
-  it("shows the complete learning card after a user selects a topic", () => {
-    render(<CatalogBrowser />);
+  it("shows the complete topic after a user selects it", () => {
+    render(<TopicBrowser />);
 
     const topic = screen.getByRole("button", {
       name: "Mensch und KI: Verantwortung bleibt menschlich",
@@ -121,7 +121,7 @@ describe("CatalogBrowser", () => {
   });
 
   it("shows editorial metadata and a consciously activated source link", () => {
-    render(<CatalogBrowser />);
+    render(<TopicBrowser />);
 
     expect(
       screen.queryByRole("link", {
@@ -152,7 +152,7 @@ describe("CatalogBrowser", () => {
   });
 
   it("shows primary sources first and hides an empty secondary group", () => {
-    render(<CatalogBrowser />);
+    render(<TopicBrowser />);
     fireEvent.click(
       screen.getByRole("button", { name: "Fachverhalten mit TDD absichern" }),
     );
@@ -175,9 +175,9 @@ describe("CatalogBrowser", () => {
   });
 
   it("marks German source titles without changing the link", () => {
-    const item = catalog.items[0];
+    const item = topics.items[0];
     render(
-      <CatalogBrowser
+      <TopicBrowser
         items={[
           {
             ...item,

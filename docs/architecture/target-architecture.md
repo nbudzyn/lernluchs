@@ -4,8 +4,8 @@
 
 Lernluchs ist eine clientseitige React-/TypeScript-Anwendung. Vite erzeugt
 statische Dateien für GitHub Pages. Ein versionierter, öffentlicher Katalog
-liefert Lernkarten, Quellen und redaktionelle Metadaten. Die App zeigt diese
-Inhalte in einer Liste an. Die App verbindet den Inhaltskatalog über seinen
+liefert Themen, Quellen und redaktionelle Metadaten. Die App zeigt diese
+Inhalte in einer Liste an. Die App verbindet die Vertikale Themen über ihren
 öffentlichen Einstiegspunkt mit der Lerncheck-Vertikale. Der Katalog enthält
 den quellengeprüften Fragenbestand; der Lerncheck hält Frageauswahl, Antworten
 und Ergebnis nur im React-Zustand. Vitest prüft Verhalten und Katalog,

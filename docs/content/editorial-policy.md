@@ -4,10 +4,10 @@
 
 Die Anwendung und ihre Inhalte sind deutsch. Etablierte englische Fachbegriffe
 wie „Worktree“, „Spec-Driven Development“ oder „Context Engineering“ bleiben
-unübersetzt. Lernkarten sind knapp, konkret und anwendungsnah; sie ersetzen
+unübersetzt. Themen sind knapp, konkret und anwendungsnah; sie ersetzen
 keine langen Originaldokumentationen.
 
-Jede Lernkarte beantwortet mindestens: Welches Problem löst das Thema? Was ist
+Jedes Thema beantwortet mindestens: Welches Problem löst es? Was ist
 das Kernkonzept? Wo würde es in Java-/Web-Entwicklung eingesetzt? Welche
 Grenze oder welches Gegenbeispiel ist wichtig?
 

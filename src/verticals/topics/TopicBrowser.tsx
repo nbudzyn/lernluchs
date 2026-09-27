@@ -1,16 +1,16 @@
 import { useState } from "react";
 
 import type { Question } from "../../shared/question";
-import { catalog } from "./catalog";
-import type { CatalogItem, CatalogSource } from "./catalogContract";
-import "./CatalogBrowser.css";
+import { topics } from "./topics";
+import type { Topic, TopicSource } from "./topicContract";
+import "./TopicBrowser.css";
 
 function SourceGroup({
   title,
   sources,
 }: {
   title: string;
-  sources: CatalogSource[];
+  sources: TopicSource[];
 }) {
   if (sources.length === 0) return null;
 
@@ -31,21 +31,21 @@ function SourceGroup({
   );
 }
 
-export function CatalogBrowser({
-  items = catalog.items,
+export function TopicBrowser({
+  items = topics.items,
   onStartQuestions,
 }: {
-  items?: CatalogItem[];
+  items?: Topic[];
   onStartQuestions?: (title: string, questions: Question[]) => void;
 }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selectedItem = items.find((item) => item.id === selectedId);
   const cardSections = selectedItem
     ? [
-        ["Problem", selectedItem.learningCard.problem],
-        ["Kernkonzept", selectedItem.learningCard.coreConcept],
-        ["Java-/Web-Einsatz", selectedItem.learningCard.javaWebUse],
-        ["Wichtige Grenze", selectedItem.learningCard.boundary],
+        ["Problem", selectedItem.content.problem],
+        ["Kernkonzept", selectedItem.content.coreConcept],
+        ["Java-/Web-Einsatz", selectedItem.content.javaWebUse],
+        ["Wichtige Grenze", selectedItem.content.boundary],
       ]
     : [];
   const editorialEntries = selectedItem
@@ -79,7 +79,7 @@ export function CatalogBrowser({
         <ul>
           {items.map((item) => (
             <li key={item.id}>
-              <div className="catalog-topic-actions">
+              <div className="topic-actions">
                 <button
                   aria-pressed={item.id === selectedId}
                   onClick={() => setSelectedId(item.id)}
@@ -116,8 +116,8 @@ export function CatalogBrowser({
       </nav>
 
       {selectedItem && (
-        <article aria-labelledby="learning-card-title">
-          <h2 id="learning-card-title">{selectedItem.title}</h2>
+        <article aria-labelledby="topic-title">
+          <h2 id="topic-title">{selectedItem.title}</h2>
 
           {cardSections.map(([heading, text]) => (
             <section key={heading}>

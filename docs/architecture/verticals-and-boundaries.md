@@ -3,21 +3,21 @@
 Vertikalen begrenzen fachliche Verantwortung und Änderungen. Die bestehenden
 Importregeln werden mit dependency-cruiser als Buildfehler geprüft.
 
-## Bestehende Vertikale: Inhaltskatalog
+## Bestehende Vertikale: Themen
 
-Der Inhaltskatalog verantwortet den versionierten, öffentlich lesbaren Bestand
-aus Lernkarten, Quellen und Aktualitätsmetadaten sowie dessen Anzeige. Er
-enthält auch die geprüften Fragen der sechs Grundlagenkarten, aber keinen
-persönlichen Zustand und hängt von keiner anderen Vertikale ab. Sein
-öffentlicher Einstiegspunkt exportiert die Themenliste und den Kartentyp.
+Die Vertikale Themen verantwortet den versionierten, öffentlich lesbaren Bestand
+aus Themen, Quellen und Aktualitätsmetadaten sowie dessen Anzeige. Sie
+enthält auch die geprüften Fragen der sechs Grundlagenthemen, aber keinen
+persönlichen Zustand und hängt von keiner anderen Vertikale ab. Ihr
+öffentlicher Einstiegspunkt exportiert die Themenliste und den Thementyp.
 
 ## Bestehende Vertikale: Lernchecks
 
-Der Lerncheck erhält die Fragen der gewählten Karte über seinen öffentlichen
+Der Lerncheck erhält die Fragen des gewählten Themas über seinen öffentlichen
 Einstiegspunkt. Er wählt fünf verschiedene Fragen, mischt die Optionen und
 verwaltet Antworten und Ergebnis flüchtig. Die Vertikale importiert keine
 Katalogdaten. `src/app` verbindet die beiden Einstiegspunkte und hält nur die
-aktuell gewählte Karte, ohne fachliche Logik zu übernehmen.
+aktuell gewählte Thema, ohne fachliche Logik zu übernehmen.
 
 ## Übergreifende Grenzen
 

@@ -1,1 +1,0 @@
-export { CatalogBrowser } from "./CatalogBrowser";

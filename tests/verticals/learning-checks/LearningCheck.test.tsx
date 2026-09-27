@@ -38,7 +38,7 @@ describe("LearningCheck", () => {
   it("asks five different questions one at a time and reveals the result only at the end", () => {
     render(
       <LearningCheck
-        title="Testkarte"
+        title="Testthema"
         questions={questions}
         onExit={vi.fn()}
         random={() => 0}
@@ -67,7 +67,7 @@ describe("LearningCheck", () => {
   it("can select the last of the 50 congratulations", () => {
     render(
       <LearningCheck
-        title="Testkarte"
+        title="Testthema"
         questions={questions}
         onExit={vi.fn()}
         random={() => 0.999999}
@@ -83,7 +83,7 @@ describe("LearningCheck", () => {
   it("shows the chosen wrong option, explanations, and a deliberate source link", () => {
     render(
       <LearningCheck
-        title="Testkarte"
+        title="Testthema"
         questions={questions}
         onExit={vi.fn()}
         random={() => 0}
@@ -106,7 +106,7 @@ describe("LearningCheck", () => {
     const onExit = vi.fn();
     render(
       <LearningCheck
-        title="Testkarte"
+        title="Testthema"
         questions={questions}
         onExit={onExit}
         random={() => 0}
@@ -123,7 +123,7 @@ describe("LearningCheck", () => {
   it("accepts only the first click on the current question", () => {
     render(
       <LearningCheck
-        title="Testkarte"
+        title="Testthema"
         questions={questions}
         onExit={vi.fn()}
         random={() => 0}
@@ -138,7 +138,7 @@ describe("LearningCheck", () => {
   it("shuffles answer options so the correct answer is not always first", () => {
     render(
       <LearningCheck
-        title="Testkarte"
+        title="Testthema"
         questions={questions}
         onExit={vi.fn()}
         random={() => 0}

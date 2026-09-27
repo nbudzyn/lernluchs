@@ -9,7 +9,7 @@ export type SourceType =
   | "conference-paper"
   | "repository";
 
-export type CatalogSource = {
+export type TopicSource = {
   title: string;
   url: string;
   type: SourceType;
@@ -18,7 +18,7 @@ export type CatalogSource = {
   checkedAt: string;
 };
 
-export type LearningCard = {
+export type TopicContent = {
   language: "de";
   problem: string;
   coreConcept: string;
@@ -33,21 +33,21 @@ export type EditorialMetadata = {
   status: EditorialStatus;
 };
 
-export type CatalogItem = {
+export type Topic = {
   id: string;
   title: string;
   questions?: Question[];
-  learningCard: LearningCard;
+  content: TopicContent;
   editorial: EditorialMetadata;
-  sources: CatalogSource[];
+  sources: TopicSource[];
 };
 
-export type Catalog = {
+export type TopicCollection = {
   version: string;
-  items: CatalogItem[];
+  items: Topic[];
 };
 
-export type CatalogValidation = {
+export type TopicValidation = {
   valid: boolean;
   errors: string[];
 };

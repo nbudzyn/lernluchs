@@ -1,4 +1,4 @@
-import type { Catalog } from "./catalogContract";
+import type { TopicCollection } from "./topicContract";
 import foundationQuestions from "./foundationQuestions.json";
 
 type FoundationId = keyof typeof foundationQuestions;
@@ -13,14 +13,14 @@ function activeEditorial(reviewDueAt: string, publishedAt = "2026-09-20") {
   };
 }
 
-export const catalog: Catalog = {
+export const topics: TopicCollection = {
   version: "3",
   items: [
     {
       id: "human-ai-responsibility",
       title: "Mensch und KI: Verantwortung bleibt menschlich",
       questions: questionsFor("human-ai-responsibility"),
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "KI-Ausgaben können plausibel wirken, obwohl Kontext, Risiken oder Folgen falsch eingeschätzt sind.",
@@ -47,7 +47,7 @@ export const catalog: Catalog = {
       id: "problem-understanding-and-change-boundaries",
       title: "Problem verstehen und Änderungsgrenzen setzen",
       questions: questionsFor("problem-understanding-and-change-boundaries"),
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "Wer direkt eine Lösung implementiert, kann Ursache, Nutzen, betroffene Teile und Nebenwirkungen verfehlen.",
@@ -82,7 +82,7 @@ export const catalog: Catalog = {
       id: "agents-md",
       title: "AGENTS.md: dauerhafter Kontext für Coding-Agenten",
       questions: questionsFor("agents-md"),
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "Agenten kennen projektspezifische Befehle, Konventionen und Risiken nicht automatisch und erhalten sie sonst bei jeder Aufgabe uneinheitlich.",
@@ -116,7 +116,7 @@ export const catalog: Catalog = {
     {
       id: "coding-agent-context-and-trust-boundaries",
       title: "Kontext und Vertrauensgrenzen für Coding-Agenten",
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "Ein Coding-Agent kann Anweisungen aus fremden Issues, Webseiten oder Dateien mit dem eigentlichen Auftrag verwechseln und dadurch unerwünschte Aktionen auslösen.",
@@ -142,7 +142,7 @@ export const catalog: Catalog = {
     {
       id: "protect-secrets-and-sensitive-data-with-ai",
       title: "Geheimnisse und sensible Daten beim KI-Einsatz schützen",
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "Prompts, Dateien und Werkzeugausgaben können Zugangsdaten, personenbezogene Daten oder vertraulichen Code enthalten und so ungewollt weitergeben.",
@@ -177,7 +177,7 @@ export const catalog: Catalog = {
       id: "ears-requirements",
       title: "EARS: Anforderungen präzise formulieren",
       questions: questionsFor("ears-requirements"),
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "Vage Anforderungen lassen unterschiedliche Interpretationen zu und erschweren Abnahme und automatisierte Tests.",
@@ -203,7 +203,7 @@ export const catalog: Catalog = {
     {
       id: "module-boundaries-and-public-interfaces",
       title: "Modulgrenzen und öffentliche Schnittstellen gestalten",
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "Ohne klare Modulgrenzen greifen Änderungen auf interne Details anderer Teile zu und ziehen unerwartete Folgen nach sich.",
@@ -230,7 +230,7 @@ export const catalog: Catalog = {
       id: "research-plan-tasks",
       title: "Research, Plan und Tasks trennen",
       questions: questionsFor("research-plan-tasks"),
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "Wenn Recherche, Entscheidung und Implementierung vermischt werden, bleiben Annahmen unsichtbar und Aufgaben werden zu groß oder widersprüchlich.",
@@ -275,7 +275,7 @@ export const catalog: Catalog = {
       id: "spec-driven-development-openspec",
       title: "Spec-Driven Development mit OpenSpec",
       questions: questionsFor("spec-driven-development-openspec"),
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "Wenn Anforderungen nur im Chat stehen, sind sie schwer prüfbar und Änderungen verlieren ihre nachvollziehbare Absicht.",
@@ -317,7 +317,7 @@ export const catalog: Catalog = {
     {
       id: "tdd-for-domain-behavior",
       title: "Fachverhalten mit TDD absichern",
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "Ohne prüfbare Beispiele kann eine Änderung fachliches Verhalten unbemerkt verschieben.",
@@ -351,7 +351,7 @@ export const catalog: Catalog = {
     {
       id: "archunit-for-java-architecture",
       title: "Java-Architekturregeln mit ArchUnit prüfen",
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "Vereinbarte Paket- und Schichtgrenzen können bei späteren Codeänderungen unbemerkt verletzt werden.",
@@ -377,14 +377,14 @@ export const catalog: Catalog = {
     {
       id: "playwright-for-web-flows",
       title: "Webabläufe mit Playwright prüfen",
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "Komponenten- und Unit-Tests übersehen Fehler im Zusammenspiel von Oberfläche, Navigation und Browser.",
         coreConcept:
           "Playwright führt Webabläufe im Browser aus und prüft sichtbares Verhalten mit Locators und wiederholenden Assertions.",
         javaWebUse:
-          "Ein Test öffnet eine Lernkarte im Browser und prüft, dass Überschrift, Inhalt und Quellen sichtbar werden.",
+          "Ein Test öffnet ein Thema im Browser und prüft, dass Überschrift, Inhalt und Quellen sichtbar werden.",
         boundary:
           "Ein Browser-Test deckt nur den geprüften Ablauf und die gewählten Browser ab; fachliche Regeln brauchen weiterhin gezielte Tests.",
       },
@@ -404,7 +404,7 @@ export const catalog: Catalog = {
       id: "web-xss-and-safe-dom",
       title:
         "Web-Sicherheitsrisiken wie XSS und unsichere DOM-Nutzung erkennen",
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "Ungeprüfte Daten können beim Einfügen in HTML oder unsichere DOM-Schnittstellen als ausführbarer Code interpretiert werden.",
@@ -430,7 +430,7 @@ export const catalog: Catalog = {
     {
       id: "dependency-security-assessment",
       title: "Abhängigkeiten und Sicherheitslücken risikobasiert bewerten",
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "Eine neue oder aktualisierte Bibliothek kann bekannte Schwachstellen, Lizenzkonflikte oder unnötige Angriffsfläche einführen.",
@@ -464,7 +464,7 @@ export const catalog: Catalog = {
     {
       id: "review-and-accept-ai-generated-changes",
       title: "KI-generierte Änderungen prüfen und übernehmen",
-      learningCard: {
+      content: {
         language: "de",
         problem:
           "Ein plausibler KI-Patch kann Anforderungen verfehlen, Sicherheitsregeln verletzen oder unnötige Abhängigkeiten einführen.",

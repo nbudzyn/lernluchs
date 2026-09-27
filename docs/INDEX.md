@@ -10,7 +10,7 @@ die für die konkrete Aufgabe gelten.
 | einen Begriff nachschlagen willst | [Glossar](product/glossary.md) |
 | die Reihenfolge geplanter Stories brauchst | [Story-Backlog](product/story-backlog.md) |
 | in einer Vertikalen implementierst | die passende Änderungs-Spec und [Vertikalen und Grenzen](architecture/verticals-and-boundaries.md) |
-| einen Lerninhalt oder eine Quelle pflegst | [Redaktionelle Richtlinie](content/editorial-policy.md) |
+| ein Thema oder eine Quelle pflegst | [Redaktionelle Richtlinie](content/editorial-policy.md) |
 | neue Auswahlfragen erstellst oder prüfst | [Regeln für Auswahlfragen](content/question-authoring.md) |
 | Tests, CI, Sicherheit oder Releases änderst | [Qualitätsstrategie](quality/verification-strategy.md) |
 | eine neue Änderung beginnst oder abschließt | [Änderungs-Workflow](changes/README.md) |
