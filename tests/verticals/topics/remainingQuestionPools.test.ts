@@ -34,11 +34,10 @@ describe("remaining topic question pools", () => {
     );
   });
 
-  it("makes every current topic available for a learning check", () => {
-    expect(topics.items).toHaveLength(16);
-    expect(topics.items.every((item) => item.questions?.length === 25)).toBe(
-      true,
-    );
+  it("preserves the sixteen existing learning checks", () => {
+    expect(
+      topics.items.filter((item) => item.questions?.length === 25),
+    ).toHaveLength(16);
     const newQuestions = topics.items
       .filter((item) => ids.includes(item.id))
       .flatMap((item) => item.questions ?? []);

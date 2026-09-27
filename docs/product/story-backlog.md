@@ -7,55 +7,20 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Fragenbestand in Vertikal learning-checks
+## Regelmäßig nachfragen
 
-Fragenbestand aus der Vertikale topics in die Vertikale learning-checks verschieben.
+Regelmäßig nachfragen:
 
-- Die Vertikale "Fragen" kennt durchaus die topics
-- Die Vertikale "Themen" (topics) kennt keine Fragen (zyklische Abhängikeit verhindern)
-    - Möglicherweise muss app die topics und die learning-checks miteinander verknüpfen, damit die Themenübersichts-GUI den Lerncheck
-      aufrufen kann.
-
-Nach Implementierung Dokumentation anpassen: Zumindest target-architecture, verticals-and-boundaries
-
-## Lernchecks für den vierten Lernpfad ergänzen
-
-Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
-
-Die vier neuen Themen aus „Java-/Web-Code technisch analysieren und modernisieren“ erhalten quellengebundene Fragenpools und Auswahlchecks
-einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie
-werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
-
-Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
-
-Außerdem werden alle für die Vertikalen "Themen" und "Lernchecks" relevanten Begriffe im Glossar mit genau einem englischen Begriff ergänzt
-(sofern noch nicht vorhanden). Betroffene englische Bezeichner werden innerhalb der beiden Vertikalen vereinheitlicht, ohne Fachlogik zu
-ändern.
-
-Vertikalen: Themen, Lernchecks
-
-Dokumentation nach Umsetzung: Fragenumfang des vierten Pfads sehr knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
-
-## Lernchecks für den fünften Lernpfad ergänzen
-
-Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
-
-Die sechs neuen Themen aus „Parallele Coding-Agenten kritisch erproben“ erhalten quellengebundene Fragenpools und Auswahlchecks
-einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie
-werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
-
-Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
-
-Vertikalen: Themen, Lernchecks
-
-Dokumentation nach Umsetzung: Fragenumfang des fünften Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
+- Können wir ein gecodetes kleines Tool gebrauchen, dass dir beim nächsten Mal bei Aufgabe X hilft?
+- Würde uns ein eigener Skill helfen?
+- Sollte man die Doku fürs nächste Mal anpassen, um Zeit / Tokens zu sparen?
 
 ## Ausstehende Lernpfade
 
 Die Vertikale Themen wird um weitere Lernpfade erweitert. Dazu werden alle Themen aus der KI-Tool-Landkarte importiert und auf Lernpfade
 verteilt. Auch Themen, die schon übernommen wurden, aber keinen Lernpfad haben, werden in einen Lernpfad aufgenommen.
 
-- AUSNAHME: Themen, die inhatlich ganz unklar sind (missverstandene Toolnamen, veraltete Konzepte o.Ä.)
+- AUSNAHME: Themen, die inhatlich ganz unklar sind (nicht im KI-Umfeld nachvollziehbare Toolnamen) oder deutlich veraltete Konzepte
 
 Die Lernpfade können neue, aber auch schon existierende Themen verwenden.
 
@@ -78,6 +43,48 @@ Abgrenzung:
 - Die Lern-App führt keine Coding-Agenten aus.
 
 Vertikale: Themen
+
+## Lernchecks für den vierten Lernpfad ergänzen
+
+Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
+
+Die vier neuen Themen aus „Java-/Web-Code technisch analysieren und modernisieren“ erhalten quellengebundene Fragenpools und Auswahlchecks
+einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie
+werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+
+Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
+
+Außerdem werden alle für die Vertikalen "Themen" und "Lernchecks" relevanten Begriffe im Glossar mit genau einem englischen Begriff ergänzt
+(sofern noch nicht vorhanden). Betroffene englische Bezeichner werden innerhalb der beiden Vertikalen vereinheitlicht, ohne Fachlogik zu
+ändern.
+
+Außerdem (VOR PRÜFEN!) den Fragenbestand aus der Vertikale topics in die Vertikale learning-checks verschieben.
+
+- Die Vertikale learning-checks kennt durchaus die topics
+- Die Vertikale topics kennt keine Fragen (zyklische Abhängikeit verhindern)
+    - Möglicherweise muss app die topics und die learning-checks miteinander verknüpfen, damit die Themenübersichts-GUI den Lerncheck
+      aufrufen kann.
+
+Vertikalen: Themen, Lernchecks
+
+Dokumentation nach Umsetzung:
+
+- Zumindest target-architecture, verticals-and-boundaries
+- Fragenumfang des vierten Pfads sehr knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
+
+## Lernchecks für den fünften Lernpfad ergänzen
+
+Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
+
+Die sechs neuen Themen aus „Parallele Coding-Agenten kritisch erproben“ erhalten quellengebundene Fragenpools und Auswahlchecks
+einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie
+werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+
+Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
+
+Vertikalen: Themen, Lernchecks
+
+Dokumentation nach Umsetzung: Fragenumfang des fünften Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
 
 ## Ausstehende Lernchecks
 

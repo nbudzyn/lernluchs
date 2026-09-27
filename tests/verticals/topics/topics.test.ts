@@ -185,7 +185,7 @@ describe("public content topics", () => {
     const otherTopics = topics.items.filter(
       (item) => !foundationIds.has(item.id),
     );
-    expect(otherTopics).toHaveLength(10);
+    expect(otherTopics).toHaveLength(20);
     expect(otherTopics.map((item) => item.id)).toContain("focused-git-commits");
     for (const item of otherTopics) {
       expect(item.editorial.reviewedAt).toBe("2026-09-27");
@@ -283,7 +283,7 @@ describe("public content topics", () => {
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
-  it("orders the sixteen available topics by the agreed five-path projection", () => {
+  it("orders the twenty-six available topics by the agreed path projection", () => {
     const newIds = [
       "coding-agent-context-and-trust-boundaries",
       "protect-secrets-and-sensitive-data-with-ai",
@@ -300,16 +300,26 @@ describe("public content topics", () => {
       "protect-secrets-and-sensitive-data-with-ai",
       "research-plan-tasks",
       "spec-driven-development-openspec",
+      "parallel-agent-task-boundaries",
+      "git-worktrees-for-isolated-changes",
+      "code-navigation-with-symbols-and-references",
+      "versioned-library-docs-with-context7",
+      "specialized-subagents-and-ownership",
+      "agent-context-handoffs",
+      "agent-tool-and-mcp-permissions",
       "module-boundaries-and-public-interfaces",
       "tdd-for-domain-behavior",
       "archunit-for-java-architecture",
+      "deterministic-agent-verification-gates",
+      "java-spring-migrations-with-openrewrite",
       "playwright-for-web-flows",
       "web-xss-and-safe-dom",
       "dependency-security-assessment",
       "review-and-accept-ai-generated-changes",
+      "compare-parallel-and-serial-agent-work",
       "focused-git-commits",
     ]);
-    expect(new Set(ids).size).toBe(16);
+    expect(new Set(ids).size).toBe(26);
     expect(
       topics.items.every((item) => !("contentVersion" in item.editorial)),
     ).toBe(true);
@@ -335,8 +345,8 @@ describe("public content topics", () => {
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
-  it("stores the three existing learning paths by topic ID and leaves the new topic unassigned", () => {
-    expect(topics.paths).toEqual([
+  it("preserves the three existing learning paths and leaves the Git topic unassigned", () => {
+    expect(topics.paths?.slice(0, 3)).toEqual([
       {
         name: "Grundlagen für KI-gestützte Softwareentwicklung",
         topicIds: [

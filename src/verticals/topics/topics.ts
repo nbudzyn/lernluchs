@@ -2,6 +2,7 @@ import type { TopicCollection } from "./topicContract";
 import foundationQuestions from "./foundationQuestions.json";
 import { secondPathQuestions } from "./secondPathQuestions";
 import { remainingQuestions } from "./remainingQuestions";
+import { fifthPathTopics, fourthPathTopics } from "./newLearningTopics";
 
 type FoundationId = keyof typeof foundationQuestions;
 const questionsFor = (id: FoundationId) => foundationQuestions[id];
@@ -60,6 +61,32 @@ export const topics: TopicCollection = {
         "research-plan-tasks",
         "tdd-for-domain-behavior",
         "review-and-accept-ai-generated-changes",
+      ],
+    },
+    {
+      name: "Java-/Web-Code technisch analysieren und modernisieren",
+      topicIds: [
+        "git-worktrees-for-isolated-changes",
+        "code-navigation-with-symbols-and-references",
+        "versioned-library-docs-with-context7",
+        "module-boundaries-and-public-interfaces",
+        "tdd-for-domain-behavior",
+        "archunit-for-java-architecture",
+        "java-spring-migrations-with-openrewrite",
+        "playwright-for-web-flows",
+      ],
+    },
+    {
+      name: "Parallele Coding-Agenten kritisch erproben",
+      topicIds: [
+        "parallel-agent-task-boundaries",
+        "git-worktrees-for-isolated-changes",
+        "specialized-subagents-and-ownership",
+        "agent-context-handoffs",
+        "agent-tool-and-mcp-permissions",
+        "deterministic-agent-verification-gates",
+        "review-and-accept-ai-generated-changes",
+        "compare-parallel-and-serial-agent-work",
       ],
     },
   ],
@@ -348,6 +375,9 @@ export const topics: TopicCollection = {
         },
       ],
     },
+    fifthPathTopics[0],
+    ...fourthPathTopics.slice(0, 3),
+    ...fifthPathTopics.slice(1, 4),
     {
       id: "module-boundaries-and-public-interfaces",
       title: "Modulgrenzen und öffentliche Schnittstellen gestalten",
@@ -453,6 +483,8 @@ export const topics: TopicCollection = {
         },
       ],
     },
+    fifthPathTopics[4],
+    fourthPathTopics[3],
     {
       id: "playwright-for-web-flows",
       title: "Webabläufe mit Playwright prüfen",
@@ -578,6 +610,7 @@ export const topics: TopicCollection = {
         },
       ],
     },
+    fifthPathTopics[5],
     {
       id: "focused-git-commits",
       title: "Git-Commits klein und nachvollziehbar halten",

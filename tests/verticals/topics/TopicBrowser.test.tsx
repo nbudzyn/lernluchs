@@ -57,11 +57,15 @@ describe("TopicBrowser", () => {
     }
   });
 
-  it("shows all sixteen topics in one semantic text overview", () => {
+  it("shows all twenty-six topics in one semantic text overview", () => {
     render(<TopicBrowser />);
 
     expect(screen.getByRole("navigation", { name: "Lernthemen" })).toBeTruthy();
-    expect(screen.getAllByRole("button", { name: /./ })).toHaveLength(31);
+    expect(
+      screen
+        .getByRole("navigation", { name: "Lernthemen" })
+        .querySelectorAll("li"),
+    ).toHaveLength(26);
     expect(
       screen.getByRole("button", {
         name: "Mensch und KI: Verantwortung bleibt menschlich",
