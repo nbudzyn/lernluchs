@@ -1,0 +1,27 @@
+.catalog-topic-actions {
+  display: flex;
+  align-items: stretch;
+  gap: 0.25rem;
+}
+
+.quiz-start-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 25px;
+  height: 21px;
+  padding: 0 2px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.quiz-start-button svg {
+  width: 21px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}

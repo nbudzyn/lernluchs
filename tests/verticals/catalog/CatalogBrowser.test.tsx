@@ -7,6 +7,20 @@ import { catalog } from "../../../src/verticals/catalog/catalog";
 afterEach(cleanup);
 
 describe("CatalogBrowser", () => {
+  it("shows an accessible icon button for each available learning check", () => {
+    render(<CatalogBrowser onStartQuestions={() => {}} />);
+
+    const quizItems = catalog.items.filter((item) => item.questions);
+    expect(quizItems).toHaveLength(6);
+    for (const item of quizItems) {
+      const label = `Fragen starten: ${item.title}`;
+      const button = screen.getByRole("button", { name: label });
+      expect(button.getAttribute("title")).toBe(label);
+      expect(button.textContent).toBe("");
+      expect(button.querySelector("svg[aria-hidden='true']")).toBeTruthy();
+    }
+  });
+
   it("shows all fifteen topics in one semantic text overview", () => {
     render(<CatalogBrowser />);
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import type { Question } from "../../shared/question";
 import { catalog } from "./catalog";
 import type { CatalogItem, CatalogSource } from "./catalogContract";
+import "./CatalogBrowser.css";
 
 function SourceGroup({
   title,
@@ -78,21 +79,37 @@ export function CatalogBrowser({
         <ul>
           {items.map((item) => (
             <li key={item.id}>
-              <button
-                aria-pressed={item.id === selectedId}
-                onClick={() => setSelectedId(item.id)}
-                type="button"
-              >
-                {item.title}
-              </button>
-              {item.questions && onStartQuestions && (
+              <div className="catalog-topic-actions">
                 <button
+                  aria-pressed={item.id === selectedId}
+                  onClick={() => setSelectedId(item.id)}
                   type="button"
-                  onClick={() => onStartQuestions(item.title, item.questions!)}
                 >
-                  Fragen starten: {item.title}
+                  {item.title}
                 </button>
-              )}
+                {item.questions && onStartQuestions && (
+                  <button
+                    aria-label={`Fragen starten: ${item.title}`}
+                    className="quiz-start-button"
+                    type="button"
+                    title={`Fragen starten: ${item.title}`}
+                    onClick={() =>
+                      onStartQuestions(item.title, item.questions!)
+                    }
+                  >
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      viewBox="0 0 28 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M4 7a5 5 0 1 1 8.6 3.5c-1.4 1.3-3.2 2.3-3.2 4" />
+                      <circle cx="9.4" cy="19" r="1" />
+                      <path d="m18 7 6 5-6 5z" />
+                    </svg>
+                  </button>
+                )}
+              </div>
             </li>
           ))}
         </ul>

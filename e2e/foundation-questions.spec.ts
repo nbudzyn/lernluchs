@@ -14,6 +14,55 @@ const foundationTitles: Record<keyof typeof foundationQuestions, string> = {
   "spec-driven-development-openspec": "Spec-Driven Development mit OpenSpec",
 };
 
+test("each icon button starts the corresponding learning check", async ({
+  page,
+}) => {
+  for (const title of Object.values(foundationTitles)) {
+    await page.goto("/");
+    const button = page.getByRole("button", {
+      name: `Fragen starten: ${title}`,
+    });
+    await expect(button).toHaveAttribute("title", `Fragen starten: ${title}`);
+    await expect(button.locator("svg[aria-hidden='true']")).toBeVisible();
+    await button.focus();
+    await page.keyboard.press("Enter");
+    await expect(
+      page.getByRole("heading", { name: `${title}: Fragen` }),
+    ).toBeVisible();
+  }
+});
+
+test("quiz icon buttons align with topic buttons without stretching the list row", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const topic = page.getByRole("button", {
+    name: foundationTitles["human-ai-responsibility"],
+    exact: true,
+  });
+  const quiz = page.getByRole("button", {
+    name: `Fragen starten: ${foundationTitles["human-ai-responsibility"]}`,
+  });
+  const topicBox = await topic.boundingBox();
+  const quizBox = await quiz.boundingBox();
+  expect(topicBox).not.toBeNull();
+  expect(quizBox).not.toBeNull();
+  expect(Math.abs(quizBox!.height - topicBox!.height)).toBeLessThan(1);
+  expect(Math.abs(quizBox!.y - topicBox!.y)).toBeLessThan(1);
+  expect(
+    Math.abs(quizBox!.y + quizBox!.height - (topicBox!.y + topicBox!.height)),
+  ).toBeLessThan(1);
+
+  const rows = page
+    .getByRole("navigation", { name: "Lernthemen" })
+    .locator("li");
+  const quizRow = await rows.nth(0).boundingBox();
+  const plainRow = await rows.nth(3).boundingBox();
+  expect(quizRow).not.toBeNull();
+  expect(plainRow).not.toBeNull();
+  expect(Math.abs(quizRow!.height - plainRow!.height)).toBeLessThan(1);
+});
+
 async function answerCurrent(page: Page, chooseCorrect: boolean) {
   const prompt = await page.getByRole("heading", { level: 2 }).textContent();
   const question = foundationQuestions["human-ai-responsibility"].find(
