@@ -9,19 +9,42 @@ Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden E
 
 ## Lernchecks für den zweiten Lernpfad ergänzen
 
+Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
+
 Die sechs zusätzlichen Themen aus „Änderungen gestalten und absichern“ erhalten quellengebundene Fragenpools und die bereits vorhandenen
 Auswahlchecks einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer
 Quellen; sie werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
 
+Betroffen sind „Modulgrenzen und öffentliche Schnittstellen gestalten“, „Fachverhalten mit TDD absichern“,
+„Java-Architekturregeln mit ArchUnit prüfen“, „Webabläufe mit Playwright prüfen“, „Web-Sicherheitsrisiken wie XSS und unsichere DOM-Nutzung
+erkennen“ und „Abhängigkeiten und Sicherheitslücken risikobasiert bewerten“. Jeder neue Pool enthält nach der unabhängigen Prüfung
+mindestens 25 fachlich unterschiedliche gültige Fragen. Die Fragen decken den jeweiligen Schwerpunkt, sinnvolle Grenzen und belegte
+Vertiefungen ab; Überschneidungen zwischen den Themen werden vermieden. Falls eine Quelle einen wichtigen Aspekt nicht trägt, wird sie nach
+den Quellenregeln gezielt ergänzt oder ersetzt und der Thementext bei Bedarf angepasst.
+
+Der bestehende Lerncheck-Ablauf bleibt erhalten: Ein Start wählt fünf Fragen aus dem Pool, fünf richtige Antworten bestehen den Check,
+die Auswertung zeigt Erklärungen und Quellenlinks, und bei einer Wiederholung werden fünf Fragen erneut zufällig gewählt. Die
+Inhaltsvalidierung erfasst alle sechs neuen Pools. Für die unabhängige fachliche Prüfung erhält der Nutzer den vollständigen kopierbaren
+Prüf-Prompt und gibt die kurze Liste beanstandeter Fragen-IDs zurück. Beanstandete Fragen werden vor der Integration korrigiert oder
+entfernt; korrigierte Fragen werden erneut unabhängig geprüft.
+
+Browser-Tests belegen Start, Bestehen, Nichtbestehen mit Erklärung und Quellenbezug sowie Wiederholung exemplarisch an jeweils
+unterschiedlichen Themen des zweiten Pfads. Sie prüfen sichtbares Verhalten über stabile Selektoren und hängen weder von einer festen
+Fragenreihenfolge noch von einer bestimmten zufälligen Auswahl ab. Die Verfügbarkeit und Struktur aller sechs Pools wird unabhängig davon
+automatisiert geprüft.
+
 Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
 
-Außerdem prüfen, ob die E2E-Tests der richtigen Vertikale zugeordnet sind, ggf. aus App in die Vertikale verschieben.
+Außerdem prüfen, ob die bestehenden Lerncheck-E2E-Tests der richtigen Vertikale zugeordnet sind, und fachlich zugehörige Tests aus `app`
+in `learning-checks` verschieben.
 
 Vertikalen: Themen, Lernchecks
 
 Dokumentation nach Umsetzung: Fragenumfang des zweiten Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
 
 ## Lernchecks für den dritten Lernpfad ergänzen
+
+Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
 
 Die drei neuen Themen aus „Sicher mit Coding-Agenten arbeiten“ erhalten quellengebundene Fragenpools und Auswahlchecks einschließlich
 Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie werden unabhängig
@@ -34,6 +57,8 @@ Vertikalen: Themen, Lernchecks
 Dokumentation nach Umsetzung: Fragenumfang des dritten Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
 
 ## Lernchecks für das unzugeordnete Git-Thema ergänzen
+
+Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
 
 „Git-Commits klein und nachvollziehbar halten“ erhält später einen quellengebundenen Fragenpool und die vorhandenen Auswahlchecks
 einschließlich Erklärung und Wiederholung. Fragen prüfen die Auswahl logisch zusammengehöriger Änderungen, den Einsatz der Staging Area und
@@ -77,6 +102,8 @@ Vertikale: Themen
 Dokumentation nach Umsetzung: Den neuen Themenbestand knapp im Produktstand ergänzen.
 
 ## Lernchecks für den vierten Lernpfad ergänzen
+
+Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
 
 Die vier neuen Themen aus „Java-/Web-Code technisch analysieren und modernisieren“ erhalten quellengebundene Fragenpools und Auswahlchecks
 einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie
@@ -125,6 +152,8 @@ Dokumentation nach Umsetzung: Den neuen Themenbestand knapp im Produktstand erg�
 
 ## Lernchecks für den fünften Lernpfad ergänzen
 
+Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
+
 Die sechs neuen Themen aus „Parallele Coding-Agenten kritisch erproben“ erhalten quellengebundene Fragenpools und Auswahlchecks
 einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie
 werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
@@ -162,6 +191,8 @@ Abgrenzung:
 Vertikale: Themen
 
 ## Weitere Lernchecks
+
+Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
 
 Alle Themen erhalten Lernchecks - sofern es für ein Thema noch keine gibt.
 
