@@ -7,29 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Filtern nach einzelnem Lernpfad
-
-Wenn ein Filter nach Lernpfaden aktiviert ist, werden die einzelnen Lernpfade danach nicht nur als Text dargestellt, sondern sie sind
-klickbar.
-
-- Klickt man auf einen Lernpfad, wird die Themenliste nur noch auf diesen einen Lernpfad gefiltert.
-    - Das System scrollt weich vertikal, sodass nach Möglichkeit alle Themen des Lernpfads im sichtbaren Bereich liegen. Sind die Themen
-      zusammen höher als der sichtbare Bereich, scrollt es zum ersten Thema des Lernpfads.
-- Ein erneuter Klick auf diesen Lernpfad bewirkt keine Änderung der Filterung.
-
-Wie bisher: Werden unten Themendetails angezeigt und ändert sich die Filterung so, dass das unten angezeigte Thema nicht mehr in der Liste
-enthalten ist, wird das Thema ausgeblendet. (Es wird auch später nicht mehr automatisch eingeblendet.)
-
-Das System stellt intern sicher, dass jeder (auch neue) Lernpfad mindestens ein Thema enthält.
-
-Abgrenzung:
-
-- Die Filterung auf den Icons ganz links in der Themenzeile macht genau dasselbe wie bisher auch: Ein Klick filtert auf alle Lernpfade,
-  zu denen das angeklickte Thema gehört. Das gilt auch, wenn zuvor ein einzelner Lernpfad ausgewählt wurde. Erst ein weiterer Klick auf
-  dasselbe Icon hebt die Filterung auf und zeigt wieder alle Themen.
-
-Vertikale: Themen
-
 ## Lernchecks für das unzugeordnete Git-Thema ergänzen
 
 „Git-Commits klein und nachvollziehbar halten“ erhält später einen quellengebundenen Fragenpool und die vorhandenen Auswahlchecks
