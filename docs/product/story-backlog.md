@@ -7,41 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Lernchecks für den zweiten Lernpfad ergänzen
-
-Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
-
-Die sechs zusätzlichen Themen aus „Änderungen gestalten und absichern“ erhalten quellengebundene Fragenpools und die bereits vorhandenen
-Auswahlchecks einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer
-Quellen; sie werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
-
-Betroffen sind „Modulgrenzen und öffentliche Schnittstellen gestalten“, „Fachverhalten mit TDD absichern“,
-„Java-Architekturregeln mit ArchUnit prüfen“, „Webabläufe mit Playwright prüfen“, „Web-Sicherheitsrisiken wie XSS und unsichere DOM-Nutzung
-erkennen“ und „Abhängigkeiten und Sicherheitslücken risikobasiert bewerten“. Jeder neue Pool enthält nach der unabhängigen Prüfung
-mindestens 25 fachlich unterschiedliche gültige Fragen. Die Fragen decken den jeweiligen Schwerpunkt, sinnvolle Grenzen und belegte
-Vertiefungen ab; Überschneidungen zwischen den Themen werden vermieden. Falls eine Quelle einen wichtigen Aspekt nicht trägt, wird sie nach
-den Quellenregeln gezielt ergänzt oder ersetzt und der Thementext bei Bedarf angepasst.
-
-Der bestehende Lerncheck-Ablauf bleibt erhalten: Ein Start wählt fünf Fragen aus dem Pool, fünf richtige Antworten bestehen den Check,
-die Auswertung zeigt Erklärungen und Quellenlinks, und bei einer Wiederholung werden fünf Fragen erneut zufällig gewählt. Die
-Inhaltsvalidierung erfasst alle sechs neuen Pools. Für die unabhängige fachliche Prüfung erhält der Nutzer den vollständigen kopierbaren
-Prüf-Prompt und gibt die kurze Liste beanstandeter Fragen-IDs zurück. Beanstandete Fragen werden vor der Integration korrigiert oder
-entfernt; korrigierte Fragen werden erneut unabhängig geprüft.
-
-Browser-Tests belegen Start, Bestehen, Nichtbestehen mit Erklärung und Quellenbezug sowie Wiederholung exemplarisch an jeweils
-unterschiedlichen Themen des zweiten Pfads. Sie prüfen sichtbares Verhalten über stabile Selektoren und hängen weder von einer festen
-Fragenreihenfolge noch von einer bestimmten zufälligen Auswahl ab. Die Verfügbarkeit und Struktur aller sechs Pools wird unabhängig davon
-automatisiert geprüft.
-
-Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
-
-Außerdem prüfen, ob die bestehenden Lerncheck-E2E-Tests der richtigen Vertikale zugeordnet sind, und fachlich zugehörige Tests aus `app`
-in `learning-checks` verschieben.
-
-Vertikalen: Themen, Lernchecks
-
-Dokumentation nach Umsetzung: Fragenumfang des zweiten Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
-
 ## Lernchecks für den dritten Lernpfad ergänzen
 
 Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
