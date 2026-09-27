@@ -45,6 +45,12 @@ export type Topic = {
 export type TopicCollection = {
   version: string;
   items: Topic[];
+  paths?: LearningPath[];
+};
+
+export type LearningPath = {
+  name: string;
+  topicIds: string[];
 };
 
 export type TopicValidation = {

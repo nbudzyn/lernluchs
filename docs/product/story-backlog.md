@@ -274,7 +274,7 @@ Anzeige und Auswahl von Lernpfaden; sie führt die Pfaddaten nicht noch einmal e
 
 - Es gibt fünf Lernpfade:
 
-  **Grundlagenpfad**
+  **Grundlagen für KI-gestützte Softwareentwicklung**
 
     1. Mensch und KI: Verantwortung bleibt menschlich
     2. Problem verstehen und Änderungsgrenzen setzen

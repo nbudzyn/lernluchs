@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 import type { Question } from "../../shared/question";
 import { topics } from "./topics";
-import type { Topic, TopicSource } from "./topicContract";
+import type { LearningPath, Topic, TopicSource } from "./topicContract";
 import "./TopicBrowser.css";
 
 function SourceGroup({
@@ -33,21 +33,74 @@ function SourceGroup({
 
 export function TopicBrowser({
   items = topics.items,
+  paths = topics.paths ?? [],
   learnedTopicIds = [],
   onStartQuestions,
 }: {
   items?: Topic[];
+  paths?: LearningPath[];
   learnedTopicIds?: string[];
   onStartQuestions?: (id: string, title: string, questions: Question[]) => void;
 }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [filterId, setFilterId] = useState<string | null>(null);
+  const rowRefs = useRef(new Map<string, HTMLLIElement>());
+  const anchor = useRef<{ id: string; x: number; y: number } | null>(null);
+  const itemIndex = new Map(items.map((item, index) => [item.id, index]));
+  const pathsFor = (id: string) =>
+    paths.filter((path) => path.topicIds.includes(id));
+  const activePaths = filterId ? pathsFor(filterId) : [];
+  const activeIds = new Set(activePaths.flatMap((path) => path.topicIds));
+  const visibleItems = activePaths.length
+    ? items.filter((item) => activeIds.has(item.id))
+    : items;
+  const sortedPaths = [...activePaths].sort((first, second) => {
+    for (
+      let index = 0;
+      index < Math.min(first.topicIds.length, second.topicIds.length);
+      index += 1
+    ) {
+      const a = itemIndex.get(first.topicIds[index]) ?? Infinity;
+      const b = itemIndex.get(second.topicIds[index]) ?? Infinity;
+      if (a !== b) return a - b;
+    }
+    return first.topicIds.length - second.topicIds.length;
+  });
+  useLayoutEffect(() => {
+    const previous = anchor.current;
+    anchor.current = null;
+    if (!previous) return;
+    const row = rowRefs.current.get(previous.id);
+    if (!row) return;
+    const rect = row.getBoundingClientRect();
+    const left = rect.left - previous.x;
+    const top = rect.top - previous.y;
+    if (left || top) window.scrollBy({ left, top, behavior: "instant" });
+  }, [filterId]);
+
+  function toggleFilter(id: string) {
+    const rect = rowRefs.current.get(id)?.getBoundingClientRect();
+    if (rect) anchor.current = { id, x: rect.left, y: rect.top };
+    const nextFilterId = filterId === id ? null : id;
+    if (
+      selectedId &&
+      nextFilterId &&
+      !pathsFor(nextFilterId).some((path) => path.topicIds.includes(selectedId))
+    ) {
+      setSelectedId(null);
+    }
+    setFilterId(nextFilterId);
+  }
   const selectedItem = items.find((item) => item.id === selectedId);
   const cardSections = selectedItem
     ? [
         ["Problem", selectedItem.content.problem],
         ["Kernkonzept", selectedItem.content.coreConcept],
-        ["Java-/Web-Einsatz", selectedItem.content.javaWebUse],
-        ["Wichtige Grenze", selectedItem.content.boundary],
+        [
+          "Anwendung in der Java- und Webentwicklung",
+          selectedItem.content.javaWebUse,
+        ],
+        ["Grenzen des Konzepts", selectedItem.content.boundary],
       ]
     : [];
   const editorialEntries = selectedItem
@@ -78,10 +131,35 @@ export function TopicBrowser({
   return (
     <>
       <nav aria-label="Lernthemen">
-        <ul>
-          {items.map((item) => (
-            <li key={item.id}>
+        <ul className="topic-list">
+          {visibleItems.map((item) => (
+            <li
+              key={item.id}
+              ref={(node) => {
+                if (node) rowRefs.current.set(item.id, node);
+                else rowRefs.current.delete(item.id);
+              }}
+            >
               <div className="topic-actions">
+                {pathsFor(item.id).length > 0 && (
+                  <button
+                    aria-label={`Lernpfade von ${item.title} filtern`}
+                    aria-pressed={filterId === item.id}
+                    className="path-filter-button"
+                    type="button"
+                    title={`Lernpfade von ${item.title} filtern`}
+                    onClick={() => toggleFilter(item.id)}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M3 4h14M5 9h10M8 14h4M10 14v3" />
+                    </svg>
+                  </button>
+                )}
                 <button
                   aria-pressed={item.id === selectedId}
                   onClick={() => setSelectedId(item.id)}
@@ -125,6 +203,13 @@ export function TopicBrowser({
           ))}
         </ul>
       </nav>
+
+      {activePaths.length > 0 && (
+        <p className="path-filter-summary">
+          Themen gefiltert nach Lernpfaden:{" "}
+          {sortedPaths.map((path) => path.name).join(", ")}
+        </p>
+      )}
 
       {selectedItem && (
         <article aria-labelledby="topic-title">

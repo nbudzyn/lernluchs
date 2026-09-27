@@ -14,7 +14,46 @@ function activeEditorial(reviewDueAt: string, publishedAt = "2026-09-20") {
 }
 
 export const topics: TopicCollection = {
-  version: "3",
+  version: "4",
+  paths: [
+    {
+      name: "Grundlagen für KI-gestützte Softwareentwicklung",
+      topicIds: [
+        "human-ai-responsibility",
+        "problem-understanding-and-change-boundaries",
+        "agents-md",
+        "ears-requirements",
+        "research-plan-tasks",
+        "spec-driven-development-openspec",
+      ],
+    },
+    {
+      name: "Änderungen gestalten und absichern",
+      topicIds: [
+        "problem-understanding-and-change-boundaries",
+        "ears-requirements",
+        "module-boundaries-and-public-interfaces",
+        "tdd-for-domain-behavior",
+        "archunit-for-java-architecture",
+        "playwright-for-web-flows",
+        "web-xss-and-safe-dom",
+        "dependency-security-assessment",
+      ],
+    },
+    {
+      name: "Sicher mit Coding-Agenten arbeiten",
+      topicIds: [
+        "human-ai-responsibility",
+        "problem-understanding-and-change-boundaries",
+        "agents-md",
+        "coding-agent-context-and-trust-boundaries",
+        "protect-secrets-and-sensitive-data-with-ai",
+        "research-plan-tasks",
+        "tdd-for-domain-behavior",
+        "review-and-accept-ai-generated-changes",
+      ],
+    },
+  ],
   items: [
     {
       id: "human-ai-responsibility",
@@ -114,6 +153,33 @@ export const topics: TopicCollection = {
       ],
     },
     {
+      id: "ears-requirements",
+      title: "EARS: Anforderungen präzise formulieren",
+      questions: questionsFor("ears-requirements"),
+      content: {
+        language: "de",
+        problem:
+          "Vage Anforderungen lassen unterschiedliche Interpretationen zu und erschweren Abnahme und automatisierte Tests.",
+        coreConcept:
+          "EARS (Easy Approach to Requirements Syntax) nutzt wenige Satzmuster, etwa „When <Auslöser>, the system shall <Verhalten>“, um Bedingungen und erwartetes Verhalten sichtbar zu machen.",
+        javaWebUse:
+          "Für eine Web-API kann ein Kriterium lauten: „When a request lacks authorization, the system shall return HTTP 401“; daraus folgt ein konkreter Integrationstest.",
+        boundary:
+          "Ein Satzmuster entdeckt keine fehlenden Fachregeln und ersetzt weder gemeinsame Begriffsarbeit noch Tests für alle Randfälle.",
+      },
+      editorial: activeEditorial("2027-03-20"),
+      sources: [
+        {
+          title: "EARS: Easy Approach to Requirements Syntax",
+          url: "https://alistairmavin.com/ears/",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
+        },
+      ],
+    },
+    {
       id: "coding-agent-context-and-trust-boundaries",
       title: "Kontext und Vertrauensgrenzen für Coding-Agenten",
       content: {
@@ -166,59 +232,6 @@ export const topics: TopicCollection = {
         {
           title: "Keeping your API credentials secure - GitHub Docs",
           url: "https://docs.github.com/en/rest/authentication/keeping-your-api-credentials-secure",
-          type: "official-guide",
-          origin: "primary",
-          language: "en",
-          checkedAt: "2026-09-26",
-        },
-      ],
-    },
-    {
-      id: "ears-requirements",
-      title: "EARS: Anforderungen präzise formulieren",
-      questions: questionsFor("ears-requirements"),
-      content: {
-        language: "de",
-        problem:
-          "Vage Anforderungen lassen unterschiedliche Interpretationen zu und erschweren Abnahme und automatisierte Tests.",
-        coreConcept:
-          "EARS (Easy Approach to Requirements Syntax) nutzt wenige Satzmuster, etwa „When <Auslöser>, the system shall <Verhalten>“, um Bedingungen und erwartetes Verhalten sichtbar zu machen.",
-        javaWebUse:
-          "Für eine Web-API kann ein Kriterium lauten: „When a request lacks authorization, the system shall return HTTP 401“; daraus folgt ein konkreter Integrationstest.",
-        boundary:
-          "Ein Satzmuster entdeckt keine fehlenden Fachregeln und ersetzt weder gemeinsame Begriffsarbeit noch Tests für alle Randfälle.",
-      },
-      editorial: activeEditorial("2027-03-20"),
-      sources: [
-        {
-          title: "EARS: Easy Approach to Requirements Syntax",
-          url: "https://alistairmavin.com/ears/",
-          type: "official-guide",
-          origin: "primary",
-          language: "en",
-          checkedAt: "2026-09-26",
-        },
-      ],
-    },
-    {
-      id: "module-boundaries-and-public-interfaces",
-      title: "Modulgrenzen und öffentliche Schnittstellen gestalten",
-      content: {
-        language: "de",
-        problem:
-          "Ohne klare Modulgrenzen greifen Änderungen auf interne Details anderer Teile zu und ziehen unerwartete Folgen nach sich.",
-        coreConcept:
-          "Ein Modul verbirgt interne Daten und Implementierung. Andere Module nutzen einen kleinen, ausdrücklich festgelegten öffentlichen Vertrag.",
-        javaWebUse:
-          "In Java kann ein Modul mit module-info.java nur benötigte Pakete exportieren; ein Web-Frontend kann fachliche Bereiche über benannte Einstiegspunkte verbinden.",
-        boundary:
-          "Ein öffentliches Paket ist noch kein guter Vertrag: exportierte Typen und Abhängigkeiten müssen bewusst klein und stabil bleiben.",
-      },
-      editorial: activeEditorial("2027-03-26", "2026-09-26"),
-      sources: [
-        {
-          title: "Modules - Dev.java",
-          url: "https://dev.java/learn/organizing/modules/",
           type: "official-guide",
           origin: "primary",
           language: "en",
@@ -307,6 +320,32 @@ export const topics: TopicCollection = {
         {
           title: "OpenSpec CLI documentation",
           url: "https://github.com/Fission-AI/OpenSpec/blob/main/docs/cli.md",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-26",
+        },
+      ],
+    },
+    {
+      id: "module-boundaries-and-public-interfaces",
+      title: "Modulgrenzen und öffentliche Schnittstellen gestalten",
+      content: {
+        language: "de",
+        problem:
+          "Ohne klare Modulgrenzen greifen Änderungen auf interne Details anderer Teile zu und ziehen unerwartete Folgen nach sich.",
+        coreConcept:
+          "Ein Modul verbirgt interne Daten und Implementierung. Andere Module nutzen einen kleinen, ausdrücklich festgelegten öffentlichen Vertrag.",
+        javaWebUse:
+          "In Java kann ein Modul mit module-info.java nur benötigte Pakete exportieren; ein Web-Frontend kann fachliche Bereiche über benannte Einstiegspunkte verbinden.",
+        boundary:
+          "Ein öffentliches Paket ist noch kein guter Vertrag: exportierte Typen und Abhängigkeiten müssen bewusst klein und stabil bleiben.",
+      },
+      editorial: activeEditorial("2027-03-26", "2026-09-26"),
+      sources: [
+        {
+          title: "Modules - Dev.java",
+          url: "https://dev.java/learn/organizing/modules/",
           type: "official-guide",
           origin: "primary",
           language: "en",
@@ -484,6 +523,45 @@ export const topics: TopicCollection = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-09-26",
+        },
+      ],
+    },
+    {
+      id: "focused-git-commits",
+      title: "Git-Commits klein und nachvollziehbar halten",
+      content: {
+        language: "de",
+        problem:
+          "Wenn unabhängige Änderungen in einem Commit landen, ist schwerer zu erkennen und zu prüfen, was aus welchem Grund geändert wurde.",
+        coreConcept:
+          "Ein Commit bündelt eine logisch zusammengehörige Änderung mit einer aussagekräftigen Nachricht. Über die Staging Area lassen sich aus dem Arbeitsstand gezielt Dateien oder Teile davon für diesen Commit auswählen.",
+        javaWebUse:
+          "Bei Änderungen an einem Spring-Endpunkt werden eine fachliche API-Anpassung und davon unabhängige Formatkorrekturen getrennt festgehalten. Vor jedem Commit wird geprüft, welche Änderungen tatsächlich gestagt sind.",
+        boundary:
+          "Ein kleiner Commit ist nicht automatisch korrekt oder lauffähig. Zusammengehörige Änderungen dürfen mehrere Dateien umfassen; eine starre Dateizahl ist kein Qualitätsmaßstab.",
+      },
+      editorial: {
+        publishedAt: "2026-09-27",
+        reviewedAt: "2026-09-27",
+        reviewDueAt: "2027-03-27",
+        status: "active",
+      },
+      sources: [
+        {
+          title: "Pro Git: Interactive Staging",
+          url: "https://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-27",
+        },
+        {
+          title: "Git: git-commit Documentation",
+          url: "https://git-scm.com/docs/git-commit",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-27",
         },
       ],
     },

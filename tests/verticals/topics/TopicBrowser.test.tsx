@@ -7,6 +7,20 @@ import { topics } from "../../../src/verticals/topics/topics";
 afterEach(cleanup);
 
 describe("TopicBrowser", () => {
+  it("shows the descriptive foundation path name in the filter summary", () => {
+    render(<TopicBrowser />);
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: "Lernpfade von Spec-Driven Development mit OpenSpec filtern",
+      }),
+    );
+    expect(
+      screen.getByText(
+        "Themen gefiltert nach Lernpfaden: Grundlagen für KI-gestützte Softwareentwicklung",
+      ),
+    ).toBeTruthy();
+  });
+
   it("marks only saved quiz topics as learned, including after a catalog change", () => {
     const quizTopic = topics.items.find((item) => item.questions)!;
     const plainTopic = topics.items.find((item) => !item.questions)!;
@@ -37,11 +51,11 @@ describe("TopicBrowser", () => {
     }
   });
 
-  it("shows all fifteen topics in one semantic text overview", () => {
+  it("shows all sixteen topics in one semantic text overview", () => {
     render(<TopicBrowser />);
 
     expect(screen.getByRole("navigation", { name: "Lernthemen" })).toBeTruthy();
-    expect(screen.getAllByRole("button")).toHaveLength(15);
+    expect(screen.getAllByRole("button", { name: /./ })).toHaveLength(31);
     expect(
       screen.getByRole("button", {
         name: "Mensch und KI: Verantwortung bleibt menschlich",
@@ -72,6 +86,99 @@ describe("TopicBrowser", () => {
     ).toBeTruthy();
   });
 
+  it("filters by current paths and closes details that leave the list without reopening them", () => {
+    const items = topics.items.slice(0, 4).map((item, index) => ({
+      ...item,
+      id: `test-${index}`,
+      title: `Thema ${index}`,
+      questions: undefined,
+    }));
+    const paths = [
+      { name: "Später", topicIds: ["test-1", "test-2"] },
+      { name: "Früher", topicIds: ["test-0", "test-1"] },
+    ];
+    render(<TopicBrowser items={items} paths={paths} />);
+
+    expect(
+      screen.queryByRole("button", { name: "Lernpfade von Thema 3 filtern" }),
+    ).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "Thema 3" }));
+    fireEvent.click(
+      screen.getByRole("button", { name: "Lernpfade von Thema 1 filtern" }),
+    );
+    expect(
+      screen.getByRole("navigation", { name: "Lernthemen" }).textContent,
+    ).not.toContain("Thema 3");
+    expect(screen.queryByRole("article", { name: "Thema 3" })).toBeNull();
+    expect(
+      screen.getByText("Themen gefiltert nach Lernpfaden: Früher, Später"),
+    ).toBeTruthy();
+    expect(
+      screen
+        .getAllByRole("button", { name: /^Thema \d$/ })
+        .map((button) => button.textContent),
+    ).toEqual(["Thema 0", "Thema 1", "Thema 2"]);
+
+    fireEvent.click(screen.getByRole("button", { name: "Thema 0" }));
+    expect(screen.getByRole("article", { name: "Thema 0" })).toBeTruthy();
+
+    fireEvent.click(
+      screen.getByRole("button", { name: "Lernpfade von Thema 2 filtern" }),
+    );
+    expect(screen.queryByRole("article", { name: "Thema 0" })).toBeNull();
+    expect(
+      screen.getByText("Themen gefiltert nach Lernpfaden: Später"),
+    ).toBeTruthy();
+    expect(
+      screen
+        .getAllByRole("button", { name: /^Thema \d$/ })
+        .map((button) => button.textContent),
+    ).toEqual(["Thema 1", "Thema 2"]);
+
+    fireEvent.click(
+      screen.getByRole("button", { name: "Lernpfade von Thema 2 filtern" }),
+    );
+    expect(screen.queryByText(/Themen gefiltert nach Lernpfaden/)).toBeNull();
+    expect(screen.getAllByRole("button", { name: /^Thema \d$/ })).toHaveLength(
+      4,
+    );
+    expect(screen.queryByRole("article")).toBeNull();
+
+    fireEvent.click(screen.getByRole("button", { name: "Thema 1" }));
+    fireEvent.click(
+      screen.getByRole("button", { name: "Lernpfade von Thema 2 filtern" }),
+    );
+    expect(screen.getByRole("article", { name: "Thema 1" })).toBeTruthy();
+  });
+
+  it("sorts path names by the full current topic order, including shared prefixes", () => {
+    const items = topics.items.slice(0, 3).map((item, index) => ({
+      ...item,
+      id: `changed-${index}`,
+      title: `Geändert ${index}`,
+      questions: undefined,
+    }));
+    const paths = [
+      { name: "Lang spät", topicIds: ["changed-0", "changed-2"] },
+      { name: "Kurz", topicIds: ["changed-0"] },
+      { name: "Lang früh", topicIds: ["changed-0", "changed-1"] },
+    ];
+    render(<TopicBrowser items={items} paths={paths} />);
+    fireEvent.click(
+      screen.getByRole("button", { name: "Lernpfade von Geändert 0 filtern" }),
+    );
+    expect(
+      screen.getByText(
+        "Themen gefiltert nach Lernpfaden: Kurz, Lang früh, Lang spät",
+      ),
+    ).toBeTruthy();
+    expect(
+      screen
+        .getAllByRole("button", { name: /^Geändert \d$/ })
+        .map((button) => button.textContent),
+    ).toEqual(["Geändert 0", "Geändert 1", "Geändert 2"]);
+  });
+
   it.each([
     [
       "Kontext und Vertrauensgrenzen für Coding-Agenten",
@@ -95,10 +202,12 @@ describe("TopicBrowser", () => {
       expect(screen.getByRole("heading", { name: "Problem" })).toBeTruthy();
       expect(screen.getByRole("heading", { name: "Kernkonzept" })).toBeTruthy();
       expect(
-        screen.getByRole("heading", { name: "Java-/Web-Einsatz" }),
+        screen.getByRole("heading", {
+          name: "Anwendung in der Java- und Webentwicklung",
+        }),
       ).toBeTruthy();
       expect(
-        screen.getByRole("heading", { name: "Wichtige Grenze" }),
+        screen.getByRole("heading", { name: "Grenzen des Konzepts" }),
       ).toBeTruthy();
       expect(screen.getByText("Fachlich geprüft")).toBeTruthy();
       expect(screen.getByText("Wiedervorlage")).toBeTruthy();
@@ -129,10 +238,12 @@ describe("TopicBrowser", () => {
     ).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Kernkonzept" })).toBeTruthy();
     expect(
-      screen.getByRole("heading", { name: "Java-/Web-Einsatz" }),
+      screen.getByRole("heading", {
+        name: "Anwendung in der Java- und Webentwicklung",
+      }),
     ).toBeTruthy();
     expect(
-      screen.getByRole("heading", { name: "Wichtige Grenze" }),
+      screen.getByRole("heading", { name: "Grenzen des Konzepts" }),
     ).toBeTruthy();
   });
 

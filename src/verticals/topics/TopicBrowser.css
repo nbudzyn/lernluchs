@@ -1,7 +1,56 @@
+.topic-list {
+  list-style: none;
+}
+
 .topic-actions {
   display: flex;
   align-items: stretch;
   gap: 0.25rem;
+  position: relative;
+}
+
+.path-filter-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  padding: 1px;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.path-filter-button:hover,
+.path-filter-button[aria-pressed="true"] {
+  background: #dce8f8;
+}
+
+.path-filter-button:focus-visible {
+  outline: 2px solid #174a88;
+  outline-offset: 1px;
+}
+
+.path-filter-button svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.path-filter-summary {
+  margin-top: 0.3rem;
 }
 
 .learned-checkmark {

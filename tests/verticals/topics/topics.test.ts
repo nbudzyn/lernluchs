@@ -188,7 +188,7 @@ describe("public content topics", () => {
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
-  it("weaves three coding-agent cards into the fifteen-topic topics", () => {
+  it("orders the sixteen available topics by the agreed five-path projection", () => {
     const newIds = [
       "coding-agent-context-and-trust-boundaries",
       "protect-secrets-and-sensitive-data-with-ai",
@@ -200,20 +200,21 @@ describe("public content topics", () => {
       "human-ai-responsibility",
       "problem-understanding-and-change-boundaries",
       "agents-md",
+      "ears-requirements",
       "coding-agent-context-and-trust-boundaries",
       "protect-secrets-and-sensitive-data-with-ai",
-      "ears-requirements",
-      "module-boundaries-and-public-interfaces",
       "research-plan-tasks",
       "spec-driven-development-openspec",
+      "module-boundaries-and-public-interfaces",
       "tdd-for-domain-behavior",
       "archunit-for-java-architecture",
       "playwright-for-web-flows",
       "web-xss-and-safe-dom",
       "dependency-security-assessment",
       "review-and-accept-ai-generated-changes",
+      "focused-git-commits",
     ]);
-    expect(new Set(ids).size).toBe(15);
+    expect(new Set(ids).size).toBe(16);
     expect(
       topics.items.every((item) => !("contentVersion" in item.editorial)),
     ).toBe(true);
@@ -236,6 +237,57 @@ describe("public content topics", () => {
         item.sources.every((source) => source.checkedAt === "2026-09-26"),
       ).toBe(true);
     }
+    expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
+  });
+
+  it("stores the three existing learning paths by topic ID and leaves the new topic unassigned", () => {
+    expect(topics.paths).toEqual([
+      {
+        name: "Grundlagen für KI-gestützte Softwareentwicklung",
+        topicIds: [
+          "human-ai-responsibility",
+          "problem-understanding-and-change-boundaries",
+          "agents-md",
+          "ears-requirements",
+          "research-plan-tasks",
+          "spec-driven-development-openspec",
+        ],
+      },
+      {
+        name: "Änderungen gestalten und absichern",
+        topicIds: [
+          "problem-understanding-and-change-boundaries",
+          "ears-requirements",
+          "module-boundaries-and-public-interfaces",
+          "tdd-for-domain-behavior",
+          "archunit-for-java-architecture",
+          "playwright-for-web-flows",
+          "web-xss-and-safe-dom",
+          "dependency-security-assessment",
+        ],
+      },
+      {
+        name: "Sicher mit Coding-Agenten arbeiten",
+        topicIds: [
+          "human-ai-responsibility",
+          "problem-understanding-and-change-boundaries",
+          "agents-md",
+          "coding-agent-context-and-trust-boundaries",
+          "protect-secrets-and-sensitive-data-with-ai",
+          "research-plan-tasks",
+          "tdd-for-domain-behavior",
+          "review-and-accept-ai-generated-changes",
+        ],
+      },
+    ]);
+    expect(
+      topics.paths?.every(
+        (path) => !path.topicIds.includes("focused-git-commits"),
+      ),
+    ).toBe(true);
+    expect(
+      topics.items.find((item) => item.id === "focused-git-commits")?.questions,
+    ).toBeUndefined();
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
