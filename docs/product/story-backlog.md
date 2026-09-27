@@ -7,31 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Kuratierte Quellen für alle Themen ergänzen (außer Grundlagen-Pfad)
-
-Alle Themen erhalten kuratierte Quellen. Die sechs Themen des Grundlagen-Pfads
-bleiben ausgenommen, auch wenn sie in weiteren Lernpfaden vorkommen. Alle anderen
-bestehenden Themen gehören dazu, einschließlich des Git-Themas ohne Lernpfad.
-
-Bereits vorhandene Quellen werden je betroffenem Thema anhand der Originalseiten
-fachlich geprüft. Fehlende Aspekte erhalten passende Quellen; eine bestehende
-Quelle wird nur mit dokumentiertem Grund ersetzt. Falls die Prüfung eine Lücke
-oder einen Widerspruch im kurzen Thementext zeigt, wird er gezielt korrigiert.
-Die fachlichen Schwerpunkte bleiben getrennt; Textkorrekturen erzeugen möglichst
-keine Überschneidung mit anderen Themen.
-
-Es gelten die [Regeln zur Quellenauswahl](../content/source-selection.md).
-
-Außerdem erhalten alle für die Vertikale „Themen“ relevanten Glossarbegriffe
-genau eine englische Entsprechung: Fragenpool, Themen, Thema, Lernpfad,
-Primärquelle und Sekundärquelle. Betroffene englische Bezeichner werden innerhalb
-der Vertikale vereinheitlicht, ohne Fachlogik zu ändern.
-
-Dokumentation nach Umsetzung: Vermerken, dass jedes (auch neue) Thema kuratierte Quellen erhält
-gemäß [Regeln zur Quellenauswahl](../content/source-selection.md).
-
-Vertikalen: Themen
-
 ## Lernchecks für den zweiten Lernpfad ergänzen
 
 Die sechs zusätzlichen Themen aus „Änderungen gestalten und absichern“ erhalten quellengebundene Fragenpools und die bereits vorhandenen
