@@ -22,6 +22,12 @@ verteilt. Auch Themen, die schon übernommen wurden, aber keinen Lernpfad haben,
 
 - AUSNAHME: Themen, die inhatlich ganz unklar sind (nicht im KI-Umfeld nachvollziehbare Toolnamen) oder deutlich veraltete Konzepte
 
+- Die (neuen) Lernpfade sollen möglichst spezifisch sein:
+    - Auf ein klar unterschiedliche Endergebnisse zielen
+    - Sich an verschiedene Zielgruppen richten
+    - Unterschiedliche Menschentypen und Erfahrungs-Hintergründe ansprechen
+    - Für sehr unterschiedliche Projekte relevant.
+
 Die Lernpfade können neue, aber auch schon existierende Themen verwenden.
 
 - Die [KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausgangspunkt für neue Themen.
@@ -39,6 +45,7 @@ Dokumentation nach Umsetzung: Den neuen Themenbestand knapp im Produktstand erg�
 
 Abgrenzung:
 
+- Bestehend Lernpfade werden nicht verändert.
 - Fragenpools gehören nicht zu dieser Story.
 - Die Lern-App führt keine Coding-Agenten aus.
 
