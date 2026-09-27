@@ -218,6 +218,17 @@ Bezeichner werden innerhalb der beiden Vertikalen vereinheitlicht, ohne Fachlogi
 
 Vertikalen: Lernchecks, Lernfortschritt
 
+## Nur die vorgegebenen Vertikalen bearbeiten
+
+Jede aktivierte Spec muss die max. 2 Vertikalen nennen, die geändert werden sollen. Beim Commit (?) prüfen, ob wirklich maximal diese
+angegebenen Vertikalen geändert wurden (sowohl Tests als auch Prod-Code - zusätzlich app und shared erlaubt sowie docs. main.tsx vielleicht
+auf Anfrage. Bei den Tests auch architecture und quality.
+
+## Sicherstellen, dass Architektur oder Bibliotheken nicht unbemerkt geändert werden
+
+Sicherstellen, dass Architektur oder Bibliotheken nicht unbemerkt geändert werden. Möglicherweise gewisse Architekturen, Bibliotheken oder
+Toolaufrufe verbieten?
+
 ## Bereits gestellte Fragen je Thema lokal merken
 
 Die App merkt sich auf dem Gerät je Thema, welche Fragen bereits gestellt wurden. Neue Durchläufe bevorzugen ausschließlich noch nicht

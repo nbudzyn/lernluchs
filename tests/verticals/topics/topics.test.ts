@@ -3,6 +3,8 @@ import { describe, expect, it } from "vitest";
 import { validateTopics } from "../../../src/verticals/topics/validateTopics";
 import type { Topic } from "../../../src/verticals/topics/topicContract";
 import { topics } from "../../../src/verticals/topics/topics";
+import { secondPathQuestions } from "../../../src/verticals/topics/secondPathQuestions";
+import { validateQuestionPool } from "../../../src/verticals/topics/validateQuestionPool";
 
 function completeItem(id: string): Topic {
   return {
@@ -35,6 +37,57 @@ function completeItem(id: string): Topic {
 }
 
 describe("public content topics", () => {
+  const secondPathPoolIds = [
+    "module-boundaries-and-public-interfaces",
+    "tdd-for-domain-behavior",
+    "archunit-for-java-architecture",
+    "playwright-for-web-flows",
+    "web-xss-and-safe-dom",
+    "dependency-security-assessment",
+  ];
+
+  it("validates the six draft pools and their attached topic sources", () => {
+    const allIds = new Set<string>();
+    for (const id of secondPathPoolIds) {
+      const item = topics.items.find((candidate) => candidate.id === id);
+      const questions = secondPathQuestions[id];
+      expect(item).toBeDefined();
+      expect(questions).toHaveLength(25);
+      expect(validateQuestionPool(item!, questions)).toEqual([]);
+      expect(new Set(questions.map((question) => question.prompt)).size).toBe(
+        questions.length,
+      );
+      for (const question of questions) {
+        expect(allIds.has(question.id)).toBe(false);
+        allIds.add(question.id);
+      }
+    }
+  });
+
+  it("rejects a second-path topic without its question pool", () => {
+    const item = topics.items.find(
+      (candidate) => candidate.id === "module-boundaries-and-public-interfaces",
+    )!;
+    const candidate = {
+      ...topics,
+      items: topics.items.map((entry) =>
+        entry.id === item.id ? { ...entry, questions: undefined } : entry,
+      ),
+    };
+    expect(validateTopics(candidate).errors).toContain(
+      `Missing question pool for item: ${item.id}`,
+    );
+  });
+
+  it.each(secondPathPoolIds)(
+    "contains at least 25 validated questions for %s",
+    (id) => {
+      const item = topics.items.find((candidate) => candidate.id === id);
+      expect(item?.questions?.length).toBeGreaterThanOrEqual(25);
+      expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
+    },
+  );
+
   it("rejects empty learning paths and topic IDs without a matching topic", () => {
     const result = validateTopics({
       version: "1",

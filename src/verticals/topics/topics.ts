@@ -1,5 +1,6 @@
 import type { TopicCollection } from "./topicContract";
 import foundationQuestions from "./foundationQuestions.json";
+import { secondPathQuestions } from "./secondPathQuestions";
 
 type FoundationId = keyof typeof foundationQuestions;
 const questionsFor = (id: FoundationId) => foundationQuestions[id];
@@ -345,6 +346,7 @@ export const topics: TopicCollection = {
     {
       id: "module-boundaries-and-public-interfaces",
       title: "Modulgrenzen und öffentliche Schnittstellen gestalten",
+      questions: secondPathQuestions["module-boundaries-and-public-interfaces"],
       content: {
         language: "de",
         problem:
@@ -358,6 +360,14 @@ export const topics: TopicCollection = {
       },
       editorial: curatedEditorial(),
       sources: [
+        {
+          title: "Introduction to Modules in Java - Dev.java",
+          url: "https://dev.java/learn/organizing/modules/intro/",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-27",
+        },
         {
           title: "Modules - Dev.java",
           url: "https://dev.java/learn/organizing/modules/",
@@ -379,6 +389,7 @@ export const topics: TopicCollection = {
     {
       id: "tdd-for-domain-behavior",
       title: "Fachverhalten mit TDD absichern",
+      questions: secondPathQuestions["tdd-for-domain-behavior"],
       content: {
         language: "de",
         problem:
@@ -413,6 +424,7 @@ export const topics: TopicCollection = {
     {
       id: "archunit-for-java-architecture",
       title: "Java-Architekturregeln mit ArchUnit prüfen",
+      questions: secondPathQuestions["archunit-for-java-architecture"],
       content: {
         language: "de",
         problem:
@@ -439,6 +451,7 @@ export const topics: TopicCollection = {
     {
       id: "playwright-for-web-flows",
       title: "Webabläufe mit Playwright prüfen",
+      questions: secondPathQuestions["playwright-for-web-flows"],
       content: {
         language: "de",
         problem:
@@ -474,6 +487,7 @@ export const topics: TopicCollection = {
       id: "web-xss-and-safe-dom",
       title:
         "Web-Sicherheitsrisiken wie XSS und unsichere DOM-Nutzung erkennen",
+      questions: secondPathQuestions["web-xss-and-safe-dom"],
       content: {
         language: "de",
         problem:
@@ -500,6 +514,7 @@ export const topics: TopicCollection = {
     {
       id: "dependency-security-assessment",
       title: "Abhängigkeiten und Sicherheitslücken risikobasiert bewerten",
+      questions: secondPathQuestions["dependency-security-assessment"],
       content: {
         language: "de",
         problem:

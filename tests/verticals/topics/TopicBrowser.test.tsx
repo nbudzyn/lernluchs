@@ -43,7 +43,7 @@ describe("TopicBrowser", () => {
     render(<TopicBrowser onStartQuestions={() => {}} />);
 
     const quizItems = topics.items.filter((item) => item.questions);
-    expect(quizItems).toHaveLength(6);
+    expect(quizItems).toHaveLength(12);
     for (const item of quizItems) {
       const label = `Fragen starten: ${item.title}`;
       const button = screen.getByRole("button", { name: label });

@@ -15,7 +15,11 @@ test("shows the curated sources of topics outside the foundation path", async ({
     ],
     [
       "Modulgrenzen und öffentliche Schnittstellen gestalten",
-      ["Modules - Dev.java", "Modules - TypeScript Handbook"],
+      [
+        "Introduction to Modules in Java - Dev.java",
+        "Modules - Dev.java",
+        "Modules - TypeScript Handbook",
+      ],
     ],
     [
       "Webabläufe mit Playwright prüfen",

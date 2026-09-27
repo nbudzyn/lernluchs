@@ -8,13 +8,19 @@ const editorialStatuses = new Set([
   "archived",
   "replaced",
 ]);
-const foundationIds = new Set([
+const questionPoolIds = new Set([
   "human-ai-responsibility",
   "problem-understanding-and-change-boundaries",
   "agents-md",
   "ears-requirements",
   "research-plan-tasks",
   "spec-driven-development-openspec",
+  "module-boundaries-and-public-interfaces",
+  "tdd-for-domain-behavior",
+  "archunit-for-java-architecture",
+  "playwright-for-web-flows",
+  "web-xss-and-safe-dom",
+  "dependency-security-assessment",
 ]);
 
 function hasText(value: string): boolean {
@@ -70,7 +76,7 @@ export function validateTopics(candidate: TopicCollection): TopicValidation {
       }
     }
 
-    if (foundationIds.has(item.id)) {
+    if (questionPoolIds.has(item.id)) {
       if (!item.questions)
         errors.push(`Missing question pool for item: ${item.id}`);
       else errors.push(...validateQuestionPool(item, item.questions));
