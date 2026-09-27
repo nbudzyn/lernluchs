@@ -36,7 +36,7 @@ export function TopicBrowser({
   onStartQuestions,
 }: {
   items?: Topic[];
-  onStartQuestions?: (title: string, questions: Question[]) => void;
+  onStartQuestions?: (id: string, title: string, questions: Question[]) => void;
 }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selectedItem = items.find((item) => item.id === selectedId);
@@ -94,7 +94,7 @@ export function TopicBrowser({
                     type="button"
                     title={`Fragen starten: ${item.title}`}
                     onClick={() =>
-                      onStartQuestions(item.title, item.questions!)
+                      onStartQuestions(item.id, item.title, item.questions!)
                     }
                   >
                     <svg

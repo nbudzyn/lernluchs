@@ -28,19 +28,24 @@ function chooseQuestions(
 }
 
 export function LearningCheck({
+  topicId,
   title,
   questions,
   onExit,
+  onPassed,
   random = Math.random,
 }: {
+  topicId: string;
   title: string;
   questions: Question[];
   onExit: () => void;
+  onPassed?: (topicId: string) => boolean;
   random?: () => number;
 }) {
   const [selected] = useState(() => chooseQuestions(questions, random));
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [congratulation, setCongratulation] = useState<string | null>(null);
+  const [saveSucceeded, setSaveSucceeded] = useState<boolean | null>(null);
   const current = selected[answers.length];
   const complete = answers.length === 5;
   const allCorrect = answers.every(
@@ -56,6 +61,7 @@ export function LearningCheck({
       allCorrect &&
       current.options.find((option) => option.id === optionId)?.correct
     ) {
+      if (onPassed) setSaveSucceeded(onPassed(topicId));
       setCongratulation(
         congratulations[Math.floor(random() * congratulations.length)],
       );
@@ -95,6 +101,12 @@ export function LearningCheck({
             >
               <h2>Lerncheck bestanden</h2>
               <p role="status">{congratulation}</p>
+              {saveSucceeded === true && <p>Als gelernt gespeichert.</p>}
+              {saveSucceeded === false && (
+                <p role="alert">
+                  Das Ergebnis wurde nicht dauerhaft gespeichert.
+                </p>
+              )}
             </section>
           ) : (
             <h2>Antworten im Überblick</h2>

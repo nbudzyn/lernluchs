@@ -2,32 +2,10 @@
 
 Dieses Backlog enthält nur geplante, noch nicht aktive Stories in vorgesehener Umsetzungsreihenfolge. Unmittelbar vor der Umsetzung erhält
 jede Story eine eigene Änderungs-Spec unter
-`docs/changes/active/`; diese dokumentiert RED → GREEN → REFACTOR.
+`docs/changes/active/`; danach wird sie aus dem Backlog entfernt. Die Spec dokumentiert RED → GREEN → REFACTOR.
 
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
-
-## Bestehen lokal speichern
-
-Hat eine lernende Person alle fünf Fragen eines Lernchecks richtig beantwortet, wird das Bestehen sofort nach der fünften Antwort lokal
-unter der dauerhaften Themen-ID gespeichert. Die Themenliste zeigt hinter dem Namen eines bestandenen Themas einen grünen, auch ohne Farbe
-verständlichen Haken. Themen ohne Lerncheck erhalten keinen Haken allein aufgrund ihrer Anzeige im Katalog.
-
-- Der Lernstand bleibt nach Reload erhalten. Ein späterer nicht bestandener Durchlauf entfernt einen vorhandenen Bestehensstand nicht; die
-  ausdrücklich bestätigte Rücksetzung gehört zur nächsten Story.
-- Katalogänderungen, vorübergehend fehlende Themen und fehlerhafte externe Quellen löschen gespeicherte Bestehensstände nicht.
-- Ist lokales Speichern nicht möglich, bleibt der Lerncheck nutzbar und die App zeigt an, dass das Ergebnis nicht dauerhaft gespeichert
-  wurde. Sind die gespeicherten Lernstandsdaten beschädigt, entfernt die App den gesamten beschädigten Lernstand, beginnt mit leerem
-  Lernstand und zeigt die Rücksetzung an. Andere lokale Daten werden dadurch nicht gelöscht.
-
-Die Umsetzung wird in Schritte mit höchstens zwei fachlichen Vertikalen pro Commit geschnitten: zuerst Bestehen und Speichern in Lernchecks
-und Lernfortschritt, danach die Anzeige in Themen und Lernfortschritt. Jeder Schritt liefert einen im Browser nachvollziehbaren Wert.
-Der Browser-E2E-Test deckt Speichern, Reload, Katalogänderungen und einen späteren nicht bestandenen Durchlauf ab; Tests prüfen außerdem
-Speicherfehler und beschädigte Daten.
-
-Vertikalen: Lernchecks, Lernfortschritt (neu; Lernchecks hängt von Lernfortschritt ab, nicht umgekehrt), Themen
-
-Dokumentation nach Umsetzung: Lokale Speicherung knapp in Produktstand und Architektur ergänzen; neue Vertikale dokumentieren.
 
 ## Nichtbestehen auf Wunsch lokal speichern
 

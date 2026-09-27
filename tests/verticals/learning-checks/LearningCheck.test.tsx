@@ -35,10 +35,51 @@ const questions: Question[] = Array.from({ length: 7 }, (_, index) => ({
 afterEach(cleanup);
 
 describe("LearningCheck", () => {
+  it("saves a perfect run immediately after the fifth answer", () => {
+    const onPassed = vi.fn(() => true);
+    render(
+      <LearningCheck
+        title="Testthema"
+        topicId="topic-a"
+        questions={questions}
+        onExit={vi.fn()}
+        onPassed={onPassed}
+        random={() => 0}
+      />,
+    );
+    for (let index = 0; index < 4; index += 1)
+      fireEvent.click(screen.getByRole("button", { name: /^Richtig / }));
+    expect(onPassed).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole("button", { name: /^Richtig / }));
+    expect(onPassed).toHaveBeenCalledExactlyOnceWith("topic-a");
+    expect(screen.getByText("Als gelernt gespeichert.")).toBeTruthy();
+  });
+
+  it("reports failed saving at the result without retrying the same run", () => {
+    const onPassed = vi.fn(() => false);
+    render(
+      <LearningCheck
+        title="Testthema"
+        topicId="topic-a"
+        questions={questions}
+        onExit={vi.fn()}
+        onPassed={onPassed}
+        random={() => 0}
+      />,
+    );
+    for (let index = 0; index < 5; index += 1)
+      fireEvent.click(screen.getByRole("button", { name: /^Richtig / }));
+    expect(onPassed).toHaveBeenCalledTimes(1);
+    expect(screen.getByRole("alert").textContent).toContain(
+      "nicht dauerhaft gespeichert",
+    );
+  });
+
   it("asks five different questions one at a time and reveals the result only at the end", () => {
     render(
       <LearningCheck
         title="Testthema"
+        topicId="topic-a"
         questions={questions}
         onExit={vi.fn()}
         random={() => 0}
@@ -68,6 +109,7 @@ describe("LearningCheck", () => {
     render(
       <LearningCheck
         title="Testthema"
+        topicId="topic-a"
         questions={questions}
         onExit={vi.fn()}
         random={() => 0.999999}
@@ -84,6 +126,7 @@ describe("LearningCheck", () => {
     render(
       <LearningCheck
         title="Testthema"
+        topicId="topic-a"
         questions={questions}
         onExit={vi.fn()}
         random={() => 0}
@@ -107,6 +150,7 @@ describe("LearningCheck", () => {
     render(
       <LearningCheck
         title="Testthema"
+        topicId="topic-a"
         questions={questions}
         onExit={onExit}
         random={() => 0}
@@ -124,6 +168,7 @@ describe("LearningCheck", () => {
     render(
       <LearningCheck
         title="Testthema"
+        topicId="topic-a"
         questions={questions}
         onExit={vi.fn()}
         random={() => 0}
@@ -139,6 +184,7 @@ describe("LearningCheck", () => {
     render(
       <LearningCheck
         title="Testthema"
+        topicId="topic-a"
         questions={questions}
         onExit={vi.fn()}
         random={() => 0}
