@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
-import foundationQuestions from "../../../src/verticals/topics/foundationQuestions.json" with { type: "json" };
+import foundationQuestions from "../../src/verticals/learning-checks/foundationQuestions.json" with { type: "json" };
 
 const key = "lernluchs.learning-progress.v1";
 const topicId = "human-ai-responsibility";
