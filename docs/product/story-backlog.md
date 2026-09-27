@@ -7,9 +7,35 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Filtern nach einzelnem Lernpfad
+
+Wenn ein Filter nach Lernpfaden aktiviert ist, werden die einzelnen Lernpfade danach nicht nur als Text dargestellt, sondern sie sind
+klickbar.
+
+- Klickt man auf einen Lernpfad, wird die Themenliste nur noch auf diesen einen Lernpfad gefiltert.
+    - Das System scrollt weich vertikal, sodass nach Möglichkeit alle Themen des Lernpfads im sichtbaren Bereich liegen. Sind die Themen
+      zusammen höher als der sichtbare Bereich, scrollt es zum ersten Thema des Lernpfads.
+- Ein erneuter Klick auf diesen Lernpfad bewirkt keine Änderung der Filterung.
+
+Wie bisher: Werden unten Themendetails angezeigt und ändert sich die Filterung so, dass das unten angezeigte Thema nicht mehr in der Liste
+enthalten ist, wird das Thema ausgeblendet. (Es wird auch später nicht mehr automatisch eingeblendet.)
+
+Das System stellt intern sicher, dass jeder (auch neue) Lernpfad mindestens ein Thema enthält.
+
+Abgrenzung:
+
+- Die Filterung auf den Icons ganz links in der Themenzeile macht genau dasselbe wie bisher auch: Ein Klick filtert auf alle Lernpfade,
+  zu denen das angeklickte Thema gehört. Das gilt auch, wenn zuvor ein einzelner Lernpfad ausgewählt wurde. Erst ein weiterer Klick auf
+  dasselbe Icon hebt die Filterung auf und zeigt wieder alle Themen.
+
+Vertikale: Themen
+
 ## Lernchecks für das unzugeordnete Git-Thema ergänzen
 
-„Git-Commits klein und nachvollziehbar halten“ erhält später einen quellengebundenen Fragenpool und die vorhandenen Auswahlchecks einschließlich Erklärung und Wiederholung. Fragen prüfen die Auswahl logisch zusammengehöriger Änderungen, den Einsatz der Staging Area und die Grenzen einer bloßen Größenregel. Sie werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen auch für ein Thema ohne Lernpfad.
+„Git-Commits klein und nachvollziehbar halten“ erhält später einen quellengebundenen Fragenpool und die vorhandenen Auswahlchecks
+einschließlich Erklärung und Wiederholung. Fragen prüfen die Auswahl logisch zusammengehöriger Änderungen, den Einsatz der Staging Area und
+die Grenzen einer bloßen Größenregel. Sie werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen auch für ein Thema ohne
+Lernpfad.
 
 Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
 
@@ -203,10 +229,10 @@ Bei Context7 werden Angaben mit der Originaldokumentation der konkreten Biblioth
 
 Fragenpools gehören nicht zu dieser Story.
 
-Alle 20 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; dazu gehört weiterhin das Thema ohne Lernpfad. Sie werden über die vier Lernpfade hinweg nach
-Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen Inhalte bleibt erhalten; die neuen
-Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der Inhalte des neuen Lernpfads bleibt
-erhalten.
+Alle 20 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; dazu gehört weiterhin das Thema ohne Lernpfad. Sie werden
+über die vier Lernpfade hinweg nach Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen
+Inhalte bleibt erhalten; die neuen Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der Inhalte
+des neuen Lernpfads bleibt erhalten.
 
 Vertikale: Themen
 
@@ -246,10 +272,10 @@ Die [KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausg
 Gegenbeispiele. Das Thema zur Bewertung beschreibt einen kontrollierten Vergleich von Ergebnisqualität, Dauer, Kosten und Review-Aufwand mit
 einem seriellen Ablauf. Fragenpools gehören nicht zu dieser Story.
 
-Alle 26 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; dazu gehört weiterhin das Thema ohne Lernpfad. Sie werden über die fünf Lernpfade hinweg nach
-Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen Inhalte bleibt erhalten; die neuen
-Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der Inhalte des neuen Lernpfads bleibt
-erhalten.
+Alle 26 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; dazu gehört weiterhin das Thema ohne Lernpfad. Sie werden
+über die fünf Lernpfade hinweg nach Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen
+Inhalte bleibt erhalten; die neuen Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der Inhalte
+des neuen Lernpfads bleibt erhalten.
 
 Vertikale: Themen
 
