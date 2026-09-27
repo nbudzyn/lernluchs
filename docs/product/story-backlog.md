@@ -7,53 +7,18 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Regelmäßig nachfragen
+## Ausstehende Lernchecks
 
-Regelmäßig nachfragen:
-
-- Können wir ein gecodetes kleines Tool gebrauchen, dass dir beim nächsten Mal bei Aufgabe X hilft?
-- Würde uns ein eigener Skill helfen?
-- Sollte man die Doku fürs nächste Mal anpassen, um Zeit / Tokens zu sparen?
-
-## Akteure klar benennen
-
-Statt User oder Benutzer oder Nutzer wollen wir zukünftig differenzieren:
-
-- Der Lernende: Der Nutzer der installierten Anwendung
-- Der Entwickler: Der menschliche User, der die Entwicklung dieser Anwendung steuert
-- Die KI: Das LLM, hier in der Regel Codex, die große Teile der Entwicklung durchführt
-
-Bezeichnungen überall umbenennen. Auch ins glossar eintragen, auch mit englischen Übersetzungen.
-
-## Language Server einbinden
-
-Language Server einbinden
-
-Ziel: Suchen und Code-Bearbeitung beschleunigen
-
-- LSP?
-    - IntelliJ MCP?
-
-## Reihenfolge der Themen zusammenziehen
-
-Führe neue Karte und ihre Einfügeposition an einer Stelle in der Themen-Vertikale zusammen. Entferne die getrennte ID-Liste `additionsAfter`
-als zweite Pflegequelle. Sichere mit einem zunächst roten Test ab, dass jede neue Karte genau einmal erscheint, alle 26 (?) bisherigen
-Themen ihre relative Reihenfolge behalten und jeder Pfad in Listenreihenfolge verläuft. Ändere weder öffentliche Themenverträge noch
-Pfadinhalte.
-
-## Redaktionelle Metadaten zusammenziehen
-
-Fasse die gleichartigen Helfer in `newLearningTopics.ts` und `expandedLearningTopics.ts` zu einem internen Helfer der Themen-Vertikale
-zusammen. Halte quellenspezifische Prüfdaten weiterhin einzeln änderbar; eine spätere Prüfung einer Quelle darf nicht automatisch alle
-anderen Quellen umdatieren. Sichere bestehende Veröffentlichungs-, Prüf- und Wiedervorlagedaten durch Tests ab.
-
-## Lernchecks für den vierten Lernpfad ergänzen
+Story aufteilen und in Chargen zu je.... umsetzen?
 
 Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
 
-Die vier neuen Themen aus „Java-/Web-Code technisch analysieren und modernisieren“ erhalten quellengebundene Fragenpools und Auswahlchecks
-einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie
-werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+Alle Themen erhalten Lernchecks - sofern es für ein Thema noch keine gibt.
+
+- Gibt es für ein Thema schon Lernchecks, dann unverändert lassen.
+- Quellengebundene Fragenpools und Auswahlchecks einschließlich Erklärung.
+- Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie werden unabhängig fachlich geprüft.
+- Elementare Browser-Tests, aber nicht einzeln für jedes Thema
 
 Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
 
@@ -61,7 +26,8 @@ Außerdem werden alle für die Vertikalen "Themen" und "Lernchecks" relevanten B
 (sofern noch nicht vorhanden). Betroffene englische Bezeichner werden innerhalb der beiden Vertikalen vereinheitlicht, ohne Fachlogik zu
 ändern.
 
-Außerdem (VOR PRÜFEN!) den Fragenbestand aus der Vertikale topics in die Vertikale learning-checks verschieben.
+Außerdem (VOR PRÜFEN!) den Fragenbestand aus der Vertikale topics in die Vertikale learning-checks verschieben (sofern noch nicht
+geschehen).
 
 - Die Vertikale learning-checks kennt durchaus die topics
 - Die Vertikale topics kennt keine Fragen (zyklische Abhängikeit verhindern)
@@ -72,42 +38,50 @@ Vertikalen: Themen, Lernchecks
 
 Dokumentation nach Umsetzung:
 
-- Zumindest target-architecture, verticals-and-boundaries
-- Fragenumfang des vierten Pfads sehr knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
+- target-architecture, verticals-and-boundaries prüfen, aktualisieren
+- Kurz Produktstand und redaktionellen Richtlinie prüfen / grob aktualisieren.
 
-## Lernchecks für den fünften Lernpfad ergänzen
+## NF: Regelmäßig nachfragen
 
-Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
+Regelmäßig nachfragen:
 
-Die sechs neuen Themen aus „Parallele Coding-Agenten kritisch erproben“ erhalten quellengebundene Fragenpools und Auswahlchecks
-einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie
-werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+- Können wir ein gecodetes kleines Tool gebrauchen, dass dir beim nächsten Mal bei Aufgabe X hilft?
+- Würde uns ein eigener Skill helfen?
+- Sollte man die Doku fürs nächste Mal anpassen, um Zeit / Tokens zu sparen?
 
-Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
+## NF: Akteure klar benennen
 
-Vertikalen: Themen, Lernchecks
+Statt User oder Benutzer oder Nutzer wollen wir zukünftig differenzieren:
 
-Dokumentation nach Umsetzung: Fragenumfang des fünften Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
+- Der Lernende: Der Nutzer der installierten Anwendung
+- Der Entwickler: Der menschliche User, der die Entwicklung dieser Anwendung steuert
+- Die KI: Das LLM, hier in der Regel Codex, die große Teile der Entwicklung durchführt
 
-## Ausstehende Lernchecks
+Bezeichnungen überall umbenennen. Auch ins glossar eintragen, auch mit englischen Übersetzungen.
 
-Story aufteilen und in Chargen zu je.... umsetzen?
+## NF: Language Server einbinden
 
-Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
+Language Server einbinden
 
-Alle Themen erhalten Lernchecks - sofern es für ein Thema noch keine gibt.
+Ziel: Suchen und Code-Bearbeitung beschleunigen
 
-- Quellengebundene Fragenpools und Auswahlchecks einschließlich Erklärung.
-- Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie werden unabhängig fachlich geprüft.
-- Elementare Browser-Tests, aber nicht einzeln für jedes Thema
+- LSP?
+    - IntelliJ MCP?
 
-Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
+## NF: Reihenfolge der Themen zusammenziehen
 
-Vertikalen: Themen, Lernchecks
+Führe neue Karte und ihre Einfügeposition an einer Stelle in der Themen-Vertikale zusammen. Entferne die getrennte ID-Liste `additionsAfter`
+als zweite Pflegequelle. Sichere mit einem zunächst roten Test ab, dass jede neue Karte genau einmal erscheint, alle 26 (?) bisherigen
+Themen ihre relative Reihenfolge behalten und jeder Pfad in Listenreihenfolge verläuft. Ändere weder öffentliche Themenverträge noch
+Pfadinhalte.
 
-Dokumentation nach Umsetzung: Kurz Produktstand und redaktionellen Richtlinie prüfen / grob aktualisieren.
+## NF: Redaktionelle Metadaten zusammenziehen
 
-## Empfehlungen für AGENTS.md-Dateien hart prüfen
+Fasse die gleichartigen Helfer in `newLearningTopics.ts` und `expandedLearningTopics.ts` zu einem internen Helfer der Themen-Vertikale
+zusammen. Halte quellenspezifische Prüfdaten weiterhin einzeln änderbar; eine spätere Prüfung einer Quelle darf nicht automatisch alle
+anderen Quellen umdatieren. Sichere bestehende Veröffentlichungs-, Prüf- und Wiedervorlagedaten durch Tests ab.
+
+## NF: Empfehlungen für AGENTS.md-Dateien hart prüfen
 
 Empfehlungen für AGENTS.md-Dateien aktuell ermitteln und mit Architektur-Tests (oder Commit-Hooks?) hart prüfen.
 
