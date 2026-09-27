@@ -382,7 +382,7 @@ describe("public content topics", () => {
     ).toBe(true);
     expect(
       topics.items.find((item) => item.id === "focused-git-commits")?.questions,
-    ).toBeUndefined();
+    ).toHaveLength(25);
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 

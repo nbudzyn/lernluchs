@@ -1,6 +1,7 @@
 import type { TopicCollection } from "./topicContract";
 import foundationQuestions from "./foundationQuestions.json";
 import { secondPathQuestions } from "./secondPathQuestions";
+import { remainingQuestions } from "./remainingQuestions";
 
 type FoundationId = keyof typeof foundationQuestions;
 const questionsFor = (id: FoundationId) => foundationQuestions[id];
@@ -190,6 +191,8 @@ export const topics: TopicCollection = {
     {
       id: "coding-agent-context-and-trust-boundaries",
       title: "Kontext und Vertrauensgrenzen für Coding-Agenten",
+      questions:
+        remainingQuestions["coding-agent-context-and-trust-boundaries"],
       content: {
         language: "de",
         problem:
@@ -224,6 +227,8 @@ export const topics: TopicCollection = {
     {
       id: "protect-secrets-and-sensitive-data-with-ai",
       title: "Geheimnisse und sensible Daten beim KI-Einsatz schützen",
+      questions:
+        remainingQuestions["protect-secrets-and-sensitive-data-with-ai"],
       content: {
         language: "de",
         problem:
@@ -549,6 +554,7 @@ export const topics: TopicCollection = {
     {
       id: "review-and-accept-ai-generated-changes",
       title: "KI-generierte Änderungen prüfen und übernehmen",
+      questions: remainingQuestions["review-and-accept-ai-generated-changes"],
       content: {
         language: "de",
         problem:
@@ -575,6 +581,7 @@ export const topics: TopicCollection = {
     {
       id: "focused-git-commits",
       title: "Git-Commits klein und nachvollziehbar halten",
+      questions: remainingQuestions["focused-git-commits"],
       content: {
         language: "de",
         problem:

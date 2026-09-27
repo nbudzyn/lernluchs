@@ -25,7 +25,11 @@ describe("TopicBrowser", () => {
 
   it("marks only saved quiz topics as learned, including after a catalog change", () => {
     const quizTopic = topics.items.find((item) => item.questions)!;
-    const plainTopic = topics.items.find((item) => !item.questions)!;
+    const plainTopic = {
+      ...quizTopic,
+      id: "temporarily-without-quiz",
+      questions: undefined,
+    };
     render(
       <TopicBrowser
         items={[plainTopic, quizTopic]}
@@ -43,7 +47,7 @@ describe("TopicBrowser", () => {
     render(<TopicBrowser onStartQuestions={() => {}} />);
 
     const quizItems = topics.items.filter((item) => item.questions);
-    expect(quizItems).toHaveLength(12);
+    expect(quizItems).toHaveLength(16);
     for (const item of quizItems) {
       const label = `Fragen starten: ${item.title}`;
       const button = screen.getByRole("button", { name: label });

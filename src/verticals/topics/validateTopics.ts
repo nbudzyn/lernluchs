@@ -21,6 +21,10 @@ const questionPoolIds = new Set([
   "playwright-for-web-flows",
   "web-xss-and-safe-dom",
   "dependency-security-assessment",
+  "coding-agent-context-and-trust-boundaries",
+  "protect-secrets-and-sensitive-data-with-ai",
+  "review-and-accept-ai-generated-changes",
+  "focused-git-commits",
 ]);
 
 function hasText(value: string): boolean {

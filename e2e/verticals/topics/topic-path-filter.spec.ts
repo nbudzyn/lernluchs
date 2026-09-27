@@ -68,7 +68,7 @@ test("closes hidden details and does not reopen them when the filter is cleared"
 }) => {
   await page.goto("/");
   const hiddenTitle = "Git-Commits klein und nachvollziehbar halten";
-  await page.getByRole("button", { name: hiddenTitle }).click();
+  await page.getByRole("button", { name: hiddenTitle, exact: true }).click();
   await expect(page.getByRole("article", { name: hiddenTitle })).toBeVisible();
   const filter = page.getByRole("button", {
     name: "Lernpfade von Spec-Driven Development mit OpenSpec filtern",
@@ -76,7 +76,9 @@ test("closes hidden details and does not reopen them when the filter is cleared"
   await filter.click();
   await expect(page.getByRole("article")).toHaveCount(0);
   await filter.click();
-  await expect(page.getByRole("button", { name: hiddenTitle })).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: hiddenTitle, exact: true }),
+  ).toBeVisible();
   await expect(page.getByRole("article")).toHaveCount(0);
 
   const keptTitle = "Problem verstehen und Änderungsgrenzen setzen";

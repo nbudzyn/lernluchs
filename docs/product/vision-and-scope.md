@@ -5,7 +5,8 @@ einer gemeinsamen Liste auswählen und deren kurze Inhalte mit kuratierten Quell
 künftig ergänztes, erhält Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md). Die Inhalte werden redaktionell
 geprüft und als versionierter, nur lesbarer Katalog veröffentlicht.
 
-Für einen Teil der Themen stehen quellengeprüfte Auswahlfragen bereit. Aus der Themenliste startet ein flüchtiger Durchlauf mit fünf
+Für alle 16 Themen des aktuellen Katalogs stehen quellengebundene Auswahlfragen bereit, auch für das Git-Thema ohne Lernpfad. Aus der
+Themenliste startet ein flüchtiger Durchlauf mit fünf
 zufällig ausgewählten Fragen. Nach der letzten Antwort zeigt die App richtige und gewählte falsche Antworten mit Begründungen und
 Quellenlinks. Ein Abbruch verwirft die Antworten. Fünf richtige Antworten speichern das Thema unter seiner dauerhaften ID lokal als
 „gelernt“. Die Themenliste zeigt dafür einen grünen, für Screenreader beschrifteten Haken. Der Lernstand bleibt nach Reload und einem
