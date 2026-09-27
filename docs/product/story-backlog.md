@@ -7,6 +7,48 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Kuratierte Quellen für alle Themen ergänzen (außer Grundlagen-Pfad)
+
+Alle Themen erhalten Quellen.
+
+- Ausnahme: Der Grundlagen-Pfad hat bereits kuratierte Quellen - nicht ändern.
+
+Es gelten die [Regeln zur Quellenauswahl](../content/source-selection.md).
+
+Außerdem werden alle für die Vertikale "Themen" relevanten Begriffe im Glossar mit genau einem englischen Begriff ergänzt. Betroffene
+englische Bezeichner werden innerhalb der Vertikale vereinheitlicht, ohne Fachlogik zu ändern.
+
+Dokumentation nach Umsetzung: Vermerken, dass jedes (auch neue) Thema kuratierte Quellen erhält
+gemäß [Regeln zur Quellenauswahl](../content/source-selection.md).
+
+Vertikalen: Themen
+
+## Lernchecks für den zweiten Lernpfad ergänzen
+
+Die sechs zusätzlichen Themen aus „Änderungen gestalten und absichern“ erhalten quellengebundene Fragenpools und die bereits vorhandenen
+Auswahlchecks einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer
+Quellen; sie werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+
+Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
+
+Außerdem prüfen, ob die E2E-Tests der richtigen Vertikale zugeordnet sind, ggf. aus App in die Vertikale verschieben.
+
+Vertikalen: Themen, Lernchecks
+
+Dokumentation nach Umsetzung: Fragenumfang des zweiten Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
+
+## Lernchecks für den dritten Lernpfad ergänzen
+
+Die drei neuen Themen aus „Sicher mit Coding-Agenten arbeiten“ erhalten quellengebundene Fragenpools und Auswahlchecks einschließlich
+Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie werden unabhängig
+fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+
+Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
+
+Vertikalen: Themen, Lernchecks
+
+Dokumentation nach Umsetzung: Fragenumfang des dritten Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
+
 ## Lernchecks für das unzugeordnete Git-Thema ergänzen
 
 „Git-Commits klein und nachvollziehbar halten“ erhält später einen quellengebundenen Fragenpool und die vorhandenen Auswahlchecks
@@ -17,6 +59,137 @@ Lernpfad.
 Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
 
 Vertikalen: Themen, Lernchecks
+
+## Vierter Lernpfad
+
+Die Vertikale Themen wird um den Lernpfad **Java-/Web-Code technisch analysieren und modernisieren** erweitert:
+
+1. Git-Worktrees für isolierte Änderungen nutzen - neu
+2. Code mit Symbol- und Referenzsuche in IDE oder LSP erschließen - neu
+3. Versionsbezogene Bibliotheksdokumentation mit Context7 prüfen - neu
+4. Modulgrenzen und öffentliche Schnittstellen gestalten - vorhanden
+5. Fachverhalten mit TDD absichern - vorhanden
+6. Java-Architekturregeln mit ArchUnit prüfen - vorhanden
+7. Java-/Spring-Migrationen mit OpenRewrite durchführen - neu
+8. Webabläufe mit Playwright prüfen - vorhanden
+
+Der neue Lernpfad wird in den bereits vorhandenen Themenzuordnungen erfasst. Eine eigene Lernpfad-Auswahl in der Oberfläche folgt erst mit
+„Lernpfade in Anzeige berücksichtigen“.
+
+Die vier neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten
+ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen. Dabei auch immer einen Blick auf die Notizen in der
+KI-Tool-Landkarte haben!
+Bei Context7 werden Angaben mit der Originaldokumentation der konkreten Bibliotheksversion abgeglichen.
+
+Fragenpools gehören nicht zu dieser Story.
+
+Alle 20 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; dazu gehört weiterhin das Thema ohne Lernpfad. Sie werden
+über die vier Lernpfade hinweg nach Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen
+Inhalte bleibt erhalten; die neuen Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der Inhalte
+des neuen Lernpfads bleibt erhalten.
+
+Vertikale: Themen
+
+Dokumentation nach Umsetzung: Den neuen Themenbestand knapp im Produktstand ergänzen.
+
+## Lernchecks für den vierten Lernpfad ergänzen
+
+Die vier neuen Themen aus „Java-/Web-Code technisch analysieren und modernisieren“ erhalten quellengebundene Fragenpools und Auswahlchecks
+einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie
+werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+
+Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
+
+Außerdem werden alle für die Vertikalen "Themen" und "Lernchecks" relevanten Begriffe im Glossar mit genau einem englischen Begriff ergänzt
+(sofern noch nicht vorhanden). Betroffene englische Bezeichner werden innerhalb der beiden Vertikalen vereinheitlicht, ohne Fachlogik zu
+ändern.
+
+Vertikalen: Themen, Lernchecks
+
+Dokumentation nach Umsetzung: Fragenumfang des vierten Pfads sehr knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
+
+## Fünfter Lernpfad
+
+Die Vertikale Themen wird um den Lernpfad **Parallele Coding-Agenten kritisch erproben** erweitert:
+
+1. Aufgaben und Abbruchkriterien für parallele Agenten festlegen - neu
+2. Git-Worktrees für isolierte Änderungen nutzen - vorhanden
+3. Spezialisierte Subagents mit klarem Aufgabenbesitz einsetzen - neu
+4. Kontext zwischen Agenten gezielt übergeben - neu
+5. Werkzeugrechte und MCP-Zugriffe begrenzen - neu
+6. Deterministische Prüf-Gates im Agenten-Harness gestalten - neu
+7. KI-generierte Änderungen prüfen und übernehmen - vorhanden
+8. Parallelität gegen einen seriellen Ablauf messen - neu
+
+Der neue Lernpfad wird in den bereits vorhandenen Themenzuordnungen erfasst. Eine eigene Lernpfad-Auswahl in der Oberfläche folgt erst mit
+„Lernpfade in Anzeige berücksichtigen“. Die Lern-App führt keine Coding-Agenten aus.
+
+Die sechs neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten
+ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen.
+Die [KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausgangspunkt. Die Themen benennen Voraussetzungen, Grenzen und
+Gegenbeispiele. Das Thema zur Bewertung beschreibt einen kontrollierten Vergleich von Ergebnisqualität, Dauer, Kosten und Review-Aufwand mit
+einem seriellen Ablauf. Fragenpools gehören nicht zu dieser Story.
+
+Alle 26 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; dazu gehört weiterhin das Thema ohne Lernpfad. Sie werden
+über die fünf Lernpfade hinweg nach Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen
+Inhalte bleibt erhalten; die neuen Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der Inhalte
+des neuen Lernpfads bleibt erhalten.
+
+Vertikale: Themen
+
+Dokumentation nach Umsetzung: Den neuen Themenbestand knapp im Produktstand ergänzen.
+
+## Lernchecks für den fünften Lernpfad ergänzen
+
+Die sechs neuen Themen aus „Parallele Coding-Agenten kritisch erproben“ erhalten quellengebundene Fragenpools und Auswahlchecks
+einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie
+werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
+
+Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
+
+Vertikalen: Themen, Lernchecks
+
+Dokumentation nach Umsetzung: Fragenumfang des fünften Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
+
+## Weitere Lernpfade
+
+Die Vertikale Themen wird um weitere Lernpfade erweitert.
+
+Die Lernpfade können neuen, aber auch schon existierende Themen verwenden.
+
+- Die [KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausgangspunkt für neue Themen.
+- Neue Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten
+  ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen.
+- Die Themen benennen Voraussetzungen, Grenzen und Gegenbeispiele.
+
+Alle Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; gibt es Themen ohne Lernpfad, werden auch die weiterhin in
+der Liste angezeigt. Alle Themen werden über alle Lernpfade hinweg nach Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die
+relative Reihenfolge aller vorhandenen Inhalte bleibt erhalten; die neuen Inhalte werden passend dazwischen oder danach eingefügt. Auch die
+oben Reihenfolgen der neuen Inhalte bleiben erhalten (im Fall eines Konflikts muss sich die Reihenfolge im neuen Lernpfad an den
+Reihenfolgen der bisherigen Lernpfade orientieren).
+
+Dokumentation nach Umsetzung: Den neuen Themenbestand knapp im Produktstand ergänzen.
+
+Abgrenzung:
+
+- Fragenpools gehören nicht zu dieser Story.
+- Die Lern-App führt keine Coding-Agenten aus.
+
+Vertikale: Themen
+
+## Weitere Lernchecks
+
+Alle Themen erhalten Lernchecks - sofern es für ein Thema noch keine gibt.
+
+- Quellengebundene Fragenpools und Auswahlchecks einschließlich Erklärung.
+- Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie werden unabhängig fachlich geprüft.
+- Elementare Browser-Tests, aber nicht einzeln für jedes Thema
+
+Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
+
+Vertikalen: Themen, Lernchecks
+
+Dokumentation nach Umsetzung: Kurz Produktstand und redaktionellen Richtlinie prüfen / grob aktualisieren.
 
 ## Initial in einem Projekt angewendet / umfassend in einem Projekt umgesetzt
 
@@ -59,6 +232,9 @@ nicht bestanden zurücksetzen?"
   erhalten!
 
 Der Browser-E2E-Test deckt Nichtbestehen mit und ohne Löschen des Lernstands UND DEN ERHALT ANDERER, BEREITS BESTANDENER THEMEN ab.
+
+Außerdem werden alle Begriffe im Glossar mit genau einem englischen Begriff ergänzt (sofern noch nicht vorhanden). Betroffene englische
+Bezeichner werden innerhalb der beiden Vertikalen vereinheitlicht, ohne Fachlogik zu ändern.
 
 Vertikalen: Lernchecks, Lernfortschritt
 
@@ -142,204 +318,6 @@ Vertikale: PWA/Zuverlässigkeit
 
 Dokumentation nach Umsetzung: Unterstützte Browser, nachgewiesene Abläufe und Release-Gates knapp in Produktstand und Qualitätsstrategie
 ergänzen.
-
-## Kuratierte Quellen für den zweiten Lernpfad ergänzen
-
-Die sechs zusätzlichen Themen aus „Änderungen gestalten und absichern“ erhalten Quellen.
-
-Es gelten die [Regeln zur Quellenauswahl](../content/source-selection.md).
-
-Vertikalen: Themen
-
-## Lernchecks für den zweiten Lernpfad ergänzen
-
-Die sechs zusätzlichen Themen aus „Änderungen gestalten und absichern“ erhalten quellengebundene Fragenpools und die bereits vorhandenen
-Auswahlchecks einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer
-Quellen; sie werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
-
-Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
-
-Vertikalen: Themen, Lernchecks
-
-Dokumentation nach Umsetzung: Fragenumfang des zweiten Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
-
-## Kuratierte Quellen für den dritten Lernpfad ergänzen
-
-Die drei neuen Themen aus „Sicher mit Coding-Agenten arbeiten“ erhalten Quellen.
-
-Es gelten die [Regeln zur Quellenauswahl](../content/source-selection.md).
-
-Vertikalen: Themen
-
-## Lernchecks für den dritten Lernpfad ergänzen
-
-Die drei neuen Themen aus „Sicher mit Coding-Agenten arbeiten“ erhalten quellengebundene Fragenpools und Auswahlchecks einschließlich
-Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie werden unabhängig
-fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
-
-Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
-
-Vertikalen: Themen, Lernchecks
-
-Dokumentation nach Umsetzung: Fragenumfang des dritten Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
-
-## Vierter Lernpfad
-
-Die Vertikale Themen wird um den Lernpfad **Java-/Web-Code technisch analysieren und modernisieren** erweitert:
-
-1. Git-Worktrees für isolierte Änderungen nutzen - neu
-2. Code mit Symbol- und Referenzsuche in IDE oder LSP erschließen - neu
-3. Versionsbezogene Bibliotheksdokumentation mit Context7 prüfen - neu
-4. Modulgrenzen und öffentliche Schnittstellen gestalten - vorhanden
-5. Fachverhalten mit TDD absichern - vorhanden
-6. Java-Architekturregeln mit ArchUnit prüfen - vorhanden
-7. Java-/Spring-Migrationen mit OpenRewrite durchführen - neu
-8. Webabläufe mit Playwright prüfen - vorhanden
-
-Der neue Lernpfad wird in den bereits vorhandenen Themenzuordnungen erfasst. Eine eigene Lernpfad-Auswahl in der Oberfläche folgt erst mit
-„Lernpfade in Anzeige berücksichtigen“.
-
-Die vier neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten
-ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen. Dabei auch immer einen Blick auf die Notizen in der
-KI-Tool-Landkarte haben!
-Bei Context7 werden Angaben mit der Originaldokumentation der konkreten Bibliotheksversion abgeglichen.
-
-Fragenpools gehören nicht zu dieser Story.
-
-Alle 20 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; dazu gehört weiterhin das Thema ohne Lernpfad. Sie werden
-über die vier Lernpfade hinweg nach Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen
-Inhalte bleibt erhalten; die neuen Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der Inhalte
-des neuen Lernpfads bleibt erhalten.
-
-Vertikale: Themen
-
-Dokumentation nach Umsetzung: Den neuen Themenbestand knapp im Produktstand ergänzen.
-
-## Lernchecks für den vierten Lernpfad ergänzen
-
-Die vier neuen Themen aus „Java-/Web-Code technisch analysieren und modernisieren“ erhalten quellengebundene Fragenpools und Auswahlchecks
-einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie
-werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
-
-Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
-
-Vertikalen: Themen, Lernchecks
-
-Dokumentation nach Umsetzung: Fragenumfang des vierten Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
-
-## Fünfter Lernpfad
-
-Die Vertikale Themen wird um den Lernpfad **Parallele Coding-Agenten kritisch erproben** erweitert:
-
-1. Aufgaben und Abbruchkriterien für parallele Agenten festlegen - neu
-2. Git-Worktrees für isolierte Änderungen nutzen - vorhanden
-3. Spezialisierte Subagents mit klarem Aufgabenbesitz einsetzen - neu
-4. Kontext zwischen Agenten gezielt übergeben - neu
-5. Werkzeugrechte und MCP-Zugriffe begrenzen - neu
-6. Deterministische Prüf-Gates im Agenten-Harness gestalten - neu
-7. KI-generierte Änderungen prüfen und übernehmen - vorhanden
-8. Parallelität gegen einen seriellen Ablauf messen - neu
-
-Der neue Lernpfad wird in den bereits vorhandenen Themenzuordnungen erfasst. Eine eigene Lernpfad-Auswahl in der Oberfläche folgt erst mit
-„Lernpfade in Anzeige berücksichtigen“. Die Lern-App führt keine Coding-Agenten aus.
-
-Die sechs neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten
-ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen.
-Die [KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausgangspunkt. Die Themen benennen Voraussetzungen, Grenzen und
-Gegenbeispiele. Das Thema zur Bewertung beschreibt einen kontrollierten Vergleich von Ergebnisqualität, Dauer, Kosten und Review-Aufwand mit
-einem seriellen Ablauf. Fragenpools gehören nicht zu dieser Story.
-
-Alle 26 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; dazu gehört weiterhin das Thema ohne Lernpfad. Sie werden
-über die fünf Lernpfade hinweg nach Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die relative Reihenfolge aller vorhandenen
-Inhalte bleibt erhalten; die neuen Inhalte werden passend dazwischen oder danach eingefügt. Auch die oben angegebene Reihenfolge der Inhalte
-des neuen Lernpfads bleibt erhalten.
-
-Vertikale: Themen
-
-Dokumentation nach Umsetzung: Den neuen Themenbestand knapp im Produktstand ergänzen.
-
-## Lernchecks für den fünften Lernpfad ergänzen
-
-Die sechs neuen Themen aus „Parallele Coding-Agenten kritisch erproben“ erhalten quellengebundene Fragenpools und Auswahlchecks
-einschließlich Erklärung und Wiederholung. Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie
-werden unabhängig fachlich geprüft. Browser-Tests zeigen den Lernnutzen für diesen Pfad.
-
-Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
-
-Vertikalen: Themen, Lernchecks
-
-Dokumentation nach Umsetzung: Fragenumfang des fünften Pfads knapp im Produktstand und in der redaktionellen Richtlinie ergänzen.
-
-## Lernpfade in Anzeige berücksichtigen
-
-Die Anwendung kennt zu diesem Zeitpunkt bereits die fünf Lernpfade und die Zuordnungen ihrer Themen. Diese Story ergänzt die eigenständige
-Anzeige und Auswahl von Lernpfaden; sie führt die Pfaddaten nicht noch einmal ein.
-
-- Es gibt fünf Lernpfade:
-
-  **Grundlagen für KI-gestützte Softwareentwicklung**
-
-    1. Mensch und KI: Verantwortung bleibt menschlich
-    2. Problem verstehen und Änderungsgrenzen setzen
-    3. AGENTS.md: dauerhafter Kontext für Coding-Agenten
-    4. EARS: Anforderungen präzise formulieren
-    5. Research, Plan und Tasks trennen
-    6. Spec-Driven Development mit OpenSpec
-
-  **Änderungen gestalten und absichern**
-
-    1. Problem verstehen und Änderungsgrenzen setzen
-    2. EARS: Anforderungen präzise formulieren
-    3. Modulgrenzen und öffentliche Schnittstellen gestalten
-    4. Fachverhalten mit TDD absichern
-    5. Java-Architekturregeln mit ArchUnit prüfen
-    6. Webabläufe mit Playwright prüfen
-    7. Web-Sicherheitsrisiken wie XSS und unsichere DOM-Nutzung erkennen
-    8. Abhängigkeiten und Sicherheitslücken risikobasiert bewerten
-
-  **Sicher mit Coding-Agenten arbeiten**
-
-    1. Mensch und KI: Verantwortung bleibt menschlich
-    2. Problem verstehen und Änderungsgrenzen setzen
-    3. AGENTS.md: dauerhafter Kontext für Coding-Agenten
-    4. Kontext und Vertrauensgrenzen für Coding-Agenten
-    5. Geheimnisse und sensible Daten beim KI-Einsatz schützen
-    6. Research, Plan und Tasks trennen
-    7. Fachverhalten mit TDD absichern
-    8. KI-generierte Änderungen prüfen und übernehmen
-
-  **Java-/Web-Code technisch analysieren und modernisieren**
-
-    1. Git-Worktrees für isolierte Änderungen nutzen
-    2. Code mit Symbol- und Referenzsuche in IDE oder LSP erschließen
-    3. Versionsbezogene Bibliotheksdokumentation mit Context7 prüfen
-    4. Modulgrenzen und öffentliche Schnittstellen gestalten
-    5. Fachverhalten mit TDD absichern
-    6. Java-Architekturregeln mit ArchUnit prüfen
-    7. Java-/Spring-Migrationen mit OpenRewrite durchführen
-    8. Webabläufe mit Playwright prüfen
-
-  **Parallele Coding-Agenten kritisch erproben**
-
-    1. Aufgaben und Abbruchkriterien für parallele Agenten festlegen
-    2. Git-Worktrees für isolierte Änderungen nutzen
-    3. Spezialisierte Subagents mit klarem Aufgabenbesitz einsetzen
-    4. Kontext zwischen Agenten gezielt übergeben
-    5. Werkzeugrechte und MCP-Zugriffe begrenzen
-    6. Deterministische Prüf-Gates im Agenten-Harness gestalten
-    7. KI-generierte Änderungen prüfen und übernehmen
-    8. Parallelität gegen einen seriellen Ablauf messen
-
-Lernpfade werden in der Anzeige berücksichtigt. Man kann die Anzeige auf einen oder mehrere Lernpfade filtern - oder man zeigt alternativ
-alle Lernpfade an.
-
-Beim Aufbau des sichtbaren Filters werden die benötigten Pfadbegriffe im Glossar mit genau einem englischen Begriff ergänzt. Betroffene
-englische Bezeichner werden innerhalb der höchstens zwei berührten Vertikalen vereinheitlicht, ohne Fachlogik zu ändern. Weitere Begriffe
-werden erst in der jeweils betroffenen fachlichen Story vereinheitlicht.
-
-Vertikalen: Themen, Lernpfade
-
-Dokumentation nach Umsetzung: Pfadmodell, Filterverhalten und neue Begriffe knapp in Produktstand, Architektur und Glossar ergänzen.
 
 ## Quellen und Videos gezielt erkunden
 
