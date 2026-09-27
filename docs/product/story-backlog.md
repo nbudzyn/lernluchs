@@ -7,59 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Vierter und fünfter Lernpfad
-
-Die Vertikale Themen wird um den Lernpfad **Java-/Web-Code technisch analysieren und modernisieren** erweitert (vierter Lernpfad):
-
-1. Git-Worktrees für isolierte Änderungen nutzen - neu
-2. Code mit Symbol- und Referenzsuche in IDE oder LSP erschließen - neu
-3. Versionsbezogene Bibliotheksdokumentation mit Context7 prüfen - neu
-4. Modulgrenzen und öffentliche Schnittstellen gestalten - vorhanden
-5. Fachverhalten mit TDD absichern - vorhanden
-6. Java-Architekturregeln mit ArchUnit prüfen - vorhanden
-7. Java-/Spring-Migrationen mit OpenRewrite durchführen - neu
-8. Webabläufe mit Playwright prüfen - vorhanden
-
-Die Vertikale Themen wird außerdem um den Lernpfad **Parallele Coding-Agenten kritisch erproben** erweitert (fünfter Lernpfad):
-
-1. Aufgaben und Abbruchkriterien für parallele Agenten festlegen - neu
-2. Git-Worktrees für isolierte Änderungen nutzen - vorhanden
-3. Spezialisierte Subagents mit klarem Aufgabenbesitz einsetzen - neu
-4. Kontext zwischen Agenten gezielt übergeben - neu
-5. Werkzeugrechte und MCP-Zugriffe begrenzen - neu
-6. Deterministische Prüf-Gates im Agenten-Harness gestalten - neu
-7. KI-generierte Änderungen prüfen und übernehmen - vorhanden
-8. Parallelität gegen einen seriellen Ablauf messen - neu
-
-Die beiden Lernpfade werden als weitere Themenzuordnungen im bestehenden Katalog erfasst. Bereits vorhandene Themen werden wiederverwendet;
-jedes der zehn neuen Themen erhält genau eine dauerhafte ID und erscheint nur einmal im Katalog. Die bisherigen drei Lernpfade behalten ihre
-Themen und deren Reihenfolge. Das bisher pfadlose Thema bleibt ohne Zuordnung. Die Lern-App führt keine Coding-Agenten aus.
-
-Die neuen Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten
-ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen. Die
-[KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausgangspunkt, nicht als Beleg. Die Themen benennen Voraussetzungen,
-Grenzen und Gegenbeispiele. Das Thema zur Bewertung beschreibt einen kontrollierten Vergleich von Ergebnisqualität, Dauer, Kosten und
-Review-Aufwand mit einem seriellen Ablauf.
-
-Alle 26 Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; dazu gehört weiterhin das Thema ohne Lernpfad. Die Liste
-ordnet Grundlagen vor mittleren und fortgeschrittenen Themen. Ihre bisherige globale Reihenfolge darf sich ändern, wenn danach jeder der
-fünf Lernpfade seine vorgegebene interne Reihenfolge behält. Die Pfadfilter zeigen jeweils genau die zugeordneten Themen in dieser
-Reihenfolge. Für neue Themen ohne Fragenpool wird kein Lerncheck angeboten.
-
-Beim Context7-Thema wird zwischen der über Context7 gefundenen Dokumentation und der Originaldokumentation der konkret genannten
-Bibliotheksversion unterschieden. Versionsabhängige Aussagen werden gegen die Originaldokumentation geprüft. Quellenprüfung,
-Aktualitätsmetadaten und begründete Unsicherheiten werden in der späteren Änderungs-Spec festgehalten.
-
-Abnahme: Katalogprüfungen belegen 26 eindeutige Themen, fünf vollständige Pfadzuordnungen mit korrekter Reihenfolge und das weiterhin
-pfadlose Thema. Ein Browser-Test belegt die gemeinsame Liste, beide neuen Pfadfilter, die Anzeige neuer Themen mit Quellen und Metadaten
-sowie das fehlende Lerncheck-Angebot bei Themen ohne Fragenpool.
-
-Fragenpools gehören nicht zu dieser Story.
-
-Vertikale: Themen
-
-Dokumentation nach Umsetzung: Den neuen Themenbestand knapp im Produktstand ergänzen.
-
 ## Fragenbestand in Vertikal learning-checks
 
 Fragenbestand aus der Vertikale topics in die Vertikale learning-checks verschieben.
@@ -157,8 +104,7 @@ Empfehlungen für AGENTS.md-Dateien aktuell ermitteln und mit Architektur-Tests 
 Erster Ansatz:
 
 - Keine AGENTS.md-Datei soll länger als 150 (?) Zeilen sein.
-- Es gibt eine AGENTS.md-Datei auf oberster Ebene
-- Es gibt keine weiteren AGENTS.md-Datei im Projekt.
+- Es gibt eine AGENTS.md-Datei auf oberster Ebene (weitere sind erlaubt)
 
 Auch CLAUDE.md anlegen, Verweis (mit @) auf AGENTS.md-Datei oder nur als Symlink.
 
