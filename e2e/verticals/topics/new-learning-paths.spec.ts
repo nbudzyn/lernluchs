@@ -40,7 +40,7 @@ for (const path of pathCases) {
   }) => {
     await page.goto("/");
     const navigation = page.getByRole("navigation", { name: "Lernthemen" });
-    await expect(navigation.locator("li")).toHaveCount(26);
+    await expect(navigation.locator("li")).toHaveCount(46);
     await expect(
       page.getByRole("button", {
         name: "Git-Commits klein und nachvollziehbar halten",

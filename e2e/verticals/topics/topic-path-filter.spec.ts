@@ -12,7 +12,7 @@ test("filters with a keyboard accessible icon and keeps its row visible", async 
     page.getByRole("button", {
       name: "Lernpfade von Git-Commits klein und nachvollziehbar halten filtern",
     }),
-  ).toHaveCount(0);
+  ).toBeVisible();
   await icon.focus();
   await expect(icon).toBeFocused();
   await expect(icon).toHaveCSS("outline-style", /^(?!none$).+/);

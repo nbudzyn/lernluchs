@@ -19,7 +19,7 @@ describe("TopicBrowser", () => {
       }),
     );
     expect(filterSummary()).toBe(
-      "Themen gefiltert nach Lernpfaden: Grundlagen für KI-gestützte Softwareentwicklung",
+      "Themen gefiltert nach Lernpfaden: Grundlagen für KI-gestützte Softwareentwicklung, Unklare Änderungswünsche in prüfbare Aufträge übersetzen, Coding-Agenten und Spec-Systeme gezielt auswählen",
     );
   });
 
@@ -57,7 +57,7 @@ describe("TopicBrowser", () => {
     }
   });
 
-  it("shows all twenty-six topics in one semantic text overview", () => {
+  it("shows all forty-six topics in one semantic text overview", () => {
     render(<TopicBrowser />);
 
     expect(screen.getByRole("navigation", { name: "Lernthemen" })).toBeTruthy();
@@ -65,7 +65,7 @@ describe("TopicBrowser", () => {
       screen
         .getByRole("navigation", { name: "Lernthemen" })
         .querySelectorAll("li"),
-    ).toHaveLength(26);
+    ).toHaveLength(46);
     expect(
       screen.getByRole("button", {
         name: "Mensch und KI: Verantwortung bleibt menschlich",

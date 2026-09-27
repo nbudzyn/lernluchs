@@ -7,42 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Ausstehende Lernpfade
-
-Die Vertikale Themen wird um weitere Lernpfade erweitert. Dazu werden alle Themen aus der KI-Tool-Landkarte importiert und auf Lernpfade
-verteilt. Auch Themen, die schon übernommen wurden, aber keinen Lernpfad haben, werden in einen Lernpfad aufgenommen.
-
-- AUSNAHME: Themen, die inhatlich ganz unklar sind (nicht im KI-Umfeld nachvollziehbare Toolnamen) oder deutlich veraltete Konzepte
-
-- Die (neuen) Lernpfade sollen möglichst spezifisch sein:
-    - Auf ein klar unterschiedliche Endergebnisse zielen
-    - Sich an verschiedene Zielgruppen richten
-    - Unterschiedliche Menschentypen und Erfahrungs-Hintergründe ansprechen
-    - Für sehr unterschiedliche Projekte relevant.
-
-Die Lernpfade können neue, aber auch schon existierende Themen verwenden.
-
-- Die [KI-Tool-Landkarte](../content/ki-tool-landkarte.md) dient als Rechercheausgangspunkt für neue Themen.
-- Neue Themen werden mit Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md) und Aktualitätsmetadaten
-  ausformuliert, fachlich geprüft und strukturell an die vorhandenen Inhalte angeglichen.
-- Die Themen benennen Voraussetzungen, Grenzen und Gegenbeispiele.
-
-Alle Themen erscheinen genau einmal in einer gemeinsamen, ungruppierten Liste; gibt es Themen ohne Lernpfad, werden auch die weiterhin in
-der Liste angezeigt. Alle Themen werden über alle Lernpfade hinweg nach Grundlagen, mittleren und fortgeschrittenen Themen sortiert. Die
-relative Reihenfolge aller vorhandenen Inhalte bleibt erhalten; die neuen Inhalte werden passend dazwischen oder danach eingefügt. Auch die
-oben Reihenfolgen der neuen Inhalte bleiben erhalten (im Fall eines Konflikts muss sich die Reihenfolge im neuen Lernpfad an den
-Reihenfolgen der bisherigen Lernpfade orientieren).
-
-Dokumentation nach Umsetzung: Den neuen Themenbestand knapp im Produktstand ergänzen.
-
-Abgrenzung:
-
-- Bestehend Lernpfade werden nicht verändert.
-- Fragenpools gehören nicht zu dieser Story.
-- Die Lern-App führt keine Coding-Agenten aus.
-
-Vertikale: Themen
-
 ## Regelmäßig nachfragen
 
 Regelmäßig nachfragen:
@@ -60,6 +24,28 @@ Statt User oder Benutzer oder Nutzer wollen wir zukünftig differenzieren:
 - Die KI: Das LLM, hier in der Regel Codex, die große Teile der Entwicklung durchführt
 
 Bezeichnungen überall umbenennen. Auch ins glossar eintragen, auch mit englischen Übersetzungen.
+
+## Language Server einbinden
+
+Language Server einbinden
+
+Ziel: Suchen und Code-Bearbeitung beschleunigen
+
+- LSP?
+    - IntelliJ MCP?
+
+## Reihenfolge der Themen zusammenziehen
+
+Führe neue Karte und ihre Einfügeposition an einer Stelle in der Themen-Vertikale zusammen. Entferne die getrennte ID-Liste `additionsAfter`
+als zweite Pflegequelle. Sichere mit einem zunächst roten Test ab, dass jede neue Karte genau einmal erscheint, alle 26 (?) bisherigen
+Themen ihre relative Reihenfolge behalten und jeder Pfad in Listenreihenfolge verläuft. Ändere weder öffentliche Themenverträge noch
+Pfadinhalte.
+
+## Redaktionelle Metadaten zusammenziehen
+
+Fasse die gleichartigen Helfer in `newLearningTopics.ts` und `expandedLearningTopics.ts` zu einem internen Helfer der Themen-Vertikale
+zusammen. Halte quellenspezifische Prüfdaten weiterhin einzeln änderbar; eine spätere Prüfung einer Quelle darf nicht automatisch alle
+anderen Quellen umdatieren. Sichere bestehende Veröffentlichungs-, Prüf- und Wiedervorlagedaten durch Tests ab.
 
 ## Lernchecks für den vierten Lernpfad ergänzen
 

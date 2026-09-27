@@ -1,8 +1,9 @@
-import type { TopicCollection } from "./topicContract";
+import type { Topic, TopicCollection } from "./topicContract";
 import foundationQuestions from "./foundationQuestions.json";
 import { secondPathQuestions } from "./secondPathQuestions";
 import { remainingQuestions } from "./remainingQuestions";
 import { fifthPathTopics, fourthPathTopics } from "./newLearningTopics";
+import { expandedLearningTopics } from "./expandedLearningTopics";
 
 type FoundationId = keyof typeof foundationQuestions;
 const questionsFor = (id: FoundationId) => foundationQuestions[id];
@@ -23,7 +24,7 @@ function curatedEditorial() {
   };
 }
 
-export const topics: TopicCollection = {
+const previousTopics: TopicCollection = {
   version: "4",
   paths: [
     {
@@ -590,19 +591,27 @@ export const topics: TopicCollection = {
       content: {
         language: "de",
         problem:
-          "Ein plausibler KI-Patch kann Anforderungen verfehlen, Sicherheitsregeln verletzen oder unnötige Abhängigkeiten einführen.",
+          "Ein plausibler KI-Patch kann Anforderungen verfehlen, Sicherheitsregeln verletzen oder unnötige Abhängigkeiten einführen. Der erzeugende Agent kann solche Fehler bei der eigenen Prüfung übersehen.",
         coreConcept:
-          "Menschen prüfen den Diff gegen Auftrag und Architektur, führen passende Tests und Sicherheitsprüfungen aus und entscheiden erst anhand der Ergebnisse über die Übernahme.",
+          "Menschen prüfen den Diff gegen Auftrag und Architektur, führen passende Tests und Sicherheitsprüfungen aus und entscheiden erst anhand der Ergebnisse über die Übernahme. Bei höherem Risiko ergänzt eine zweite, nicht an der Änderung beteiligte Review-Perspektive diese Prüfung.",
         javaWebUse:
-          "Bei einem geänderten Spring-Endpunkt werden Berechtigungsprüfung, Fehlerfälle und neue Bibliotheken im Diff kontrolliert und mit gezielten Java- und Browser-Tests geprüft.",
+          "Bei einem geänderten Spring-Endpunkt werden Berechtigungsprüfung, Fehlerfälle und neue Bibliotheken im Diff kontrolliert und mit gezielten Java- und Browser-Tests geprüft. Eine unabhängige Person prüft zusätzlich API-Vertrag und Berechtigungen.",
         boundary:
-          "Grüne Tests und Scanner decken nur ihre geprüften Fälle ab. Sie ersetzen weder die fachliche Bewertung noch die menschliche Freigabe.",
+          "Grüne Tests und Scanner decken nur ihre geprüften Fälle ab. Ein Review-Agent ersetzt weder die fachliche Bewertung noch die menschliche Freigabe; eine feste Anzahl von Reviews garantiert keine Qualität.",
       },
       editorial: curatedEditorial(),
       sources: [
         {
           title: "Review AI-generated code - GitHub Docs",
           url: "https://docs.github.com/en/copilot/tutorials/review-ai-generated-code",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-09-27",
+        },
+        {
+          title: "Safety in building agents – OpenAI",
+          url: "https://developers.openai.com/api/docs/guides/agent-builder-safety",
           type: "official-guide",
           origin: "primary",
           language: "en",
@@ -649,6 +658,153 @@ export const topics: TopicCollection = {
           language: "en",
           checkedAt: "2026-09-27",
         },
+      ],
+    },
+  ],
+};
+
+function expandedTopic(id: string): Topic {
+  const item = expandedLearningTopics.find((topic) => topic.id === id);
+  if (!item) throw new Error(`Missing expanded topic: ${id}`);
+  return item;
+}
+
+const additionsAfter: Record<string, string[]> = {
+  "problem-understanding-and-change-boundaries": [
+    "domain-language-and-complexity",
+    "project-documentation-and-checklists",
+    "open-knowledge-format",
+    "goal-discovery-and-stop-criteria",
+  ],
+  "ears-requirements": [
+    "design-and-legacy-specification",
+    "standards-and-constraint-rationale",
+    "llm-fallibility-and-counterchecks",
+    "context-selection-and-reset",
+  ],
+  "coding-agent-context-and-trust-boundaries": [
+    "codebase-memory-for-large-repos",
+    "token-efficiency-tools",
+  ],
+  "spec-driven-development-openspec": [
+    "coding-agent-interface-selection",
+    "agent-skills-and-commands",
+    "spec-framework-selection",
+  ],
+  "deterministic-agent-verification-gates": ["automation-value-and-gates"],
+  "web-xss-and-safe-dom": [
+    "web-security-baseline",
+    "ui-design-system-workflow",
+    "technical-documentation-generation",
+  ],
+  "compare-parallel-and-serial-agent-work": [
+    "bug-triage-and-pr-automation",
+    "local-model-stack-evaluation",
+    "coding-harness-design",
+  ],
+};
+
+export const topics: TopicCollection = {
+  version: "5",
+  items: previousTopics.items.flatMap((item) => [
+    item,
+    ...(additionsAfter[item.id] ?? []).map(expandedTopic),
+  ]),
+  paths: [
+    ...(previousTopics.paths ?? []),
+    {
+      name: "Projektwissen für kleine Java-/Web-Teams pflegen",
+      topicIds: [
+        "problem-understanding-and-change-boundaries",
+        "domain-language-and-complexity",
+        "project-documentation-and-checklists",
+        "open-knowledge-format",
+        "agents-md",
+        "research-plan-tasks",
+        "focused-git-commits",
+      ],
+    },
+    {
+      name: "Unklare Änderungswünsche in prüfbare Aufträge übersetzen",
+      topicIds: [
+        "problem-understanding-and-change-boundaries",
+        "goal-discovery-and-stop-criteria",
+        "ears-requirements",
+        "design-and-legacy-specification",
+        "standards-and-constraint-rationale",
+        "llm-fallibility-and-counterchecks",
+        "research-plan-tasks",
+        "spec-driven-development-openspec",
+      ],
+    },
+    {
+      name: "Agentenkontext in großen Repositories steuern",
+      topicIds: [
+        "project-documentation-and-checklists",
+        "agents-md",
+        "context-selection-and-reset",
+        "coding-agent-context-and-trust-boundaries",
+        "codebase-memory-for-large-repos",
+        "token-efficiency-tools",
+        "code-navigation-with-symbols-and-references",
+        "versioned-library-docs-with-context7",
+      ],
+    },
+    {
+      name: "Coding-Agenten und Spec-Systeme gezielt auswählen",
+      topicIds: [
+        "spec-driven-development-openspec",
+        "coding-agent-interface-selection",
+        "agent-skills-and-commands",
+        "spec-framework-selection",
+        "specialized-subagents-and-ownership",
+        "agent-tool-and-mcp-permissions",
+      ],
+    },
+    {
+      name: "Weboberflächen und technische Dokumentation gestalten",
+      topicIds: [
+        "module-boundaries-and-public-interfaces",
+        "tdd-for-domain-behavior",
+        "playwright-for-web-flows",
+        "web-xss-and-safe-dom",
+        "ui-design-system-workflow",
+        "technical-documentation-generation",
+      ],
+    },
+    {
+      name: "Sicherheit und Qualität eines Webprodukts bewerten",
+      topicIds: [
+        "standards-and-constraint-rationale",
+        "coding-agent-context-and-trust-boundaries",
+        "protect-secrets-and-sensitive-data-with-ai",
+        "module-boundaries-and-public-interfaces",
+        "archunit-for-java-architecture",
+        "web-xss-and-safe-dom",
+        "web-security-baseline",
+        "dependency-security-assessment",
+        "review-and-accept-ai-generated-changes",
+      ],
+    },
+    {
+      name: "Wiederkehrende Entwicklungsarbeit kontrolliert automatisieren",
+      topicIds: [
+        "parallel-agent-task-boundaries",
+        "git-worktrees-for-isolated-changes",
+        "deterministic-agent-verification-gates",
+        "automation-value-and-gates",
+        "review-and-accept-ai-generated-changes",
+        "bug-triage-and-pr-automation",
+        "coding-harness-design",
+      ],
+    },
+    {
+      name: "Lokale KI-Stacks für sensible Projekte prüfen",
+      topicIds: [
+        "coding-agent-interface-selection",
+        "agent-tool-and-mcp-permissions",
+        "local-model-stack-evaluation",
+        "coding-harness-design",
       ],
     },
   ],

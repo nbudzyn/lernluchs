@@ -5,6 +5,7 @@ import type { Topic } from "../../../src/verticals/topics/topicContract";
 import { topics } from "../../../src/verticals/topics/topics";
 import { secondPathQuestions } from "../../../src/verticals/topics/secondPathQuestions";
 import { validateQuestionPool } from "../../../src/verticals/topics/validateQuestionPool";
+import { expandedLearningTopics } from "../../../src/verticals/topics/expandedLearningTopics";
 
 function completeItem(id: string): Topic {
   return {
@@ -182,8 +183,9 @@ describe("public content topics", () => {
   });
   it("curates current sources for every topic outside the foundation path", () => {
     const foundationIds = new Set(topics.paths?.[0].topicIds);
+    const expandedIds = new Set(expandedLearningTopics.map((item) => item.id));
     const otherTopics = topics.items.filter(
-      (item) => !foundationIds.has(item.id),
+      (item) => !foundationIds.has(item.id) && !expandedIds.has(item.id),
     );
     expect(otherTopics).toHaveLength(20);
     expect(otherTopics.map((item) => item.id)).toContain("focused-git-commits");
@@ -283,7 +285,7 @@ describe("public content topics", () => {
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
-  it("orders the twenty-six available topics by the agreed path projection", () => {
+  it("preserves the agreed order of the original twenty-six topics", () => {
     const newIds = [
       "coding-agent-context-and-trust-boundaries",
       "protect-secrets-and-sensitive-data-with-ai",
@@ -291,7 +293,8 @@ describe("public content topics", () => {
     ];
     const ids = topics.items.map((item) => item.id);
 
-    expect(ids).toEqual([
+    const expandedIds = new Set(expandedLearningTopics.map((item) => item.id));
+    expect(ids.filter((id) => !expandedIds.has(id))).toEqual([
       "human-ai-responsibility",
       "problem-understanding-and-change-boundaries",
       "agents-md",
@@ -319,7 +322,7 @@ describe("public content topics", () => {
       "compare-parallel-and-serial-agent-work",
       "focused-git-commits",
     ]);
-    expect(new Set(ids).size).toBe(26);
+    expect(new Set(ids).size).toBe(ids.length);
     expect(
       topics.items.every((item) => !("contentVersion" in item.editorial)),
     ).toBe(true);
@@ -345,7 +348,7 @@ describe("public content topics", () => {
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
-  it("preserves the three existing learning paths and leaves the Git topic unassigned", () => {
+  it("preserves the existing learning paths and assigns the Git topic to a new path", () => {
     expect(topics.paths?.slice(0, 3)).toEqual([
       {
         name: "Grundlagen für KI-gestützte Softwareentwicklung",
@@ -386,9 +389,14 @@ describe("public content topics", () => {
       },
     ]);
     expect(
-      topics.paths?.every(
-        (path) => !path.topicIds.includes("focused-git-commits"),
-      ),
+      topics.paths
+        ?.slice(0, 5)
+        .every((path) => !path.topicIds.includes("focused-git-commits")),
+    ).toBe(true);
+    expect(
+      topics.paths
+        ?.slice(5)
+        .some((path) => path.topicIds.includes("focused-git-commits")),
     ).toBe(true);
     expect(
       topics.items.find((item) => item.id === "focused-git-commits")?.questions,

@@ -69,9 +69,7 @@ test("a third-path check explains a failed answer", async ({ page }) => {
   );
 });
 
-test("the unassigned Git topic can be passed and repeated", async ({
-  page,
-}) => {
+test("the Git topic can be passed and repeated", async ({ page }) => {
   const id = "focused-git-commits";
   await start(page, id);
   for (let index = 1; index <= 5; index += 1) {
