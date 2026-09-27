@@ -318,6 +318,19 @@ export const expandedLearningTopics: Topic[] = [
         "OpenAI Skills",
         "https://developers.openai.com/plugins/concepts/skills",
       ),
+      primary(
+        "Build skills – OpenAI",
+        "https://developers.openai.com/plugins/build/skills",
+      ),
+      primary(
+        "Plugin security and privacy – OpenAI",
+        "https://developers.openai.com/plugins/guides/security-privacy",
+      ),
+      primary(
+        "Testing Agent Skills Systematically with Evals – OpenAI",
+        "https://developers.openai.com/blog/eval-skills",
+        "official-publication",
+      ),
     ],
     "2026-12-27",
   ),
@@ -331,6 +344,10 @@ export const expandedLearningTopics: Topic[] = [
     [
       primary("OpenSpec", "https://openspec.dev/", "reference-site"),
       primary(
+        "OpenSpec spec-driven schema",
+        "https://openspec.dev/docs/schemas/spec-driven",
+      ),
+      primary(
         "GitHub Spec Kit",
         "https://github.com/github/spec-kit/blob/main/docs/index.md",
         "repository",
@@ -339,6 +356,7 @@ export const expandedLearningTopics: Topic[] = [
         "Kiro Specs",
         "https://kiro.dev/docs/getting-started/first-project/",
       ),
+      primary("Kiro Specs workflow", "https://kiro.dev/docs/specs/"),
     ],
     "2026-12-27",
   ),
@@ -351,8 +369,8 @@ export const expandedLearningTopics: Topic[] = [
     "Ein Prompt steuert keinen zuverlässigen Zustandsautomaten. Automatisierung lohnt sich nicht, wenn Koordination und Kontrolle mehr kosten als der manuelle Ablauf.",
     [
       primary(
-        "Safety in building agents – OpenAI",
-        "https://developers.openai.com/api/docs/guides/agent-builder-safety",
+        "Guardrails and human review – OpenAI",
+        "https://developers.openai.com/api/docs/guides/agents/guardrails-approvals",
       ),
       primary(
         "Best practices for using GitHub Copilot to work on tasks",
@@ -375,9 +393,29 @@ export const expandedLearningTopics: Topic[] = [
         "reference-site",
       ),
       primary(
+        "OWASP A01:2025 Broken Access Control",
+        "https://top10.owasp.org/2025/A01_2025-Broken_Access_Control/",
+      ),
+      primary(
+        "OWASP A02:2025 Security Misconfiguration",
+        "https://top10.owasp.org/2025/A02_2025-Security_Misconfiguration/",
+      ),
+      primary(
+        "OWASP A05:2025 Injection",
+        "https://top10.owasp.org/2025/A05_2025-Injection/",
+      ),
+      primary(
         "OWASP Top 10 for LLM Applications",
         "https://genai.owasp.org/llm-top-10/",
         "reference-site",
+      ),
+      primary(
+        "OWASP LLM01:2025 Prompt Injection",
+        "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+      ),
+      primary(
+        "OWASP LLM06:2025 Excessive Agency",
+        "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
       ),
       primary(
         "MDN practical security implementation guides",

@@ -30,4 +30,4 @@ Für Auswahl, Ergänzung und Ersatz von Quellen gelten die
 [Quellenregeln](source-selection.md). Jedes bestehende und neue Thema erhält kuratiert ausgewählte Quellen nach diesen Regeln.
 
 Für neue quellengebundene Auswahlfragen gelten die
-[Regeln zur Fragenerstellung und Prüfung](question-authoring.md). 27 der 46 Themen des aktuellen Katalogs besitzen Fragen.
+[Regeln zur Fragenerstellung und Prüfung](question-authoring.md). 31 der 46 Themen des aktuellen Katalogs besitzen Fragen.

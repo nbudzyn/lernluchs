@@ -36,6 +36,42 @@ function completeItem(id: string): Topic {
 }
 
 describe("public content topics", () => {
+  it.each([
+    [
+      "agent-skills-and-commands",
+      "https://developers.openai.com/plugins/build/skills",
+    ],
+    [
+      "spec-framework-selection",
+      "https://openspec.dev/docs/schemas/spec-driven",
+    ],
+    [
+      "automation-value-and-gates",
+      "https://developers.openai.com/api/docs/guides/agents/guardrails-approvals",
+    ],
+    [
+      "web-security-baseline",
+      "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+    ],
+    [
+      "web-security-baseline",
+      "https://top10.owasp.org/2025/A01_2025-Broken_Access_Control/",
+    ],
+    [
+      "web-security-baseline",
+      "https://top10.owasp.org/2025/A02_2025-Security_Misconfiguration/",
+    ],
+    [
+      "web-security-baseline",
+      "https://top10.owasp.org/2025/A05_2025-Injection/",
+    ],
+  ])("links the focused source for %s", (topicId, sourceUrl) => {
+    const topic = topics.items.find((item) => item.id === topicId);
+    expect(topic?.sources.some((source) => source.url === sourceUrl)).toBe(
+      true,
+    );
+  });
+
   it("links the context-management source used by the new learning check", () => {
     const item = topics.items.find(
       (candidate) => candidate.id === "context-selection-and-reset",
