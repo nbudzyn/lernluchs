@@ -9,14 +9,23 @@ Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden E
 
 ## Kuratierte Quellen für alle Themen ergänzen (außer Grundlagen-Pfad)
 
-Alle Themen erhalten Quellen.
+Alle Themen erhalten kuratierte Quellen. Die sechs Themen des Grundlagen-Pfads
+bleiben ausgenommen, auch wenn sie in weiteren Lernpfaden vorkommen. Alle anderen
+bestehenden Themen gehören dazu, einschließlich des Git-Themas ohne Lernpfad.
 
-- Ausnahme: Der Grundlagen-Pfad hat bereits kuratierte Quellen - nicht ändern.
+Bereits vorhandene Quellen werden je betroffenem Thema anhand der Originalseiten
+fachlich geprüft. Fehlende Aspekte erhalten passende Quellen; eine bestehende
+Quelle wird nur mit dokumentiertem Grund ersetzt. Falls die Prüfung eine Lücke
+oder einen Widerspruch im kurzen Thementext zeigt, wird er gezielt korrigiert.
+Die fachlichen Schwerpunkte bleiben getrennt; Textkorrekturen erzeugen möglichst
+keine Überschneidung mit anderen Themen.
 
 Es gelten die [Regeln zur Quellenauswahl](../content/source-selection.md).
 
-Außerdem werden alle für die Vertikale "Themen" relevanten Begriffe im Glossar mit genau einem englischen Begriff ergänzt. Betroffene
-englische Bezeichner werden innerhalb der Vertikale vereinheitlicht, ohne Fachlogik zu ändern.
+Außerdem erhalten alle für die Vertikale „Themen“ relevanten Glossarbegriffe
+genau eine englische Entsprechung: Fragenpool, Themen, Thema, Lernpfad,
+Primärquelle und Sekundärquelle. Betroffene englische Bezeichner werden innerhalb
+der Vertikale vereinheitlicht, ohne Fachlogik zu ändern.
 
 Dokumentation nach Umsetzung: Vermerken, dass jedes (auch neue) Thema kuratierte Quellen erhält
 gemäß [Regeln zur Quellenauswahl](../content/source-selection.md).
@@ -153,7 +162,7 @@ Dokumentation nach Umsetzung: Fragenumfang des fünften Pfads knapp im Produktst
 
 ## Weitere Lernpfade
 
-Die Vertikale Themen wird um weitere Lernpfade erweitert.
+Die Vertikale Themen wird um weitere Lernpfade erweitert. (Alle Themen aus der KI-Tool-Landkarte importieren und auf Lernpfade verteilen?)
 
 Die Lernpfade können neuen, aber auch schon existierende Themen verwenden.
 
