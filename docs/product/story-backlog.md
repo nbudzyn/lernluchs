@@ -13,6 +13,8 @@ Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden E
 Bedarf in kleinere, fachlich zusammenhängende und im Browser einzeln abnehmbare Stories aufgeteilt. Bereits vorhandene Fragenpools bleiben
 unverändert.
 
+- Die ersten 5 Themen in Reihenfolge der Liste verwenden, die keine Fragen haben.
+
 Je neuem Themenpool gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md): mindestens 25 fachlich unterschiedliche,
 gültige Fragen mit Erklärungen und Quellenbezügen nach unabhängiger fachlicher Prüfung. Die Fragen prüfen den Schwerpunkt des Themas sowie
 passende vertiefende Details seiner Quellen. Elementare Browser-Tests sichern die Nutzung exemplarisch, nicht für jedes Thema einzeln.
@@ -23,7 +25,9 @@ Dokumentation nach Umsetzung: Produktstand und redaktionelle Richtlinie auf den 
 aktualisieren.
 
 Abgrenzung:
-Die weiteren Themen (über die fünf hinaus) kommen später
+
+- Keine Fragen bei Themen ändern, die schon Fragen haben
+- Die weiteren Themen (über die fünf hinaus) kommen später
 
 ## Lernchecks für die übrigen Themen ohne Fragen
 
