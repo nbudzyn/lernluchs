@@ -7,14 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Regelmäßig nachfragen
-
-Regelmäßig nachfragen:
-
-- Können wir ein gecodetes kleines Tool gebrauchen, dass dir beim nächsten Mal bei Aufgabe X hilft?
-- Würde uns ein eigener Skill helfen?
-- Sollte man die Doku fürs nächste Mal anpassen, um Zeit / Tokens zu sparen?
-
 ## Ausstehende Lernpfade
 
 Die Vertikale Themen wird um weitere Lernpfade erweitert. Dazu werden alle Themen aus der KI-Tool-Landkarte importiert und auf Lernpfade
@@ -50,6 +42,24 @@ Abgrenzung:
 - Die Lern-App führt keine Coding-Agenten aus.
 
 Vertikale: Themen
+
+## Regelmäßig nachfragen
+
+Regelmäßig nachfragen:
+
+- Können wir ein gecodetes kleines Tool gebrauchen, dass dir beim nächsten Mal bei Aufgabe X hilft?
+- Würde uns ein eigener Skill helfen?
+- Sollte man die Doku fürs nächste Mal anpassen, um Zeit / Tokens zu sparen?
+
+## Akteure klar benennen
+
+Statt User oder Benutzer oder Nutzer wollen wir zukünftig differenzieren:
+
+- Der Lernende: Der Nutzer der installierten Anwendung
+- Der Entwickler: Der menschliche User, der die Entwicklung dieser Anwendung steuert
+- Die KI: Das LLM, hier in der Regel Codex, die große Teile der Entwicklung durchführt
+
+Bezeichnungen überall umbenennen. Auch ins glossar eintragen, auch mit englischen Übersetzungen.
 
 ## Lernchecks für den vierten Lernpfad ergänzen
 
