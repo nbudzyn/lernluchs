@@ -1,7 +1,7 @@
 import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-import { remainingQuestions } from "../src/verticals/topics/remainingQuestions.ts";
+import { remainingQuestions } from "../src/verticals/learning-checks/remainingQuestions.ts";
 
 const target = process.argv[2];
 if (!target) throw new Error("Provide the output path for the review prompt.");

@@ -34,7 +34,6 @@ it("adds the fourth path with four sourced topics in path order", () => {
   ]) {
     const item = topics.items.find((candidate) => candidate.id === id);
     expect(item).toBeDefined();
-    expect(item?.questions).toBeUndefined();
     expect(item?.sources.some((source) => source.origin === "primary")).toBe(
       true,
     );
@@ -72,7 +71,6 @@ it("adds the fifth path with six sourced topics in path order", () => {
   )) {
     const item = topics.items.find((candidate) => candidate.id === id);
     expect(item).toBeDefined();
-    expect(item?.questions).toBeUndefined();
     expect(item?.sources.some((source) => source.origin === "primary")).toBe(
       true,
     );

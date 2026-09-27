@@ -24,16 +24,16 @@ describe("TopicBrowser", () => {
   });
 
   it("marks only saved quiz topics as learned, including after a catalog change", () => {
-    const quizTopic = topics.items.find((item) => item.questions)!;
+    const quizTopic = topics.items[0];
     const plainTopic = {
       ...quizTopic,
       id: "temporarily-without-quiz",
-      questions: undefined,
     };
     render(
       <TopicBrowser
         items={[plainTopic, quizTopic]}
         learnedTopicIds={[quizTopic.id, plainTopic.id, "temporarily-missing"]}
+        availableLearningCheckTopicIds={[quizTopic.id]}
       />,
     );
     const rows = screen.getAllByRole("listitem");
@@ -44,9 +44,14 @@ describe("TopicBrowser", () => {
   });
 
   it("shows an accessible icon button for each available learning check", () => {
-    render(<TopicBrowser onStartQuestions={() => {}} />);
+    const quizItems = topics.items.slice(0, 16);
+    render(
+      <TopicBrowser
+        availableLearningCheckTopicIds={quizItems.map((item) => item.id)}
+        onStartLearningCheck={() => {}}
+      />,
+    );
 
-    const quizItems = topics.items.filter((item) => item.questions);
     expect(quizItems).toHaveLength(16);
     for (const item of quizItems) {
       const label = `Fragen starten: ${item.title}`;
@@ -101,7 +106,6 @@ describe("TopicBrowser", () => {
       ...item,
       id: `test-${index}`,
       title: `Thema ${index}`,
-      questions: undefined,
     }));
     const paths = [
       { name: "Später", topicIds: ["test-1", "test-2"] },
@@ -164,7 +168,6 @@ describe("TopicBrowser", () => {
       ...item,
       id: `path-test-${index}`,
       title: `Pfadthema ${index}`,
-      questions: undefined,
     }));
     const paths = [
       { name: "Erster Pfad", topicIds: ["path-test-0", "path-test-1"] },
@@ -222,7 +225,6 @@ describe("TopicBrowser", () => {
       ...item,
       id: `changed-${index}`,
       title: `Geändert ${index}`,
-      questions: undefined,
     }));
     const paths = [
       { name: "Lang spät", topicIds: ["changed-0", "changed-2"] },

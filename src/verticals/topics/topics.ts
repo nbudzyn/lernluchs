@@ -1,12 +1,6 @@
 import type { Topic, TopicCollection } from "./topicContract";
-import foundationQuestions from "./foundationQuestions.json";
-import { secondPathQuestions } from "./secondPathQuestions";
-import { remainingQuestions } from "./remainingQuestions";
 import { fifthPathTopics, fourthPathTopics } from "./newLearningTopics";
 import { expandedLearningTopics } from "./expandedLearningTopics";
-
-type FoundationId = keyof typeof foundationQuestions;
-const questionsFor = (id: FoundationId) => foundationQuestions[id];
 
 function activeEditorial(reviewDueAt: string, publishedAt = "2026-09-20") {
   return {
@@ -95,7 +89,6 @@ const previousTopics: TopicCollection = {
     {
       id: "human-ai-responsibility",
       title: "Mensch und KI: Verantwortung bleibt menschlich",
-      questions: questionsFor("human-ai-responsibility"),
       content: {
         language: "de",
         problem:
@@ -122,7 +115,6 @@ const previousTopics: TopicCollection = {
     {
       id: "problem-understanding-and-change-boundaries",
       title: "Problem verstehen und Änderungsgrenzen setzen",
-      questions: questionsFor("problem-understanding-and-change-boundaries"),
       content: {
         language: "de",
         problem:
@@ -157,7 +149,6 @@ const previousTopics: TopicCollection = {
     {
       id: "agents-md",
       title: "AGENTS.md: dauerhafter Kontext für Coding-Agenten",
-      questions: questionsFor("agents-md"),
       content: {
         language: "de",
         problem:
@@ -192,7 +183,6 @@ const previousTopics: TopicCollection = {
     {
       id: "ears-requirements",
       title: "EARS: Anforderungen präzise formulieren",
-      questions: questionsFor("ears-requirements"),
       content: {
         language: "de",
         problem:
@@ -219,8 +209,6 @@ const previousTopics: TopicCollection = {
     {
       id: "coding-agent-context-and-trust-boundaries",
       title: "Kontext und Vertrauensgrenzen für Coding-Agenten",
-      questions:
-        remainingQuestions["coding-agent-context-and-trust-boundaries"],
       content: {
         language: "de",
         problem:
@@ -255,8 +243,6 @@ const previousTopics: TopicCollection = {
     {
       id: "protect-secrets-and-sensitive-data-with-ai",
       title: "Geheimnisse und sensible Daten beim KI-Einsatz schützen",
-      questions:
-        remainingQuestions["protect-secrets-and-sensitive-data-with-ai"],
       content: {
         language: "de",
         problem:
@@ -291,7 +277,6 @@ const previousTopics: TopicCollection = {
     {
       id: "research-plan-tasks",
       title: "Research, Plan und Tasks trennen",
-      questions: questionsFor("research-plan-tasks"),
       content: {
         language: "de",
         problem:
@@ -336,7 +321,6 @@ const previousTopics: TopicCollection = {
     {
       id: "spec-driven-development-openspec",
       title: "Spec-Driven Development mit OpenSpec",
-      questions: questionsFor("spec-driven-development-openspec"),
       content: {
         language: "de",
         problem:
@@ -382,7 +366,6 @@ const previousTopics: TopicCollection = {
     {
       id: "module-boundaries-and-public-interfaces",
       title: "Modulgrenzen und öffentliche Schnittstellen gestalten",
-      questions: secondPathQuestions["module-boundaries-and-public-interfaces"],
       content: {
         language: "de",
         problem:
@@ -425,7 +408,6 @@ const previousTopics: TopicCollection = {
     {
       id: "tdd-for-domain-behavior",
       title: "Fachverhalten mit TDD absichern",
-      questions: secondPathQuestions["tdd-for-domain-behavior"],
       content: {
         language: "de",
         problem:
@@ -460,7 +442,6 @@ const previousTopics: TopicCollection = {
     {
       id: "archunit-for-java-architecture",
       title: "Java-Architekturregeln mit ArchUnit prüfen",
-      questions: secondPathQuestions["archunit-for-java-architecture"],
       content: {
         language: "de",
         problem:
@@ -489,7 +470,6 @@ const previousTopics: TopicCollection = {
     {
       id: "playwright-for-web-flows",
       title: "Webabläufe mit Playwright prüfen",
-      questions: secondPathQuestions["playwright-for-web-flows"],
       content: {
         language: "de",
         problem:
@@ -525,7 +505,6 @@ const previousTopics: TopicCollection = {
       id: "web-xss-and-safe-dom",
       title:
         "Web-Sicherheitsrisiken wie XSS und unsichere DOM-Nutzung erkennen",
-      questions: secondPathQuestions["web-xss-and-safe-dom"],
       content: {
         language: "de",
         problem:
@@ -552,7 +531,6 @@ const previousTopics: TopicCollection = {
     {
       id: "dependency-security-assessment",
       title: "Abhängigkeiten und Sicherheitslücken risikobasiert bewerten",
-      questions: secondPathQuestions["dependency-security-assessment"],
       content: {
         language: "de",
         problem:
@@ -587,7 +565,6 @@ const previousTopics: TopicCollection = {
     {
       id: "review-and-accept-ai-generated-changes",
       title: "KI-generierte Änderungen prüfen und übernehmen",
-      questions: remainingQuestions["review-and-accept-ai-generated-changes"],
       content: {
         language: "de",
         problem:
@@ -623,7 +600,6 @@ const previousTopics: TopicCollection = {
     {
       id: "focused-git-commits",
       title: "Git-Commits klein und nachvollziehbar halten",
-      questions: remainingQuestions["focused-git-commits"],
       content: {
         language: "de",
         problem:

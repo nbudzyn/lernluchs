@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
-import { secondPathQuestions } from "../../../src/verticals/topics/secondPathQuestions";
+import { secondPathQuestions } from "../../../src/verticals/learning-checks/secondPathQuestions";
 
 const titles = {
   "module-boundaries-and-public-interfaces":

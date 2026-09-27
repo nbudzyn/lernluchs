@@ -7,39 +7,38 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Ausstehende Lernchecks
+## Lernchecks für 5 Themen ohne Fragen
 
-Story aufteilen und in Chargen zu je.... umsetzen?
+5 von den noch 28 Themen ohne Fragen erhalten ebenfalls nutzbare, quellengebundene Lernchecks. Vor der Aktivierung wird diese Story bei
+Bedarf in kleinere, fachlich zusammenhängende und im Browser einzeln abnehmbare Stories aufgeteilt. Bereits vorhandene Fragenpools bleiben
+unverändert.
 
-Initial den Entwickler erinnern: KI-Model-Aufwand auf Hoch stellen
+Je neuem Themenpool gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md): mindestens 25 fachlich unterschiedliche,
+gültige Fragen mit Erklärungen und Quellenbezügen nach unabhängiger fachlicher Prüfung. Die Fragen prüfen den Schwerpunkt des Themas sowie
+passende vertiefende Details seiner Quellen. Elementare Browser-Tests sichern die Nutzung exemplarisch, nicht für jedes Thema einzeln.
 
-Alle Themen erhalten Lernchecks - sofern es für ein Thema noch keine gibt.
+Vertikalen: Themen, Lernchecks (plus App und Shared bei Bedarf).
 
-- Gibt es für ein Thema schon Lernchecks, dann unverändert lassen.
-- Quellengebundene Fragenpools und Auswahlchecks einschließlich Erklärung.
-- Fragen prüfen den fachlichen Schwerpunkt der Themen und vertiefende Details ihrer Quellen; sie werden unabhängig fachlich geprüft.
-- Elementare Browser-Tests, aber nicht einzeln für jedes Thema
+Dokumentation nach Umsetzung: Produktstand und redaktionelle Richtlinie auf den tatsächlich erreichten Fragenbestand prüfen und knapp
+aktualisieren.
 
-Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md).
+Abgrenzung:
+Die weiteren Themen (über die fünf hinaus) kommen später
 
-Außerdem werden alle für die Vertikalen "Themen" und "Lernchecks" relevanten Begriffe im Glossar mit genau einem englischen Begriff ergänzt
-(sofern noch nicht vorhanden). Betroffene englische Bezeichner werden innerhalb der beiden Vertikalen vereinheitlicht, ohne Fachlogik zu
-ändern.
+## Lernchecks für die übrigen Themen ohne Fragen
 
-Außerdem (VOR PRÜFEN!) den Fragenbestand aus der Vertikale topics in die Vertikale learning-checks verschieben (sofern noch nicht
-geschehen).
+Die 23 übrigen Themen ohne Fragen erhalten ebenfalls nutzbare, quellengebundene Lernchecks. Vor der Aktivierung wird diese Story bei Bedarf
+in kleinere, fachlich zusammenhängende und im Browser einzeln abnehmbare Stories aufgeteilt. Bereits vorhandene Fragenpools bleiben
+unverändert.
 
-- Die Vertikale learning-checks kennt durchaus die topics
-- Die Vertikale topics kennt keine Fragen (zyklische Abhängikeit verhindern)
-    - Möglicherweise muss app die topics und die learning-checks miteinander verknüpfen, damit die Themenübersichts-GUI den Lerncheck
-      aufrufen kann.
+Je neuem Themenpool gelten die [gemeinsamen Fragenregeln](../content/question-authoring.md): mindestens 25 fachlich unterschiedliche,
+gültige Fragen mit Erklärungen und Quellenbezügen nach unabhängiger fachlicher Prüfung. Die Fragen prüfen den Schwerpunkt des Themas sowie
+passende vertiefende Details seiner Quellen. Elementare Browser-Tests sichern die Nutzung exemplarisch, nicht für jedes Thema einzeln.
 
-Vertikalen: Themen, Lernchecks
+Vertikalen: Themen, Lernchecks (plus App und Shared bei Bedarf).
 
-Dokumentation nach Umsetzung:
-
-- target-architecture, verticals-and-boundaries prüfen, aktualisieren
-- Kurz Produktstand und redaktionellen Richtlinie prüfen / grob aktualisieren.
+Dokumentation nach Umsetzung: Produktstand und redaktionelle Richtlinie auf den tatsächlich erreichten Fragenbestand prüfen und knapp
+aktualisieren.
 
 ## NF: Regelmäßig nachfragen
 
@@ -65,8 +64,8 @@ Language Server einbinden
 
 Ziel: Suchen und Code-Bearbeitung beschleunigen
 
-- LSP?
-    - IntelliJ MCP?
+- LSP
+    - IntelliJ MCP? oder ACP
 
 ## NF: Reihenfolge der Themen zusammenziehen
 

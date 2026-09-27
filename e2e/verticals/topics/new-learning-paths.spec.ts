@@ -56,7 +56,7 @@ for (const path of pathCases) {
     await page.getByRole("button", { name: path.name, exact: true }).click();
     await expect(
       navigation.locator(
-        "li .topic-actions > button:not(.path-filter-button):not(.quiz-start-button)",
+        "li .topic-actions > button:not(.path-filter-button):not(.learning-check-start-button)",
       ),
     ).toHaveText(path.titles);
 

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { validateQuestionPool } from "../../../src/verticals/topics/validateQuestionPool";
+import { validateQuestionPool } from "../../../src/verticals/learning-checks/validateQuestionPool";
 import type { Question } from "../../../src/shared/question";
 
 const item = {

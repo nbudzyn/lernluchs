@@ -1,5 +1,4 @@
 import type { TopicCollection, TopicValidation } from "./topicContract";
-import { validateQuestionPool } from "./validateQuestionPool";
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 const editorialStatuses = new Set([
@@ -7,24 +6,6 @@ const editorialStatuses = new Set([
   "watching",
   "archived",
   "replaced",
-]);
-const questionPoolIds = new Set([
-  "human-ai-responsibility",
-  "problem-understanding-and-change-boundaries",
-  "agents-md",
-  "ears-requirements",
-  "research-plan-tasks",
-  "spec-driven-development-openspec",
-  "module-boundaries-and-public-interfaces",
-  "tdd-for-domain-behavior",
-  "archunit-for-java-architecture",
-  "playwright-for-web-flows",
-  "web-xss-and-safe-dom",
-  "dependency-security-assessment",
-  "coding-agent-context-and-trust-boundaries",
-  "protect-secrets-and-sensitive-data-with-ai",
-  "review-and-accept-ai-generated-changes",
-  "focused-git-commits",
 ]);
 
 function hasText(value: string): boolean {
@@ -78,12 +59,6 @@ export function validateTopics(candidate: TopicCollection): TopicValidation {
       ) {
         errors.push(`Invalid source for item: ${item.id}`);
       }
-    }
-
-    if (questionPoolIds.has(item.id)) {
-      if (!item.questions)
-        errors.push(`Missing question pool for item: ${item.id}`);
-      else errors.push(...validateQuestionPool(item, item.questions));
     }
   }
 

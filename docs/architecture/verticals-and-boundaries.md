@@ -6,21 +6,22 @@ Importregeln werden mit dependency-cruiser als Buildfehler geprüft.
 ## Bestehende Vertikale: Themen
 
 Die Vertikale Themen verantwortet den versionierten, öffentlich lesbaren Bestand
-aus Themen, Quellen und Aktualitätsmetadaten sowie dessen Anzeige. Sie
-enthält auch die geprüften Fragen der sechs Grundlagenthemen, aber keinen
-persönlichen Zustand. Die Themenliste erhält die gelernten Themen-IDs über ihre
-öffentliche Komponentenschnittstelle und zeigt nur für Themen mit Lerncheck
-einen Haken. Ihr öffentlicher Einstiegspunkt exportiert die Themenliste und den
-Thementyp.
+aus Themen, Quellen und Aktualitätsmetadaten sowie dessen Anzeige. Sie enthält
+weder Fragen noch persönlichen Zustand. Die Themenliste erhält die IDs der
+verfügbaren Lernchecks und der gelernten Themen über ihre öffentliche
+Komponentenschnittstelle. Ihr öffentlicher Einstiegspunkt exportiert die
+Themenliste.
 
 ## Bestehende Vertikale: Lernchecks
 
-Der Lerncheck erhält die Fragen und die dauerhafte ID des gewählten Themas über
-seinen öffentlichen Einstiegspunkt. Er wählt fünf verschiedene Fragen, mischt
-die Optionen und verwaltet Antworten und Ergebnis flüchtig. Nach fünf richtigen
-Antworten meldet er das Bestehen über einen kleinen Speichervertrag an den
-Lernfortschritt und zeigt dessen Erfolg oder Fehlschlag. Die Vertikale
-importiert keine Katalogdaten.
+Die Vertikale Lernchecks besitzt die quellengebundenen Fragenpools und deren
+Validierung. Ihr öffentlicher Einstiegspunkt bietet verfügbare Themen-IDs und
+eine Fragenabfrage nach dauerhafter Themen-ID. Der Lerncheck wählt fünf
+verschiedene Fragen, mischt die Optionen und verwaltet Antworten und Ergebnis
+flüchtig. Nach fünf richtigen Antworten meldet er das Bestehen über einen kleinen
+Speichervertrag an den Lernfortschritt und zeigt dessen Erfolg oder Fehlschlag.
+Die Vertikale importiert keine internen Daten der Themen-Vertikale; die
+Katalogvalidierung erhält Themen-IDs und Quellen als schmale Eingabe.
 
 ## Bestehende Vertikale: Lernfortschritt
 
@@ -41,6 +42,7 @@ und kleine technische Hilfen, keine Geschäfts- oder Präsentationslogik.
 
 Ein Architekturtest und dependency-cruiser verhindern direkte App-Importe aus
 internen Dateien der drei Vertikalen. `src/app` verbindet die öffentlichen
-Einstiegspunkte und hält nur das aktuell gewählte Thema, ohne fachliche Logik zu
-übernehmen. Weitere Vertikalen werden im [Story-Backlog](../product/story-backlog.md)
-geplant.
+Einstiegspunkte, indem es IDs verfügbarer Checks an die Themenliste gibt und beim
+Start Fragen anhand der gewählten ID abfragt. Die App hält den aktuellen
+Lerncheck, ohne Fragenlogik zu übernehmen. Weitere Vertikalen werden im
+[Story-Backlog](../product/story-backlog.md) geplant.

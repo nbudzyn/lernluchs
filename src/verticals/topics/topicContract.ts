@@ -1,5 +1,3 @@
-import type { Question } from "../../shared/question";
-
 export type EditorialStatus = "active" | "watching" | "archived" | "replaced";
 
 export type SourceType =
@@ -36,7 +34,6 @@ export type EditorialMetadata = {
 export type Topic = {
   id: string;
   title: string;
-  questions?: Question[];
   content: TopicContent;
   editorial: EditorialMetadata;
   sources: TopicSource[];

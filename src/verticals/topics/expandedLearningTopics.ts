@@ -69,6 +69,31 @@ export const expandedLearningTopics: Topic[] = [
         "reference-site",
       ),
       primary(
+        "Diátaxis – Tutorials",
+        "https://diataxis.fr/tutorials/",
+        "official-guide",
+      ),
+      primary(
+        "Diátaxis – How-to guides",
+        "https://diataxis.fr/how-to-guides/",
+        "official-guide",
+      ),
+      primary(
+        "Diátaxis – Reference",
+        "https://diataxis.fr/reference/",
+        "official-guide",
+      ),
+      primary(
+        "Diátaxis – Explanation",
+        "https://diataxis.fr/explanation/",
+        "official-guide",
+      ),
+      primary(
+        "Diátaxis – The map",
+        "https://diataxis.fr/map/",
+        "official-guide",
+      ),
+      primary(
         "The Scrum Guide – Definition of Done",
         "https://scrumguides.org/scrum-guide.html",
         "official-publication",

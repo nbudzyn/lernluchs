@@ -1,0 +1,4064 @@
+{
+  "human-ai-responsibility": [
+    {
+      "id": "H01",
+      "prompt": "Welche vier Funktionen umfasst der AI RMF Core?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Govern, Map, Measure und Manage",
+          "correct": true,
+          "explanation": "NIST nennt diese vier Funktionen ausdrücklich.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Govern, Map, Measure und Monitor",
+          "correct": false,
+          "explanation": "Monitor klingt nach laufender Kontrolle, ist aber keine der vier Core-Funktionen; die vierte heißt Manage.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Map, Measure, Manage und Audit",
+          "correct": false,
+          "explanation": "Ein Audit kann die Risikopraxis prüfen, ersetzt aber nicht die querschnittliche Govern-Funktion des Core.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H02",
+      "prompt": "Welche Funktion ist im AI RMF querschnittlich angelegt?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Govern",
+          "correct": true,
+          "explanation": "Govern soll die anderen Funktionen durchdringen.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Manage",
+          "correct": false,
+          "explanation": "Manage bearbeitet priorisierte Risiken; die querschnittliche Organisationsfunktion ist Govern.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Monitor",
+          "correct": false,
+          "explanation": "Überwachung ist Teil laufender Risikoarbeit, aber Monitor ist keine benannte Core-Funktion und nicht die querschnittliche Govern-Funktion.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H03",
+      "prompt": "Womit beginnt nach eingerichteter Governance für die meisten Nutzenden die Risikoarbeit?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mit Map",
+          "correct": true,
+          "explanation": "NIST nennt Map als typischen Einstieg nach Govern.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Mit Measure",
+          "correct": false,
+          "explanation": "Messung wirkt als nächster Schritt plausibel, doch der typische Einstieg nach Govern ist die Kontextklärung durch Map.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Mit Manage",
+          "correct": false,
+          "explanation": "Risikobehandlung setzt typischerweise die vorherige Erfassung des Kontexts durch Map voraus.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H04",
+      "prompt": "Wie ist die Reihenfolge der Core-Funktionen zu verstehen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Iterativ und kontextabhängig",
+          "correct": true,
+          "explanation": "NIST erlaubt kontextabhängige Reihenfolge und Rückbezüge.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Als feste Folge Govern → Map → Measure → Manage",
+          "correct": false,
+          "explanation": "Die Darstellung legt eine Reihenfolge nahe; NIST erlaubt jedoch eine iterative, kontextabhängige Anwendung.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Als einmaliger Durchlauf mit Rücksprung nur bei Fehlern",
+          "correct": false,
+          "explanation": "Das klingt nach Prozesskontrolle, doch die Core-Funktionen werden während des Lebenszyklus laufend erneut verbunden.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H05",
+      "prompt": "Was leistet die Map-Funktion vor einer Risikobewertung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sie klärt Kontext und mögliche Risiken des KI-Systems",
+          "correct": true,
+          "explanation": "Map schafft Kontext für Measure und Manage.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Sie misst die Wirksamkeit der Risikokontrollen",
+          "correct": false,
+          "explanation": "Das ist die naheliegende Measure-Aufgabe; Map stellt zuvor den Nutzungskontext und mögliche Risiken fest.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Sie priorisiert und behandelt dokumentierte Risiken",
+          "correct": false,
+          "explanation": "Das beschreibt Manage und setzt die Kontextarbeit von Map voraus.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H06",
+      "prompt": "Was soll bei der Beschreibung eines KI-Einsatzes früh geprüft werden?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ob die KI-Lösung für den Zweck überhaupt angemessen ist",
+          "correct": true,
+          "explanation": "Map informiert auch die Entscheidung über die Angemessenheit einer KI-Lösung.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Ob die Risiken des bereits gewählten Modells messbar sind",
+          "correct": false,
+          "explanation": "Messbarkeit ist wichtig, setzt aber die frühere Entscheidung über die Angemessenheit einer KI-Lösung nicht außer Kraft.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Ob vorhandene Risikokontrollen für das Modell wirksam sind",
+          "correct": false,
+          "explanation": "Kontrollen werden später bewertet; Map soll zunächst auch die grundsätzliche Eignung von KI für den Zweck klären.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H07",
+      "prompt": "Wessen Perspektiven können bei der Risikobetrachtung hilfreich sein?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Auch die von Betroffenen außerhalb des Entwicklungsteams",
+          "correct": true,
+          "explanation": "NIST empfiehlt vielfältige interne und externe Perspektiven.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Die Perspektiven der internen Modelltester",
+          "correct": false,
+          "explanation": "Interne Tester können beitragen; gefragt sind zusätzlich die Perspektiven von Menschen außerhalb des Entwicklungsteams.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Die Perspektiven der Beschaffungsabteilung",
+          "correct": false,
+          "explanation": "Beschaffung kann beteiligt sein; sie ersetzt die Sicht externer Betroffener auf mögliche Auswirkungen nicht.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H08",
+      "prompt": "Warum reichen gute Absichten bei der Entwicklung eines KI-Systems nicht aus?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Spätere Nutzungskontexte und Wechselwirkungen können Risiken verändern",
+          "correct": true,
+          "explanation": "NIST beschreibt Abhängigkeiten zwischen Lebenszyklusphasen und Einsatzkontext.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Weil die anfängliche Risikoeinschätzung erst durch Messmetriken gültig wird",
+          "correct": false,
+          "explanation": "Metriken helfen, erklären aber nicht, warum gute Absichten durch spätere Kontexte und Wechselwirkungen unterlaufen werden können.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Weil eine frühe Prüfung durch ein vielfältiges Team spätere Kontextprüfungen ersetzt",
+          "correct": false,
+          "explanation": "Vielfalt verbessert die Sicht auf Annahmen, ersetzt aber keine Prüfung veränderter Einsatzbedingungen.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H09",
+      "prompt": "Welche Aufgabe haben Führungskräfte bei Entscheidungen über Risiken der KI-Entwicklung und des KI-Einsatzes?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Verantwortung für Entscheidungen über Entwicklungs- und Einsatzrisiken",
+          "correct": true,
+          "explanation": "Govern 2.3 weist der Führung Verantwortung für Risikoentscheidungen zu.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Sie dokumentieren ausschließlich die technischen Messmetriken",
+          "correct": false,
+          "explanation": "Messmetriken sind Teil der Risikoarbeit; Govern 2.3 weist der Führung Verantwortung für Risikoentscheidungen zu.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Sie delegieren Entscheidungen über Einsatzrisiken vollständig an das Modellteam",
+          "correct": false,
+          "explanation": "Fachliche Zuarbeit ist möglich, doch Govern 2.3 verlangt Verantwortung der Führung für diese Entscheidungen.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H10",
+      "prompt": "Was gehört zur organisatorischen Verantwortlichkeit für KI-Risiken?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Klare Rollen, Zuständigkeiten und Kommunikationswege",
+          "correct": true,
+          "explanation": "Govern 2.1 fordert dokumentierte und klare Rollen und Wege.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Nur eine zentrale Liste aller Modelle",
+          "correct": false,
+          "explanation": "Ein Inventar ist nützlich, klärt aber nicht Rollen, Zuständigkeiten und Kommunikationswege nach Govern 2.1.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Nur eine einheitliche Messmetrik für alle Teams",
+          "correct": false,
+          "explanation": "Messung hilft bei Risiken, ersetzt aber keine dokumentierten Verantwortungs- und Kommunikationsstrukturen.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H11",
+      "prompt": "Wie sollten Verfahren zur Behandlung von KI-Risiken organisiert sein?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Transparent und entsprechend den Risikoprioritäten",
+          "correct": true,
+          "explanation": "Govern 1.4 beschreibt transparente Kontrollen nach Prioritäten.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Vor allem nach einheitlichen Modellmetriken",
+          "correct": false,
+          "explanation": "Metriken betreffen die Bewertung; Govern 1.4 verlangt transparente Verfahren nach Risikoprioritäten.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Vor allem nach der Reihenfolge der Produktreleases",
+          "correct": false,
+          "explanation": "Ein Releaseplan kann Arbeit ordnen, ist aber keine risikopriorisierte Steuerung von Risikoverfahren.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H12",
+      "prompt": "Woran richtet eine Organisation den benötigten Umfang ihrer KI-Risikomanagementverfahren aus?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Die Risikotoleranz der Organisation",
+          "correct": true,
+          "explanation": "Das erforderliche Niveau richtet sich nach der Risikotoleranz.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Die einheitliche Modellgröße aller Systeme",
+          "correct": false,
+          "explanation": "Modellgröße kann eine technische Eigenschaft sein; Govern 1.3 richtet das nötige Risikomanagement an der Risikotoleranz aus.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Die Anzahl bereits abgeschlossener Risikoaudits",
+          "correct": false,
+          "explanation": "Frühere Audits können informieren, bestimmen aber nicht allein den benötigten Umfang nach organisatorischer Risikotoleranz.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H13",
+      "prompt": "Welche wiederkehrende organisatorische Maßnahme ist nach Einführung eines KI-Risikomanagementverfahrens vorgesehen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Laufende Überwachung und regelmäßige Überprüfung",
+          "correct": true,
+          "explanation": "Der Prozess und seine Ergebnisse sollen fortlaufend beobachtet werden.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Eine einmalige Überprüfung der Trainingsdaten vor Freigabe",
+          "correct": false,
+          "explanation": "Die Vorprüfung kann sinnvoll sein; Govern 1.5 verlangt zusätzlich laufende Überwachung und regelmäßige Überprüfung.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Erneute Messung nach einem gemeldeten Incident",
+          "correct": false,
+          "explanation": "Ein Incident kann Anlass sein, ersetzt aber keine geplante fortlaufende Überwachung und periodische Prüfung.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H14",
+      "prompt": "Wie soll ein KI-Systembestand organisatorisch behandelt werden?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Erfasst und nach Risikopriorität mit Ressourcen versehen",
+          "correct": true,
+          "explanation": "Govern 1.6 nennt Inventarisierung entsprechend Risikoprioritäten.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Nur die Systeme mit eigenem Trainingsdatensatz erfassen",
+          "correct": false,
+          "explanation": "Ein solches Inventar übersieht andere KI-Systeme; Govern 1.6 spricht vom Bestand der KI-Systeme und risikogerechten Ressourcen.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Alle Systeme unabhängig vom Risiko gleich stark betreuen",
+          "correct": false,
+          "explanation": "Ein Inventar ist richtig, doch Govern 1.6 richtet die Ressourcen nach Risikoprioritäten aus.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H15",
+      "prompt": "Was muss bei der Abschaltung eines KI-Systems berücksichtigt werden?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sie soll sicher erfolgen und Risiken nicht erhöhen",
+          "correct": true,
+          "explanation": "Govern 1.7 fordert sicheres Außerbetriebnehmen.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Vor allem den Betrieb sofort stoppen, sobald ein Risiko bekannt wird",
+          "correct": false,
+          "explanation": "Ein Stopp kann nötig sein, muss aber so geplant sein, dass neue Risiken nicht steigen.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Vor allem die Messmetriken bis zum letzten Betriebstag beibehalten",
+          "correct": false,
+          "explanation": "Metriken können helfen, ersetzen aber keinen sicheren Plan zur Außerbetriebnahme nach Govern 1.7.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H16",
+      "prompt": "Was umfasst Govern über den Entwicklungszeitpunkt hinaus?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Den gesamten Produktlebenszyklus",
+          "correct": true,
+          "explanation": "NIST bezieht Governance auf den gesamten Lebenszyklus.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Nur Entwicklung und Bereitstellung bis zum ersten Release",
+          "correct": false,
+          "explanation": "Govern begleitet auch Nutzung, Überwachung und Außerbetriebnahme des Systems.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Nur die Phasen, in denen ein Modell nachtrainiert wird",
+          "correct": false,
+          "explanation": "Nachtraining ist ein möglicher Abschnitt; Govern betrifft den ganzen Produktlebenszyklus.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H17",
+      "prompt": "Welche Funktion kann Projektdokumentation im KI-Team erfüllen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Transparenz, menschliche Prüfung und Verantwortlichkeit stärken",
+          "correct": true,
+          "explanation": "NIST nennt diese drei möglichen Wirkungen der Dokumentation.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Sie ersetzt die unabhängige Messung der Systemleistung",
+          "correct": false,
+          "explanation": "Dokumentation verbessert Nachvollziehbarkeit, kann aber die in Measure vorgesehene Prüfung nicht ersetzen.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Sie macht Risikoentscheidungen ohne benannte Verantwortliche möglich",
+          "correct": false,
+          "explanation": "Nachvollziehbarkeit soll menschliche Prüfung und Verantwortlichkeit stärken, nicht Zuständigkeiten auflösen.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H18",
+      "prompt": "Wie sollen Rollen von Menschen und KI bestimmt werden?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Durch definierte Zuständigkeiten und Aufsicht",
+          "correct": true,
+          "explanation": "Govern 3.2 fordert geklärte Rollen und menschliche Aufsicht.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Durch die vom Modell gemessene Antwortqualität",
+          "correct": false,
+          "explanation": "Antwortqualität ist eine mögliche Messgröße; Govern 3.2 verlangt festgelegte Rollen und Aufsicht für Mensch und KI.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Durch die allgemeine Risikotoleranz ohne konkrete Zuständigkeiten",
+          "correct": false,
+          "explanation": "Risikotoleranz steuert den Umfang, definiert aber nicht die Rollen und Aufsicht einer Mensch-KI-Konfiguration.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H19",
+      "prompt": "Warum ist ein vielfältiges Team bei Risikofragen nützlich?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Es kann Annahmen und neue Risiken sichtbar machen",
+          "correct": true,
+          "explanation": "NIST begründet vielfältige Perspektiven mit offenerem Austausch.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Es ersetzt die Beteiligung von Menschen außerhalb des Teams",
+          "correct": false,
+          "explanation": "Ein vielfältiges internes Team hilft, doch externe Perspektiven können weitere Annahmen und Auswirkungen sichtbar machen.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Es macht dokumentierte Risikoprüfungen entbehrlich",
+          "correct": false,
+          "explanation": "Vielfalt verbessert den Blick auf Risiken, ersetzt aber die dokumentierte Risikoarbeit nicht.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H20",
+      "prompt": "Welche Rückmeldungen ergänzen interne Bewertungen der Auswirkungen eines KI-Systems?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Relevante Rückmeldungen außerhalb des Entwicklungsteams zu Auswirkungen",
+          "correct": true,
+          "explanation": "Govern 5 behandelt externe Perspektiven und Rückkopplung.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Nur interne Rückmeldungen zur Modellgenauigkeit",
+          "correct": false,
+          "explanation": "Genauigkeit ist relevant, doch Govern 5.1 bezieht externe Rückmeldungen zu individuellen und gesellschaftlichen Auswirkungen ein.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Nur Rückmeldungen aus dem Produktmanagement zum Nutzen",
+          "correct": false,
+          "explanation": "Produktnutzen gehört zur Bewertung; gefragt sind auch externe Perspektiven auf mögliche Auswirkungen.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H21",
+      "prompt": "Welche zusätzliche Risikokategorie muss eine Organisation beim Zukauf von KI-Systemen oder Daten berücksichtigen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Drittanbieter- und Lieferkettenrisiken",
+          "correct": true,
+          "explanation": "Govern 6 behandelt Risiken aus Drittsoftware und Daten.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Nur die dokumentierte Leistung des Drittmodells",
+          "correct": false,
+          "explanation": "Leistung kann ein Kriterium sein, deckt aber Risiken aus Drittanbieterdaten, Rechten und Lieferketten nicht ab.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Nur die internen Risiken des eigenen Quellcodes",
+          "correct": false,
+          "explanation": "Eigener Code zählt, doch Govern 6 bezieht Drittanbieter-Software und Daten ausdrücklich ein.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H22",
+      "prompt": "Wie soll eine Organisation auf den Ausfall einer als hochriskant eingestuften Drittanbieterkomponente vorbereitet sein?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mit einem Notfallverfahren",
+          "correct": true,
+          "explanation": "Govern 6.2 fordert Kontingenzprozesse für solche Fälle.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Mit einer regelmäßigen Bewertung der Modellgenauigkeit",
+          "correct": false,
+          "explanation": "Messung kann Probleme erkennen; Govern 6.2 fordert für Ausfälle hochriskanter Drittkomponenten ein Notfallverfahren.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Mit einer einmaligen Prüfung des Liefervertrags",
+          "correct": false,
+          "explanation": "Verträge können Teil der Vorsorge sein, ersetzen aber keinen Prozess zum Umgang mit Ausfällen oder Vorfällen.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H23",
+      "prompt": "Welches Risiko muss Map neben der vorgesehenen Nutzung betrachten?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Vorhersehbare Nutzung außerhalb des vorgesehenen Zwecks",
+          "correct": true,
+          "explanation": "NIST nennt Risiken der Nutzung jenseits des beabsichtigten Zwecks.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Nur die Risiken der vorgesehenen Nutzung",
+          "correct": false,
+          "explanation": "Map betrachtet diese Risiken, zusätzlich aber vorhersehbare Verwendung außerhalb des vorgesehenen Zwecks.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Nur Risiken, die bereits in einem Incident aufgetreten sind",
+          "correct": false,
+          "explanation": "Vorfälle sind Hinweise, doch Map soll auch künftig vorhersehbare Fehlverwendungen antizipieren.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H24",
+      "prompt": "Warum ist die Prüfung des Einsatzkontexts wichtig?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ein System kann außerhalb seines vorgesehenen Kontexts versagen",
+          "correct": true,
+          "explanation": "Map soll Grenzen der Funktionsfähigkeit im Nutzungskontext erkennen.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Weil eine gute Trainingsleistung in jedem Einsatzkontext gleich bleibt",
+          "correct": false,
+          "explanation": "Trainingsleistung kann Hinweise geben; Map betont Grenzen innerhalb und außerhalb des vorgesehenen Kontexts.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Weil der Einsatzzweck allein die Risikotoleranz festlegt",
+          "correct": false,
+          "explanation": "Der Zweck ist Teil des Kontexts; Risikotoleranz ist eine organisatorische Entscheidung und erklärt kein mögliches Versagen.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    },
+    {
+      "id": "H25",
+      "prompt": "Welchen Status haben die AI-RMF-Playbook-Vorschläge?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Freiwillige, anpassbare Handlungsvorschläge",
+          "correct": true,
+          "explanation": "NIST beschreibt Playbook und Framework als freiwillig und kontextabhängig.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "b",
+          "text": "Ein verbindlicher Mindestkatalog für jede Organisation",
+          "correct": false,
+          "explanation": "Die Vorschläge wirken wie eine Checkliste; NIST bezeichnet Framework und Playbook jedoch als freiwillig und anpassbar.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        },
+        {
+          "id": "c",
+          "text": "Ein Nachweis umfassender Risikomessung für ein KI-System",
+          "correct": false,
+          "explanation": "Das Playbook bietet Handlungsideen, bescheinigt aber keine vollständige Risikomessung.",
+          "sourceUrl": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+        }
+      ]
+    }
+  ],
+  "agents-md": [
+    {
+      "id": "A01",
+      "prompt": "Welchen Zweck hat AGENTS.md in einem Repository?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Vorhersagbare Projektanweisungen für Coding-Agenten bereitstellen",
+          "correct": true,
+          "explanation": "Die Datei ist ein eigener Ort für Agentenkontext.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "Projektanweisungen für Menschen und Agenten vollständig zusammenführen",
+          "correct": false,
+          "explanation": "Das klingt nach einem gemeinsamen Handbuch; AGENTS.md ist ein eigener, gezielter Ort für Agentenanweisungen.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "Verbindliche Laufzeitkonfiguration des Coding-Agenten speichern",
+          "correct": false,
+          "explanation": "Projektkontext kann das Verhalten anleiten, ist aber keine technische Laufzeitkonfiguration.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    },
+    {
+      "id": "A02",
+      "prompt": "In welchem Format wird AGENTS.md geführt?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Markdown",
+          "correct": true,
+          "explanation": "Das offene Format verwendet gewöhnliches Markdown.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "YAML mit festen Schlüsseln",
+          "correct": false,
+          "explanation": "YAML kann in anderen Anweisungsformaten vorkommen; AGENTS.md ist freies Markdown ohne Pflichtschema.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "JSON mit einem instructions-Feld",
+          "correct": false,
+          "explanation": "Ein strukturiertes JSON-Format wäre maschinenlesbar, entspricht aber nicht dem Markdown-Format von AGENTS.md.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    },
+    {
+      "id": "A03",
+      "prompt": "Wo beginnt eine einfache AGENTS.md-Einrichtung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mit einer AGENTS.md im Repository-Stamm",
+          "correct": true,
+          "explanation": "Die Anleitung empfiehlt die Datei an der Repository-Wurzel.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "Mit einer AGENTS.md nur im Benutzerprofil",
+          "correct": false,
+          "explanation": "Persönliche Anweisungen können existieren; die einfache geteilte Einrichtung beginnt in der Repository-Wurzel.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "Mit einer Anweisungsdatei in jedem Quellordner",
+          "correct": false,
+          "explanation": "Lokale Dateien sind für Teilbereiche möglich; als Einstieg empfiehlt die Quelle eine Datei im Repository-Stamm.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    },
+    {
+      "id": "A04",
+      "prompt": "Welche Angabe hilft Agenten beim lokalen Prüfen besonders?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Konkrete Build- und Testbefehle",
+          "correct": true,
+          "explanation": "Build und Testbefehle gehören zu den empfohlenen Inhalten.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "Allgemeine Qualitätsziele ohne ausführbare Befehle",
+          "correct": false,
+          "explanation": "Ziele helfen bei der Orientierung, geben dem Agenten aber keinen konkreten lokalen Prüfablauf.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "Nur die Namen der eingesetzten Testframeworks",
+          "correct": false,
+          "explanation": "Werkzeugnamen deuten Tests an; ausführbare Build- und Testbefehle sind für die lokale Prüfung konkreter.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    },
+    {
+      "id": "A05",
+      "prompt": "Welche Projektkonvention eignet sich für AGENTS.md?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Konkrete Stil- und Testregeln",
+          "correct": true,
+          "explanation": "Die Quelle nennt Code-Stil und Testanweisungen als Beispiele.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "Allgemeine Projektziele ohne Arbeitsregeln",
+          "correct": false,
+          "explanation": "Ein Ziel kann Kontext geben, ersetzt aber keine konkreten Stil- und Testregeln für die Bearbeitung.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "Eine ausführliche Beschreibung des Quellcodes ohne Arbeitsregeln",
+          "correct": false,
+          "explanation": "Code kann der Agent im Repository lesen; die Datei soll handlungsrelevante Konventionen geben.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    },
+    {
+      "id": "A06",
+      "prompt": "Wie verhalten sich README und AGENTS.md zueinander?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sie ergänzen sich mit verschiedenen Zielgruppen",
+          "correct": true,
+          "explanation": "README richtet sich an Menschen; AGENTS.md enthält agentenspezifischen Kontext.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "AGENTS.md enthält die gesamte README zusätzlich",
+          "correct": false,
+          "explanation": "Doppelte Dokumentation wäre möglich, widerspricht aber der gezielten Aufteilung für unterschiedliche Zielgruppen.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "Die README enthält nur Agentenbefehle und AGENTS.md nur Projektwerbung",
+          "correct": false,
+          "explanation": "Das vertauscht die Zielgruppen; AGENTS.md ist für Agentenanweisungen vorgesehen.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    },
+    {
+      "id": "A07",
+      "prompt": "Warum ist eine eigene Agentendatei nützlich?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sie hält detaillierte Agentenanweisungen aus der menschlichen README heraus",
+          "correct": true,
+          "explanation": "Die Quelle nennt präzise Agentenanweisungen bei knapper menschlicher README.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "Sie macht Projektanweisungen ohne Teamprüfung verbindlich",
+          "correct": false,
+          "explanation": "Ein fester Ort hilft Agenten, doch seine Inhalte müssen weiterhin fachlich gepflegt und geprüft werden.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "Sie erspart jede weitere fachliche Aufgabenbeschreibung",
+          "correct": false,
+          "explanation": "Dauerhafter Projektkontext ersetzt keinen konkreten Auftrag mit Ziel und Grenzen.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    },
+    {
+      "id": "A08",
+      "prompt": "Was ist bei einem großen Monorepo für einzelne Pakete vorgesehen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zusätzliche AGENTS.md-Dateien in Unterverzeichnissen",
+          "correct": true,
+          "explanation": "Die Quelle empfiehlt verschachtelte Dateien für Teilprojekte.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "Eine einzige Stammdatei mit allen Paketdetails",
+          "correct": false,
+          "explanation": "Das kann funktionieren, doch die Quelle empfiehlt in großen Monorepos zusätzliche nahe Dateien für Teilprojekte.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "Je Paket eine eigene globale Benutzeranweisung",
+          "correct": false,
+          "explanation": "Benutzeranweisungen sind nicht der geteilte, paketnahe Repository-Kontext des Formats.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    },
+    {
+      "id": "A09",
+      "prompt": "Welche AGENTS.md hat bei widersprüchlichen Dateien für eine bearbeitete Datei Vorrang?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Die der bearbeiteten Datei nächstgelegene",
+          "correct": true,
+          "explanation": "Die nächste Datei im Verzeichnisbaum hat Vorrang.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "Die Datei im Repository-Stamm hat für alle Unterordner Vorrang",
+          "correct": false,
+          "explanation": "Die Stammdatei ist ein Ausgangspunkt; bei Konflikten gewinnt laut FAQ die näher liegende AGENTS.md.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "Alle konkurrierenden Dateien gelten ohne Vorrang gleichzeitig",
+          "correct": false,
+          "explanation": "Mehrere Dateien können Kontext liefern, aber die FAQ regelt Konflikte zugunsten der nächstgelegenen.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    },
+    {
+      "id": "A10",
+      "prompt": "Welche Anweisung hat bei einem Widerspruch mit AGENTS.md Vorrang?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Explizite Anweisungen des Nutzers im Chat",
+          "correct": true,
+          "explanation": "Die FAQ nennt den ausdrücklichen Nutzerprompt als vorrangig.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "Eine abweichende README im selben Verzeichnis",
+          "correct": false,
+          "explanation": "Eine README kann informieren; die FAQ gibt ausdrücklichen Nutzeranweisungen im Chat Vorrang.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "Die AGENTS.md im nächstgelegenen Unterordner",
+          "correct": false,
+          "explanation": "Die nähere Datei gewinnt zwischen AGENTS.md-Dateien, überstimmt aber keine explizite Nutzeranweisung.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    },
+    {
+      "id": "A11",
+      "prompt": "Sind feste Pflichtabschnitte für AGENTS.md vorgeschrieben?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nein, Überschriften können passend gewählt werden",
+          "correct": true,
+          "explanation": "Die FAQ nennt keine vorgeschriebenen Felder.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "Ja, Setup und Tests müssen als feste Überschriften vorkommen",
+          "correct": false,
+          "explanation": "Beide Themen sind nützlich, doch das Format schreibt weder diese Überschriften noch andere Pflichtfelder vor.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "Ja, ein Abschnitt zum Geltungsbereich ist Pflicht",
+          "correct": false,
+          "explanation": "Bei verschachtelten Dateien ergibt sich der Geltungsbereich aus dem Dateiort; die FAQ schreibt dafür keinen Abschnitt vor.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    },
+    {
+      "id": "A13",
+      "prompt": "Was gilt für AGENTS.md über verschiedene Coding-Agenten hinweg?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Das Format kann von mehreren kompatiblen Werkzeugen genutzt werden",
+          "correct": true,
+          "explanation": "Die Quelle beschreibt ein offenes, agentenübergreifendes Format.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "Es ist an ein einzelnes Editorprodukt gebunden",
+          "correct": false,
+          "explanation": "Editoren können es nutzen; das offene Format ist gerade für mehrere kompatible Coding-Agenten gedacht.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "Es führt bei allen Agenten zum identischen Arbeitsablauf",
+          "correct": false,
+          "explanation": "Mehrere Werkzeuge unterstützen das Format, doch daraus folgt keine identische Umsetzung jeder Anweisung.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    },
+    {
+      "id": "A14",
+      "prompt": "Was gehört bei einem Paket mit eigenem Testbefehl in die nahe AGENTS.md?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Der für dieses Paket relevante Testbefehl",
+          "correct": true,
+          "explanation": "Verschachtelte Anweisungen sollen das jeweilige Teilprojekt unterstützen.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "Der allgemeine Testbefehl des Repository-Stamms ohne Paketbezug",
+          "correct": false,
+          "explanation": "Ein globaler Befehl kann nützlich sein; die nahe Datei soll die konkreten Prüfungen des Pakets nennen.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "Nur die Namen der Testdateien des Pakets",
+          "correct": false,
+          "explanation": "Dateinamen zeigen Prüfumfang, liefern dem Agenten aber keinen ausführbaren Paket-Testbefehl.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    },
+    {
+      "id": "A16",
+      "prompt": "Welcher Ort ist laut VS Code für geteilte Projektanweisungen an mehrere kompatible Agenten geeignet?",
+      "options": [
+        {
+          "id": "a",
+          "text": "AGENTS.md",
+          "correct": true,
+          "explanation": "VS Code beschreibt AGENTS.md als agentenübergreifendes Projektformat.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "b",
+          "text": "Eine persönliche VS-Code-Profilanweisung",
+          "correct": false,
+          "explanation": "Das Profil ist benutzerspezifisch; AGENTS.md liegt im Projekt und ist über kompatible Agenten teilbar.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "c",
+          "text": "Eine VS-Code-Aufgabe in tasks.json",
+          "correct": false,
+          "explanation": "Eine Aufgabe kann Befehle starten, ist aber kein gemeinsames Format für Agentenanweisungen.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        }
+      ]
+    },
+    {
+      "id": "A17",
+      "prompt": "Welche VS-Code-Anweisungsart passt zu Regeln nur für bestimmte Dateien?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eine .instructions.md-Datei mit passendem applyTo-Muster",
+          "correct": true,
+          "explanation": "VS Code beschreibt zielgerichtete Anweisungen über Dateimuster.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "b",
+          "text": "Eine projektweite copilot-instructions.md ohne Dateifilter",
+          "correct": false,
+          "explanation": "Projektweite Regeln gelten breit; .instructions.md mit applyTo ist für Regeln zu passenden Dateien gedacht.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "c",
+          "text": "Eine AGENTS.md nur im Repository-Stamm",
+          "correct": false,
+          "explanation": "Die Stammdatei liefert allgemeinen Kontext, keinen automatischen applyTo-Filter für bestimmte Dateien.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        }
+      ]
+    },
+    {
+      "id": "A18",
+      "prompt": "Wie sollten Anweisungen bei mehreren passenden Geltungsbereichen abgelegt werden?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Im engsten passenden Bereich",
+          "correct": true,
+          "explanation": "VS Code empfiehlt den schmalsten passenden Scope.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "b",
+          "text": "In einer allgemeinen Projektdatei trotz engerem Dateibezug",
+          "correct": false,
+          "explanation": "Allgemeine Regeln sind möglich; VS Code empfiehlt gezielte Anweisungen im engsten passenden Bereich.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "c",
+          "text": "Im globalen Benutzerprofil für alle Repositories",
+          "correct": false,
+          "explanation": "Nutzeranweisungen gelten breiter als die betreffenden Projektdateien und passen nicht zu lokalen Regeln.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        }
+      ]
+    },
+    {
+      "id": "A19",
+      "prompt": "Worauf kommt es bei einer .instructions.md-Datei für automatische Zuordnung an?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Auf ein passendes applyTo-Dateimuster",
+          "correct": true,
+          "explanation": "VS Code verwendet applyTo zum automatischen Anhängen.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "b",
+          "text": "Auf eine treffende description ohne Dateimuster",
+          "correct": false,
+          "explanation": "description hilft bei Auswahl nach Aufgabe; automatische Dateizuordnung nutzt applyTo.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "c",
+          "text": "Auf das Verzeichnis der Datei ohne applyTo",
+          "correct": false,
+          "explanation": "Der Ablageort organisiert Anweisungen; die automatische Zuordnung zu geänderten Dateien erfolgt über applyTo.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        }
+      ]
+    },
+    {
+      "id": "A20",
+      "prompt": "Was beschreibt in VS Code eine .instructions.md-Datei für bedarfsweise Auswahl?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eine aussagekräftige description",
+          "correct": true,
+          "explanation": "Die Beschreibung unterstützt die Relevanzauswahl.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "b",
+          "text": "Ein applyTo-Muster für alle Dateien",
+          "correct": false,
+          "explanation": "applyTo steuert automatische Dateizuordnung, während description die bedarfsweise Auswahl nach Aufgabe unterstützt.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "c",
+          "text": "Ein möglichst kurzer name-Wert",
+          "correct": false,
+          "explanation": "name bezeichnet die Datei in der Oberfläche; für Auswahl nach Aufgabenrelevanz hilft description.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        }
+      ]
+    },
+    {
+      "id": "A21",
+      "prompt": "Wie werden relative Dateipfade in VS-Code-Anweisungen aufgelöst?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Relativ zur Anweisungsdatei",
+          "correct": true,
+          "explanation": "Die Dokumentation nennt die Anweisungsdatei als Basis.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "b",
+          "text": "Relativ zur Workspace-Wurzel",
+          "correct": false,
+          "explanation": "applyTo-Muster beziehen sich auf die Workspace-Wurzel; relative Links in Anweisungen werden von der Anweisungsdatei aus aufgelöst.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "c",
+          "text": "Relativ zur gerade geöffneten Quelldatei",
+          "correct": false,
+          "explanation": "Die bearbeitete Datei kann wechseln; relative Links in Anweisungen beziehen sich auf den Ort der Anweisungsdatei.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        }
+      ]
+    },
+    {
+      "id": "A22",
+      "prompt": "Welche Pfadtrenner empfiehlt VS Code in Anweisungen für Portabilität?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Vorwärtsschrägstriche",
+          "correct": true,
+          "explanation": "Die Dokumentation empfiehlt `/` für plattformübergreifende Pfade.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "b",
+          "text": "Die Pfadtrenner des aktuellen Betriebssystems",
+          "correct": false,
+          "explanation": "Das klingt naheliegend, verringert aber die Portabilität; VS Code empfiehlt / in Anweisungen.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "c",
+          "text": "Plattformabhängige Trenner je nach Teammitglied",
+          "correct": false,
+          "explanation": "Unterschiedliche Trenner in geteilten Anweisungen erschweren die plattformübergreifende Nutzung.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        }
+      ]
+    },
+    {
+      "id": "A23",
+      "prompt": "Was sollten Teams nach KI-generierten Anweisungsdateien tun?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Befehle und Konventionen gegen das Repository prüfen",
+          "correct": true,
+          "explanation": "VS Code fordert eine Prüfung der generierten Inhalte.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "b",
+          "text": "Nur prüfen, ob die Datei syntaktisch Markdown ist",
+          "correct": false,
+          "explanation": "Gültiges Markdown sagt nichts darüber aus, ob Befehle und Konventionen zum Repository passen.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "c",
+          "text": "Nur prüfen, ob die Datei im richtigen Ordner liegt",
+          "correct": false,
+          "explanation": "Der Ort sichert Auffindbarkeit; die generierten Inhalte müssen am Repository validiert werden.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        }
+      ]
+    },
+    {
+      "id": "A24",
+      "prompt": "Welche Funktion hat eine Workspace-Anweisung gegenüber einer Nutzeranweisung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sie gilt für das jeweilige Projekt",
+          "correct": true,
+          "explanation": "VS Code unterscheidet Projekt- und Nutzerscope.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "b",
+          "text": "Sie gilt für das Benutzerprofil über alle Projekte hinweg",
+          "correct": false,
+          "explanation": "Das ist die Reichweite einer Nutzeranweisung; eine Workspace-Anweisung ist projektgebunden.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "c",
+          "text": "Sie gilt nur für eine einzelne Chatnachricht",
+          "correct": false,
+          "explanation": "Einzelne Chats können Anweisungen enthalten; Workspace-Dateien liefern wiederverwendbaren Projektkontext.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        }
+      ]
+    },
+    {
+      "id": "A25",
+      "prompt": "Beeinflussen VS-Code-Custom-Instructions Inline-Vorschläge während des Tippens?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nein",
+          "correct": true,
+          "explanation": "VS Code weist ausdrücklich auf diese Grenze hin.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "b",
+          "text": "Ja, weil dieselben Regeln auch für den Agentenchat gelten",
+          "correct": false,
+          "explanation": "Chatkontext und Inline-Vorschläge haben verschiedene Wege; VS Code nimmt Custom Instructions für Inline-Vorschläge nicht hinzu.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        },
+        {
+          "id": "c",
+          "text": "Ja, sobald applyTo zur geöffneten Datei passt",
+          "correct": false,
+          "explanation": "applyTo steuert Agentenanweisungen für passende Dateien; Inline-Vorschläge berücksichtigen diese Anweisungen laut VS Code nicht.",
+          "sourceUrl": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+        }
+      ]
+    },
+    {
+      "id": "A26",
+      "prompt": "Wie soll AGENTS.md nach Änderungen am Projekt behandelt werden?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Als lebendes Dokument bei Bedarf aktualisieren",
+          "correct": true,
+          "explanation": "Die AGENTS.md-FAQ empfiehlt laufende Pflege der Datei.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "Als einmalig erzeugte Setup-Datei ohne spätere Pflege",
+          "correct": false,
+          "explanation": "Projektbefehle und Konventionen ändern sich; die FAQ nennt AGENTS.md lebende Dokumentation.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "Nur bei einem Wechsel des Coding-Agenten ändern",
+          "correct": false,
+          "explanation": "Werkzeugwechsel kann Anlass sein; Aktualisierungen sind auch bei Projektänderungen nötig.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    },
+    {
+      "id": "A27",
+      "prompt": "Wo sucht das AGENTS.md-Beispiel nach dem CI-Prüfplan?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Im Verzeichnis .github/workflows",
+          "correct": true,
+          "explanation": "Das Beispiel verweist für den CI-Plan auf .github/workflows.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "b",
+          "text": "Im Abschnitt scripts der package.json",
+          "correct": false,
+          "explanation": "npm-Skripte können Tests beschreiben; das Beispiel verweist für den CI-Prüfplan auf .github/workflows.",
+          "sourceUrl": "https://agents.md/"
+        },
+        {
+          "id": "c",
+          "text": "In einer lokalen VS-Code-Task-Datei",
+          "correct": false,
+          "explanation": "Editoraufgaben können Prüfbefehle enthalten, sind aber nicht der im Beispiel genannte CI-Ort.",
+          "sourceUrl": "https://agents.md/"
+        }
+      ]
+    }
+  ],
+  "ears-requirements": [
+    {
+      "id": "E01",
+      "prompt": "Wofür steht die Abkürzung EARS?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Easy Approach to Requirements Syntax",
+          "correct": true,
+          "explanation": "Die Quelle löst die Abkürzung ausdrücklich auf.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Easy Approach to Requirements Specification",
+          "correct": false,
+          "explanation": "Specification ist fachlich verwandt, doch das S steht in der Originalbezeichnung für Syntax.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Efficient Approach to Requirements Syntax",
+          "correct": false,
+          "explanation": "Efficient beschreibt einen möglichen Nutzen, ist aber nicht das E der veröffentlichten Bezeichnung.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E02",
+      "prompt": "Was schränkt EARS bei Anforderungen bewusst ein?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Die Form natürlicher Sprache",
+          "correct": true,
+          "explanation": "EARS gibt Textanforderungen eine leichte Syntaxstruktur.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Den fachlichen Umfang einer Anforderung",
+          "correct": false,
+          "explanation": "EARS strukturiert die Textform; fehlende Fachregeln oder ein zu großer Umfang werden nicht automatisch geklärt.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Die Anzahl erlaubter Systemantworten auf eine Bedingung",
+          "correct": false,
+          "explanation": "Die Grundregel erlaubt eine oder mehrere Reaktionen; eingeschränkt wird die Form der natürlichen Sprache.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E03",
+      "prompt": "Wie sind die EARS-Klauseln angeordnet?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In einer festen Reihenfolge",
+          "correct": true,
+          "explanation": "Die feste Reihenfolge folgt einer zeitlichen Logik.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Nach Wichtigkeit der Systemreaktionen",
+          "correct": false,
+          "explanation": "Priorisierung ist für Anforderungen denkbar; EARS ordnet die Klauseln nach zeitlicher Logik.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Nach der Reihenfolge, in der der Autor Bedingungen entdeckt",
+          "correct": false,
+          "explanation": "Die Entdeckung kann variieren, doch die Klauseln werden in der EARS-Syntax fest geordnet.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E04",
+      "prompt": "Welcher Teil steht in der allgemeinen Syntax vor einem optionalen Auslöser?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Die optionale Vorbedingung mit While",
+          "correct": true,
+          "explanation": "Die Grundform beginnt mit optionalen While-Vorbedingungen.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Eine optionale Produkteigenschaft mit Where",
+          "correct": false,
+          "explanation": "Where bezeichnet ein enthaltenes Merkmal, steht aber nicht als Vorbedingung vor when in der allgemeinen Syntax.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Der Systemname mit shall",
+          "correct": false,
+          "explanation": "Systemname und Reaktion folgen in der allgemeinen Syntax auf die optionalen While- und when-Klauseln.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E05",
+      "prompt": "Wie viele Trigger erlaubt die EARS-Grundregel in einer Anforderung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Null oder einen",
+          "correct": true,
+          "explanation": "Das Regelwerk nennt null oder einen Trigger.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Genau einen Trigger in jeder Anforderung",
+          "correct": false,
+          "explanation": "Ein Ereignis ist häufig, aber die EARS-Grundregel erlaubt auch Anforderungen ohne Trigger.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Mehrere Trigger, solange die Systemreaktion gleich ist",
+          "correct": false,
+          "explanation": "Gleiche Reaktion macht mehrere Trigger nicht zu einem; die Grundregel erlaubt höchstens einen.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E06",
+      "prompt": "Wie viele Systemnamen verlangt die EARS-Grundregel?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Genau einen",
+          "correct": true,
+          "explanation": "Das Regelwerk nennt einen Systemnamen.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Mindestens einen Systemnamen pro Klausel",
+          "correct": false,
+          "explanation": "Mehrere Klauseln sind möglich, doch die Grundregel nennt genau einen Systemnamen für die Anforderung.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Einen Systemnamen für jede Systemreaktion",
+          "correct": false,
+          "explanation": "Mehrere Reaktionen sind erlaubt, aber daraus entstehen nicht mehrere Systemnamen in der Grundregel.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E07",
+      "prompt": "Wie viele Systemreaktionen verlangt die EARS-Grundregel?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mindestens eine",
+          "correct": true,
+          "explanation": "Das Regelwerk nennt eine oder mehrere Reaktionen.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Genau eine Reaktion",
+          "correct": false,
+          "explanation": "Eine Reaktion genügt, aber die Grundregel erlaubt mehrere Systemreaktionen.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Eine Reaktion nur bei vorhandenem Trigger",
+          "correct": false,
+          "explanation": "Auch ständig geltende Anforderungen ohne Trigger brauchen mindestens eine Systemreaktion.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E08",
+      "prompt": "Wie viele Vorbedingungen lässt die EARS-Grundregel zu?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Null oder mehrere",
+          "correct": true,
+          "explanation": "Das Regelwerk erlaubt null oder mehrere Vorbedingungen.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Genau eine Vorbedingung",
+          "correct": false,
+          "explanation": "Eine While-Klausel ist möglich, aber die Grundregel lässt null oder mehrere Vorbedingungen zu.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Mindestens eine Vorbedingung bei jeder Anforderung",
+          "correct": false,
+          "explanation": "Ubiquitous und Event driven können ohne Vorbedingung formuliert werden.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E09",
+      "prompt": "Welches Muster beschreibt eine ständig geltende Anforderung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ubiquitous ohne spezielles Schlüsselwort",
+          "correct": true,
+          "explanation": "Ubiquitous-Anforderungen gelten immer.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "State driven mit While",
+          "correct": false,
+          "explanation": "Ein Zustand kann lange gelten, doch Ubiquitous hat keine zustandsgebundene Bedingung und kein Schlüsselwort.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Optional feature mit Where",
+          "correct": false,
+          "explanation": "Eine Produkteigenschaft kann dauerhaft vorhanden sein, aber Where bindet die Anforderung an diese Eigenschaft.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E10",
+      "prompt": "Welches Schlüsselwort kennzeichnet eine zustandsgetriebene Anforderung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "While",
+          "correct": true,
+          "explanation": "While bindet die Antwort an einen andauernden Zustand.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "If",
+          "correct": false,
+          "explanation": "If leitet den unerwünschten Auslöser eines If-Then-Musters ein, nicht die Dauer eines Zustands.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Then",
+          "correct": false,
+          "explanation": "Then verbindet unerwünschten Auslöser und Reaktion; ein andauernder Zustand wird mit While beschrieben.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E11",
+      "prompt": "Welches Schlüsselwort kennzeichnet einen Ereignisauslöser?",
+      "options": [
+        {
+          "id": "a",
+          "text": "When",
+          "correct": true,
+          "explanation": "When beschreibt die Reaktion auf ein eintretendes Ereignis.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "If",
+          "correct": false,
+          "explanation": "If kennzeichnet im Muster für unerwünschtes Verhalten einen problematischen Auslöser, nicht das allgemeine Event-driven-Muster.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Then",
+          "correct": false,
+          "explanation": "Then gehört zur Reaktion auf unerwünschtes Verhalten, nicht zum Ereignisauslöser mit When.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E12",
+      "prompt": "Welches Schlüsselwort kennzeichnet eine Anforderung an ein enthaltenes optionales Merkmal?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Where",
+          "correct": true,
+          "explanation": "Where gilt für Produkte mit dem benannten Merkmal.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "While",
+          "correct": false,
+          "explanation": "While ist eine Vorbedingung während eines Zustands; ein optional enthaltenes Merkmal wird mit Where markiert.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "If-Then",
+          "correct": false,
+          "explanation": "If-Then beschreibt unerwünschtes Verhalten; ein in einer Produktvariante enthaltenes Merkmal nutzt Where.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E13",
+      "prompt": "Welche Schlüsselwörter kennzeichnen unerwünschtes Verhalten?",
+      "options": [
+        {
+          "id": "a",
+          "text": "If und Then",
+          "correct": true,
+          "explanation": "If-Then beschreibt die Systemreaktion auf unerwünschte Situationen.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "When und shall",
+          "correct": false,
+          "explanation": "When und shall formulieren eine allgemeine Ereignisreaktion; unerwünschtes Verhalten wird mit If und Then gekennzeichnet.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "While und shall",
+          "correct": false,
+          "explanation": "While bindet Verhalten an einen Zustand, beschreibt aber nicht das If-Then-Muster für unerwünschte Situationen.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E14",
+      "prompt": "Was kennzeichnet eine komplexe EARS-Anforderung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mehr als ein EARS-Schlüsselwort",
+          "correct": true,
+          "explanation": "Die Quelle nennt Kombinationen einfacher Muster komplex.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Mehrere Systemreaktionen in einem Satz",
+          "correct": false,
+          "explanation": "Mehrere Reaktionen sind nach der Grundregel möglich; komplex heißt eine Anforderung wegen mehr als eines EARS-Schlüsselworts.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Eine Kombination aus Fachregel und Testfall",
+          "correct": false,
+          "explanation": "Ein Testfall kann eine Anforderung prüfen, ist aber kein Kriterium für das komplexe EARS-Muster.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E15",
+      "prompt": "Welche Reihenfolge passt für ein Ereignis in einem Zustand?",
+      "options": [
+        {
+          "id": "a",
+          "text": "While Zustand, When Ereignis, System shall Reaktion",
+          "correct": true,
+          "explanation": "Das komplexe Muster stellt die Vorbedingung vor den Auslöser.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "When Ereignis, While Zustand, System shall Reaktion",
+          "correct": false,
+          "explanation": "Beide Klauseln sind fachlich passend, aber die EARS-Reihenfolge setzt die Vorbedingung vor den Trigger.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "While Zustand, System shall Reaktion, When Ereignis",
+          "correct": false,
+          "explanation": "Die Reaktion folgt auf den Trigger; nachgestelltes When verletzt die feste Klauselfolge.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E16",
+      "prompt": "Ein Hinweis soll während der gesamten Dauer einer Nutzersperre angezeigt werden. Welches einfache EARS-Muster passt?",
+      "options": [
+        {
+          "id": "a",
+          "text": "State driven mit While",
+          "correct": true,
+          "explanation": "Die Bedingung ist ein andauernder Zustand.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Complex mit While und When",
+          "correct": false,
+          "explanation": "Ein anhaltender Zustand ist vorhanden, aber das Beispiel nennt keinen zusätzlichen Ereignisauslöser für ein komplexes Muster.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Ubiquitous ohne Bedingung",
+          "correct": false,
+          "explanation": "Die Sperre ist eine Bedingung; das Verhalten gilt nicht in jedem Zustand.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E17",
+      "prompt": "Die Web-App soll auf das Abschicken eines Logins mit einer Eingabeprüfung reagieren. Welches einfache EARS-Muster passt?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Event driven mit When",
+          "correct": true,
+          "explanation": "Der Versand ist ein auslösendes Ereignis.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Complex mit While und When",
+          "correct": false,
+          "explanation": "Das Abschicken ist ein Ereignis, doch ein zusätzlicher Zustand für das komplexe Muster fehlt.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Unwanted behaviour mit If-Then",
+          "correct": false,
+          "explanation": "Ein regulär abgeschickter Login ist kein unerwünschter Auslöser; das passende Grundmuster ist When.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E18",
+      "prompt": "Ein ungültiges Token erreicht die API und soll eine Fehlermeldung auslösen. Welches EARS-Muster passt?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Unwanted behaviour mit If-Then",
+          "correct": true,
+          "explanation": "Das ungültige Token ist eine unerwünschte Situation.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Event driven mit When",
+          "correct": false,
+          "explanation": "Ein eintreffendes Token ist zwar ein Ereignis, doch die ausdrücklich ungültige Eingabe ist im EARS-Beispiel ein unerwünschter Fall mit If-Then.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "State driven mit While",
+          "correct": false,
+          "explanation": "Ein ungültiges Token beschreibt einen problematischen Auslöser, keinen fortdauernden Systemzustand.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E19",
+      "prompt": "Welches Muster passt zu einer Exportfunktion, die nur in einer Produktvariante vorhanden ist?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Optional feature mit Where",
+          "correct": true,
+          "explanation": "Where grenzt Anforderungen nach vorhandenen Funktionen ein.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Complex mit Where und When",
+          "correct": false,
+          "explanation": "Ein optionales Merkmal ist vorhanden, aber ein zusätzliches Ereignis wird nicht beschrieben.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Ubiquitous ohne Bedingung",
+          "correct": false,
+          "explanation": "Die Anforderung gilt nur für die Variante mit Exportfunktion, nicht für alle Produkte.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E20",
+      "prompt": "Welches Muster passt zu „Der Webdienst stellt alle API-Antworten als UTF-8 bereit“ ohne weitere Bedingung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ubiquitous",
+          "correct": true,
+          "explanation": "Eine jederzeit geltende Anforderung braucht kein EARS-Schlüsselwort.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "State driven",
+          "correct": false,
+          "explanation": "Es gibt keinen besonderen Zustand, während dessen die UTF-8-Regel gelten soll.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Event driven",
+          "correct": false,
+          "explanation": "Es gibt kein einzelnes Ereignis, das die ständig geltende Ausgabevorgabe auslöst.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E21",
+      "prompt": "Welches Problem ungebundener natürlicher Sprache adressiert EARS?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mehrdeutige oder unpräzise Anforderungen",
+          "correct": true,
+          "explanation": "Die Quelle nennt Ungenauigkeit natürlicher Sprache als Ausgangsproblem.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Fehlende Priorisierung zwischen bereits präzisen Anforderungen",
+          "correct": false,
+          "explanation": "Priorisierung kann fehlen, doch EARS richtet sich gegen unpräzise Formulierungen in natürlicher Sprache.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Fehlende Implementierungsdetails in der Anforderung",
+          "correct": false,
+          "explanation": "EARS strukturiert beobachtbare Anforderungen; technische Lösungsdetails sind nicht sein Ziel.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E22",
+      "prompt": "Welchen Werkzeugbedarf beschreibt die EARS-Quelle?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kein Spezialwerkzeug ist nötig",
+          "correct": true,
+          "explanation": "EARS wird als leichtgewichtige Methode ohne Spezialwerkzeug beschrieben.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Ein Requirements-Management-System für die Schlüsselwörter",
+          "correct": false,
+          "explanation": "Ein solches System kann nützlich sein, ist laut Quelle aber keine Voraussetzung für EARS.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Eine formale Syntaxprüfsoftware für jeden Satz",
+          "correct": false,
+          "explanation": "EARS nutzt eine leichte Textsyntax und benötigt laut Quelle kein Spezialwerkzeug.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E23",
+      "prompt": "Für welche Autorengruppe hebt die Quelle eine besondere Eignung hervor?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Menschen, die Anforderungen auf Englisch schreiben, obwohl es nicht ihre Erstsprache ist",
+          "correct": true,
+          "explanation": "Die Quelle nennt ausdrücklich nicht englische Erstsprachler.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Autoren mit formaler Requirements-Ausbildung",
+          "correct": false,
+          "explanation": "Ausbildung kann helfen; die Quelle hebt gerade geringen Schulungsbedarf und Nichtmuttersprachler hervor.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Teams mit spezialisierten Requirements-Werkzeugen",
+          "correct": false,
+          "explanation": "EARS braucht kein Spezialwerkzeug und hilft besonders Autoren mit anderer englischer Erstsprache.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E24",
+      "prompt": "Aus welchem Arbeitskontext entstand EARS?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Analyse von Lufttüchtigkeitsregeln für ein Triebwerkssteuerungssystem",
+          "correct": true,
+          "explanation": "Mavin und Kollegen entwickelten EARS bei Rolls-Royce anhand dieser Regeln.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "Prüfung von Testfällen für eine Flugsteuerung",
+          "correct": false,
+          "explanation": "Der Luftfahrtkontext passt, doch die Quelle nennt die Analyse von Lufttüchtigkeitsregeln für eine Triebwerkssteuerung.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "Formulierung von Softwareanforderungen für ein Webportal",
+          "correct": false,
+          "explanation": "Webanforderungen können EARS nutzen; die Entstehung lag bei Lufttüchtigkeitsregeln für ein Triebwerkssteuerungssystem.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    },
+    {
+      "id": "E25",
+      "prompt": "Wann wurde die EARS-Notation erstmals veröffentlicht?",
+      "options": [
+        {
+          "id": "a",
+          "text": "2009",
+          "correct": true,
+          "explanation": "Die Quelle nennt 2009 als erste Veröffentlichung.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "b",
+          "text": "2008",
+          "correct": false,
+          "explanation": "Ein früherer Entwicklungszeitraum ist denkbar; die Quelle nennt 2009 als Erstveröffentlichung.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        },
+        {
+          "id": "c",
+          "text": "2010",
+          "correct": false,
+          "explanation": "Eine spätere Verbreitung ist möglich; die Quelle datiert die erste Veröffentlichung auf 2009.",
+          "sourceUrl": "https://alistairmavin.com/ears/"
+        }
+      ]
+    }
+  ],
+  "problem-understanding-and-change-boundaries": [
+    {
+      "id": "P01",
+      "prompt": "Was sollte ein gut abgegrenzter Auftrag zuerst benennen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Das zu lösende Problem oder die gewünschte Arbeit",
+          "correct": true,
+          "explanation": "GitHub nennt eine klare Problembeschreibung als Kern.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "b",
+          "text": "Die vorgesehenen Implementierungsschritte",
+          "correct": false,
+          "explanation": "Schritte konkretisieren einen Lösungsweg; zunächst muss das Problem oder die gewünschte Arbeit klar sein.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "c",
+          "text": "Die bereits vermutete technische Ursache",
+          "correct": false,
+          "explanation": "Eine Hypothese kann helfen, ersetzt aber keine klare Beschreibung des zu lösenden Problems.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        }
+      ]
+    },
+    {
+      "id": "P02",
+      "prompt": "Welcher Zusatz macht ein Ergebnis eines Coding-Agenten besser überprüfbar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Vollständige Akzeptanzkriterien",
+          "correct": true,
+          "explanation": "GitHub nennt Kriterien für die gute Lösung.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "b",
+          "text": "Eine ausführliche Beschreibung des Agentenmodells",
+          "correct": false,
+          "explanation": "Das Modell beeinflusst die Arbeit, definiert aber nicht, wann das Ergebnis fachlich akzeptabel ist.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "c",
+          "text": "Eine Liste der geplanten Codeänderungen ohne erwartetes Verhalten",
+          "correct": false,
+          "explanation": "Eine Änderungsübersicht hilft beim Scope; überprüfbar wird das Ergebnis durch Akzeptanzkriterien.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        }
+      ]
+    },
+    {
+      "id": "P03",
+      "prompt": "Welche Information kann den Änderungsumfang eines Agenten eingrenzen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hinweise auf die zu ändernden Dateien",
+          "correct": true,
+          "explanation": "GitHub empfiehlt Dateihinweise im Auftrag.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "b",
+          "text": "Hinweise auf die zu verwendende Modellversion",
+          "correct": false,
+          "explanation": "Die Modellwahl betrifft das Werkzeug, nicht die fachliche Grenze der zu ändernden Dateien.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "c",
+          "text": "Eine Liste möglicher Testframeworks",
+          "correct": false,
+          "explanation": "Testwerkzeuge helfen beim Prüfen, begrenzen aber den Änderungsumfang im Code nicht so konkret wie Dateihinweise.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        }
+      ]
+    },
+    {
+      "id": "P04",
+      "prompt": "Wie sollte ein Issue für einen Coding-Agenten geschrieben sein?",
+      "options": [
+        {
+          "id": "a",
+          "text": "So, dass die Beschreibung als ausführbarer Arbeitsauftrag verständlich ist",
+          "correct": true,
+          "explanation": "GitHub empfiehlt, das Issue als Prompt zu betrachten.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "b",
+          "text": "Als technische Lösung ohne Problem oder Akzeptanzkriterien",
+          "correct": false,
+          "explanation": "Eine Lösungsidee kann nützlich sein; der Agent braucht einen verständlichen Auftrag mit Ziel und Erfolgskriterien.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "c",
+          "text": "Als Sammlung offener Ideen ohne priorisiertes Ergebnis",
+          "correct": false,
+          "explanation": "Ideen können Recherche anstoßen, ergeben aber noch keinen klar ausführbaren Arbeitsauftrag.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        }
+      ]
+    },
+    {
+      "id": "P05",
+      "prompt": "Welche Aufgaben eignen sich besonders für erste Einsätze eines Coding-Agenten?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Einfachere, klar begrenzte Änderungen",
+          "correct": true,
+          "explanation": "Die Anleitung empfiehlt anfänglich einfache Aufgaben.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "b",
+          "text": "Breit angelegte Änderungen mit vielen unbekannten Abhängigkeiten",
+          "correct": false,
+          "explanation": "Solche Aufgaben brauchen viel Kontext; GitHub empfiehlt für erste Einsätze einfachere, abgegrenzte Aufgaben.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "c",
+          "text": "Sicherheitskritische Änderungen mit unklarer Fachregel",
+          "correct": false,
+          "explanation": "Hier sind Risiko und Mehrdeutigkeit hoch; das ist kein geeigneter Einstieg für eigenständige Agentenarbeit.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        }
+      ]
+    },
+    {
+      "id": "P06",
+      "prompt": "Welche Änderung nennt GitHub als Beispiel für eine geeignete Agentenaufgabe?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Verbesserte Testabdeckung",
+          "correct": true,
+          "explanation": "Testabdeckung steht in der Liste einfacher Aufgaben.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "b",
+          "text": "Eine neue Authentifizierungsarchitektur",
+          "correct": false,
+          "explanation": "Tests können Teil davon sein, doch eine sicherheitskritische Architekturänderung ist kein einfaches Beispiel für erste Einsätze.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "c",
+          "text": "Eine Migration mit unbekannten Modulabhängigkeiten",
+          "correct": false,
+          "explanation": "Migrationen können Agenten helfen, aber unbekannte Grenzen machen sie komplexer als gezielte Testabdeckung.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        }
+      ]
+    },
+    {
+      "id": "P07",
+      "prompt": "Welche weitere geeignete Aufgabe nennt GitHub?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eine begrenzte Korrektur der Zugänglichkeit",
+          "correct": true,
+          "explanation": "Zugänglichkeitsverbesserungen werden als Beispiel genannt.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "b",
+          "text": "Eine vollständige Neugestaltung aller UI-Flows",
+          "correct": false,
+          "explanation": "UI-Arbeit kann geeignet sein; eine systemweite Neugestaltung ist nicht die begrenzte Zugänglichkeitskorrektur der Quelle.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "c",
+          "text": "Eine neue Berechtigungslogik für alle Endpunkte",
+          "correct": false,
+          "explanation": "Berechtigungen sind sensibel und breit; GitHub nennt kleinere Accessibility-Arbeiten als anfängliches Beispiel.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        }
+      ]
+    },
+    {
+      "id": "P08",
+      "prompt": "Woran erkennt man eine komplexe Aufgabe, die eher menschliche Steuerung braucht?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sie verlangt breites repositoryübergreifendes Wissen",
+          "correct": true,
+          "explanation": "GitHub nennt breit angelegte kontextreiche Refactorings als schwierig.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "b",
+          "text": "Sie berührt mehrere Dateien innerhalb eines klaren Moduls",
+          "correct": false,
+          "explanation": "Mehrere Dateien allein machen eine Aufgabe nicht breit; ausschlaggebend ist umfangreiches Wissen über Repository-Grenzen hinweg.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "c",
+          "text": "Sie benötigt einen neuen Test für einen bekannten Fehler",
+          "correct": false,
+          "explanation": "Ein gezielter Test ist eher abgrenzbar; komplex wird die Aufgabe durch breite Abhängigkeiten und Kontextbedarf.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        }
+      ]
+    },
+    {
+      "id": "P09",
+      "prompt": "Welche Art Aufgabe soll nicht ohne menschliche Risikoprüfung einem Agenten überlassen werden?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eine Änderung mit Authentifizierungsfolgen",
+          "correct": true,
+          "explanation": "GitHub nennt Authentifizierung unter sensitiven Aufgaben.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "b",
+          "text": "Eine Änderung an nicht sicherheitsrelevanten Dokumentationstexten",
+          "correct": false,
+          "explanation": "Dokumentation kann Fehler haben, trägt hier aber nicht die besonderen Authentifizierungsfolgen.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "c",
+          "text": "Eine lokale Korrektur der Beschriftung eines Formularfelds",
+          "correct": false,
+          "explanation": "UI-Beschriftung sollte geprüft werden; sie hat nicht ohne Weiteres das Sicherheitsrisiko einer Authentifizierungsänderung.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        }
+      ]
+    },
+    {
+      "id": "P10",
+      "prompt": "Welcher Datenbezug erhöht die Vorsicht bei einem Agentenauftrag?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Personenbezogene Daten",
+          "correct": true,
+          "explanation": "GitHub nennt PII als sensible Aufgabe.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "b",
+          "text": "Öffentlich dokumentierte API-Beispieldaten",
+          "correct": false,
+          "explanation": "Beispiele können Kontext geben; personenbezogene Daten verlangen besondere Vorsicht beim Agenteneinsatz.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "c",
+          "text": "Synthetische Testdaten ohne Personenbezug",
+          "correct": false,
+          "explanation": "Testdaten sind zu prüfen, besitzen aber nicht den besonderen Schutzbedarf personenbezogener Daten.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        }
+      ]
+    },
+    {
+      "id": "P11",
+      "prompt": "Warum ist eine offene, unklare Aufgabe problematisch?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Der Lösungsrahmen ist nicht hinreichend definiert",
+          "correct": true,
+          "explanation": "GitHub unterscheidet mehrdeutige Aufgaben als menschlich zu klären.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "b",
+          "text": "Der Agent kennt die bevorzugte Modellversion nicht",
+          "correct": false,
+          "explanation": "Modellwahl kann die Arbeit beeinflussen; das Problem ist hier ein nicht definierter Lösungsrahmen.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "c",
+          "text": "Es fehlen bereits geschätzte Codezeilen",
+          "correct": false,
+          "explanation": "Eine Zeilenschätzung ist optional; fehlende Ziel- und Umfangsklärung macht den Auftrag offen.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        }
+      ]
+    },
+    {
+      "id": "P13",
+      "prompt": "Was kann ein Agent vor einem Patch in unbekanntem Code klären?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wo die Kernlogik einer Funktion liegt",
+          "correct": true,
+          "explanation": "OpenAI nennt das Lokalisieren von Kernlogik.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Welche Datei zuletzt geändert wurde",
+          "correct": false,
+          "explanation": "Änderungszeit kann ein Hinweis sein, zeigt aber nicht zuverlässig den Ort der Kernlogik.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Welche Testdatei den kürzesten Namen hat",
+          "correct": false,
+          "explanation": "Tests können Verhalten erklären, doch der Dateiname lokalisiert die Kernlogik nicht.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "P14",
+      "prompt": "Was hilft, die Auswirkung einer API-Änderung zu verstehen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Beziehungen zwischen Diensten oder Modulen abbilden",
+          "correct": true,
+          "explanation": "OpenAI nennt die Beziehungen zwischen Diensten und Modulen.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Nur die Signatur des geänderten Endpunkts lesen",
+          "correct": false,
+          "explanation": "Die Signatur zeigt den lokalen Vertrag, aber nicht die Beziehungen zwischen Diensten und Modulen.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Nur die unmittelbar aufrufende UI-Komponente finden",
+          "correct": false,
+          "explanation": "Ein Aufrufer ist relevant; weitere Verbraucher und Abhängigkeiten bleiben dabei offen.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "P15",
+      "prompt": "Welche Untersuchung hilft bei einem Spring-Webdienst vor einer Änderung des Endpunkts?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Den Datenfluss vom Eintritt bis zur Antwort nachvollziehen",
+          "correct": true,
+          "explanation": "OpenAI nennt Datenflussanalyse und ein Beispiel vom Entry-Point bis zur Antwort.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Nur die Controller-Methode isoliert lesen",
+          "correct": false,
+          "explanation": "Der Controller ist ein Einstiegspunkt; der Datenfluss umfasst auch nachgelagerte Verarbeitung und Antwort.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Nur die Datenbankabfrage hinter dem Endpunkt prüfen",
+          "correct": false,
+          "explanation": "Die Abfrage kann wichtig sein, deckt aber Eintritt, weitere Schichten und Rückgabe nicht vollständig ab.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "P16",
+      "prompt": "Was kann bei einer Incident-Analyse die Änderungsgrenze aufzeigen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wie Fehlerzustände durch Komponenten weitergegeben werden",
+          "correct": true,
+          "explanation": "OpenAI nennt das Nachverfolgen von Fehlerausbreitung.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Nur den letzten Stacktrace am Endpunkt lesen",
+          "correct": false,
+          "explanation": "Der Stacktrace ist ein Hinweis; die Ausbreitung des Fehlerzustands durch Komponenten zeigt die Änderungsgrenze besser.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Nur die Komponente mit der ersten Logmeldung ändern",
+          "correct": false,
+          "explanation": "Die erste Meldung muss nicht die Ursache sein; der Fehlerpfad durch mehrere Komponenten muss verstanden werden.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "P17",
+      "prompt": "Welche Recherche kann einen unbeabsichtigten Architekturbruch vermeiden?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bestehende Architekturmuster des Projekts erkennen",
+          "correct": true,
+          "explanation": "OpenAI nennt das Auffinden von Architekturmustern.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Ein neues Muster aus einem anderen Projekt übernehmen",
+          "correct": false,
+          "explanation": "Ein externes Muster kann nützlich sein, aber ohne Bestandsaufnahme kann es die vorhandene Architektur verletzen.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Nur die Importlisten der Zielklasse kopieren",
+          "correct": false,
+          "explanation": "Imports zeigen Abhängigkeiten, erklären aber nicht die Architekturregeln des Projekts.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "P18",
+      "prompt": "Welche Gefahr besteht bei einer breit angelegten Migration?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Struktur und Abhängigkeiten werden durch reine Textersetzung übersehen",
+          "correct": true,
+          "explanation": "OpenAI beschreibt Mehrdateien- und Abhängigkeitsbewusstsein über Regex hinaus.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Nur dass die Migration zu viele kleine Commits erzeugt",
+          "correct": false,
+          "explanation": "Commitgröße kann eine Rolle spielen; die Quelle betont übersehene Struktur und Abhängigkeiten bei bloßer Textersetzung.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Nur dass die neue API eine andere Schreibweise hat",
+          "correct": false,
+          "explanation": "Syntax lässt sich ersetzen; die eigentliche Gefahr sind semantische und strukturelle Abhängigkeiten.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "P19",
+      "prompt": "Was ist bei einer Leistungsoptimierung vor dem Patch zu suchen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Konkrete langsame oder speicherintensive Pfade",
+          "correct": true,
+          "explanation": "OpenAI nennt die Analyse realer Engpässe.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Den langsamsten Endpunkt allein nach Bauchgefühl wählen",
+          "correct": false,
+          "explanation": "Eine Vermutung kann einen Startpunkt geben; vor dem Patch sollten konkrete langsame Pfade untersucht werden.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Zunächst eine Cache-Bibliothek für das ganze Projekt festlegen",
+          "correct": false,
+          "explanation": "Caching kann helfen, doch die Engpässe sollten vor der Werkzeugwahl nachgewiesen werden.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "P20",
+      "prompt": "Was sollte bei einer geplanten Cache-Änderung als Erstes erkennbar sein?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wiederholte teure Operationen, die Caching lohnen könnten",
+          "correct": true,
+          "explanation": "OpenAI nennt wiederholte teure Operationen als Untersuchungsziel.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Dass die Antwortzeit eines Endpunkts manchmal schwankt",
+          "correct": false,
+          "explanation": "Schwankungen sind ein Hinweis; eine Cache-Idee braucht wiederholte teure Operationen als konkreten Kandidaten.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Dass bereits ein Cache-Framework eingebunden ist",
+          "correct": false,
+          "explanation": "Verfügbarkeit eines Werkzeugs zeigt noch nicht, ob sich eine teure Operation zum Cachen lohnt.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "P21",
+      "prompt": "Welche Fälle sind bei einer neuen Funktion als Akzeptanzkriterien wichtig?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Randfälle wie leere Eingaben und Maximalwerte",
+          "correct": true,
+          "explanation": "OpenAI nennt leere Eingaben und Maximalwerte als häufig übersehene Bedingungen.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Nur den häufigsten Nutzerpfad mit Standardwerten",
+          "correct": false,
+          "explanation": "Der Hauptpfad gehört dazu, doch leere Eingaben und Grenzwerte sind wichtige Akzeptanzfälle.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Nur die erfolgreiche API-Antwort ohne Eingabevariation",
+          "correct": false,
+          "explanation": "Ein Erfolgstest kann bestehen, obwohl Randfälle der neuen Funktion falsch sind.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "P22",
+      "prompt": "Was sollte ein Team bei einer KI-generierten Testergänzung prüfen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ob Fehlerpfade und ungewöhnliche gültige Zustände abgedeckt sind",
+          "correct": true,
+          "explanation": "OpenAI nennt Failure Paths und ungewöhnliche gültige Zustände.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Ob die Tests nur den Standardfall schneller ausführen",
+          "correct": false,
+          "explanation": "Schnelle Tests sind nützlich; entscheidend ist hier, ob Fehlerpfade und ungewöhnliche gültige Zustände abgedeckt werden.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Ob jede Testmethode dieselbe Anzahl Assertions enthält",
+          "correct": false,
+          "explanation": "Gleiche Assertionzahlen zeigen keine inhaltliche Abdeckung von Rand- und Fehlerfällen.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "P23",
+      "prompt": "Was hilft bei einer offenen Designfrage vor der Implementierung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Alternativen und Trade-offs sichtbar machen",
+          "correct": true,
+          "explanation": "OpenAI nennt Exploration, Alternativen und das Prüfen von Annahmen.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Die erstgenannte Bibliothek sofort als Architekturentscheidung setzen",
+          "correct": false,
+          "explanation": "Eine Bibliothek kann passen, doch die offene Designfrage erfordert Vergleich von Alternativen und Trade-offs.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Nur die geschätzte Implementierungsdauer notieren",
+          "correct": false,
+          "explanation": "Zeit ist ein Trade-off, ersetzt aber die Betrachtung fachlicher und technischer Alternativen nicht.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "P24",
+      "prompt": "Was sollte eine technische Änderung aus Nutzerfeedback zunächst liefern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Einen überprüfbaren Entwurf, der fachlich verfeinert wird",
+          "correct": true,
+          "explanation": "OpenAI beschreibt Startercode als Rohentwurf zur späteren Verfeinerung.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Einen Produktionspatch ohne fachliche Durchsicht",
+          "correct": false,
+          "explanation": "Ein erster Patch ist möglich, doch die Quelle beschreibt aus Feedback zunächst einen Entwurf zur Verfeinerung.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Eine verbindliche Architekturentscheidung aus der ersten Nutzerformulierung",
+          "correct": false,
+          "explanation": "Feedback zeigt Bedarf; ein überprüfbarer Entwurf macht offene Fachfragen vor einer Festlegung sichtbar.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "P25",
+      "prompt": "Woran wird ein Agentenvorschlag nach einer ersten Umsetzung bewertet?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Am Diff gegen Ziel und Kriterien",
+          "correct": true,
+          "explanation": "GitHub empfiehlt Diff-Prüfung und iterative Korrektur.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "b",
+          "text": "Am Bestehen eines einzelnen vorhandenen Tests",
+          "correct": false,
+          "explanation": "Ein grüner Test ist hilfreich, deckt aber Ziel, Scope und weitere Akzeptanzkriterien nicht vollständig ab.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "c",
+          "text": "An der Menge der geänderten Dateien",
+          "correct": false,
+          "explanation": "Der Umfang des Diffs sagt allein nicht, ob er das vereinbarte Ziel trifft.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        }
+      ]
+    },
+    {
+      "id": "P26",
+      "prompt": "Welche Aufgabe sollte eine lernende Person eher selbst bearbeiten?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eine Aufgabe, bei der sie selbst tiefes Verständnis erwerben möchte",
+          "correct": true,
+          "explanation": "GitHub nennt Lernaufgaben mit gewünschtem tieferem Verständnis als eher menschlich.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "b",
+          "text": "Eine klar abgegrenzte Dokumentationskorrektur",
+          "correct": false,
+          "explanation": "Das kann ein guter Agentenauftrag sein; tiefes persönliches Lernen verlangt eher eigene Bearbeitung.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "c",
+          "text": "Eine wiederholbare Änderung mit festem Akzeptanztest",
+          "correct": false,
+          "explanation": "Die Aufgabe lässt sich gut delegieren; das Lernziel der Person ist der entscheidende Gegenfall.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        }
+      ]
+    }
+  ],
+  "research-plan-tasks": [
+    {
+      "id": "R01",
+      "prompt": "Welcher Schritt geht bei einer Codeänderung dem Implementierungsplan voraus?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Die Untersuchung des Repositorys",
+          "correct": true,
+          "explanation": "GitHub beschreibt zuerst Recherche, dann Plan und Änderung.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "b",
+          "text": "Die Festlegung der endgültigen Dateiliste",
+          "correct": false,
+          "explanation": "Dateien können Teil des Plans sein; zuerst untersucht Research das Repository und seine Abhängigkeiten.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "c",
+          "text": "Die Ausführung eines vorgeschlagenen Refactorings",
+          "correct": false,
+          "explanation": "Codeänderungen folgen erst auf Recherche und Planung im beschriebenen Ablauf.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        }
+      ]
+    },
+    {
+      "id": "R03",
+      "prompt": "Wozu dient Research vor einer Änderung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bestehendes Verhalten und Annahmen prüfen",
+          "correct": true,
+          "explanation": "Research untersucht Code und Annahmen vor dem Plan.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "b",
+          "text": "Den technischen Lösungsweg endgültig festlegen",
+          "correct": false,
+          "explanation": "Research liefert Fakten und prüft Annahmen; Entscheidungen werden im anschließenden Plan ausgearbeitet.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "c",
+          "text": "Bereits die Akzeptanz aller Codeänderungen bestätigen",
+          "correct": false,
+          "explanation": "Vor dem Patch gibt es noch keinen Diff zur Prüfung; Research klärt zunächst den Bestand.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        }
+      ]
+    },
+    {
+      "id": "R04",
+      "prompt": "Wie kann eine Research-Sitzung vertieft werden?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mit gezielten Folgefragen",
+          "correct": true,
+          "explanation": "GitHub beschreibt Follow-up-Fragen zur Steuerung.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "b",
+          "text": "Durch einen Implementierungsauftrag statt weiterer Fragen",
+          "correct": false,
+          "explanation": "Implementierung kann später folgen; GitHub beschreibt gezielte Folgefragen, um Research zu vertiefen.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "c",
+          "text": "Durch die unveränderte Wiederholung derselben Anfrage",
+          "correct": false,
+          "explanation": "Wiederholung liefert kaum neue Richtung; gezielte Nachfragen klären offene Punkte.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        }
+      ]
+    },
+    {
+      "id": "R05",
+      "prompt": "Was sollte nach einer Research-Antwort passieren?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Die Antwort prüfen und offene Punkte nachfragen",
+          "correct": true,
+          "explanation": "GitHub nennt Review und Follow-ups nach Research.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "b",
+          "text": "Sofort einen Patch ohne Rückfrage erzeugen",
+          "correct": false,
+          "explanation": "Ein Patch kann folgen, aber die Research-Antwort soll zuerst geprüft und bei Bedarf vertieft werden.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "c",
+          "text": "Die Antwort direkt als unveränderlichen Plan ablegen",
+          "correct": false,
+          "explanation": "Research liefert Untersuchungen; der Plan wird gesondert entworfen und iteriert.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        }
+      ]
+    },
+    {
+      "id": "R06",
+      "prompt": "Was soll ein Plan vor dem Coding klären?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Den vorgesehenen Lösungsansatz",
+          "correct": true,
+          "explanation": "Die Planphase legt den Ansatz zur Prüfung vor.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "b",
+          "text": "Welche Dateien zuletzt geändert wurden",
+          "correct": false,
+          "explanation": "Der Änderungsverlauf kann Kontext liefern; der Plan soll den Lösungsansatz vor dem Coding klären.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "c",
+          "text": "Ob ein Pull Request sofort eröffnet werden kann",
+          "correct": false,
+          "explanation": "Ein PR ist ein späterer Review-Schritt und ersetzt keinen abgestimmten Lösungsansatz.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        }
+      ]
+    },
+    {
+      "id": "R07",
+      "prompt": "Was geschieht, wenn der vorgeschlagene Plan die Absicht nicht trifft?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Er wird vor der Umsetzung iteriert",
+          "correct": true,
+          "explanation": "GitHub fordert Review und Plananpassung.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "b",
+          "text": "Er wird trotz Abweichung als verbindlicher Taskplan verwendet",
+          "correct": false,
+          "explanation": "Ein unpassender Plan soll vor dem Coding überprüft und angepasst werden.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "c",
+          "text": "Er wird durch sofortiges Coding ohne Planung ersetzt",
+          "correct": false,
+          "explanation": "GitHub empfiehlt Iteration des Plans, bis er die Absicht trifft.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        }
+      ]
+    },
+    {
+      "id": "R09",
+      "prompt": "Wie wird ein abgestimmter Implementierungsplan während anschließender Codeänderungen genutzt?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Als Bezug für iterative Codeänderungen",
+          "correct": true,
+          "explanation": "Die Änderungen folgen nach Research und Planung.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "b",
+          "text": "Als unveränderliche Liste ohne Diff-Review",
+          "correct": false,
+          "explanation": "Der Plan gibt Richtung; GitHub beschreibt iterative Änderungen und Prüfung des Diffs.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "c",
+          "text": "Als automatische Freigabe aller Codeänderungen",
+          "correct": false,
+          "explanation": "Ein Plan ist keine Freigabe; die Änderungen werden geprüft und verfeinert.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        }
+      ]
+    },
+    {
+      "id": "R11",
+      "prompt": "Wann ist nach Recherche, Plan und iterativen Änderungen ein Pull Request sinnvoll?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wenn Änderungen und Review dafür bereit sind",
+          "correct": true,
+          "explanation": "Der PR steht am Ende der Iteration.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "b",
+          "text": "Sobald ein erster Plan formuliert wurde",
+          "correct": false,
+          "explanation": "Ein Plan ist noch kein geprüfter Code; der PR folgt, wenn Änderungen und Review bereit sind.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "c",
+          "text": "Nach jeder Research-Antwort",
+          "correct": false,
+          "explanation": "Research kann vor Code stattfinden; der PR wird erst nach passenden Änderungen eröffnet.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        }
+      ]
+    },
+    {
+      "id": "R12",
+      "prompt": "Wie kann visuelle Information in einem Forschungsauftrag helfen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Einen relevanten Screenshot oder eine Skizze beilegen",
+          "correct": true,
+          "explanation": "GitHub beschreibt Bilder als ergänzenden Kontext.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "b",
+          "text": "Durch einen Screenshot ohne Beschreibung des Ziels",
+          "correct": false,
+          "explanation": "Bilder liefern Kontext, aber der Forschungsauftrag braucht weiterhin eine klare Frage.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "c",
+          "text": "Durch eine Skizze der bereits festgelegten Implementierung",
+          "correct": false,
+          "explanation": "Eine Skizze kann helfen, doch Research soll zunächst den Bestand untersuchen und Annahmen prüfen.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        }
+      ]
+    },
+    {
+      "id": "R13",
+      "prompt": "Was ist bei einer größeren Codeänderung ein sinnvoller erster Agentenauftrag?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zunächst einen Implementierungsplan anfragen",
+          "correct": true,
+          "explanation": "Die Quelle beschreibt einen Planungsmodus vor dem Codieren.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Zunächst eine vollständige Migration anfordern",
+          "correct": false,
+          "explanation": "Bei größeren Änderungen empfiehlt OpenAI einen Implementierungsplan vor breiter Codearbeit.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Zunächst alle Tests neu erzeugen lassen",
+          "correct": false,
+          "explanation": "Tests können Teil der Umsetzung sein; vor großen Änderungen soll der Ansatz geplant werden.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "R14",
+      "prompt": "Welche ungefähre Größe macht eine Coding-Agent-Aufgabe gut abgrenzbar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Etwa eine Stunde menschliche Arbeit oder einige hundert Codezeilen",
+          "correct": true,
+          "explanation": "Die Quelle nennt diesen Größenbereich als Erfahrung.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Mehrere Wochen menschliche Arbeit pro Agentenauftrag",
+          "correct": false,
+          "explanation": "Große Vorhaben lassen sich zerlegen; OpenAI nennt etwa eine Stunde oder einige hundert Zeilen als gut abgrenzbar.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Nur eine einzelne Funktion unabhängig vom Aufwand",
+          "correct": false,
+          "explanation": "Funktionsgrenzen sind kein festes Größenmaß; die Quelle nennt ungefähre Arbeitszeit und Codeumfang.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "R15",
+      "prompt": "Welche Angaben machen einen technischen Planungsauftrag konkreter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Relevante Pfade, Komponenten und Dokumentauszüge",
+          "correct": true,
+          "explanation": "OpenAI empfiehlt konkrete Struktur und Kontext.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Nur das gewünschte Enddatum",
+          "correct": false,
+          "explanation": "Eine Frist kann helfen, liefert aber keinen technischen Kontext zu Pfaden und Komponenten.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Nur eine allgemeine Rollenbeschreibung des Agenten",
+          "correct": false,
+          "explanation": "Eine Rolle ersetzt keine konkreten Pfade, Komponenten oder Dokumentauszüge für den Plan.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "R16",
+      "prompt": "Was kann ein Plan aus vorhandenen Codebeispielen übernehmen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bewährte Muster eines benannten Moduls",
+          "correct": true,
+          "explanation": "OpenAI empfiehlt einen konkreten Referenzmodul-Hinweis.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Die Dateinamen eines fremden Projekts",
+          "correct": false,
+          "explanation": "Dateinamen sind kein verlässliches lokales Muster; ein benanntes bestehendes Modul zeigt passende Konventionen.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Die unveränderten Details jeder Beispielimplementierung",
+          "correct": false,
+          "explanation": "Beispiele liefern Muster, die zum neuen Kontext passen müssen, nicht blind zu kopierende Details.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "R17",
+      "prompt": "Was kann als kleiner Task aus einer großen Änderung herausgelöst werden?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ein abgegrenzter Test- oder Refactoring-Schritt",
+          "correct": true,
+          "explanation": "Die Quellen empfehlen gut begrenzte iterative Arbeiten.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Ein Task für die gesamte Änderung ohne Zwischennachweis",
+          "correct": false,
+          "explanation": "Ein großer Sammelauftrag bleibt schwer prüfbar; ein abgegrenzter Test- oder Refactoring-Schritt ist kleiner.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Ein Task nur zum Festlegen der Modelltemperatur",
+          "correct": false,
+          "explanation": "Werkzeugeinstellungen können relevant sein, liefern aber keinen fachlichen Teil der großen Änderung.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "R18",
+      "prompt": "Wie können Randideen während einer laufenden Änderung erfasst werden?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Als separate spätere Aufgaben",
+          "correct": true,
+          "explanation": "OpenAI beschreibt die Task Queue als leichten Backlog.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Als zusätzliche Anforderungen im aktuellen Task ohne Prüfung",
+          "correct": false,
+          "explanation": "Randideen können sinnvoll sein, sollen den vereinbarten Umfang aber nicht still erweitern.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Als endgültig verworfene Gedanken ohne Aufzeichnung",
+          "correct": false,
+          "explanation": "Getrennte spätere Aufgaben bewahren Ideen für eine bewusste Entscheidung.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "R19",
+      "prompt": "Wozu dient ein konfigurierter Startablauf für einen Coding-Agenten?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Er verringert wiederkehrende Umgebungsfehler",
+          "correct": true,
+          "explanation": "OpenAI nennt Startup-Skript und Umgebung als Fehlerreduktion.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Er definiert die fachlichen Akzeptanzkriterien",
+          "correct": false,
+          "explanation": "Ein Startablauf bereitet die Umgebung vor; Akzeptanzkriterien müssen aus dem Auftrag kommen.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Er ersetzt gezielte Tests nach einer Änderung",
+          "correct": false,
+          "explanation": "Setup reduziert Umgebungsfehler, prüft aber nicht automatisch die fachliche Änderung.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "R20",
+      "prompt": "Was sollte bei wiederholten Buildfehlern vor weiteren Tasks überprüft werden?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Die Entwicklungsumgebung des Agenten",
+          "correct": true,
+          "explanation": "OpenAI empfiehlt iterative Korrektur der Umgebung.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Nur den Plantext kürzen",
+          "correct": false,
+          "explanation": "Ein kürzerer Plan kann helfen, behebt aber keine wiederkehrenden Buildfehler der Agentenumgebung.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Zunächst weitere Implementierungstasks starten",
+          "correct": false,
+          "explanation": "Weitere Tasks auf einer fehlerhaften Umgebung wiederholen vermutlich denselben Buildfehler.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "R21",
+      "prompt": "Wozu können mehrere Lösungsvorschläge für einen schwierigen Task dienen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Alternativen vergleichen und einen stärkeren Ansatz wählen",
+          "correct": true,
+          "explanation": "OpenAI beschreibt mehrere Antworten zur Exploration.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Die Variante mit den meisten geänderten Dateien übernehmen",
+          "correct": false,
+          "explanation": "Diffumfang ist kein Qualitätsmaß; mehrere Vorschläge dienen dem Vergleich von Lösungsansätzen.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Alle Varianten gleichzeitig in denselben Patch mischen",
+          "correct": false,
+          "explanation": "Widersprüchliche Lösungen können sich stören; die Quelle beschreibt Vergleich und Auswahl eines stärkeren Ansatzes.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "R22",
+      "prompt": "Wie bleibt eine unterbrochene Aufgabe nachvollziehbar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Teilstände und offene Schritte festhalten",
+          "correct": true,
+          "explanation": "OpenAI nennt das Erfassen unfertiger Arbeit für spätere Wiederaufnahme.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Nur den letzten erfolgreichen Build notieren",
+          "correct": false,
+          "explanation": "Ein Buildstatus erklärt weder erreichte Teilschritte noch offene Arbeit.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Den ursprünglichen Plan ohne neue Erkenntnisse behalten",
+          "correct": false,
+          "explanation": "Eine Unterbrechung erfordert den aktuellen Teilstand und die verbleibenden Schritte.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "R23",
+      "prompt": "Welche Research-Frage unterstützt eine Migrationsplanung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wo dasselbe veraltete Muster sonst noch verwendet wird",
+          "correct": true,
+          "explanation": "OpenAI nennt die Suche nach ähnlichen Mustern als Vorbereitung.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "b",
+          "text": "Welche neue Bibliothek die Migration erleichtert",
+          "correct": false,
+          "explanation": "Werkzeugwahl kann später folgen; Research sollte zuerst bestehende Stellen des veralteten Musters finden.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        },
+        {
+          "id": "c",
+          "text": "Welche Tests den Zielcode bereits abdecken",
+          "correct": false,
+          "explanation": "Testabdeckung ist wichtig, beantwortet aber nicht, wo das veraltete Muster sonst noch vorkommt.",
+          "sourceUrl": "https://openai.com/business/guides-and-resources/how-openai-uses-codex/"
+        }
+      ]
+    },
+    {
+      "id": "R24",
+      "prompt": "Was ist bei einer neuen Erkenntnis während der Implementierung sinnvoll?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Annahmen und Plan erneut prüfen und den Task anpassen",
+          "correct": true,
+          "explanation": "Die Quellen beschreiben iterative Forschung, Planung und Änderung.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "b",
+          "text": "Nur den neuen Befund in den Committext schreiben",
+          "correct": false,
+          "explanation": "Dokumentation kann nützen; die Erkenntnis soll Annahmen, Plan und aktuellen Task beeinflussen.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "c",
+          "text": "Unverändert weiterarbeiten und erst nach Abschluss prüfen",
+          "correct": false,
+          "explanation": "Neue Fakten können die Umsetzung ändern und sollten vor weiterer Arbeit berücksichtigt werden.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        }
+      ]
+    },
+    {
+      "id": "R25",
+      "prompt": "Wie werden Umsetzungsschritte im beschriebenen Ablauf überprüfbar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Durch kleine Änderungen mit Diff-Review und gezielten Folgeaufträgen",
+          "correct": true,
+          "explanation": "GitHub beschreibt iterative Änderungen und Review.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "b",
+          "text": "Durch einen großen Patch mit nur einem Abschlusstest",
+          "correct": false,
+          "explanation": "Ein Gesamttest kann helfen, macht einzelne Entscheidungen aber schwer prüfbar; GitHub beschreibt kleine Änderungen und Diff-Review.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        },
+        {
+          "id": "c",
+          "text": "Durch die Anzahl erledigter Agentennachrichten",
+          "correct": false,
+          "explanation": "Nachrichtenzahl belegt weder fachliche Richtigkeit noch die Prüfbarkeit der Änderungen.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate"
+        }
+      ]
+    },
+    {
+      "id": "R26",
+      "prompt": "Warum können getrennte Sitzungen für Research, Plan und Umsetzung hilfreich sein?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gemeinsame lange Sitzungen sammeln schnell irrelevanten Kontext an",
+          "correct": true,
+          "explanation": "GitHub nennt wachsenden und irrelevanten Kontext als Grund für die Trennung.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage"
+        },
+        {
+          "id": "b",
+          "text": "Weil Research nach einem Plan technisch nicht mehr möglich ist",
+          "correct": false,
+          "explanation": "Die Phasen können bei neuen Erkenntnissen erneut besucht werden; der Grund ist wachsender irrelevanter Kontext.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage"
+        },
+        {
+          "id": "c",
+          "text": "Weil jede Phase eine eigene Repository-Kopie benötigt",
+          "correct": false,
+          "explanation": "Getrennte Sitzungen helfen beim Kontext, setzen aber keine eigenen Repository-Kopien voraus.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage"
+        }
+      ]
+    },
+    {
+      "id": "R27",
+      "prompt": "Welche Modellwahl passt bei getrennten Phasen für komplexe Planung und klare Ausführung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stärkeres Reasoning für den Plan, günstigeres passendes Modell für die Umsetzung",
+          "correct": true,
+          "explanation": "Die Quelle unterscheidet anspruchsvolle Planung und fokussierte Ausführung.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage"
+        },
+        {
+          "id": "b",
+          "text": "Dasselbe starke Reasoning-Modell für jede Routineänderung",
+          "correct": false,
+          "explanation": "Ein starkes Modell passt zur Planung; für klare Umsetzung empfiehlt GitHub ein günstigeres geeignetes Modell.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage"
+        },
+        {
+          "id": "c",
+          "text": "Ein leichtes Modell für komplexe Architekturplanung und ein starkes für Routinecode",
+          "correct": false,
+          "explanation": "Die Quelle ordnet tiefes Reasoning der Planung und effiziente Modelle der Ausführung zu.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage"
+        }
+      ]
+    },
+    {
+      "id": "R28",
+      "prompt": "Wie lässt sich beim Wechsel zwischen Research, Plan und Umsetzung unnötiger Alt-Kontext vermeiden?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eine neue Sitzung zwischen Phasen beginnen",
+          "correct": true,
+          "explanation": "GitHub empfiehlt neue Sitzungen zwischen den Phasen.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage"
+        },
+        {
+          "id": "b",
+          "text": "Den gesamten alten Gesprächsverlauf in jede neue Phase kopieren",
+          "correct": false,
+          "explanation": "Damit bleibt gerade der irrelevante Alt-Kontext erhalten, den die Phasentrennung vermeiden soll.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage"
+        },
+        {
+          "id": "c",
+          "text": "Alle Repository-Dateien dauerhaft im Chat offen halten",
+          "correct": false,
+          "explanation": "Mehr Kontext ist nicht automatisch besser; neue Sitzungen begrenzen Alt-Kontext zwischen den Phasen.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage"
+        }
+      ]
+    }
+  ],
+  "spec-driven-development-openspec": [
+    {
+      "id": "S01",
+      "prompt": "Welches OpenSpec-Schema beschreibt den eingebauten Standardablauf?",
+      "options": [
+        {
+          "id": "a",
+          "text": "spec-driven",
+          "correct": true,
+          "explanation": "Die Dokumentation nennt spec-driven als Standardschema.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "proposal-driven",
+          "correct": false,
+          "explanation": "Das Proposal startet den Ablauf, doch der Name des eingebauten Standardschemas lautet spec-driven.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "change-driven",
+          "correct": false,
+          "explanation": "Der Ablauf organisiert Änderungen, aber die dokumentierte Schema-ID heißt spec-driven.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "prompt": "Welches Artefakt begründet zuerst, warum eine Änderung nötig ist?",
+      "options": [
+        {
+          "id": "a",
+          "text": "proposal.md",
+          "correct": true,
+          "explanation": "Das Proposal beschreibt das Warum.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "design.md",
+          "correct": false,
+          "explanation": "Design erklärt das Wie und kann später folgen; das Warum steht zuerst im Proposal.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "specs/<capability-path>/spec.md",
+          "correct": false,
+          "explanation": "Eine Spec beschreibt geändertes Verhalten; die Begründung gehört zuerst in proposal.md.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "prompt": "Welches Artefakt beschreibt geändertes beobachtbares Verhalten?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eine Spec unter specs/",
+          "correct": true,
+          "explanation": "OpenSpec ordnet Verhalten den Specs zu.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "proposal.md",
+          "correct": false,
+          "explanation": "Das Proposal erklärt Motivation und Umfang; beobachtbares Verhalten wird in einer Delta-Spec festgehalten.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "design.md",
+          "correct": false,
+          "explanation": "Design beschreibt die Umsetzung; die Verhaltensanforderung gehört in specs/.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "prompt": "Welches Artefakt hält die technische Umsetzungsidee fest?",
+      "options": [
+        {
+          "id": "a",
+          "text": "design.md",
+          "correct": true,
+          "explanation": "Das Design behandelt das Wie.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Eine Delta-Spec unter specs/",
+          "correct": false,
+          "explanation": "Die Delta-Spec beschreibt beobachtbares Verhalten; die technische Umsetzungsidee steht im Design.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "tasks.md",
+          "correct": false,
+          "explanation": "Tasks beschreiben prüfbare Schritte; das technische Gesamtkonzept hält design.md fest.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "prompt": "Welches Artefakt enthält die prüfbare Umsetzungsliste?",
+      "options": [
+        {
+          "id": "a",
+          "text": "tasks.md",
+          "correct": true,
+          "explanation": "Tasks sind die Implementierungscheckliste.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "design.md",
+          "correct": false,
+          "explanation": "Das Design erklärt technische Entscheidungen, ist aber nicht die Checkbox-Liste der Umsetzung.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Eine Delta-Spec unter specs/",
+          "correct": false,
+          "explanation": "Die Spec beschreibt Verhalten; die abhakbaren Umsetzungsschritte liegen in tasks.md.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "prompt": "Was ist die Standardreihenfolge beim Entwurf der Artefakte?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Proposal, dann Specs und Design, danach Tasks",
+          "correct": true,
+          "explanation": "Das Proposal steht zuerst, Tasks folgen auf Specs und Design.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Proposal, dann Tasks, danach Specs und Design",
+          "correct": false,
+          "explanation": "Tasks benötigen im Standardschema die vorherigen Artefakte; nach dem Proposal folgen Specs und gegebenenfalls Design.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Specs und Design vor dem Proposal, danach Tasks",
+          "correct": false,
+          "explanation": "Beide Artefakte bauen auf dem Proposal auf, das zuerst entsteht.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "prompt": "In welcher Reihenfolge können Specs und Design nach dem Proposal entstehen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In beliebiger Reihenfolge vor Tasks",
+          "correct": true,
+          "explanation": "Beide folgen dem Proposal und gehen Tasks voraus.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Specs müssen immer vor Design entstehen",
+          "correct": false,
+          "explanation": "Beide bauen auf dem Proposal auf und können laut Standardschema in beliebiger Reihenfolge vor Tasks folgen.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Design muss immer vor Specs entstehen",
+          "correct": false,
+          "explanation": "Das Schema verlangt keine feste Reihenfolge zwischen diesen beiden Artefakten.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "prompt": "Wann kann design.md im Standardschema entfallen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wenn keine seiner Bedingungen zutrifft",
+          "correct": true,
+          "explanation": "OpenSpec lässt Design bei unnötigem Bedarf aus.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Wenn bereits eine Delta-Spec geschrieben ist",
+          "correct": false,
+          "explanation": "Eine Spec ersetzt Design nicht automatisch; dessen Bedarf hängt von technischen Entscheidungsbedingungen ab.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Wenn die Änderung in nur einem Repository liegt",
+          "correct": false,
+          "explanation": "Auch eine lokale Änderung kann etwa Sicherheits- oder Migrationskomplexität haben und ein Design brauchen.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "prompt": "Unter welcher Bedingung dürfen Specs im Schema ausgelassen werden?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wenn skip_specs ausdrücklich gesetzt wird",
+          "correct": true,
+          "explanation": "Die Schema-Dokumentation nennt skip_specs.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Wenn design.md die Anforderungen bereits erklärt",
+          "correct": false,
+          "explanation": "Ein Design ersetzt Verhaltens-Specs nicht; die Auslassung erfordert skip_specs: true bei fehlender Spec-Änderung.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Wenn eine Änderung nur bestehendes Verhalten umsetzt",
+          "correct": false,
+          "explanation": "Auch dabei können geänderte Anforderungen vorliegen; die Auslassung muss ausdrücklich per skip_specs markiert sein.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "prompt": "Wo liegt eine Delta-Spec für eine neue Capability?",
+      "options": [
+        {
+          "id": "a",
+          "text": "specs/<capability-path>/spec.md im Änderungsordner",
+          "correct": true,
+          "explanation": "Das Standardschema nutzt einen Pfad je Capability.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "openspec/specs/<capability-path>/spec.md als direkte Änderung",
+          "correct": false,
+          "explanation": "Dort liegen dauerhafte Specs; die neue Delta-Spec gehört in den Änderungsordner unter specs/.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "design/<capability-path>/spec.md im Änderungsordner",
+          "correct": false,
+          "explanation": "Design und Specs sind getrennte Artefakte; Delta-Specs liegen unter specs/.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "prompt": "Was sollen Specs primär beschreiben?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Was Nutzer oder andere Systeme beobachten können",
+          "correct": true,
+          "explanation": "Die Spec ist ein Verhaltensvertrag.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Welche internen Klassen genau geändert werden",
+          "correct": false,
+          "explanation": "Klassenwahl ist Umsetzung; Specs beschreiben beobachtbares Verhalten und Grenzen.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "In welcher Reihenfolge der Agent Dateien editiert",
+          "correct": false,
+          "explanation": "Die Bearbeitungsfolge gehört in Tasks oder Plan, nicht in den Verhaltensvertrag.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "prompt": "Welche Angabe gehört zu einem guten Spec-Szenario?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eingabe beziehungsweise Bedingung und erwartetes Ergebnis",
+          "correct": true,
+          "explanation": "OpenSpec betont prüfbare Szenarien mit WHEN und THEN.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Die gewählte interne Bibliothek und ihre Version",
+          "correct": false,
+          "explanation": "Bibliothekswahl kann ins Design gehören; ein Spec-Szenario braucht Bedingung und beobachtetes Ergebnis.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Nur den Namen des erwarteten Nutzerwunsches",
+          "correct": false,
+          "explanation": "Ein Wunsch ohne konkrete Bedingung und erwartetes Ergebnis ist nicht prüfbar genug.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S13",
+      "prompt": "Welcher Inhalt gehört eher ins Design als in eine Spec?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Die Wahl einer Bibliothek oder internen Struktur",
+          "correct": true,
+          "explanation": "Designs erklären technische Entscheidungen.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Die erwartete Fehlermeldung für Nutzende",
+          "correct": false,
+          "explanation": "Sichtbares Fehlerverhalten ist ein Spec-Fall, keine interne Designentscheidung.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Die Berechtigungsgrenze eines API-Aufrufs",
+          "correct": false,
+          "explanation": "Eine externe Sicherheitsgrenze ist beobachtbarer Vertrag und gehört in die Spec.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S14",
+      "prompt": "Was sollte eine Spec bei Fehlerfällen festhalten?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Das beobachtbare Verhalten im Fehlerfall",
+          "correct": true,
+          "explanation": "OpenSpec nennt Fehlerbedingungen als Spec-Inhalt.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Die konkrete interne Exception-Klasse",
+          "correct": false,
+          "explanation": "Die Implementierung kann wechseln; die Spec soll das für Nutzende oder andere Systeme sichtbare Fehlerverhalten festhalten.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Nur die geplante Debug-Logdatei",
+          "correct": false,
+          "explanation": "Ein internes Log kann im Design relevant sein, ersetzt aber nicht das beobachtbare Verhalten im Fehlerfall.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S15",
+      "prompt": "Was bedeutet ein Delta-Abschnitt ADDED Requirements?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Neue Anforderungen einer Capability",
+          "correct": true,
+          "explanation": "ADDED kennzeichnet hinzugefügtes Verhalten.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Eine vollständige Neufassung einer bestehenden Anforderung",
+          "correct": false,
+          "explanation": "Das ist MODIFIED; ADDED steht für neue Anforderungen einer Capability.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Eine reine Umbenennung ohne Verhaltensänderung",
+          "correct": false,
+          "explanation": "Das ist RENAMED und nicht das Hinzufügen einer Anforderung.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S16",
+      "prompt": "Was erfordert ein MODIFIED-Abschnitt für eine bestehende Anforderung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Den vollständigen aktualisierten Anforderungsblock",
+          "correct": true,
+          "explanation": "OpenSpec warnt vor Teilblöcken bei MODIFIED.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Nur die geänderten Sätze ohne übrige Szenarien",
+          "correct": false,
+          "explanation": "Bei MODIFIED muss der vollständige aktualisierte Anforderungsblock mit Szenarien stehen.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Nur einen Link auf die bisherige dauerhafte Spec",
+          "correct": false,
+          "explanation": "Ein Verweis ersetzt den vollständigen neuen Block nicht und könnte Details beim Archivieren verlieren.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S17",
+      "prompt": "Was muss eine entfernte Anforderung im Delta begründen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Grund und Migration",
+          "correct": true,
+          "explanation": "REMOVED fordert Reason und Migration.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Die Überschrift einer Nachfolgeanforderung",
+          "correct": false,
+          "explanation": "Eine Entfernung braucht dokumentierten Grund und Migration, nicht bloß ein Nachfolgelabel.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Die Versionsnummer der Änderung",
+          "correct": false,
+          "explanation": "Eine Versionsnummer erklärt weder die Entfernung noch den Umgang mit bisherigen Nutzern.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S18",
+      "prompt": "Was unterscheidet RENAMED von MODIFIED?",
+      "options": [
+        {
+          "id": "a",
+          "text": "RENAMED ändert nur den Namen",
+          "correct": true,
+          "explanation": "Die Delta-Operation RENAMED ist für reine Namen.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "RENAMED ändert Name und beobachtbares Verhalten zugleich",
+          "correct": false,
+          "explanation": "Verhaltensänderungen gehören zu MODIFIED; RENAMED ist nur für Namensänderungen.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "RENAMED ersetzt den vollständigen Anforderungsblock",
+          "correct": false,
+          "explanation": "Ein vollständiger geänderter Block ist der MODIFIED-Fall, nicht eine reine Umbenennung.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S19",
+      "prompt": "Wie wird in OpenSpec ein Szenario als Überschrift markiert?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mit vier Markdown-Hashes",
+          "correct": true,
+          "explanation": "Die Schema-Anleitung verlangt #### für Szenarien.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Mit drei Markdown-Hashes",
+          "correct": false,
+          "explanation": "Drei Hashes markieren eine Requirement-Überschrift; Szenarien brauchen vier.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Mit einem Checkbox-Eintrag",
+          "correct": false,
+          "explanation": "Checkboxen verfolgen Tasks; Szenarien werden als Überschrift mit vier Hashes formatiert.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S20",
+      "prompt": "Wann beginnt Apply im Standardschema?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wenn tasks.md mit mindestens einem Task vorliegt",
+          "correct": true,
+          "explanation": "Apply benötigt die Taskliste.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Sobald proposal.md existiert",
+          "correct": false,
+          "explanation": "Das Proposal startet die Planung; Apply beginnt erst mit einer tasks.md, die mindestens einen Task enthält.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Sobald specs/ eine Delta-Spec enthält",
+          "correct": false,
+          "explanation": "Die Spec ist Teil der Planung; Apply setzt die Taskliste voraus.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S21",
+      "prompt": "Wie verfolgt Apply die Umsetzung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Über Checkboxen in tasks.md",
+          "correct": true,
+          "explanation": "Das Schema verfolgt markierte Tasks.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Über Szenario-Überschriften in der Delta-Spec",
+          "correct": false,
+          "explanation": "Szenarien beschreiben Verhalten; Apply verfolgt die Checkboxen in tasks.md.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Über Abschnitte in design.md",
+          "correct": false,
+          "explanation": "Design erklärt Entscheidungen, enthält aber nicht den Fortschrittsmechanismus von Apply.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S22",
+      "prompt": "Was soll ein einzelner Task laut Schema enthalten?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Einen konkreten Nachweis der Fertigstellung",
+          "correct": true,
+          "explanation": "OpenSpec fordert für Tasks einen Verifikationsweg.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "b",
+          "text": "Nur eine technische Aktivität ohne Prüfkriterium",
+          "correct": false,
+          "explanation": "Ein Task soll klein und überprüfbar sein und einen konkreten Fertigstellungsnachweis nennen.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "c",
+          "text": "Die gesamte Änderung mit einer gemeinsamen Endprüfung",
+          "correct": false,
+          "explanation": "Ein Sammel-Task ist zu groß; das Schema verlangt kleine Tasks mit eigenem Nachweis.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "S23",
+      "prompt": "Was passiert beim Archivieren mit Delta-Anforderungen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sie werden in die dauerhaften Specs übernommen",
+          "correct": true,
+          "explanation": "Der Quickstart beschreibt die Übernahme in Haupt-Specs.",
+          "sourceUrl": "https://openspec.dev/docs/quickstart"
+        },
+        {
+          "id": "b",
+          "text": "Sie bleiben nur als Delta im archivierten Änderungsordner",
+          "correct": false,
+          "explanation": "Der Ordner wird archiviert, aber Delta-Anforderungen werden auch in die dauerhaften Specs übernommen.",
+          "sourceUrl": "https://openspec.dev/docs/quickstart"
+        },
+        {
+          "id": "c",
+          "text": "Sie werden als erledigte Checkboxen in tasks.md übertragen",
+          "correct": false,
+          "explanation": "Checkboxen verfolgen Umsetzung; die Verhaltensregeln werden in die dauerhaften Specs integriert.",
+          "sourceUrl": "https://openspec.dev/docs/quickstart"
+        }
+      ]
+    },
+    {
+      "id": "S24",
+      "prompt": "Was passiert beim Archivieren mit dem Änderungsordner?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Er wird ins Archiv verschoben",
+          "correct": true,
+          "explanation": "Der Quickstart zeigt den Archivschritt.",
+          "sourceUrl": "https://openspec.dev/docs/quickstart"
+        },
+        {
+          "id": "b",
+          "text": "Er wird als dauerhafte Spec-Datei umbenannt",
+          "correct": false,
+          "explanation": "Dauerhafte Specs werden aus Delta-Anforderungen aktualisiert; der Änderungsordner selbst wandert ins Archiv.",
+          "sourceUrl": "https://openspec.dev/docs/quickstart"
+        },
+        {
+          "id": "c",
+          "text": "Er bleibt für spätere Tasks aktiv",
+          "correct": false,
+          "explanation": "Abgeschlossene Änderungen werden archiviert und nicht als laufender Änderungsordner weitergeführt.",
+          "sourceUrl": "https://openspec.dev/docs/quickstart"
+        }
+      ]
+    },
+    {
+      "id": "S25",
+      "prompt": "Wie ist OpenSpec im Verhältnis zu Git zu verstehen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Der Änderungsablauf ist von Git-Commits getrennt",
+          "correct": true,
+          "explanation": "Der Quickstart nennt Git als getrenntes Anliegen.",
+          "sourceUrl": "https://openspec.dev/docs/quickstart"
+        },
+        {
+          "id": "b",
+          "text": "Jedes OpenSpec-Artefakt erzwingt einen eigenen Git-Commit",
+          "correct": false,
+          "explanation": "Die Artefaktfolge organisiert Änderungen, legt aber keine solche Commitfolge fest.",
+          "sourceUrl": "https://openspec.dev/docs/quickstart"
+        },
+        {
+          "id": "c",
+          "text": "Archivieren ersetzt die Versionierung mit Git",
+          "correct": false,
+          "explanation": "OpenSpec verwaltet Spezifikationsänderungen; Git bleibt davon getrennt für Versionsverwaltung.",
+          "sourceUrl": "https://openspec.dev/docs/quickstart"
+        }
+      ]
+    }
+  ]
+}

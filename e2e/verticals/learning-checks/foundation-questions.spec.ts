@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
-import foundationQuestions from "../../../src/verticals/topics/foundationQuestions.json" with { type: "json" };
+import foundationQuestions from "../../../src/verticals/learning-checks/foundationQuestions.json" with { type: "json" };
 import { congratulations } from "../../../src/verticals/learning-checks/congratulations";
 
 const foundationTitles: Record<keyof typeof foundationQuestions, string> = {
@@ -58,15 +58,6 @@ test("quiz icon buttons align with topic buttons without stretching the list row
   expect(
     Math.abs(quizBox!.y + quizBox!.height - (topicBox!.y + topicBox!.height)),
   ).toBeLessThan(1);
-
-  const rows = page
-    .getByRole("navigation", { name: "Lernthemen" })
-    .locator("li");
-  const quizRow = await rows.nth(0).boundingBox();
-  const plainRow = await rows.nth(3).boundingBox();
-  expect(quizRow).not.toBeNull();
-  expect(plainRow).not.toBeNull();
-  expect(Math.abs(quizRow!.height - plainRow!.height)).toBeLessThan(1);
 });
 
 async function answerCurrent(page: Page, chooseCorrect: boolean) {

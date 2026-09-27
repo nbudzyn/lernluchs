@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { topics } from "../../../src/verticals/topics/topics";
+import { questionsForTopic } from "../../../src/verticals/learning-checks";
 
 const weakExamples: Record<string, string[]> = {
   "human-ai-responsibility": [
@@ -38,9 +38,7 @@ const weakExamples: Record<string, string[]> = {
 describe("foundation distractors", () => {
   for (const [itemId, examples] of Object.entries(weakExamples)) {
     it(`${itemId} replaces unrelated and easy-to-dismiss answers`, () => {
-      const questions = topics.items.find(
-        (item) => item.id === itemId,
-      )?.questions;
+      const questions = questionsForTopic(itemId);
       expect(questions?.length).toBeGreaterThanOrEqual(25);
       const distractors = questions?.flatMap((question) =>
         question.options.filter((option) => !option.correct),

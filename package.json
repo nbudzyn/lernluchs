@@ -13,7 +13,7 @@
     "lint": "oxlint --type-aware --deny-warnings src tests e2e scripts vite.config.ts playwright.config.ts dependency-cruiser.cjs",
     "test": "vitest",
     "test:e2e": "playwright test",
-    "validate:content": "vitest run tests/verticals/topics/topics.test.ts",
+    "validate:content": "vitest run tests/verticals/topics/topics.test.ts tests/verticals/learning-checks/questionCatalog.test.ts tests/verticals/learning-checks/firstTwoQuestions.test.ts",
     "check:architecture": "depcruise --config dependency-cruiser.cjs \"src/**/*.ts\" \"src/**/*.tsx\" --output-type err && node --test scripts/check-vertical-scope.node.mjs",
     "check:vertical-scope": "node scripts/check-vertical-scope.mjs",
     "check:licenses": "node scripts/check-licenses.mjs",

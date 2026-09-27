@@ -1,6 +1,6 @@
 import { writeFileSync } from "node:fs";
 
-import { secondPathQuestions } from "../src/verticals/topics/secondPathQuestions.ts";
+import { secondPathQuestions } from "../src/verticals/learning-checks/secondPathQuestions.ts";
 
 const lines = [
   "# Unabhängige Fachprüfung: Lernchecks für den zweiten Lernpfad",

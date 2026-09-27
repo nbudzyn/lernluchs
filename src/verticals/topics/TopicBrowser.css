@@ -80,7 +80,7 @@
   white-space: nowrap;
 }
 
-.quiz-start-button {
+.learning-check-start-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -92,7 +92,7 @@
   cursor: pointer;
 }
 
-.quiz-start-button svg {
+.learning-check-start-button svg {
   width: 21px;
   height: 18px;
   fill: none;

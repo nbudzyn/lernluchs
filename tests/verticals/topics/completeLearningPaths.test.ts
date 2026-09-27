@@ -131,7 +131,6 @@ describe("vollständige Lernpfade", () => {
     for (const id of newIds) {
       const topic = topics.items.find((item) => item.id === id);
       expect(topic, id).toBeDefined();
-      expect(topic?.questions, id).toBeUndefined();
       expect(topic?.editorial.reviewedAt, id).toBe("2026-09-27");
       expect(
         topic?.sources.some((source) => source.origin === "primary"),
@@ -151,7 +150,6 @@ describe("vollständige Lernpfade", () => {
     );
     expect(review?.content.coreConcept).toContain("zweite");
     expect(review?.content.boundary).toContain("Review-Agent");
-    expect(review?.questions).toBeDefined();
     expect(
       topics.items.some((item) => item.id === "independent-agent-review"),
     ).toBe(false);

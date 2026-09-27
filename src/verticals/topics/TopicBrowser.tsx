@@ -1,6 +1,5 @@
 import { useLayoutEffect, useRef, useState } from "react";
 
-import type { Question } from "../../shared/question";
 import { topics } from "./topics";
 import type { LearningPath, Topic, TopicSource } from "./topicContract";
 import "./TopicBrowser.css";
@@ -38,12 +37,14 @@ export function TopicBrowser({
   items = topics.items,
   paths = topics.paths ?? [],
   learnedTopicIds = [],
-  onStartQuestions,
+  availableLearningCheckTopicIds = [],
+  onStartLearningCheck,
 }: {
   items?: Topic[];
   paths?: LearningPath[];
   learnedTopicIds?: string[];
-  onStartQuestions?: (id: string, title: string, questions: Question[]) => void;
+  availableLearningCheckTopicIds?: string[];
+  onStartLearningCheck?: (id: string, title: string) => void;
 }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [filter, setFilter] = useState<PathFilter>(null);
@@ -51,6 +52,7 @@ export function TopicBrowser({
   const anchor = useRef<{ id: string; x: number; y: number } | null>(null);
   const scrollToPath = useRef(false);
   const itemIndex = new Map(items.map((item, index) => [item.id, index]));
+  const checkIds = new Set(availableLearningCheckTopicIds);
   const pathsFor = (id: string) =>
     paths.filter((path) => path.topicIds.includes(id));
   const activePaths = filter
@@ -224,7 +226,7 @@ export function TopicBrowser({
                 >
                   {item.title}
                 </button>
-                {item.questions && learnedTopicIds.includes(item.id) && (
+                {checkIds.has(item.id) && learnedTopicIds.includes(item.id) && (
                   <span
                     className="learned-checkmark"
                     role="img"
@@ -233,15 +235,13 @@ export function TopicBrowser({
                     ✓
                   </span>
                 )}
-                {item.questions && onStartQuestions && (
+                {checkIds.has(item.id) && onStartLearningCheck && (
                   <button
                     aria-label={`Fragen starten: ${item.title}`}
-                    className="quiz-start-button"
+                    className="learning-check-start-button"
                     type="button"
                     title={`Fragen starten: ${item.title}`}
-                    onClick={() =>
-                      onStartQuestions(item.id, item.title, item.questions!)
-                    }
+                    onClick={() => onStartLearningCheck(item.id, item.title)}
                   >
                     <svg
                       aria-hidden="true"

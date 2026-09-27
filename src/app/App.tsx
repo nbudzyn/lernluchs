@@ -1,7 +1,11 @@
 import { useState } from "react";
 
 import { TopicBrowser } from "../verticals/topics";
-import { LearningCheck } from "../verticals/learning-checks";
+import {
+  availableLearningCheckTopicIds,
+  LearningCheck,
+  questionsForTopic,
+} from "../verticals/learning-checks";
 import type { Question } from "../verticals/learning-checks";
 import {
   LearningProgressNotice,
@@ -31,9 +35,11 @@ export function App() {
       ) : (
         <TopicBrowser
           learnedTopicIds={progress.learnedTopicIds}
-          onStartQuestions={(id, title, questions) =>
-            setActiveCheck({ id, title, questions })
-          }
+          availableLearningCheckTopicIds={availableLearningCheckTopicIds}
+          onStartLearningCheck={(id, title) => {
+            const questions = questionsForTopic(id);
+            if (questions) setActiveCheck({ id, title, questions });
+          }}
         />
       )}
     </main>

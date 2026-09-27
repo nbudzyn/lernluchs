@@ -5,7 +5,7 @@ einer gemeinsamen Liste auswählen und deren kurze Inhalte mit kuratierten Quell
 künftig ergänztes, erhält Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md). Die Inhalte werden redaktionell
 geprüft und als versionierter, nur lesbarer Katalog veröffentlicht.
 
-Für 16 Themen stehen quellengebundene Auswahlfragen bereit, auch für das Git-Thema. Die übrigen 30 Themen
+Für 18 Themen stehen quellengebundene Auswahlfragen bereit, auch für die Themen zu Fachsprache, Projektwissen und Git. Die übrigen 28 Themen
 besitzen noch keine Fragenpools und bieten daher keinen Lerncheck an. Aus der
 Themenliste startet ein flüchtiger Durchlauf mit fünf
 zufällig ausgewählten Fragen. Nach der letzten Antwort zeigt die App richtige und gewählte falsche Antworten mit Begründungen und

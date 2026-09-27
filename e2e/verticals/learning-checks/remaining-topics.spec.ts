@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
-import { remainingQuestions } from "../../../src/verticals/topics/remainingQuestions";
+import { remainingQuestions } from "../../../src/verticals/learning-checks/remainingQuestions";
 
 const titles = {
   "coding-agent-context-and-trust-boundaries":
