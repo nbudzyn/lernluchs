@@ -77,5 +77,16 @@ export function validateTopics(candidate: TopicCollection): TopicValidation {
     }
   }
 
+  for (const path of candidate.paths ?? []) {
+    if (path.topicIds.length === 0) {
+      errors.push(`Empty learning path: ${path.name}`);
+    }
+    for (const id of path.topicIds) {
+      if (!seenIds.has(id)) {
+        errors.push(`Unknown topic ID in learning path ${path.name}: ${id}`);
+      }
+    }
+  }
+
   return { valid: errors.length === 0, errors };
 }

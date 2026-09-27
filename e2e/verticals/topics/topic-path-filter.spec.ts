@@ -84,3 +84,75 @@ test("closes hidden details and does not reopen them when the filter is cleared"
   await filter.click();
   await expect(page.getByRole("article", { name: keptTitle })).toBeVisible();
 });
+
+test("scrolls to the first topic when a selected path is taller than the viewport", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 160 });
+  await page.goto("/");
+  await page
+    .getByRole("button", {
+      name: "Lernpfade von Problem verstehen und Änderungsgrenzen setzen filtern",
+    })
+    .click();
+  await page
+    .getByRole("button", {
+      name: "Änderungen gestalten und absichern",
+    })
+    .click();
+
+  const firstTopic = page.getByRole("button", {
+    name: "Problem verstehen und Änderungsgrenzen setzen",
+    exact: true,
+  });
+  await expect
+    .poll(async () => (await firstTopic.boundingBox())?.y)
+    .toBeGreaterThanOrEqual(-1);
+  const position = await firstTopic.boundingBox();
+  expect(position?.y).toBeLessThan(160);
+  await expect(firstTopic).toBeFocused();
+});
+
+test("selects one short path, keeps its topics visible, and restores the icon filter", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const icon = page.getByRole("button", {
+    name: "Lernpfade von Mensch und KI: Verantwortung bleibt menschlich filtern",
+  });
+  await icon.click();
+  const path = page.getByRole("button", {
+    name: "Grundlagen für KI-gestützte Softwareentwicklung",
+  });
+  await path.click();
+  await expect(path).toHaveAttribute("aria-pressed", "true");
+  await expect(
+    page.getByRole("button", {
+      name: "Kontext und Vertrauensgrenzen für Coding-Agenten",
+      exact: true,
+    }),
+  ).toHaveCount(0);
+  const rows = page
+    .getByRole("navigation", { name: "Lernthemen" })
+    .locator("li");
+  for (const row of await rows.all()) {
+    const box = await row.boundingBox();
+    expect(box?.y).toBeGreaterThanOrEqual(-1);
+    expect((box?.y ?? 0) + (box?.height ?? 0)).toBeLessThanOrEqual(800);
+  }
+  await path.click();
+  await expect(path).toHaveAttribute("aria-pressed", "true");
+  await icon.click();
+  await expect(
+    page.getByRole("button", {
+      name: "Sicher mit Coding-Agenten arbeiten",
+    }),
+  ).toBeVisible();
+  await icon.click();
+  await expect(
+    page.getByRole("button", {
+      name: "Git-Commits klein und nachvollziehbar halten",
+      exact: true,
+    }),
+  ).toBeVisible();
+});

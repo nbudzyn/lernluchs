@@ -35,6 +35,21 @@ function completeItem(id: string): Topic {
 }
 
 describe("public content topics", () => {
+  it("rejects empty learning paths and topic IDs without a matching topic", () => {
+    const result = validateTopics({
+      version: "1",
+      items: [completeItem("present")],
+      paths: [
+        { name: "Leer", topicIds: [] },
+        { name: "Unbekannt", topicIds: ["missing"] },
+      ],
+    });
+    expect(result.errors).toContain("Empty learning path: Leer");
+    expect(result.errors).toContain(
+      "Unknown topic ID in learning path Unbekannt: missing",
+    );
+  });
+
   it("contains at least 25 validated questions for each foundation card", () => {
     const foundationIds = [
       "human-ai-responsibility",

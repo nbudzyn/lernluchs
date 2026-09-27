@@ -53,6 +53,26 @@
   margin-top: 0.3rem;
 }
 
+.path-name-button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.path-name-button:hover,
+.path-name-button[aria-pressed="true"] {
+  color: #174a88;
+}
+
+.path-name-button:focus-visible {
+  outline: 2px solid #174a88;
+  outline-offset: 2px;
+}
+
 .learned-checkmark {
   align-self: center;
   color: #167a34;

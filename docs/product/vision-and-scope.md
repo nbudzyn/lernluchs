@@ -1,7 +1,7 @@
 # Produktstand
 
 Lernluchs ist eine öffentliche, statische Lernanwendung für KI-unterstützte
-Java- und Webentwicklung. Lernende können derzeit 15 Themen in einer
+Java- und Webentwicklung. Lernende können derzeit 16 Themen in einer
 gemeinsamen Liste auswählen und deren kurze Inhalte mit Quellen und
 Aktualitätsangaben lesen. Die Inhalte werden redaktionell geprüft und als
 versionierter, nur lesbarer Katalog veröffentlicht.
@@ -19,8 +19,9 @@ dauerhaft gespeichert wurde.
 
 Die Liste enthält auch drei Themen zum sicheren Arbeiten mit Coding-Agenten:
 Vertrauensgrenzen für Kontext, Schutz sensibler Daten und Prüfung
-KI-generierter Änderungen. Lernpfade erscheinen noch nicht als eigene
-Abschnitte oder Filter.
+KI-generierter Änderungen. Die drei vorhandenen Lernpfade lassen sich über das
+Icon eines Themas gemeinsam oder über ihren angezeigten Namen einzeln filtern.
+Die Themen bleiben in einer gemeinsamen Liste ohne eigene Pfadabschnitte.
 
 Geplante Erweiterungen und ihre Umsetzungsreihenfolge stehen im
 [Story-Backlog](story-backlog.md).

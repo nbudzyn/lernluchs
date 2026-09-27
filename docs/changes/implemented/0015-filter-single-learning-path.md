@@ -37,11 +37,17 @@ Vertikale: Themen
 
 ## Umsetzung und Nachweise
 
-| Schritt | Geplanter Nachweis | Stand |
+| Schritt | Nachweis | Stand |
 | --- | --- | --- |
-| RED → GREEN → REFACTOR: Einzelpfadfilter | Zuerst scheitert ein Komponententest am fehlenden Wechsel zum Einzelpfad. Danach werden Pfadnamen bedienbar und die Filterzustände sowie Detailregeln grün geprüft. Anschließend wird bei grünen Tests überarbeitet. | Ausstehend |
-| RED → GREEN → REFACTOR: Scrollen | Zuerst scheitert ein Browser-Test an der fehlenden vertikalen Scrollregel. Danach bestehen die Fälle für kurze und lange Pfade. Anschließend wird bei grünen Tests überarbeitet. | Ausstehend |
-| RED → GREEN → REFACTOR: Katalogkonsistenz | Zuerst scheitert ein Inhaltstest an einem leeren Pfad. Danach weist die Inhaltsprüfung leere Pfade zurück. Anschließend wird bei grünen Tests überarbeitet. | Ausstehend |
-| Pflichtsuite | Nach allen Teil-Features laufen die für die Änderung geltenden Prüfungen vollständig grün. | Ausstehend |
-| Lokale Browserabnahme | Browser, geprüfter Ablauf und Ergebnis werden nach der Implementierung hier festgehalten. | Ausstehend |
-| Manuelle Nutzerprüfung | Die ausdrückliche Bestätigung des Nutzers wird vor einem Commit abgewartet. | Ausstehend |
+| RED: Einzelpfadfilter | `npx vitest run tests/verticals/topics/TopicBrowser.test.tsx -t "selects one path"` schlug fachlich korrekt fehl: Ein Button „Erster Pfad“ fehlte. | Erbracht |
+| GREEN: Einzelpfadfilter | Pfadnamen sind Buttons. Der Test für Einzelpfad, wiederholten Klick, Icon-Rückweg und ausgeblendete Details wurde grün. Ein weiterer Test prüft den Erhalt sichtbarer Details. | Erbracht |
+| REFACTOR: Einzelpfadfilter | Vorhandene Textprüfungen an die neue Buttonstruktur angepasst und den vollständigen Komponententest erneut ausgeführt: 15 Tests grün. | Erbracht |
+| RED: Scrollen | Der neue Chromium-Browser-Test für einen hohen Pfad scheiterte mit dem ersten Thema bei −58,125 Pixel außerhalb des Fensters. Ein ergänzter Fokusnachweis scheiterte, weil nach dem Scrollen kein sichtbares Thema fokussiert war. | Erbracht |
+| GREEN: Scrollen | Vertikales Scrollen zeigt bei kurzen Pfaden alle Themen und bei hohen Pfaden das erste Thema; dieses erhält den Fokus. Beide Fälle bestehen im Desktop- und Mobilbrowser. | Erbracht |
+| REFACTOR: Scrollen | Scroll- und Fokuscodes formatiert; die vorhandene Icon-Ankerung bleibt erhalten. Browser-Suite nach der Überarbeitung grün. | Erbracht |
+| RED: Katalogkonsistenz | `npx vitest run tests/verticals/topics/topics.test.ts -t "rejects empty learning paths"` schlug fehl: Die Validierung meldete für einen leeren Pfad keine Fehler. | Erbracht |
+| GREEN: Katalogkonsistenz | Leere Pfade und unbekannte Themen-IDs werden gemeldet; `npm run validate:content` grün (10 Tests). | Erbracht |
+| REFACTOR: Katalogkonsistenz | Keine weitere Umstrukturierung nötig; die vollständige Inhaltssuite nach GREEN erneut grün. | Erbracht |
+| Pflichtsuite | `npm run check` grün: Format, Lint, Typen, 57 Tests, Inhalts- und Architekturprüfung, Lizenzen und Build. `npm run test:e2e` grün: 30 Tests auf Desktop- und Mobil-Chromium. Keine neue Abhängigkeit. | Erbracht |
+| Lokale Browserabnahme | In Chromium Desktop unter `http://127.0.0.1:4173/` das Icon neben „Mensch und KI“ gewählt und danach „Grundlagen für KI-gestützte Softwareentwicklung“ angeklickt: Nur die sechs Pfadthemen und der gewählte Pfadname waren sichtbar. Die automatisierten Browserabläufe prüften außerdem lange Pfade, erneuten Pfadklick, Icon-Rückweg und Themendetails. | Erbracht |
+| Manuelle Nutzerprüfung | Der Nutzer hat die Änderung selbst geprüft und das Ergebnis ausdrücklich bestätigt; der Commit ist freigegeben. | Erbracht |

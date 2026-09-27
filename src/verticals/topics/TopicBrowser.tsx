@@ -5,6 +5,9 @@ import { topics } from "./topics";
 import type { LearningPath, Topic, TopicSource } from "./topicContract";
 import "./TopicBrowser.css";
 
+type PathFilter =
+  { kind: "topic"; id: string } | { kind: "path"; index: number } | null;
+
 function SourceGroup({
   title,
   sources,
@@ -43,13 +46,20 @@ export function TopicBrowser({
   onStartQuestions?: (id: string, title: string, questions: Question[]) => void;
 }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [filterId, setFilterId] = useState<string | null>(null);
+  const [filter, setFilter] = useState<PathFilter>(null);
   const rowRefs = useRef(new Map<string, HTMLLIElement>());
   const anchor = useRef<{ id: string; x: number; y: number } | null>(null);
+  const scrollToPath = useRef(false);
   const itemIndex = new Map(items.map((item, index) => [item.id, index]));
   const pathsFor = (id: string) =>
     paths.filter((path) => path.topicIds.includes(id));
-  const activePaths = filterId ? pathsFor(filterId) : [];
+  const activePaths = filter
+    ? filter.kind === "topic"
+      ? pathsFor(filter.id)
+      : paths[filter.index]
+        ? [paths[filter.index]]
+        : []
+    : [];
   const activeIds = new Set(activePaths.flatMap((path) => path.topicIds));
   const visibleItems = activePaths.length
     ? items.filter((item) => activeIds.has(item.id))
@@ -67,6 +77,38 @@ export function TopicBrowser({
     return first.topicIds.length - second.topicIds.length;
   });
   useLayoutEffect(() => {
+    if (scrollToPath.current) {
+      scrollToPath.current = false;
+      const firstId = visibleItems[0]?.id;
+      const lastId = visibleItems.at(-1)?.id;
+      const first = firstId && rowRefs.current.get(firstId);
+      const last = lastId && rowRefs.current.get(lastId);
+      if (first && last) {
+        const firstRect = first.getBoundingClientRect();
+        const lastRect = last.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const tooTall = lastRect.bottom - firstRect.top > viewportHeight;
+        const top =
+          tooTall || firstRect.top < 0
+            ? firstRect.top
+            : Math.max(0, lastRect.bottom - viewportHeight);
+        if (top) {
+          window.scrollBy({
+            top,
+            behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)")
+              .matches
+              ? "instant"
+              : "smooth",
+          });
+        }
+        first
+          .querySelector<HTMLButtonElement>(
+            ".topic-actions > button:not(.path-filter-button)",
+          )
+          ?.focus({ preventScroll: true });
+      }
+      return;
+    }
     const previous = anchor.current;
     anchor.current = null;
     if (!previous) return;
@@ -76,20 +118,33 @@ export function TopicBrowser({
     const left = rect.left - previous.x;
     const top = rect.top - previous.y;
     if (left || top) window.scrollBy({ left, top, behavior: "instant" });
-  }, [filterId]);
+  }, [filter]);
 
   function toggleFilter(id: string) {
     const rect = rowRefs.current.get(id)?.getBoundingClientRect();
     if (rect) anchor.current = { id, x: rect.left, y: rect.top };
-    const nextFilterId = filterId === id ? null : id;
+    const nextFilter: PathFilter =
+      filter?.kind === "topic" && filter.id === id
+        ? null
+        : { kind: "topic", id };
     if (
       selectedId &&
-      nextFilterId &&
-      !pathsFor(nextFilterId).some((path) => path.topicIds.includes(selectedId))
+      nextFilter &&
+      !pathsFor(id).some((path) => path.topicIds.includes(selectedId))
     ) {
       setSelectedId(null);
     }
-    setFilterId(nextFilterId);
+    setFilter(nextFilter);
+  }
+
+  function selectPath(index: number) {
+    if (filter?.kind === "path" && filter.index === index) return;
+    anchor.current = null;
+    scrollToPath.current = true;
+    if (selectedId && !paths[index].topicIds.includes(selectedId)) {
+      setSelectedId(null);
+    }
+    setFilter({ kind: "path", index });
   }
   const selectedItem = items.find((item) => item.id === selectedId);
   const cardSections = selectedItem
@@ -144,7 +199,9 @@ export function TopicBrowser({
                 {pathsFor(item.id).length > 0 && (
                   <button
                     aria-label={`Lernpfade von ${item.title} filtern`}
-                    aria-pressed={filterId === item.id}
+                    aria-pressed={
+                      filter?.kind === "topic" && filter.id === item.id
+                    }
                     className="path-filter-button"
                     type="button"
                     title={`Lernpfade von ${item.title} filtern`}
@@ -207,7 +264,21 @@ export function TopicBrowser({
       {activePaths.length > 0 && (
         <p className="path-filter-summary">
           Themen gefiltert nach Lernpfaden:{" "}
-          {sortedPaths.map((path) => path.name).join(", ")}
+          {sortedPaths.map((path, index) => (
+            <span key={paths.indexOf(path)}>
+              {index > 0 ? ", " : null}
+              <button
+                aria-pressed={
+                  filter?.kind === "path" && paths[filter.index] === path
+                }
+                className="path-name-button"
+                onClick={() => selectPath(paths.indexOf(path))}
+                type="button"
+              >
+                {path.name}
+              </button>
+            </span>
+          ))}
         </p>
       )}
 

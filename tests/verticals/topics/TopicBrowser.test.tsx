@@ -6,6 +6,10 @@ import { topics } from "../../../src/verticals/topics/topics";
 
 afterEach(cleanup);
 
+function filterSummary() {
+  return document.querySelector(".path-filter-summary")?.textContent;
+}
+
 describe("TopicBrowser", () => {
   it("shows the descriptive foundation path name in the filter summary", () => {
     render(<TopicBrowser />);
@@ -14,11 +18,9 @@ describe("TopicBrowser", () => {
         name: "Lernpfade von Spec-Driven Development mit OpenSpec filtern",
       }),
     );
-    expect(
-      screen.getByText(
-        "Themen gefiltert nach Lernpfaden: Grundlagen für KI-gestützte Softwareentwicklung",
-      ),
-    ).toBeTruthy();
+    expect(filterSummary()).toBe(
+      "Themen gefiltert nach Lernpfaden: Grundlagen für KI-gestützte Softwareentwicklung",
+    );
   });
 
   it("marks only saved quiz topics as learned, including after a catalog change", () => {
@@ -110,9 +112,9 @@ describe("TopicBrowser", () => {
       screen.getByRole("navigation", { name: "Lernthemen" }).textContent,
     ).not.toContain("Thema 3");
     expect(screen.queryByRole("article", { name: "Thema 3" })).toBeNull();
-    expect(
-      screen.getByText("Themen gefiltert nach Lernpfaden: Früher, Später"),
-    ).toBeTruthy();
+    expect(filterSummary()).toBe(
+      "Themen gefiltert nach Lernpfaden: Früher, Später",
+    );
     expect(
       screen
         .getAllByRole("button", { name: /^Thema \d$/ })
@@ -126,9 +128,7 @@ describe("TopicBrowser", () => {
       screen.getByRole("button", { name: "Lernpfade von Thema 2 filtern" }),
     );
     expect(screen.queryByRole("article", { name: "Thema 0" })).toBeNull();
-    expect(
-      screen.getByText("Themen gefiltert nach Lernpfaden: Später"),
-    ).toBeTruthy();
+    expect(filterSummary()).toBe("Themen gefiltert nach Lernpfaden: Später");
     expect(
       screen
         .getAllByRole("button", { name: /^Thema \d$/ })
@@ -138,7 +138,7 @@ describe("TopicBrowser", () => {
     fireEvent.click(
       screen.getByRole("button", { name: "Lernpfade von Thema 2 filtern" }),
     );
-    expect(screen.queryByText(/Themen gefiltert nach Lernpfaden/)).toBeNull();
+    expect(filterSummary()).toBeUndefined();
     expect(screen.getAllByRole("button", { name: /^Thema \d$/ })).toHaveLength(
       4,
     );
@@ -149,6 +149,64 @@ describe("TopicBrowser", () => {
       screen.getByRole("button", { name: "Lernpfade von Thema 2 filtern" }),
     );
     expect(screen.getByRole("article", { name: "Thema 1" })).toBeTruthy();
+  });
+
+  it("selects one path and restores the icon's full path filter before clearing it", () => {
+    const items = topics.items.slice(0, 3).map((item, index) => ({
+      ...item,
+      id: `path-test-${index}`,
+      title: `Pfadthema ${index}`,
+      questions: undefined,
+    }));
+    const paths = [
+      { name: "Erster Pfad", topicIds: ["path-test-0", "path-test-1"] },
+      { name: "Zweiter Pfad", topicIds: ["path-test-0", "path-test-2"] },
+    ];
+    render(<TopicBrowser items={items} paths={paths} />);
+
+    const icon = screen.getByRole("button", {
+      name: "Lernpfade von Pfadthema 0 filtern",
+    });
+    fireEvent.click(icon);
+    fireEvent.click(screen.getByRole("button", { name: "Pfadthema 2" }));
+    fireEvent.click(screen.getByRole("button", { name: "Erster Pfad" }));
+    expect(
+      screen
+        .getByRole("button", { name: "Erster Pfad" })
+        .getAttribute("aria-pressed"),
+    ).toBe("true");
+    expect(screen.queryByRole("button", { name: "Pfadthema 2" })).toBeNull();
+    expect(screen.queryByRole("article", { name: "Pfadthema 2" })).toBeNull();
+
+    fireEvent.click(screen.getByRole("button", { name: "Erster Pfad" }));
+    expect(screen.queryByRole("button", { name: "Pfadthema 2" })).toBeNull();
+
+    fireEvent.click(icon);
+    expect(screen.getByRole("button", { name: "Pfadthema 2" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Zweiter Pfad" })).toBeTruthy();
+    fireEvent.click(icon);
+    expect(screen.queryByRole("button", { name: "Erster Pfad" })).toBeNull();
+    expect(
+      screen.getAllByRole("button", { name: /^Pfadthema \d$/ }),
+    ).toHaveLength(3);
+    expect(screen.queryByRole("article")).toBeNull();
+  });
+
+  it("keeps details for a topic that remains in the selected single path", () => {
+    const items = topics.items.slice(0, 2);
+    const paths = [
+      { name: "Beide", topicIds: items.map((item) => item.id) },
+      { name: "Nur erstes", topicIds: [items[0].id] },
+    ];
+    render(<TopicBrowser items={items} paths={paths} />);
+    fireEvent.click(screen.getByRole("button", { name: items[0].title }));
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: `Lernpfade von ${items[0].title} filtern`,
+      }),
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Nur erstes" }));
+    expect(screen.getByRole("article", { name: items[0].title })).toBeTruthy();
   });
 
   it("sorts path names by the full current topic order, including shared prefixes", () => {
@@ -167,11 +225,9 @@ describe("TopicBrowser", () => {
     fireEvent.click(
       screen.getByRole("button", { name: "Lernpfade von Geändert 0 filtern" }),
     );
-    expect(
-      screen.getByText(
-        "Themen gefiltert nach Lernpfaden: Kurz, Lang früh, Lang spät",
-      ),
-    ).toBeTruthy();
+    expect(filterSummary()).toBe(
+      "Themen gefiltert nach Lernpfaden: Kurz, Lang früh, Lang spät",
+    );
     expect(
       screen
         .getAllByRole("button", { name: /^Geändert \d$/ })
