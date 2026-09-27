@@ -10,10 +10,9 @@ pauschal die gesamte Dokumentation.
   aktiven Spec fest.
 - Committe nur bei vollständig grüner Pflichtsuite.
 - Committe erst, nachdem der Nutzer die Änderung selbst manuell getestet und das Ergebnis ausdrücklich bestätigt hat.
-- Ändere fachlich höchstens zwei Vertikalen pro Commit.
+- Ändere fachlich höchstens zwei Vertikalen pro Commit (plus App und Shared bei Bedarf).
 - Füge keine Abhängigkeit ohne begründete Freigabe in der Spec hinzu.
 - Schreibe weder persönlichen Fortschritt noch Fehlermeldungen nach Git oder an einen externen Dienst.
 - Bei Unsicherheit über eine fachliche Aussage: nicht raten; Quellen prüfen und die Unsicherheit dokumentieren.
 
-Die vollständigen Regeln stehen in
-`docs/governance/durable-rules.md`.
+Die vollständigen Regeln stehen in `docs/governance/durable-rules.md`.

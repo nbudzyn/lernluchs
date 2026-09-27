@@ -34,6 +34,20 @@ Für neue Fragen gelten die [gemeinsamen Fragenregeln](../content/question-autho
 
 Vertikalen: Themen, Lernchecks
 
+## Empfehlungen für AGENTS.md-Dateien hart prüfen
+
+Empfehlungen für AGENTS.md-Dateien aktuell ermitteln und mit Architektur-Tests (oder Commit-Hooks?) hart prüfen.
+
+Erster Ansatz:
+
+- Keine AGENTS.md-Datei soll länger als 150 (?) Zeilen sein.
+- Es gibt eine AGENTS.md-Datei auf oberster Ebene
+- Es gibt keine weiteren AGENTS.md-Datei im Projekt.
+
+Auch CLAUDE.md anlegen, Verweis (mit @) auf AGENTS.md-Datei oder nur als Symlink.
+
+Außerdem einmal prüfen, ob es widersprüchliche Regeln im Projekt gibt.
+
 ## Vierter Lernpfad
 
 Die Vertikale Themen wird um den Lernpfad **Java-/Web-Code technisch analysieren und modernisieren** erweitert:
