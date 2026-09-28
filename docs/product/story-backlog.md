@@ -7,6 +7,25 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## NotebookLM-Podcasts einbinden
+
+NotebookLM-Podcast als Sekundärquellen einbinden
+
+## Link zu ChatGPT zum Lenern
+
+Ein Link oder Button öffnet ChatGPT mit dem Prompt "Das hier möchte ich lernen: " und dann dem vollständigen Texte des Themas inkl. Primär-
+und vielleicht Sekundärquellen
+
+## Link zur Google-KI zum Lernen
+
+Ein Link oder Button öffnet die online-Google-KI mit dem Prompt "Das hier möchte ich lernen: " und dann dem vollständigen Texte des Themas
+inkl. Primär- und vielleicht Sekundärquellen
+
+## Bei YouTube suchen
+
+Ein Link öffnet YouTube und sucht nach einigen Kernbegriffen (vorher statisch aus den Inhalten extrahiert) - alternativ Suche nach Deutschen
+oder Englischen Begriffen?
+
 ## NF: Bezeichnungen vereinheitlichen
 
 Wir haben nur wenige fachliche Dinge in der Anwendung. Die identifizieren und auf einheitliche Begriffe festlegen (mit einheitlichen)
