@@ -171,9 +171,13 @@ describe("public content topics", () => {
     expect(otherTopics).toHaveLength(20);
     expect(otherTopics.map((item) => item.id)).toContain("focused-git-commits");
     for (const item of otherTopics) {
-      expect(item.editorial.reviewedAt).toBe("2026-09-27");
+      const expectedReviewDate =
+        item.id === "agent-tool-and-mcp-permissions"
+          ? "2026-09-28"
+          : "2026-09-27";
+      expect(item.editorial.reviewedAt).toBe(expectedReviewDate);
       expect(
-        item.sources.every((source) => source.checkedAt === "2026-09-27"),
+        item.sources.every((source) => source.checkedAt === expectedReviewDate),
       ).toBe(true);
     }
     const sourcesFor = (id: string) =>

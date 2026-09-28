@@ -265,7 +265,7 @@ export const fifthPathTopics: Topic[] = [
       boundary:
         "Promptregeln sind keine Rechtekontrolle. MCP-Server können eigene Berechtigungen besitzen; auch ein lesender Zugriff kann sensible Daten offenlegen.",
     },
-    editorial: editorial("2026-12-27"),
+    editorial: { ...editorial("2026-12-27"), reviewedAt: "2026-09-28" },
     sources: [
       {
         title: "Custom agents configuration - GitHub Docs",
@@ -273,15 +273,15 @@ export const fifthPathTopics: Topic[] = [
         type: "official-guide",
         origin: "primary",
         language: "en",
-        checkedAt: "2026-09-27",
+        checkedAt: "2026-09-28",
       },
       {
-        title: "Safety in building agents - OpenAI",
-        url: "https://developers.openai.com/api/docs/guides/agent-builder-safety",
+        title: "Sandbox security - OpenAI Agents API",
+        url: "https://developers.openai.com/api/docs/guides/agents-api/environments/security",
         type: "official-guide",
         origin: "primary",
         language: "en",
-        checkedAt: "2026-09-27",
+        checkedAt: "2026-09-28",
       },
     ],
   },

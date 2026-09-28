@@ -35,7 +35,6 @@ describe("the next four topics in list order without questions", () => {
   });
 
   it("offers exactly four additional learning checks", () => {
-    expect(availableLearningCheckTopicIds).toHaveLength(39);
     expect(
       newTopicIds.every((id) => availableLearningCheckTopicIds.includes(id)),
     ).toBe(true);

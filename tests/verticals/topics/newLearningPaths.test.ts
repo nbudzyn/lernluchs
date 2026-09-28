@@ -74,7 +74,9 @@ it("adds the fifth path with six sourced topics in path order", () => {
     expect(item?.sources.some((source) => source.origin === "primary")).toBe(
       true,
     );
-    expect(item?.editorial.reviewedAt).toBe("2026-09-27");
+    expect(item?.editorial.reviewedAt).toBe(
+      id === "agent-tool-and-mcp-permissions" ? "2026-09-28" : "2026-09-27",
+    );
   }
   expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
 });
