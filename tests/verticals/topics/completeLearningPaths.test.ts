@@ -137,7 +137,9 @@ describe("vollständige Lernpfade", () => {
         id,
       ).toBe(true);
       expect(
-        topic?.sources.every((source) => source.checkedAt === "2026-09-27"),
+        topic?.sources.every(
+          (source) => source.checkedAt >= topic.editorial.publishedAt,
+        ),
         id,
       ).toBe(true);
     }

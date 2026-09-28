@@ -4,23 +4,23 @@ import {
   availableLearningCheckTopicIds,
   questionsForTopic,
 } from "../../../src/verticals/learning-checks";
+import { firstFourRemainingQuestions } from "../../../src/verticals/learning-checks/firstFourRemainingQuestions";
 import { validateQuestionPool } from "../../../src/verticals/learning-checks/validateQuestionPool";
-import { nextFourMissingQuestions } from "../../../src/verticals/learning-checks/nextFourMissingQuestions";
 import { topics } from "../../../src/verticals/topics/topics";
 
-const nextFourTopicIds = [
-  "agent-skills-and-commands",
-  "spec-framework-selection",
-  "automation-value-and-gates",
-  "web-security-baseline",
+const newTopicIds = [
+  "ui-design-system-workflow",
+  "technical-documentation-generation",
+  "bug-triage-and-pr-automation",
+  "local-model-stack-evaluation",
 ];
 
-describe("the next four topics without learning checks", () => {
-  it.each(nextFourTopicIds)("validates the review draft for %s", (id) => {
-    const topic = topics.items.find((item) => item.id === id);
-    const draft = nextFourMissingQuestions[id];
+describe("the next four topics in list order without questions", () => {
+  it.each(newTopicIds)("validates the review draft for %s", (id) => {
+    const topic = topics.items.find((item) => item.id === id)!;
+    const draft = firstFourRemainingQuestions[id];
     expect(draft).toHaveLength(25);
-    expect(validateQuestionPool(topic!, draft)).toEqual([]);
+    expect(validateQuestionPool(topic, draft)).toEqual([]);
     expect(new Set(draft.map((question) => question.prompt)).size).toBe(25);
     expect(
       draft.flatMap((question) =>
@@ -34,17 +34,15 @@ describe("the next four topics without learning checks", () => {
     ).toEqual([]);
   });
 
-  it("adds exactly these four learning checks to the existing catalog", () => {
+  it("offers exactly four additional learning checks", () => {
     expect(availableLearningCheckTopicIds).toHaveLength(39);
     expect(
-      nextFourTopicIds.every((id) =>
-        availableLearningCheckTopicIds.includes(id),
-      ),
+      newTopicIds.every((id) => availableLearningCheckTopicIds.includes(id)),
     ).toBe(true);
   });
 
-  it.each(nextFourTopicIds)(
-    "has at least 25 valid, distinct questions for %s",
+  it.each(newTopicIds)(
+    "provides 25 distinct sourced questions for %s",
     (id) => {
       const topic = topics.items.find((item) => item.id === id);
       const questions = questionsForTopic(id);
@@ -54,6 +52,16 @@ describe("the next four topics without learning checks", () => {
       expect(new Set(questions!.map((question) => question.prompt)).size).toBe(
         questions!.length,
       );
+      expect(
+        questions!.flatMap((question) =>
+          question.options
+            .filter((option) => !option.correct)
+            .filter((option) =>
+              /\b(nur|immer|nie|ausschließlich)\b/i.test(option.text),
+            )
+            .map((option) => option.id),
+        ),
+      ).toEqual([]);
     },
   );
 });

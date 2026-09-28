@@ -4,6 +4,7 @@ function primary(
   title: string,
   url: string,
   type: SourceType = "official-guide",
+  checkedAt = "2026-09-27",
 ): TopicSource {
   return {
     title,
@@ -11,8 +12,12 @@ function primary(
     type,
     origin: "primary",
     language: "en",
-    checkedAt: "2026-09-27",
+    checkedAt,
   };
+}
+
+function checkedPrimary(title: string, url: string): TopicSource {
+  return primary(title, url, "official-guide", "2026-09-28");
 }
 
 function card(
@@ -441,6 +446,30 @@ export const expandedLearningTopics: Topic[] = [
         "Penpot components",
         "https://help.penpot.app/user-guide/design-systems/components/",
       ),
+      checkedPrimary(
+        "Storybook stories",
+        "https://storybook.js.org/docs/writing-stories",
+      ),
+      checkedPrimary(
+        "Storybook args",
+        "https://storybook.js.org/docs/writing-stories/args",
+      ),
+      checkedPrimary(
+        "Storybook interaction tests",
+        "https://storybook.js.org/docs/writing-tests/interaction-testing",
+      ),
+      checkedPrimary(
+        "Storybook accessibility tests",
+        "https://storybook.js.org/docs/writing-tests/accessibility-testing",
+      ),
+      checkedPrimary(
+        "Storybook visual tests",
+        "https://storybook.js.org/docs/writing-tests/visual-testing",
+      ),
+      checkedPrimary(
+        "Penpot variants",
+        "https://help.penpot.app/user-guide/design-systems/variants/",
+      ),
     ],
     "2026-12-27",
   ),
@@ -456,6 +485,14 @@ export const expandedLearningTopics: Topic[] = [
         "Oracle Javadoc Guide – JDK 26",
         "https://docs.oracle.com/en/java/javase/26/javadoc/javadoc-guide.pdf",
       ),
+      checkedPrimary(
+        "JavaDoc Documentation Comment Specification – JDK 26",
+        "https://docs.oracle.com/en/java/javase/26/docs/specs/javadoc/doc-comment-spec.html",
+      ),
+      checkedPrimary(
+        "The javadoc Command – JDK 26",
+        "https://docs.oracle.com/en/java/javase/26/docs/specs/man/javadoc.html",
+      ),
     ],
   ),
   card(
@@ -469,6 +506,22 @@ export const expandedLearningTopics: Topic[] = [
       primary(
         "Best practices for using GitHub Copilot to work on tasks",
         "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results",
+      ),
+      checkedPrimary(
+        "Creating an issue – GitHub Docs",
+        "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue",
+      ),
+      checkedPrimary(
+        "Filtering and searching issues and pull requests – GitHub Docs",
+        "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/filtering-and-searching-issues-and-pull-requests",
+      ),
+      checkedPrimary(
+        "Using GitHub Copilot cloud agent to improve a project",
+        "https://docs.github.com/en/copilot/tutorials/cloud-agent/improve-a-project",
+      ),
+      checkedPrimary(
+        "Reviewing proposed changes in a pull request – GitHub Docs",
+        "https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request",
       ),
     ],
     "2026-12-27",
