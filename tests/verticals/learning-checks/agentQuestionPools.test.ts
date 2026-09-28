@@ -74,16 +74,12 @@ describe("four agent learning checks", () => {
     },
   );
 
-  it("leaves exactly the three later topics without checks", () => {
-    expect(availableLearningCheckTopicIds).toHaveLength(43);
+  it("provides checks for every published topic", () => {
+    expect(availableLearningCheckTopicIds).toHaveLength(46);
     expect(
       topics.items
         .filter((topic) => !availableLearningCheckTopicIds.includes(topic.id))
         .map((topic) => topic.id),
-    ).toEqual([
-      "java-spring-migrations-with-openrewrite",
-      "compare-parallel-and-serial-agent-work",
-      "coding-harness-design",
-    ]);
+    ).toEqual([]);
   });
 });

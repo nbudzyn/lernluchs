@@ -560,6 +560,22 @@ export const expandedLearningTopics: Topic[] = [
         "Sandbox security – OpenAI",
         "https://developers.openai.com/api/docs/guides/agents-api/environments/security",
       ),
+      checkedPrimary(
+        "Agents API Architecture – OpenAI",
+        "https://developers.openai.com/api/docs/guides/agents-api/architecture",
+      ),
+      checkedPrimary(
+        "Self-hosted sandboxes – OpenAI",
+        "https://developers.openai.com/api/docs/guides/agents-api/environments/self-hosted",
+      ),
+      checkedPrimary(
+        "MCP connections – OpenAI",
+        "https://developers.openai.com/api/docs/guides/agents-api/tools/mcp",
+      ),
+      checkedPrimary(
+        "Run and continue sessions – OpenAI",
+        "https://developers.openai.com/api/docs/guides/agents-api/sessions",
+      ),
     ],
     "2026-12-27",
   ),

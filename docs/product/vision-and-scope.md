@@ -5,13 +5,12 @@ einer gemeinsamen Liste auswählen und deren kurze Inhalte mit kuratierten Quell
 künftig ergänztes, erhält Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md). Die Inhalte werden redaktionell
 geprüft und als versionierter, nur lesbarer Katalog veröffentlicht.
 
-Für 43 Themen stehen quellengebundene Auswahlfragen bereit, auch für die Themen zu Fachsprache, Projektwissen, Git, OKF, Zielklärung,
+Für alle 46 Themen stehen quellengebundene Auswahlfragen bereit, auch für die Themen zu Fachsprache, Projektwissen, Git, OKF, Zielklärung,
 Legacy-Spezifikation, Standards, LLM-Fehlbarkeit, Agentenkontext, Codegraphen, Tokenwerkzeugen, Coding-Agent-Oberflächen, Skills,
 Spec-Frameworks, Automatisierung, Web-Sicherheitsbaselines, parallelen Agentengrenzen, Worktrees, Code-Navigation, Context7,
 UI-Komponenten mit Penpot und Storybook, Java-API-Dokumentation, Bug-Triage bis zum PR, lokale KI-Stacks, spezialisierte Subagents,
-Agenten-Handoffs, Werkzeugrechte und deterministische Prüf-Gates. Die übrigen 3 Themen besitzen noch keine Fragenpools und bieten daher
-keinen Lerncheck an. Aus der
-Themenliste startet ein flüchtiger Durchlauf mit fünf
+Agenten-Handoffs, Werkzeugrechte, deterministische Prüf-Gates, OpenRewrite-Migrationen, den Vergleich serieller und paralleler Agentenarbeit
+und Agenten-Harnesses. Aus der Themenliste startet ein flüchtiger Durchlauf mit fünf
 zufällig ausgewählten Fragen. Nach der letzten Antwort zeigt die App richtige und gewählte falsche Antworten mit Begründungen und
 Quellenlinks. Ein Abbruch verwirft die Antworten. Fünf richtige Antworten speichern das Thema unter seiner dauerhaften ID lokal als
 „gelernt“. Die Themenliste zeigt dafür einen grünen, für Screenreader beschrifteten Haken. Der Lernstand bleibt nach Reload und einem

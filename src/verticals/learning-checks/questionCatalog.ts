@@ -15,6 +15,9 @@ import { agentPermissionQuestions } from "./agentPermissionQuestions";
 import { agentVerificationQuestions } from "./agentVerificationQuestions";
 import { remainingQuestions } from "./remainingQuestions";
 import { secondPathQuestions } from "./secondPathQuestions";
+import { openRewriteQuestions } from "./openRewriteQuestions";
+import { parallelComparisonQuestions } from "./parallelComparisonQuestions";
+import { harnessDesignQuestions } from "./harnessDesignQuestions";
 
 const questionPools: Record<string, Question[]> = {
   ...foundationQuestions,
@@ -31,6 +34,9 @@ const questionPools: Record<string, Question[]> = {
   "deterministic-agent-verification-gates": agentVerificationQuestions,
   "domain-language-and-complexity": domainLanguageQuestions,
   "project-documentation-and-checklists": projectDocumentationQuestions,
+  "java-spring-migrations-with-openrewrite": openRewriteQuestions,
+  "compare-parallel-and-serial-agent-work": parallelComparisonQuestions,
+  "coding-harness-design": harnessDesignQuestions,
 };
 
 export const availableLearningCheckTopicIds = Object.keys(questionPools);
