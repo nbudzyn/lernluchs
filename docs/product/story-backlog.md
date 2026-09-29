@@ -7,32 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Themenliste und Thema nebeneinander (breite Ansicht)
-
-Bei ausreichend breiter Ansicht stehen Themenliste und gewähltes Thema nebeneinander.
-
-- "Ausreichend breite Ansicht" = bei einem üblichen PC- oder Tablet-Browserfenster, jedoch üblicherweise nicht auf dem Handy
-    - Relevant ist die Breite, nicht der Device-Typ!
-- Vor der ersten Themenwahl zeigt die rechte Desktop-Fläche eine knappe Einführung zu den vorhandenen Symbolen und Filtermöglichkeiten:
-  Lernpfade zum Thema filtern, einen Pfad auswählen oder den Filter aufheben, Fragen starten und den Gelernt-Status erkennen. Kurze
-  Halbsätze, ohne „du“, „Sie“ oder unpersönliches „man“.
-    - Keine Hilfesymbol (siehe unten) in diesem Fall!
-
-Auf dem Handy öffnet sich das Thema in einer eigenen Ansicht.
-
-- Dort ist die oben beschriebene Hilfe-Seite über ein Hilfesymbol erreichbar (neue Seite, danach Rückkehr zu Themenliste).
-    - Das Hilfesysmbol entspricht den üblichen Anforderungen an eigene Icons
-- Bei jedem Rückweg zur Liste, auch nach einem Lerncheck, bleibt sie so erhalten, wie sie verlassen wurde, insbesondere mit Filterung und
-  Scrollposition.
-
-Kein Scrollen links-rechts
-
-Der Inhalt steht im Vordergrund. Bedienelemente und statische Texte sollen wenig Platz verschwenden
-
-Barrierefrei!
-
-Vertikale: Themen
-
 ## Nutzerwege anpassen - weitere Schritte
 
 Analysiere zunächst die bestehende Anwendung vollständig, insbesondere alle vier Screens.

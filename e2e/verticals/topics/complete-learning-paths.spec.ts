@@ -36,6 +36,9 @@ test("zeigt einen neuen Lernpfad und eine quellengebundene Karte", async ({
     }),
   ).toBeVisible();
   await expect(article.getByText("2026-12-27")).toBeVisible();
+  if ((page.viewportSize()?.width ?? 0) < 800) {
+    await page.getByRole("button", { name: "Zur Themenliste" }).click();
+  }
   await expect(
     page.getByRole("button", {
       name: "Fragen starten: Langlebiges Domänenwissen mit OKF strukturieren",

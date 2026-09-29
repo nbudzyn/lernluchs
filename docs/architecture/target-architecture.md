@@ -8,6 +8,10 @@ die Vertikale Themen über ihren öffentlichen Einstiegspunkt mit der Lerncheck-
 Fragenpools und gibt sie über Themen-IDs an die App; `topics` enthält keine Fragen. Der Lerncheck hält Frageauswahl, Antworten und Ergebnis nur im React-Zustand. Vitest prüft Verhalten und Katalog,
 dependency-cruiser die Importgrenzen und Zyklen. Chromium-E2E-Tests prüfen den sichtbaren Ablauf auf Desktop und Smartphone. E2E-Dateien
 gehören der prüfenden Vertikale oder bei vertikalübergreifenden Abläufen `app`; gemeinsame Testhilfen liegen unter `e2e/shared/`.
+Die eigenständige Vertikale `help` besitzt die Einführung zu den Themen-Symbolen und zur Lernpfad-Filterung. Die einzige gerichtete
+Abhängigkeit lautet `topics → help`: `topics` importiert `help/index.ts`, während `help` weder `topics` noch andere App-Vertikalen oder
+`shared` importiert. Die Themenansicht bestimmt die Position der Hilfe auf breiten und
+schmalen Viewports. Unit- und E2E-Tests der Hilfe liegen unter ihrer eigenen Vertikale.
 
 ## Dauerhafte Leitplanken
 

@@ -12,6 +12,14 @@ verfügbaren Lernchecks und der gelernten Themen über ihre öffentliche
 Komponentenschnittstelle. Ihr öffentlicher Einstiegspunkt exportiert die
 Themenliste.
 
+## Bestehende Vertikale: Hilfe
+
+Die Vertikale Hilfe besitzt die knappe Einführung zu Symbolen und Lernpfad-Filterung für die Themenansicht. Ihr öffentlicher Einstiegspunkt
+exportiert die präsentierende Komponente `TopicHelp` ohne Themen-Daten oder Rückrufvertrag. Die Hilfe importiert weder andere Vertikalen noch
+`shared` oder `app`. Die Abhängigkeit zeigt ausschließlich von Themen nach Hilfe: Themen importiert nur `help/index.ts` und verantwortet selbst, wann die Hilfe rechts oder als mobile Ansicht
+erscheint und wie der Rückweg zur Liste funktioniert. Die gerichtete Ausnahme ist in dependency-cruiser und einem Architekturtest
+abgesichert. Hilfe-eigene Unit- und E2E-Tests liegen unter `tests/verticals/help/` und `e2e/verticals/help/`.
+
 ## Bestehende Vertikale: Lernchecks
 
 Die Vertikale Lernchecks besitzt die quellengebundenen Fragenpools und deren
@@ -41,7 +49,7 @@ Gemeinsamer Code enthält lediglich stabile IDs, Datenschemata, Validierung
 und kleine technische Hilfen, keine Geschäfts- oder Präsentationslogik.
 
 Ein Architekturtest und dependency-cruiser verhindern direkte App-Importe aus
-internen Dateien der drei Vertikalen. `src/app` verbindet die öffentlichen
+internen Dateien der Vertikalen. `src/app` verbindet die öffentlichen
 Einstiegspunkte, indem es IDs verfügbarer Checks an die Themenliste gibt und beim
 Start Fragen anhand der gewählten ID abfragt. Die App hält den aktuellen
 Lerncheck, ohne Fragenlogik zu übernehmen. Weitere Vertikalen werden im

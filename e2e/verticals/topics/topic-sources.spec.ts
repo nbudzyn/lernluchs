@@ -31,6 +31,9 @@ test("shows the curated sources of topics outside the foundation path", async ({
   ] as const) {
     await page.getByRole("button", { name: topic, exact: true }).click();
     const article = page.getByRole("article", { name: topic });
+    expect(
+      (await article.locator("section > h3").allTextContents()).slice(-2),
+    ).toEqual(["Quellen", "Redaktionelle Metadaten"]);
     await expect(
       article.getByRole("heading", { name: "Primärquellen" }),
     ).toBeVisible();
@@ -49,6 +52,9 @@ test("shows the curated sources of topics outside the foundation path", async ({
     for (const link of await article.getByRole("link").all()) {
       await expect(link).toHaveAttribute("target", "_blank");
       await expect(link).toHaveAttribute("href", /^https:\/\//);
+    }
+    if ((page.viewportSize()?.width ?? 0) < 800) {
+      await page.getByRole("button", { name: "Zur Themenliste" }).click();
     }
   }
 });

@@ -70,6 +70,9 @@ test("closes hidden details and does not reopen them when the filter is cleared"
   const hiddenTitle = "Git-Commits klein und nachvollziehbar halten";
   await page.getByRole("button", { name: hiddenTitle, exact: true }).click();
   await expect(page.getByRole("article", { name: hiddenTitle })).toBeVisible();
+  const mobile = (page.viewportSize()?.width ?? 0) < 800;
+  if (mobile)
+    await page.getByRole("button", { name: "Zur Themenliste" }).click();
   const filter = page.getByRole("button", {
     name: "Lernpfade von Spec-Driven Development mit OpenSpec filtern",
   });
@@ -83,8 +86,16 @@ test("closes hidden details and does not reopen them when the filter is cleared"
 
   const keptTitle = "Problem verstehen und Änderungsgrenzen setzen";
   await page.getByRole("button", { name: keptTitle, exact: true }).click();
+  if (mobile)
+    await page.getByRole("button", { name: "Zur Themenliste" }).click();
   await filter.click();
-  await expect(page.getByRole("article", { name: keptTitle })).toBeVisible();
+  if (mobile) {
+    await expect(
+      page.getByRole("button", { name: keptTitle, exact: true }),
+    ).toHaveAttribute("aria-pressed", "true");
+  } else {
+    await expect(page.getByRole("article", { name: keptTitle })).toBeVisible();
+  }
 });
 
 test("scrolls to the first topic when a selected path is taller than the viewport", async ({

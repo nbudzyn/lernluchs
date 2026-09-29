@@ -30,4 +30,37 @@ describe("App", () => {
     expect(screen.getByRole("navigation", { name: "Lernthemen" })).toBeTruthy();
     expect(screen.queryByText("Frage 1 von 5")).toBeNull();
   });
+
+  it("keeps an independently selected topic and path filter through a check", () => {
+    render(<App />);
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: "Mensch und KI: Verantwortung bleibt menschlich",
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: "Lernpfade von Mensch und KI: Verantwortung bleibt menschlich filtern",
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: "Fragen starten: Spec-Driven Development mit OpenSpec",
+      }),
+    );
+    expect(screen.getByText("Frage 1 von 5")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Abbrechen" }));
+    expect(
+      screen.getByRole("article", {
+        name: "Mensch und KI: Verantwortung bleibt menschlich",
+      }),
+    ).toBeTruthy();
+    expect(
+      screen
+        .getByRole("button", {
+          name: "Lernpfade von Mensch und KI: Verantwortung bleibt menschlich filtern",
+        })
+        .getAttribute("aria-pressed"),
+    ).toBe("true");
+  });
 });

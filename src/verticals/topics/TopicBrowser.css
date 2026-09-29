@@ -1,5 +1,101 @@
+.topic-browser {
+  display: grid;
+  grid-template-columns: minmax(18rem, 36%) minmax(0, 1fr);
+  align-items: start;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.topic-browser-list,
+.topic-browser-detail {
+  min-width: 0;
+}
+
+.topic-browser-detail {
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  overflow-wrap: anywhere;
+}
+
+.topic-browser-detail h2 {
+  margin-top: 0;
+}
+
+.topic-browser-detail p,
+.topic-browser-detail li,
+.path-filter-summary {
+  overflow-wrap: anywhere;
+}
+
 .topic-list {
   list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.65rem;
+}
+
+.topic-list li {
+  margin-bottom: 0.25rem;
+}
+
+.topic-actions > button:not(.path-filter-button):not(.learning-check-start-button) {
+  min-width: 0;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.topic-help-button,
+.topic-back-button {
+  display: none;
+}
+
+@media (max-width: 799px) {
+  .topic-browser {
+    display: block;
+  }
+
+  .topic-browser[data-mobile-view="list"] .topic-browser-detail,
+  .topic-browser[data-mobile-view="topic"] .topic-browser-list,
+  .topic-browser[data-mobile-view="help"] .topic-browser-list {
+    display: none;
+  }
+
+  .topic-browser-detail {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .topic-help-button,
+  .topic-back-button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+  }
+
+  .topic-help-button {
+    justify-content: center;
+    width: 2.5rem;
+    padding: 0.35rem;
+  }
+
+  .topic-help-button svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+  }
+}
+
+@media (min-width: 800px) {
+  .topic-browser-detail .topic-back-button {
+    display: none;
+  }
 }
 
 .source-audio-icon {

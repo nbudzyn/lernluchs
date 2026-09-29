@@ -69,6 +69,9 @@ for (const path of pathCases) {
       article.getByRole("link", { name: path.source }),
     ).toBeVisible();
     await expect(article.getByText("2026-09-27").first()).toBeVisible();
+    if ((page.viewportSize()?.width ?? 0) < 800) {
+      await page.getByRole("button", { name: "Zur Themenliste" }).click();
+    }
     await expect(
       page.getByRole("button", {
         name: `Fragen starten: ${path.startingTopic}`,

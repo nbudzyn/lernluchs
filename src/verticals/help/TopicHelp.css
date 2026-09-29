@@ -1,0 +1,32 @@
+.topic-help-content {
+  overflow-wrap: anywhere;
+}
+
+.topic-help-content h2 {
+  margin-top: 0;
+}
+
+.topic-help-content ul {
+  padding-left: 1.4rem;
+}
+
+.topic-help-content li {
+  margin-bottom: 0.35rem;
+}
+
+.topic-help-content svg {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: -0.2em;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.help-passed-icon {
+  color: #167a34;
+  font-weight: 700;
+  white-space: nowrap;
+}

@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, useState } from "react";
 
+import { TopicHelp } from "../help";
 import { topics } from "./topics";
 import type { LearningPath, Topic, TopicSource } from "./topicContract";
 import "./TopicBrowser.css";
@@ -62,6 +63,10 @@ export function TopicBrowser({
 }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [filter, setFilter] = useState<PathFilter>(null);
+  const [mobileView, setMobileView] = useState<"list" | "topic" | "help">(
+    "list",
+  );
+  const listScrollY = useRef(0);
   const rowRefs = useRef(new Map<string, HTMLLIElement>());
   const anchor = useRef<{ id: string; x: number; y: number } | null>(null);
   const scrollToPath = useRef(false);
@@ -149,6 +154,7 @@ export function TopicBrowser({
       !pathsFor(id).some((path) => path.topicIds.includes(selectedId))
     ) {
       setSelectedId(null);
+      setMobileView("list");
     }
     setFilter(nextFilter);
   }
@@ -159,10 +165,25 @@ export function TopicBrowser({
     scrollToPath.current = true;
     if (selectedId && !paths[index].topicIds.includes(selectedId)) {
       setSelectedId(null);
+      setMobileView("list");
     }
     setFilter({ kind: "path", index });
   }
   const selectedItem = items.find((item) => item.id === selectedId);
+  function openMobileView(view: "topic" | "help") {
+    if (window.matchMedia?.("(max-width: 799px)").matches) {
+      listScrollY.current = window.scrollY;
+      window.scrollTo(0, 0);
+    }
+    setMobileView(view);
+  }
+
+  function returnToList() {
+    setMobileView("list");
+    if (window.matchMedia?.("(max-width: 799px)").matches) {
+      requestAnimationFrame(() => window.scrollTo(0, listScrollY.current));
+    }
+  }
   const cardSections = selectedItem
     ? [
         ["Problem", selectedItem.content.problem],
@@ -200,148 +221,193 @@ export function TopicBrowser({
     : [];
 
   return (
-    <>
-      <nav aria-label="Lernthemen">
-        <ul className="topic-list">
-          {visibleItems.map((item) => (
-            <li
-              key={item.id}
-              ref={(node) => {
-                if (node) rowRefs.current.set(item.id, node);
-                else rowRefs.current.delete(item.id);
-              }}
-            >
-              <div className="topic-actions">
-                {pathsFor(item.id).length > 0 && (
-                  <button
-                    aria-label={`Lernpfade von ${item.title} filtern`}
-                    aria-pressed={
-                      filter?.kind === "topic" && filter.id === item.id
-                    }
-                    className="path-filter-button"
-                    type="button"
-                    title={`Lernpfade von ${item.title} filtern`}
-                    onClick={() => toggleFilter(item.id)}
-                  >
-                    <svg
-                      aria-hidden="true"
-                      focusable="false"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
+    <div className="topic-browser" data-mobile-view={mobileView}>
+      <div className="topic-browser-list">
+        {mobileView === "list" && (
+          <button
+            aria-label="Hilfe öffnen"
+            className="topic-help-button"
+            type="button"
+            title="Hilfe öffnen"
+            onClick={() => openMobileView("help")}
+          >
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M9.5 9a2.5 2.5 0 1 1 4.3 1.7c-.9.8-1.8 1.3-1.8 2.8M12 17h.01" />
+            </svg>
+          </button>
+        )}
+        <nav aria-label="Lernthemen">
+          <ul className="topic-list">
+            {visibleItems.map((item) => (
+              <li
+                key={item.id}
+                ref={(node) => {
+                  if (node) rowRefs.current.set(item.id, node);
+                  else rowRefs.current.delete(item.id);
+                }}
+              >
+                <div className="topic-actions">
+                  {pathsFor(item.id).length > 0 && (
+                    <button
+                      aria-label={`Lernpfade von ${item.title} filtern`}
+                      aria-pressed={
+                        filter?.kind === "topic" && filter.id === item.id
+                      }
+                      className="path-filter-button"
+                      type="button"
+                      title={`Lernpfade von ${item.title} filtern`}
+                      onClick={() => toggleFilter(item.id)}
                     >
-                      <path d="M3 4h14M5 9h10M8 14h4M10 14v3" />
-                    </svg>
+                      <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M3 4h14M5 9h10M8 14h4M10 14v3" />
+                      </svg>
+                    </button>
+                  )}
+                  <button
+                    aria-pressed={item.id === selectedId}
+                    onClick={() => {
+                      setSelectedId(item.id);
+                      openMobileView("topic");
+                    }}
+                    type="button"
+                  >
+                    {item.title}
                   </button>
-                )}
+                  {checkIds.has(item.id) &&
+                    learnedTopicIds.includes(item.id) && (
+                      <span
+                        className="learned-checkmark"
+                        role="img"
+                        aria-label="Gelernt"
+                      >
+                        ✓
+                      </span>
+                    )}
+                  {checkIds.has(item.id) && onStartLearningCheck && (
+                    <button
+                      aria-label={`Fragen starten: ${item.title}`}
+                      className="learning-check-start-button"
+                      type="button"
+                      title={`Fragen starten: ${item.title}`}
+                      onClick={() => onStartLearningCheck(item.id, item.title)}
+                    >
+                      <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        viewBox="0 0 28 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M4 7a5 5 0 1 1 8.6 3.5c-1.4 1.3-3.2 2.3-3.2 4" />
+                        <circle cx="9.4" cy="19" r="1" />
+                        <path d="m18 7 6 5-6 5z" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {activePaths.length > 0 && (
+          <p className="path-filter-summary">
+            Themen gefiltert nach{" "}
+            {activePaths.length === 1 ? "Lernpfad" : "Lernpfaden"}:{" "}
+            {sortedPaths.map((path, index) => (
+              <span key={paths.indexOf(path)}>
+                {index > 0 ? ", " : null}
                 <button
-                  aria-pressed={item.id === selectedId}
-                  onClick={() => setSelectedId(item.id)}
+                  aria-pressed={
+                    filter?.kind === "path" && paths[filter.index] === path
+                  }
+                  className="path-name-button"
+                  onClick={() => selectPath(paths.indexOf(path))}
                   type="button"
                 >
-                  {item.title}
+                  {path.name}
                 </button>
-                {checkIds.has(item.id) && learnedTopicIds.includes(item.id) && (
-                  <span
-                    className="learned-checkmark"
-                    role="img"
-                    aria-label="Gelernt"
-                  >
-                    ✓
-                  </span>
-                )}
-                {checkIds.has(item.id) && onStartLearningCheck && (
-                  <button
-                    aria-label={`Fragen starten: ${item.title}`}
-                    className="learning-check-start-button"
-                    type="button"
-                    title={`Fragen starten: ${item.title}`}
-                    onClick={() => onStartLearningCheck(item.id, item.title)}
-                  >
-                    <svg
-                      aria-hidden="true"
-                      focusable="false"
-                      viewBox="0 0 28 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M4 7a5 5 0 1 1 8.6 3.5c-1.4 1.3-3.2 2.3-3.2 4" />
-                      <circle cx="9.4" cy="19" r="1" />
-                      <path d="m18 7 6 5-6 5z" />
-                    </svg>
-                  </button>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </nav>
+              </span>
+            ))}
+          </p>
+        )}
+      </div>
 
-      {activePaths.length > 0 && (
-        <p className="path-filter-summary">
-          Themen gefiltert nach Lernpfaden:{" "}
-          {sortedPaths.map((path, index) => (
-            <span key={paths.indexOf(path)}>
-              {index > 0 ? ", " : null}
+      <div className="topic-browser-detail">
+        {(mobileView === "help" || !selectedItem) && (
+          <>
+            {mobileView === "help" && (
               <button
-                aria-pressed={
-                  filter?.kind === "path" && paths[filter.index] === path
-                }
-                className="path-name-button"
-                onClick={() => selectPath(paths.indexOf(path))}
+                className="topic-back-button"
                 type="button"
+                onClick={returnToList}
               >
-                {path.name}
+                Zur Themenliste
               </button>
-            </span>
-          ))}
-        </p>
-      )}
+            )}
+            <TopicHelp />
+          </>
+        )}
 
-      {selectedItem && (
-        <article aria-labelledby="topic-title">
-          <h2 id="topic-title">{selectedItem.title}</h2>
+        {selectedItem && mobileView !== "help" && (
+          <article aria-labelledby="topic-title">
+            <button
+              className="topic-back-button"
+              type="button"
+              onClick={returnToList}
+            >
+              Zur Themenliste
+            </button>
+            <h2 id="topic-title">{selectedItem.title}</h2>
 
-          {cardSections.map(([heading, text]) => (
-            <section key={heading}>
-              <h3>{heading}</h3>
-              <p>{text}</p>
+            {cardSections.map(([heading, text]) => (
+              <section key={heading}>
+                <h3>{heading}</h3>
+                <p>{text}</p>
+              </section>
+            ))}
+
+            <section>
+              <h3>Quellen</h3>
+              <SourceGroup
+                title="Primärquellen"
+                sources={selectedItem.sources.filter(
+                  (source) => source.origin === "primary",
+                )}
+              />
+              <SourceGroup
+                title="Sekundärquellen"
+                sources={selectedItem.sources.filter(
+                  (source) => source.origin === "secondary",
+                )}
+              />
             </section>
-          ))}
 
-          <section>
-            <h3>Redaktionelle Metadaten</h3>
-            <dl>
-              {editorialEntries.map((entry) => (
-                <div key={entry.label}>
-                  <dt>{entry.label}</dt>
-                  <dd>
-                    {entry.isDate ? (
-                      <time dateTime={entry.value}>{entry.value}</time>
-                    ) : (
-                      entry.value
-                    )}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </section>
-
-          <section>
-            <h3>Quellen</h3>
-            <SourceGroup
-              title="Primärquellen"
-              sources={selectedItem.sources.filter(
-                (source) => source.origin === "primary",
-              )}
-            />
-            <SourceGroup
-              title="Sekundärquellen"
-              sources={selectedItem.sources.filter(
-                (source) => source.origin === "secondary",
-              )}
-            />
-          </section>
-        </article>
-      )}
-    </>
+            <section>
+              <h3>Redaktionelle Metadaten</h3>
+              <dl>
+                {editorialEntries.map((entry) => (
+                  <div key={entry.label}>
+                    <dt>{entry.label}</dt>
+                    <dd>
+                      {entry.isDate ? (
+                        <time dateTime={entry.value}>{entry.value}</time>
+                      ) : (
+                        entry.value
+                      )}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          </article>
+        )}
+      </div>
+    </div>
   );
 }

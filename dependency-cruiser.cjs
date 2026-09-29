@@ -29,11 +29,26 @@ module.exports = {
       severity: "error",
       from: { path: "^src/app/" },
       to: {
-        path: "^src/verticals/(topics|learning-checks|learning-progress)/(?!index\\.ts$)",
+        path: "^src/verticals/(topics|help|learning-checks|learning-progress)/(?!index\\.ts$)",
       },
     },
+    {
+      name: "topics-import-only-public-help",
+      comment:
+        "Themen dürfen nur den öffentlichen Hilfe-Einstiegspunkt importieren.",
+      severity: "error",
+      from: { path: "^src/verticals/topics/" },
+      to: { path: "^src/verticals/(?!topics/|help/index\\.ts$)" },
+    },
+    {
+      name: "help-is-self-contained",
+      comment:
+        "Die Hilfe hängt von keiner anderen App-Vertikale und keinem Shared-Modul ab.",
+      severity: "error",
+      from: { path: "^src/verticals/help/" },
+      to: { path: "^src/(shared/|verticals/(?!help/))" },
+    },
     ...[
-      "topics",
       "learning-progress",
       "competency-profile",
       "learning-checks",

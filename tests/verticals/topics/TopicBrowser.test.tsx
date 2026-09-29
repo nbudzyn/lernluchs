@@ -11,6 +11,41 @@ function filterSummary() {
 }
 
 describe("TopicBrowser", () => {
+  it("shows the guidance before selection and opens help from the list", () => {
+    render(<TopicBrowser />);
+    expect(
+      screen.getByRole("region", { name: "Hilfe zu Themen" }),
+    ).toBeTruthy();
+    for (const text of [
+      "filtert nach allen Lernpfaden mit diesem Thema",
+      "Lernpfad-Filterung unter der Themenliste",
+      "Klick auf einen Lernpfad filtert auf diesen einen Lernpfad",
+      "startet einen Test",
+      "Test bestanden",
+    ]) {
+      expect(screen.getByText(text)).toBeTruthy();
+    }
+    expect(
+      document.querySelectorAll(".topic-help-content li svg"),
+    ).toHaveLength(2);
+    fireEvent.click(screen.getByRole("button", { name: "Hilfe öffnen" }));
+    expect(
+      screen.getByRole("button", { name: "Zur Themenliste" }),
+    ).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Zur Themenliste" }));
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: "Mensch und KI: Verantwortung bleibt menschlich",
+      }),
+    );
+    expect(
+      screen.getByRole("article", {
+        name: "Mensch und KI: Verantwortung bleibt menschlich",
+      }),
+    ).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Hilfe öffnen" })).toBeNull();
+  });
+
   it("shows the descriptive foundation path name in the filter summary", () => {
     render(<TopicBrowser />);
     fireEvent.click(
@@ -140,7 +175,7 @@ describe("TopicBrowser", () => {
       screen.getByRole("button", { name: "Lernpfade von Thema 2 filtern" }),
     );
     expect(screen.queryByRole("article", { name: "Thema 0" })).toBeNull();
-    expect(filterSummary()).toBe("Themen gefiltert nach Lernpfaden: Später");
+    expect(filterSummary()).toBe("Themen gefiltert nach Lernpfad: Später");
     expect(
       screen
         .getAllByRole("button", { name: /^Thema \d$/ })
@@ -333,6 +368,14 @@ describe("TopicBrowser", () => {
     expect(screen.getByText("Fachlich geprüft")).toBeTruthy();
     expect(screen.getByText("Wiedervorlage")).toBeTruthy();
     expect(screen.getByText("Status")).toBeTruthy();
+    const article = screen.getByRole("article", {
+      name: "Mensch und KI: Verantwortung bleibt menschlich",
+    });
+    expect(
+      Array.from(article.querySelectorAll("section > h3"))
+        .map((heading) => heading.textContent)
+        .slice(-2),
+    ).toEqual(["Quellen", "Redaktionelle Metadaten"]);
 
     const source = screen.getByRole("link", {
       name: "NIST AI RMF Core",
