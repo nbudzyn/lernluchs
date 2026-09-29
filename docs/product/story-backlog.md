@@ -7,19 +7,62 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## NotebookLM-Podcasts einbinden
+
+Die Primär- und Sekundärquellen erhalten neu einen Medientyp.
+
+- ALLE aktuellen Primär- und Sekundärquellen werden intern mit dem Typ TEXT markiert. Die Anzeige von Sekundärquellen mit dem Typ TEXT
+  bleibt unverändert: Der Typ wird nicht angezeigt.
+- Zusätzlich gibt es den Typ AUDIO.
+- Bei Quellen mit dem Typ AUDIO - NUR BEI DIESEN! - kann optional eine Laufzeit angegeben sein.
+- Quellen mit dem Typ AUDIO werden bei der Anzeige VOR DER QUELLE als Audio markiert (neues Icon gemäß Vorgaben, z.B. Kopfhörer). FALLS eine
+  Laufzeit angegeben ist, wird die Laufzeit HINTER dem Namen der Quelle angezeigt: "00:45", " 37:13" oder "1:37:13".
+
+Die folgenden NotebookLM-Podcasts werden im Code dem jeweiligen Thema als zusätzliche Sekundärquelle zuordnen.
+
+- Jeder Link soll genau einem Thema zugeordnet werden. Ist die Zuordnung an Hand der URL nicht möglich - nachfragen!
+- Test hierfür nur exemplarisch!
+
+https://notebook.google.com/notebook/6470b468-6d6c-4ea0-9821-72a65333ca1e/artifact/c491b8f8-3908-4f43-b7ac-2a70dd286b2e?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_
+https://notebook.google.com/notebook/6db9ba12-5e83-4a5a-a3a7-a99aa94671e1/artifact/9597ecbc-e414-42fd-9d83-03c1e27aeca8?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_
+https://notebook.google.com/notebook/804b6663-97d7-4be6-824b-24b54eff63b1/artifact/7336accd-68bd-41de-845d-690f4f1ff314?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_
+https://notebook.google.com/notebook/6e538076-e980-4471-a351-01d34903567f/artifact/0a86fe92-0c28-46d5-b30e-10349a67802a?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_
+https://notebook.google.com/notebook/e8f2213d-6d4e-4a47-a523-fd9163a6a96e/artifact/afab811e-4bd2-4fb2-96fc-59406ac984be?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_
+https://notebook.google.com/notebook/554500c6-8784-4fe6-80bd-815b5693330c/artifact/f3673123-fc05-4a90-bc8c-fd368f7415d1?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_
+https://notebook.google.com/notebook/b660f74e-9aa5-422a-bfca-f4b5935c11c0/artifact/fe6aa068-4945-4013-a02f-52cc1db8b771?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_
+https://notebook.google.com/notebook/b48701c3-1b7f-47f7-9725-242e0a8f22e8/artifact/eb2c1bae-2423-483a-b5ad-2289bd1afca4?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_
+https://notebook.google.com/notebook/86d98751-a331-480c-9e9e-41a66f3b0d0a/artifact/76d53329-bc1e-4184-8e4c-e52e581703ce?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_
+https://notebook.google.com/notebook/2200aa61-91d2-4de3-9aab-8b25c22404af/artifact/706621fe-3e55-41b7-9329-2c35c63d6068?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_
+https://notebook.google.com/notebook/ffcf3f8a-7112-4ece-a5d0-7ca0440b8eda/artifact/eb19995d-ec09-4d27-8736-7f5266fd741d?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_
+
+Vertikale: Themen
+
+Abgrenzung:
+
+- Themen (Texte) und Fragen bleiben unverändert
+
+## 100 neue Entwicklungen ermitteln und den Themen hinzufügen
+
+100 neue Entwicklungen ermitteln und den Themen hinzufügen
+
+## Verwendung von nmp prüfen, ggf. regulieren
+
+Verwendung von nmp prüfen, ggf. regulieren
+
 ## OWASP Dependency Check einbinden
 
 OWASP Dependency Check einbinden
 
 - Immer? Nach jeder Änderung von... was? Am Ende vor dem Commit? Vor jedem install...?
 
-## Regelmäßige Aktivitäten planen und bei auf Ausführung hinweisen
+## Regelmäßige Aktivitäten planen und zeitgesteuert auf Ausführung hinweisen
 
 - Generell überlegen: Vielleicht eine Liste der regelmäßigen Aktivitäten machen, die einmal täglich geprüft und dann während der Entwicklung
   vorgeschlagen wird?
     - z.B.:
         - Auf Secrets prüfen (z.B. mit TruffleHog?!)
-        - Links auf Erreichbarkeit und Security-Probleme prüfen, ggf. ersetzen (Themen höchstens minimal anpassen; Fragen bleiben gleich)
+        - Links (Primärquellen und Sekundärquellen) auf Erreichbarkeit und Sicherheitsrisiken prüfen, ggf. ersetzen (Themen höchstens
+          minimal anpassen; Fragen bleiben gleich)
         - Aktualisierung der Inhalte prüfen
         - Auf personenbezogene Daten prüfen und anbieten, sie zu entfernen oder zu anonymisieren
 
@@ -30,21 +73,9 @@ Vielleicht eine eigene Datei, die dann durchgegangen wird, wenn ein Kalenderdatu
 
 Nur Tests der Vertikalen laufen lassen? Alle Tests erst, wenn die grün sind? Vor dem Commit immer alle Tests
 
-## 100 neue Entwicklungen ermitteln und den Themen hinzufügen
-
-100 neue Entwicklungen ermitteln und den Themen hinzufügen
-
-## Verwendung von nmp prüfen, ggf. regulieren
-
-Verwendung von nmp prüfen, ggf. regulieren
-
 ## Impressum und Datenschutz-Policy einfügen. Haftungsausschluss
 
 Impressum und Datenschutz-Policy einfügen. Haftungsausschluss Neue Vertikale "Legal" o.Ä.
-
-## NotebookLM-Podcasts einbinden
-
-NotebookLM-Podcast als Sekundärquellen einbinden
 
 ## Link zu ChatGPT zum Lenern
 
