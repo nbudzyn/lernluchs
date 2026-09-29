@@ -7,10 +7,133 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Nutzerwege festlegen
+## Themenliste und Thema nebeneinander (breite Ansicht)
 
-Thema finden → Inhalt lesen → Fragen beantworten → Ergebnis verstehen. Für diese vier Schritte klären, was jeweils sofort sichtbar und
-bedienbar sein muss.
+Bei ausreichend breiter Ansicht stehen Themenliste und gewähltes Thema nebeneinander.
+
+- "Ausreichend breite Ansicht" = bei einem üblichen PC- oder Tablet-Browserfenster, jedoch üblicherweise nicht auf dem Handy
+    - Relevant ist die Breite, nicht der Device-Typ!
+- Vor der ersten Themenwahl zeigt die rechte Desktop-Fläche eine knappe Einführung zu den vorhandenen Symbolen und Filtermöglichkeiten:
+  Lernpfade zum Thema filtern, einen Pfad auswählen oder den Filter aufheben, Fragen starten und den Gelernt-Status erkennen. Kurze
+  Halbsätze, ohne „du“, „Sie“ oder unpersönliches „man“.
+    - Keine Hilfesymbol (siehe unten) in diesem Fall!
+
+Auf dem Handy öffnet sich das Thema in einer eigenen Ansicht.
+
+- Dort ist die oben beschriebene Hilfe-Seite über ein Hilfesymbol erreichbar (neue Seite, danach Rückkehr zu Themenliste).
+    - Das Hilfesysmbol entspricht den üblichen Anforderungen an eigene Icons
+- Bei jedem Rückweg zur Liste, auch nach einem Lerncheck, bleibt sie so erhalten, wie sie verlassen wurde, insbesondere mit Filterung und
+  Scrollposition.
+
+Kein Scrollen links-rechts
+
+Der Inhalt steht im Vordergrund. Bedienelemente und statische Texte sollen wenig Platz verschwenden
+
+Barrierefrei!
+
+Vertikale: Themen
+
+## Nutzerwege anpassen - weitere Schritte
+
+Analysiere zunächst die bestehende Anwendung vollständig, insbesondere alle vier Screens.
+
+Die Anwendung funktioniert und die derzeitigen Nutzerabläufe sollen grundsätzlich erhalten bleiben.
+
+Die bestehende visuelle Gestaltung ist dagegen NICHT erhaltenswert. Betrachte sie ausschließlich als funktionalen Prototyp.
+
+ZIEL
+
+Redesigne die gesamte Anwendung visuell von Grund auf.
+
+Sie soll wie eine sorgfältig von einem sehr guten Product-Design-Team gestaltete, moderne Web-Anwendung wirken – nicht wie ein generisches
+AI-generiertes React-Dashboard.
+
+WICHTIG
+
+Behalte bei:
+
+- bestehende Funktionen
+- fachliche Inhalte
+- grundlegende Nutzerabläufe
+- vorhandene Daten und Datenflüsse
+
+Darfst du verändern:
+
+- Layout
+- visuelle Hierarchie
+- Typografie
+- Farben
+- Spacing
+- Größen
+- Navigationdarstellung
+- Anordnung innerhalb eines Screens
+- Buttons und Controls
+- Icons
+- Oberflächen
+- Borders
+- States
+- Component Styling
+- bestehende React-Komponentenstruktur, wenn ein Refactoring für ein konsistentes UI sinnvoll ist
+
+Vermeide insbesondere typische AI-UI-Muster:
+
+- Card-in-Card-in-Card
+- übermäßig große Border-Radii
+- unnötige Gradients
+- Glassmorphism
+- riesige Hero-artige Überschriften in einer Arbeitsoberfläche
+- übermäßigen Einsatz von Pills/Badges
+- dekorative Elemente ohne Funktion
+- unnötige Animationen
+- riesige Abstände und dadurch geringe Informationsdichte
+- überall Schatten
+- eine eigene visuelle Behandlung für jedes einzelne Element
+
+DESIGNPRINZIPIEN
+
+Die Anwendung soll:
+
+- hochwertig
+- ruhig
+- präzise
+- modern
+- konsistent
+- angenehm zu benutzen
+- visuell eigenständig wirken.
+
+"Modern" bedeutet dabei NICHT futuristisch oder dekorativ.
+
+Gute Typografie, Proportionen, Weißraum, Hierarchie und Konsistenz sind wichtiger als Effekte.
+
+VOR DER IMPLEMENTIERUNG
+
+1. Untersuche alle vier Screens.
+2. Identifiziere die vorhandenen UI-Patterns und Komponenten.
+3. Trenne funktionale Anforderungen von zufälligen Eigenschaften des aktuellen Designs.
+4. Entwickle daraus EINE konsistente visuelle Designsprache für die gesamte Anwendung.
+5. Definiere die wichtigsten Design-Tokens und Komponenten.
+6. Prüfe deinen Entwurf kritisch auf typische "AI Slop"-Muster.
+
+Danach implementiere das Redesign über alle vier Screens.
+
+Wichtig:
+Optimiere nicht einfach das vorhandene CSS. Die Anwendung darf deutlich anders aussehen.
+
+Behandle das bestehende UI als funktionierenden Prototyp, der jetzt sein eigentliches Product Design bekommt.
+
+---
+
+technisches Professional Tool
+
+---
+
+- Ein Filter muss sich leicht ändern oder vollständig aufheben lassen; Lernende sollen jederzeit zur gesamten Themenliste zurückfinden.
+- Spätere Aktionen aus einem Thema heraus, etwa eine Suche bei ChatGPT oder auf YouTube, werden im Entwurf berücksichtigt; sie öffnen
+  externe Angebote erst nach bewusster Auswahl.
+
+Für spätere Ausbauschritte vormerken, noch nicht in dieser Story umsetzen: eine Texteingabe, die Themen auch über Begriffe in der
+Beschreibung findet (etwa „Ope“ für „Open Spec“), sowie einen kompakten alternativen Einstieg über einen oder mehrere Lernpfade auf
+derselben Seite. Die Entwürfe sollen diese Erweiterungen ermöglichen, ohne dafür zunächst leere Fläche zu reservieren.
 
 Mittelfristiges Ziel: Besseres UI-Design
 
@@ -25,18 +148,29 @@ Der Inhalt steht im Vordergrund. Bedienelemente und statische Texte sollen wenig
 - Auch auf Handy gut bedienbar
 - Barrierefrei
 
+## DANACH
+
+Nimm den Screen, der möglichst viele Komponenten enthält, und sage zunächst:
+„Entwickle die neue Designsprache zuerst vollständig an diesem Screen. Die anderen drei Screens noch nicht verändern.“
+
+Dann schaust du ihn dir an. Das ist der Moment für Aussagen wie „zu steril“, „zu verspielt“, „zu viel Weißraum“, „Navigation gefällt mir“,
+„Buttons sehen billig aus“, „mehr Desktop-App und weniger Website“. Erst wenn dieser eine Screen sitzt:
+„Diese Designsprache ist freigegeben. Extrahiere daraus das gemeinsame Designsystem und übertrage es konsistent auf die übrigen drei
+Screens. Erfinde dabei keine neue Designsprache.“
+
 ## Durch die Oberfläche und Bedienung motiviert, aber nicht abgelenkt werden - 2 bis 3 Entwürfe
 
-Zwei bis drei Entwürfe für Desktop und Mobil erstellen: mit sichtbarer Lernpfadnavigation, gut lesbarer Themenübersicht, eigenständiger
-Themenansicht und klar angeordnetem Lerncheck. Ruhige, redaktionelle Lernoberfläche anstreben, die trotzdem zum modernen Thema passt (nicht
-altbacken, nicht spezifisch Web2.0-mäßig...)
+Zwei bis drei Entwürfe für Desktop und Mobil erstellen: mit der Themenliste als primärem Einstieg, schnell erkennbarem Lernpfadbezug, gut
+lesbarer Themenübersicht, geteilter Themenansicht bei ausreichend Platz, eigener Themenansicht auf dem Handy, knapper Einführung in Symbole
+und Filter sowie klar angeordnetem Lerncheck. Ruhige, redaktionelle Lernoberfläche anstreben, die zum modernen Thema passt und verlässlich
+wirkt (nicht altbacken, nicht spezifisch Web2.0-mäßig...).
 
 - Ein einheitliches Farbschema soll angenehm anzuschauen sein, Texte sollen gut lesbar sein (automatisch Light Mode und Dark Mode nach
   Auswahl des Betriebssystems / des Browsers).
     - Farben vorsehen (Story-Backlog) für erfolgreiche Lernchecks und ggf. für Fehlantworten
 - Schriftgröße etwas größer als bisher
 - Kein Scrollen links-rechts
-- Horizontales Scrollen nicht als Dauerzustnand (kein Runter- und Hoch-Scrollen zwischen Liste und Details!)
+- Kein dauerndes Herunter- und Hochschrollen zwischen Themenliste und Themendetails.
 - Auf dem PC mit Tasten bedienbar
 - Auch auf Handy gut bedienbar
 - Barrierefrei
@@ -192,9 +326,11 @@ Die Praxiserfahrung wird (analog zum grünen Haken für "gelern") in der Themenl
 - In Leib und Blut übergegangen: Symbol soundso
 - Falls nötig werden Symbole nach den Projektregeln als Grafiken erzeugt (oder textuelle Zeichen in einer Farbe)
 
-## Details des Themas anzeigen wie modaler Dialog
+## Themenliste und Themendetails responsiv nebeneinander oder einzeln anzeigen
 
-Details des Themas anzeigen wie modaler Dialog
+Bei ausreichend Platz stehen Themenliste und gewähltes Thema nebeneinander. Auf dem Handy öffnet sich das Thema in einer eigenen Ansicht;
+bei jedem Zurückkehren zur Liste, auch nach einem Lerncheck, bleiben Filterung und Scrollposition erhalten. Der Entwurf berücksichtigt
+spätere externe Aktionen zum Thema, ohne dafür zunächst ungenutzte Bedienelemente anzuzeigen.
 
 Vertikalen: Themen
 
