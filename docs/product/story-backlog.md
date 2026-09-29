@@ -7,6 +7,51 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Nutzerwege festlegen
+
+Thema finden → Inhalt lesen → Fragen beantworten → Ergebnis verstehen. Für diese vier Schritte klären, was jeweils sofort sichtbar und
+bedienbar sein muss.
+
+Mittelfristiges Ziel: Besseres UI-Design
+
+Die Oberfläche soll motivierend, aber nicht ablenkend sein.
+
+Kein Scrollen links-rechts
+
+Der Inhalt steht im Vordergrund. Bedienelemente und statische Texte sollen wenig Platz verschwenden
+
+- Texte sollen gut lesbar sein
+- Auf dem PC mit Tasten bedienbar
+- Auch auf Handy gut bedienbar
+- Barrierefrei
+
+## Durch die Oberfläche und Bedienung motiviert, aber nicht abgelenkt werden - 2 bis 3 Entwürfe
+
+Zwei bis drei Entwürfe für Desktop und Mobil erstellen: mit sichtbarer Lernpfadnavigation, gut lesbarer Themenübersicht, eigenständiger
+Themenansicht und klar angeordnetem Lerncheck. Ruhige, redaktionelle Lernoberfläche anstreben, die trotzdem zum modernen Thema passt (nicht
+altbacken, nicht spezifisch Web2.0-mäßig...)
+
+- Ein einheitliches Farbschema soll angenehm anzuschauen sein, Texte sollen gut lesbar sein (automatisch Light Mode und Dark Mode nach
+  Auswahl des Betriebssystems / des Browsers).
+    - Farben vorsehen (Story-Backlog) für erfolgreiche Lernchecks und ggf. für Fehlantworten
+- Schriftgröße etwas größer als bisher
+- Kein Scrollen links-rechts
+- Horizontales Scrollen nicht als Dauerzustnand (kein Runter- und Hoch-Scrollen zwischen Liste und Details!)
+- Auf dem PC mit Tasten bedienbar
+- Auch auf Handy gut bedienbar
+- Barrierefrei
+- Der Inhalt steht im Vordergrund. Bedienelemente und statische Texte sollen wenig Platz verschwenden
+- Es soll nicht nach "AI Slop" aussehen.
+- Gui schrittweise hübscher
+- "Lernluchs KI"
+- beraten lassen
+- Skill?
+
+## Durch die Oberfläche und Bedienung motiviert, aber nicht abgelenkt werden - kleines visuelles System festlegen
+
+Schriftgrößen, Textbreite, Abstände, Farben, Schaltflächen, Fokus- und Statusanzeigen. Dabei Tastaturbedienung und ausreichend große
+Bedienelemente prüfen; Evlt. WCAG 2.2?!
+
 ## 100 neue Entwicklungen ermitteln und den Themen hinzufügen
 
 100 neue Entwicklungen ermitteln und den Themen hinzufügen
@@ -192,26 +237,6 @@ Fragenablauf nutzbar. Browser-E2E-Tests prüfen mehrere Durchläufe, Ausschöpfu
 Vertikalen: Themen, Lernchecks
 
 Dokumentation nach Umsetzung: Lokale Fragehistorie und Zyklusregel knapp in Produktstand und Architektur ergänzen.
-
-## Durch die Oberfläche und Bedienung motiviert, aber nicht abgelenkt werden
-
-Die Oberfläche soll motivierend, aber nicht ablenkend sein.
-
-- Ein einheitliches Farbschema soll angenehm anzuschauen sein, Texte sollen gut lesbar sein (automatisch Light Mode und Dark Mode nach
-  Auswahl des Betriebssystems / des Browsers).
-    - Farben vorsehen (Story-Backlog) für erfolgreiche Lernchecks und ggf. für Fehlantworten
-- Schriftgröße etwas größer als bisher
-- Kein vertikales Scrollen!
-- Horizontales Scrollen sollte eher selten nötig sein
-- Auf dem PC mit Tasten bedienbar
-- Auch auf Handy gut bedienbar
-- Barrierefrei
-- Der Inhalt steht im Vordergrund. Bedienelemente und statische Texte sollen wenig Platz verschwenden
-- Es soll nicht nach "AI Slop" aussehen.
-- Gui schrittweise hübscher
-- "Lernluchs KI"
-- beraten lassen
-- Skill?
 
 ## Themen auf einer Landkarte erkunden
 
