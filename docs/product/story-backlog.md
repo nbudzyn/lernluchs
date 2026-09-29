@@ -7,6 +7,55 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Einmalig auf personenbezogene Daten prüfen
+
+Einmalig auf personenbezogene Daten prüfen und anbieten, sie zu entfernen oder zu anonymisieren
+
+## Einmalig auf Secrets prüfen
+
+Einmalig auf Secrets prüfen
+
+## OWASP Dependency Check einbinden
+
+OWASP Dependency Check einbinden
+
+- Immer? Nach jeder Änderung von... was? Am Ende vor dem Commit? Vor jedem install...?
+
+## Scanner für Secrets einbinden
+
+Scanner für Secrets (Datenschutz?!) einbinden TrufleHog?
+
+## Links einmalig und dann regelmäßig auf Security prüfen
+
+Links regelmäßig auf Security prüfen, ggf. ersetzen. Fragen bleiben gleich
+
+- Generell überlegen: Vielleicht eine Liste der regelmäßigen Aktivitäten machen, die einmal täglich geprüft und dann während der Entwicklung
+  vorgeschlagen wird?
+    - z.B.:
+        - Auf Secrets prüfen
+        - Links prüfen
+        - Aktualisierung der Inhalte prüfen
+        - Auf personenbezogene Daten prüfen und anbieten, sie zu entfernen oder zu anonymisieren
+
+Vielleicht eine eigene Datei, die dann durchgegangen wird, wenn ein Kalenderdatum, DAS IN DER ZENTRALEN DOKU STEHT, erreicht oder
+überschritten ist? (Dieses Kalenderdatum muss dann nach der Abarbeitung weitergesetzt werden.)
+
+## Zunächst nur Tests der jeweiligen Vertikale laufen lassen?
+
+Nur Tests der Vertikalen laufen lassen? Alle Tests erst, wenn die grün sind? Vor dem Commit immer alle Tests
+
+## 100 neue Entwicklungen ermitteln und den Themen hinzufügen
+
+100 neue Entwicklungen ermitteln und den Themen hinzufügen
+
+## Verwendung von nmp prüfen, ggf. regulieren
+
+Verwendung von nmp prüfen, ggf. regulieren
+
+## Impressum und Datenschutz-Policy einfügen. Haftungsausschluss
+
+Impressum und Datenschutz-Policy einfügen. Haftungsausschluss Neue Vertikale "Legal" o.Ä.
+
 ## NotebookLM-Podcasts einbinden
 
 NotebookLM-Podcast als Sekundärquellen einbinden
@@ -65,6 +114,10 @@ Führe neue Karte und ihre Einfügeposition an einer Stelle in der Themen-Vertik
 als zweite Pflegequelle. Sichere mit einem zunächst roten Test ab, dass jede neue Karte genau einmal erscheint, alle 26 (?) bisherigen
 Themen ihre relative Reihenfolge behalten und jeder Pfad in Listenreihenfolge verläuft. Ändere weder öffentliche Themenverträge noch
 Pfadinhalte.
+
+## Detaillierter redaktionelle Metadaten nur auf Wunsch zeigen
+
+Bei redaktionelle Metadaten nur fachlich geprüft anzeigen ( "September 2026") - den Rest erst auf Klick aufklappen
 
 ## NF: Redaktionelle Metadaten zusammenziehen
 
@@ -172,6 +225,10 @@ Die Oberfläche soll motivierend, aber nicht ablenkend sein.
 - Barrierefrei
 - Der Inhalt steht im Vordergrund. Bedienelemente und statische Texte sollen wenig Platz verschwenden
 - Es soll nicht nach "AI Slop" aussehen.
+- Gui schrittweise hübscher
+- "Lernluchs KI"
+- beraten lassen
+- Skill?
 
 ## Themen auf einer Landkarte erkunden
 
@@ -283,6 +340,10 @@ Vertikale: Lernziele
 
 Dokumentation nach Umsetzung: Erinnerungsregeln knapp in Produktstand und Architektur ergänzen.
 
+## Mutation Testing einführen?
+
+Mutation Testing einführen?
+
 ## Benachrichtigungen für Erinnerungen erlauben
 
 Lernende können Benachrichtigungen für bestehende Erinnerungen ausdrücklich aktivieren und wieder deaktivieren. Ohne Berechtigung bleiben
@@ -293,6 +354,10 @@ Vertikalen: Lernziele, PWA/Zuverlässigkeit
 
 Dokumentation nach Umsetzung: Berechtigungen, unterstützte Browser und Fallback knapp in Produktstand, Architektur und Qualitätsstrategie
 ergänzen.
+
+## Für TDD: TIA Parasoft
+
+Für TDD: TIA Parasoft
 
 ## Persönliche Daten exportieren und wiederherstellen
 
