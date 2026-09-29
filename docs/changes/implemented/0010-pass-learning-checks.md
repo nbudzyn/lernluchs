@@ -92,7 +92,7 @@ Vertikalen: Lernchecks
 
 ## Umsetzung und Nachweise
 
-Die Umsetzung und die Prüfungen vom 27.09.2026 sind dokumentiert. Der Nutzer hat die Erfolgsansicht im lokalen Browser selbst angesehen und die Darstellung mit „Das passt so“ ausdrücklich bestätigt. Anschließend hat er den Commit freigegeben.
+Die Umsetzung und die Prüfungen vom 27.09.2026 sind dokumentiert. Der Nutzer hat die Erfolgsansicht im lokalen Browser selbst angesehen und die Darstellung positiv bestätigt. Anschließend hat er den Commit freigegeben.
 
 | Schritt | Ergebnis und Nachweis |
 | --- | --- |

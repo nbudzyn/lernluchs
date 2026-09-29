@@ -155,7 +155,7 @@ als Rechercheausgangspunkt verwendet. Wo ein Arbeitsrat über die Quelle hinausg
   „Parallele Coding-Agenten kritisch erproben“ zeigte acht Themen in der vorgesehenen Reihenfolge. Die Karte „Aufgaben und
   Abbruchkriterien für parallele Agenten festlegen“ zeigte alle vier Inhaltsabschnitte, redaktionelle Metadaten und zwei
   Primärquellen; für sie erschien kein Lerncheck. Der vierte Pfad wurde zusätzlich im Desktop- und Mobile-Browser-E2E geprüft.
-- Der Nutzer bestätigte nach eigener manueller Prüfung am 27.09.2026 mit „OK“ und gab anschließend den Commit aller lokalen Änderungen
+- Der Nutzer bestätigte nach eigener manueller Prüfung am 27.09.2026 das Ergebnis und gab anschließend den Commit aller lokalen Änderungen
   einschließlich seiner Backlog-Anpassungen ausdrücklich frei.
 - Unmittelbar vor dem Commit erneuter lokaler Sichtcheck im Codex In-app-Browser unter `http://127.0.0.1:4176/`:
   Der fünfte Pfad zeigte acht Themen; die Worktree-Karte öffnete sich mit Inhalt, Datum und Git-Primärquelle ohne Lerncheck.

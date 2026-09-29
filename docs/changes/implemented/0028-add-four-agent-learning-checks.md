@@ -90,6 +90,6 @@ GitHub Docs wurde am selben Tag erneut geprüft. Der Thementext blieb sachlich p
 - Unabhängige KI-Prüfung: Der Entwickler ließ den Prompt mit allen 100 Fragen vom 28.09.2026 prüfen. Das Ergebnis benannte vier
   fachliche Dopplungen: `subagent-ownership-03/-19`, `subagent-ownership-06/-23`, `agent-handoff-01/-22` und
   `agent-verification-03/-04`. Die jeweils zweite Frage wurde ersetzt. Ein Folgeprompt enthielt die vier Korrekturen und ihre
-  unveränderten Vergleichspartner. Der Entwickler meldete für die erneute unabhängige Prüfung am 28.09.2026: „Keine Beanstandungen.“
+  unveränderten Vergleichspartner. Der Entwickler meldete für die erneute unabhängige Prüfung am 28.09.2026 keine weiteren Beanstandungen.
   Damit sind auch die vier korrigierten Fragen redaktionell geprüft; jeder neue Pool enthält weiterhin 25 Fragen.
-- Der Entwickler bestätigte nach eigener manueller Prüfung am 28.09.2026 ausdrücklich: „Alles passt.“ Alle Abnahmekriterien sind erfüllt.
+- Der Entwickler bestätigte nach eigener manueller Prüfung am 28.09.2026 ein positives Ergebnis. Alle Abnahmekriterien sind erfüllt.

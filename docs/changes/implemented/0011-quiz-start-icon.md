@@ -38,7 +38,7 @@ Vertikale: Inhaltskatalog
 | RED: Zeilenausrichtung | `npm run test:e2e -- --grep "without stretching" --project=desktop-chromium` schlug fehl: Die Oberkanten der Buttons lagen 4,5 Pixel auseinander. Der Test prüft zusätzlich gleiche Unterkanten und gleiche Höhe von Zeilen mit und ohne Icon. |
 | GREEN: Zeilenausrichtung | Beide Buttons je Thema in eine gemeinsame Flex-Zeile gesetzt und den Inline-Abstand des Icon-Buttons entfernt. Der Browser-Test war auf Desktop und Mobil grün. |
 | REFACTOR nach Layoutkorrektur | Code und E2E-Test formatiert. `npm run check` erneut grün: 41 Unit- und Komponententests sowie alle übrigen Pflichtprüfungen. `npm run test:e2e -- --workers=1` erneut grün: 12 Fälle auf Desktop und Mobil. |
-| Abnahme | Im Codex In-app-Browser unter `http://127.0.0.1:4173/` bündige Ober- und Unterkanten und gleichmäßige Zeilenabstände visuell geprüft. Der Nutzer prüfte die überarbeitete Ansicht selbst und bestätigte: „Ja, das ist gut. Du kannst committen.“ |
+| Abnahme | Im Codex In-app-Browser unter `http://127.0.0.1:4173/` bündige Ober- und Unterkanten und gleichmäßige Zeilenabstände visuell geprüft. Der Nutzer prüfte die überarbeitete Ansicht selbst, bestätigte das Ergebnis und gab den Commit frei. |
 
 Das SVG wurde für diese Änderung direkt aus einfachen `path`- und `circle`-Formen gezeichnet: ein Fragezeichen und ein Start-Dreieck.
 Es wurde keine fremde Grafik, Vorlage, Icon-Bibliothek oder zusätzliche Abhängigkeit verwendet.

@@ -64,7 +64,7 @@ Vertikalen: Themen
 | REFACTOR | Neue Tests formatiert und Bezeichner gegen das Glossar geprüft; keine weitere Code-Umbenennung erforderlich. Danach `npm run check` grün: Format, Lint, Typen, 65 Unit-/Komponententests, 11 Inhaltsprüfungen, Architektur, Lizenzen und Build. `npm run test:e2e`: 32/32 grün. `npm audit --audit-level=high`: 0 Schwachstellen. Keine neue Abhängigkeit. |
 | Quellenprüfung | Originalseiten aller 17 beibehaltenen oder ergänzten Quellen am 27.09.2026 geprüft; Einzelheiten unten. Keine Quelle ersetzt. |
 | Browserabnahme | Lokales Chromium mit Playwright auf Desktop- und Pixel-7-Viewport: Themen für Coding-Agent-Kontext, Modulgrenzen und Playwright geöffnet. Jeweils Primärquellengruppe, Linktitel in Katalogreihenfolge, HTTPS-Ziele und bewusst zu aktivierende Links geprüft; keine Sekundärgruppe für diese drei Themen. Alle 2 neuen Browserfälle grün, zusammen mit der vollständigen E2E-Suite 32/32. Die Quellen sind englisch; der vorhandene Komponententest für die sichtbare Kennzeichnung ` [DE]` blieb grün. |
-| Manuelle Prüfung durch den Nutzer | Der Nutzer bestätigte am 27.09.2026 auf die Bitte um eigene manuelle Prüfung mit „OK. Commit.“ das Ergebnis und gab den Commit frei. |
+| Manuelle Prüfung durch den Nutzer | Der Nutzer bestätigte am 27.09.2026 nach eigener manueller Prüfung das Ergebnis und gab den Commit frei. |
 
 ## Quellenprüfung am 27.09.2026
 

@@ -43,7 +43,7 @@ Bei jeder neuen Frage werden Aussage, Ausschluss der falschen Optionen und Quell
 
 Für das Projektwissen-Thema wurden zusätzlich die Originalseiten zu [Tutorials](https://diataxis.fr/tutorials/), [How-to guides](https://diataxis.fr/how-to-guides/), [Reference](https://diataxis.fr/reference/), [Explanation](https://diataxis.fr/explanation/) und [The map](https://diataxis.fr/map/) geprüft und als Themenquellen ergänzt. Sie tragen die jeweiligen Detailfragen direkter als die Diátaxis-Startseite.
 
-Die unabhängige externe KI-Prüfung aller 50 Fragen beanstandete am 27.09.2026 DL17 (Vorbedingung statt belegter Nachbedingung/Invariante) sowie die PDF-Seitenlinks von DL19, DL20 und DL23. DL17 wurde fachlich auf Nachbedingung und Invarianten geändert; die Links wurden auf `#page=47`, `#page=48` und `#page=36` korrigiert. Die erneute unabhängige Prüfung dieser vier Fragen ergab „Alles ok!“. Die übrigen 46 Fragen wurden nicht beanstandet. Die Entwürfe wurden erst danach in den Lerncheck-Katalog eingebunden.
+Die unabhängige externe KI-Prüfung aller 50 Fragen beanstandete am 27.09.2026 DL17 (Vorbedingung statt belegter Nachbedingung/Invariante) sowie die PDF-Seitenlinks von DL19, DL20 und DL23. DL17 wurde fachlich auf Nachbedingung und Invarianten geändert; die Links wurden auf `#page=47`, `#page=48` und `#page=36` korrigiert. Die erneute unabhängige Prüfung dieser vier Fragen ergab keine weiteren Beanstandungen. Die übrigen 46 Fragen wurden nicht beanstandet. Die Entwürfe wurden erst danach in den Lerncheck-Katalog eingebunden.
 
 ## Abnahme und Umsetzung
 
@@ -61,7 +61,7 @@ Die unabhängige externe KI-Prüfung aller 50 Fragen beanstandete am 27.09.2026 
 - `npm audit --audit-level=high` am 27.09.2026 grün: 0 Schwachstellen. Es wurden keine Abhängigkeiten ergänzt.
 - Lokaler Browser: Codex-In-App-Browser mit Chromium auf `http://127.0.0.1:4174/`. Beide neuen Themen zeigten in der Themenliste „Fragen starten“. Der erste Check öffnete Fragen mit drei Optionen; nach einer Antwort erschien die nächste Frage, und „Abbrechen“ führte zur Liste zurück. Der zweite Check ließ sich ebenfalls starten und zeigte eine quellengebundene Frage mit drei Optionen; Abbruch führte zurück zur Liste. Ergebnis: beide Starts und der einfache Antwort-/Abbruchablauf funktionieren. Der vollständige Durchlauf und die Quellenlinks sind zusätzlich in den Desktop- und Mobil-E2E-Tests grün.
 
-Der Entwickler hat seine eigene manuelle Prüfung am 27.09.2026 ausdrücklich mit „Ja, es ist alles okay. Alles committen!“ bestätigt. Pflichtsuite und lokaler Browserablauf wurden unmittelbar vor beiden Commits erneut geprüft.
+Der Entwickler hat nach eigener manueller Prüfung am 27.09.2026 das Ergebnis bestätigt und beide Commits freigegeben. Pflichtsuite und lokaler Browserablauf wurden unmittelbar vor beiden Commits erneut geprüft.
 
 ### Prüfung unmittelbar vor Commit 1
 

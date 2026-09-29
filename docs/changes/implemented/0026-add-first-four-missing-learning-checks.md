@@ -51,7 +51,7 @@ Prüftag: 28.09.2026. Die Originalseiten wurden geöffnet; konkrete Fragen werde
 | Vier Themenpools und Kataloganbindung | `npm test -- --run tests/verticals/learning-checks/newFourQuestionPools.test.ts` am 28.09.2026: 5 fachlich erwartete Fehler, weil die vier Pools im Katalog fehlen. | Vier unabhängig geprüfte Pools mit je 25 Fragen eingebunden. Die gezielte Suite aus Katalog- und Pooltests ist grün: 33 Tests. | Überholte globale Poolzählungen auf 35 aktualisiert; `npm run check` danach grün. |
 | Exemplarischer Browserablauf | `npx playwright test e2e/verticals/learning-checks/new-four-learning-checks.spec.ts --project=desktop-chromium` am 28.09.2026: erwarteter Timeout, weil der Startknopf für das neue Thema ohne Kataloganbindung fehlt. | Der neue Lerncheck besteht den Browserablauf auf Desktop und Mobil; Ergebnis enthält fünf Antworten, Erklärungen und Quellenlinks. | Die bisherige Annahme „ohne neue Checks“ im Lernpfad-Browsertest angepasst; `npm run test:e2e` danach grün: 66 Tests. |
 
-Unabhängige fachliche Prüfung: Der Nutzer ließ alle 100 Fragen anhand des vollständigen Prüfprompts extern prüfen und meldete allein CN18: Die bisherige Begründung behauptete einen variablen Suchbereich, den die VS-Code-Quelle für `Rename Symbol` nicht belegt. CN18 wurde auf die dort ausdrücklich genannte Sprachunterstützung umformuliert. Der Nutzer ließ diese Korrektur erneut extern prüfen und meldete „Keine Beanstandungen“.
+Unabhängige fachliche Prüfung: Der Nutzer ließ alle 100 Fragen anhand des vollständigen Prüfprompts extern prüfen und meldete allein CN18: Die bisherige Begründung behauptete einen variablen Suchbereich, den die VS-Code-Quelle für `Rename Symbol` nicht belegt. CN18 wurde auf die dort ausdrücklich genannte Sprachunterstützung umformuliert. Der Nutzer ließ diese Korrektur erneut extern prüfen und meldete keine weiteren Beanstandungen.
 
 Die vorhandenen Primärquellen tragen die Entwürfe; eine neue Themenquelle war nicht nötig. Die eigene Prüfung hat insbesondere Aussagen ohne direkten Quellenbezug durch belegte Git- und IDE-Funktionen ersetzt. Der vollständige externe Prüfprompt wurde aus den Fragenentwürfen erzeugt und dem Nutzer zum unabhängigen Prüfen bereitgestellt.
 
@@ -61,4 +61,4 @@ Lokaler Browsernachweis am 28.09.2026: Codex In-app-Browser unter `http://127.0.
 
 Browsercheck unmittelbar vor dem Commit am 28.09.2026: Codex In-app-Browser unter `http://127.0.0.1:5174/`. Den Lerncheck „Versionsbezogene Bibliotheksdokumentation mit Context7 prüfen“ aus der Themenliste gestartet, alle fünf Fragen beantwortet und die bestandene Ergebnisansicht mit Erklärungen und Quellenlinks geprüft.
 
-Manuelle Prüfung des Nutzers: Der Nutzer hat die Änderung selbst getestet und am 28.09.2026 ausdrücklich mit „Ist abgenommen. Commit!“ bestätigt.
+Manuelle Prüfung des Nutzers: Der Nutzer hat die Änderung selbst getestet, am 28.09.2026 das Ergebnis positiv bestätigt und den Commit freigegeben.

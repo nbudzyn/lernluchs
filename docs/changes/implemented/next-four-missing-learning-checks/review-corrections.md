@@ -1,6 +1,6 @@
 # Erneute unabhängige Prüfung: SF07 und AV02
 
-Die Erstprüfung beanstandete SF07 wegen optionalem design.md und AV02 wegen eines ebenfalls richtigen Dateihinweises. Prüfe die korrigierten Fragen einschließlich aller Optionen, Erklärungen und Quellen erneut auf fachliche Richtigkeit, Eindeutigkeit und plausible Distraktoren. Antworte mit beanstandeten IDs und knappem Grund oder „Keine Beanstandungen“.
+Die Erstprüfung beanstandete SF07 wegen optionalem design.md und AV02 wegen eines ebenfalls richtigen Dateihinweises. Prüfe die korrigierten Fragen einschließlich aller Optionen, Erklärungen und Quellen erneut auf fachliche Richtigkeit, Eindeutigkeit und plausible Distraktoren. Antworte mit beanstandeten IDs und knappem Grund; wenn keine Beanstandung vorliegt, gib dies knapp an.
 
 ## SF07 – Wenn bei einer OpenSpec-Änderung weder Specs noch Design ausgelassen werden: Wann werden die Tasks vorbereitet?
 

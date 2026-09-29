@@ -76,7 +76,7 @@ Lokaler Browsernachweis am 28.09.2026: Codex In-app-Browser unter `http://127.0.
 Themenliste; fünf Fragen ließen sich beantworten. Die Ergebnisübersicht zeigte richtige und gewählte Antworten mit Begründungen und
 Quellenlinks. „Zur Themenliste“ führte zurück zur Liste. Die beiden weiteren neuen Startbuttons waren dort ebenfalls sichtbar.
 
-Der Nutzer hat den geänderten Ablauf am 28.09.2026 selbst manuell getestet und ausdrücklich bestätigt: „Funktioniert gut. Commit!“
+Der Nutzer hat den geänderten Ablauf am 28.09.2026 selbst manuell getestet, das Ergebnis positiv bestätigt und den Commit freigegeben.
 Damit ist die manuelle Abnahme erfolgt. Unmittelbar vor dem Commit wurde der Ablauf im Codex In-app-Browser unter
 `http://127.0.0.1:5173/` erneut geprüft: Der Harness-Lerncheck startete aus der Themenliste, alle fünf Fragen ließen sich beantworten,
 die Ergebnisübersicht zeigte Begründungen und Quellenlinks, und „Zur Themenliste“ führte zurück. Die Startbuttons der beiden anderen

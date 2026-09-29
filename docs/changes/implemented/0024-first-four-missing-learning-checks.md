@@ -63,14 +63,13 @@ Prüftag: 27.09.2026. Originalseiten wurden geöffnet; der genaue Zuschnitt der 
 
 Die unabhängige Erstprüfung aller 100 Entwürfe beanstandete `TK02`, `TK13`, `TK25`, `UI23` und `UI25` wegen nicht ausreichend
 belegter Aussagen. Diese fünf Fragen wurden durch unmittelbar in den jeweiligen Originalquellen belegte Fragen ersetzt. Der Entwickler
-bestätigte die unabhängige erneute Prüfung am 27.09.2026 mit „Keine Beanstandungen!“. Erst danach wurden alle 100 Fragen in den
+bestätigte nach unabhängiger erneuter Prüfung am 27.09.2026, dass keine weiteren Beanstandungen vorlagen. Erst danach wurden alle 100 Fragen in den
 öffentlichen Katalog übernommen.
 
 Pflichtsuite unmittelbar vor dem Commit am 27.09.2026 erneut ausgeführt: `npm run check` grün (96 Unit-Tests, 28 Content-Tests,
 Architektur- und Lizenzprüfungen sowie Build), `npm run test:e2e` grün (62 Browser-Tests). `npm audit --audit-level=high` war
 zuvor ohne Fund. Der Build meldet eine nicht blockierende Warnung zur Größe des gebündelten JavaScript.
 
-Der Entwickler hat die Änderung selbst manuell getestet und am 27.09.2026 ausdrücklich bestätigt: „Funktioniert. Du kannst
-committen.“ Lokaler Browsernachweis: Codex-In-App-Browser auf `http://127.0.0.1:4176/`; beim Thema „Agentenkontext gezielt auswählen
+Der Entwickler hat die Änderung selbst manuell getestet, am 27.09.2026 das Ergebnis positiv bestätigt und den Commit freigegeben. Lokaler Browsernachweis: Codex-In-App-Browser auf `http://127.0.0.1:4176/`; beim Thema „Agentenkontext gezielt auswählen
 und neu ordnen“ wurden fünf Antworten gegeben, das Ergebnis mit Quellenlinks geprüft und die Themenliste wieder erreicht. Der
 abschließende Browsercheck direkt vor dem Commit ist grün.

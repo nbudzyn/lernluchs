@@ -160,7 +160,7 @@ Beobachtung oder Regel in den Notizen, die heute zu absolut wäre.
 
 | Idee | Wofür / Kurzbeschreibung | Einordnung und Konkurrenz |
 | --- | --- | --- |
-| **Bugtracker → Duplikatprüfung → Reproduktion → Beschreibung → Branch → Regressionstest → PR** | Agentische Fehlerbehebungskette mit nachweisbaren Zwischenartefakten. | **Später/Pilot.** Sehr gute Zielarchitektur, aber nur mit isolierter Umgebung, minimalen Rechten, verpflichtendem Menschen-Gate vor PR/Merge und Unternehmensfreigabe. Bei Consist zuerst René/IT-Security/Datenschutz nach erlaubten Integrationen fragen. |
+| **Bugtracker → Duplikatprüfung → Reproduktion → Beschreibung → Branch → Regressionstest → PR** | Agentische Fehlerbehebungskette mit nachweisbaren Zwischenartefakten. | **Später/Pilot.** Nur in isolierter Umgebung mit minimalen Rechten, Tests und begrenztem Änderungsumfang erproben. |
 | **Automatische PR-Review-Agenten** | Prüfen Diffs gegen Tests, Architektur, Security und Spezifikation. | **Test.** Hilfreicher Zweitblick, aber kein Freigabeersatz. An bestehende CI, Codeowner und branch protection anbinden. |
 | **Agent holt Anforderungen, arbeitet im Branch und eröffnet PR** | Standardisierte Übergabe von Arbeit an einen Coding-Agenten. | **Später.** Baut auf verlässlicher Ticketqualität, Worktrees/Branches, Tests und Rechtebegrenzung auf. |
 

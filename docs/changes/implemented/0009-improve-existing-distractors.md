@@ -88,6 +88,6 @@ Lokaler Browsernachweis: Desktop-Chromium und Mobile-Chromium; in allen sechs Po
 gegeben und bei jeder Frage drei bis fünf sichtbare Optionen geprüft. Nach einer falschen Antwort wurden die Erklärung
 der gewählten und der richtigen Antwort sowie beide Quellenlinks im Ergebnis geprüft. Ergebnis: acht Browser-Tests grün.
 Manuelle Prüfung: Der Nutzer öffnete die lokale Anwendung im In-App-Browser unter `http://127.0.0.1:4174/` und
-bestätigte den Ablauf am 27.09.2026 ausdrücklich mit „Funktioniert!“. Einzelne geprüfte Fragen-IDs wurden nicht
+bestätigte den Ablauf am 27.09.2026 nach eigener Prüfung als funktionierend. Einzelne geprüfte Fragen-IDs wurden nicht
 zurückgemeldet; die automatisierte Browserprüfung deckte alle sechs Pools ab. Damit ist die manuelle Freigabe für den
 Commit erteilt.

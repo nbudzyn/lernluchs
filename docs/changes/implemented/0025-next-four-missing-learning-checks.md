@@ -66,12 +66,12 @@ Der vollständige [Prüf-Prompt](next-four-missing-learning-checks/review-prompt
 unabhängige externe KI-Prüfung bereitgestellt. Die Erstprüfung beanstandete `SF07` (optionales `design.md` im OpenSpec-Schema) und
 `AV02` (Dateihinweis war ebenfalls richtig). Beide Fragen wurden präzisiert und mit dem
 [Korrektur-Prompt](next-four-missing-learning-checks/review-corrections.md) erneut unabhängig geprüft. Rückmeldung des Entwicklers:
-„Keine Beanstandungen“. Anschließend wurden die Fragen in den öffentlichen Katalog eingehängt.
+keine weiteren Beanstandungen. Anschließend wurden die Fragen in den öffentlichen Katalog eingehängt.
 
 Pflichtsuite am 27.09.2026: `npm run check` grün (Format, Lint, Typen, 112 Unit-/Komponententests, 35 Inhaltsprüfungen,
 Architekturregeln, Lizenzprüfung und Produktions-Build). `npm run test:e2e` grün (64 Desktop-/Mobiltests).
 `npm audit --audit-level=high`: keine Schwachstellen ab „high“. Der Entwickler bestätigte nach eigenem manuellem Test am
-27.09.2026 ausdrücklich: „Ist abgenommen. Commit!“
+27.09.2026 das Ergebnis und gab den Commit frei.
 
 Abschlussprüfung unmittelbar vor dem Commit am 27.09.2026: `npm run check` erneut grün (112 Unit-/Komponententests,
 35 Inhaltsprüfungen und weitere Pflichtprüfungen), `npm run test:e2e` erneut grün (64 Tests),

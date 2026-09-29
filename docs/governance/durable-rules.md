@@ -47,6 +47,9 @@ dokumentierte Architekturentscheidung ersetzt werden.
   steht in der Änderungs-Spec.
 - Ein Commit erfolgt erst, nachdem der Nutzer die Änderung selbst manuell
   getestet und das Ergebnis ausdrücklich bestätigt hat.
+- Test- und Freigaberückmeldungen des Entwicklers werden in Git nur als
+  erfolgt vermerkt. Wortlaut und weitere Einzelheiten der Rückmeldungen werden
+  nicht dokumentiert.
 - Jede fachliche Änderung startet mit einer eigenen Änderungsdokumentation.
 - Jede Story wird so geschnitten, dass sie einen für Benutzer im Browser
   nachvollziehbaren Geschäftswert hinzufügt. Reine interne Verträge,
