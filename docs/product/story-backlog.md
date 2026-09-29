@@ -7,10 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Links einmalig und dann regelmäßig auf Security prüfen
-
-Links regelmäßig auf Security prüfen, ggf. ersetzen. Fragen bleiben gleich
-
 ## OWASP Dependency Check einbinden
 
 OWASP Dependency Check einbinden
@@ -23,7 +19,7 @@ OWASP Dependency Check einbinden
   vorgeschlagen wird?
     - z.B.:
         - Auf Secrets prüfen (z.B. mit TruffleHog?!)
-        - Links prüfen
+        - Links auf Erreichbarkeit und Security-Probleme prüfen, ggf. ersetzen (Themen höchstens minimal anpassen; Fragen bleiben gleich)
         - Aktualisierung der Inhalte prüfen
         - Auf personenbezogene Daten prüfen und anbieten, sie zu entfernen oder zu anonymisieren
 
