@@ -354,13 +354,27 @@ describe("TopicBrowser", () => {
       screen.getByRole("heading", { name: "Sekundärquellen" }),
     ).toBeTruthy();
     expect(screen.getAllByRole("link").map((link) => link.textContent)).toEqual(
-      ["Canon TDD - Kent Beck", "Test Driven Development - Martin Fowler"],
+      [
+        "Canon TDD - Kent Beck",
+        "Test Driven Development - Martin Fowler",
+        "KI bremst Senior-Devs ohne TDD aus [DE]",
+      ],
     );
-    fireEvent.click(
-      screen.getByRole("button", {
-        name: "Mensch und KI: Verantwortung bleibt menschlich",
-      }),
+    cleanup();
+    const item = topics.items[0];
+    render(
+      <TopicBrowser
+        items={[
+          {
+            ...item,
+            sources: item.sources.filter(
+              (source) => source.origin === "primary",
+            ),
+          },
+        ]}
+      />,
     );
+    fireEvent.click(screen.getByRole("button", { name: item.title }));
     expect(screen.getByRole("heading", { name: "Primärquellen" })).toBeTruthy();
     expect(
       screen.queryByRole("heading", { name: "Sekundärquellen" }),
@@ -385,6 +399,59 @@ describe("TopicBrowser", () => {
     fireEvent.click(screen.getByRole("button", { name: item.title }));
     expect(
       screen.getByRole("link", { name: "Deutsche Quelle [DE]" }),
+    ).toBeTruthy();
+  });
+
+  it("marks only audio sources and shows duration after the linked title", () => {
+    const item = topics.items[0];
+    render(
+      <TopicBrowser
+        items={[
+          {
+            ...item,
+            sources: [
+              { ...item.sources[0], mediaType: "text" },
+              {
+                ...item.sources[0],
+                title: "Podcast mit Laufzeit",
+                url: "https://example.test/audio-1",
+                origin: "secondary",
+                language: "de",
+                mediaType: "audio",
+                duration: "1:37:13",
+              },
+              {
+                ...item.sources[0],
+                title: "Podcast ohne Laufzeit",
+                url: "https://example.test/audio-2",
+                origin: "secondary",
+                mediaType: "audio",
+              },
+            ],
+          },
+        ]}
+      />,
+    );
+    fireEvent.click(screen.getByRole("button", { name: item.title }));
+    const textSource = screen.getByRole("link", { name: "NIST AI RMF Core" });
+    expect(textSource.parentElement?.textContent).toBe("NIST AI RMF Core");
+    const timedSource = screen.getByRole("link", {
+      name: "Podcast mit Laufzeit [DE]",
+    });
+    expect(timedSource.parentElement?.textContent).toBe(
+      "Podcast mit Laufzeit [DE] 1:37:13",
+    );
+    expect(
+      timedSource.parentElement?.querySelector("svg[aria-label='Audio']"),
+    ).toBeTruthy();
+    const untimedSource = screen.getByRole("link", {
+      name: "Podcast ohne Laufzeit",
+    });
+    expect(untimedSource.parentElement?.textContent).toBe(
+      "Podcast ohne Laufzeit",
+    );
+    expect(
+      untimedSource.parentElement?.querySelector("svg[aria-label='Audio']"),
     ).toBeTruthy();
   });
 });

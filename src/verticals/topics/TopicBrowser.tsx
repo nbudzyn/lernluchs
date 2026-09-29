@@ -22,10 +22,24 @@ function SourceGroup({
       <ul>
         {sources.map((source) => (
           <li key={source.url}>
+            {source.mediaType === "audio" && (
+              <svg
+                aria-label="Audio"
+                className="source-audio-icon"
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M4 13v-2a8 8 0 0 1 16 0v2M4 13h3v7H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 1-2Zm16 0h-3v7h2a2 2 0 0 0 2-2v-3a2 2 0 0 0-1-2Z" />
+              </svg>
+            )}
             <a href={source.url} rel="noreferrer" target="_blank">
               {source.title}
               {source.language === "de" ? " [DE]" : ""}
             </a>
+            {source.mediaType === "audio" && source.duration && (
+              <> {source.duration}</>
+            )}
           </li>
         ))}
       </ul>

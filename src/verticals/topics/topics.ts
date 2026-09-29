@@ -1,6 +1,7 @@
 import type { Topic, TopicCollection } from "./topicContract";
 import { fifthPathTopics, fourthPathTopics } from "./newLearningTopics";
 import { expandedLearningTopics } from "./expandedLearningTopics";
+import { notebookPodcasts } from "./notebookPodcasts";
 
 function activeEditorial(reviewDueAt: string, publishedAt = "2026-09-20") {
   return {
@@ -108,6 +109,7 @@ const previousTopics: TopicCollection = {
           type: "official-publication",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-26",
         },
       ],
@@ -134,6 +136,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-26",
         },
         {
@@ -142,6 +145,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-26",
         },
       ],
@@ -168,6 +172,7 @@ const previousTopics: TopicCollection = {
           type: "reference-site",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-26",
         },
         {
@@ -176,6 +181,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-26",
         },
       ],
@@ -202,6 +208,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-26",
         },
       ],
@@ -228,6 +235,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
         {
@@ -236,6 +244,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
       ],
@@ -262,6 +271,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
         {
@@ -270,6 +280,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
       ],
@@ -296,6 +307,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-26",
         },
         {
@@ -305,6 +317,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-26",
         },
         {
@@ -314,6 +327,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-26",
         },
       ],
@@ -340,6 +354,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-26",
         },
         {
@@ -348,6 +363,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-26",
         },
         {
@@ -356,6 +372,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-26",
         },
       ],
@@ -385,6 +402,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
         {
@@ -393,6 +411,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
         {
@@ -401,6 +420,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
       ],
@@ -427,6 +447,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
         {
@@ -435,6 +456,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "secondary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
       ],
@@ -461,6 +483,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
       ],
@@ -489,6 +512,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
         {
@@ -497,6 +521,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
       ],
@@ -524,6 +549,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
       ],
@@ -550,6 +576,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
         {
@@ -558,6 +585,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
       ],
@@ -584,6 +612,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
         {
@@ -592,6 +621,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
       ],
@@ -624,6 +654,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
         {
@@ -632,6 +663,7 @@ const previousTopics: TopicCollection = {
           type: "official-guide",
           origin: "primary",
           language: "en",
+          mediaType: "text",
           checkedAt: "2026-09-27",
         },
       ],
@@ -681,11 +713,21 @@ const additionsAfter: Record<string, string[]> = {
 };
 
 export const topics: TopicCollection = {
-  version: "5",
-  items: previousTopics.items.flatMap((item) => [
-    item,
-    ...(additionsAfter[item.id] ?? []).map(expandedTopic),
-  ]),
+  version: "6",
+  items: previousTopics.items
+    .flatMap((item) => [
+      item,
+      ...(additionsAfter[item.id] ?? []).map(expandedTopic),
+    ])
+    .map((item) => ({
+      ...item,
+      sources: [
+        ...item.sources,
+        ...notebookPodcasts
+          .filter((podcast) => podcast.topicId === item.id)
+          .map((podcast) => podcast.source),
+      ],
+    })),
   paths: [
     ...(previousTopics.paths ?? []),
     {

@@ -27,6 +27,7 @@ function completeItem(id: string): Topic {
         title: "Quelle",
         url: "https://example.test/source",
         type: "official-guide",
+        mediaType: "text",
         origin: "primary",
         language: "en",
         checkedAt: "2026-09-20",
@@ -162,6 +163,89 @@ describe("public content topics", () => {
       }).valid,
     ).toBe(false);
   });
+  it("accepts audio with optional duration and rejects invalid media metadata", () => {
+    const item = completeItem("media-rules");
+    const source = item.sources[0];
+    const validAudio = {
+      ...source,
+      mediaType: "audio" as const,
+      duration: "1:37:13",
+    };
+    expect(
+      validateTopics({
+        version: "1",
+        items: [{ ...item, sources: [validAudio] }],
+      }).valid,
+    ).toBe(true);
+    expect(
+      validateTopics({
+        version: "1",
+        items: [
+          {
+            ...item,
+            sources: [{ ...validAudio, duration: undefined }],
+          },
+        ],
+      }).valid,
+    ).toBe(true);
+    for (const invalidSource of [
+      { ...source, mediaType: "video" },
+      { ...source, mediaType: "text", duration: "25:00" },
+      { ...source, mediaType: "audio", duration: "25 minutes" },
+    ]) {
+      expect(
+        validateTopics({
+          version: "1",
+          items: [
+            {
+              ...item,
+              sources: [invalidSource as unknown as Topic["sources"][number]],
+            },
+          ],
+        }).valid,
+      ).toBe(false);
+    }
+  });
+  it("marks existing written sources as text", () => {
+    expect(
+      topics.items.every((item) =>
+        item.sources.every(
+          (source) =>
+            source.mediaType ===
+            (source.url.startsWith("https://notebook.google.com/")
+              ? "audio"
+              : "text"),
+        ),
+      ),
+    ).toBe(true);
+    expect(
+      topics.items
+        .flatMap((item) => item.sources)
+        .filter((source) => source.mediaType === "text").length,
+    ).toBeGreaterThan(11);
+  });
+  it("adds each podcast once and associates the domain-language example with its topic", () => {
+    const audioSources = topics.items.flatMap((item) =>
+      item.sources
+        .filter((source) => source.mediaType === "audio")
+        .map((source) => ({ topicId: item.id, source })),
+    );
+    expect(audioSources).toHaveLength(11);
+    expect(new Set(audioSources.map(({ source }) => source.url)).size).toBe(11);
+    expect(
+      audioSources.find(({ source }) =>
+        source.url.includes("f3673123-fc05-4a90-bc8c-fd368f7415d1"),
+      ),
+    ).toMatchObject({
+      topicId: "domain-language-and-complexity",
+      source: {
+        title: "Nie wieder Stille Post im Code",
+        origin: "secondary",
+        mediaType: "audio",
+        duration: "23:57",
+      },
+    });
+  });
   it("curates current sources for every topic outside the foundation path", () => {
     const foundationIds = new Set(topics.paths?.[0].topicIds);
     const expandedIds = new Set(expandedLearningTopics.map((item) => item.id));
@@ -177,7 +261,9 @@ describe("public content topics", () => {
           : "2026-09-27";
       expect(item.editorial.reviewedAt).toBe(expectedReviewDate);
       expect(
-        item.sources.every((source) => source.checkedAt === expectedReviewDate),
+        item.sources
+          .filter((source) => source.mediaType === "text")
+          .every((source) => source.checkedAt === expectedReviewDate),
       ).toBe(true);
     }
     const sourcesFor = (id: string) =>
@@ -264,7 +350,9 @@ describe("public content topics", () => {
       expect(item.editorial.reviewedAt).toBe("2026-09-27");
       expect(item.editorial.reviewDueAt).toBe("2027-03-27");
       expect(
-        item.sources.every((source) => source.checkedAt === "2026-09-27"),
+        item.sources
+          .filter((source) => source.mediaType === "text")
+          .every((source) => source.checkedAt === "2026-09-27"),
       ).toBe(true);
     }
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
@@ -327,7 +415,9 @@ describe("public content topics", () => {
       });
       expect(item.sources.length).toBeGreaterThan(0);
       expect(
-        item.sources.every((source) => source.checkedAt === "2026-09-27"),
+        item.sources
+          .filter((source) => source.mediaType === "text")
+          .every((source) => source.checkedAt === "2026-09-27"),
       ).toBe(true);
     }
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });

@@ -10,6 +10,7 @@ function primary(
     title,
     url,
     type,
+    mediaType: "text",
     origin: "primary",
     language: "en",
     checkedAt,

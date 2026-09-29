@@ -5,12 +5,15 @@ export type SourceType =
   | "official-guide"
   | "reference-site"
   | "conference-paper"
-  | "repository";
+  | "repository"
+  | "audio-summary";
 
 export type TopicSource = {
   title: string;
   url: string;
   type: SourceType;
+  mediaType: "text" | "audio";
+  duration?: string;
   origin: "primary" | "secondary";
   language: "de" | "en";
   checkedAt: string;

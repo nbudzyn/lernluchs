@@ -2,6 +2,18 @@
   list-style: none;
 }
 
+.source-audio-icon {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.35em;
+  vertical-align: -0.12em;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
 .topic-actions {
   display: flex;
   align-items: stretch;

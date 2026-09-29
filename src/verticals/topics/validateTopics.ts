@@ -1,6 +1,7 @@
 import type { TopicCollection, TopicValidation } from "./topicContract";
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+const durationPattern = /^(?:\d+:)?\d{1,2}:[0-5]\d$/;
 const editorialStatuses = new Set([
   "active",
   "watching",
@@ -53,6 +54,10 @@ export function validateTopics(candidate: TopicCollection): TopicValidation {
         !hasText(source.title) ||
         !source.url.startsWith("https://") ||
         !hasText(source.type) ||
+        !["text", "audio"].includes(source.mediaType) ||
+        (source.duration !== undefined &&
+          (source.mediaType !== "audio" ||
+            !durationPattern.test(source.duration))) ||
         !["primary", "secondary"].includes(source.origin) ||
         !["de", "en"].includes(source.language) ||
         !datePattern.test(source.checkedAt)
