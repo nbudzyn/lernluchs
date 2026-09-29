@@ -7,10 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Einmalig auf personenbezogene Daten prüfen
-
-Einmalig auf personenbezogene Daten prüfen und anbieten, sie zu entfernen oder zu anonymisieren
-
 ## Einmalig auf Secrets prüfen
 
 Einmalig auf Secrets prüfen
