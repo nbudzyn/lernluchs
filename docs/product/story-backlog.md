@@ -44,7 +44,8 @@ VOR DER IMPLEMENTIERUNG
 1. Starte die Anwendung und untersuche die bereits redesigneten Screens visuell.
 2. Untersuche zusätzlich deren Implementierung und identifiziere die etablierten Design-Tokens, wiederverwendbaren Komponenten und
    Layout-Patterns.
-3. Untersuche die beiden noch alten Screens und ihre Funktionen.
+3. Untersuche die beiden noch alten Screens und ihre Funktionen - in der Lerncheck-Auswertung insbesondere die Darstellung von richtig und
+   falsch beantworteten Fragen und die Glückwunsch-Anzeigen.
 4. Ordne deren UI-Elemente soweit sinnvoll den bereits etablierten Patterns und Komponenten zu.
 5. Bewahre die bestehenden Funktionen, fachlichen Inhalte, Datenflüsse und Nutzerabläufe.
 
@@ -52,7 +53,7 @@ IMPLEMENTIERUNG
 
 Übertrage anschließend das bestehende Design auf die beiden verbleibenden Screens.
 
-Verwenden Farben (bisher "grün" und "rot" als Signalfarben) aus der gewählten Farbpalette oder ergänze die Farbpalette harmonisch.
+Verwenden Farben (bisher "grün" und "rot" als Signalfarben) aus der gewählten Farbpalette oder ergänze die Farbpalette stilgemäß.
 
 Bevor du neue Komponenten oder neue Styling-Patterns einführst, prüfe, ob eine bereits vorhandene Lösung wiederverwendet oder sinnvoll
 erweitert werden kann.
