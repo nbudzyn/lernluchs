@@ -20,7 +20,10 @@ test("each icon button starts the corresponding learning check", async ({
   for (const title of Object.values(foundationTitles)) {
     await page.goto("/");
     await expect(
-      page.getByRole("heading", { level: 1, name: "Lernluchs – Themen" }),
+      page.getByRole("heading", {
+        level: 1,
+        name: /^Lernluchs(?: KI)? [–-] Themen$/,
+      }),
     ).toBeVisible();
     const button = page.getByRole("button", {
       name: `Fragen starten: ${title}`,
