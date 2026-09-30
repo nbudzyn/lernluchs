@@ -7,12 +7,23 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Alle Informationen zu den Themen (außer den Fragen) leicht editierbar an einem Ort
 
-## Status eines Themas auf deutsch anzeigen (nicht "active" etc.)
+Der angezeigte Status soll nicht als "active" angezeigt werden, sondern auf Deutsch (alle Status).
 
-Status auf deutsch (nicht "active" etc.)
+Alle Informationen zu den Themen sollen leicht editierbar sein und sich an in einer Datei befinden.
 
-- im Source Code selbst gern englisch
+- Aktuell sind sie an verschiedenen Stellen verstreut
+
+Außerdem sollen sie insofern leicht editierbar sein, dass der Produktivcode nirgendwo auf konkrete Texte Bezug nimmt.
+
+Auch Testcode sollte nur auf einige wenige Texte bezug nehmen. Diesesollten im Produktivcode durch einen Kommentar gekennzeichnet sein.
+
+Vertikale: Themen
+
+Abgrenzung:
+
+- Hier geht es nicht um die Fragen! Die sollen weiterhin für sich bleiben.
 
 ## Weitere UI-Verbesserungen
 
@@ -61,11 +72,6 @@ und vielleicht Sekundärquellen
 Ein Link oder Button öffnet die online-Google-KI mit dem Prompt "Das hier möchte ich lernen: " und dann dem vollständigen Texte des Themas
 inkl. Primär- und vielleicht Sekundärquellen
 
-## Bei YouTube suchen
-
-Ein Link öffnet YouTube und sucht nach einigen Kernbegriffen (vorher statisch aus den Inhalten extrahiert) - alternativ Suche nach Deutschen
-oder Englischen Begriffen?
-
 ## NF: Bezeichnungen vereinheitlichen
 
 Wir haben nur wenige fachliche Dinge in der Anwendung. Die identifizieren und auf einheitliche Begriffe festlegen (mit einheitlichen)
@@ -106,7 +112,7 @@ als zweite Pflegequelle. Sichere mit einem zunächst roten Test ab, dass jede ne
 Themen ihre relative Reihenfolge behalten und jeder Pfad in Listenreihenfolge verläuft. Ändere weder öffentliche Themenverträge noch
 Pfadinhalte.
 
-## Detaillierter redaktionelle Metadaten nur auf Wunsch zeigen
+## Detaillierte redaktionelle Metadaten nur auf Wunsch zeigen
 
 Bei redaktionelle Metadaten nur fachlich geprüft anzeigen ( "September 2026") - den Rest erst auf Klick aufklappen
 
@@ -154,14 +160,6 @@ Die Praxiserfahrung wird (analog zum grünen Haken für "gelern") in der Themenl
 - Umfassend in einem Projekt umgesetzt: Symbol soundso
 - In Leib und Blut übergegangen: Symbol soundso
 - Falls nötig werden Symbole nach den Projektregeln als Grafiken erzeugt (oder textuelle Zeichen in einer Farbe)
-
-## Themenliste und Themendetails responsiv nebeneinander oder einzeln anzeigen
-
-Bei ausreichend Platz stehen Themenliste und gewähltes Thema nebeneinander. Auf dem Handy öffnet sich das Thema in einer eigenen Ansicht;
-bei jedem Zurückkehren zur Liste, auch nach einem Lerncheck, bleiben Filterung und Scrollposition erhalten. Der Entwurf berücksichtigt
-spätere externe Aktionen zum Thema, ohne dafür zunächst ungenutzte Bedienelemente anzuzeigen.
-
-Vertikalen: Themen
 
 ## Nichtbestehen auf Wunsch lokal speichern
 
@@ -253,17 +251,6 @@ Vertikale: PWA/Zuverlässigkeit
 
 Dokumentation nach Umsetzung: Unterstützte Browser, nachgewiesene Abläufe und Release-Gates knapp in Produktstand und Qualitätsstrategie
 ergänzen.
-
-## Quellen und Videos gezielt erkunden
-
-Lernende sehen je Thema, welche Quellen und Videos verfügbar sind, erkennen deren Typ und Aktualität und öffnen externe Angebote nur nach
-bewusster Aktion. Die redaktionelle Pflege bleibt im öffentlichen Katalog; die App bietet keine Inhaltsbearbeitung. Ein ausgefallener
-externer Link blockiert das Thema nicht. Browser-Tests prüfen Anzeige und Öffnung.
-
-Vertikale: Themen
-
-Dokumentation nach Umsetzung: Tatsächliche Quell- und Videodaten, Pflege und Öffnungsverhalten knapp in Produktstand und redaktioneller
-Richtlinie ergänzen.
 
 ## Aktualisierte und ersetzte Themen nachvollziehen
 
