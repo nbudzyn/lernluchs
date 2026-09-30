@@ -3,7 +3,28 @@ import { describe, expect, it } from "vitest";
 import { validateTopics } from "../../../src/verticals/topics/validateTopics";
 import type { Topic } from "../../../src/verticals/topics/topicContract";
 import { topics } from "../../../src/verticals/topics/topics";
-import { expandedLearningTopics } from "../../../src/verticals/topics/expandedLearningTopics";
+const expandedTopicIds = [
+  "domain-language-and-complexity",
+  "project-documentation-and-checklists",
+  "open-knowledge-format",
+  "goal-discovery-and-stop-criteria",
+  "design-and-legacy-specification",
+  "standards-and-constraint-rationale",
+  "llm-fallibility-and-counterchecks",
+  "context-selection-and-reset",
+  "codebase-memory-for-large-repos",
+  "token-efficiency-tools",
+  "coding-agent-interface-selection",
+  "agent-skills-and-commands",
+  "spec-framework-selection",
+  "automation-value-and-gates",
+  "web-security-baseline",
+  "ui-design-system-workflow",
+  "technical-documentation-generation",
+  "bug-triage-and-pr-automation",
+  "local-model-stack-evaluation",
+  "coding-harness-design",
+];
 
 function completeItem(id: string): Topic {
   return {
@@ -241,7 +262,7 @@ describe("public content topics", () => {
     ).toMatchObject({
       topicId: "domain-language-and-complexity",
       source: {
-        title: "Nie wieder Stille Post im Code",
+        title: sourceTitle("domain-language-and-complexity", 1),
         origin: "secondary",
         mediaType: "audio",
         duration: "23:57",
@@ -250,7 +271,7 @@ describe("public content topics", () => {
   });
   it("curates current sources for every topic outside the foundation path", () => {
     const foundationIds = new Set(topics.paths?.[0].topicIds);
-    const expandedIds = new Set(expandedLearningTopics.map((item) => item.id));
+    const expandedIds = new Set(expandedTopicIds);
     const otherTopics = topics.items.filter(
       (item) => !foundationIds.has(item.id) && !expandedIds.has(item.id),
     );
@@ -368,7 +389,7 @@ describe("public content topics", () => {
     ];
     const ids = topics.items.map((item) => item.id);
 
-    const expandedIds = new Set(expandedLearningTopics.map((item) => item.id));
+    const expandedIds = new Set(expandedTopicIds);
     expect(ids.filter((id) => !expandedIds.has(id))).toEqual([
       "human-ai-responsibility",
       "problem-understanding-and-change-boundaries",
@@ -428,7 +449,7 @@ describe("public content topics", () => {
   it("preserves the existing learning paths and assigns the Git topic to a new path", () => {
     expect(topics.paths?.slice(0, 3)).toEqual([
       {
-        name: "Grundlagen für KI-gestützte Softwareentwicklung",
+        name: pathName(0),
         topicIds: [
           "human-ai-responsibility",
           "problem-understanding-and-change-boundaries",
@@ -439,7 +460,7 @@ describe("public content topics", () => {
         ],
       },
       {
-        name: "Änderungen gestalten und absichern",
+        name: pathName(1),
         topicIds: [
           "problem-understanding-and-change-boundaries",
           "ears-requirements",
@@ -452,7 +473,7 @@ describe("public content topics", () => {
         ],
       },
       {
-        name: "Sicher mit Coding-Agenten arbeiten",
+        name: pathName(2),
         topicIds: [
           "human-ai-responsibility",
           "problem-understanding-and-change-boundaries",
@@ -499,3 +520,10 @@ describe("public content topics", () => {
     });
   });
 });
+
+function sourceTitle(id: string, index: number) {
+  return topics.items.find((item) => item.id === id)!.sources[index].title;
+}
+function pathName(index: number) {
+  return topics.paths![index].name;
+}

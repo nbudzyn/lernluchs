@@ -1,9 +1,10 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 
 import { questionsForTopic } from "../../../src/verticals/learning-checks/questionCatalog";
 
 const id = "human-ai-responsibility";
-const title = "Mensch und KI: Verantwortung bleibt menschlich";
+const title = topicTitle("human-ai-responsibility");
 
 test("question and result inherit the editorial surfaces and remain usable", async ({
   page,
@@ -102,3 +103,7 @@ test("passed result uses the same dark palette and restrained success treatment"
     page.getByRole("navigation", { name: "Lernthemen" }),
   ).toBeVisible();
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}

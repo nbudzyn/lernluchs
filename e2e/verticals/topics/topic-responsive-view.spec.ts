@@ -1,7 +1,8 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 
-const firstTitle = "Mensch und KI: Verantwortung bleibt menschlich";
-const otherTitle = "Spec-Driven Development mit OpenSpec";
+const firstTitle = topicTitle("human-ai-responsibility");
+const otherTitle = topicTitle("spec-driven-development-openspec");
 
 test("editorial topic design adapts to color scheme and mobile touch", async ({
   page,
@@ -145,3 +146,7 @@ test("mobile list, help and topic return to the list at its former position", as
     ),
   ).toBe(true);
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}

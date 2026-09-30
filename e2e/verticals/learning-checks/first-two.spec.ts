@@ -1,12 +1,15 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 
 import { questionsForTopic } from "../../../src/verticals/learning-checks/questionCatalog";
 
 const titles = {
-  "domain-language-and-complexity":
-    "Fachsprache vereinheitlichen und Komplexität begrenzen",
-  "project-documentation-and-checklists":
-    "Projektwissen und Fertigkriterien gezielt dokumentieren",
+  "domain-language-and-complexity": topicTitle(
+    "domain-language-and-complexity",
+  ),
+  "project-documentation-and-checklists": topicTitle(
+    "project-documentation-and-checklists",
+  ),
 };
 
 test("the first two new topics start a learning check", async ({ page }) => {
@@ -51,3 +54,7 @@ test("a new learning check reveals explanations after five answers", async ({
     5,
   );
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}

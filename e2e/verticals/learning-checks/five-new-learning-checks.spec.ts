@@ -1,3 +1,4 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 
 import { fiveNewQuestions } from "../../../src/verticals/learning-checks/fiveNewQuestions";
@@ -8,12 +9,12 @@ test("starts and cancels a new standards check from the topic list", async ({
   await page.goto("/");
   await page
     .getByRole("button", {
-      name: "Fragen starten: Relevante Standards und Einschränkungen begründen",
+      name: `Fragen starten: ${topicTitle("standards-and-constraint-rationale")}`,
     })
     .click();
   await expect(
     page.getByRole("heading", {
-      name: "Relevante Standards und Einschränkungen begründen: Fragen",
+      name: `${topicTitle("standards-and-constraint-rationale")}: Fragen`,
     }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Abbrechen" }).click();
@@ -28,7 +29,7 @@ test("completes a sourced OKF check and shows answer explanations", async ({
   await page.goto("/");
   await page
     .getByRole("button", {
-      name: "Fragen starten: Langlebiges Domänenwissen mit OKF strukturieren",
+      name: `Fragen starten: ${topicTitle("open-knowledge-format")}`,
     })
     .click();
 
@@ -52,3 +53,7 @@ test("completes a sourced OKF check and shows answer explanations", async ({
     page.getByRole("link", { name: "Quelle öffnen" }).first(),
   ).toHaveAttribute("href", /open-knowledge-format/);
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}

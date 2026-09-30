@@ -1,36 +1,36 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 
 const pathCases = [
   {
-    name: "Java-/Web-Code technisch analysieren und modernisieren",
-    startingTopic: "Git-Worktrees für isolierte Änderungen nutzen",
+    name: pathName(3),
+    startingTopic: topicTitle("git-worktrees-for-isolated-changes"),
     titles: [
-      "Git-Worktrees für isolierte Änderungen nutzen",
-      "Code mit Symbol- und Referenzsuche in IDE oder LSP erschließen",
-      "Versionsbezogene Bibliotheksdokumentation mit Context7 prüfen",
-      "Modulgrenzen und öffentliche Schnittstellen gestalten",
-      "Fachverhalten mit TDD absichern",
-      "Java-Architekturregeln mit ArchUnit prüfen",
-      "Java-/Spring-Migrationen mit OpenRewrite durchführen",
-      "Webabläufe mit Playwright prüfen",
+      topicTitle("git-worktrees-for-isolated-changes"),
+      topicTitle("code-navigation-with-symbols-and-references"),
+      topicTitle("versioned-library-docs-with-context7"),
+      topicTitle("module-boundaries-and-public-interfaces"),
+      topicTitle("tdd-for-domain-behavior"),
+      topicTitle("archunit-for-java-architecture"),
+      topicTitle("java-spring-migrations-with-openrewrite"),
+      topicTitle("playwright-for-web-flows"),
     ],
-    source: "Git: git-worktree Documentation",
+    source: sourceTitle("git-worktrees-for-isolated-changes", 0),
   },
   {
-    name: "Parallele Coding-Agenten kritisch erproben",
-    startingTopic:
-      "Aufgaben und Abbruchkriterien für parallele Agenten festlegen",
+    name: pathName(4),
+    startingTopic: topicTitle("parallel-agent-task-boundaries"),
     titles: [
-      "Aufgaben und Abbruchkriterien für parallele Agenten festlegen",
-      "Git-Worktrees für isolierte Änderungen nutzen",
-      "Spezialisierte Subagents mit klarem Aufgabenbesitz einsetzen",
-      "Kontext zwischen Agenten gezielt übergeben",
-      "Werkzeugrechte und MCP-Zugriffe begrenzen",
-      "Deterministische Prüf-Gates im Agenten-Harness gestalten",
-      "KI-generierte Änderungen prüfen und übernehmen",
-      "Parallelität gegen einen seriellen Ablauf messen",
+      topicTitle("parallel-agent-task-boundaries"),
+      topicTitle("git-worktrees-for-isolated-changes"),
+      topicTitle("specialized-subagents-and-ownership"),
+      topicTitle("agent-context-handoffs"),
+      topicTitle("agent-tool-and-mcp-permissions"),
+      topicTitle("deterministic-agent-verification-gates"),
+      topicTitle("review-and-accept-ai-generated-changes"),
+      topicTitle("compare-parallel-and-serial-agent-work"),
     ],
-    source: "A practical guide to building agents - OpenAI",
+    source: sourceTitle("agent-context-handoffs", 1),
   },
 ] as const;
 
@@ -43,7 +43,7 @@ for (const path of pathCases) {
     await expect(navigation.locator("li")).toHaveCount(46);
     await expect(
       page.getByRole("button", {
-        name: "Git-Commits klein und nachvollziehbar halten",
+        name: topicTitle("focused-git-commits"),
         exact: true,
       }),
     ).toBeVisible();
@@ -78,4 +78,14 @@ for (const path of pathCases) {
       }),
     ).toHaveCount(1);
   });
+}
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}
+function sourceTitle(id: string, index: number) {
+  return topics.items.find((item) => item.id === id)!.sources[index].title;
+}
+function pathName(index: number) {
+  return topics.paths![index].name;
 }

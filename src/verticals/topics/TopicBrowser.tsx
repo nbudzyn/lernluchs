@@ -2,8 +2,20 @@ import { useLayoutEffect, useRef, useState } from "react";
 
 import { TopicHelp } from "../help";
 import { topics } from "./topics";
-import type { LearningPath, Topic, TopicSource } from "./topicContract";
+import type {
+  EditorialStatus,
+  LearningPath,
+  Topic,
+  TopicSource,
+} from "./topicContract";
 import "./TopicBrowser.css";
+
+const editorialStatusLabels: Record<EditorialStatus, string> = {
+  active: "Aktiv",
+  watching: "Unter Beobachtung",
+  archived: "Archiviert",
+  replaced: "Ersetzt",
+};
 
 type PathFilter =
   { kind: "topic"; id: string } | { kind: "path"; index: number } | null;
@@ -248,7 +260,7 @@ export function TopicBrowser({
         },
         {
           label: "Status",
-          value: selectedItem.editorial.status,
+          value: editorialStatusLabels[selectedItem.editorial.status],
           isDate: false,
         },
       ]

@@ -1,16 +1,17 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 
 test("filters with a keyboard accessible icon and keeps its row visible", async ({
   page,
 }) => {
   await page.goto("/");
-  const title = "Mensch und KI: Verantwortung bleibt menschlich";
+  const title = topicTitle("human-ai-responsibility");
   const icon = page.getByRole("button", {
     name: `Lernpfade von ${title} filtern`,
   });
   await expect(
     page.getByRole("button", {
-      name: "Lernpfade von Git-Commits klein und nachvollziehbar halten filtern",
+      name: `Lernpfade von ${topicTitle("focused-git-commits")} filtern`,
     }),
   ).toBeVisible();
   await icon.focus();
@@ -51,7 +52,7 @@ test("keeps a later clicked row in view as preceding topics disappear", async ({
 }) => {
   await page.goto("/");
   const icon = page.getByRole("button", {
-    name: "Lernpfade von Fachverhalten mit TDD absichern filtern",
+    name: `Lernpfade von ${topicTitle("tdd-for-domain-behavior")} filtern`,
   });
   await icon.scrollIntoViewIfNeeded();
   const before = await icon.boundingBox();
@@ -71,7 +72,7 @@ test("shows all active path names above the list without horizontal overflow", a
   await page.goto("/");
   await page
     .getByRole("button", {
-      name: "Lernpfade von Spec-Driven Development mit OpenSpec filtern",
+      name: `Lernpfade von ${topicTitle("spec-driven-development-openspec")} filtern`,
     })
     .click();
   const summary = page.getByRole("region", { name: "Aktive Lernpfade" });
@@ -93,14 +94,14 @@ test("closes hidden details and does not reopen them when the filter is cleared"
   page,
 }) => {
   await page.goto("/");
-  const hiddenTitle = "Git-Commits klein und nachvollziehbar halten";
+  const hiddenTitle = topicTitle("focused-git-commits");
   await page.getByRole("button", { name: hiddenTitle, exact: true }).click();
   await expect(page.getByRole("article", { name: hiddenTitle })).toBeVisible();
   const mobile = (page.viewportSize()?.width ?? 0) < 800;
   if (mobile)
     await page.getByRole("button", { name: "Zur Themenliste" }).click();
   const filter = page.getByRole("button", {
-    name: "Lernpfade von Spec-Driven Development mit OpenSpec filtern",
+    name: `Lernpfade von ${topicTitle("spec-driven-development-openspec")} filtern`,
   });
   await filter.click();
   await expect(page.getByRole("article")).toHaveCount(0);
@@ -110,7 +111,7 @@ test("closes hidden details and does not reopen them when the filter is cleared"
   ).toBeVisible();
   await expect(page.getByRole("article")).toHaveCount(0);
 
-  const keptTitle = "Problem verstehen und Änderungsgrenzen setzen";
+  const keptTitle = topicTitle("problem-understanding-and-change-boundaries");
   await page.getByRole("button", { name: keptTitle, exact: true }).click();
   if (mobile)
     await page.getByRole("button", { name: "Zur Themenliste" }).click();
@@ -131,17 +132,17 @@ test("scrolls to the first topic when a selected path is taller than the viewpor
   await page.goto("/");
   await page
     .getByRole("button", {
-      name: "Lernpfade von Problem verstehen und Änderungsgrenzen setzen filtern",
+      name: `Lernpfade von ${topicTitle("problem-understanding-and-change-boundaries")} filtern`,
     })
     .click();
   await page
     .getByRole("button", {
-      name: "Änderungen gestalten und absichern",
+      name: pathName(1),
     })
     .click();
 
   const firstTopic = page.getByRole("button", {
-    name: "Problem verstehen und Änderungsgrenzen setzen",
+    name: topicTitle("problem-understanding-and-change-boundaries"),
     exact: true,
   });
   await expect
@@ -157,17 +158,17 @@ test("selects one short path, keeps its topics visible, and restores the icon fi
 }) => {
   await page.goto("/");
   const icon = page.getByRole("button", {
-    name: "Lernpfade von Mensch und KI: Verantwortung bleibt menschlich filtern",
+    name: `Lernpfade von ${topicTitle("human-ai-responsibility")} filtern`,
   });
   await icon.click();
   const path = page.getByRole("button", {
-    name: "Grundlagen für KI-gestützte Softwareentwicklung",
+    name: pathName(0),
   });
   await path.click();
   await expect(path).toHaveAttribute("aria-pressed", "true");
   await expect(
     page.getByRole("button", {
-      name: "Kontext und Vertrauensgrenzen für Coding-Agenten",
+      name: topicTitle("coding-agent-context-and-trust-boundaries"),
       exact: true,
     }),
   ).toHaveCount(0);
@@ -184,14 +185,21 @@ test("selects one short path, keeps its topics visible, and restores the icon fi
   await icon.click();
   await expect(
     page.getByRole("button", {
-      name: "Sicher mit Coding-Agenten arbeiten",
+      name: pathName(2),
     }),
   ).toBeVisible();
   await icon.click();
   await expect(
     page.getByRole("button", {
-      name: "Git-Commits klein und nachvollziehbar halten",
+      name: topicTitle("focused-git-commits"),
       exact: true,
     }),
   ).toBeVisible();
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}
+function pathName(index: number) {
+  return topics.paths![index].name;
+}

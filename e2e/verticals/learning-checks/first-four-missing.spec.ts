@@ -1,3 +1,4 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 
 test("a newly covered context topic offers a sourced learning check", async ({
@@ -6,7 +7,7 @@ test("a newly covered context topic offers a sourced learning check", async ({
   await page.goto("/");
   await page
     .getByRole("button", {
-      name: "Fragen starten: Agentenkontext gezielt auswählen und neu ordnen",
+      name: `Fragen starten: ${topicTitle("context-selection-and-reset")}`,
     })
     .click();
   await expect(page.getByText("Frage 1 von 5")).toBeVisible();
@@ -29,3 +30,7 @@ test("a newly covered context topic offers a sourced learning check", async ({
     page.getByRole("navigation", { name: "Lernthemen" }),
   ).toBeVisible();
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}

@@ -1,16 +1,20 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
 import { remainingQuestions } from "../../../src/verticals/learning-checks/remainingQuestions";
 
 const titles = {
-  "coding-agent-context-and-trust-boundaries":
-    "Kontext und Vertrauensgrenzen für Coding-Agenten",
-  "protect-secrets-and-sensitive-data-with-ai":
-    "Geheimnisse und sensible Daten beim KI-Einsatz schützen",
-  "review-and-accept-ai-generated-changes":
-    "KI-generierte Änderungen prüfen und übernehmen",
-  "focused-git-commits": "Git-Commits klein und nachvollziehbar halten",
+  "coding-agent-context-and-trust-boundaries": topicTitle(
+    "coding-agent-context-and-trust-boundaries",
+  ),
+  "protect-secrets-and-sensitive-data-with-ai": topicTitle(
+    "protect-secrets-and-sensitive-data-with-ai",
+  ),
+  "review-and-accept-ai-generated-changes": topicTitle(
+    "review-and-accept-ai-generated-changes",
+  ),
+  "focused-git-commits": topicTitle("focused-git-commits"),
 };
 
 type TopicId = keyof typeof titles;
@@ -85,3 +89,7 @@ test("the Git topic can be passed and repeated", async ({ page }) => {
     .click();
   await expect(page.getByText("Frage 1 von 5")).toBeVisible();
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}

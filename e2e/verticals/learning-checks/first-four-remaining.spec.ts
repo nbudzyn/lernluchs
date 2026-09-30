@@ -1,3 +1,4 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 
 test("a newly covered UI topic offers a sourced learning check", async ({
@@ -6,7 +7,7 @@ test("a newly covered UI topic offers a sourced learning check", async ({
   await page.goto("/");
   await page
     .getByRole("button", {
-      name: "Fragen starten: UI-Komponenten entwerfen und sichtbar prüfen",
+      name: `Fragen starten: ${topicTitle("ui-design-system-workflow")}`,
     })
     .click();
 
@@ -28,3 +29,7 @@ test("a newly covered UI topic offers a sourced learning check", async ({
     page.getByRole("navigation", { name: "Lernthemen" }),
   ).toBeVisible();
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}

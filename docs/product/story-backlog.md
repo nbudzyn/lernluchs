@@ -7,24 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Alle Informationen zu den Themen (außer den Fragen) leicht editierbar an einem Ort
-
-Der angezeigte Status soll nicht als "active" angezeigt werden, sondern auf Deutsch (alle Status).
-
-Alle Informationen zu den Themen sollen leicht editierbar sein und sich an in einer Datei befinden.
-
-- Aktuell sind sie an verschiedenen Stellen verstreut
-
-Außerdem sollen sie insofern leicht editierbar sein, dass der Produktivcode nirgendwo auf konkrete Texte Bezug nimmt.
-
-Auch Testcode sollte nur auf einige wenige Texte bezug nehmen. Diesesollten im Produktivcode durch einen Kommentar gekennzeichnet sein.
-
-Vertikale: Themen
-
-Abgrenzung:
-
-- Hier geht es nicht um die Fragen! Die sollen weiterhin für sich bleiben.
-
 ## Weitere UI-Verbesserungen
 
 - eine Texteingabe, die Themen auch über Begriffe in der Beschreibung findet (etwa „Ope“ für „Open Spec“)
@@ -105,22 +87,9 @@ Ziel: Suchen und Code-Bearbeitung beschleunigen
 - LSP
     - IntelliJ MCP? oder ACP
 
-## NF: Reihenfolge der Themen zusammenziehen
-
-Führe neue Karte und ihre Einfügeposition an einer Stelle in der Themen-Vertikale zusammen. Entferne die getrennte ID-Liste `additionsAfter`
-als zweite Pflegequelle. Sichere mit einem zunächst roten Test ab, dass jede neue Karte genau einmal erscheint, alle 26 (?) bisherigen
-Themen ihre relative Reihenfolge behalten und jeder Pfad in Listenreihenfolge verläuft. Ändere weder öffentliche Themenverträge noch
-Pfadinhalte.
-
 ## Detaillierte redaktionelle Metadaten nur auf Wunsch zeigen
 
 Bei redaktionelle Metadaten nur fachlich geprüft anzeigen ( "September 2026") - den Rest erst auf Klick aufklappen
-
-## NF: Redaktionelle Metadaten zusammenziehen
-
-Fasse die gleichartigen Helfer in `newLearningTopics.ts` und `expandedLearningTopics.ts` zu einem internen Helfer der Themen-Vertikale
-zusammen. Halte quellenspezifische Prüfdaten weiterhin einzeln änderbar; eine spätere Prüfung einer Quelle darf nicht automatisch alle
-anderen Quellen umdatieren. Sichere bestehende Veröffentlichungs-, Prüf- und Wiedervorlagedaten durch Tests ab.
 
 ## NF: Empfehlungen für AGENTS.md-Dateien hart prüfen
 

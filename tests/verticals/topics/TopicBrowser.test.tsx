@@ -17,6 +17,22 @@ function filterSummary() {
 }
 
 describe("TopicBrowser", () => {
+  it.each([
+    ["active", "Aktiv"],
+    ["watching", "Unter Beobachtung"],
+    ["archived", "Archiviert"],
+    ["replaced", "Ersetzt"],
+  ] as const)("shows editorial status %s in German", (status, label) => {
+    const item = {
+      ...topics.items[0],
+      title: "Editierbarer Titel",
+      editorial: { ...topics.items[0].editorial, status },
+    };
+    render(<TopicBrowser items={[item]} paths={[]} />);
+    fireEvent.click(screen.getByRole("button", { name: item.title }));
+    expect(screen.getByText(label)).toBeTruthy();
+    expect(screen.queryByText(status)).toBeNull();
+  });
   it("shows accessible video links with full duration and a separate learning segment", () => {
     const topic = {
       ...topics.items[0],
@@ -57,7 +73,7 @@ describe("TopicBrowser", () => {
     expect(screen.queryByText("LERNTHEMEN")).toBeNull();
     fireEvent.click(
       screen.getByRole("button", {
-        name: "Lernpfade von Mensch und KI: Verantwortung bleibt menschlich filtern",
+        name: `Lernpfade von ${topicTitle("human-ai-responsibility")} filtern`,
       }),
     );
     expect(screen.getByText("10 / 46 Themen")).toBeTruthy();
@@ -113,12 +129,12 @@ describe("TopicBrowser", () => {
     fireEvent.click(screen.getByRole("button", { name: "Zur Themenliste" }));
     fireEvent.click(
       screen.getByRole("button", {
-        name: "Mensch und KI: Verantwortung bleibt menschlich",
+        name: topicTitle("human-ai-responsibility"),
       }),
     );
     expect(
       screen.getByRole("article", {
-        name: "Mensch und KI: Verantwortung bleibt menschlich",
+        name: topicTitle("human-ai-responsibility"),
       }),
     ).toBeTruthy();
     expect(screen.queryByRole("button", { name: "Hilfe öffnen" })).toBeNull();
@@ -128,11 +144,11 @@ describe("TopicBrowser", () => {
     render(<TopicBrowser />);
     fireEvent.click(
       screen.getByRole("button", {
-        name: "Lernpfade von Spec-Driven Development mit OpenSpec filtern",
+        name: `Lernpfade von ${topicTitle("spec-driven-development-openspec")} filtern`,
       }),
     );
     expect(filterSummary()).toBe(
-      "Gefiltert nach: Grundlagen für KI-gestützte Softwareentwicklung, Unklare Änderungswünsche in prüfbare Aufträge übersetzen, Coding-Agenten und Spec-Systeme gezielt auswählen",
+      `Gefiltert nach: ${pathName(0)}, ${pathName(6)}, ${pathName(8)}`,
     );
   });
 
@@ -186,30 +202,32 @@ describe("TopicBrowser", () => {
     ).toHaveLength(46);
     expect(
       screen.getByRole("button", {
-        name: "Mensch und KI: Verantwortung bleibt menschlich",
+        name: topicTitle("human-ai-responsibility"),
       }),
     ).toBeTruthy();
     expect(
       screen.getByRole("button", {
-        name: "Spec-Driven Development mit OpenSpec",
-      }),
-    ).toBeTruthy();
-    expect(
-      screen.getByRole("button", { name: "Webabläufe mit Playwright prüfen" }),
-    ).toBeTruthy();
-    expect(
-      screen.getByRole("button", {
-        name: "Kontext und Vertrauensgrenzen für Coding-Agenten",
+        name: topicTitle("spec-driven-development-openspec"),
       }),
     ).toBeTruthy();
     expect(
       screen.getByRole("button", {
-        name: "Geheimnisse und sensible Daten beim KI-Einsatz schützen",
+        name: topicTitle("playwright-for-web-flows"),
       }),
     ).toBeTruthy();
     expect(
       screen.getByRole("button", {
-        name: "KI-generierte Änderungen prüfen und übernehmen",
+        name: topicTitle("coding-agent-context-and-trust-boundaries"),
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole("button", {
+        name: topicTitle("protect-secrets-and-sensitive-data-with-ai"),
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole("button", {
+        name: topicTitle("review-and-accept-ai-generated-changes"),
       }),
     ).toBeTruthy();
   });
@@ -356,16 +374,16 @@ describe("TopicBrowser", () => {
 
   it.each([
     [
-      "Kontext und Vertrauensgrenzen für Coding-Agenten",
-      "OWASP LLM01:2025 Prompt Injection",
+      topicTitle("coding-agent-context-and-trust-boundaries"),
+      sourceTitle("web-security-baseline", 5),
     ],
     [
-      "Geheimnisse und sensible Daten beim KI-Einsatz schützen",
-      "OWASP LLM02:2025 Sensitive Information Disclosure",
+      topicTitle("protect-secrets-and-sensitive-data-with-ai"),
+      sourceTitle("protect-secrets-and-sensitive-data-with-ai", 0),
     ],
     [
-      "KI-generierte Änderungen prüfen und übernehmen",
-      "Review AI-generated code - GitHub Docs",
+      topicTitle("review-and-accept-ai-generated-changes"),
+      sourceTitle("review-and-accept-ai-generated-changes", 0),
     ],
   ])(
     "shows the new card %s with content, metadata, and sources",
@@ -395,14 +413,14 @@ describe("TopicBrowser", () => {
     render(<TopicBrowser />);
 
     const topic = screen.getByRole("button", {
-      name: "Mensch und KI: Verantwortung bleibt menschlich",
+      name: topicTitle("human-ai-responsibility"),
     });
     fireEvent.click(topic);
 
     expect(topic.getAttribute("aria-pressed")).toBe("true");
     expect(
       screen.getByRole("article", {
-        name: "Mensch und KI: Verantwortung bleibt menschlich",
+        name: topicTitle("human-ai-responsibility"),
       }),
     ).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Problem" })).toBeTruthy();
@@ -427,13 +445,13 @@ describe("TopicBrowser", () => {
 
     expect(
       screen.queryByRole("link", {
-        name: "NIST AI RMF Core",
+        name: sourceTitle("human-ai-responsibility", 0),
       }),
     ).toBeNull();
 
     fireEvent.click(
       screen.getByRole("button", {
-        name: "Mensch und KI: Verantwortung bleibt menschlich",
+        name: topicTitle("human-ai-responsibility"),
       }),
     );
 
@@ -443,7 +461,7 @@ describe("TopicBrowser", () => {
     expect(screen.getByText("Wiedervorlage")).toBeTruthy();
     expect(screen.getByText("Status")).toBeTruthy();
     const article = screen.getByRole("article", {
-      name: "Mensch und KI: Verantwortung bleibt menschlich",
+      name: topicTitle("human-ai-responsibility"),
     });
     expect(
       Array.from(article.querySelectorAll("section > h3"))
@@ -452,7 +470,7 @@ describe("TopicBrowser", () => {
     ).toEqual(["Quellen", "Redaktionelle Metadaten"]);
 
     const source = screen.getByRole("link", {
-      name: "NIST AI RMF Core",
+      name: sourceTitle("human-ai-responsibility", 0),
     });
     expect(source.getAttribute("href")).toBe(
       "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
@@ -464,7 +482,9 @@ describe("TopicBrowser", () => {
   it("shows primary sources first and hides an empty secondary group", () => {
     render(<TopicBrowser />);
     fireEvent.click(
-      screen.getByRole("button", { name: "Fachverhalten mit TDD absichern" }),
+      screen.getByRole("button", {
+        name: topicTitle("tdd-for-domain-behavior"),
+      }),
     );
     expect(screen.getByRole("heading", { name: "Primärquellen" })).toBeTruthy();
     expect(
@@ -476,9 +496,9 @@ describe("TopicBrowser", () => {
         .map((link) => link.textContent)
         .slice(0, 3),
     ).toEqual([
-      "Canon TDD - Kent Beck",
-      "Test Driven Development - Martin Fowler",
-      "KI bremst Senior-Devs ohne TDD aus [DE]",
+      sourceTitle("tdd-for-domain-behavior", 0),
+      sourceTitle("tdd-for-domain-behavior", 1),
+      sourceTitle("tdd-for-domain-behavior", 2) + " [DE]",
     ]);
     cleanup();
     const item = topics.items[0];
@@ -553,8 +573,12 @@ describe("TopicBrowser", () => {
       />,
     );
     fireEvent.click(screen.getByRole("button", { name: item.title }));
-    const textSource = screen.getByRole("link", { name: "NIST AI RMF Core" });
-    expect(textSource.parentElement?.textContent).toBe("NIST AI RMF Core");
+    const textSource = screen.getByRole("link", {
+      name: sourceTitle("human-ai-responsibility", 0),
+    });
+    expect(textSource.parentElement?.textContent).toBe(
+      sourceTitle("human-ai-responsibility", 0),
+    );
     const timedSource = screen.getByRole("link", {
       name: "Podcast mit Laufzeit [DE]",
     });
@@ -575,3 +599,13 @@ describe("TopicBrowser", () => {
     ).toBeTruthy();
   });
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}
+function sourceTitle(id: string, index: number) {
+  return topics.items.find((item) => item.id === id)!.sources[index].title;
+}
+function pathName(index: number) {
+  return topics.paths![index].name;
+}

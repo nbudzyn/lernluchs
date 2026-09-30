@@ -1,10 +1,11 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 
 test("a new agent topic offers a sourced learning check", async ({ page }) => {
   await page.goto("/");
   await page
     .getByRole("button", {
-      name: "Fragen starten: Spezialisierte Subagents mit klarem Aufgabenbesitz einsetzen",
+      name: `Fragen starten: ${topicTitle("specialized-subagents-and-ownership")}`,
     })
     .click();
 
@@ -26,3 +27,7 @@ test("a new agent topic offers a sourced learning check", async ({ page }) => {
     page.getByRole("navigation", { name: "Lernthemen" }),
   ).toBeVisible();
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}

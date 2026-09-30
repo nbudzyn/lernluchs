@@ -1,3 +1,4 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 
 test("shows the curated sources of topics outside the foundation path", async ({
@@ -7,25 +8,28 @@ test("shows the curated sources of topics outside the foundation path", async ({
 
   for (const [topic, expectedLinks, audioTitle] of [
     [
-      "Kontext und Vertrauensgrenzen für Coding-Agenten",
+      topicTitle("coding-agent-context-and-trust-boundaries"),
       [
-        "OWASP LLM01:2025 Prompt Injection",
-        "Risks and mitigations for GitHub Copilot cloud agent",
+        sourceTitle("web-security-baseline", 5),
+        sourceTitle("coding-agent-context-and-trust-boundaries", 1),
       ],
-      "Vektor-Rotation stoppt bösartige Befehle in READMEs",
+      sourceTitle("coding-agent-context-and-trust-boundaries", 2),
     ],
     [
-      "Modulgrenzen und öffentliche Schnittstellen gestalten",
+      topicTitle("module-boundaries-and-public-interfaces"),
       [
-        "Introduction to Modules in Java - Dev.java",
-        "Modules - Dev.java",
-        "Modules - TypeScript Handbook",
+        sourceTitle("module-boundaries-and-public-interfaces", 0),
+        sourceTitle("module-boundaries-and-public-interfaces", 1),
+        sourceTitle("module-boundaries-and-public-interfaces", 2),
       ],
       null,
     ],
     [
-      "Webabläufe mit Playwright prüfen",
-      ["Playwright Test Assertions", "Playwright Locators"],
+      topicTitle("playwright-for-web-flows"),
+      [
+        sourceTitle("playwright-for-web-flows", 0),
+        sourceTitle("playwright-for-web-flows", 1),
+      ],
       null,
     ],
   ] as const) {
@@ -63,3 +67,10 @@ test("shows the curated sources of topics outside the foundation path", async ({
     }
   }
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}
+function sourceTitle(id: string, index: number) {
+  return topics.items.find((item) => item.id === id)!.sources[index].title;
+}

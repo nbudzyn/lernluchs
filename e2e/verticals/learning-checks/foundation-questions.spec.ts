@@ -1,3 +1,4 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
@@ -5,13 +6,16 @@ import foundationQuestions from "../../../src/verticals/learning-checks/foundati
 import { congratulations } from "../../../src/verticals/learning-checks/congratulations";
 
 const foundationTitles: Record<keyof typeof foundationQuestions, string> = {
-  "human-ai-responsibility": "Mensch und KI: Verantwortung bleibt menschlich",
-  "problem-understanding-and-change-boundaries":
-    "Problem verstehen und Änderungsgrenzen setzen",
-  "agents-md": "AGENTS.md: dauerhafter Kontext für Coding-Agenten",
-  "ears-requirements": "EARS: Anforderungen präzise formulieren",
-  "research-plan-tasks": "Research, Plan und Tasks trennen",
-  "spec-driven-development-openspec": "Spec-Driven Development mit OpenSpec",
+  "human-ai-responsibility": topicTitle("human-ai-responsibility"),
+  "problem-understanding-and-change-boundaries": topicTitle(
+    "problem-understanding-and-change-boundaries",
+  ),
+  "agents-md": topicTitle("agents-md"),
+  "ears-requirements": topicTitle("ears-requirements"),
+  "research-plan-tasks": topicTitle("research-plan-tasks"),
+  "spec-driven-development-openspec": topicTitle(
+    "spec-driven-development-openspec",
+  ),
 };
 
 test("each icon button starts the corresponding learning check", async ({
@@ -86,7 +90,7 @@ test("answers five questions correctly from the topic list and shows a summary",
   await expect(page.getByRole("article")).toHaveCount(0);
   await page
     .getByRole("button", {
-      name: "Fragen starten: Mensch und KI: Verantwortung bleibt menschlich",
+      name: `Fragen starten: ${topicTitle("human-ai-responsibility")}`,
     })
     .click();
 
@@ -114,7 +118,7 @@ test("answers five questions correctly from the topic list and shows a summary",
   ).toBeVisible();
   await page
     .getByRole("button", {
-      name: "Fragen starten: Mensch und KI: Verantwortung bleibt menschlich",
+      name: `Fragen starten: ${topicTitle("human-ai-responsibility")}`,
     })
     .click();
   await expect(page.getByText("Frage 1 von 5")).toBeVisible();
@@ -125,7 +129,7 @@ test("answers five questions correctly from the topic list and shows a summary",
   ).toBeVisible();
   await page
     .getByRole("button", {
-      name: "Fragen starten: Mensch und KI: Verantwortung bleibt menschlich",
+      name: `Fragen starten: ${topicTitle("human-ai-responsibility")}`,
     })
     .click();
   await expect(page.getByText("Frage 1 von 5")).toBeVisible();
@@ -138,7 +142,7 @@ test("shows a wrong choice and keeps the result readable when its source fails",
   await page.goto("/");
   await page
     .getByRole("button", {
-      name: "Fragen starten: Mensch und KI: Verantwortung bleibt menschlich",
+      name: `Fragen starten: ${topicTitle("human-ai-responsibility")}`,
     })
     .click();
   for (let index = 0; index < 5; index += 1)
@@ -166,7 +170,7 @@ test("can cancel a run and return to the topic list", async ({ page }) => {
   await page.goto("/");
   await page
     .getByRole("button", {
-      name: "Fragen starten: AGENTS.md: dauerhafter Kontext für Coding-Agenten",
+      name: `Fragen starten: ${topicTitle("agents-md")}`,
     })
     .click();
   await page
@@ -232,3 +236,7 @@ test("each foundation pool shows sourced answer explanations", async ({
     );
   }
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}

@@ -15,10 +15,7 @@ const fourthPathIds = [
 ];
 
 it("adds the fourth path with four sourced topics in path order", () => {
-  const path = topics.paths?.find(
-    (item) =>
-      item.name === "Java-/Web-Code technisch analysieren und modernisieren",
-  );
+  const path = topics.paths?.find((item) => item.name === pathName(3));
   expect(path?.topicIds).toEqual(fourthPathIds);
   expect(
     topics.items
@@ -54,9 +51,7 @@ const fifthPathIds = [
 ];
 
 it("adds the fifth path with six sourced topics in path order", () => {
-  const path = topics.paths?.find(
-    (item) => item.name === "Parallele Coding-Agenten kritisch erproben",
-  );
+  const path = topics.paths?.find((item) => item.name === pathName(4));
   expect(path?.topicIds).toEqual(fifthPathIds);
   expect(
     topics.items
@@ -80,3 +75,7 @@ it("adds the fifth path with six sourced topics in path order", () => {
   }
   expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
 });
+
+function pathName(index: number) {
+  return topics.paths![index].name;
+}

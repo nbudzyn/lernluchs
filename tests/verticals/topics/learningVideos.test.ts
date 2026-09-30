@@ -42,16 +42,20 @@ describe("agreed learning video selection", () => {
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
-  it("keeps the four agreed first-topic videos and their original titles", () => {
+  it("keeps the four agreed first-topic videos with their durations and languages", () => {
     expect(
       topics.items[0].sources
         .filter((source) => source.mediaType === "video")
-        .map((source) => [source.title, source.duration, source.language]),
+        .map((source) => [
+          new URL(source.url).searchParams.get("v"),
+          source.duration,
+          source.language,
+        ]),
     ).toEqual([
-      ["Why AI Agents Need A Human in the Loop Now", "7:27", "en"],
-      ["Was ist Vertrauenswürdige KI?", "19:43", "de"],
-      ["What is AI Ethics?", "6:10", "en"],
-      ["How to implement AI Ethics", "3:44", "en"],
+      ["cmEJ-5zYKHA", "7:27", "en"],
+      ["sNHZjpXlZl8", "19:43", "de"],
+      ["aGwYtUzMQUk", "6:10", "en"],
+      ["muLPOvIEtaw", "3:44", "en"],
     ]);
   });
 

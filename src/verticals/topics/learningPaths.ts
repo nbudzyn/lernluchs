@@ -1,0 +1,163 @@
+import type { LearningPath } from "./topicContract";
+
+// Themen über stabile IDs referenzieren, in Reihenfolge der Themenliste.
+export const learningPaths: LearningPath[] = [
+  {
+    name: "Grundlagen für KI-gestützte Softwareentwicklung",
+    topicIds: [
+      "human-ai-responsibility",
+      "problem-understanding-and-change-boundaries",
+      "agents-md",
+      "ears-requirements",
+      "research-plan-tasks",
+      "spec-driven-development-openspec",
+    ],
+  },
+  {
+    name: "Änderungen gestalten und absichern",
+    topicIds: [
+      "problem-understanding-and-change-boundaries",
+      "ears-requirements",
+      "module-boundaries-and-public-interfaces",
+      "tdd-for-domain-behavior",
+      "archunit-for-java-architecture",
+      "playwright-for-web-flows",
+      "web-xss-and-safe-dom",
+      "dependency-security-assessment",
+    ],
+  },
+  {
+    name: "Sicher mit Coding-Agenten arbeiten",
+    topicIds: [
+      "human-ai-responsibility",
+      "problem-understanding-and-change-boundaries",
+      "agents-md",
+      "coding-agent-context-and-trust-boundaries",
+      "protect-secrets-and-sensitive-data-with-ai",
+      "research-plan-tasks",
+      "tdd-for-domain-behavior",
+      "review-and-accept-ai-generated-changes",
+    ],
+  },
+  {
+    name: "Java-/Web-Code technisch analysieren und modernisieren",
+    topicIds: [
+      "git-worktrees-for-isolated-changes",
+      "code-navigation-with-symbols-and-references",
+      "versioned-library-docs-with-context7",
+      "module-boundaries-and-public-interfaces",
+      "tdd-for-domain-behavior",
+      "archunit-for-java-architecture",
+      "java-spring-migrations-with-openrewrite",
+      "playwright-for-web-flows",
+    ],
+  },
+  {
+    name: "Parallele Coding-Agenten kritisch erproben",
+    topicIds: [
+      "parallel-agent-task-boundaries",
+      "git-worktrees-for-isolated-changes",
+      "specialized-subagents-and-ownership",
+      "agent-context-handoffs",
+      "agent-tool-and-mcp-permissions",
+      "deterministic-agent-verification-gates",
+      "review-and-accept-ai-generated-changes",
+      "compare-parallel-and-serial-agent-work",
+    ],
+  },
+  {
+    name: "Projektwissen für kleine Java-/Web-Teams pflegen",
+    topicIds: [
+      "problem-understanding-and-change-boundaries",
+      "domain-language-and-complexity",
+      "project-documentation-and-checklists",
+      "open-knowledge-format",
+      "agents-md",
+      "research-plan-tasks",
+      "focused-git-commits",
+    ],
+  },
+  {
+    name: "Unklare Änderungswünsche in prüfbare Aufträge übersetzen",
+    topicIds: [
+      "problem-understanding-and-change-boundaries",
+      "goal-discovery-and-stop-criteria",
+      "ears-requirements",
+      "design-and-legacy-specification",
+      "standards-and-constraint-rationale",
+      "llm-fallibility-and-counterchecks",
+      "research-plan-tasks",
+      "spec-driven-development-openspec",
+    ],
+  },
+  {
+    name: "Agentenkontext in großen Repositories steuern",
+    topicIds: [
+      "project-documentation-and-checklists",
+      "agents-md",
+      "context-selection-and-reset",
+      "coding-agent-context-and-trust-boundaries",
+      "codebase-memory-for-large-repos",
+      "token-efficiency-tools",
+      "code-navigation-with-symbols-and-references",
+      "versioned-library-docs-with-context7",
+    ],
+  },
+  {
+    name: "Coding-Agenten und Spec-Systeme gezielt auswählen",
+    topicIds: [
+      "spec-driven-development-openspec",
+      "coding-agent-interface-selection",
+      "agent-skills-and-commands",
+      "spec-framework-selection",
+      "specialized-subagents-and-ownership",
+      "agent-tool-and-mcp-permissions",
+    ],
+  },
+  {
+    name: "Weboberflächen und technische Dokumentation gestalten",
+    topicIds: [
+      "module-boundaries-and-public-interfaces",
+      "tdd-for-domain-behavior",
+      "playwright-for-web-flows",
+      "web-xss-and-safe-dom",
+      "ui-design-system-workflow",
+      "technical-documentation-generation",
+    ],
+  },
+  {
+    name: "Sicherheit und Qualität eines Webprodukts bewerten",
+    topicIds: [
+      "standards-and-constraint-rationale",
+      "coding-agent-context-and-trust-boundaries",
+      "protect-secrets-and-sensitive-data-with-ai",
+      "module-boundaries-and-public-interfaces",
+      "archunit-for-java-architecture",
+      "web-xss-and-safe-dom",
+      "web-security-baseline",
+      "dependency-security-assessment",
+      "review-and-accept-ai-generated-changes",
+    ],
+  },
+  {
+    name: "Wiederkehrende Entwicklungsarbeit kontrolliert automatisieren",
+    topicIds: [
+      "parallel-agent-task-boundaries",
+      "git-worktrees-for-isolated-changes",
+      "deterministic-agent-verification-gates",
+      "automation-value-and-gates",
+      "review-and-accept-ai-generated-changes",
+      "bug-triage-and-pr-automation",
+      "coding-harness-design",
+    ],
+  },
+  {
+    name: "Lokale KI-Stacks für sensible Projekte prüfen",
+    topicIds: [
+      "coding-agent-interface-selection",
+      "agent-tool-and-mcp-permissions",
+      "local-model-stack-evaluation",
+      "coding-harness-design",
+    ],
+  },
+];

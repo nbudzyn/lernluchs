@@ -1,19 +1,22 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
 import { secondPathQuestions } from "../../../src/verticals/learning-checks/secondPathQuestions";
 
 const titles = {
-  "module-boundaries-and-public-interfaces":
-    "Modulgrenzen und öffentliche Schnittstellen gestalten",
-  "tdd-for-domain-behavior": "Fachverhalten mit TDD absichern",
-  "archunit-for-java-architecture":
-    "Java-Architekturregeln mit ArchUnit prüfen",
-  "playwright-for-web-flows": "Webabläufe mit Playwright prüfen",
-  "web-xss-and-safe-dom":
-    "Web-Sicherheitsrisiken wie XSS und unsichere DOM-Nutzung erkennen",
-  "dependency-security-assessment":
-    "Abhängigkeiten und Sicherheitslücken risikobasiert bewerten",
+  "module-boundaries-and-public-interfaces": topicTitle(
+    "module-boundaries-and-public-interfaces",
+  ),
+  "tdd-for-domain-behavior": topicTitle("tdd-for-domain-behavior"),
+  "archunit-for-java-architecture": topicTitle(
+    "archunit-for-java-architecture",
+  ),
+  "playwright-for-web-flows": topicTitle("playwright-for-web-flows"),
+  "web-xss-and-safe-dom": topicTitle("web-xss-and-safe-dom"),
+  "dependency-security-assessment": topicTitle(
+    "dependency-security-assessment",
+  ),
 };
 
 type TopicId = keyof typeof titles;
@@ -124,3 +127,7 @@ test("a new run draws five questions again", async ({ page }) => {
   }
   expect(seen.size).toBe(5);
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}

@@ -1,3 +1,4 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 
 test("shows learning videos without external loading and opens one on request", async ({
@@ -19,7 +20,7 @@ test("shows learning videos without external loading and opens one on request", 
   await page.goto("/");
   await page
     .getByRole("button", {
-      name: "Mensch und KI: Verantwortung bleibt menschlich",
+      name: topicTitle("human-ai-responsibility"),
       exact: true,
     })
     .click();
@@ -28,11 +29,11 @@ test("shows learning videos without external loading and opens one on request", 
     article.getByRole("img", { name: "Video", exact: true }),
   ).toHaveCount(4);
   const german = article.getByRole("link", {
-    name: "Was ist Vertrauenswürdige KI? [DE]",
+    name: sourceTitle("human-ai-responsibility", 3) + " [DE]",
     exact: true,
   });
   await expect(german.locator("..")).toHaveText(
-    "Was ist Vertrauenswürdige KI? [DE] 19:43",
+    `${sourceTitle("human-ai-responsibility", 3)} [DE] 19:43`,
   );
   await expect(german).toHaveAttribute("target", "_blank");
   await expect(page.locator("iframe, video, img[src*='youtube']")).toHaveCount(
@@ -50,7 +51,7 @@ test("shows learning videos without external loading and opens one on request", 
     await page.getByRole("button", { name: "Zur Themenliste" }).click();
   await page
     .getByRole("button", {
-      name: "EARS: Anforderungen präzise formulieren",
+      name: topicTitle("ears-requirements"),
       exact: true,
     })
     .click();
@@ -68,12 +69,12 @@ test("shows learning videos without external loading and opens one on request", 
     await page.getByRole("button", { name: "Zur Themenliste" }).click();
   await page
     .getByRole("button", {
-      name: "Werkzeugrechte und MCP-Zugriffe begrenzen",
+      name: topicTitle("agent-tool-and-mcp-permissions"),
       exact: true,
     })
     .click();
   const longVideo = article.getByRole("link", {
-    name: "MCP Security: Sicherheitsrisiken beim Model Context Protocol | Security Podcast [DE]",
+    name: sourceTitle("agent-tool-and-mcp-permissions", 2) + " [DE]",
     exact: true,
   });
   await expect(longVideo.locator("..")).not.toContainText("Gesamtlänge:");
@@ -87,3 +88,10 @@ test("shows learning videos without external loading and opens one on request", 
     ),
   ).toBe(true);
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}
+function sourceTitle(id: string, index: number) {
+  return topics.items.find((item) => item.id === id)!.sources[index].title;
+}

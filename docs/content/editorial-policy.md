@@ -2,6 +2,11 @@
 
 ## Sprache und Stil
 
+Themen einschließlich aller Quellen und Metadaten werden in `src/verticals/topics/topics.ts` gepflegt; die Reihenfolge der Einträge ist
+die Themenlistenreihenfolge. Lernpfade stehen separat in `src/verticals/topics/learningPaths.ts` und referenzieren stabile Themen-IDs in
+Listenreihenfolge. IDs bleiben bei Textänderungen erhalten. Quellenprüfdaten werden je Quelle geändert, nicht pauschal für andere Quellen.
+Fragen bleiben in der Lernchecks-Vertikale. Bewusste Testbindungen an einzelne redaktionelle Texte sind an deren Definition kommentiert.
+
 Die Anwendung und ihre Inhalte sind deutsch. Etablierte englische Fachbegriffe wie „Worktree“, „Spec-Driven Development“ oder „Context
 Engineering“ bleiben unübersetzt. Themen sind knapp, konkret und anwendungsnah; sie ersetzen keine langen Originaldokumentationen.
 

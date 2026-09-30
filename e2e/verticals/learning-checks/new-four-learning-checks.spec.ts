@@ -1,3 +1,4 @@
+import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 
 import { newFourQuestions } from "../../../src/verticals/learning-checks/newFourQuestions";
@@ -8,7 +9,7 @@ test("a newly covered parallel-agent topic completes a sourced check", async ({
   await page.goto("/");
   await page
     .getByRole("button", {
-      name: "Fragen starten: Aufgaben und Abbruchkriterien für parallele Agenten festlegen",
+      name: `Fragen starten: ${topicTitle("parallel-agent-task-boundaries")}`,
     })
     .click();
 
@@ -46,3 +47,7 @@ test("a newly covered parallel-agent topic completes a sourced check", async ({
     page.getByRole("link", { name: "Quelle öffnen" }).first(),
   ).toHaveAttribute("href", /^https:\/\//);
 });
+
+function topicTitle(id: string) {
+  return topics.items.find((item) => item.id === id)!.title;
+}

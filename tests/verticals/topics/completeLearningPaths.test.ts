@@ -57,7 +57,7 @@ const newIds = [
 
 const existingPaths = [
   {
-    name: "Grundlagen für KI-gestützte Softwareentwicklung",
+    name: pathName(0),
     topicIds: [
       "human-ai-responsibility",
       "problem-understanding-and-change-boundaries",
@@ -68,7 +68,7 @@ const existingPaths = [
     ],
   },
   {
-    name: "Änderungen gestalten und absichern",
+    name: pathName(1),
     topicIds: [
       "problem-understanding-and-change-boundaries",
       "ears-requirements",
@@ -81,7 +81,7 @@ const existingPaths = [
     ],
   },
   {
-    name: "Sicher mit Coding-Agenten arbeiten",
+    name: pathName(2),
     topicIds: [
       "human-ai-responsibility",
       "problem-understanding-and-change-boundaries",
@@ -94,7 +94,7 @@ const existingPaths = [
     ],
   },
   {
-    name: "Java-/Web-Code technisch analysieren und modernisieren",
+    name: pathName(3),
     topicIds: [
       "git-worktrees-for-isolated-changes",
       "code-navigation-with-symbols-and-references",
@@ -107,7 +107,7 @@ const existingPaths = [
     ],
   },
   {
-    name: "Parallele Coding-Agenten kritisch erproben",
+    name: pathName(4),
     topicIds: [
       "parallel-agent-task-boundaries",
       "git-worktrees-for-isolated-changes",
@@ -156,9 +156,7 @@ describe("vollständige Lernpfade", () => {
       topics.items.some((item) => item.id === "independent-agent-review"),
     ).toBe(false);
     const automationPath = topics.paths?.find(
-      (path) =>
-        path.name ===
-        "Wiederkehrende Entwicklungsarbeit kontrolliert automatisieren",
+      (path) => path.name === pathName(11),
     );
     expect(
       automationPath?.topicIds.filter(
@@ -170,14 +168,14 @@ describe("vollständige Lernpfade", () => {
   it("bewahrt die fünf Pfade und ordnet jedes Thema in mindestens einen neuen oder alten Pfad", () => {
     expect(topics.paths?.slice(0, 5)).toEqual(existingPaths);
     expect(topics.paths?.slice(5).map((path) => path.name)).toEqual([
-      "Projektwissen für kleine Java-/Web-Teams pflegen",
-      "Unklare Änderungswünsche in prüfbare Aufträge übersetzen",
-      "Agentenkontext in großen Repositories steuern",
-      "Coding-Agenten und Spec-Systeme gezielt auswählen",
-      "Weboberflächen und technische Dokumentation gestalten",
-      "Sicherheit und Qualität eines Webprodukts bewerten",
-      "Wiederkehrende Entwicklungsarbeit kontrolliert automatisieren",
-      "Lokale KI-Stacks für sensible Projekte prüfen",
+      pathName(5),
+      pathName(6),
+      pathName(7),
+      pathName(8),
+      pathName(9),
+      pathName(10),
+      pathName(11),
+      pathName(12),
     ]);
     const positions = new Map(
       topics.items.map((item, index) => [item.id, index]),
@@ -195,3 +193,7 @@ describe("vollständige Lernpfade", () => {
     }
   });
 });
+
+function pathName(index: number) {
+  return topics.paths![index].name;
+}
