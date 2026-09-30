@@ -3,7 +3,7 @@ import "./TopicHelp.css";
 export function TopicHelp() {
   return (
     <section aria-label="Hilfe zu Themen" className="topic-help-content">
-      <h2>Orientierung</h2>
+      <h2>Hilfe</h2>
       <ul>
         <li>Klick auf ein Thema öffnet das Thema</li>
         <li>
@@ -12,7 +12,7 @@ export function TopicHelp() {
           </svg>{" "}
           <span>filtert nach allen Lernpfaden mit diesem Thema</span>
         </li>
-        <li>Lernpfad-Filterung unter der Themenliste</li>
+        <li>Aktive Lernpfade stehen über der Themenliste</li>
         <li>Klick auf einen Lernpfad filtert auf diesen einen Lernpfad</li>
         <li>
           <svg aria-hidden="true" viewBox="0 0 28 24">

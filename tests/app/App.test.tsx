@@ -10,7 +10,7 @@ describe("App", () => {
     render(<App />);
 
     expect(
-      screen.getByRole("heading", { name: "Lernluchs – Themen" }),
+      screen.getByRole("heading", { name: "Lernluchs KI – Themen" }),
     ).toBeTruthy();
     expect(screen.getByRole("navigation", { name: "Lernthemen" })).toBeTruthy();
   });
@@ -23,7 +23,9 @@ describe("App", () => {
         name: "Fragen starten: Mensch und KI: Verantwortung bleibt menschlich",
       }),
     );
-    expect(screen.getByRole("heading", { name: /^Lernluchs$/ })).toBeTruthy();
+    expect(
+      screen.getByRole("heading", { name: /^Lernluchs KI$/ }),
+    ).toBeTruthy();
     expect(screen.getByText("Frage 1 von 5")).toBeTruthy();
     expect(screen.queryByRole("article")).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "Abbrechen" }));

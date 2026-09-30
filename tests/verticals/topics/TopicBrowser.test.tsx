@@ -7,10 +7,54 @@ import { topics } from "../../../src/verticals/topics/topics";
 afterEach(cleanup);
 
 function filterSummary() {
-  return document.querySelector(".path-filter-summary")?.textContent;
+  const summary = document.querySelector(".path-filter-summary");
+  if (!summary) return undefined;
+  return `${summary.querySelector(".path-filter-label")?.textContent}: ${Array.from(
+    summary.querySelectorAll(".path-name-button"),
+  )
+    .map((button) => button.textContent)
+    .join(", ")}`;
 }
 
 describe("TopicBrowser", () => {
+  it("shows active paths before the list and visible versus total topic counts", () => {
+    render(<TopicBrowser />);
+    expect(screen.getByText("46 Themen")).toBeTruthy();
+    expect(screen.queryByText("LERNTHEMEN")).toBeNull();
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: "Lernpfade von Mensch und KI: Verantwortung bleibt menschlich filtern",
+      }),
+    );
+    expect(screen.getByText("10 / 46 Themen")).toBeTruthy();
+    const summary = screen.getByRole("region", { name: "Aktive Lernpfade" });
+    const list = screen.getByRole("navigation", { name: "Lernthemen" });
+    expect(
+      summary.compareDocumentPosition(list) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Filter aufheben" }));
+    expect(screen.getByText("46 Themen")).toBeTruthy();
+    expect(summary.isConnected).toBe(false);
+  });
+
+  it("shows every matching path without a fixed path limit", () => {
+    const item = topics.items[0];
+    const paths = Array.from({ length: 12 }, (_, index) => ({
+      name: `Lernpfad ${index + 1}`,
+      topicIds: [item.id],
+    }));
+    render(<TopicBrowser items={[item]} paths={paths} />);
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: `Lernpfade von ${item.title} filtern`,
+      }),
+    );
+    expect(
+      screen.getAllByRole("button", { name: /^Lernpfad \d+$/ }),
+    ).toHaveLength(12);
+    expect(screen.getByText("1 / 1 Themen")).toBeTruthy();
+  });
+
   it("shows the guidance before selection and opens help from the list", () => {
     render(<TopicBrowser />);
     expect(
@@ -18,7 +62,7 @@ describe("TopicBrowser", () => {
     ).toBeTruthy();
     for (const text of [
       "filtert nach allen Lernpfaden mit diesem Thema",
-      "Lernpfad-Filterung unter der Themenliste",
+      "Aktive Lernpfade stehen über der Themenliste",
       "Klick auf einen Lernpfad filtert auf diesen einen Lernpfad",
       "startet einen Test",
       "Test bestanden",
@@ -54,7 +98,7 @@ describe("TopicBrowser", () => {
       }),
     );
     expect(filterSummary()).toBe(
-      "Themen gefiltert nach Lernpfaden: Grundlagen für KI-gestützte Softwareentwicklung, Unklare Änderungswünsche in prüfbare Aufträge übersetzen, Coding-Agenten und Spec-Systeme gezielt auswählen",
+      "Gefiltert nach: Grundlagen für KI-gestützte Softwareentwicklung, Unklare Änderungswünsche in prüfbare Aufträge übersetzen, Coding-Agenten und Spec-Systeme gezielt auswählen",
     );
   });
 
@@ -159,9 +203,7 @@ describe("TopicBrowser", () => {
       screen.getByRole("navigation", { name: "Lernthemen" }).textContent,
     ).not.toContain("Thema 3");
     expect(screen.queryByRole("article", { name: "Thema 3" })).toBeNull();
-    expect(filterSummary()).toBe(
-      "Themen gefiltert nach Lernpfaden: Früher, Später",
-    );
+    expect(filterSummary()).toBe("Gefiltert nach: Früher, Später");
     expect(
       screen
         .getAllByRole("button", { name: /^Thema \d$/ })
@@ -175,7 +217,7 @@ describe("TopicBrowser", () => {
       screen.getByRole("button", { name: "Lernpfade von Thema 2 filtern" }),
     );
     expect(screen.queryByRole("article", { name: "Thema 0" })).toBeNull();
-    expect(filterSummary()).toBe("Themen gefiltert nach Lernpfad: Später");
+    expect(filterSummary()).toBe("Gefiltert nach: Später");
     expect(
       screen
         .getAllByRole("button", { name: /^Thema \d$/ })
@@ -270,9 +312,7 @@ describe("TopicBrowser", () => {
     fireEvent.click(
       screen.getByRole("button", { name: "Lernpfade von Geändert 0 filtern" }),
     );
-    expect(filterSummary()).toBe(
-      "Themen gefiltert nach Lernpfaden: Kurz, Lang früh, Lang spät",
-    );
+    expect(filterSummary()).toBe("Gefiltert nach: Kurz, Lang früh, Lang spät");
     expect(
       screen
         .getAllByRole("button", { name: /^Geändert \d$/ })

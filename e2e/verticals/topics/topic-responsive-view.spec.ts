@@ -3,6 +3,36 @@ import { expect, test } from "@playwright/test";
 const firstTitle = "Mensch und KI: Verantwortung bleibt menschlich";
 const otherTitle = "Spec-Driven Development mit OpenSpec";
 
+test("editorial topic design adapts to color scheme and mobile touch", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 740 });
+  await page.emulateMedia({ colorScheme: "light" });
+  await page.goto("/");
+  await expect(page).toHaveTitle("Lernluchs KI");
+  const stage = page.locator(".topic-stage");
+  const topic = page.getByRole("button", { name: firstTitle, exact: true });
+  const help = page.getByRole("button", { name: "Hilfe öffnen" });
+  const light = await stage.evaluate((element) => ({
+    background: getComputedStyle(element).backgroundColor,
+    color: getComputedStyle(element).color,
+  }));
+  expect(light.background).not.toBe("rgba(0, 0, 0, 0)");
+  expect((await topic.boundingBox())?.height).toBeGreaterThanOrEqual(44);
+  expect((await help.boundingBox())?.height).toBeGreaterThanOrEqual(44);
+
+  await page.emulateMedia({ colorScheme: "dark" });
+  const dark = await stage.evaluate((element) => ({
+    background: getComputedStyle(element).backgroundColor,
+    color: getComputedStyle(element).color,
+  }));
+  expect(dark.background).not.toBe(light.background);
+  expect(dark.color).not.toBe(light.color);
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth),
+  ).toBeLessThanOrEqual(390);
+});
+
 test("wide view restores the same filter, scroll and independent detail after a check", async ({
   page,
 }) => {

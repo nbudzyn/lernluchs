@@ -23,17 +23,18 @@ test("filters with a keyboard accessible icon and keeps its row visible", async 
   expect(iconBox.height).toBeLessThanOrEqual(before.height);
   await page.keyboard.press("Enter");
   await expect(icon).toHaveAttribute("aria-pressed", "true");
-  await expect(
-    page.getByText(/Themen gefiltert nach Lernpfaden:/),
-  ).toBeVisible();
+  const summary = page.locator(".path-filter-summary");
+  await expect(summary.getByText("Gefiltert nach")).toBeVisible();
+  await expect(page.getByText("10 / 46 Themen")).toBeVisible();
   const after = await row.boundingBox();
+  const summaryBox = await summary.boundingBox();
   if (!after) throw new Error("Filtered topic row disappeared");
+  if (!summaryBox) throw new Error("Active paths are not visible");
   expect(Math.abs(after.x - before.x)).toBeLessThan(2);
-  expect(Math.abs(after.y - before.y)).toBeLessThan(2);
-  await icon.click();
-  await expect(page.getByText(/Themen gefiltert nach Lernpfaden:/)).toHaveCount(
-    0,
-  );
+  expect(summaryBox.y + summaryBox.height).toBeLessThanOrEqual(after.y);
+  await page.getByRole("button", { name: "Filter aufheben" }).click();
+  await expect(summary).toHaveCount(0);
+  await expect(page.getByText("46 Themen")).toBeVisible();
   await page.getByRole("button", { name: title, exact: true }).click();
   await expect(
     page.getByRole("heading", {
@@ -61,6 +62,31 @@ test("keeps a later clicked row in view as preceding topics disappear", async ({
   expect(after.y).toBeGreaterThanOrEqual(0);
   expect(after.y).toBeLessThan(await page.evaluate(() => window.innerHeight));
   expect(Math.abs(after.x - before.x)).toBeLessThan(2);
+});
+
+test("shows all active path names above the list without horizontal overflow", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 740 });
+  await page.goto("/");
+  await page
+    .getByRole("button", {
+      name: "Lernpfade von Spec-Driven Development mit OpenSpec filtern",
+    })
+    .click();
+  const summary = page.getByRole("region", { name: "Aktive Lernpfade" });
+  await expect(summary.locator(".path-name-button")).toHaveCount(3);
+  await expect(page.getByText("15 / 46 Themen")).toBeVisible();
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth),
+  ).toBeLessThanOrEqual(320);
+  const summaryBox = await summary.boundingBox();
+  const listBox = await page
+    .getByRole("navigation", { name: "Lernthemen" })
+    .boundingBox();
+  expect(
+    summaryBox && listBox && summaryBox.y + summaryBox.height <= listBox.y,
+  ).toBeTruthy();
 });
 
 test("closes hidden details and does not reopen them when the filter is cleared", async ({

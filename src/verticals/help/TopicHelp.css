@@ -3,30 +3,62 @@
 }
 
 .topic-help-content h2 {
-  margin-top: 0;
+  margin: 0 0 0.65rem;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.7rem, 2.5vw, 2.35rem);
+  font-weight: 400;
+  line-height: 1.2;
 }
 
 .topic-help-content ul {
-  padding-left: 1.4rem;
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
 }
 
 .topic-help-content li {
-  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: start;
+  gap: 0.65rem;
+  min-height: 2.75rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--line);
+  line-height: 1.5;
+}
+
+.topic-help-content li::before {
+  content: "·";
+  flex: none;
+  width: 1.3rem;
+  color: var(--accent);
+  font-weight: 700;
+  text-align: center;
+}
+
+.topic-help-content li:has(svg, .help-passed-icon)::before {
+  display: none;
+}
+
+.topic-help-content svg,
+.help-passed-icon {
+  flex: none;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-top: 0.1rem;
 }
 
 .topic-help-content svg {
-  width: 1.2em;
-  height: 1.2em;
-  vertical-align: -0.2em;
   fill: none;
-  stroke: currentColor;
+  stroke: var(--accent);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.7;
 }
 
 .help-passed-icon {
-  color: #167a34;
+  color: var(--accent);
   font-weight: 700;
-  white-space: nowrap;
+  text-align: center;
 }

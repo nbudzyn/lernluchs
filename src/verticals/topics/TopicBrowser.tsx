@@ -169,6 +169,21 @@ export function TopicBrowser({
     }
     setFilter({ kind: "path", index });
   }
+
+  function clearFilter() {
+    const firstVisibleId = visibleItems[0]?.id;
+    if (firstVisibleId) {
+      rowRefs.current
+        .get(firstVisibleId)
+        ?.querySelector<HTMLButtonElement>(
+          ".topic-actions > button:not(.path-filter-button)",
+        )
+        ?.focus({ preventScroll: true });
+    }
+    anchor.current = null;
+    scrollToPath.current = false;
+    setFilter(null);
+  }
   const selectedItem = items.find((item) => item.id === selectedId);
   function openMobileView(view: "topic" | "help") {
     if (window.matchMedia?.("(max-width: 799px)").matches) {
@@ -223,19 +238,60 @@ export function TopicBrowser({
   return (
     <div className="topic-browser" data-mobile-view={mobileView}>
       <div className="topic-browser-list">
-        {mobileView === "list" && (
-          <button
-            aria-label="Hilfe öffnen"
-            className="topic-help-button"
-            type="button"
-            title="Hilfe öffnen"
-            onClick={() => openMobileView("help")}
+        <div className="topic-list-header">
+          <div>
+            <h2>Themen</h2>
+            {!filter && (
+              <p className="topic-list-count">{items.length} Themen</p>
+            )}
+          </div>
+          {mobileView === "list" && (
+            <button
+              aria-label="Hilfe öffnen"
+              className="topic-help-button"
+              type="button"
+              title="Hilfe öffnen"
+              onClick={() => openMobileView("help")}
+            >
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M9.5 9a2.5 2.5 0 1 1 4.3 1.7c-.9.8-1.8 1.3-1.8 2.8M12 17h.01" />
+              </svg>
+            </button>
+          )}
+        </div>
+        {activePaths.length > 0 && (
+          <section
+            className="path-filter-summary"
+            aria-label="Aktive Lernpfade"
           >
-            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M9.5 9a2.5 2.5 0 1 1 4.3 1.7c-.9.8-1.8 1.3-1.8 2.8M12 17h.01" />
-            </svg>
-          </button>
+            <div className="path-filter-heading">
+              <div>
+                <p className="path-filter-label">Gefiltert nach</p>
+                <p className="path-filter-count">
+                  {visibleItems.length} / {items.length} Themen
+                </p>
+              </div>
+              <button type="button" onClick={clearFilter}>
+                Filter aufheben
+              </button>
+            </div>
+            <div className="path-filter-options">
+              {sortedPaths.map((path) => (
+                <button
+                  key={paths.indexOf(path)}
+                  aria-pressed={
+                    filter?.kind === "path" && paths[filter.index] === path
+                  }
+                  className="path-name-button"
+                  onClick={() => selectPath(paths.indexOf(path))}
+                  type="button"
+                >
+                  {path.name}
+                </button>
+              ))}
+            </div>
+          </section>
         )}
         <nav aria-label="Lernthemen">
           <ul className="topic-list">
@@ -314,28 +370,6 @@ export function TopicBrowser({
             ))}
           </ul>
         </nav>
-
-        {activePaths.length > 0 && (
-          <p className="path-filter-summary">
-            Themen gefiltert nach{" "}
-            {activePaths.length === 1 ? "Lernpfad" : "Lernpfaden"}:{" "}
-            {sortedPaths.map((path, index) => (
-              <span key={paths.indexOf(path)}>
-                {index > 0 ? ", " : null}
-                <button
-                  aria-pressed={
-                    filter?.kind === "path" && paths[filter.index] === path
-                  }
-                  className="path-name-button"
-                  onClick={() => selectPath(paths.indexOf(path))}
-                  type="button"
-                >
-                  {path.name}
-                </button>
-              </span>
-            ))}
-          </p>
-        )}
       </div>
 
       <div className="topic-browser-detail">

@@ -29,7 +29,9 @@ export function App() {
         aria-hidden={activeCheck !== null}
         inert={activeCheck !== null}
       >
-        <h1>Lernluchs – Themen</h1>
+        <header className="topic-stage-header">
+          <h1>Lernluchs KI – Themen</h1>
+        </header>
         <LearningProgressNotice notice={progress.notice} />
         <TopicBrowser
           learnedTopicIds={progress.learnedTopicIds}
@@ -45,7 +47,7 @@ export function App() {
       </div>
       {activeCheck && (
         <div className="learning-check-overlay">
-          <h1>Lernluchs</h1>
+          <h1>Lernluchs KI</h1>
           <LearningCheck
             topicId={activeCheck.id}
             title={activeCheck.title}
