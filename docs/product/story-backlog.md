@@ -7,11 +7,12 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Nutzerwege anpassen - weitere Schritte
+## Visuelles redesign
 
-Analysiere zunächst die bestehende Anwendung vollständig, insbesondere alle vier Screens.
+Analysiere zunächst die bestehende Anwendung vollständig, insbesondere alle Screens: Themenliste, Hilfe, Themendetailansicht, Frage und
+Lerncheck-Ergebnis.
 
-Die Anwendung funktioniert und die derzeitigen Nutzerabläufe sollen grundsätzlich erhalten bleiben.
+Die Anwendung funktioniert, und die derzeitigen Nutzerabläufe sollen grundsätzlich erhalten bleiben.
 
 Die bestehende visuelle Gestaltung ist dagegen NICHT erhaltenswert. Betrachte sie ausschließlich als funktionalen Prototyp.
 
@@ -20,7 +21,7 @@ ZIEL
 Redesigne die gesamte Anwendung visuell von Grund auf.
 
 Sie soll wie eine sorgfältig von einem sehr guten Product-Design-Team gestaltete, moderne Web-Anwendung wirken – nicht wie ein generisches
-AI-generiertes React-Dashboard.
+AI-generiertes React-Dashboard. Sie soll Professionalität und Stabilität vermitteln.
 
 WICHTIG
 
@@ -79,48 +80,31 @@ Die Anwendung soll:
 
 Gute Typografie, Proportionen, Weißraum, Hierarchie und Konsistenz sind wichtiger als Effekte.
 
+Die Anwendung soll für schmale Bildschirme (mobile Geräte) wie für breite Bildschirme (Desktop, Tablet) sehr gut zu benutzen sein. Texte
+sollen gut lesbar sein. Die Anwendung soll einen Dark Mode besitzen, automatisch gesteuert durch den Browser / das Betriebssystem. Die
+Anwendung soll barriefrei sein.
+
 VOR DER IMPLEMENTIERUNG
 
-1. Untersuche alle vier Screens.
+1. Untersuche ALLE Screens - sowohl für schmale wie auch wie breite Bildschirme
 2. Identifiziere die vorhandenen UI-Patterns und Komponenten.
 3. Trenne funktionale Anforderungen von zufälligen Eigenschaften des aktuellen Designs.
 4. Entwickle daraus EINE konsistente visuelle Designsprache für die gesamte Anwendung.
 5. Definiere die wichtigsten Design-Tokens und Komponenten.
 6. Prüfe deinen Entwurf kritisch auf typische "AI Slop"-Muster.
 
-Danach implementiere das Redesign über alle vier Screens.
+Danach implementiere das Redesign über ALLE Screens.
 
 Wichtig:
 Optimiere nicht einfach das vorhandene CSS. Die Anwendung darf deutlich anders aussehen.
 
 Behandle das bestehende UI als funktionierenden Prototyp, der jetzt sein eigentliches Product Design bekommt.
 
----
-
-technisches Professional Tool
-
----
+## Weitere UI-Verbesserungen
 
 - Ein Filter muss sich leicht ändern oder vollständig aufheben lassen; Lernende sollen jederzeit zur gesamten Themenliste zurückfinden.
-- Spätere Aktionen aus einem Thema heraus, etwa eine Suche bei ChatGPT oder auf YouTube, werden im Entwurf berücksichtigt; sie öffnen
-  externe Angebote erst nach bewusster Auswahl.
-
-Für spätere Ausbauschritte vormerken, noch nicht in dieser Story umsetzen: eine Texteingabe, die Themen auch über Begriffe in der
-Beschreibung findet (etwa „Ope“ für „Open Spec“), sowie einen kompakten alternativen Einstieg über einen oder mehrere Lernpfade auf
-derselben Seite. Die Entwürfe sollen diese Erweiterungen ermöglichen, ohne dafür zunächst leere Fläche zu reservieren.
-
-Mittelfristiges Ziel: Besseres UI-Design
-
-Die Oberfläche soll motivierend, aber nicht ablenkend sein.
-
-Kein Scrollen links-rechts
-
-Der Inhalt steht im Vordergrund. Bedienelemente und statische Texte sollen wenig Platz verschwenden
-
-- Texte sollen gut lesbar sein
-- Auf dem PC mit Tasten bedienbar
-- Auch auf Handy gut bedienbar
-- Barrierefrei
+- eine Texteingabe, die Themen auch über Begriffe in der Beschreibung findet (etwa „Ope“ für „Open Spec“)
+- ein kompakten alternativer Einstieg über einen oder mehrere Lernpfade auf derselben Seite.
 
 ## DANACH
 
