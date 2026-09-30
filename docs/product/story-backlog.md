@@ -81,6 +81,12 @@ Prüfe außerdem, dass durch das Redesign keine bestehenden Funktionen oder Nutz
 Wichtig:
 Nicht nach erfolgreichem Build aufhören. Das visuelle Ergebnis in der laufenden Anwendung ist Teil der Definition of Done.
 
+## Status eines Themas auf deutsch anzeigen (nicht "active" etc.)
+
+Status auf deutsch (nicht "active" etc.)
+
+- im Source Code selbst gern englisch
+
 ## Weitere UI-Verbesserungen
 
 - eine Texteingabe, die Themen auch über Begriffe in der Beschreibung findet (etwa „Ope“ für „Open Spec“)
