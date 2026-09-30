@@ -7,12 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Status eines Themas auf deutsch anzeigen (nicht "active" etc.)
-
-Status auf deutsch (nicht "active" etc.)
-
-- im Source Code selbst gern englisch
-
 ## 100 neue Entwicklungen ermitteln und den Themen hinzufügen
 
 100 neue KI-Entwicklungen vor Oktober 2026 ermitteln. Mit den existierenden Themen abgleichen und Vorschläge dem Entwickler darstellen:
@@ -23,6 +17,12 @@ Status auf deutsch (nicht "active" etc.)
 - Welche neuen Lernpfade sollte es geben, damit auch alle neuen Themen abgedeckt sind?
 
 Noch nichts im Code ändern.
+
+## Status eines Themas auf deutsch anzeigen (nicht "active" etc.)
+
+Status auf deutsch (nicht "active" etc.)
+
+- im Source Code selbst gern englisch
 
 ## Weitere UI-Verbesserungen
 
