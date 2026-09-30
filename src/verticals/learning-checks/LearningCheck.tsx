@@ -70,13 +70,19 @@ export function LearningCheck({
   }
 
   return (
-    <section aria-label={`Fragen zu ${title}`}>
+    <section className="learning-check" aria-label={`Fragen zu ${title}`}>
       <h1>{title}: Fragen</h1>
       {!complete && current && (
-        <div key={current.id}>
-          <p>Frage {answers.length + 1} von 5</p>
+        <div className="learning-check-question" key={current.id}>
+          <p className="learning-check-count">
+            Frage {answers.length + 1} von 5
+          </p>
           <h2>{current.prompt}</h2>
-          <div role="group" aria-label="Antwortoptionen">
+          <div
+            className="learning-check-options"
+            role="group"
+            aria-label="Antwortoptionen"
+          >
             {current.options.map((option) => (
               <button
                 key={option.id}
@@ -87,7 +93,11 @@ export function LearningCheck({
               </button>
             ))}
           </div>
-          <button type="button" onClick={onExit}>
+          <button
+            className="learning-check-exit"
+            type="button"
+            onClick={onExit}
+          >
             Abbrechen
           </button>
         </div>
@@ -111,7 +121,7 @@ export function LearningCheck({
           ) : (
             <h2>Antworten im Überblick</h2>
           )}
-          <ol>
+          <ol className="learning-check-results">
             {answers.map(({ question, optionId }) => {
               const right = question.options.find((option) => option.correct)!;
               const chosen = question.options.find(
@@ -120,7 +130,9 @@ export function LearningCheck({
               return (
                 <li key={question.id}>
                   <h3>{question.prompt}</h3>
-                  <p style={{ color: "green" }}>Richtig: {right.text}</p>
+                  <p className="learning-check-correct">
+                    Richtig: {right.text}
+                  </p>
                   <p>
                     {right.explanation}{" "}
                     <a href={right.sourceUrl} target="_blank" rel="noreferrer">
@@ -129,7 +141,9 @@ export function LearningCheck({
                   </p>
                   {!chosen.correct && (
                     <>
-                      <p style={{ color: "red" }}>Gewählt: {chosen.text}</p>
+                      <p className="learning-check-incorrect">
+                        Gewählt: {chosen.text}
+                      </p>
                       <p>
                         {chosen.explanation}{" "}
                         <a
@@ -146,7 +160,11 @@ export function LearningCheck({
               );
             })}
           </ol>
-          <button type="button" onClick={onExit}>
+          <button
+            className="learning-check-exit"
+            type="button"
+            onClick={onExit}
+          >
             Zur Themenliste
           </button>
         </>

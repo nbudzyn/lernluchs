@@ -1,51 +1,165 @@
-.learning-check-celebration {
-  position: relative;
-  box-sizing: border-box;
-  max-width: 48rem;
-  margin: 1.5rem 0 2rem;
-  padding: 1.5rem 1.75rem;
-  border: 1px solid #d69c45;
-  border-left: 6px solid #a86312;
-  border-radius: 0.75rem;
-  background: #fff5df;
-  color: #382405;
-  box-shadow: 0 0.4rem 1.2rem rgba(76, 48, 8, 0.13);
+.learning-check {
+  max-width: 54rem;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 2.8vw, 2.5rem);
+  overflow-wrap: anywhere;
 }
 
-.learning-check-celebration::before {
-  content: "✦";
-  position: absolute;
-  top: 1rem;
-  right: 1.25rem;
-  color: #a86312;
-  font-size: 1.75rem;
-  line-height: 1;
+.learning-check h1,
+.learning-check > h2 {
+  margin: 0 0 1.5rem;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.7rem, 2.5vw, 2.35rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.learning-check h1 {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.learning-check-count {
+  margin: 0 0 0.7rem;
+  color: var(--muted-ink);
+  font-size: 0.9rem;
+}
+
+.learning-check-question h2 {
+  max-width: 68ch;
+  margin: 0 0 1.5rem;
+  color: var(--ink);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.4;
+}
+
+.learning-check-options {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.learning-check-options button {
+  min-height: 3.25rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.2rem;
+  background: var(--surface);
+  color: var(--body-ink);
+  text-align: left;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.learning-check-options button:hover {
+  border-color: var(--accent);
+  background: var(--subtle);
+  color: var(--ink);
+}
+
+.learning-check-exit {
+  min-height: 2.75rem;
+  margin-top: 1.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+}
+
+.learning-check-exit:hover {
+  color: var(--ink);
+  text-decoration-thickness: 2px;
+}
+
+.learning-check-celebration {
+  margin: 0 0 1.5rem;
+  padding: 1.1rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  background: var(--subtle);
 }
 
 .learning-check-celebration h2 {
-  margin: 0 2rem 0.75rem 0;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  line-height: 1.2;
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+  font-size: 1rem;
 }
 
 .learning-check-celebration [role="status"] {
   margin: 0;
-  font-family: Georgia, serif;
-  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
-  font-style: italic;
-  line-height: 1.4;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  line-height: 1.35;
 }
 
-@media (prefers-color-scheme: dark) {
-  .learning-check-celebration {
-    border-color: #d69c45;
-    border-left-color: #f0b45c;
-    background: #382712;
-    color: #fff0d4;
-    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.3);
-  }
+.learning-check-celebration p:not([role="status"]) {
+  margin: 0.7rem 0 0;
+}
 
-  .learning-check-celebration::before {
-    color: #f0b45c;
-  }
+.learning-check-celebration [role="alert"] {
+  color: var(--error);
+}
+
+.learning-check-results {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: result;
+  border-top: 1px solid var(--line);
+}
+
+.learning-check-results li {
+  padding: 1.3rem 0;
+  border-bottom: 1px solid var(--line);
+  counter-increment: result;
+}
+
+.learning-check-results h3 {
+  margin: 0 0 0.9rem;
+  color: var(--ink);
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.learning-check-results h3::before {
+  content: counter(result, decimal-leading-zero) "  ";
+  margin-right: 0.45rem;
+  color: var(--muted-ink);
+  font-size: 0.85rem;
+}
+
+.learning-check-results p {
+  max-width: 68ch;
+  margin: 0.4rem 0 0;
+  line-height: 1.65;
+}
+
+.learning-check-results .learning-check-correct,
+.learning-check-results .learning-check-incorrect {
+  margin-top: 0.95rem;
+  font-weight: 700;
+}
+
+.learning-check-correct {
+  color: var(--accent);
+}
+
+.learning-check-incorrect {
+  color: var(--error);
+}
+
+.learning-check a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.learning-check a:hover {
+  text-decoration-thickness: 2px;
 }

@@ -47,7 +47,9 @@ export function App() {
       </div>
       {activeCheck && (
         <div className="learning-check-overlay">
-          <h1>Lernluchs KI</h1>
+          <header className="topic-stage-header">
+            <h1>Lernluchs KI</h1>
+          </header>
           <LearningCheck
             topicId={activeCheck.id}
             title={activeCheck.title}

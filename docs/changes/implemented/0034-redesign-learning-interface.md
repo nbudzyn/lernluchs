@@ -148,7 +148,7 @@ und Commits benötigen. Die gerichtete Abhängigkeit Themen → Hilfe bleibt bes
 | Referenzscreen Themen/Hilfe | Neuer Playwright-Test `editorial topic design adapts to color scheme and mobile touch` zunächst rot: `.topic-stage` hatte einen transparenten Hintergrund; mobile Hilfe- und Themenknöpfe erreichten die geforderten 44 px nicht. | Redaktionelle Flächen, Typografie, Farben, Trennlinien, Fokus und mobile Bedienziele umgesetzt; gezielter Browser-Test grün. | Fragenknopf an die Höhe der Themenzeile angepasst, nachdem die bestehende Ausrichtungsprüfung fehlschlug; Auswahl als durchgängige Zeile statt einzelner Farbfläche dargestellt. Danach volle Suite grün. |
 | Rückmeldung zum Referenzscreen | Zuerst neun gezielte Unit-/Komponententests rot für Benennung, Hilfe, Themenzahl und Filterposition; gezielter Browser-Test rot für `10 / 46 Themen`. | Exakte Kopfzeile und Tab-Titel, Zählung, Filterzusammenfassung über der Liste und Hilfetext umgesetzt. Tests für Rücksetzen und zwölf lange Lernpfadnamen ergänzt; alle gezielten Prüfungen grün. | Doppelte kleine Überschrift entfernt, „Orientierung“ zu „Hilfe“ gekürzt und Filtertext zu „Gefiltert nach“ verdichtet. Nach der Korrektur einer TypeScript-Assertion volle Pflichtsuite grün. |
 | Typografische Nachkorrektur | App-Test erwartete `Lernluchs KI – Themen` und schlug gegen den kurzen Bindestrich fehl (1 von 3 Tests). | Halbgeviertstrich in der sichtbaren Kopfzeile umgesetzt; 153 Unit-/Komponententests und 84 Browser-Tests grün. | Lerncheck-Einstiegstest prüft den Ablauf unabhängig von der typografischen Form der App-Überschrift; der App-Test prüft den exakten Text. |
-| Lerncheck-Frage/Ergebnis nach Designfreigabe | Ausstehend. | Ausstehend. | Ausstehend. |
+| Lerncheck-Frage/Ergebnis nach Designfreigabe | Die Umsetzung wird in der eigenen Spec [Übertragung des Referenzscreens auf Lernchecks](0033-transfer-reference-design-to-learning-checks.md) nachgewiesen. | Siehe verlinkte Spec. | Siehe verlinkte Spec. |
 
 Pflichtsuite nach der letzten Code- und Teständerung: `npm run check` grün (153 Unit-/Komponententests, 38 Inhaltsprüfungen,
 Architektur- und Lizenzprüfung, Produktionsbuild); `npm run test:e2e -- --reporter=line` grün (84 Tests in Desktop- und
@@ -164,4 +164,4 @@ stellt `46 Themen` und die vollständige Liste wieder her. Der mobile Browser-Te
 den Umbruch ohne horizontalen Überlauf; ein Komponententest prüft zwölf Pfade.
 Nach der Nachfrage zum Gedankenstrich zeigt die Kopfzeile `Lernluchs KI – Themen`. Der Entwickler hat den Referenzscreen
 ansonsten manuell geprüft und ausdrücklich freigegeben; Commits sind erlaubt. Die Übertragung der Designsprache auf Lerncheck-Frage
-und -Ergebnis steht noch aus.
+und -Ergebnis ist in der verlinkten eigenen Spec nachgewiesen. Die manuelle Prüfung und ausdrückliche positive Bestätigung sind erfolgt.

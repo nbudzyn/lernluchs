@@ -12,7 +12,7 @@ body {
   margin: 0;
 }
 
-.topic-stage {
+main {
   --page: #f8f7f2;
   --surface: #fffefa;
   --subtle: #e2eee9;
@@ -23,20 +23,24 @@ body {
   --accent: #147262;
   --accent-ink: #ffffff;
   --focus: #aa551a;
-  min-height: 100vh;
-  background: var(--page);
+  --error: #a53e32;
   color: var(--body-ink);
   font-family: "Segoe UI", Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
 }
 
-.topic-stage :focus-visible {
+.topic-stage {
+  min-height: 100vh;
+  background: var(--page);
+}
+
+main :focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
 
-.topic-stage button {
+main button {
   font: inherit;
 }
 
@@ -60,9 +64,8 @@ body {
   z-index: 10;
   inset: 0;
   overflow: auto;
-  padding: 1rem;
-  background: Canvas;
-  color: CanvasText;
+  background: var(--page);
+  color: var(--body-ink);
 }
 
 body:has(.learning-check-overlay) {
@@ -70,7 +73,7 @@ body:has(.learning-check-overlay) {
 }
 
 @media (prefers-color-scheme: dark) {
-  .topic-stage {
+  main {
     --page: #172521;
     --surface: #20312c;
     --subtle: #27443b;
@@ -81,6 +84,7 @@ body:has(.learning-check-overlay) {
     --accent: #8ad8c3;
     --accent-ink: #123b32;
     --focus: #f2b670;
+    --error: #f0a395;
   }
 
   .topic-stage-header {
