@@ -23,5 +23,10 @@ oder über ihren angezeigten Namen einzeln filtern. Themen, die mehreren Pfaden 
 auch das Git-Thema gehört jetzt zu einem Pfad. Die neuen Karten behandeln unter anderem OKF, Codegraphen, Skills, Spec-Frameworks,
 Web-Sicherheitsbaselines, Storybook/Penpot und alternative Agenten-Stacks.
 
+Oberhalb der Themenliste steht ein Schnellfilter. Er sucht die vollständige Eingabe unabhängig von Groß-/Kleinschreibung in Titel, Problem,
+Kernkonzept, Java-/Web-Anwendung und Konzeptgrenzen; Quellen und Metadaten bleiben ausgeschlossen. Jede Eingabeänderung wirkt sofort und
+zusätzlich zum Lernpfadfilter. „Filter aufheben“ leert beide Filter. Ein ausgefiltertes ausgewähltes Thema wird geschlossen; rechts erscheint
+wieder die Hilfe. Escape im Suchfeld leert nur den Suchtext und erhält den Lernpfadfilter sowie den Eingabefokus. Die Suche bleibt flüchtig auf dem Gerät.
+
 Geplante Erweiterungen und ihre Umsetzungsreihenfolge stehen im
 [Story-Backlog](story-backlog.md).

@@ -7,20 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Schnellfilter
-
-Oberhalb der Themenliste gibt es dauerhaft ein Textfeld. Eingaben in dieses Textfeld filtern die Themenliste:
-
-- Sobald dort ein Zeichen eingegeben ist, werden in der Themenliste nur noch Themen angezeigt, wo der vollständige Text in Titel, Problem,
-  Konzept, "Anwendung in der Java- und Webentwicklung" oder "Grenzen des Konzepts" enthalten ist. Groß- / Kleinschreibung ist egal. ("onz d"
-  findet "KONZEPT DER".
-- Diese Filterung funktioniert zusätzlich (UND-Bedingung) zur Filterung nach Lernpfaden.
-- Der Button "Filter aufheben" löscht auch diese Filter-Box.
-- Jedes eingegebene oder gelöschte Zeitchen aktualisiert sofort die Liste.
-- Sobald dort ein Zeichen eingetragen ist, erscheint auch der Link "Filter aufheben". Wird das rechts angezeigte Thema aus der Liste
-  AUSgefiltert, erscheint rechts wieder die Hilfe.
-- Quellen werden beim Filter nicht berücksichtigt.
-
 ## Liste der Lernpfade mit Filter (Einzelauswahl)
 
 - ein kompakten alternativer Einstieg über einen oder mehrere Lernpfade auf derselben Seite.

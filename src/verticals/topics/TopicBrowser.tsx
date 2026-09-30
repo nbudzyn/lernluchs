@@ -20,6 +20,16 @@ const editorialStatusLabels: Record<EditorialStatus, string> = {
 type PathFilter =
   { kind: "topic"; id: string } | { kind: "path"; index: number } | null;
 
+function matchesQuickFilter(item: Topic, query: string) {
+  return [
+    item.title,
+    item.content.problem,
+    item.content.coreConcept,
+    item.content.javaWebUse,
+    item.content.boundary,
+  ].some((text) => text.toLowerCase().includes(query.toLowerCase()));
+}
+
 function SourceGroup({
   title,
   sources,
@@ -94,6 +104,7 @@ export function TopicBrowser({
 }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [filter, setFilter] = useState<PathFilter>(null);
+  const [quickFilter, setQuickFilter] = useState("");
   const [mobileView, setMobileView] = useState<"list" | "topic" | "help">(
     "list",
   );
@@ -113,9 +124,11 @@ export function TopicBrowser({
         : []
     : [];
   const activeIds = new Set(activePaths.flatMap((path) => path.topicIds));
-  const visibleItems = activePaths.length
-    ? items.filter((item) => activeIds.has(item.id))
-    : items;
+  const visibleItems = items.filter(
+    (item) =>
+      (!activePaths.length || activeIds.has(item.id)) &&
+      matchesQuickFilter(item, quickFilter),
+  );
   const sortedPaths = [...activePaths].sort((first, second) => {
     for (
       let index = 0;
@@ -214,6 +227,16 @@ export function TopicBrowser({
     anchor.current = null;
     scrollToPath.current = false;
     setFilter(null);
+    setQuickFilter("");
+  }
+
+  function changeQuickFilter(value: string) {
+    setQuickFilter(value);
+    const selected = items.find((item) => item.id === selectedId);
+    if (selected && !matchesQuickFilter(selected, value)) {
+      setSelectedId(null);
+      setMobileView("list");
+    }
   }
   const selectedItem = items.find((item) => item.id === selectedId);
   function openMobileView(view: "topic" | "help") {
@@ -273,7 +296,10 @@ export function TopicBrowser({
           <div>
             <h2>Themen</h2>
             {!filter && (
-              <p className="topic-list-count">{items.length} Themen</p>
+              <p className="topic-list-count">
+                {quickFilter && `${visibleItems.length} / `}
+                {items.length} Themen
+              </p>
             )}
           </div>
           {mobileView === "list" && (
@@ -288,6 +314,26 @@ export function TopicBrowser({
                 <circle cx="12" cy="12" r="9" />
                 <path d="M9.5 9a2.5 2.5 0 1 1 4.3 1.7c-.9.8-1.8 1.3-1.8 2.8M12 17h.01" />
               </svg>
+            </button>
+          )}
+        </div>
+        <div className="topic-quick-filter">
+          <label htmlFor="topic-quick-filter">Schnellfilter</label>
+          <input
+            id="topic-quick-filter"
+            type="text"
+            value={quickFilter}
+            onChange={(event) => changeQuickFilter(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === "Escape" && quickFilter) {
+                event.preventDefault();
+                changeQuickFilter("");
+              }
+            }}
+          />
+          {quickFilter && activePaths.length === 0 && (
+            <button type="button" onClick={clearFilter}>
+              Filter aufheben
             </button>
           )}
         </div>
@@ -325,6 +371,9 @@ export function TopicBrowser({
           </section>
         )}
         <nav aria-label="Lernthemen">
+          {visibleItems.length === 0 && (
+            <p role="status">Keine Themen gefunden.</p>
+          )}
           <ul className="topic-list">
             {visibleItems.map((item) => (
               <li
