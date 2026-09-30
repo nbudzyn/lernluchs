@@ -13,14 +13,21 @@ Status auf deutsch (nicht "active" etc.)
 
 - im Source Code selbst gern englisch
 
+## 100 neue Entwicklungen ermitteln und den Themen hinzufügen
+
+100 neue KI-Entwicklungen vor Oktober 2026 ermitteln. Mit den existierenden Themen abgleichen und Vorschläge dem Entwickler darstellen:
+
+- Welche KI-Entwicklungen sollten den bestehenden Themen hinzugefügt werden?
+- Welche neuen / zunehmend wichtigen Themen sollten den bestehenden Lernpfaden hinzugefügt werden? (Lernpfade dürfen die bisherige Länge ein
+  wenig überschreiten)
+- Welche neuen Lernpfade sollte es geben, damit auch alle neuen Themen abgedeckt sind?
+
+Noch nichts im Code ändern.
+
 ## Weitere UI-Verbesserungen
 
 - eine Texteingabe, die Themen auch über Begriffe in der Beschreibung findet (etwa „Ope“ für „Open Spec“)
 - ein kompakten alternativer Einstieg über einen oder mehrere Lernpfade auf derselben Seite.
-
-## 100 neue Entwicklungen ermitteln und den Themen hinzufügen
-
-100 neue Entwicklungen ermitteln und den Themen hinzufügen
 
 ## Verwendung von nmp prüfen, ggf. regulieren
 
