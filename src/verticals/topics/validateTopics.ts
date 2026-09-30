@@ -1,7 +1,62 @@
-import type { TopicCollection, TopicValidation } from "./topicContract";
+import type {
+  TopicCollection,
+  TopicSource,
+  TopicValidation,
+} from "./topicContract";
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 const durationPattern = /^(?:\d+:)?\d{1,2}:[0-5]\d$/;
+const sourceTypes = new Set([
+  "official-publication",
+  "official-guide",
+  "reference-site",
+  "conference-paper",
+  "repository",
+  "audio-summary",
+  "learning-video",
+]);
+
+function seconds(duration: string): number {
+  return duration
+    .split(":")
+    .reduce((total, part) => total * 60 + Number(part), 0);
+}
+
+function validMedia(source: TopicSource): boolean {
+  if (!["text", "audio", "video"].includes(source.mediaType)) return false;
+  if (source.type === "learning-video" && source.mediaType !== "video")
+    return false;
+  if (source.mediaType === "video" && !source.duration) return false;
+  if (
+    source.duration !== undefined &&
+    (source.mediaType === "text" ||
+      !durationPattern.test(source.duration) ||
+      seconds(source.duration) <= 0)
+  )
+    return false;
+  const segment = source.learningSegment;
+  return (
+    segment === undefined ||
+    (source.mediaType === "video" &&
+      source.duration !== undefined &&
+      durationPattern.test(segment.start) &&
+      durationPattern.test(segment.end) &&
+      seconds(segment.start) < seconds(segment.end) &&
+      seconds(segment.end) <= seconds(source.duration))
+  );
+}
+
+function sourceIdentity(source: TopicSource): string {
+  try {
+    const url = new URL(source.url);
+    if (source.mediaType === "video" && url.hostname === "www.youtube.com") {
+      return `youtube:${url.searchParams.get("v") ?? source.url}`;
+    }
+  } catch {
+    /* Invalid URLs are handled by source validation. */
+  }
+  return source.url;
+}
 const editorialStatuses = new Set([
   "active",
   "watching",
@@ -45,19 +100,21 @@ export function validateTopics(candidate: TopicCollection): TopicValidation {
     if (!item.sources.some((source) => source.origin === "primary")) {
       errors.push(`Missing primary source for item: ${item.id}`);
     }
-    if (item.sources.length > 10) {
+    if (item.sources.length > 20) {
       errors.push(`Too many sources for item: ${item.id}`);
     }
 
+    const seenSources = new Set<string>();
     for (const source of item.sources) {
+      const identity = sourceIdentity(source);
+      if (seenSources.has(identity))
+        errors.push(`Duplicate source for item: ${item.id}`);
+      seenSources.add(identity);
       if (
         !hasText(source.title) ||
         !source.url.startsWith("https://") ||
-        !hasText(source.type) ||
-        !["text", "audio"].includes(source.mediaType) ||
-        (source.duration !== undefined &&
-          (source.mediaType !== "audio" ||
-            !durationPattern.test(source.duration))) ||
+        !sourceTypes.has(source.type) ||
+        !validMedia(source) ||
         !["primary", "secondary"].includes(source.origin) ||
         !["de", "en"].includes(source.language) ||
         !datePattern.test(source.checkedAt)

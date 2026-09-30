@@ -113,7 +113,7 @@ describe("public content topics", () => {
       ),
     ).toBe(true);
   });
-  it("requires a primary source, at most ten sources, and a supported language", () => {
+  it("requires a primary source, at most twenty sources, and a supported language", () => {
     const item = completeItem("source-rules");
     expect(
       validateTopics({
@@ -129,7 +129,7 @@ describe("public content topics", () => {
         items: [
           {
             ...item,
-            sources: Array.from({ length: 11 }, (_, index) => ({
+            sources: Array.from({ length: 21 }, (_, index) => ({
               ...item.sources[0],
               url: `https://example.test/${index}`,
             })),
@@ -189,7 +189,7 @@ describe("public content topics", () => {
       }).valid,
     ).toBe(true);
     for (const invalidSource of [
-      { ...source, mediaType: "video" },
+      { ...source, mediaType: "unknown" },
       { ...source, mediaType: "text", duration: "25:00" },
       { ...source, mediaType: "audio", duration: "25 minutes" },
     ]) {
@@ -209,13 +209,15 @@ describe("public content topics", () => {
   it("marks existing written sources as text", () => {
     expect(
       topics.items.every((item) =>
-        item.sources.every(
-          (source) =>
-            source.mediaType ===
-            (source.url.startsWith("https://notebook.google.com/")
-              ? "audio"
-              : "text"),
-        ),
+        item.sources
+          .filter((source) => source.mediaType !== "video")
+          .every(
+            (source) =>
+              source.mediaType ===
+              (source.url.startsWith("https://notebook.google.com/")
+                ? "audio"
+                : "text"),
+          ),
       ),
     ).toBe(true);
     expect(

@@ -292,7 +292,8 @@
   margin: 0;
 }
 
-.source-audio-icon {
+.source-audio-icon,
+.source-video-icon {
   width: 1em;
   height: 1em;
   margin-right: 0.35em;

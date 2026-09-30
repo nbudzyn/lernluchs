@@ -6,14 +6,16 @@ export type SourceType =
   | "reference-site"
   | "conference-paper"
   | "repository"
-  | "audio-summary";
+  | "audio-summary"
+  | "learning-video";
 
 export type TopicSource = {
   title: string;
   url: string;
   type: SourceType;
-  mediaType: "text" | "audio";
+  mediaType: "text" | "audio" | "video";
   duration?: string;
+  learningSegment?: { start: string; end: string };
   origin: "primary" | "secondary";
   language: "de" | "en";
   checkedAt: string;

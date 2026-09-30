@@ -39,8 +39,13 @@ test("shows the curated sources of topics outside the foundation path", async ({
     ).toBeVisible();
     await expect(
       article.getByRole("heading", { name: "Sekundärquellen" }),
-    ).toHaveCount(audioTitle ? 1 : 0);
-    await expect(article.getByRole("link")).toHaveText([
+    ).toHaveCount(1);
+    expect(
+      (await article.getByRole("link").allTextContents()).slice(
+        0,
+        expectedLinks.length + (audioTitle ? 1 : 0),
+      ),
+    ).toEqual([
       ...expectedLinks,
       ...(audioTitle ? [`${audioTitle} [DE]`] : []),
     ]);

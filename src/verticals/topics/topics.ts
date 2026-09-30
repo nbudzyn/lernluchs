@@ -2,6 +2,7 @@ import type { Topic, TopicCollection } from "./topicContract";
 import { fifthPathTopics, fourthPathTopics } from "./newLearningTopics";
 import { expandedLearningTopics } from "./expandedLearningTopics";
 import { notebookPodcasts } from "./notebookPodcasts";
+import { learningVideos } from "./learningVideos";
 
 function activeEditorial(reviewDueAt: string, publishedAt = "2026-09-20") {
   return {
@@ -713,7 +714,7 @@ const additionsAfter: Record<string, string[]> = {
 };
 
 export const topics: TopicCollection = {
-  version: "6",
+  version: "7",
   items: previousTopics.items
     .flatMap((item) => [
       item,
@@ -726,6 +727,7 @@ export const topics: TopicCollection = {
         ...notebookPodcasts
           .filter((podcast) => podcast.topicId === item.id)
           .map((podcast) => podcast.source),
+        ...(learningVideos[item.id] ?? []),
       ],
     })),
   paths: [

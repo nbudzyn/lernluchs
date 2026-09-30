@@ -17,6 +17,40 @@ function filterSummary() {
 }
 
 describe("TopicBrowser", () => {
+  it("shows accessible video links with full duration and a separate learning segment", () => {
+    const topic = {
+      ...topics.items[0],
+      sources: [
+        topics.items[0].sources[0],
+        {
+          title: "Langer Lernvortrag",
+          url: "https://www.youtube.com/watch?v=example1234&t=600s",
+          type: "learning-video" as const,
+          mediaType: "video" as const,
+          origin: "secondary" as const,
+          language: "de" as const,
+          duration: "96:14",
+          learningSegment: { start: "10:00", end: "52:36" },
+          checkedAt: "2026-09-30",
+        },
+      ],
+    };
+    render(<TopicBrowser items={[topic]} paths={[]} />);
+    fireEvent.click(screen.getByRole("button", { name: topic.title }));
+    expect(screen.getByRole("img", { name: "Video" })).toBeTruthy();
+    const link = screen.getByRole("link", { name: "Langer Lernvortrag [DE]" });
+    expect(link.getAttribute("target")).toBe("_blank");
+    expect(link.getAttribute("rel")).toContain("noreferrer");
+    expect(link.parentElement?.textContent).toBe(
+      "Langer Lernvortrag [DE] 96:14 · Lernabschnitt: 10:00–52:36",
+    );
+    expect(link.parentElement?.textContent).toContain(
+      "Lernabschnitt: 10:00–52:36",
+    );
+    expect(
+      document.querySelector("iframe, video, img[src], script[src*='youtube']"),
+    ).toBeNull();
+  });
   it("shows active paths before the list and visible versus total topic counts", () => {
     render(<TopicBrowser />);
     expect(screen.getByText("46 Themen")).toBeTruthy();
@@ -436,13 +470,16 @@ describe("TopicBrowser", () => {
     expect(
       screen.getByRole("heading", { name: "Sekundärquellen" }),
     ).toBeTruthy();
-    expect(screen.getAllByRole("link").map((link) => link.textContent)).toEqual(
-      [
-        "Canon TDD - Kent Beck",
-        "Test Driven Development - Martin Fowler",
-        "KI bremst Senior-Devs ohne TDD aus [DE]",
-      ],
-    );
+    expect(
+      screen
+        .getAllByRole("link")
+        .map((link) => link.textContent)
+        .slice(0, 3),
+    ).toEqual([
+      "Canon TDD - Kent Beck",
+      "Test Driven Development - Martin Fowler",
+      "KI bremst Senior-Devs ohne TDD aus [DE]",
+    ]);
     cleanup();
     const item = topics.items[0];
     render(

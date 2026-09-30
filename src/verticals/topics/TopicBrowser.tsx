@@ -34,12 +34,31 @@ function SourceGroup({
                 <path d="M4 13v-2a8 8 0 0 1 16 0v2M4 13h3v7H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 1-2Zm16 0h-3v7h2a2 2 0 0 0 2-2v-3a2 2 0 0 0-1-2Z" />
               </svg>
             )}
+            {source.mediaType === "video" && (
+              <svg
+                aria-label="Video"
+                className="source-video-icon"
+                role="img"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect x="3" y="4" width="18" height="16" rx="1" />
+                <path d="M7 4v16M17 4v16M3 8h4M3 12h4M3 16h4M17 8h4M17 12h4M17 16h4" />
+              </svg>
+            )}
             <a href={source.url} rel="noreferrer" target="_blank">
               {source.title}
               {source.language === "de" ? " [DE]" : ""}
             </a>
-            {source.mediaType === "audio" && source.duration && (
+            {source.mediaType !== "text" && source.duration && (
               <> {source.duration}</>
+            )}
+            {source.mediaType === "video" && source.learningSegment && (
+              <>
+                {" "}
+                · Lernabschnitt: {source.learningSegment.start}–
+                {source.learningSegment.end}
+              </>
             )}
           </li>
         ))}
