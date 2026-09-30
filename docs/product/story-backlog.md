@@ -7,6 +7,14 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Impressum einfügen
+
+Impressum einfügen
+
+## Datenschutz-Policy einfügen. Haftungsausschluss
+
+Datenschutz-Policy einfügen. Haftungsausschluss Neue Vertikale "Legal" o.Ä.
+
 ## Weitere UI-Verbesserungen
 
 - eine Texteingabe, die Themen auch über Begriffe in der Beschreibung findet (etwa „Ope“ für „Open Spec“)
@@ -39,10 +47,6 @@ Vielleicht eine eigene Datei, die dann durchgegangen wird, wenn ein Kalenderdatu
 ## Zunächst nur Tests der jeweiligen Vertikale laufen lassen?
 
 Nur Tests der Vertikalen laufen lassen? Alle Tests erst, wenn die grün sind? Vor dem Commit immer alle Tests
-
-## Impressum und Datenschutz-Policy einfügen. Haftungsausschluss
-
-Impressum und Datenschutz-Policy einfügen. Haftungsausschluss Neue Vertikale "Legal" o.Ä.
 
 ## Link zu ChatGPT zum Lenern
 
