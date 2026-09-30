@@ -7,49 +7,84 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Übertragung des Referenzscreens auf Fragen und Lerncheck-Auswertung -> visuell einheitliche Anwendung
+
+Bitte übertrage die bereits etablierte Designsprache der Anwendung auf die beiden noch nicht redesigneten Screens: Frage und
+Learncheck-Auswertung.
+
+WICHTIG:
+Das ist keine neue Designaufgabe. Die visuelle Richtung ist bereits festgelegt und in den redesigneten Screens im aktuellen Repository
+implementiert: In der Themenliste, den Themendetails und der Hilfeseite.
+
+Betrachte diese bestehenden Screens als verbindliche Referenz für:
+
+- Typografie
+- Farben
+- Spacing und Proportionen
+- Layoutprinzipien
+- Navigation
+- Buttons und Controls
+- Formulare
+- Oberflächen und Container
+- Borders, Radien und Schatten
+- Icons
+- Hover-, Focus-, Selected-, Disabled- und sonstige Zustände
+- Informationsdichte und visuelle Hierarchie
+- Dark-Mode-Handling
+
+ZIEL
+
+Die beiden verbleibenden Screens sollen anschließend eindeutig zur selben Anwendung gehören.
+
+Erfinde für sie keine neue Designsprache und interpretiere das Design nicht erneut. Leite die Gestaltung aus den bereits redesigneten
+Screens und den dort vorhandenen Komponenten, Styles und Design-Tokens ab.
+
+VOR DER IMPLEMENTIERUNG
+
+1. Starte die Anwendung und untersuche die bereits redesigneten Screens visuell.
+2. Untersuche zusätzlich deren Implementierung und identifiziere die etablierten Design-Tokens, wiederverwendbaren Komponenten und
+   Layout-Patterns.
+3. Untersuche die beiden noch alten Screens und ihre Funktionen.
+4. Ordne deren UI-Elemente soweit sinnvoll den bereits etablierten Patterns und Komponenten zu.
+5. Bewahre die bestehenden Funktionen, fachlichen Inhalte, Datenflüsse und Nutzerabläufe.
+
+IMPLEMENTIERUNG
+
+Übertrage anschließend das bestehende Design auf die beiden verbleibenden Screens.
+
+Verwenden Farben (bisher "grün" und "rot" als Signalfarben) aus der gewählten Farbpalette oder ergänze die Farbpalette harmonisch.
+
+Bevor du neue Komponenten oder neue Styling-Patterns einführst, prüfe, ob eine bereits vorhandene Lösung wiederverwendet oder sinnvoll
+erweitert werden kann.
+
+- Das gilt insbesondere für den Glückwunsch!
+
+Falls einer der beiden Screens etwas benötigt, für das es noch kein Pattern gibt, entwickle eine Lösung, die sich möglichst
+selbstverständlich aus der bestehenden Designsprache ableitet. Verändere nicht das gesamte Designsystem nur wegen eines lokalen Sonderfalls.
+
+Du darfst die React-Komponentenstruktur refactoren, wenn dies Wiederverwendung und Konsistenz verbessert. Vermeide jedoch unnötige
+Refactorings außerhalb des Redesigns.
+
+QUALITÄTSPRÜFUNG
+
+Wenn beide Screens umgesetzt sind:
+
+- starte bzw. öffne die Anwendung erneut
+- prüfe alle Screens visuell
+- vergleiche insbesondere die beiden neuen Screens mit den bereits redesigneten Referenz-Screens
+- suche nach Inkonsistenzen bei Typografie, Spacing, Controls, Größen, Farben, States und Layout
+- prüfe auf typische generische/AI-generierte UI-Muster
+- korrigiere gefundene Inkonsistenzen selbstständig
+
+Prüfe außerdem, dass durch das Redesign keine bestehenden Funktionen oder Nutzerabläufe beschädigt wurden.
+
+Wichtig:
+Nicht nach erfolgreichem Build aufhören. Das visuelle Ergebnis in der laufenden Anwendung ist Teil der Definition of Done.
+
 ## Weitere UI-Verbesserungen
 
-- Ein Filter muss sich leicht ändern oder vollständig aufheben lassen; Lernende sollen jederzeit zur gesamten Themenliste zurückfinden.
 - eine Texteingabe, die Themen auch über Begriffe in der Beschreibung findet (etwa „Ope“ für „Open Spec“)
 - ein kompakten alternativer Einstieg über einen oder mehrere Lernpfade auf derselben Seite.
-
-## DANACH
-
-Nimm den Screen, der möglichst viele Komponenten enthält, und sage zunächst:
-„Entwickle die neue Designsprache zuerst vollständig an diesem Screen. Die anderen drei Screens noch nicht verändern.“
-
-Dann schaust du ihn dir an. Das ist der Moment für Aussagen wie „zu steril“, „zu verspielt“, „zu viel Weißraum“, „Navigation gefällt mir“,
-„Buttons sehen billig aus“, „mehr Desktop-App und weniger Website“. Erst wenn dieser eine Screen sitzt:
-„Diese Designsprache ist freigegeben. Extrahiere daraus das gemeinsame Designsystem und übertrage es konsistent auf die übrigen drei
-Screens. Erfinde dabei keine neue Designsprache.“
-
-## Durch die Oberfläche und Bedienung motiviert, aber nicht abgelenkt werden - 2 bis 3 Entwürfe
-
-Zwei bis drei Entwürfe für Desktop und Mobil erstellen: mit der Themenliste als primärem Einstieg, schnell erkennbarem Lernpfadbezug, gut
-lesbarer Themenübersicht, geteilter Themenansicht bei ausreichend Platz, eigener Themenansicht auf dem Handy, knapper Einführung in Symbole
-und Filter sowie klar angeordnetem Lerncheck. Ruhige, redaktionelle Lernoberfläche anstreben, die zum modernen Thema passt und verlässlich
-wirkt (nicht altbacken, nicht spezifisch Web2.0-mäßig...).
-
-- Ein einheitliches Farbschema soll angenehm anzuschauen sein, Texte sollen gut lesbar sein (automatisch Light Mode und Dark Mode nach
-  Auswahl des Betriebssystems / des Browsers).
-    - Farben vorsehen (Story-Backlog) für erfolgreiche Lernchecks und ggf. für Fehlantworten
-- Schriftgröße etwas größer als bisher
-- Kein Scrollen links-rechts
-- Kein dauerndes Herunter- und Hochschrollen zwischen Themenliste und Themendetails.
-- Auf dem PC mit Tasten bedienbar
-- Auch auf Handy gut bedienbar
-- Barrierefrei
-- Der Inhalt steht im Vordergrund. Bedienelemente und statische Texte sollen wenig Platz verschwenden
-- Es soll nicht nach "AI Slop" aussehen.
-- Gui schrittweise hübscher
-- "Lernluchs KI"
-- beraten lassen
-- Skill?
-
-## Durch die Oberfläche und Bedienung motiviert, aber nicht abgelenkt werden - kleines visuelles System festlegen
-
-Schriftgrößen, Textbreite, Abstände, Farben, Schaltflächen, Fokus- und Statusanzeigen. Dabei Tastaturbedienung und ausreichend große
-Bedienelemente prüfen; Evlt. WCAG 2.2?!
 
 ## 100 neue Entwicklungen ermitteln und den Themen hinzufügen
 
