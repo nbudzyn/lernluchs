@@ -1,5 +1,5 @@
-import type { TopicCollection } from "./topicContract";
 import { learningPaths } from "./learningPaths";
+import type { TopicCollection } from "./topicContract";
 
 // Themenreihenfolge: Einträge hier verschieben. IDs bleiben stabil.
 export const topics: TopicCollection = {
@@ -12,13 +12,13 @@ export const topics: TopicCollection = {
       content: {
         language: "de",
         problem:
-          "KI-Ausgaben können plausibel wirken, obwohl Kontext, Risiken oder Folgen falsch eingeschätzt sind.",
+          "KI-Ausgaben können plausibel wirken, obwohl die KI falsche Annahmen über den Kontext getroffen hat oder Risiken und Folgen falsch eingeschätzt hat.",
         coreConcept:
-          "Menschen legen Zweck, Grenzen und Prüfkriterien fest, bewerten Ergebnisse und verantworten Entscheidungen über Einsatz und Folgen.",
+          "Menschen legen Zweck und Grenzen von KI-Anwendungen sowie Prüfkriterien fest. Menschen bewerten KI-Ergebnisse und verantworten die Entscheidungen über den KI-Einsatz und seine Folgen.",
         javaWebUse:
-          "Bei einem Java-Webdienst prüft ein Mensch etwa Eingaben, Berechtigungen, Tests und sicherheitsrelevante Änderungen, statt einen Agentenvorschlag ungeprüft zu übernehmen.",
+          "Bei einem Java-Webdienst prüft ein Mensch Vorschläge und Berechtigungen von KI-Agenten und prüft Tests und sicherheitsrelevante Änderungen, statt einen Agentenvorschlag ungeprüft zu übernehmen.",
         boundary:
-          "Menschliche Kontrolle ist kein Ritual: Umfang und Form richten sich nach dem Risiko; eine Modellantwort ist keine Freigabe oder Garantie.",
+          "Menschliche Kontrolle ist kein Ritual: Umfang und Form richten sich nach dem Risiko. Eine Antwort eines KI-Modells ist keine Freigabe oder Garantie.",
       },
       editorial: {
         publishedAt: "2026-09-20",
@@ -90,15 +90,15 @@ export const topics: TopicCollection = {
     },
     {
       id: "problem-understanding-and-change-boundaries",
-      title: "Problem verstehen und Änderungsgrenzen setzen",
+      title: "Problem verstehen und Änderungen begrenzen",
       content: {
         language: "de",
         problem:
-          "Wer direkt eine Lösung implementiert, kann Ursache, Nutzen, betroffene Teile und Nebenwirkungen verfehlen.",
+          "Wer direkt eine Lösung implementiert, kann tieferliegende Ursachen oder Nebenwirkungen übersehen oder Potenzial verschenken.",
         coreConcept:
-          "Vor dem Coding werden gewünschtes Ergebnis, vorhandene Fakten, erlaubter Umfang, Nicht-Ziele und prüfbare Akzeptanz geklärt.",
+          "Vor dem Coding werden gewünschtes Ergebnis, bekannte Fakten, erlaubter Umfang, Nicht-Ziele und prüfbare Akzeptanzkriterien geklärt.",
         javaWebUse:
-          "Für eine Änderung an einem Spring-Endpunkt werden API-Vertrag, betroffene Schichten, Sicherheitsgrenzen und Regressionstests vor dem Patch festgehalten.",
+          "Vor einer Änderung an einem Spring-Endpunkt werden API-Vertrag, betroffene Schichten, Sicherheitsgrenzen und Regressionstests festgehalten.",
         boundary:
           "Diese Klärung ist kein schwerer Prozess für jeden Tippfehler; bei kleinen, eindeutig isolierten Korrekturen reicht eine entsprechend kleine Prüfung.",
       },
@@ -186,9 +186,9 @@ export const topics: TopicCollection = {
       content: {
         language: "de",
         problem:
-          "Uneinheitliche Namen und überladene Einheiten erschweren Änderungen: Menschen und Agenten sprechen scheinbar über dasselbe, meinen aber Verschiedenes.",
+          "Uneinheitliche Namen und mehrdeutige Bezeichnungen erschweren Änderungen: Menschen und Agenten sprechen scheinbar über dasselbe, meinen aber Verschiedenes.",
         coreConcept:
-          "Ein Team klärt Begriffe im abgegrenzten Fachkontext und nutzt dieselben Namen in Gespräch, Spec, Code und Tests. Verantwortlichkeiten werden so geschnitten, dass wichtige Entscheidungen nachvollziehbar bleiben.",
+          "Ein Team klärt Begriffe im abgegrenzten Fachkontext und nutzt dieselben Namen in Gespräch, Spec, Code und Tests. Verantwortlichkeiten werden so geschnitten, dass die wichtigen Entscheidungen nachvollziehbar bleiben.",
         javaWebUse:
           "In einer Java-Bestellstrecke heißen Status und Aktionen in Controller, Service, Tests und Glossar gleich; ein zu großes Modul wird entlang fachlicher Verantwortungen geteilt.",
         boundary:
@@ -266,17 +266,17 @@ export const topics: TopicCollection = {
     },
     {
       id: "project-documentation-and-checklists",
-      title: "Projektwissen und Fertigkriterien gezielt dokumentieren",
+      title: "Projektwissen und Definition of Done zielgerichtet dokumentieren",
       content: {
         language: "de",
         problem:
-          "Wenn Regeln, Erklärungen und Task-Notizen vermischt werden, lesen Beteiligte zu viel oder übersehen die verbindliche Stelle.",
+          "Wenn Regeln, Erklärungen und Arbeitsnotizen vermischt werden, lesen Beteiligte zu viel oder übersehen die verbindliche Stelle.",
         coreConcept:
-          "Kurze, verlinkte Dokumente trennen Anleitung, Referenz und Erklärung. Eine konkrete Fertigdefinition nennt die nötigen Prüfungen; flüchtige Arbeitsnotizen werden nicht ungeprüft zu dauerhaften Regeln.",
+          "Kurze, verlinkte Dokumente trennen Anleitung, Referenz und Erklärung. Eine konkrete Definition of Done nennt die nötigen Prüfungen; flüchtige Arbeitsnotizen werden nicht ungeprüft zu dauerhaften Regeln.",
         javaWebUse:
           "Ein Java-/Web-Team verlinkt aus AGENTS.md auf Build- und Architekturhinweise und hält für eine Änderung Abnahme, Tests und Review in einer kleinen Spec fest.",
         boundary:
-          "Eine Checkliste ersetzt weder fachliche Entscheidung noch Test. Eine automatische Wiki-Zusammenfassung braucht einen verantwortlichen Besitzer für ihre Aktualität.",
+          "Eine Checkliste ersetzt weder fachliche Entscheidung noch Test. Eine automatische Wiki-Zusammenfassung braucht einen verantwortlichen Besitzer, um aktuell zu bleiben.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -393,17 +393,17 @@ export const topics: TopicCollection = {
     },
     {
       id: "open-knowledge-format",
-      title: "Langlebiges Domänenwissen mit OKF strukturieren",
+      title: "Langlebiges Wissen über die Fachlichkeit mit OKF strukturieren",
       content: {
         language: "de",
         problem:
-          "In größeren Projekten ist Domänenwissen über Dateien und Köpfe verteilt; Herkunft und Gültigkeit einer Aussage bleiben unklar.",
+          "In größeren Projekten ist das Wissen über die Fachlichkeit auf viele Köpfe und in vielen Dateien verteilt; Herkunft und Gültigkeit einer Aussage bleiben oft unklar.",
         coreConcept:
           "Open Knowledge Format beschreibt Wissenseinheiten als Markdown mit YAML-Metadaten und Verweisen auf Quellen. Ein Bündel kann versioniert und von Menschen sowie Werkzeugen gelesen werden.",
         javaWebUse:
-          "Für einen Java-Webdienst können API-Bedeutungen und Geschäftsbegriffe als kuratierte Wissenseinträge mit Herkunft im Repository liegen.",
+          "Für einen Java-Webdienst können die Bedeutungen der Elemente der API und Geschäftsbegriffe in einem Repository als Wissenseinträge zusammengestellt sein - mit Angaben über ihre Herkunft.",
         boundary:
-          "OKF ist nur bei wirklichem Pflegebedarf sinnvoll. Es ersetzt weder ausführbare Tests noch API-Schemata; die ältere Kopie im Knowledge-Catalog-Repository ist eingefroren.",
+          "OKF ist nur bei wirklichem Pflegebedarf sinnvoll. Es ersetzt weder ausführbare Tests noch API-Schemata und kann veralten.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -479,7 +479,7 @@ export const topics: TopicCollection = {
       content: {
         language: "de",
         problem:
-          "Ein scheinbar klarer Implementierungswunsch kann mehrere fachliche Ergebnisse meinen oder ohne Grenze ausufern.",
+          "Ein scheinbar klarer Implementierungswunsch kann mehrere fachliche Ergebnisse meinen oder grenzenlos ausufern.",
         coreConcept:
           "Ein gezieltes Gespräch klärt Zielgruppe, gewünschtes Ergebnis, Beispiele, Nicht-Ziele und ein überprüfbares Ende. Bei Unsicherheit werden die entscheidungsrelevanten Fragen zuerst gestellt.",
         javaWebUse:
@@ -583,11 +583,11 @@ export const topics: TopicCollection = {
         problem:
           "Agenten kennen projektspezifische Befehle, Konventionen und Risiken nicht automatisch und erhalten sie sonst bei jeder Aufgabe uneinheitlich.",
         coreConcept:
-          "AGENTS.md ist eine gezielt gepflegte Markdown-Anweisung im Repository für Setup, Tests, Architekturgrenzen und weitere lokale Besonderheiten.",
+          "AGENTS.md ist eine gezielt gepflegte Markdown-Anweisung im Repository für Setup, Tests, Architekturgrenzen und weitere projektspezifische Besonderheiten.",
         javaWebUse:
           "In einem Java-/Web-Repository kann die Datei Gradle- oder npm-Prüfbefehle, Modulgrenzen und Regeln für Migrationsdateien nennen.",
         boundary:
-          "Sie ersetzt weder README noch fachliche Spezifikationen und darf keine Geheimnisse enthalten; nahe, konkrete Anweisungen sind hilfreicher als ein allgemeines Handbuch.",
+          "Sie ersetzt weder README noch fachliche Spezifikationen und darf keine Geheimnisse enthalten; spezifische Anweisungen für den konkreten Fall sind hilfreicher als ein allgemeines Handbuch.",
       },
       editorial: {
         publishedAt: "2026-09-20",
@@ -674,9 +674,9 @@ export const topics: TopicCollection = {
         problem:
           "Vage Anforderungen lassen unterschiedliche Interpretationen zu und erschweren Abnahme und automatisierte Tests.",
         coreConcept:
-          "EARS (Easy Approach to Requirements Syntax) nutzt wenige Satzmuster, etwa „When <Auslöser>, the system shall <Verhalten>“, um Bedingungen und erwartetes Verhalten sichtbar zu machen.",
+          "EARS (Easy Approach to Requirements Syntax) nutzt wenige Satzmuster, etwa „When <Auslöser>, the system shall <Verhalten>“, um Bedingungen und erwartetes Verhalten klarzumachen.",
         javaWebUse:
-          "Für eine Web-API kann ein Kriterium lauten: „When a request lacks authorization, the system shall return HTTP 401“; daraus folgt ein konkreter Integrationstest.",
+          "Für eine Web-API kann ein Kriterium lauten: „When a request lacks authorization, the system shall return HTTP 401“; daraus ergibt sich ein konkreter Integrationstest.",
         boundary:
           "Ein Satzmuster entdeckt keine fehlenden Fachregeln und ersetzt weder gemeinsame Begriffsarbeit noch Tests für alle Randfälle.",
       },
@@ -748,9 +748,9 @@ export const topics: TopicCollection = {
         problem:
           "Ein Plan für Legacy-Code kann auf einer erfundenen Regel beruhen, wenn nur Namen oder einzelne Beispiele betrachtet wurden.",
         coreConcept:
-          "Beobachtungen aus Code, Tests, Nutzungsfällen und Fachgespräch werden getrennt von Annahmen festgehalten. Für riskante Änderungen skizzieren Datenstrukturen, Pseudocode und Gegenbeispiele die beabsichtigte Lösung.",
+          "Beobachtungen aus Code, Tests, Anwenderbeobachtung und Fachgespräch werden getrennt von Annahmen festgehalten. Für riskante Änderungen skizzieren Datenstrukturen, Pseudocode und Gegenbeispiele die beabsichtigte Lösung.",
         javaWebUse:
-          "Vor dem Ersatz einer Java-Berechnungsroutine werden repräsentative Ein- und Ausgaben gemessen und als Regressionstests festgehalten; erst danach wird die neue Struktur entworfen.",
+          "Vor dem Ersatz einer Java-Berechnungsroutine werden repräsentative Ein- und Ausgaben aufgenommen und als Regressionstests festgehalten; erst danach wird die neue Struktur entworfen.",
         boundary:
           "Eine von KI erzeugte Spezifikation bleibt eine Hypothese, bis sie gegen Systemverhalten und Fachwissen geprüft wurde. GOAP ist ein Planungsmodell, kein Standard für jede Webänderung.",
       },
@@ -824,13 +824,13 @@ export const topics: TopicCollection = {
       content: {
         language: "de",
         problem:
-          "Eine pauschale Normenliste oder ein unbegründetes Verbot lenkt eine Änderung vom eigentlichen Risiko ab.",
+          "Eine pauschale Normenliste oder ein unbegründetes Verbot lenken bei Änderungen vom eigentlichen Risiko ab.",
         coreConcept:
           "Für den konkreten Einsatz werden passende Anforderungen ausgewählt und mit Zweck, Geltungsbereich und prüfbarem Verhalten verbunden. Einschränkungen nennen die Gefahr, die sie verhindern sollen.",
         javaWebUse:
           "Für einen öffentlichen Spring-Endpunkt wird eine passende ASVS-Anforderung zu Zugriffsschutz gewählt und durch einen Integrationstest geprüft.",
         boundary:
-          "ASVS ist ein Anforderungskatalog, kein Nachweis, dass ein System sicher ist. Eine Versionsnummer und der gewählte Prüfumfang müssen zum Projekt passen.",
+          "ASVS ist ein Anforderungskatalog, kein Nachweis, dass ein System sicher ist. Version und der gewählte Prüfumfang müssen zum Projekt passen.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -924,7 +924,7 @@ export const topics: TopicCollection = {
       content: {
         language: "de",
         problem:
-          "Ein Sprachmodell kann eine falsche Prämisse flüssig fortsetzen und nach einer Korrektur sprachlich zustimmen, ohne den Fehler tatsächlich zu beheben.",
+          "Ein Sprachmodell kann eine falsche Prämisse flüssig fortsetzen und selbst auf eine Korrektur hin sprachlich zustimmen, ohne den Fehler tatsächlich zu beheben.",
         coreConcept:
           "Aussagen werden an Originalquellen, ausführbaren Tests und Gegenbeispielen geprüft. Für reversible Prototypen darf der Prüfaufwand geringer sein als für kritische Fach- oder Sicherheitslogik.",
         javaWebUse:
@@ -1009,11 +1009,11 @@ export const topics: TopicCollection = {
         problem:
           "Zu viele unpassende Dateien und alte Annahmen verdrängen die für die aktuelle Änderung nötigen Fakten.",
         coreConcept:
-          "Relevante Ausschnitte werden gezielt gesucht, Ergebnisse knapp mit Fundstellen verdichtet und bei Widerspruch neu geprüft. Unabhängige Aufgaben können in getrennten Kontexten bearbeitet werden.",
+          "Relevante Ausschnitte werden gezielt gesucht. Ergebnisse werden knapp mit Fundstellen verdichtet und bei Widersprüchen neu geprüft. Unabhängige Aufgaben können in getrennten Kontexten bearbeitet werden.",
         javaWebUse:
           "Für einen Spring-Fehler werden nur Endpunkt, aufgerufener Service und passende Tests gelesen; nach einem falschen Ansatz wird der geprüfte Stand neu zusammengefasst.",
         boundary:
-          "Kompaktierung kann Details verlieren. Ein Kontext-Reset ersetzt weder Quellprüfung noch technische Isolation von Dateien, Rechten und Diensten.",
+          "Durch Compaction können Details verloren gehen. Ein Kontext-Reset ersetzt weder Quellprüfung noch technische Isolation von Dateien, Rechten und Diensten.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -1094,9 +1094,9 @@ export const topics: TopicCollection = {
         coreConcept:
           "Externe Inhalte bleiben Daten statt Anweisungen. Ihr Ursprung wird kenntlich gemacht; Werkzeugrechte werden auf die Aufgabe begrenzt und riskante Aktionen von Menschen geprüft.",
         javaWebUse:
-          "Bei der Analyse eines Spring-Issues behandelt der Agent darin eingebettete Befehle nicht als Projektvorgabe und prüft Änderungen an Berechtigungen und Endpunkten gegen den vereinbarten Auftrag.",
+          "Bei der Analyse eines Spring-Issues behandelt der Agent darin eingebettete Befehle nicht als Projektvorgabe und prüft den vereinbarten Auftrag, bevor er Berechtigungen und Endpunkte ändert.",
         boundary:
-          "Eine Warnung im Prompt oder eine Quellenmarkierung verhindert Prompt Injection nicht sicher. Rechtebegrenzung und Prüfungen müssen auch außerhalb des Modells greifen.",
+          "Eine Warnung im Prompt oder eine Ursprungsmarkierung verhindert Prompt Injection nicht sicher. Rechtebegrenzung und Prüfungen müssen auch außerhalb des Modells greifen.",
       },
       editorial: {
         publishedAt: "2026-09-26",
@@ -1248,11 +1248,11 @@ export const topics: TopicCollection = {
         problem:
           "Lange Terminalausgaben und wiederholter Kontext können Agentensitzungen verteuern, ohne bessere Entscheidungen zu liefern.",
         coreConcept:
-          "RTK verdichtet typische Kommandoausgaben; Caveman bietet weitere Kontext- und Ausgabeverdichtung. Vor Einsatz werden Originaldaten, Fehlerdetails und tatsächliche Einsparung am eigenen Ablauf geprüft.",
+          "RTK verdichtet typische Kommandoausgaben; Caveman bietet weitere Kontext- und Ausgabeverdichtung. Vor Einsatz sollten Originaldaten, Fehlerdetails und tatsächliche Einsparung am eigenen Ablauf geprüft werden.",
         javaWebUse:
           "Ein Java-/Web-Team vergleicht einen Testlauf mit und ohne Verdichtung und kontrolliert, ob Fehlermeldungen und relevante Testnamen vollständig auffindbar bleiben.",
         boundary:
-          "Die ältere Variante Caveman Code ist seit August 2026 eingefroren. Verdichtung kann entscheidende Details auslassen und ist kein Ersatz für gezielte Suche.",
+          "Die ältere Variante Caveman Code wird seit August 2026 nicht mehr gepflegt. Verdichtung kann entscheidende Details auslassen und ist kein Ersatz für gezielte Suche.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -1322,7 +1322,7 @@ export const topics: TopicCollection = {
         coreConcept:
           "Vor dem KI-Einsatz werden benötigte Daten minimiert und sensible Werte entfernt. Zugangsdaten bleiben in geeigneten Secret-Speichern; Agenten und Werkzeuge erhalten nur nötige Rechte.",
         javaWebUse:
-          "Für die Fehlersuche an einem Spring-Dienst werden echte Tokens und Kundendaten aus Logs entfernt, bevor ein Agent sie erhält; Konfigurationsgeheimnisse bleiben außerhalb des Repositories.",
+          "Für die Fehlersuche an einem Spring-Dienst werden echte Tokens und Kundendaten aus Logs entfernt, bevor ein Agent die Logs erhält; Secrets werden in der Konfiguration abgelegt, nicht im Repository.",
         boundary:
           "Eine bloße Anweisung zum Verschweigen schützt Daten nicht zuverlässig. Bei einem offengelegten Token muss der Zugang gesperrt oder der Token erneuert werden.",
       },
@@ -1407,17 +1407,17 @@ export const topics: TopicCollection = {
     },
     {
       id: "research-plan-tasks",
-      title: "Research, Plan und Tasks trennen",
+      title: "Recherche, Planung und Umsetzung trennen",
       content: {
         language: "de",
         problem:
           "Wenn Recherche, Entscheidung und Implementierung vermischt werden, bleiben Annahmen unsichtbar und Aufgaben werden zu groß oder widersprüchlich.",
         coreConcept:
-          "Research sammelt überprüfte Fakten und offene Fragen; ein Plan dokumentiert Entscheidungen und Prüfnachweise; Tasks zerlegen die Umsetzung in überprüfbare Schritte.",
+          "In der Recherche werden überprüfte Fakten und offene Fragen gesammelt; ein Plan dokumentiert Entscheidungen und Prüfnachweise; Tasks zerlegen die Umsetzung in überprüfbare Schritte.",
         javaWebUse:
           "Vor einem Umbau eines React-Frontends werden vorhandene Datenflüsse untersucht, der erlaubte Komponentenumbau geplant und anschließend Tests sowie kleine Implementierungsschritte als Tasks notiert.",
         boundary:
-          "Die Reihenfolge ist eine anpassbare Arbeitshilfe, kein Wasserfallgesetz: Neue Erkenntnisse dürfen Research und Plan aktualisieren, bevor weiter implementiert wird.",
+          "Die Reihenfolge ist eine anpassbare Arbeitshilfe, kein Wasserfallgesetz: Neue Erkenntnisse dürfen Rechercheergebnisse und Plan aktualisieren, bevor weiter implementiert wird.",
       },
       editorial: {
         publishedAt: "2026-09-20",
@@ -1513,11 +1513,11 @@ export const topics: TopicCollection = {
       content: {
         language: "de",
         problem:
-          "Wenn Anforderungen nur im Chat stehen, sind sie schwer prüfbar und Änderungen verlieren ihre nachvollziehbare Absicht.",
+          "Wenn Anforderungen nur im Chat mit einer KI stehen, sind sie schwer prüfbar, die Absichten hinter einer Änderung sind nicht mehr nachvollziehbar.",
         coreConcept:
-          "Spec-Driven Development hält die vereinbarte Änderung als versionierte Artefakte fest; OpenSpec organisiert dafür unter anderem Proposal, Spezifikation, Design und Tasks in einem Änderungsordner.",
+          "Spec-Driven Development hält die vereinbarte Änderung als versionierte Artefakte fest; OpenSpec hält dafür unter anderem Proposal, Spezifikation, Design und Tasks in einem Änderungsordner.",
         javaWebUse:
-          "Für eine neue Java-Funktion beschreibt ein Proposal Nutzen und Nicht-Ziele, die Spezifikation prüfbares Verhalten, ein bei Bedarf angelegtes Design technische Entscheidungen und Tasks kleine, getestete Umsetzungsschritte.",
+          "Für eine neue Java-Funktion beschreibt ein Proposal Nutzen und Nicht-Ziele, die Spezifikation beschreibt prüfbares Verhalten, ein bei Bedarf angelegtes Design technische Entscheidungen, und Tasks sind kleine, getestete Umsetzungsschritte.",
         boundary:
           "OpenSpec ist kein Korrektheitsbeweis und keine Pflicht für jede kleine Änderung; als Werkzeugwahl muss es gegen Alternativen geprüft und seine Telemetrieeinstellung bewusst konfiguriert werden.",
       },
@@ -1716,11 +1716,11 @@ export const topics: TopicCollection = {
         problem:
           "Ein langer globaler Prompt oder eine ungeprüfte fremde Skill-Sammlung macht wiederkehrende Aufgaben schwer wartbar und kann unnötige Rechte verlangen.",
         coreConcept:
-          "Ein Skill bündelt eine kleine wiederholbare Anleitung mit optionalen Ressourcen. Ein Slash Command kann den Einstieg erleichtern; Werkzeugrechte und Datenzugriff werden separat geprüft.",
+          "Ein Skill bündelt eine kleine wiederholbare Anleitung mit optionalen Ressourcen. Ein Slash Command kann die Verwendung eines Skills anfordern; Berechtigungen für Tools und für den konkreten Datenzugriff müssen separat geprüft werden.",
         javaWebUse:
           "Ein erprobter Spring-Migrationsablauf wird erst nach mehreren erfolgreichen Durchläufen als Skill mit Tests, Abbruchfällen und Quellen verpackt.",
         boundary:
-          "Ein Skill ist keine Sicherheitsgrenze und eine Rollenbeschreibung ersetzt keine überprüfbaren Akzeptanzkriterien. Fremde Skills vor Installation auf Herkunft und Verhalten prüfen.",
+          "Ein Skill sorgt nicht für Sicherheit und eine Rollenbeschreibung ersetzt keine überprüfbaren Akzeptanzkriterien. Fremde Skills vor Installation auf Herkunft und Verhalten prüfen.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -1810,17 +1810,16 @@ export const topics: TopicCollection = {
     },
     {
       id: "spec-framework-selection",
-      title: "Spec-Frameworks an einem kleinen Pilot vergleichen",
+      title: "Spec-Frameworks in einem kleinen Pilotprojekt vergleichen",
       content: {
         language: "de",
         problem:
-          "Ein Team kann mehrere Spezifikationssysteme installieren und dadurch doppelte Wahrheiten statt klarer Anforderungen schaffen.",
+          "Ein Team kann mehrere Spec-Driven-Development-Tools installieren und dadurch doppelte Wahrheiten statt klarer Anforderungen schaffen.",
         coreConcept:
-          "OpenSpec und GitHub Spec Kit organisieren Anforderungen und Umsetzung unterschiedlich; Kiro bringt Specs in eine eigene Entwicklungsumgebung. Umfangreichere Rahmen wie Superpowers oder BMAD werden nur bei konkreter Prozesslücke geprüft.",
+          "OpenSpec und GitHub Spec Kit organisieren Anforderungen und Umsetzung unterschiedlich; Kiro bringt Specs in eine eigene Entwicklungsumgebung. Umfangreichere Frameworks wie Superpowers oder BMAD sollten nur bei konkreter Prozesslücke geprüft werden.",
         javaWebUse:
           "Für eine mittelgroße Java-/Web-Änderung nutzt das Team genau einen Pilotablauf, prüft Spec, Aufgaben, Diff und Tests und entscheidet dann über Beibehaltung.",
-        boundary:
-          "Ein Framework erzeugt keine richtigen Fachregeln. GOAP ist ein Planungsansatz und die unklaren Kürzel der Landkarte sind ohne Originalquelle keine auswählbaren Methoden.",
+        boundary: "Ein Framework erzeugt keine richtigen Fachregeln.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -1925,7 +1924,7 @@ export const topics: TopicCollection = {
         problem:
           "Mehrere Agenten können dieselben Dateien ändern, voneinander abhängige Entscheidungen doppelt treffen oder ohne klares Ende weiterarbeiten.",
         coreConcept:
-          "Vor der Delegation werden unabhängige Ergebnisse, Dateibesitz, Eingaben, Akzeptanzkriterien und Abbruchgrenzen wie Zeit, Kosten oder fehlende Evidenz festgelegt.",
+          "Vor der Delegation werden unabhängige Ergebnisse, Dateibesitz, Eingaben, Akzeptanzkriterien und Abbruchbedingungen auf Basis von Zeit, Kosten oder fehlender Evidenz festgelegt.",
         javaWebUse:
           "Ein Agent untersucht die Java-API und ein anderer den React-Aufrufvertrag; beide liefern Befunde zu getrennten Dateien, bevor ein Mensch die gemeinsame Änderung plant.",
         boundary:
@@ -2007,9 +2006,9 @@ export const topics: TopicCollection = {
         problem:
           "Zwei gleichzeitige Änderungen im selben Checkout überschreiben Dateien oder vermischen unvollständige Arbeitsstände.",
         coreConcept:
-          "Ein Git-Repository kann mehrere verknüpfte Arbeitsverzeichnisse besitzen. Jeder Worktree hat seinen eigenen Checkout; Branches und Git-Objekte gehören weiterhin zum gemeinsamen Repository.",
+          "Ein Git-Repository kann mehrere verknüpfte Working Directories besitzen. Jeder Worktree hat seinen eigenen Checkout; Branches und Git-Objekte gehören weiterhin zum gemeinsamen Repository.",
         javaWebUse:
-          "Eine Spring-Migration und eine React-Korrektur werden in getrennten Worktrees mit jeweils eigener Branch und eigenen Tests bearbeitet; erst geprüfte Änderungen werden zusammengeführt.",
+          "Eine Spring-Migration und eine React-Korrektur werden in getrennten Worktrees mit jeweils eigenem Branch und eigenen Tests bearbeitet; Änderungen werden erst geprüft, dann zusammengeführt.",
         boundary:
           "Worktrees trennen Dateien, aber nicht automatisch externe Dienste, Datenbanken oder Ports. Für abhängige Arbeiten hilft ein serieller Ablauf oft mehr; entfernte Worktrees werden mit Git-Befehlen verwaltet.",
       },
@@ -2084,7 +2083,7 @@ export const topics: TopicCollection = {
         javaWebUse:
           "Vor der Änderung einer Java-Service-Methode werden Implementierungen und Aufrufer in der IDE geprüft; im TypeScript-Frontend wird von einer Prop zu Definition und Verwendungen navigiert.",
         boundary:
-          "Index, Sprachunterstützung und dynamische Aufrufe begrenzen die Treffer. Textsuche, Tests und Laufzeitbeobachtung ergänzen die Symbolsuche, besonders bei Konfiguration und Reflection.",
+          "Index, Sprachunterstützung und dynamische Aufrufe beschränken die Treffer. Textsuche, Tests und Laufzeitbeobachtung müssen die Symbolsuche ergänzen, besonders bei Konfiguration und Reflection.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -2171,7 +2170,7 @@ export const topics: TopicCollection = {
         javaWebUse:
           "Bei einem Spring-Boot-3.5-Projekt wird zuerst die verwendete Version im Build geprüft, dann passende Dokumentation gesucht und eine relevante Aussage mit der Spring-Boot-3.5-Referenz abgeglichen.",
         boundary:
-          "Context7 ist ein Such- und Kontextwerkzeug, keine Autorität für Korrektheit oder Aktualität. Eine Versionsnennung garantiert keinen passenden Treffer; bei Abweichungen zählt die Originaldokumentation.",
+          "Context7 ist ein Such- und Kontextwerkzeug, keine Autorität für Korrektheit oder Aktualität. Eine Versionsnennung garantiert keinen passenden Treffer; bei Abweichungen zählt letztlich doch nur wieder die Originaldokumentation.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -2251,17 +2250,17 @@ export const topics: TopicCollection = {
     },
     {
       id: "specialized-subagents-and-ownership",
-      title: "Spezialisierte Subagents mit klarem Aufgabenbesitz einsetzen",
+      title: "Spezialisierten Subagents klare Aufgaben zuordnen",
       content: {
         language: "de",
         problem:
-          "Ohne Zuständigkeiten liefern parallele Agenten überlappende Patches und ihre Ergebnisse lassen sich schwer zusammenführen.",
+          "Ohne Zuständigkeiten liefern parallele Agenten überlappende Änderungen und ihre Ergebnisse lassen sich schwer zusammenführen.",
         coreConcept:
-          "Ein koordinierender Agent vergibt begrenzte Teilaufträge mit eigener Aufgabe, Kontext, Werkzeugen und erwartetem Ergebnis. Zuständigkeit für Dateien und Entscheidungen wird ausdrücklich benannt.",
+          "Ein koordinierender Agent vergibt begrenzte Teilaufträge mit jeweils eigener Aufgabe, eigenem Kontext, festgelegten Tools und erwartetem Ergebnis. Es wird ausdrücklich benannt, welcher Subagent für welche Dateien und Entscheidungen zuständig ist.",
         javaWebUse:
-          "Ein Subagent prüft ausschließlich Tests einer Spring-Migration, ein anderer die Dokumentationsfolgen; die Hauptinstanz bewertet beide Befunde gegen denselben API-Vertrag.",
+          "Ein Subagent prüft ausschließlich die Tests einer Spring-Migration, ein anderer die Dokumentationsfolgen; die Hauptinstanz bewertet beide Befunde gegen denselben API-Vertrag.",
         boundary:
-          "Eine Rollenbeschreibung allein erzwingt keinen Dateibesitz. Getrennte Worktrees, begrenzte Rechte und ein abschließender Diff-Review bleiben nötig; einfache Aufgaben können seriell schneller sein.",
+          "Eine Rollenbeschreibung allein schränkt nicht die Änderungsrechte an Dateien ein. Getrennte Worktrees, begrenzte Rechte und ein abschließender Diff-Review bleiben nötig; einfache Aufgaben können seriell schneller sein.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -2339,13 +2338,13 @@ export const topics: TopicCollection = {
       content: {
         language: "de",
         problem:
-          "Eine Übergabe ohne geprüften Zwischenstand verliert Annahmen, offene Fragen und den Bezug zu konkreten Dateien oder Tests.",
+          "Wird ein Kontext übergeben, ohne den Zwischenstand zu prüfen, können Annahmen, offene Fragen und der Bezug zu konkreten Dateien oder Tests verloren gehen.",
         coreConcept:
-          "Eine Übergabe nennt Auftrag, relevante Fakten mit Fundstellen, getroffene Entscheidungen, Prüfstand und offene Punkte. Der empfangende Agent bekommt nur den nötigen Kontext und bestätigt die Übernahme.",
+          "Eine Kontext-Übergabe (Handoff) nennt Auftrag, relevante Fakten mit Fundstellen, bereits getroffene Entscheidungen, Prüfstand und offene Punkte. Der empfangende Agent bekommt nur den nötigen Kontext und bestätigt die Übernahme.",
         javaWebUse:
-          "Nach der Analyse eines Java-Controllers werden betroffene Endpunkte, Dateipfade, API-Annahmen und fehlschlagende Tests an den Agenten für die Weboberfläche übergeben.",
+          "Nach der Analyse eines Java-Controllers werden betroffene Endpoints, Dateipfade, API-Annahmen und fehlschlagende Tests an den Agenten für die Weboberfläche übergeben.",
         boundary:
-          "Eine Zusammenfassung kann Details auslassen oder falsch darstellen. Kritische Aussagen werden an Originaldateien geprüft; bei einem echten Agenten-Handoff können auch Verlauf und Werkzeugrechte mitübergehen.",
+          "Eine Zusammenfassung kann Details auslassen oder falsch darstellen. Kritische Aussagen muss der empfangende Agent anhand der Originaldateien verifizieren; bei einem Handoff von Agent zu Agent können auch Verlauf und Werkzeugrechte mitübergehen.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -2413,11 +2412,11 @@ export const topics: TopicCollection = {
         problem:
           "Ein Agent mit pauschalem Schreib-, Netzwerk- oder MCP-Zugriff kann durch Fehler oder fremde Inhalte weit mehr verändern als für seine Aufgabe nötig.",
         coreConcept:
-          "Werkzeuge, Datenquellen und Zugangsdaten werden pro Rolle auf den nötigen Umfang begrenzt. Riskante Aktionen erhalten technische Schranken und eine passende Freigabe.",
+          "Werkzeuge, Datenquellen und Zugangsdaten werden pro Rolle auf den nötigen Umfang begrenzt. Riskante Aktionen werden durch technische Schranken begrenzt und erfordern manuelle Freigaben.",
         javaWebUse:
           "Ein Rechercheagent darf Java-Quellen und Bibliotheksdokumentation lesen, aber keine Deployments auslösen; ein Implementierungsagent schreibt nur im zugewiesenen Worktree.",
         boundary:
-          "Promptregeln sind keine Rechtekontrolle. MCP-Server können eigene Berechtigungen besitzen; auch ein lesender Zugriff kann sensible Daten offenlegen.",
+          "Prompt-Regeln sind keine Rechtekontrolle. MCP-Server können eigene Berechtigungen besitzen; auch ein lesender Zugriff kann sensible Daten offenlegen.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -2588,13 +2587,13 @@ export const topics: TopicCollection = {
       content: {
         language: "de",
         problem:
-          "Ohne prüfbare Beispiele kann eine Änderung fachliches Verhalten unbemerkt verschieben.",
+          "Ohne prüfbare Beispiele kann eine Änderung fachliches Verhalten unbemerkt verändern.",
         coreConcept:
           "TDD beginnt mit einem fehlschlagenden Test für das nächste Verhalten, ergänzt nur genug Code für einen grünen Test und verbessert danach die Struktur bei weiter grünen Tests.",
         javaWebUse:
           "Für eine Java-Bestellregel wird zuerst ein JUnit-Test für einen Grenzfall geschrieben, dann die Regel implementiert und anschließend bei grüner Suite refaktoriert.",
         boundary:
-          "Grüne Tests beweisen nur die geprüften Fälle; fehlende oder falsch erwartete Fachregeln bleiben möglich.",
+          "Grüne Tests beweisen nur die geprüften Fälle; es kann weiterhin zu fehlenden oder falsch erwarteten Fachregeln kommen.",
       },
       editorial: {
         publishedAt: "2026-09-26",
@@ -2761,7 +2760,7 @@ export const topics: TopicCollection = {
         javaWebUse:
           "Für einen Spring- und React-Patch laufen Build, Typprüfung, Unit- und Browser-Tests als feste Gates; ein fehlgeschlagener Pflichtcheck verhindert die Übernahme.",
         boundary:
-          "Grüne Checks ersetzen weder passende Testfälle noch Review. Ein übersprungener oder falsch konfigurierter Check kann grün erscheinen; das Gate muss selbst geprüft werden.",
+          "Grüne Checks ersetzen weder passende Testfälle noch Review. Ein übersprungener oder falsch konfigurierter Check kann grün erscheinen; auch das Gate selbst muss geprüft werden.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -2839,7 +2838,7 @@ export const topics: TopicCollection = {
         problem:
           "Ein automatisierter Ablauf kann Fehler schneller und häufiger ausführen, wenn Eingaben, Rechte und Abnahme unklar sind.",
         coreConcept:
-          "Wiederholung, klare Regeln und messbarer Zeitgewinn rechtfertigen einen Pilot. Ein Workflow hält Zustände und Pflichtprüfungen technisch fest; riskante Übergänge verlangen gezielte menschliche Freigabe.",
+          "Wiederholung, klare Regeln und messbarer Zeitgewinn rechtfertigen eine Pilotierung. Ein Workflow hält Zustände und Pflichtprüfungen technisch fest; riskante Übergänge verlangen gezielte menschliche Freigabe.",
         javaWebUse:
           "Ein Bot darf einen Java-Bug reproduzieren und einen Testvorschlag vorbereiten; ein PR oder Release folgt erst nach festgelegten Checks und Review.",
         boundary:
@@ -2925,7 +2924,7 @@ export const topics: TopicCollection = {
         javaWebUse:
           "Für ein Spring-Boot-Upgrade wird ein passendes Rezept ausgewählt, in einem isolierten Branch ausgeführt und der Diff mit Build, Tests und Laufzeitprüfung gegen die Migrationsziele geprüft.",
         boundary:
-          "Ein Rezept ersetzt keine fachliche Abnahme. Zielversion, Rezeptumfang, Verfügbarkeit und Lizenz sind vor dem Einsatz zu prüfen; projektspezifische Anpassungen können offenbleiben.",
+          "Ein Refactoring-Rezept ersetzt keine fachliche Abnahme. Zielversion, Rezeptumfang, Verfügbarkeit und Lizenz sind vor dem Einsatz zu prüfen; oft sind zusätzlich projektspezifische Anpassungen nötig.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -2994,7 +2993,7 @@ export const topics: TopicCollection = {
         problem:
           "Komponenten- und Unit-Tests übersehen Fehler im Zusammenspiel von Oberfläche, Navigation und Browser.",
         coreConcept:
-          "Playwright führt Webabläufe im Browser aus und prüft sichtbares Verhalten mit Locators und wiederholenden Assertions.",
+          "Playwright führt Webabläufe im Browser aus und prüft mit Locators und Assertions das sichtbare Verhalten.",
         javaWebUse:
           "Ein Test öffnet ein Thema im Browser und prüft, dass Überschrift, Inhalt und Quellen sichtbar werden.",
         boundary:
@@ -3155,7 +3154,7 @@ export const topics: TopicCollection = {
         coreConcept:
           "OWASP Top 10 für Webanwendungen und für LLM-Anwendungen adressieren unterschiedliche Bedrohungen. Anforderungen an Zugriffe, Konfiguration, Ausgabe und Header werden passend zum System ausgewählt und getestet.",
         javaWebUse:
-          "Für eine Spring-/React-App prüft das Team Zugriffskontrolle und Sicherheitsheader; bei einer Agentenintegration zusätzlich Prompt Injection und unerwünschte Werkzeugaktionen.",
+          "Für eine Spring-/React-App prüft das Team Zugriffskontrolle und Sicherheits-Header, bei einer Agentenintegration zusätzlich Prompt Injection und unerwünschte Tool-Verwendung.",
         boundary:
           "CSP und Trusted Types ergänzen sichere DOM-Nutzung, ersetzen sie aber nicht. Eine statische GitHub-Pages-App hat andere Header-Möglichkeiten als ein eigener Server.",
       },
@@ -3285,7 +3284,7 @@ export const topics: TopicCollection = {
     },
     {
       id: "ui-design-system-workflow",
-      title: "UI-Komponenten entwerfen und sichtbar prüfen",
+      title: "UI-Komponenten entwerfen und visuell prüfen",
       content: {
         language: "de",
         problem:
@@ -3434,7 +3433,7 @@ export const topics: TopicCollection = {
         javaWebUse:
           "Ein Java-Modul erzeugt HTML-API-Dokumentation für seine öffentlichen Verträge und prüft Links sowie Beispiele im Build.",
         boundary:
-          "Ein Markdown-zu-PDF-Export ist ein anderer Vorgang. Generierung kann veraltete oder fachlich falsche Kommentare nicht selbst korrigieren.",
+          "Ein Markdown-zu-PDF-Export braucht einen separaten Build-Schritt. Generierung kann veraltete oder fachlich falsche Kommentare nicht selbst korrigieren.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -3521,11 +3520,11 @@ export const topics: TopicCollection = {
         problem:
           "Eine neue oder aktualisierte Bibliothek kann bekannte Schwachstellen, Lizenzkonflikte oder unnötige Angriffsfläche einführen.",
         coreConcept:
-          "Abhängigkeiten werden nach Nutzen, Einsatzbereich, bekannten Schwachstellen, Lizenz und Wartung bewertet; Funde werden nach Auswirkung und Erreichbarkeit priorisiert.",
+          "Abhängigkeiten müssen nach Nutzen, Einsatzbereich, bekannten Schwachstellen, Lizenz und Wartungsaufwand bewertet werden; Funde werden nach Auswirkung und Erreichbarkeit priorisiert.",
         javaWebUse:
           "Vor einem npm- oder Maven-Update prüft ein Team den Dependency-Diff, bekannte Advisories und die Nutzung der betroffenen Bibliothek im eigenen Webdienst.",
         boundary:
-          "Ein unauffälliger Scan belegt keine Sicherheit: Datenbanken können Lücken haben und ein Fund muss im konkreten Einsatz eingeordnet werden.",
+          "Ein Scan ohne Auffälligkeiten belegt keine Sicherheit: Datenbanken können Lücken haben und ein Fund muss im konkreten Einsatz eingeordnet werden.",
       },
       editorial: {
         publishedAt: "2026-09-26",
@@ -3606,12 +3605,12 @@ export const topics: TopicCollection = {
           "Ein plausibler KI-Patch kann Anforderungen verfehlen, Sicherheitsregeln verletzen oder unnötige Abhängigkeiten einführen. Der erzeugende Agent kann solche Fehler bei der eigenen Prüfung übersehen.",
         coreConcept:
           // Bewusste Textbindung: completeLearningPaths.test.ts prüft „zweite“ als unabhängige Review-Perspektive.
-          "Menschen prüfen den Diff gegen Auftrag und Architektur, führen passende Tests und Sicherheitsprüfungen aus und entscheiden erst anhand der Ergebnisse über die Übernahme. Bei höherem Risiko ergänzt eine zweite, nicht an der Änderung beteiligte Review-Perspektive diese Prüfung.",
+          "Menschen prüfen den Diff gegen den Entwicklungsauftrag und die Architektur, führen passende Tests und Sicherheitsprüfungen aus und entscheiden erst anhand der Ergebnisse über die Übernahme. Bei höherem Risiko ergänzt eine zweite, nicht an der Änderung beteiligte Review-Perspektive diese Prüfung.",
         javaWebUse:
-          "Bei einem geänderten Spring-Endpunkt werden Berechtigungsprüfung, Fehlerfälle und neue Bibliotheken im Diff kontrolliert und mit gezielten Java- und Browser-Tests geprüft. Eine unabhängige Person prüft zusätzlich API-Vertrag und Berechtigungen.",
+          "Bei einem geänderten Spring-Endpoint werden Berechtigungsprüfung, Fehlerfälle und neue Bibliotheken im Diff kontrolliert und mit gezielten Java- und Browser-Tests geprüft. Eine unabhängige Person prüft zusätzlich API-Vertrag und Berechtigungen.",
         boundary:
           // Bewusste Textbindung: completeLearningPaths.test.ts prüft den Grenzfall „Review-Agent“.
-          "Grüne Tests und Scanner decken nur ihre geprüften Fälle ab. Ein Review-Agent ersetzt weder die fachliche Bewertung noch die menschliche Freigabe; eine feste Anzahl von Reviews garantiert keine Qualität.",
+          "Grüne Tests und Scanner decken nur ihre geprüften Fälle ab. Ein Review-Agent ersetzt weder die fachliche Bewertung noch die menschliche Freigabe; auch mehrfache Reviews garantieren keine Qualität.",
       },
       editorial: {
         publishedAt: "2026-09-26",
@@ -3693,17 +3692,17 @@ export const topics: TopicCollection = {
     },
     {
       id: "compare-parallel-and-serial-agent-work",
-      title: "Parallelität gegen einen seriellen Ablauf messen",
+      title: "Einsatz von parallelen Agenten gegen den seriellen Ablauf messen",
       content: {
         language: "de",
         problem:
           "Mehr Agenten wirken schneller, können aber zusätzliche Kosten, Koordination und Review-Aufwand erzeugen, ohne das Ergebnis zu verbessern.",
         coreConcept:
-          "Für vergleichbare Aufgaben werden ein serieller und ein paralleler Ablauf mit denselben Anforderungen und Abnahmekriterien geprüft. Ergebnisqualität, Gesamtzeit, Kosten und menschlicher Review-Aufwand werden getrennt erfasst.",
+          "Für vergleichbare Aufgaben sollten serieller und paralleler Ablauf mit denselben Anforderungen und Abnahmekriterien geprüft werden. Dabei werden Ergebnisqualität, Gesamtzeit, Kosten und menschlicher Review-Aufwand ermittelt und verglichen.",
         javaWebUse:
           "Eine Java-/Web-Änderung wird als kontrollierter Versuch einmal seriell und einmal mit getrennten Agenten bearbeitet; Tests, Defekte, Laufzeit, Tokenkosten und Review-Minuten werden verglichen.",
         boundary:
-          "Ein einzelner Versuch beweist keinen allgemeinen Vorteil. Aufgabenvarianz, Modellwahl, Tokenbudget und Einarbeitung beeinflussen den Vergleich; veröffentlichte Forschungsergebnisse zu Rechercheaufgaben gelten nicht automatisch für Coding.",
+          "Ein einzelner Versuch beweist keinen allgemeinen Vorteil. Aufgabenvarianz, Modellwahl, Token-Budget und Einarbeitung beeinflussen den Vergleich; veröffentlichte Forschungsergebnisse zu Rechercheaufgaben gelten nicht automatisch für die eigene Software-Entwicklung.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -3870,13 +3869,13 @@ export const topics: TopicCollection = {
       content: {
         language: "de",
         problem:
-          "Ein lokales Modell, ein Agentenprogramm und eine selbst hostbare Plattform werden oft als gleichwertige Alternativen behandelt, obwohl Betrieb und Datenfluss verschieden sind.",
+          "Ein lokales Modell, ein Agentenprogramm und eine selbst gehostete Plattform werden oft als gleichwertige Alternativen behandelt, obwohl sie sich in Betrieb und Datenfluss deutlich unterscheiden.",
         coreConcept:
-          "Qwen ist eine Modellfamilie, Hermes ein Agenten-Harness und Bionic eine Plattform für kontrollierte interne Workflows. Ein Pilot prüft Modellqualität, Hardware, Rechte, Wartung und tatsächlichen Datenfluss getrennt.",
+          "Qwen ist eine Modellfamilie, Hermes ein Agenten-Harness und Bionic eine Plattform für kontrollierte interne Workflows. Erst eine Pilotierung schafft ein Verständnis von Modellqualität, nötiger Hardware, Berechtigungsanforderungen, Wartungsaufwand und den tatsächlichen Datenflüssen.",
         javaWebUse:
           "Ein Team testet eine freigegebene Java-Analyseaufgabe lokal und vergleicht Ergebnis, Laufzeit und Review-Aufwand mit dem bisherigen Ablauf.",
         boundary:
-          "Lokal bedeutet nicht automatisch sicher oder günstig. Für produktive Unternehmensdaten gelten gesonderte rechtliche und technische Freigaben.",
+          "Lokal bedeutet nicht automatisch sicher oder günstig. Für produktive Unternehmensdaten sind gesonderte rechtliche und technische Freigaben nötig.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -3961,13 +3960,13 @@ export const topics: TopicCollection = {
       content: {
         language: "de",
         problem:
-          "Ein Agent mit Toolzugriff kann einen guten Prompt trotzdem falsch ausführen oder mehr Daten und Rechte nutzen als nötig.",
+          "Ein Agent mit Tool-Zugriff kann einen guten Prompt trotzdem falsch ausführen oder mehr Daten und Rechte nutzen als nötig.",
         coreConcept:
-          "Ein Harness verbindet Werkzeuge, Kontext, Zustände, Sandbox, Netzwerkregeln und deterministische Tests. Identität und Zugangsdaten bleiben außerhalb der untrusted Ausführungsumgebung, soweit die Architektur es erlaubt.",
+          "Ein Harness verbindet Tools, Kontext, Zustände, Sandbox, Netzwerkregeln und deterministische Prüfungen. Identität und Zugangsdaten bleiben außerhalb der nicht vertrauenswürdigen Ausführungsumgebung, soweit die Architektur es erlaubt.",
         javaWebUse:
           "Für einen Java-/Web-Patch läuft der Agent in isoliertem Checkout mit begrenzten Schreibrechten; CI entscheidet anhand fester Tests über die Übernahme.",
         boundary:
-          "Ein eigenes Harness ist ein Bauprojekt mit Wartungs- und Sicherheitskosten. Ein MCP-Zugang zu OpenRewrite ist nur eine Oberfläche für dessen Rezepte, keine neue Migrationsmethode.",
+          "Einen eigenen Harness aufzubauen ist ein Projekt mit Wartungs- und Sicherheitskosten. Ein MCP-Zugang zu OpenRewrite ist nur eine Zugriffsmöglichkeit auf die existierenden OpenRewrite-Rezepte und eröffnet keine grundsätzlich neuen Migrationsmöglichkeiten.",
       },
       editorial: {
         publishedAt: "2026-09-27",
@@ -4072,9 +4071,9 @@ export const topics: TopicCollection = {
         problem:
           "Wenn unabhängige Änderungen in einem Commit landen, ist schwerer zu erkennen und zu prüfen, was aus welchem Grund geändert wurde.",
         coreConcept:
-          "Ein Commit bündelt eine logisch zusammengehörige Änderung mit einer aussagekräftigen Nachricht. Über die Staging Area lassen sich aus dem Arbeitsstand gezielt Dateien oder Teile davon für diesen Commit auswählen.",
+          "Ein Commit verknüpft eine logisch zusammengehörige Änderung mit einer aussagekräftigen Beschreibung. Über die Staging Area lassen sich aus der Working Copy gezielt einzelne Dateien oder sogar Teile davon für einen Commit auswählen.",
         javaWebUse:
-          "Bei Änderungen an einem Spring-Endpunkt werden eine fachliche API-Anpassung und davon unabhängige Formatkorrekturen getrennt festgehalten. Vor jedem Commit wird geprüft, welche Änderungen tatsächlich gestagt sind.",
+          "Bei Änderungen an einem Spring-Endpoint werden eine fachliche API-Anpassung einerseits und davon unabhängige Formatkorrekturen andererseits getrennt committet. Vor jedem Commit wird geprüft, welche Änderungen tatsächlich gestagt sind.",
         boundary:
           "Ein kleiner Commit ist nicht automatisch korrekt oder lauffähig. Zusammengehörige Änderungen dürfen mehrere Dateien umfassen; eine starre Dateizahl ist kein Qualitätsmaßstab.",
       },

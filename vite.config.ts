@@ -8,6 +8,26 @@ export default defineConfig(({ mode }) => {
   return {
     base: pagesBasePath || "/",
     plugins: [react()],
+    build: {
+      rolldownOptions: {
+        output: {
+          codeSplitting: {
+            groups: [
+              // Redaktionelle Kataloge separat ausliefern; die 500-kB-Warngrenze bleibt aktiv.
+              {
+                name: "topics",
+                test: /[\\/]verticals[\\/]topics[\\/]topics\.ts$/,
+              },
+              {
+                name: "questions",
+                test: /[\\/]verticals[\\/]learning-checks[\\/]\w+Questions\.(?:ts|json)$/,
+                maxSize: 400_000,
+              },
+            ],
+          },
+        },
+      },
+    },
     test: {
       environment: "jsdom",
       exclude: [...configDefaults.exclude, "e2e/**"],

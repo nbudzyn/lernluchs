@@ -426,7 +426,7 @@ describe("TopicBrowser", () => {
     expect(screen.getByRole("heading", { name: "Problem" })).toBeTruthy();
     expect(
       screen.getByText(
-        "KI-Ausgaben können plausibel wirken, obwohl Kontext, Risiken oder Folgen falsch eingeschätzt sind.",
+        "KI-Ausgaben können plausibel wirken, obwohl die KI falsche Annahmen über den Kontext getroffen hat oder Risiken und Folgen falsch eingeschätzt hat.",
       ),
     ).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Kernkonzept" })).toBeTruthy();
