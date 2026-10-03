@@ -7,6 +7,22 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## NF: Bezeichnungen vereinheitlichen
+
+Wir haben nur wenige fachliche Dinge in der Anwendung. Die identifizieren und auf einheitliche Begriffe festlegen (mit einheitlichen)
+Übersetzungen. Die bisherigen "unscharfen Synonyme" (u.a. "Katalog" oder "Karte") aus dem Glossar entfernen und im Code umbenennen.
+(Ubiquitous Language)
+
+## Jüngste Private Notizen in Themen (oder als neue Themen) übernehmen 
+- Jüngste Private Notizen in Themen (oder als neue Themen) übernehmen
+
+## Einschätzung von ChatGPT zu neuen Entwicklungen 2026 einarbeiten
+Einschätzung von ChatGPT zu neuen Entwicklungen 2026 einarbeiten
+- Neue Themen / in Themen einarbeiten
+- Quellen ergänzen
+- Fragen unverändert lassen
+- (Aktualisierungsdatum erhöhen?)
+
 ## Liste der Lernpfade mit Filter (Einzelauswahl)
 
 - ein kompakten alternativer Einstieg über einen oder mehrere Lernpfade auf derselben Seite.
@@ -39,21 +55,16 @@ Vielleicht eine eigene Datei, die dann durchgegangen wird, wenn ein Kalenderdatu
 
 Nur Tests der Vertikalen laufen lassen? Alle Tests erst, wenn die grün sind? Vor dem Commit immer alle Tests
 
-## Link zu ChatGPT zum Lenern
+## Link zu ChatGPT zum Lernen?
 
 Ein Link oder Button öffnet ChatGPT mit dem Prompt "Das hier möchte ich lernen: " und dann dem vollständigen Texte des Themas inkl. Primär-
 und vielleicht Sekundärquellen
+Man könnte den /teach-Skill von Matt einbinden
 
 ## Link zur Google-KI zum Lernen
 
 Ein Link oder Button öffnet die online-Google-KI mit dem Prompt "Das hier möchte ich lernen: " und dann dem vollständigen Texte des Themas
 inkl. Primär- und vielleicht Sekundärquellen
-
-## NF: Bezeichnungen vereinheitlichen
-
-Wir haben nur wenige fachliche Dinge in der Anwendung. Die identifizieren und auf einheitliche Begriffe festlegen (mit einheitlichen)
-Übersetzungen. Die bisherigen "unscharfen Synonyme" (u.a. "Katalog" oder "Karte") aus dem Glossar entfernen und im Code umbenennen.
-(Ubiquitous Language)
 
 ## NF: Regelmäßig nachfragen
 
@@ -140,12 +151,6 @@ Bezeichner werden innerhalb der beiden Vertikalen vereinheitlicht, ohne Fachlogi
 
 Vertikalen: Lernchecks, Lernfortschritt
 
-## Nur die vorgegebenen Vertikalen bearbeiten
-
-Jede aktivierte Spec muss die max. 2 Vertikalen nennen, die geändert werden sollen. Beim Commit (?) prüfen, ob wirklich maximal diese
-angegebenen Vertikalen geändert wurden (sowohl Tests als auch Prod-Code - zusätzlich app und shared erlaubt sowie docs. main.tsx vielleicht
-auf Anfrage. Bei den Tests auch architecture und quality.
-
 ## Sicherstellen, dass Architektur oder Bibliotheken nicht unbemerkt geändert werden
 
 Sicherstellen, dass Architektur oder Bibliotheken nicht unbemerkt geändert werden. Möglicherweise gewisse Architekturen, Bibliotheken oder
@@ -196,14 +201,9 @@ Architektur und Qualitätsstrategie ergänzen.
 
 ## Kernabläufe und Release auf Zielbrowsern abnehmen
 
-Lernende können die installierbare App auf den unterstützten Geräten durchgängig nutzen: ein Thema wählen, einen Lerncheck wiederholen,
-Fortschritt bestätigen und die Kerninhalte nach dem Erstladen offline öffnen.
-
-Die vollständige Pflichtsuite ist grün: Format, Lint, Typen, Inhalts- und Schema-Validierung, Unit- und Komponententests, Browser-E2E,
-Architekturgrenzen, bekannte Schwachstellen und unzulässige Lizenzen, Produktionsbuild sowie PWA-/Offline-Prüfung. Insbesondere werden
+Die vollständige Pflichtsuite ist grün: Lint, Typen, Inhalts- und Schema-Validierung, bekannte Schwachstellen und unzulässige Lizenzen, Produktionsbuild sowie PWA-/Offline-Prüfung. Insbesondere werden
 Querverbindungen, Themen und Metadaten, Bestehen und Nichtbestehen mit anderem Fragensatz, bestätigter Fortschritt über Reload,
-Offline-Nutzung und der Ausfall eines optionalen Quellenlinks geprüft. Automatisierte Tests decken definierte Desktop- und mobile Viewports
-ab. Der GitHub-Pages-Release durchläuft dieselben Pflichtprüfungen; ein fehlendes oder fehlschlagendes Gate verhindert die Veröffentlichung.
+Offline-Nutzung geprüft. Der GitHub-Pages-Release durchläuft dieselben Pflichtprüfungen; ein fehlendes oder fehlschlagendes Gate verhindert die Veröffentlichung.
 GitHub Dependency Review und Dependabot ergänzen die Abhängigkeitsprüfung; Updates werden getrennt getestet und bewusst freigegeben.
 
 Installation und Kernabläufe werden zusätzlich auf Samsung Internet/Android, Chrome und Firefox unter Windows 11 sowie Safari auf einem

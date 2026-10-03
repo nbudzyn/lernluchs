@@ -155,28 +155,12 @@ Recherche und Katalogabgleich am 30.09.2026. Die folgenden 100 Punkte sind **Ein
 
 ### Vorschläge für den Katalog
 
-**Priorität A – bestehende Themen aktualisieren**
-
-| Bestehendes Thema | Vorschlag | Belege |
-| --- | --- | --- |
-| `agent-tool-and-mcp-permissions` | MCP-Autorisierung, Task-Lebenszyklus, URL-Elicitation und private Tunnel als konkrete Grenzfälle ergänzen. | 1–8, 56 |
-| `deterministic-agent-verification-gates` | Agenten-Evals um Ergebnis, Ablauf, Kosten und Regression erweitern; KI-Reviews und Security-Scanner nur als zusätzliche Signale einordnen. | 16–19, 44, 96–97; [ANT-EVAL] |
-| `agent-context-handoffs` | Wiederaufnahme, Sitzungsprotokolle und Mid-turn-Steuerung als nachvollziehbaren Übergabekontext erklären. | 14, 27–28, 38, 61–62 |
-| `parallel-agent-task-boundaries` und `compare-parallel-and-serial-agent-work` | Parallele Sitzungen und Subagent-Aufgaben mit Abbruch-, Review- und Kostenkriterien verbinden. | 23, 30, 35 |
-| `local-model-stack-evaluation` | Lokalen Modellbetrieb, Agent-Harness und mögliche Cloud-Fallbacks samt Datenschutzgrenze aktualisieren. | 34, 41, 99–100 |
-| `spec-driven-development-openspec` | Planfreigabe, getrennte Recherche und Umsetzung als produktübergreifende Muster ergänzen, ohne sie OpenSpec zuzuschreiben. | 20–22 |
-| `review-and-accept-ai-generated-changes` | Selbstreview, agentisches Review und menschengeprüfte Sicherheits-Patches mit ihren Grenzen erläutern. | 16–19, 44, 96–97 |
-
 **Priorität A – neue Themen in vorhandenen Pfaden**
 
-| Neues Thema | Passender bestehender Pfad | Lernwert |
-| --- | --- | --- |
-| MCP, A2A und ACP gezielt unterscheiden | Coding-Agenten und Spec-Systeme gezielt auswählen | Werkzeug-, Agenten- und Editor-Schnittstellen haben verschiedene Vertrauens- und Lebenszyklusmodelle (1–12). |
-| Agenten-Evals mit repräsentativen Aufgaben gestalten | Sicherheit und Qualität eines Webprodukts bewerten | Ergebnis- und Ablaufprüfungen sowie Kostenmessung über bloße Testgrünheit hinaus ([ANT-EVAL], 39, 44). |
-| Agenten-Sandboxes und Laufzeitrechte prüfen | Sicher mit Coding-Agenten arbeiten | Dateisystem, Netzwerk, Credentials und externe Integrationen konkret begrenzen (43, 46, 54, 75). |
-| KI-gestützte Sicherheitsfunde verifizieren | Sicherheit und Qualität eines Webprodukts bewerten | Agentische Funde reproduzieren, priorisieren und Patches unabhängig prüfen (94–97). |
-| Modellwechsel und API-Lebenszyklen absichern | Coding-Agenten und Spec-Systeme gezielt auswählen | Modelle, Tool-Fähigkeiten, Abkündigungen und Regressionen als Wartungsaufgabe behandeln (51–53, 63–70). |
-| Kontextkompaktierung und Agentengedächtnis bewerten | Agentenkontext in großen Repositories steuern | Zusammenfassung, Wiederaufnahme und persistente Erinnerung hinsichtlich Verlust und Datenschutz prüfen (33, 38, 47, 55, 84). |
+| Neues Thema                                         | Passender bestehender Pfad | Lernwert |
+|-----------------------------------------------------| --- | --- |
+| MCP, A2A und ACP gezielt einsetzen                  | Coding-Agenten und Spec-Systeme gezielt auswählen | Werkzeug-, Agenten- und Editor-Schnittstellen haben verschiedene Vertrauens- und Lebenszyklusmodelle (1–12). |
+| Modellwechsel und API-Lebenszyklen absichern  | Coding-Agenten und Spec-Systeme gezielt auswählen | Modelle, Tool-Fähigkeiten, Abkündigungen und Regressionen als Wartungsaufgabe behandeln (51–53, 63–70). |
 
 **Priorität B – neue Lernpfade, um die neuen Themen abzudecken**
 
