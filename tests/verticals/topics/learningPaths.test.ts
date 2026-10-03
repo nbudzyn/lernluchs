@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { topics } from "../../../src/verticals/topics/topics";
 import { validateTopics } from "../../../src/verticals/topics/validateTopics";
 
-const existingIds = [
+const coreTopicIds = [
   "human-ai-responsibility",
   "problem-understanding-and-change-boundaries",
   "agents-md",
@@ -31,7 +31,7 @@ const existingIds = [
   "focused-git-commits",
 ];
 
-const newIds = [
+const workflowTopicIds = [
   "domain-language-and-complexity",
   "project-documentation-and-checklists",
   "open-knowledge-format",
@@ -54,7 +54,7 @@ const newIds = [
   "coding-harness-design",
 ];
 
-const existingPaths = [
+const coreLearningPaths = [
   {
     name: pathName(0),
     topicIds: [
@@ -120,13 +120,15 @@ const existingPaths = [
 ];
 
 describe("vollständige Lernpfade", () => {
-  it("ordnet alle bestehenden und neuen Themen einmal in der gemeinsamen Liste", () => {
+  it("ordnet alle Themen einmal in der gemeinsamen Liste", () => {
     const ids = topics.items.map((item) => item.id);
-    expect(ids).toHaveLength(existingIds.length + newIds.length);
+    expect(ids).toHaveLength(coreTopicIds.length + workflowTopicIds.length);
     expect(new Set(ids).size).toBe(ids.length);
-    expect(ids.filter((id) => existingIds.includes(id))).toEqual(existingIds);
-    expect(ids.filter((id) => newIds.includes(id))).toEqual(newIds);
-    for (const id of newIds) {
+    expect(ids.filter((id) => coreTopicIds.includes(id))).toEqual(coreTopicIds);
+    expect(ids.filter((id) => workflowTopicIds.includes(id))).toEqual(
+      workflowTopicIds,
+    );
+    for (const id of workflowTopicIds) {
       const topic = topics.items.find((item) => item.id === id);
       expect(topic, id).toBeDefined();
       expect(topic?.editorial.reviewedAt, id).toBe("2026-09-27");
@@ -163,8 +165,8 @@ describe("vollständige Lernpfade", () => {
     ).toHaveLength(1);
   });
 
-  it("bewahrt die fünf Pfade und ordnet jedes Thema in mindestens einen neuen oder alten Pfad", () => {
-    expect(topics.paths?.slice(0, 5)).toEqual(existingPaths);
+  it("bewahrt die Kernpfade und ordnet jedes Thema mindestens einem Pfad zu", () => {
+    expect(topics.paths?.slice(0, 5)).toEqual(coreLearningPaths);
     expect(topics.paths?.slice(5).map((path) => path.name)).toEqual([
       pathName(5),
       pathName(6),
@@ -179,7 +181,7 @@ describe("vollständige Lernpfade", () => {
       topics.items.map((item, index) => [item.id, index]),
     );
     const assigned = new Set(topics.paths?.flatMap((path) => path.topicIds));
-    for (const id of [...existingIds, ...newIds]) {
+    for (const id of [...coreTopicIds, ...workflowTopicIds]) {
       expect(assigned.has(id), id).toBe(true);
     }
     for (const path of topics.paths ?? []) {
@@ -195,3 +197,74 @@ describe("vollständige Lernpfade", () => {
 function pathName(index: number) {
   return topics.paths![index].name;
 }
+const modernizationTopicIds = [
+  "git-worktrees-for-isolated-changes",
+  "versioned-library-docs-with-context7",
+  "module-boundaries-and-public-interfaces",
+  "tdd-for-domain-behavior",
+  "archunit-for-java-architecture",
+  "refactorings-and-migrations-with-openrewrite",
+  "playwright-for-web-flows",
+];
+
+it("provides sourced modernization topics in path order", () => {
+  const path = topics.paths?.find((item) => item.name === pathName(3));
+  expect(path?.topicIds).toEqual(modernizationTopicIds);
+  expect(
+    topics.items
+      .map((item) => item.id)
+      .filter((id) => modernizationTopicIds.includes(id)),
+  ).toEqual(modernizationTopicIds);
+
+  for (const id of [
+    modernizationTopicIds[0],
+    modernizationTopicIds[1],
+    modernizationTopicIds[2],
+    modernizationTopicIds[5],
+  ]) {
+    const item = topics.items.find((candidate) => candidate.id === id);
+    expect(item).toBeDefined();
+    expect(item?.sources.some((source) => source.origin === "primary")).toBe(
+      true,
+    );
+    expect(item?.editorial.reviewedAt).toBe("2026-09-27");
+  }
+  expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
+});
+
+const parallelAgentTopicIds = [
+  "parallel-agent-task-boundaries",
+  "git-worktrees-for-isolated-changes",
+  "specialized-subagents-and-ownership",
+  "agent-context-handoffs",
+  "agent-tool-and-mcp-permissions",
+  "deterministic-agent-verification-gates",
+  "review-and-accept-ai-generated-changes",
+  "compare-parallel-and-serial-agent-work",
+];
+
+it("provides sourced parallel agent topics in path order", () => {
+  const path = topics.paths?.find((item) => item.name === pathName(4));
+  expect(path?.topicIds).toEqual(parallelAgentTopicIds);
+  expect(
+    topics.items
+      .map((item) => item.id)
+      .filter((id) => parallelAgentTopicIds.includes(id)),
+  ).toEqual(parallelAgentTopicIds);
+
+  for (const id of parallelAgentTopicIds.filter(
+    (candidate) =>
+      candidate !== "git-worktrees-for-isolated-changes" &&
+      candidate !== "review-and-accept-ai-generated-changes",
+  )) {
+    const item = topics.items.find((candidate) => candidate.id === id);
+    expect(item).toBeDefined();
+    expect(item?.sources.some((source) => source.origin === "primary")).toBe(
+      true,
+    );
+    expect(item?.editorial.reviewedAt).toBe(
+      id === "agent-tool-and-mcp-permissions" ? "2026-09-28" : "2026-09-27",
+    );
+  }
+  expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
+});

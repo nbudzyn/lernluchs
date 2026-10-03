@@ -1,0 +1,81 @@
+// @vitest-environment node
+/// <reference types="vite/client" />
+import { describe, expect, it } from "vitest";
+
+import {
+  availableLearningCheckTopicIds,
+  questionsForTopic,
+} from "../../src/verticals/learning-checks/questionCatalog";
+import { learningPaths } from "../../src/verticals/topics/learningPaths";
+
+async function fingerprint(value: unknown) {
+  const hash = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(JSON.stringify(value)),
+  );
+  return Array.from(new Uint8Array(hash), (byte) =>
+    byte.toString(16).padStart(2, "0"),
+  ).join("");
+}
+
+describe("learning data organization", () => {
+  it("groups learning-check tests by implementation and browser workflow", () => {
+    const unitFiles = Object.keys(
+      import.meta.glob("../verticals/learning-checks/*.{test.ts,test.tsx}"),
+    ).map((path) => path.split("/").at(-1)!);
+    expect(unitFiles.sort()).toEqual([
+      "LearningCheck.test.tsx",
+      "questionCatalog.test.ts",
+      "validateQuestionCatalog.test.ts",
+      "validateQuestionPool.test.ts",
+    ]);
+    const browserFiles = Object.keys(
+      import.meta.glob("../../e2e/verticals/learning-checks/*.spec.ts"),
+    ).map((path) => path.split("/").at(-1)!);
+    expect(browserFiles).toEqual(["learning-check.spec.ts"]);
+  });
+
+  it("preserves every question, answer, source and stable ID in catalog order", async () => {
+    const pools = Object.fromEntries(
+      availableLearningCheckTopicIds.map((id) => [id, questionsForTopic(id)]),
+    );
+    expect(availableLearningCheckTopicIds).toHaveLength(45);
+    expect(await fingerprint(pools)).toBe(
+      "2ebcf9abf03fbf862b5149bcbbea420f713a21e46e34328c871d626acdb5c7fa",
+    );
+  });
+
+  it("preserves every learning path and its topic order", async () => {
+    expect(learningPaths).toHaveLength(13);
+    expect(await fingerprint(learningPaths)).toBe(
+      "73637290c7cacdca4f5f93c0c46ea438cfe1af52e142001329e2c7adafb84337",
+    );
+  });
+
+  it("maintains all questions in one neutral catalog data file", () => {
+    const files = Object.keys(
+      import.meta.glob("../../src/verticals/learning-checks/*.{ts,json}"),
+    ).map((path) => path.split("/").at(-1)!);
+    expect(
+      files.filter((name) => /questions\.(?:ts|json)$/i.test(name)),
+    ).toEqual(["questions.json"]);
+  });
+
+  it("names learning-data tests by subject rather than delivery order", () => {
+    const files = Object.keys(
+      import.meta.glob([
+        "../verticals/learning-checks/*.{ts,tsx}",
+        "../verticals/topics/*.{ts,tsx}",
+        "../../e2e/verticals/learning-checks/*.ts",
+        "../../e2e/verticals/topics/*.ts",
+      ]),
+    ).map((path) => path.split("/").at(-1)!);
+    expect(
+      files.filter((name) =>
+        /(?:^|-)(?:first|new|next|remaining|second|final)(?:-|\.)/i.test(
+          name.replace(/([a-z])([A-Z])/g, "$1-$2"),
+        ),
+      ),
+    ).toEqual([]);
+  });
+});

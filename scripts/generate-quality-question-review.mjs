@@ -1,9 +1,22 @@
 import { writeFileSync } from "node:fs";
+import { resolve } from "node:path";
 
-import { secondPathQuestions } from "../src/verticals/learning-checks/secondPathQuestions.ts";
+import questions from "../src/verticals/learning-checks/questions.json" with { type: "json" };
+
+const topicIds = [
+  "module-boundaries-and-public-interfaces",
+  "tdd-for-domain-behavior",
+  "archunit-for-java-architecture",
+  "playwright-for-web-flows",
+  "web-xss-and-safe-dom",
+  "dependency-security-assessment",
+];
+
+const target = process.argv[2];
+if (!target) throw new Error("Provide the output path for the review prompt.");
 
 const lines = [
-  "# Unabhängige Fachprüfung: Lernchecks für den zweiten Lernpfad",
+  "# Unabhängige Fachprüfung: Lernchecks zur Softwarequalität",
   "",
   "Prüfe alle folgenden 150 Fragen unabhängig gegen die jeweils verlinkte Originalquelle. Prüfe für jede Frage die fachliche Richtigkeit, genau eine eindeutig richtige Antwort, plausible und eindeutig falsche Ablenkungen, jede Erklärung und den konkreten Quellenbezug. Öffne die Quellen selbst; übernimm die angegebene Lösung nicht ungeprüft. Achte auf fachliche Dopplungen innerhalb eines Pools und Überschneidungen der sechs Themenschwerpunkte. Wenn eine Quelle nicht erreichbar ist oder die Aussage nicht trägt, beanstande die Frage. Antworte ausschließlich mit einer sehr kurzen Liste beanstandeter Fragen-IDs, zum Beispiel `M03, T17, X08`. Falls keine Frage zu beanstanden ist, antworte ausschließlich `Keine Beanstandungen`. Gib keine personenbezogenen Daten oder Projektfortschritt an einen Dienst weiter.",
   "",
@@ -11,9 +24,9 @@ const lines = [
   "",
 ];
 
-for (const [topicId, questions] of Object.entries(secondPathQuestions)) {
+for (const topicId of topicIds) {
   lines.push(`## ${topicId}`, "");
-  for (const question of questions) {
+  for (const question of questions[topicId]) {
     lines.push(`### ${question.id}: ${question.prompt}`, "");
     for (const option of question.options) {
       lines.push(
@@ -28,11 +41,4 @@ while (lines.at(-1) === "") {
   lines.pop();
 }
 
-writeFileSync(
-  new URL(
-    "../docs/changes/implemented/second-path-learning-checks/review-prompt.md",
-    import.meta.url,
-  ),
-  `${lines.join("\n")}\n`,
-  "utf8",
-);
+writeFileSync(resolve(target), `${lines.join("\n")}\n`, "utf8");

@@ -15,26 +15,20 @@ const server = await createServer({
 });
 
 try {
-  const pools = await Promise.all(
-    [
-      ["OpenRewrite", "openRewriteQuestions.ts", "openRewriteQuestions"],
-      [
-        "Serielle und parallele Agenten",
-        "parallelComparisonQuestions.ts",
-        "parallelComparisonQuestions",
-      ],
-      [
-        "Agenten-Harness",
-        "harnessDesignQuestions.ts",
-        "harnessDesignQuestions",
-      ],
-    ].map(async ([title, file, exportName]) => {
-      const module = await server.ssrLoadModule(
-        `/src/verticals/learning-checks/${file}`,
-      );
-      return { title, questions: module[exportName] };
-    }),
+  const { questionsForTopic } = await server.ssrLoadModule(
+    "/src/verticals/learning-checks/questionCatalog.ts",
   );
+  const pools = [
+    ["OpenRewrite", "refactorings-and-migrations-with-openrewrite"],
+    [
+      "Serielle und parallele Agenten",
+      "compare-parallel-and-serial-agent-work",
+    ],
+    ["Agenten-Harness", "coding-harness-design"],
+  ].map(([title, topicId]) => ({
+    title,
+    questions: questionsForTopic(topicId),
+  }));
   const { topics } = await server.ssrLoadModule(
     "/src/verticals/topics/topics.ts",
   );

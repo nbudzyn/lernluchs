@@ -3,60 +3,165 @@ import { describe, expect, it } from "vitest";
 import {
   availableLearningCheckTopicIds,
   questionsForTopic,
-} from "../../../src/verticals/learning-checks";
-import { validateQuestionCatalog } from "../../../src/verticals/learning-checks/validateQuestionCatalog";
+} from "../../../src/verticals/learning-checks/questionCatalog";
 import { validateQuestionPool } from "../../../src/verticals/learning-checks/validateQuestionPool";
 import { topics } from "../../../src/verticals/topics/topics";
 
-describe("learning-check question catalog", () => {
-  it("owns all 45 pools by stable topic ID", () => {
+// These reviewed pools additionally reject giveaway absolutes in distractors.
+const reviewedDistractorPools = new Set([
+  "specialized-subagents-and-ownership",
+  "agent-context-handoffs",
+  "agent-tool-and-mcp-permissions",
+  "deterministic-agent-verification-gates",
+  "agent-skills-and-commands",
+  "spec-framework-selection",
+  "automation-value-and-gates",
+  "web-security-baseline",
+  "ui-design-system-workflow",
+  "technical-documentation-generation",
+  "bug-triage-and-pr-automation",
+  "local-model-stack-evaluation",
+]);
+
+const weakExamples: Record<string, string[]> = {
+  "human-ai-responsibility": [
+    "Mit dem abschließenden Audit",
+    "Nur die Anzahl der UI-Klicks",
+    "Nur den Speicherbedarf beim Training",
+  ],
+  "agents-md": [
+    "Binärdatei",
+    "Mit einer Datei im Browsercache",
+    "Eine Liste aller früheren Chatnachrichten",
+  ],
+  "ears-requirements": [
+    "Die Anzahl der Entwickler",
+    "Genau fünf",
+    "Langsame Netzwerkverbindungen",
+  ],
+  "problem-understanding-and-change-boundaries": [
+    "Die Anzahl historischer Sterne",
+    "Nur den Browser-Tabtitel ansehen",
+    "Nur die Anzahl der Klassen zählen",
+  ],
+  "research-plan-tasks": [
+    "Nur die Farbe der Entwicklungsumgebung",
+    "Ein geheimes Token im Bild verstecken",
+    "Welche Datei die meisten Leerzeichen hat",
+  ],
+  "spec-driven-development-openspec": [
+    "Der Lockfile",
+    "Ein Konsolenprotokoll",
+    "Nur die geschätzte Arbeitszeit",
+  ],
+};
+
+describe("questionCatalog", () => {
+  it("owns exactly the published topics by stable ID and rejects unknown IDs", () => {
     expect(availableLearningCheckTopicIds).toHaveLength(45);
-    expect(questionsForTopic("human-ai-responsibility")).toHaveLength(25);
-    expect(questionsForTopic("focused-git-commits")).toHaveLength(25);
+    expect([...availableLearningCheckTopicIds].sort()).toEqual(
+      topics.items.map((topic) => topic.id).sort(),
+    );
     expect(questionsForTopic("unknown-topic")).toBeUndefined();
   });
 
-  it("validates every pool against its topic sources", () => {
-    expect(validateQuestionCatalog(topics.items)).toEqual([]);
+  it("provides 25 valid, distinct and sourced questions in every published pool", () => {
+    for (const topic of topics.items) {
+      const questions = questionsForTopic(topic.id);
+      expect.soft(questions, `${topic.id}: missing pool`).toBeDefined();
+      if (!questions) continue;
+      expect.soft(questions, `${topic.id}: pool size`).toHaveLength(25);
+      expect
+        .soft(validateQuestionPool(topic, questions), `${topic.id}: validation`)
+        .toEqual([]);
+      const seen = new Set<string>();
+      for (const question of questions) {
+        expect
+          .soft(
+            seen.has(question.prompt),
+            `${topic.id}/${question.id}: duplicate prompt`,
+          )
+          .toBe(false);
+        seen.add(question.prompt);
+      }
+    }
   });
 
-  it.each([
-    "module-boundaries-and-public-interfaces",
-    "tdd-for-domain-behavior",
-    "archunit-for-java-architecture",
-    "playwright-for-web-flows",
-    "web-xss-and-safe-dom",
-    "dependency-security-assessment",
-  ])("preserves the second-path pool for %s", (id) => {
-    expect(questionsForTopic(id)).toHaveLength(25);
+  it("keeps reviewed distractors plausible and removes unrelated examples", () => {
+    for (const topicId of new Set([
+      ...reviewedDistractorPools,
+      ...Object.keys(weakExamples),
+    ])) {
+      const questions = questionsForTopic(topicId);
+      expect.soft(questions, `${topicId}: missing reviewed pool`).toBeDefined();
+      if (!questions) continue;
+      const distractors = questions.flatMap((question) =>
+        question.options
+          .filter((option) => !option.correct)
+          .map((option) => ({ question, option })),
+      );
+      expect
+        .soft(distractors.length, `${topicId}: distractor count`)
+        .toBeGreaterThanOrEqual(50);
+      for (const { question, option } of distractors) {
+        const context = `${topicId}/${question.id}/${option.id}`;
+        expect
+          .soft(option.explanation.trim(), `${context}: explanation`)
+          .not.toBe("");
+        expect
+          .soft(weakExamples[topicId] ?? [], `${context}: unrelated answer`)
+          .not.toContain(option.text);
+        if (reviewedDistractorPools.has(topicId)) {
+          expect
+            .soft(option.text, `${context}: giveaway absolute`)
+            .not.toMatch(/\b(nur|immer|nie|ausschließlich)\b/i);
+        }
+      }
+    }
   });
 
-  it.each([
-    "open-knowledge-format",
-    "goal-discovery-and-stop-criteria",
-    "design-and-legacy-specification",
-    "standards-and-constraint-rationale",
-    "llm-fallibility-and-counterchecks",
-  ])("offers a sourced new pool for %s", (id) => {
-    const topic = topics.items.find((item) => item.id === id)!;
-    const questions = questionsForTopic(id);
-    expect(questions).toHaveLength(25);
-    expect(validateQuestionPool(topic, questions!)).toEqual([]);
-    expect(new Set(questions!.map((question) => question.prompt)).size).toBe(
-      25,
-    );
+  it("retains all reviewed distinct concepts", () => {
+    const concepts: [string, string, RegExp][] = [
+      [
+        "specialized-subagents-and-ownership",
+        "subagent-ownership-19",
+        /Simulationen/,
+      ],
+      [
+        "specialized-subagents-and-ownership",
+        "subagent-ownership-23",
+        /Skills/,
+      ],
+      ["agent-context-handoffs", "agent-handoff-22", /Werkzeugnamen/],
+      [
+        "deterministic-agent-verification-gates",
+        "agent-verification-04",
+        /schreibberechtigte/,
+      ],
+    ];
+    for (const [topicId, questionId, concept] of concepts) {
+      const question = questionsForTopic(topicId)?.find(
+        (item) => item.id === questionId,
+      );
+      expect
+        .soft(question, `${topicId}/${questionId}: missing concept question`)
+        .toBeDefined();
+      expect
+        .soft(
+          question?.options.find((option) => option.correct)?.text,
+          `${topicId}/${questionId}: reviewed concept`,
+        )
+        .toMatch(concept);
+    }
   });
 
-  it.each([
-    "domain-language-and-complexity",
-    "project-documentation-and-checklists",
-  ])("offers a sourced pool for %s", (id) => {
-    const topic = topics.items.find((item) => item.id === id)!;
-    const questions = questionsForTopic(id);
-    expect(questions).toHaveLength(25);
-    expect(validateQuestionPool(topic, questions!)).toEqual([]);
-    expect(new Set(questions!.map((question) => question.prompt)).size).toBe(
-      25,
-    );
+  it("provides workspace pools in published topic order", () => {
+    const positions = [
+      "parallel-agent-task-boundaries",
+      "git-worktrees-for-isolated-changes",
+      "versioned-library-docs-with-context7",
+    ].map((id) => topics.items.findIndex((topic) => topic.id === id));
+    expect(positions).toEqual([...positions].sort((a, b) => a - b));
+    expect(positions[0]).toBeGreaterThanOrEqual(0);
   });
 });

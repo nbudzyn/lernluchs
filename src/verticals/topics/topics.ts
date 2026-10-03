@@ -349,6 +349,16 @@ export const topics: TopicCollection = {
           checkedAt: "2026-09-27",
         },
         {
+          title: "KI-Halluzinationen mit Diátaxis und Gates stoppen",
+          url: "https://notebooklm.link.google/AT34SG35Drtz",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "23:12",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
+        },
+        {
           title: "Tipps für die technische Dokumentation // deutsch",
           url: "https://www.youtube.com/watch?v=BNBDkIJxDm0",
           type: "learning-video",
@@ -429,6 +439,16 @@ export const topics: TopicCollection = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-09-27",
+        },
+        {
+          title: "Warum viel Kontext Java KI Agenten schadet",
+          url: "https://notebooklm.link.google/3F9u8SJass7g",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "21:35",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title:
@@ -530,6 +550,16 @@ export const topics: TopicCollection = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-09-27",
+        },
+        {
+          title: "Spring AI und LangChain4j ohne Python-Sidecars",
+          url: "https://notebooklm.link.google/h0fbMDINkgRw",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "28:22",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title: "Tutorial: Projektmanagement - Projektziele",
@@ -742,7 +772,7 @@ export const topics: TopicCollection = {
     {
       id: "design-and-legacy-specification",
       title:
-        "Bestehendes Verhalten erforschen und einen Entwurf prüfbar machen",
+        "Verhalten von Legacy-Code ermitteln und die Neuentwicklung verlässlich testen",
       content: {
         language: "de",
         problem:
@@ -769,6 +799,16 @@ export const topics: TopicCollection = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-09-27",
+        },
+        {
+          title: "KI-Agenten mit ADRs und Pseudocode bändigen",
+          url: "https://notebooklm.link.google/FkCKFPc1qhmF",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "26:32",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title: "Legacy Code angstfrei mit der Golden Master Technik ändern",
@@ -885,6 +925,16 @@ export const topics: TopicCollection = {
           checkedAt: "2026-09-27",
         },
         {
+          title: "Sicherer KI Code durch Spec Driven Development",
+          url: "https://notebooklm.link.google/gQ8peB8Ituje",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "23:15",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
+        },
+        {
           title:
             "OWASP Application Security Verification Standard (ASVS) - Shanni Prutchi, Ryan Armstrong",
           url: "https://www.youtube.com/watch?v=BnP2vls88fw",
@@ -957,6 +1007,16 @@ export const topics: TopicCollection = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-09-27",
+        },
+        {
+          title: "Warum KI-Code knallharte Verifizierung braucht",
+          url: "https://notebooklm.link.google/oHeFwonSdM7H",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "20:11",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title:
@@ -4015,6 +4075,16 @@ export const topics: TopicCollection = {
           language: "en",
           mediaType: "text",
           checkedAt: "2026-09-27",
+        },
+        {
+          title: "Der Git Commit als semantische KI Schnittstelle",
+          url: "https://notebooklm.link.google/oiA9K16a7yuI",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "23:33",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title: "Git add - Die staging area sinnvoll nutzen",

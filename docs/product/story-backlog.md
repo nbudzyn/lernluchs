@@ -7,19 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Alle Fragen und Fragenpools in einer Datei zusammenfassen
-Alle Fragen und Fragenpools in einer Datei zusammenfassen. Tests und E2E-Tests entsprechend organisieren. Neutral-fachlich benennen ohne Bezug auf die Entwicklungs-Reihenfolge (nicht "first", "new", "first 4" o.Ä.).
-
-## Alle Lernpfade in einer Datei ohne "new" zusammenfassen
-Alle Lernpfade in einer Datei ohne "new" zusammenfassen, Tests dazu passend benennen.
-
-## RTK ausprobieren
-RTK zunächst gezielt für Testläufe und Git-Ausgaben ausprobieren. Dabei prüfen, ob Fehlerdetails und Exitcodes zuverlässig erhalten bleiben, und vergleichen der Ausgabegröße.
-
-  Für Codex CLI dokumentiert RTK eine automatische Integration. Ob diese in unserer konkreten Desktop-/PowerShell-Konfiguration greift, müssten wir gesondert prüfen; ein Versuch mit expliziten rtk-Aufrufen wäre deshalb der passende Einstieg. Integrationsdokumentation
-
-Kleiner Praxistest - globale Einrichtung noch nicht.
-
 ## Liste der Lernpfade mit Filter (Einzelauswahl)
 
 - ein kompakten alternativer Einstieg über einen oder mehrere Lernpfade auf derselben Seite.

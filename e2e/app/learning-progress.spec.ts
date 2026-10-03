@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
-import foundationQuestions from "../../src/verticals/learning-checks/foundationQuestions.json" with { type: "json" };
+import { questionsForTopic } from "../../src/verticals/learning-checks/questionCatalog";
 
 const key = "lernluchs.learning-progress.v1";
 const topicId = "human-ai-responsibility";
@@ -15,7 +15,7 @@ async function answerCheck(page: Page, correct: boolean) {
   await startCheck(page);
   for (let index = 0; index < 5; index += 1) {
     const prompt = await page.getByRole("heading", { level: 2 }).textContent();
-    const question = foundationQuestions[topicId].find(
+    const question = questionsForTopic(topicId)!.find(
       (candidate) => candidate.prompt === prompt,
     );
     if (!question) throw new Error(`Unknown question: ${prompt}`);

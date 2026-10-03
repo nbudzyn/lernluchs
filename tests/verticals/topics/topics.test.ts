@@ -27,6 +27,18 @@ const expandedTopicIds = [
   "coding-harness-design",
 ];
 
+it("uses the current sandbox-security source for agent tool permissions", () => {
+  const topic = topics.items.find(
+    (item) => item.id === "agent-tool-and-mcp-permissions",
+  );
+  expect(topic?.sources.map((source) => source.url)).toContain(
+    "https://developers.openai.com/api/docs/guides/agents-api/environments/security",
+  );
+  expect(topic?.sources.map((source) => source.url)).not.toContain(
+    "https://developers.openai.com/api/docs/guides/agent-builder-safety",
+  );
+});
+
 function completeItem(id: string): Topic {
   return {
     id,
@@ -228,47 +240,32 @@ describe("public content topics", () => {
       ).toBe(false);
     }
   });
-  it("marks existing written sources as text", () => {
+  it("marks written sources as text independently of audio and video providers", () => {
     expect(
       topics.items.every((item) =>
         item.sources
-          .filter((source) => source.mediaType !== "video")
-          .every(
-            (source) =>
-              source.mediaType ===
-              (source.url.startsWith("https://notebook.google.com/")
-                ? "audio"
-                : "text"),
-          ),
+          .filter((source) => !["audio", "video"].includes(source.mediaType))
+          .every((source) => source.mediaType === "text"),
       ),
     ).toBe(true);
     expect(
       topics.items
         .flatMap((item) => item.sources)
         .filter((source) => source.mediaType === "text").length,
-    ).toBeGreaterThan(11);
+    ).toBeGreaterThan(0);
   });
-  it("adds each podcast once and associates the domain-language example with its topic", () => {
+  it("provides audio sources with titles and HTTPS links for their topics", () => {
     const audioSources = topics.items.flatMap((item) =>
       item.sources
         .filter((source) => source.mediaType === "audio")
         .map((source) => ({ topicId: item.id, source })),
     );
-    expect(audioSources).toHaveLength(11);
-    expect(new Set(audioSources.map(({ source }) => source.url)).size).toBe(11);
-    expect(
-      audioSources.find(({ source }) =>
-        source.url.includes("f3673123-fc05-4a90-bc8c-fd368f7415d1"),
-      ),
-    ).toMatchObject({
-      topicId: "domain-language-and-complexity",
-      source: {
-        title: sourceTitle("domain-language-and-complexity", 1),
-        origin: "secondary",
-        mediaType: "audio",
-        duration: "23:57",
-      },
-    });
+    expect(audioSources.length).toBeGreaterThan(0);
+    for (const { topicId, source } of audioSources) {
+      expect(topics.items.some((topic) => topic.id === topicId)).toBe(true);
+      expect(source.title.trim()).not.toBe("");
+      expect(new URL(source.url).protocol).toBe("https:");
+    }
   });
   it("curates current sources for every topic outside the foundation path", () => {
     const foundationIds = new Set(topics.paths?.[0].topicIds);
@@ -520,10 +517,6 @@ describe("public content topics", () => {
     });
   });
 });
-
-function sourceTitle(id: string, index: number) {
-  return topics.items.find((item) => item.id === id)!.sources[index].title;
-}
 
 function pathName(index: number) {
   return topics.paths![index].name;

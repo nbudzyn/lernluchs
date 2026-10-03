@@ -12,15 +12,17 @@
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\" \"tests/**/*.{ts,tsx}\" \"e2e/**/*.ts\" \"scripts/**/*.mjs\" \".github/workflows/*.yml\" \"*.{json,ts,cjs}\"",
     "lint": "oxlint --type-aware --deny-warnings src tests e2e scripts vite.config.ts playwright.config.ts dependency-cruiser.cjs",
     "test": "vitest",
-    "test:e2e": "playwright test",
-    "validate:content": "vitest run tests/verticals/topics/topics.test.ts tests/verticals/learning-checks/questionCatalog.test.ts tests/verticals/learning-checks/firstTwoQuestions.test.ts",
+    "test:unit": "node scripts/test-runner.mjs unit",
+    "test:e2e": "node scripts/test-runner.mjs e2e",
+    "test:runner": "node --test scripts/test-runner.node.mjs",
+    "validate:content": "node scripts/test-runner.mjs unit tests/verticals/topics/topics.test.ts tests/verticals/learning-checks/questionCatalog.test.ts tests/verticals/learning-checks/validateQuestionCatalog.test.ts",
     "check:architecture": "depcruise --config dependency-cruiser.cjs \"src/**/*.ts\" \"src/**/*.tsx\" --output-type err && node --test scripts/check-vertical-scope.node.mjs",
     "check:vertical-scope": "node scripts/check-vertical-scope.mjs",
     "check:licenses": "node scripts/check-licenses.mjs",
     "build": "vite build && node scripts/verify-build.mjs",
     "test:pages-build": "node scripts/test-pages-build.mjs",
     "test:pages-workflow": "node scripts/verify-pages-workflow.mjs",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm test -- --run && npm run validate:content && npm run check:architecture && npm run check:licenses && npm run build"
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test:runner && npm run --silent test:unit && npm run --silent validate:content && npm run check:architecture && npm run check:licenses && npm run build"
   },
   "dependencies": {
     "react": "19.3.0",

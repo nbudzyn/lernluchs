@@ -27,11 +27,12 @@ jobs:
       - run: npm run format:check
       - run: npm run lint
       - run: npm run typecheck
-      - run: npm test -- --run
-      - run: npm run validate:content
+      - run: npm run test:runner
+      - run: npm run --silent test:unit
+      - run: npm run --silent validate:content
       - run: npm run check:architecture
       - run: npm run check:licenses
       - run: npm run build
       - run: npx playwright install --with-deps chromium
-      - run: npm run test:e2e
+      - run: npm run --silent test:e2e
       - run: npm audit --audit-level=high

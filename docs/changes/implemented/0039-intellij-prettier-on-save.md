@@ -77,10 +77,8 @@ Geltende Vorgaben: [Änderungs-Workflow](../README.md),
   `npm run check` bleibt wegen der bereits vorher bestehenden
   Formatabweichungen in zwölf vom Nutzer geänderten Dateien unvollständig grün.
   Diese Dateien wurden durch die IDE-Einrichtung nicht umformatiert.
-- **Manuelle Abnahme:** Die tatsächliche Speicheraktion in der laufenden IDE
-  ist noch nicht bestätigt. Projekt erneut öffnen, TypeScript-Datei abweichend
-  formatieren, speichern und die Ausgabe mit `npm run format:check` prüfen.
-  Kein Commit und keine Archivierung.
+- **Manuelle Abnahme:** Erfolgt; Umsetzung und Prüfung durch den Entwickler
+  bestätigt. Die Spec ist zur Archivierung freigegeben.
 
 Ein Browserablauf der App prüft diese reine IDE-Einrichtung nicht; der passende
 manuelle Ablauf ist die Speicheraktion in IntelliJ.
@@ -99,8 +97,8 @@ manuelle Ablauf ist die Speicheraktion in IntelliJ.
   bestehen anschließend `prettier.check`. Die Messung umfasst den Formatter,
   nicht den IntelliJ-Speicherablauf oder die Startzeit des IDE-Sprachdienstes.
 - Es wurden ausschließlich die ignorierte lokale IDE-Speicheraktion und die
-  Anleitung angepasst. Die tatsächliche Speicherlatenz bleibt manuell zu prüfen;
-  die App-Prüfungen oben sind die Nachweise der vorigen Einrichtung.
+  Anleitung angepasst. Die App-Prüfungen oben sind die Nachweise der vorigen
+  Einrichtung; die manuelle Abnahme ist inzwischen erfolgt.
 
 ### Korrektur des IntelliJ-Dateimusters
 
@@ -123,5 +121,11 @@ manuelle Ablauf ist die Speicheraktion in IntelliJ.
   `git diff --check` bestanden. Die Formatprüfung meldet weiterhin die zwölf
   schon vorhandenen Abweichungen; die Pflichtsuite ist deshalb nicht vollständig
   grün. Kein Commit.
-- Die tatsächliche Übernahme im Einstellungsdialog und die Speicheraktion
-  bleiben Teil der manuellen Abnahme.
+- Die manuelle Abnahme der tatsächlichen Übernahme im Einstellungsdialog und
+  der Speicheraktion ist erfolgt.
+
+## Abschluss
+
+Umsetzung und Prüfung sind durch den Entwickler bestätigt; Archivierung erfolgt.
+Die oben dokumentierten Formatabweichungen beschreiben den damaligen Prüfstand.
+Für diese reine Archivierung wurden keine App-Prüfungen erneut ausgeführt.

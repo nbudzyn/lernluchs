@@ -39,9 +39,22 @@ dokumentierte Architekturentscheidung ersetzt werden.
   unmittelbar am Anfang von [AGENTS.md](../../AGENTS.md#vor-jedem-lesen-und-tool-aufruf). Sie gelten auch während Coding-Sessions;
   ihr geringerer Ausgabeumfang reduziert keine vorgeschriebenen Prüfungen oder Fehlerdetails.
 - Bei Fragen, Screenshot-Prüfungen und reiner Diagnose keine Dateien ändern.
+- Unit-/Komponenten- und E2E-Einmalläufe verwenden verbindlich den eigenen
+  Runner gemäß [Qualitätsstrategie](../quality/verification-strategy.md#lokale-testaufrufe-und-ausgabe).
+  Erfolg liefert Anzahl, Laufzeit und Exitcode; Fehlerdetails bleiben vollständig.
+  Für weitere Details das vorhandene lokale Rohprotokoll lesen, keinen zweiten
+  Testlauf starten. Rohprotokolle werden außerhalb des Repositorys aufbewahrt.
 
 ## TDD und Spec-Driven Development
 
+- Tests für dieselbe Implementierungsdatei `X.ts` liegen in `X.test.ts`, für
+  `X.tsx` in `X.test.tsx`. E2E-Tests liegen pro Nutzerablauf oder Funktion in
+  einer fachlich benannten `*.spec.ts`. Gleichartige Prüfungen mit anderen Daten
+  werden in einem Test über alle betreffenden Datensätze zusammengeführt;
+  Fehler nennen die betroffenen Daten und die verletzte Regel.
+- Vor einer neuen Testmethode in der RED-Phase zuerst vorhandene Tests prüfen:
+  einen passenden Test ergänzen oder verallgemeinern. Eine neue Testmethode nur
+  für eine bisher nicht abgedeckte, eigenständige Anforderung anlegen.
 - Vor jeder Implementierung eines Teil-Features wird ein Test geschrieben und
   ausgeführt, der aus fachlich korrektem Grund fehlschlägt (**RED**).
 - Erst danach wird die kleinste Implementierung ergänzt, bis der Test besteht

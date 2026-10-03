@@ -45,4 +45,5 @@ einfach ignorieren.
 - `npm run test:e2e -- --reporter=dot`: grün, 96 Chromium-E2E-Tests auf Desktop und Mobilgeräten in 22,6 s. Die vier neuen Browserfälle prüfen die entfernte ID mit und ohne gespeichertes Bestehen, den Erhalt eines anderen gelernten Themas über Reload und einen verbleibenden Lerncheck.
 - `git diff --check`: grün. Prüfung des Arbeitsbaums mit der vorhandenen Vertikalzählung: ausschließlich `learning-checks` und `topics` betroffen.
 
-Manuelle Abnahme durch den Entwickler und Commit stehen noch aus. Die lokale Anwendung steht unter `http://127.0.0.1:4174/` zur Prüfung bereit.
+Manuelle Abnahme durch den Entwickler erfolgt; Umsetzung und Prüfung bestätigt.
+Die Spec ist zur Archivierung freigegeben. Für diese reine Archivierung wurden keine App-Prüfungen erneut ausgeführt.

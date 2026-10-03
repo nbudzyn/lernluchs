@@ -144,8 +144,8 @@ if (process.argv.includes("--integrate")) {
     });
   }
   writeFileSync(
-    "src/verticals/learning-checks/foundationQuestions.json",
-    `${JSON.stringify(byCard, null, 2)}\n`,
+    "src/verticals/learning-checks/questions.json",
+    `${JSON.stringify({ ...JSON.parse(readFileSync("src/verticals/learning-checks/questions.json", "utf8")), ...byCard }, null, 2)}\n`,
   );
   console.log("Reviewed questions integrated into the topics data file.");
 }

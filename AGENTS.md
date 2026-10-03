@@ -27,6 +27,20 @@ Die vollständigen Regeln stehen in `docs/governance/durable-rules.md`.
 
 ## Prüfaufwand begrenzen
 
+- Testorganisation: Tests für `X.ts` gemeinsam in `X.test.ts`, für `X.tsx` in
+  `X.test.tsx`; E2E-Tests pro Nutzerablauf oder Funktion in einer fachlich benannten
+  `*.spec.ts`. Gleiche Anforderungen mit unterschiedlichen Daten in einem Test
+  über alle betreffenden Datensätze prüfen; Datenkennungen in Fehlern erhalten.
+- Vor dem Anlegen eines neuen Tests in der RED-Phase zuerst prüfen, ob ein
+  bestehender Test ergänzt oder verallgemeinert werden kann. Nur für eine noch
+  nicht abgedeckte, eigenständige Anforderung einen neuen Test anlegen.
+- Unit-/Komponenten- und E2E-Einmalläufe verbindlich mit dem eigenen Runner ausführen:
+  `npm run --silent test:unit -- [Dateien/Filter]` beziehungsweise `npm run --silent test:e2e -- [Dateien/Filter]`.
+  Ohne Filter laufen alle Tests des Typs; `--vertical NAME` wählt eine Vertikale,
+  `-t "Testname"` einen Vitest-Test und `--grep "Testname"` einen E2E-Test.
+  Die [Qualitätsstrategie](docs/quality/verification-strategy.md#lokale-testaufrufe-und-ausgabe) enthält konkrete Beispiele.
+- Runner-Ausgaben nicht zusätzlich kürzen und Tests nicht zum Wiederherstellen von Fehlerdetails wiederholen.
+  Rohprotokolle liegen außerhalb von Git; RTK ist für diese Testaufrufe nicht erforderlich.
 - Bei Fragen, Screenshot-Prüfungen und reiner Diagnose keine Dateien ändern.
 - Während der Umsetzung betroffene Prüfungen ausführen; die vollständige Pflichtsuite nach der letzten produktrelevanten Änderung und vor dem Commit.
 - Bei reinen Dokumentations- oder IDE-Änderungen keine App-E2E-Tests ausführen.

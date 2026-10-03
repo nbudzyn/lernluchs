@@ -1,7 +1,7 @@
 import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-import { remainingQuestions } from "../src/verticals/learning-checks/remainingQuestions.ts";
+import questions from "../src/verticals/learning-checks/questions.json" with { type: "json" };
 
 const target = process.argv[2];
 if (!target) throw new Error("Provide the output path for the review prompt.");
@@ -24,12 +24,12 @@ const lines = [
   "",
 ];
 
-for (const [topicId, questions] of Object.entries(remainingQuestions)) {
-  const selected = questions.filter(
+for (const [topicId, pool] of Object.entries(questions)) {
+  const selected = pool.filter(
     (question) => requestedIds.size === 0 || requestedIds.has(question.id),
   );
   if (selected.length === 0) continue;
-  lines.push(`## ${titles[topicId]} (${topicId})`, "");
+  lines.push(`## ${titles[topicId] ?? topicId} (${topicId})`, "");
   for (const question of selected) {
     lines.push(`### ${question.id}: ${question.prompt}`);
     for (const option of question.options) {
