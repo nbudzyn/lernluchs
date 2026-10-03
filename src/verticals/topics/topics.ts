@@ -1340,6 +1340,16 @@ export const topics: Topics = {
           checkedAt: "2026-10-03",
         },
         {
+          title: "Token-Verschwendung bei KI-Coding-Agenten stoppen",
+          url: "https://notebooklm.link.google/PfVKsYCYeOHz",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "17:54",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
+        },
+        {
           title: "How to Cut Token Use in an AI Agent System – Julian Goldie",
           url: "https://www.youtube.com/watch?v=vq70qWphRfk",
           type: "learning-video",
@@ -1752,6 +1762,16 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-09-27",
+        },
+        {
+          title: "Claude Code Copilot und Kiro im Vergleich",
+          url: "https://notebooklm.link.google/oEQqgl4NOu6r",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "22:55",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title: "Claude Code VS. Codex VS. Cursor: Welche KI codet am BESTEN?",
