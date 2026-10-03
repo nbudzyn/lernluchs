@@ -7,11 +7,20 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## NF: Bezeichnungen vereinheitlichen
+## Bezeichnungen vereinheitlichen
 
-Wir haben nur wenige fachliche Dinge in der Anwendung. Die identifizieren und auf einheitliche Begriffe festlegen (mit einheitlichen)
-Übersetzungen. Die bisherigen "unscharfen Synonyme" (u.a. "Katalog" oder "Karte") aus dem Glossar entfernen und im Code umbenennen.
-(Ubiquitous Language)
+Wir haben nur wenige fachliche Dinge (Konzepte) in der Anwendung.
+Erster Schritt: Tabelle der fachlichen Dinge in der Anwendung, jeweils mit Begriffen, die in der Anwendung / im Quellcode / in den Vorgaben verwendet werden und eine überschneidende oder ähnliche Bedeutung haben ("unscharfen Synonyme").
+
+Im zweiten Schritt wollen wir uns klar auf einen Begriff einigen und die anderen Begriffe eliminieren / ersetzen.
+
+Wir wollen eine klare Ubiquitous Language erreichen.
+
+Vielleicht schreiben wir eine Art deutsch-englische Synonym-Liste in das Glossar und haben irgendwo den Hinweis, diese Synonyme NICHT zu verwenden?
+
+## token-efficiency-tools um Quellen ergänzen, insbesondere um YouTube-Videos
+token-efficiency-tools um fehlende Quellen ergänzen, insbesondere um YouTube-Videos
+
 
 ## Jüngste Private Notizen in Themen (oder als neue Themen) übernehmen 
 - Jüngste Private Notizen in Themen (oder als neue Themen) übernehmen

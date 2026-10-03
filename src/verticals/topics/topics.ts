@@ -1308,7 +1308,7 @@ export const topics: TopicCollection = {
         problem:
           "Lange Terminalausgaben und wiederholter Kontext können Agentensitzungen verteuern, ohne bessere Entscheidungen zu liefern.",
         coreConcept:
-          "RTK verdichtet typische Kommandoausgaben; Caveman bietet weitere Kontext- und Ausgabeverdichtung. Vor Einsatz sollten Originaldaten, Fehlerdetails und tatsächliche Einsparung am eigenen Ablauf geprüft werden.",
+          "RTK verdichtet typische Kommandoausgaben; headroom, Caveman und ponytail bieten weitere Kontext- und Ausgabeverdichtung. Vor Einsatz sollten Originaldaten, Fehlerdetails und tatsächliche Einsparung am eigenen Ablauf geprüft werden.",
         javaWebUse:
           "Ein Java-/Web-Team vergleicht einen Testlauf mit und ohne Verdichtung und kontrolliert, ob Fehlermeldungen und relevante Testnamen vollständig auffindbar bleiben.",
         boundary:
