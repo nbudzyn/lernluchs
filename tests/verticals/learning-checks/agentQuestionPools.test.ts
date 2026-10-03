@@ -75,7 +75,7 @@ describe("four agent learning checks", () => {
   );
 
   it("provides checks for every published topic", () => {
-    expect(availableLearningCheckTopicIds).toHaveLength(46);
+    expect(availableLearningCheckTopicIds).toHaveLength(45);
     expect(
       topics.items
         .filter((topic) => !availableLearningCheckTopicIds.includes(topic.id))

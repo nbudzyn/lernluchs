@@ -5,7 +5,6 @@ import { validateTopics } from "../../../src/verticals/topics/validateTopics";
 
 const fourthPathIds = [
   "git-worktrees-for-isolated-changes",
-  "code-navigation-with-symbols-and-references",
   "versioned-library-docs-with-context7",
   "module-boundaries-and-public-interfaces",
   "tdd-for-domain-behavior",
@@ -27,7 +26,7 @@ it("adds the fourth path with four sourced topics in path order", () => {
     fourthPathIds[0],
     fourthPathIds[1],
     fourthPathIds[2],
-    fourthPathIds[6],
+    fourthPathIds[5],
   ]) {
     const item = topics.items.find((candidate) => candidate.id === id);
     expect(item).toBeDefined();

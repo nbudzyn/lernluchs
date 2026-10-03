@@ -46,10 +46,9 @@ Die Spec hält knapp fest: Ziel und Nicht-Ziele, betroffene Vertikalen, nötige 
 
 ## Prüfung mit gezieltem Aufwand
 
-- Zuerst `docs/INDEX.md` und die für den Schritt relevante Backlog-Story oder
-  aktive Spec lesen. Danach nur verlinkte dauerhafte Dokumente sowie für die
-  konkrete Änderung relevante Ausschnitte aus Code und Tests öffnen. Weitere
-  Dateien nur bei einem konkreten Klärungsbedarf hinzunehmen.
+- Den Lese- und Ausgabeumfang nach [AGENTS.md](../../AGENTS.md#vor-jedem-lesen-und-tool-aufruf) begrenzen: zuerst `docs/INDEX.md`, dann die
+  relevante aktive Spec oder ausschließlich die erste Backlog-Story. Danach nur benötigte Abschnitte der verlinkten Vorgaben und gezielte
+  Ausschnitte aus Code und Tests lesen. Weitere Dateien nur bei konkretem Klärungsbedarf hinzunehmen.
 - Bei fachlichen Inhalten vor dem Coding eine knappe Quellenübersicht in der
   Spec festhalten: Aussage, möglichst primäre Quelle, Prüftag und Grenze oder
   Unsicherheit. Mehrere Aussagen gebündelt prüfen; die redaktionellen

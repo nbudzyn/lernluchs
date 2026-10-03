@@ -11,7 +11,6 @@ import { topics } from "../../../src/verticals/topics/topics";
 const newTopicIds = [
   "parallel-agent-task-boundaries",
   "git-worktrees-for-isolated-changes",
-  "code-navigation-with-symbols-and-references",
   "versioned-library-docs-with-context7",
 ];
 
@@ -33,7 +32,7 @@ describe("the next four topics without learning checks", () => {
     expect(positions[0]).toBeGreaterThanOrEqual(0);
     expect(
       topics.items
-        .slice(0, positions[3] + 1)
+        .slice(0, positions[2] + 1)
         .every((topic) => availableLearningCheckTopicIds.includes(topic.id)),
     ).toBe(true);
   });

@@ -20,7 +20,7 @@ describe("central topic editing", () => {
     expect(source).not.toMatch(/\bfunction\b|\.map\(/);
     expect(topics.paths).toHaveLength(13);
     const ids = topics.items.map((item) => item.id);
-    expect(new Set(ids).size).toBe(46);
+    expect(new Set(ids).size).toBe(45);
     for (const path of topics.paths ?? []) {
       expect(new Set(path.topicIds).size).toBe(path.topicIds.length);
       expect(ids.filter((id) => path.topicIds.includes(id))).toEqual(

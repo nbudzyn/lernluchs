@@ -1,34 +1,33 @@
 # Arbeitsanweisungen für KI-Änderungen
 
-Lies für jede Aufgabe zuerst `docs/INDEX.md`, danach die für die Aufgabe relevante aktive Änderungs-Spec und nur die dort verlinkten dauerhaften Dokumente. Lies nicht
-pauschal die gesamte Dokumentation.
+Lies zuerst `docs/INDEX.md`, dann die relevante aktive Spec oder Backlog-Story.
+
+## Vor jedem Lesen und Tool-Aufruf
+
+- Bei „erste Story“ nur bis zur nächsten gleichrangigen Backlog-Überschrift lesen.
+- Nur benötigte Abschnitte der Spec-verlinkten Vorgaben lesen; vor Aktivierung gelten die Links im Index. Unpassende Specs nicht lesen.
+- Gelesene Dokumente innerhalb der Session wiederverwenden; erneut lesen nur bei Änderungen oder konkreter Unsicherheit.
+- Code und Tests gezielt durchsuchen, dann relevante Treffer und Funktionen lesen. Ganze Dateien nur bei konkretem Klärungsbedarf öffnen.
+- Umfangreiche Tool-Aufrufe auf eine konkrete offene Frage begrenzen.
+- Bei erfolgreichen Prüfungen nur Ergebnis, Exitcode, Anzahl und Laufzeit ausgeben. Bei Fehlern nur betroffene Prüfungen ausgeben,
+  deren Fehlerdetails vollständig erhalten. Exitcodes nie durch Ausgabekürzung verdecken.
+- Nachweise einschließlich RED und grüner Testsuite einmal in der aktiven Spec festhalten und aktualisieren.
+  Meldungen knapp halten; der Abschluss nennt eigenständig Ergebnis, Prüfstatus und offene Schritte.
 
 ## Nicht verhandelbar
 
-- Implementiere kein Teil-Feature ohne aktive Spec.
-- Arbeite pro Teil-Feature in der Reihenfolge RED → GREEN → REFACTOR. Halte den RED-Nachweis und die anschließend grüne Testsuite in der
-  aktiven Spec fest.
-- Committe nur bei vollständig grüner Pflichtsuite.
-- Committe erst, nachdem der Nutzer die Änderung selbst manuell getestet und das Ergebnis ausdrücklich bestätigt hat.
-- Ändere fachlich höchstens zwei Vertikalen pro Commit (plus App und Shared bei Bedarf).
-- Füge keine Abhängigkeit ohne begründete Freigabe in der Spec hinzu.
-- Schreibe weder persönlichen Fortschritt noch Fehlermeldungen nach Git oder an einen externen Dienst.
-- Bei Unsicherheit über eine fachliche Aussage: nicht raten; Quellen prüfen und die Unsicherheit dokumentieren.
+- Teil-Features nur mit aktiver Spec und in der Reihenfolge RED → GREEN → REFACTOR implementieren.
+- Nur committen, wenn die Pflichtsuite vollständig grün ist und der Nutzer seinen manuellen Test ausdrücklich positiv bestätigt hat.
+- Pro Commit höchstens zwei fachliche Vertikalen ändern; App und Shared sind zusätzlich erlaubt.
+- Neue Abhängigkeiten brauchen eine begründete Freigabe in der Spec.
+- Persönlichen Fortschritt und Fehlermeldungen weder nach Git noch an externe Dienste schreiben.
+- Unsichere fachliche Aussagen anhand von Quellen prüfen und verbleibende Unsicherheit dokumentieren; nicht raten.
 
 Die vollständigen Regeln stehen in `docs/governance/durable-rules.md`.
 
-## Effizient arbeiten
+## Prüfaufwand begrenzen
 
-Diese Regeln gelten auch für Coding-Sessions und präzisieren den Lese- und Prüfumfang der verlinkten Vorgaben.
-
-- Bereits gelesene, unveränderte Dokumente innerhalb einer Session
-  wiederverwenden. Erneut lesen nur bei Änderungen oder konkreter Unsicherheit.
-- Aktive Specs nach Aufgabenrelevanz auswählen. Fachlich unpassende Specs
-  nicht vollständig lesen.
 - Bei Fragen, Screenshot-Prüfungen und reiner Diagnose keine Dateien ändern.
-- Während der Umsetzung betroffene Prüfungen ausführen.
-  Die vollständige Pflichtsuite nach der letzten produktrelevanten Änderung
-  und vor einem Commit ausführen.
-- Reine Dokumentations- oder IDE-Änderungen lösen keine App-E2E-Tests aus.
-- Bestandene Prüfungen ohne relevante Änderung nicht wiederholen.
-- Erfolgreiche Tool-Ausgaben auf Ergebnis, Anzahl und Laufzeit begrenzen.
+- Während der Umsetzung betroffene Prüfungen ausführen; die vollständige Pflichtsuite nach der letzten produktrelevanten Änderung und vor dem Commit.
+- Bei reinen Dokumentations- oder IDE-Änderungen keine App-E2E-Tests ausführen.
+- Grüne Prüfungen nur bei relevanten Änderungen wiederholen.

@@ -35,13 +35,10 @@ dokumentierte Architekturentscheidung ersetzt werden.
 
 ## Aufgabenbezogen lesen und prüfen
 
-- Zuerst `docs/INDEX.md` lesen, danach die für die Aufgabe relevante aktive
-  Spec und die dort verlinkten, für die Aufgabe benötigten dauerhaften
-  Dokumente. Fachlich unpassende Specs nicht vollständig lesen.
-- Bereits gelesene, unveränderte Dokumente innerhalb einer Session
-  wiederverwenden. Erneut lesen nur bei Änderungen oder konkreter Unsicherheit.
+- Die verbindlichen Regeln für gezieltes Lesen, Wiederverwenden gelesener Dokumente, begrenzte Tool-Ausgaben und knappe Nachweise stehen
+  unmittelbar am Anfang von [AGENTS.md](../../AGENTS.md#vor-jedem-lesen-und-tool-aufruf). Sie gelten auch während Coding-Sessions;
+  ihr geringerer Ausgabeumfang reduziert keine vorgeschriebenen Prüfungen oder Fehlerdetails.
 - Bei Fragen, Screenshot-Prüfungen und reiner Diagnose keine Dateien ändern.
-- Erfolgreiche Tool-Ausgaben auf Ergebnis, Anzahl und Laufzeit begrenzen.
 
 ## TDD und Spec-Driven Development
 

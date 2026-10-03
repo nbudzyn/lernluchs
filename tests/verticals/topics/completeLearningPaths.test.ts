@@ -14,7 +14,6 @@ const existingIds = [
   "spec-driven-development-openspec",
   "parallel-agent-task-boundaries",
   "git-worktrees-for-isolated-changes",
-  "code-navigation-with-symbols-and-references",
   "versioned-library-docs-with-context7",
   "specialized-subagents-and-ownership",
   "agent-context-handoffs",
@@ -97,7 +96,6 @@ const existingPaths = [
     name: pathName(3),
     topicIds: [
       "git-worktrees-for-isolated-changes",
-      "code-navigation-with-symbols-and-references",
       "versioned-library-docs-with-context7",
       "module-boundaries-and-public-interfaces",
       "tdd-for-domain-behavior",

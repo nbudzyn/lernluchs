@@ -162,7 +162,6 @@ Recherche und Katalogabgleich am 30.09.2026. Die folgenden 100 Punkte sind **Ein
 | `agent-tool-and-mcp-permissions` | MCP-Autorisierung, Task-Lebenszyklus, URL-Elicitation und private Tunnel als konkrete Grenzfälle ergänzen. | 1–8, 56 |
 | `deterministic-agent-verification-gates` | Agenten-Evals um Ergebnis, Ablauf, Kosten und Regression erweitern; KI-Reviews und Security-Scanner nur als zusätzliche Signale einordnen. | 16–19, 44, 96–97; [ANT-EVAL] |
 | `agent-context-handoffs` | Wiederaufnahme, Sitzungsprotokolle und Mid-turn-Steuerung als nachvollziehbaren Übergabekontext erklären. | 14, 27–28, 38, 61–62 |
-| `code-navigation-with-symbols-and-references` | Semantische und repositoryübergreifende Suche gegen symbolbasierte IDE-Navigation abgrenzen; Hersteller-Benchmarks als eigene Angaben kennzeichnen. | 98 |
 | `parallel-agent-task-boundaries` und `compare-parallel-and-serial-agent-work` | Parallele Sitzungen und Subagent-Aufgaben mit Abbruch-, Review- und Kostenkriterien verbinden. | 23, 30, 35 |
 | `local-model-stack-evaluation` | Lokalen Modellbetrieb, Agent-Harness und mögliche Cloud-Fallbacks samt Datenschutzgrenze aktualisieren. | 34, 41, 99–100 |
 | `spec-driven-development-openspec` | Planfreigabe, getrennte Recherche und Umsetzung als produktübergreifende Muster ergänzen, ohne sie OpenSpec zuzuschreiben. | 20–22 |

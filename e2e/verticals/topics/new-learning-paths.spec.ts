@@ -7,7 +7,6 @@ const pathCases = [
     startingTopic: topicTitle("git-worktrees-for-isolated-changes"),
     titles: [
       topicTitle("git-worktrees-for-isolated-changes"),
-      topicTitle("code-navigation-with-symbols-and-references"),
       topicTitle("versioned-library-docs-with-context7"),
       topicTitle("module-boundaries-and-public-interfaces"),
       topicTitle("tdd-for-domain-behavior"),
@@ -40,7 +39,7 @@ for (const path of pathCases) {
   }) => {
     await page.goto("/");
     const navigation = page.getByRole("navigation", { name: "Lernthemen" });
-    await expect(navigation.locator("li")).toHaveCount(46);
+    await expect(navigation.locator("li")).toHaveCount(45);
     await expect(
       page.getByRole("button", {
         name: topicTitle("focused-git-commits"),

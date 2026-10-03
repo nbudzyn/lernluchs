@@ -276,7 +276,7 @@ describe("public content topics", () => {
     const otherTopics = topics.items.filter(
       (item) => !foundationIds.has(item.id) && !expandedIds.has(item.id),
     );
-    expect(otherTopics).toHaveLength(20);
+    expect(otherTopics).toHaveLength(19);
     expect(otherTopics.map((item) => item.id)).toContain("focused-git-commits");
     for (const item of otherTopics) {
       const expectedReviewDate =
@@ -402,7 +402,6 @@ describe("public content topics", () => {
       "spec-driven-development-openspec",
       "parallel-agent-task-boundaries",
       "git-worktrees-for-isolated-changes",
-      "code-navigation-with-symbols-and-references",
       "versioned-library-docs-with-context7",
       "specialized-subagents-and-ownership",
       "agent-context-handoffs",

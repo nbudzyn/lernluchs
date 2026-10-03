@@ -6,7 +6,7 @@ test("zeigt einen neuen Lernpfad und eine quellengebundene Karte", async ({
 }) => {
   await page.goto("/");
   const navigation = page.getByRole("navigation", { name: "Lernthemen" });
-  await expect(navigation.locator("li")).toHaveCount(46);
+  await expect(navigation.locator("li")).toHaveCount(45);
 
   await page
     .getByRole("button", {

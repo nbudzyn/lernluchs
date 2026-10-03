@@ -43,7 +43,6 @@ export const learningPaths: LearningPath[] = [
     name: "Java-/Web-Code technisch analysieren und modernisieren",
     topicIds: [
       "git-worktrees-for-isolated-changes",
-      "code-navigation-with-symbols-and-references",
       "versioned-library-docs-with-context7",
       "module-boundaries-and-public-interfaces",
       "tdd-for-domain-behavior",
@@ -99,7 +98,6 @@ export const learningPaths: LearningPath[] = [
       "coding-agent-context-and-trust-boundaries",
       "codegraphs-for-large-repos",
       "token-efficiency-tools",
-      "code-navigation-with-symbols-and-references",
       "versioned-library-docs-with-context7",
     ],
   },

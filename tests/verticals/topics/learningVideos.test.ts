@@ -17,7 +17,7 @@ const withoutGermanVideo = [
 
 describe("agreed learning video selection", () => {
   it("provides four videos per topic, or three English videos for the documented gaps", () => {
-    expect(topics.items).toHaveLength(46);
+    expect(topics.items).toHaveLength(45);
     for (const topic of topics.items) {
       const videos = topic.sources.filter(
         (source) => source.mediaType === "video",
