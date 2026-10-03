@@ -9,7 +9,7 @@ import { topics } from "../../../src/verticals/topics/topics";
 
 const newTopicIds = [
   "context-selection-and-reset",
-  "codebase-memory-for-large-repos",
+  "codegraphs-for-large-repos",
   "token-efficiency-tools",
   "coding-agent-interface-selection",
 ];

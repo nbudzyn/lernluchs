@@ -1,5 +1,5 @@
-import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
+import { topics } from "../../../src/verticals/topics/topics";
 
 const pathCases = [
   {
@@ -12,7 +12,7 @@ const pathCases = [
       topicTitle("module-boundaries-and-public-interfaces"),
       topicTitle("tdd-for-domain-behavior"),
       topicTitle("archunit-for-java-architecture"),
-      topicTitle("java-spring-migrations-with-openrewrite"),
+      topicTitle("refactorings-and-migrations-with-openrewrite"),
       topicTitle("playwright-for-web-flows"),
     ],
     source: sourceTitle("git-worktrees-for-isolated-changes", 0),
@@ -83,9 +83,11 @@ for (const path of pathCases) {
 function topicTitle(id: string) {
   return topics.items.find((item) => item.id === id)!.title;
 }
+
 function sourceTitle(id: string, index: number) {
   return topics.items.find((item) => item.id === id)!.sources[index].title;
 }
+
 function pathName(index: number) {
   return topics.paths![index].name;
 }

@@ -825,7 +825,7 @@ export const firstFourMissingQuestions: Record<string, Question[]> = {
       ],
     },
   ],
-  "codebase-memory-for-large-repos": [
+  "codegraphs-for-large-repos": [
     {
       id: "CG01",
       prompt:

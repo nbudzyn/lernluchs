@@ -4,7 +4,9 @@ import { resolve } from "node:path";
 import { createServer } from "vite";
 
 const target = process.argv[2];
-if (!target) throw new Error("Provide the output path for the review prompt.");
+if (!target) {
+  throw new Error("Provide the output path for the review prompt.");
+}
 
 const server = await createServer({
   configFile: false,
@@ -40,7 +42,7 @@ try {
     "/src/verticals/learning-checks/validateQuestionPool.ts",
   );
   const topicIds = [
-    "java-spring-migrations-with-openrewrite",
+    "refactorings-and-migrations-with-openrewrite",
     "compare-parallel-and-serial-agent-work",
     "coding-harness-design",
   ];
@@ -49,11 +51,16 @@ try {
   for (const [index, { title, questions }] of pools.entries()) {
     const topic = topics.items.find((item) => item.id === topicIds[index]);
     const errors = validateQuestionPool(topic, questions);
-    if (errors.length) throw new Error(`${title}: ${errors.join("; ")}`);
-    if (new Set(questions.map((question) => question.prompt)).size !== 25)
+    if (errors.length) {
+      throw new Error(`${title}: ${errors.join("; ")}`);
+    }
+    if (new Set(questions.map((question) => question.prompt)).size !== 25) {
       throw new Error(`${title}: duplicate question prompt`);
+    }
     for (const question of questions) {
-      if (ids.has(question.id)) throw new Error(`Duplicate ID: ${question.id}`);
+      if (ids.has(question.id)) {
+        throw new Error(`Duplicate ID: ${question.id}`);
+      }
       ids.add(question.id);
     }
   }
@@ -66,7 +73,9 @@ try {
   ];
 
   for (const { title, questions } of pools) {
-    if (questions.length !== 25) throw new Error(`Expected 25 for ${title}`);
+    if (questions.length !== 25) {
+      throw new Error(`Expected 25 for ${title}`);
+    }
     lines.push(`## ${title}`, "");
     for (const question of questions) {
       lines.push(`### ${question.id}: ${question.prompt}`);

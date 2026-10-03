@@ -5,7 +5,7 @@ import { validateQuestionPool } from "../../../src/verticals/learning-checks/val
 import { topics } from "../../../src/verticals/topics/topics";
 
 const remainingTopicIds = [
-  "java-spring-migrations-with-openrewrite",
+  "refactorings-and-migrations-with-openrewrite",
   "compare-parallel-and-serial-agent-work",
   "coding-harness-design",
 ];

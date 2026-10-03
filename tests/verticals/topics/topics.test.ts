@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
-
-import { validateTopics } from "../../../src/verticals/topics/validateTopics";
 import type { Topic } from "../../../src/verticals/topics/topicContract";
 import { topics } from "../../../src/verticals/topics/topics";
+
+import { validateTopics } from "../../../src/verticals/topics/validateTopics";
+
 const expandedTopicIds = [
   "domain-language-and-complexity",
   "project-documentation-and-checklists",
@@ -12,7 +13,7 @@ const expandedTopicIds = [
   "standards-and-constraint-rationale",
   "llm-fallibility-and-counterchecks",
   "context-selection-and-reset",
-  "codebase-memory-for-large-repos",
+  "codegraphs-for-large-repos",
   "token-efficiency-tools",
   "coding-agent-interface-selection",
   "agent-skills-and-commands",
@@ -410,7 +411,7 @@ describe("public content topics", () => {
       "tdd-for-domain-behavior",
       "archunit-for-java-architecture",
       "deterministic-agent-verification-gates",
-      "java-spring-migrations-with-openrewrite",
+      "refactorings-and-migrations-with-openrewrite",
       "playwright-for-web-flows",
       "web-xss-and-safe-dom",
       "dependency-security-assessment",
@@ -524,6 +525,7 @@ describe("public content topics", () => {
 function sourceTitle(id: string, index: number) {
   return topics.items.find((item) => item.id === id)!.sources[index].title;
 }
+
 function pathName(index: number) {
   return topics.paths![index].name;
 }

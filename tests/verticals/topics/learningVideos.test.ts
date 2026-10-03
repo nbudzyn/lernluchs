@@ -6,11 +6,11 @@ import { validateTopics } from "../../../src/verticals/topics/validateTopics";
 const withoutGermanVideo = [
   "ears-requirements",
   "standards-and-constraint-rationale",
-  "codebase-memory-for-large-repos",
+  "codegraphs-for-large-repos",
   "token-efficiency-tools",
   "spec-driven-development-openspec",
   "agent-context-handoffs",
-  "java-spring-migrations-with-openrewrite",
+  "refactorings-and-migrations-with-openrewrite",
   "compare-parallel-and-serial-agent-work",
   "bug-triage-and-pr-automation",
 ];

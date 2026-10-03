@@ -10,7 +10,7 @@ const fourthPathIds = [
   "module-boundaries-and-public-interfaces",
   "tdd-for-domain-behavior",
   "archunit-for-java-architecture",
-  "java-spring-migrations-with-openrewrite",
+  "refactorings-and-migrations-with-openrewrite",
   "playwright-for-web-flows",
 ];
 

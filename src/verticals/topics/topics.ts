@@ -1177,14 +1177,14 @@ export const topics: TopicCollection = {
       ],
     },
     {
-      id: "codebase-memory-for-large-repos",
+      id: "codegraphs-for-large-repos",
       title: "Große Repositories mit einem Codegraphen erschließen",
       content: {
         language: "de",
         problem:
           "In einem großen Repository sind Aufrufketten und Auswirkungen schwer allein durch wiederholtes Öffnen einzelner Dateien zu erkennen.",
         coreConcept:
-          "Codebase Memory MCP indexiert Code zu einem abfragbaren Graphen für Struktur- und Abhängigkeitsfragen. Befunde werden gegen aktuelle Quelldateien geprüft.",
+          "Codebase Memory MCP und der JetBrains MCP-Server indexieren Code zu einem abfragbaren Graphen für Struktur- und Abhängigkeitsfragen. Befunde werden gegen aktuelle Quelldateien geprüft.",
         javaWebUse:
           "Vor einer Änderung an einem Java-Service werden Aufrufer und verbundene Web-Routen im Graphen gesucht und anschließend im Code bestätigt.",
         boundary:
@@ -1710,7 +1710,7 @@ export const topics: TopicCollection = {
     },
     {
       id: "agent-skills-and-commands",
-      title: "Wiederkehrende Agentenabläufe als Skills prüfen",
+      title: "Für wiederkehrende Agentenabläufe Skills erwägen",
       content: {
         language: "de",
         problem:
@@ -1810,7 +1810,8 @@ export const topics: TopicCollection = {
     },
     {
       id: "spec-framework-selection",
-      title: "Spec-Frameworks in einem kleinen Pilotprojekt vergleichen",
+      title:
+        "Spec-Frameworks in einem kleinen Pilotprojekt vergleichen und nach Bedarf einsetzen",
       content: {
         language: "de",
         problem:
@@ -1924,7 +1925,7 @@ export const topics: TopicCollection = {
         problem:
           "Mehrere Agenten können dieselben Dateien ändern, voneinander abhängige Entscheidungen doppelt treffen oder ohne klares Ende weiterarbeiten.",
         coreConcept:
-          "Vor der Delegation werden unabhängige Ergebnisse, Dateibesitz, Eingaben, Akzeptanzkriterien und Abbruchbedingungen auf Basis von Zeit, Kosten oder fehlender Evidenz festgelegt.",
+          "Vor der Delegation an Sub-Agenten werden unabhängige Ergebnisse, Dateibesitz, Eingaben, Akzeptanzkriterien und Abbruchbedingungen auf Basis von Zeit, Kosten oder fehlender Evidenz festgelegt.",
         javaWebUse:
           "Ein Agent untersucht die Java-API und ein anderer den React-Aufrufvertrag; beide liefern Befunde zu getrennten Dateien, bevor ein Mensch die gemeinsame Änderung plant.",
         boundary:
@@ -2160,7 +2161,7 @@ export const topics: TopicCollection = {
     },
     {
       id: "versioned-library-docs-with-context7",
-      title: "Versionsbezogene Bibliotheksdokumentation mit Context7 prüfen",
+      title: "Versionsbezogene Bibliotheksdokumentation mit Context7 erwägen",
       content: {
         language: "de",
         problem:
@@ -2913,14 +2914,14 @@ export const topics: TopicCollection = {
       ],
     },
     {
-      id: "java-spring-migrations-with-openrewrite",
-      title: "Java-/Spring-Migrationen mit OpenRewrite durchführen",
+      id: "refactorings-and-migrations-with-openrewrite",
+      title: "Refactorings und Code-Migrationen mit OpenRewrite durchführen",
       content: {
         language: "de",
         problem:
-          "Größere Java- oder Spring-Upgrades enthalten wiederkehrende API- und Build-Änderungen, die per Hand leicht inkonsistent werden.",
+          "Größere Refactorings, Migrationen und Versions-Upgrades enthalten wiederkehrende API- und Build-Änderungen, die per Hand leicht inkonsistent werden.",
         coreConcept:
-          "OpenRewrite führt ausgewählte, wiederholbare Rezepte über Maven oder Gradle aus. Ein Rezept beschreibt konkrete Quellcode- oder Build-Transformationen für eine Zielmigration.",
+          "OpenRewrite führt ausgewählte, wiederholbare Rezepte aus. Ein Rezept beschreibt konkrete Quellcode- oder Build-Transformationen für eine Zielmigration.",
         javaWebUse:
           "Für ein Spring-Boot-Upgrade wird ein passendes Rezept ausgewählt, in einem isolierten Branch ausgeführt und der Diff mit Build, Tests und Laufzeitprüfung gegen die Migrationsziele geprüft.",
         boundary:

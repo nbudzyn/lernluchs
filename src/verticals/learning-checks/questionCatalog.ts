@@ -1,23 +1,23 @@
 import type { Question } from "../../shared/question";
-import foundationQuestions from "./foundationQuestions.json" with { type: "json" };
+import { agentHandoffQuestions } from "./agentHandoffQuestions";
+import { agentPermissionQuestions } from "./agentPermissionQuestions";
+import { agentVerificationQuestions } from "./agentVerificationQuestions";
+import { firstFourMissingQuestions } from "./firstFourMissingQuestions";
+import { firstFourRemainingQuestions } from "./firstFourRemainingQuestions";
 import {
   domainLanguageQuestions,
   projectDocumentationQuestions,
 } from "./firstTwoQuestions";
 import { fiveNewQuestions } from "./fiveNewQuestions";
-import { firstFourMissingQuestions } from "./firstFourMissingQuestions";
-import { firstFourRemainingQuestions } from "./firstFourRemainingQuestions";
-import { nextFourMissingQuestions } from "./nextFourMissingQuestions";
+import foundationQuestions from "./foundationQuestions.json" with { type: "json" };
+import { harnessDesignQuestions } from "./harnessDesignQuestions";
 import { newFourQuestions } from "./newFourQuestions";
-import { subagentOwnershipQuestions } from "./subagentOwnershipQuestions";
-import { agentHandoffQuestions } from "./agentHandoffQuestions";
-import { agentPermissionQuestions } from "./agentPermissionQuestions";
-import { agentVerificationQuestions } from "./agentVerificationQuestions";
-import { remainingQuestions } from "./remainingQuestions";
-import { secondPathQuestions } from "./secondPathQuestions";
+import { nextFourMissingQuestions } from "./nextFourMissingQuestions";
 import { openRewriteQuestions } from "./openRewriteQuestions";
 import { parallelComparisonQuestions } from "./parallelComparisonQuestions";
-import { harnessDesignQuestions } from "./harnessDesignQuestions";
+import { remainingQuestions } from "./remainingQuestions";
+import { secondPathQuestions } from "./secondPathQuestions";
+import { subagentOwnershipQuestions } from "./subagentOwnershipQuestions";
 
 const questionPools: Record<string, Question[]> = {
   ...foundationQuestions,
@@ -34,7 +34,7 @@ const questionPools: Record<string, Question[]> = {
   "deterministic-agent-verification-gates": agentVerificationQuestions,
   "domain-language-and-complexity": domainLanguageQuestions,
   "project-documentation-and-checklists": projectDocumentationQuestions,
-  "java-spring-migrations-with-openrewrite": openRewriteQuestions,
+  "refactorings-and-migrations-with-openrewrite": openRewriteQuestions,
   "compare-parallel-and-serial-agent-work": parallelComparisonQuestions,
   "coding-harness-design": harnessDesignQuestions,
 };
