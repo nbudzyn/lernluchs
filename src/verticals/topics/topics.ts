@@ -1244,7 +1244,7 @@ export const topics: Topics = {
         problem:
           "In einem großen Repository sind Aufrufketten und Auswirkungen schwer allein durch wiederholtes Öffnen einzelner Dateien zu erkennen.",
         coreConcept:
-          "Codebase Memory MCP und der JetBrains MCP-Server indexieren Code zu einem abfragbaren Graphen für Struktur- und Abhängigkeitsfragen. Befunde werden gegen aktuelle Quelldateien geprüft.",
+          "Codebase Memory MCP, Graphify und der JetBrains MCP-Server indexieren Code zu einem abfragbaren Graphen für Struktur- und Abhängigkeitsfragen. Befunde werden gegen aktuelle Quelldateien geprüft.",
         javaWebUse:
           "Vor einer Änderung an einem Java-Service werden Aufrufer und verbundene Web-Routen im Graphen gesucht und anschließend im Code bestätigt.",
         boundary:
