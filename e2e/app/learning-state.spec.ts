@@ -84,7 +84,9 @@ test("shows a failed write immediately and retries on a new perfect run", async 
   await expect(page.getByRole("img", { name: "Gelernt" })).toHaveCount(1);
 });
 
-test("resets only damaged progress and informs the user", async ({ page }) => {
+test("resets only damaged learning state and informs the user", async ({
+  page,
+}) => {
   await page.goto("/");
   await page.evaluate((storageKey) => {
     localStorage.setItem(storageKey, "not json");

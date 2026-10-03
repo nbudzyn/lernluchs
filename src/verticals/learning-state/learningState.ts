@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 
+// Bestehender Speichervertrag: Der neue Vertikalenname verändert gespeicherten Lernstand nicht.
 const storageKey = "lernluchs.learning-progress.v1";
 
 type Snapshot = {
@@ -8,7 +9,7 @@ type Snapshot = {
   canSave: boolean;
 };
 
-function readProgress(): Snapshot {
+function readLearningState(): Snapshot {
   let value: string | null;
   try {
     value = localStorage.getItem(storageKey);
@@ -65,11 +66,11 @@ function readProgress(): Snapshot {
   }
 }
 
-export function useLearningProgress() {
-  const [snapshot, setSnapshot] = useState(readProgress);
+export function useLearningState() {
+  const [snapshot, setSnapshot] = useState(readLearningState);
 
   const markLearned = useCallback((topicId: string): boolean => {
-    const current = readProgress();
+    const current = readLearningState();
     if (!current.canSave) {
       setSnapshot(current);
       return false;

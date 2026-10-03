@@ -20,7 +20,7 @@ describe("public vertical entrypoints", () => {
       return [...contents.matchAll(/from\s+["']([^"']+)["']/g)]
         .map((match) => match[1])
         .filter((specifier) =>
-          /verticals\/(topics|help|learning-checks|learning-progress)\//.test(
+          /verticals\/(topics|help|learning-checks|learning-state)\//.test(
             specifier,
           ),
         )

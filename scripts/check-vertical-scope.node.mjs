@@ -30,10 +30,10 @@ test("rejects a third distinct vertical", () => {
     () =>
       assertCommitScope("0123456789abcdef", [
         "e2e/verticals/topics/filter.spec.ts",
-        "tests/verticals/learning-checks/quiz.test.tsx",
-        "src/verticals/learning-progress/learningProgress.ts",
+        "tests/verticals/learning-checks/LearningCheck.test.tsx",
+        "src/verticals/learning-state/learningState.ts",
       ]),
-    /Commit 0123456789ab ändert 3 Vertikalen: learning-checks, learning-progress, topics/,
+    /Commit 0123456789ab ändert 3 Vertikalen: learning-checks, learning-state, topics/,
   );
 });
 
@@ -96,14 +96,14 @@ test("checks each commit in a real Git range", () => {
     );
     const base = git("rev-parse", "HEAD");
     write("src/verticals/topics/a.ts");
-    write("e2e/verticals/learning-progress/a.spec.ts");
+    write("e2e/verticals/learning-state/a.spec.ts");
     write("e2e/app/flow.spec.ts");
     commit("two verticals and app");
     assert.equal(check(base).status, 0);
 
     git("checkout", "-qb", "invalid", base);
     write("src/verticals/topics/a.ts");
-    write("tests/verticals/learning-progress/a.test.ts");
+    write("tests/verticals/learning-state/a.test.ts");
     write("e2e/verticals/learning-checks/a.spec.ts");
     commit("three verticals");
     const result = check(base);

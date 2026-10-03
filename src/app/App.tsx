@@ -8,13 +8,13 @@ import {
 } from "../verticals/learning-checks";
 import type { Question } from "../verticals/learning-checks";
 import {
-  LearningProgressNotice,
-  useLearningProgress,
-} from "../verticals/learning-progress";
+  LearningStateNotice,
+  useLearningState,
+} from "../verticals/learning-state";
 import "./App.css";
 
 export function App() {
-  const progress = useLearningProgress();
+  const learningState = useLearningState();
   const checkTrigger = useRef<HTMLElement | null>(null);
   const [activeCheck, setActiveCheck] = useState<{
     id: string;
@@ -32,9 +32,9 @@ export function App() {
         <header className="topic-stage-header">
           <h1>Lernluchs KI – Themen</h1>
         </header>
-        <LearningProgressNotice notice={progress.notice} />
+        <LearningStateNotice notice={learningState.notice} />
         <TopicBrowser
-          learnedTopicIds={progress.learnedTopicIds}
+          learnedTopicIds={learningState.learnedTopicIds}
           availableLearningCheckTopicIds={availableLearningCheckTopicIds}
           onStartLearningCheck={(id, title) => {
             const questions = questionsForTopic(id);
@@ -60,7 +60,7 @@ export function App() {
                 checkTrigger.current?.focus({ preventScroll: true }),
               );
             }}
-            onPassed={progress.markLearned}
+            onPassed={learningState.markLearned}
           />
         </div>
       )}

@@ -29,7 +29,7 @@ module.exports = {
       severity: "error",
       from: { path: "^src/app/" },
       to: {
-        path: "^src/verticals/(topics|help|learning-checks|learning-progress)/(?!index\\.ts$)",
+        path: "^src/verticals/(topics|help|learning-checks|learning-state)/(?!index\\.ts$)",
       },
     },
     {
@@ -49,10 +49,10 @@ module.exports = {
       to: { path: "^src/(shared/|verticals/(?!help/))" },
     },
     ...[
-      "learning-progress",
+      "learning-state",
       "competency-profile",
       "learning-checks",
-      "map",
+      "topic-map",
       "pwa-reliability",
     ].map((vertical) => ({
       name: `${vertical}-does-not-import-other-verticals`,
