@@ -146,7 +146,7 @@ describe("vollständige Lernpfade", () => {
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
-  it("bündelt die unabhängige Review in der bestehenden Karte", () => {
+  it("bündelt die unabhängige Review in der bestehenden Thema", () => {
     const review = topics.items.find(
       (item) => item.id === "review-and-accept-ai-generated-changes",
     );

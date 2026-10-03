@@ -10,10 +10,8 @@ test("shows the independent guidance beside the topic list", async ({
   await expect(help.locator("li").first()).toHaveText(
     "Klick auf ein Thema öffnet das Thema",
   );
-  await expect(help.getByText("Test bestanden")).toBeVisible();
-  await expect(
-    page.getByRole("navigation", { name: "Lernthemen" }),
-  ).toBeVisible();
+  await expect(help.getByText("Thema gelernt")).toBeVisible();
+  await expect(page.getByRole("navigation")).toBeVisible();
 });
 
 test("opens the same guidance as a mobile view and returns to the list", async ({
@@ -27,9 +25,7 @@ test("opens the same guidance as a mobile view and returns to the list", async (
   await expect(help.locator("li").first()).toHaveText(
     "Klick auf ein Thema öffnet das Thema",
   );
-  await expect(help.getByText("startet einen Test")).toBeVisible();
+  await expect(help.getByText("startet einen Lerncheck")).toBeVisible();
   await page.getByRole("button", { name: "Zur Themenliste" }).click();
-  await expect(
-    page.getByRole("navigation", { name: "Lernthemen" }),
-  ).toBeVisible();
+  await expect(page.getByRole("navigation")).toBeVisible();
 });

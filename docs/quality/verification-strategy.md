@@ -8,7 +8,7 @@ Die CI für Pull Requests und Pushes auf `main` installiert die festgeschriebene
 2. Type-Aware-Lint mit Oxlint und TypeScript 7; Warnungen lassen das Gate scheitern.
 3. TypeScript-Typprüfung.
 4. Unit- und Komponententests mit Vitest.
-5. Themenvalidierung für eindeutige IDs, vollständige Themen, redaktionelle Metadaten und HTTPS-Quellen sowie Lerncheck-Katalogvalidierung für jeden vorhandenen Fragenpool mit mindestens 25 Fragen, genau einer richtigen Antwort, Erklärungen und Bezug zu den Quellen des Themas.
+5. Themenvalidierung für eindeutige IDs, vollständige Themen, redaktionelle Metadaten und HTTPS-Quellen sowie Validierung der Fragenpools für jeden vorhandenen Fragenpool mit mindestens 25 Fragen, genau einer richtigen Antwort, Erklärungen und Bezug zu den Quellen des Themas.
 6. Architekturprüfung mit dependency-cruiser, Tests der öffentlichen Vertikal-Einstiegspunkte und der E2E-Ablage sowie Tests der
    Vertikalzählung.
 7. Lizenzprüfung der festgeschriebenen Abhängigkeiten. Unbekannte, GPL-, AGPL-, SSPL- und nicht quelloffene Lizenzen scheitern; LGPL und MPL brauchen eine dokumentierte Einzelfallfreigabe.

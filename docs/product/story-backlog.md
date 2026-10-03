@@ -7,17 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Bezeichnungen vereinheitlichen
-
-Wir haben nur wenige fachliche Dinge (Konzepte) in der Anwendung.
-Erster Schritt: Tabelle der fachlichen Dinge in der Anwendung, jeweils mit Begriffen, die in der Anwendung / im Quellcode / in den Vorgaben verwendet werden und eine überschneidende oder ähnliche Bedeutung haben ("unscharfen Synonyme").
-
-Im zweiten Schritt wollen wir uns klar auf einen Begriff einigen und die anderen Begriffe eliminieren / ersetzen.
-
-Wir wollen eine klare Ubiquitous Language erreichen.
-
-Vielleicht schreiben wir eine Art deutsch-englische Synonym-Liste in das Glossar und haben irgendwo den Hinweis, diese Synonyme NICHT zu verwenden?
-
 ## token-efficiency-tools um Quellen ergänzen, insbesondere um YouTube-Videos
 token-efficiency-tools um fehlende Quellen ergänzen, insbesondere um YouTube-Videos
 
@@ -158,7 +147,7 @@ Der Browser-E2E-Test deckt Nichtbestehen mit und ohne Löschen des Lernstands UN
 Außerdem werden alle Begriffe im Glossar mit genau einem englischen Begriff ergänzt (sofern noch nicht vorhanden). Betroffene englische
 Bezeichner werden innerhalb der beiden Vertikalen vereinheitlicht, ohne Fachlogik zu ändern.
 
-Vertikalen: Lernchecks, Lernfortschritt
+Vertikalen: Lernchecks, Lernstand
 
 ## Sicherstellen, dass Architektur oder Bibliotheken nicht unbemerkt geändert werden
 
@@ -172,7 +161,7 @@ gestellte Fragen, bis der Pool des Themas ausgeschöpft ist. Danach beginnt ein 
 Frage doppelt.
 
 Die spätere Änderungs-Spec legt fest, wann eine abgebrochene Frage als gestellt gilt, wie ein Rest von weniger als fünf Fragen mit dem
-nächsten Zyklus verbunden wird und wie veraltete Fragen-IDs nach Katalogänderungen behandelt werden. Ohne gespeicherten Stand bleibt der
+nächsten Zyklus verbunden wird und wie veraltete Fragen-IDs nach Änderungen an Themen oder Fragenpools behandelt werden. Ohne gespeicherten Stand bleibt der
 Fragenablauf nutzbar. Browser-E2E-Tests prüfen mehrere Durchläufe, Ausschöpfung, Neustart und Abbruch.
 
 Vertikalen: Themen, Lernchecks
@@ -183,7 +172,7 @@ Dokumentation nach Umsetzung: Lokale Fragehistorie und Zyklusregel knapp in Prod
 
 Die sechs Grundlagenthemen erscheinen als frei navigierbare grafische Landkarte mit fachlichen Querverbindungen. Lernende können jedes Thema
 ohne Sperre auswählen. Die vorhandene zugängliche Liste bleibt als Fallback nutzbar, auch wenn die Grafik ausfällt. Die Landkarte liest
-Katalog und bestätigten Fortschritt nur über kleine öffentliche Verträge und delegiert Änderungen an die zuständige Vertikale.
+Themen und bestätigten Lernstand nur über kleine öffentliche Verträge und delegiert Änderungen an die zuständige Vertikale.
 Browser-E2E-Tests prüfen Auswahl, Querverbindung und Listenfallback.
 
 Falls wir inzwischen den 01.12.2026 oder später haben, werden in dieser Story die Quellen der vorhandenen Themen zu `AGENTS.md`,
@@ -197,9 +186,9 @@ Dokumentation nach Umsetzung: Landkarte, Fallback und Vertikalgrenzen knapp in P
 ## App installieren und Kernabläufe offline nutzen
 
 Nach dem ersten erfolgreichen Laden ist die öffentliche GitHub-Pages-App installierbar und zeigt offline Landkarte, Liste, Themen,
-Lernchecks und bereits bestätigten Fortschritt. Der versionierte Service-Worker-Cache hält App und Katalog einschließlich Fragen je Build
+Lernchecks und bereits bestätigten Fortschritt. Der versionierte Service-Worker-Cache hält App und Themen einschließlich Fragen je Build
 zusammen; Updates mischen keine Build-Stände und überschreiben keinen lokalen Fortschritt. Der öffentliche Build enthält nur App und
-Katalog, keine persönlichen Daten oder extern nachgeladenen Laufzeitressourcen. Externe Quellen können offline als nicht verfügbar
+Themen, keine persönlichen Daten oder extern nachgeladenen Laufzeitressourcen. Externe Quellen können offline als nicht verfügbar
 erscheinen und öffnen sich nur nach bewusster Aktion. Browser- und PWA-Prüfungen decken Erstladen, Offline-Nutzung und kontrollierte Updates
 ab. Die neuen PWA-/Offline-Gates werden nach grünem Nachweis in der Qualitätsstrategie dokumentiert.
 
@@ -239,9 +228,9 @@ Dokumentation nach Umsetzung: Archivierungs- und Nachfolgerregeln knapp in Produ
 
 Lernende können zu einem Thema eine lokale Notiz oder einen Fehler- und Aktualitätshinweis festhalten und später wiederfinden. Hinweise
 enthalten Themen-ID, Datum und kurze Begründung; sie bleiben ohne bewussten Export auf dem Gerät und gelangen nicht nach Git. Browser-Tests
-prüfen Speichern, Wiederfinden und Trennung vom öffentlichen Katalog.
+prüfen Speichern, Wiederfinden und Trennung von den öffentlichen Themen.
 
-Vertikalen: Themen, Lernfortschritt
+Vertikalen: Themen, Lernstand
 
 Dokumentation nach Umsetzung: Lokale Hinweise und ihren Datenfluss knapp in Produktstand, Architektur und redaktioneller Richtlinie
 ergänzen.
@@ -251,7 +240,7 @@ ergänzen.
 Lernende können für ein Thema ein persönliches Ziel setzen, ändern und abschließen. Das Ziel zeigt den bestätigten Fortschritt, ohne ihn zu
 ersetzen, und bleibt nach Reload erhalten. Browser-Tests prüfen diese Abläufe.
 
-Vertikalen: Lernfortschritt, Lernziele
+Vertikalen: Lernstand, Lernziele
 
 Dokumentation nach Umsetzung: Lernziele und ihre Beziehung zum Fortschritt knapp in Produktstand und Architektur ergänzen.
 
@@ -298,7 +287,7 @@ Lernende können Fortschritt, Ziele und Hinweise bewusst als Datei exportieren u
 sie, welche Daten ersetzt oder zusammengeführt würden, und bestätigen die Aktion. Ungültige Dateien verändern keine vorhandenen Daten.
 Browser-Tests prüfen Export, Vorschau, Import und Fehlerfall.
 
-Vertikalen: Lernfortschritt, PWA/Zuverlässigkeit
+Vertikalen: Lernstand, PWA/Zuverlässigkeit
 
 Dokumentation nach Umsetzung: Exportformat, Importregeln und Datenschutz knapp in Produktstand und Architektur ergänzen.
 
@@ -315,8 +304,8 @@ gespeichert? Die Änderungs-Spec legt außerdem die genaue Versions- und Migrati
 Inhaltsversion und für reine Quellenänderungen. Browser-Tests prüfen Lernen, Versionswechsel, ältere Lernstände und zusätzliche Fragen ohne
 Versionswechsel.
 
-Bis zur Umsetzung dieser Story gibt es keine fachlichen Inhaltsversionen. Eine technische App- oder Katalog-Buildnummer ist davon getrennt.
-Die betroffenen Vertikalen Themen, Lernchecks und Lernfortschritt werden für die Umsetzung in Schritte mit höchstens zwei Vertikalen pro
+Bis zur Umsetzung dieser Story gibt es keine fachlichen Inhaltsversionen. Eine technische App- oder Buildnummer der Themen ist davon getrennt.
+Die betroffenen Vertikalen Themen, Lernchecks und Lernstand werden für die Umsetzung in Schritte mit höchstens zwei Vertikalen pro
 fachlichem Commit geschnitten.
 
 Dokumentation nach Umsetzung: Versionsregeln und Bezug von Fragen, Quellen und Lernstand knapp in Produktstand, Architektur und
@@ -329,6 +318,6 @@ Benutzerverwaltung. Die Änderungs-Spec prüft vor der Implementierung eine sich
 Konfliktbehandlung, Löschung und Ausfallverhalten fest. Die bestehende lokale Nutzung bleibt unabhängig von einer Verbindung möglich.
 Browser-Tests prüfen Abgleich, Konflikt und Offline-Fallback.
 
-Vertikalen: Lernfortschritt, PWA/Zuverlässigkeit
+Vertikalen: Lernstand, PWA/Zuverlässigkeit
 
 Dokumentation nach Umsetzung: Tatsächlichen Datenfluss, Grenzen und Sicherheitsentscheidung knapp in Produktstand und Architektur ergänzen.

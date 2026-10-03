@@ -3,9 +3,9 @@
 Lernluchs ist eine öffentliche, statische Lernanwendung für KI-unterstützte Java- und Webentwicklung. Lernende können derzeit 45 Themen in
 einer gemeinsamen Liste auswählen und deren kurze Inhalte mit kuratierten Quellen und Aktualitätsangaben lesen. Jedes Thema, auch ein
 künftig ergänztes, erhält Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md). Die Inhalte werden redaktionell
-geprüft und als versionierter, nur lesbarer Katalog veröffentlicht.
+geprüft und als versionierte, nur lesbare Themen veröffentlicht.
 
-Für alle 45 Themen stehen quellengebundene Auswahlfragen bereit, auch für die Themen zu Fachsprache, Projektwissen, Git, OKF, Zielklärung,
+Für alle 45 Themen stehen quellengebundene Fragen bereit, auch für die Themen zu Fachsprache, Projektwissen, Git, OKF, Zielklärung,
 Legacy-Spezifikation, Standards, LLM-Fehlbarkeit, Agentenkontext, Codegraphen, Tokenwerkzeugen, Coding-Agent-Oberflächen, Skills,
 Spec-Frameworks, Automatisierung, Web-Sicherheitsbaselines, parallelen Agentengrenzen, Worktrees, Context7,
 UI-Komponenten mit Penpot und Storybook, Java-API-Dokumentation, Bug-Triage bis zum PR, lokale KI-Stacks, spezialisierte Subagents,

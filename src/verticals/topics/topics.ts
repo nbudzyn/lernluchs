@@ -1,13 +1,13 @@
 import { learningPaths } from "./learningPaths";
-import type { TopicCollection } from "./topicContract";
+import type { Topics } from "./topicContract";
 
 // Themenreihenfolge: Einträge hier verschieben. IDs bleiben stabil.
-export const topics: TopicCollection = {
+export const topics: Topics = {
   version: "7",
   items: [
     {
       id: "human-ai-responsibility",
-      // Bewusste Textbindung: tests/app/App.test.tsx und e2e/app/learning-progress.spec.ts.
+      // Bewusste Textbindung: tests/app/App.test.tsx und e2e/app/learning-state.spec.ts.
       title: "Mensch und KI: Verantwortung bleibt menschlich",
       content: {
         language: "de",

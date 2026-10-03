@@ -37,12 +37,12 @@
   text-align: center;
 }
 
-.topic-help-content li:has(svg, .help-passed-icon)::before {
+.topic-help-content li:has(svg, .help-learned-icon)::before {
   display: none;
 }
 
 .topic-help-content svg,
-.help-passed-icon {
+.help-learned-icon {
   flex: none;
   width: 1.3rem;
   height: 1.3rem;
@@ -57,7 +57,7 @@
   stroke-width: 1.7;
 }
 
-.help-passed-icon {
+.help-learned-icon {
   color: var(--accent);
   font-weight: 700;
   text-align: center;

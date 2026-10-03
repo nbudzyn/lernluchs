@@ -13,25 +13,25 @@ Refinement: Berücksichtigt werden fachlich belegbare Entwicklungen von Oktober 
 
 ## Ziel, Grenzen und Entscheidungen
 
-Die Recherche erfasst 100 voneinander abgrenzbare Entwicklungen im festgelegten Zeitraum und vergleicht sie mit den 46 Themen und 13 Lernpfaden des aktuellen Katalogs. Vorschläge werden nach Lernwert und Relevanz für Java-/Webteams priorisiert. Produktankündigungen werden als Aussagen des jeweiligen Anbieters eingeordnet; aus einer Verfügbarkeit folgt keine Qualitäts- oder Sicherheitsgarantie.
+Die Recherche erfasst 100 voneinander abgrenzbare Entwicklungen im festgelegten Zeitraum und vergleicht sie mit den 46 Themen und 13 Lernpfaden der Anwendung. Vorschläge werden nach Lernwert und Relevanz für Java-/Webteams priorisiert. Produktankündigungen werden als Aussagen des jeweiligen Anbieters eingeordnet; aus einer Verfügbarkeit folgt keine Qualitäts- oder Sicherheitsgarantie.
 
-Betroffene Vertikalen: keine. Dies ist eine redaktionelle Recherche ohne Änderung an Produktcode, Katalog oder Tests. Es werden keine Abhängigkeiten hinzugefügt.
+Betroffene Vertikalen: keine. Dies ist eine redaktionelle Recherche ohne Änderung an Produktcode, Themen oder Tests. Es werden keine Abhängigkeiten hinzugefügt.
 
 ## Risiken und Abnahme
 
 - **Scheinbare Neuheit:** Jede Entwicklung muss ein im Zeitraum datiertes Primärquellendokument und einen benennbaren neuen Lernaspekt haben. Reine Umbenennungen oder Preisänderungen werden ausgeschlossen.
 - **Anbieterübergewicht:** Die Recherche berücksichtigt mehrere unabhängige Anbieter, Standards und Open-Source-Projekte.
-- **Katalogüberschneidung:** Vorschläge unterscheiden Ergänzungen bestehender Themen von neuen Themen und Lernpfaden; vorhandene Themen-IDs und Pfade bilden die Vergleichsbasis.
+- **Themenüberschneidung:** Vorschläge unterscheiden Ergänzungen bestehender Themen von neuen Themen und Lernpfaden; vorhandene Themen-IDs und Pfade bilden die Vergleichsbasis.
 - **Quellen- und Zukunftsgrenze:** Nur bis 30.09.2026 veröffentlichte Aussagen zählen. Angekündigte, noch nicht ausgelieferte Funktionen werden als solche gekennzeichnet.
 - **Abnahme:** Genau 100 belegte Entwicklungen, eine priorisierte Zuordnung und ausdrücklich dokumentierte Unsicherheiten. Der Entwickler kann die Vorschläge prüfen, bevor eine spätere Story Inhalte ändert.
 
 ## Umsetzung und Nachweise
 
-Diese Story hat kein Code-Teil-Feature. RED → GREEN → REFACTOR und die Code-Pflichtsuite werden deshalb nicht durch Scheintests ersetzt. Die redaktionelle Prüfung besteht aus Quellen-, Datums-, Dubletten- und Katalogabgleich. Die Recherche und ihre Nachweise stehen unten in dieser Spec.
+Diese Story hat kein Code-Teil-Feature. RED → GREEN → REFACTOR und die Code-Pflichtsuite werden deshalb nicht durch Scheintests ersetzt. Die redaktionelle Prüfung besteht aus Quellen-, Datums-, Dubletten- und Themenabgleich. Die Recherche und ihre Nachweise stehen unten in dieser Spec.
 
 ## Rechercheergebnis
 
-Recherche und Katalogabgleich am 30.09.2026. Die folgenden 100 Punkte sind **Einzelentwicklungen**, keine 100 vorgeschlagenen Lernkarten. „Neu“ meint die dokumentierte Veröffentlichung oder Erweiterung im vereinbarten Zeitraum, nicht die erstmalige Erfindung des zugrunde liegenden Konzepts. Bei Produktquellen ist die Aussage auf die dort beschriebene Version und Verfügbarkeit begrenzt.
+Recherche und Themenabgleich am 30.09.2026. Die folgenden 100 Punkte sind **Einzelentwicklungen**, keine 100 vorgeschlagenen Themen. „Neu“ meint die dokumentierte Veröffentlichung oder Erweiterung im vereinbarten Zeitraum, nicht die erstmalige Erfindung des zugrunde liegenden Konzepts. Bei Produktquellen ist die Aussage auf die dort beschriebene Version und Verfügbarkeit begrenzt.
 
 ### 100 belegte Entwicklungen
 
@@ -153,7 +153,7 @@ Recherche und Katalogabgleich am 30.09.2026. Die folgenden 100 Punkte sind **Ein
 99. Junie Local bündelte einen lokal ausgeführten, abgestimmten Coding-Agenten ohne Cloud-Verarbeitung (08/2026; [JB-LOCAL]).
 100. Ollama Launch vereinfachte die Kopplung lokaler oder gehosteter Modelle mit Coding-Agent-CLIs (01/2026; [OLLAMA]).
 
-### Vorschläge für den Katalog
+### Vorschläge für die Themen
 
 **Priorität A – neue Themen in vorhandenen Pfaden**
 
@@ -169,13 +169,13 @@ Recherche und Katalogabgleich am 30.09.2026. Die folgenden 100 Punkte sind **Ein
 | KI-Funktionen in Java-Webanwendungen bauen | Modell- und API-Wahl → Spring-AI-Toolschleife → MCP-Server/-Client → strukturierte Ausgabe → multimodale Suche → Evaluation und Betrieb | Der aktuelle Java-/Web-Pfad behandelt vor allem Codeanalyse und Modernisierung; Spring AI 2.x schafft zusätzlich einen eigenständigen Anwendungsbau-Pfad (79–93). |
 | Agentensysteme verbinden und betreiben | MCP/A2A/ACP → Autorisierung → Zustands- und Task-Lebenszyklus → Sandboxes → Observability → Kosten- und Sicherheitsprüfung | Die Protokoll-, Sicherheits- und Betriebsaspekte werden sonst über mehrere vorhandene Pfade verstreut (1–12, 43, 46, 56–62, 94–97). |
 
-Die bestehenden Pfade dürfen für die sechs priorisierten Themen leicht länger werden. Der Java-Web-Pfad und der neue Agentensystem-Pfad brauchen vor einer späteren Inhaltsstory eine eigene fachliche Reihenfolge und Quellenprüfung je Lernkarte.
+Die bestehenden Pfade dürfen für die sechs priorisierten Themen leicht länger werden. Der Java-Web-Pfad und der neue Agentensystem-Pfad brauchen vor einer späteren Inhaltsstory eine eigene fachliche Reihenfolge und Quellenprüfung je Thema.
 
 ### Quellen und Grenzen
 
 Alle verlinkten Seiten wurden am 30.09.2026 auf Datum und die jeweils genannte Aussage geprüft. Die Kurzangaben verweisen auf Originalankündigungen, Spezifikationen oder Release Notes. Vorschau- und Milestone-Funktionen können sich ändern; insbesondere die geordneten Message Parts in Spring AI 2.1 werden zunächst nur vom Responses-Modell nativ genutzt. Anbieter-Benchmarks und Sicherheitswirksamkeit wurden hier nicht unabhängig gemessen. Die 100 Punkte sind als Recherchepool kuratiert; Priorität und didaktische Gruppierung sind unsere Schlussfolgerung aus dem Produktfokus und keine Aussage der Quellen.
 
-Der lokale Abgleich mit dem Katalog ergab 46 vorhandene Themen und 13 vorhandene Pfade. Eine Nummernprüfung bestätigte 100 eindeutige Einträge von 1 bis 100; alle Kurzverweise haben eine Quellen-Definition. `git diff --check` meldete keinen Whitespace-Fehler. Produktcode, Tests, Laufzeitinhalte und Abhängigkeiten wurden nicht verändert; deshalb waren Pflichtsuite und Browserablauf für diese Recherche nicht einschlägig. Die Vorschläge bleiben bis zur manuellen Sichtung durch den Entwickler aktiv und werden nicht committet.
+Der lokale Abgleich mit den Themen ergab 46 vorhandene Themen und 13 vorhandene Pfade. Eine Nummernprüfung bestätigte 100 eindeutige Einträge von 1 bis 100; alle Kurzverweise haben eine Quellen-Definition. `git diff --check` meldete keinen Whitespace-Fehler. Produktcode, Tests, Laufzeitinhalte und Abhängigkeiten wurden nicht verändert; deshalb waren Pflichtsuite und Browserablauf für diese Recherche nicht einschlägig. Die Vorschläge bleiben bis zur manuellen Sichtung durch den Entwickler aktiv und werden nicht committet.
 
 [MCP25]: https://blog.modelcontextprotocol.io/posts/2025-11-25-first-mcp-anniversary/
 [A2A]: https://a2a-protocol.org/latest/blog/

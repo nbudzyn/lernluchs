@@ -44,7 +44,7 @@ export type Topic = {
   sources: TopicSource[];
 };
 
-export type TopicCollection = {
+export type Topics = {
   version: string;
   items: Topic[];
   paths?: LearningPath[];

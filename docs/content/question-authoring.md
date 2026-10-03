@@ -1,4 +1,4 @@
-# Quellengebundene Auswahlfragen erstellen und prüfen
+# Quellengebundene Fragen erstellen und prüfen
 
 Diese Regeln gelten für jede Story, die neue Fragen für Themen erstellt. Die jeweilige Änderungs-Spec bestimmt die betroffenen Themen und
 den Fragenablauf. Für die Auswahl oder Änderung von Themenquellen gelten zusätzlich die [Quellenregeln](source-selection.md); für
@@ -65,5 +65,5 @@ redaktionelle Metadaten und die fachliche Prüfung der Themen gilt die [redaktio
    zurückgeben. Der Nutzer führt diese Prüfung aus und gibt das Ergebnis zurück.
 3. Entferne beanstandete Fragen oder kläre und korrigiere sie vor der Integration fachlich; korrigierte Fragen werden erneut unabhängig
    geprüft. Ergänze nötigenfalls weitere Fragen, bis der Mindestbestand nach der Prüfung erreicht ist.
-4. Validiere Fragen und Antworten zusammen mit dem öffentlichen Katalog. Der Nachweis umfasst eindeutige IDs, genau eine richtige Antwort,
+4. Validiere Fragen und Antworten zusammen mit den öffentlichen Themen. Der Nachweis umfasst eindeutige IDs, genau eine richtige Antwort,
    drei bis fünf Optionen, vollständige Erklärungen und gültige Quellenbezüge.

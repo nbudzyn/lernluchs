@@ -253,7 +253,7 @@ export function TopicBrowser({
       requestAnimationFrame(() => window.scrollTo(0, listScrollY.current));
     }
   }
-  const cardSections = selectedItem
+  const topicSections = selectedItem
     ? [
         ["Problem", selectedItem.content.problem],
         ["Kernkonzept", selectedItem.content.coreConcept],
@@ -479,7 +479,7 @@ export function TopicBrowser({
             </button>
             <h2 id="topic-title">{selectedItem.title}</h2>
 
-            {cardSections.map(([heading, text]) => (
+            {topicSections.map(([heading, text]) => (
               <section key={heading}>
                 <h3>{heading}</h3>
                 <p>{text}</p>

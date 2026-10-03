@@ -1,8 +1,4 @@
-import type {
-  TopicCollection,
-  TopicSource,
-  TopicValidation,
-} from "./topicContract";
+import type { Topics, TopicSource, TopicValidation } from "./topicContract";
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 const durationPattern = /^(?:\d+:)?\d{1,2}:[0-5]\d$/;
@@ -68,7 +64,7 @@ function hasText(value: string): boolean {
   return value.trim().length > 0;
 }
 
-export function validateTopics(candidate: TopicCollection): TopicValidation {
+export function validateTopics(candidate: Topics): TopicValidation {
   const seenIds = new Set<string>();
   const errors: string[] = [];
 

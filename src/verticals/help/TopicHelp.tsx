@@ -20,13 +20,13 @@ export function TopicHelp() {
             <circle cx="9.4" cy="19" r="1" />
             <path d="m18 7 6 5-6 5z" />
           </svg>{" "}
-          <span>startet einen Test</span>
+          <span>startet einen Lerncheck</span>
         </li>
         <li>
-          <span className="help-passed-icon" aria-hidden="true">
+          <span className="help-learned-icon" aria-hidden="true">
             ✓
           </span>{" "}
-          <span>Test bestanden</span>
+          <span>Thema gelernt</span>
         </li>
       </ul>
     </section>

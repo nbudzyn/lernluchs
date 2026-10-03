@@ -347,7 +347,7 @@ describe("public content topics", () => {
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
-  it("preserves the six sourced cards from the second learning path in order", () => {
+  it("preserves the six sourced topics from the second learning path in order", () => {
     const newIds = [
       "module-boundaries-and-public-interfaces",
       "tdd-for-domain-behavior",

@@ -27,13 +27,13 @@ Validierung. Ihr öffentlicher Einstiegspunkt bietet verfügbare Themen-IDs und
 eine Fragenabfrage nach dauerhafter Themen-ID. Der Lerncheck wählt fünf
 verschiedene Fragen, mischt die Optionen und verwaltet Antworten und Ergebnis
 flüchtig. Nach fünf richtigen Antworten meldet er das Bestehen über einen kleinen
-Speichervertrag an den Lernfortschritt und zeigt dessen Erfolg oder Fehlschlag.
+Speichervertrag an den Lernstand und zeigt dessen Erfolg oder Fehlschlag.
 Die Vertikale importiert keine internen Daten der Themen-Vertikale; die
-Katalogvalidierung erhält Themen-IDs und Quellen als schmale Eingabe.
+Die Validierung der Fragenpools erhält Themen-IDs und Quellen als schmale Eingabe.
 
-## Bestehende Vertikale: Lernfortschritt
+## Bestehende Vertikale: Lernstand
 
-Die Vertikale Lernfortschritt besitzt den persönlichen, lokal gespeicherten
+Die Vertikale Lernstand (`learning-state`) besitzt den persönlichen, lokal gespeicherten
 Lernstand. Sie speichert gelernte Themen unter dauerhaften IDs in einem eigenen
 versionierten `localStorage`-Eintrag und stellt der App gelernte IDs, das
 Speichern eines Bestehens und Hinweise auf beschädigte Daten bereit. Ungültige

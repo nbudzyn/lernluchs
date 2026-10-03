@@ -114,8 +114,8 @@ describe("TopicBrowser", () => {
       "filtert nach allen Lernpfaden mit diesem Thema",
       "Aktive Lernpfade stehen über der Themenliste",
       "Klick auf einen Lernpfad filtert auf diesen einen Lernpfad",
-      "startet einen Test",
-      "Test bestanden",
+      "startet einen Lerncheck",
+      "Thema gelernt",
     ]) {
       expect(screen.getByText(text)).toBeTruthy();
     }
