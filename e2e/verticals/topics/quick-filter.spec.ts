@@ -7,7 +7,7 @@ test("filters immediately, closes excluded details, and resets search and path t
 }) => {
   await page.goto("/");
   const search = page.getByRole("textbox", { name: "Schnellfilter" });
-  const list = page.getByRole("navigation", { name: "Lernthemen" });
+  const list = page.getByRole("navigation", { name: "Themen" });
   const first = topics.items[0];
   const mobile = (page.viewportSize()?.width ?? 0) < 800;
   await expect(search).toBeVisible();

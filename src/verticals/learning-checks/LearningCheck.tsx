@@ -70,8 +70,8 @@ export function LearningCheck({
   }
 
   return (
-    <section className="learning-check" aria-label={`Fragen zu ${title}`}>
-      <h1>{title}: Fragen</h1>
+    <section className="learning-check" aria-label={`Lerncheck zu ${title}`}>
+      <h1>{title}: Lerncheck</h1>
       {!complete && current && (
         <div className="learning-check-question" key={current.id}>
           <p className="learning-check-count">

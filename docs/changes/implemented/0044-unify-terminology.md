@@ -120,4 +120,5 @@ bei der Rückkehr eine sichtbare Navigation, ohne den von Themen verantworteten
 zugänglichen Namen nochmals zu prüfen; dieser bleibt in Themen-/App-Tests
 abgesichert. So können die drei Committeile auch unabhängig voneinander die
 Vertikalgrenze einhalten. Die abschließenden Prüfergebnisse beziehen sich auf diesen Stand. Die Spec wird
-mit dem letzten Committeil archiviert.
+mit dem letzten Committeil archiviert. Der lokale Browserablauf wurde unmittelbar
+vor jedem der drei Committeile erneut erfolgreich geprüft.

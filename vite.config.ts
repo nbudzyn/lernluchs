@@ -6,7 +6,7 @@ import type { Question } from "./src/shared/question";
 
 // Ein gepflegter Fragenbestand, beim Produktionsbuild nach Pool aufteilbar.
 function questionPoolModules() {
-  const catalogId = "\0question-pool-catalog";
+  const questionPoolsId = "\0question-pools";
   const poolPrefix = "\0question-pool:";
   const pools: Record<string, Question[]> = questions;
 
@@ -20,13 +20,13 @@ function questionPoolModules() {
         source === "./questions.json" &&
         importer
           ?.replaceAll("\\", "/")
-          .endsWith("/learning-checks/questionCatalog.ts")
+          .endsWith("/learning-checks/questionPools.ts")
       ) {
-        return catalogId;
+        return questionPoolsId;
       }
     },
     load(id: string) {
-      if (id === catalogId) {
+      if (id === questionPoolsId) {
         const entries = Object.keys(pools);
         const imports = entries.map(
           (topicId, index) =>
@@ -80,7 +80,7 @@ export default defineConfig(({ mode }) => {
         output: {
           codeSplitting: {
             groups: [
-              // Redaktionelle Kataloge separat ausliefern; die 500-kB-Warngrenze bleibt aktiv.
+              // Themen und Fragenpools separat ausliefern; die 500-kB-Warngrenze bleibt aktiv.
               {
                 name: "topics",
                 test: /[\\/]verticals[\\/]topics[\\/]topics\.ts$/,

@@ -1,11 +1,11 @@
 import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
 
-test("zeigt einen Lernpfad und eine quellengebundene Karte", async ({
+test("zeigt einen Lernpfad und ein quellengebundenes Thema", async ({
   page,
 }) => {
   await page.goto("/");
-  const navigation = page.getByRole("navigation", { name: "Lernthemen" });
+  const navigation = page.getByRole("navigation", { name: "Themen" });
   await expect(navigation.locator("li")).toHaveCount(45);
 
   await page
@@ -42,7 +42,7 @@ test("zeigt einen Lernpfad und eine quellengebundene Karte", async ({
   }
   await expect(
     page.getByRole("button", {
-      name: `Fragen starten: ${topicTitle("open-knowledge-format")}`,
+      name: `Lerncheck starten: ${topicTitle("open-knowledge-format")}`,
     }),
   ).toBeVisible();
 });
@@ -89,11 +89,11 @@ const pathCases = [
 ] as const;
 
 for (const path of pathCases) {
-  test(`shows the ${path.name} path with sourced cards and a learning check`, async ({
+  test(`shows the ${path.name} path with sourced topics and a learning check`, async ({
     page,
   }) => {
     await page.goto("/");
-    const navigation = page.getByRole("navigation", { name: "Lernthemen" });
+    const navigation = page.getByRole("navigation", { name: "Themen" });
     await expect(navigation.locator("li")).toHaveCount(45);
     await expect(
       page.getByRole("button", {
@@ -128,7 +128,7 @@ for (const path of pathCases) {
     }
     await expect(
       page.getByRole("button", {
-        name: `Fragen starten: ${path.startingTopic}`,
+        name: `Lerncheck starten: ${path.startingTopic}`,
       }),
     ).toHaveCount(1);
   });

@@ -4,7 +4,7 @@ import type { Page } from "@playwright/test";
 import {
   availableLearningCheckTopicIds,
   questionsForTopic,
-} from "../../../src/verticals/learning-checks/questionCatalog";
+} from "../../../src/verticals/learning-checks/questionPools";
 import { congratulations } from "../../../src/verticals/learning-checks/congratulations";
 import { topics } from "../../../src/verticals/topics/topics";
 
@@ -42,10 +42,10 @@ async function start(page: Page, id: string) {
   await page.goto("/");
   await expect(page.getByRole("article")).toHaveCount(0);
   await page
-    .getByRole("button", { name: `Fragen starten: ${topicTitle(id)}` })
+    .getByRole("button", { name: `Lerncheck starten: ${topicTitle(id)}` })
     .click();
   await expect(
-    page.getByRole("heading", { name: `${topicTitle(id)}: Fragen` }),
+    page.getByRole("heading", { name: `${topicTitle(id)}: Lerncheck` }),
   ).toBeVisible();
   await expect(page.getByText("Frage 1 von 5")).toBeVisible();
 }
@@ -108,9 +108,12 @@ test("each published topic starts its corresponding check using the keyboard", a
       }),
     ).toBeVisible();
     const button = page.getByRole("button", {
-      name: `Fragen starten: ${title}`,
+      name: `Lerncheck starten: ${title}`,
     });
-    await expect(button).toHaveAttribute("title", `Fragen starten: ${title}`);
+    await expect(button).toHaveAttribute(
+      "title",
+      `Lerncheck starten: ${title}`,
+    );
     await expect(button.locator("svg[aria-hidden='true']")).toBeVisible();
     await button.focus();
     await page.keyboard.press("Enter");
@@ -118,13 +121,13 @@ test("each published topic starts its corresponding check using the keyboard", a
       page.getByRole("heading", { level: 1, name: "Lernluchs" }),
     ).toBeVisible();
     await expect(
-      page.getByRole("heading", { name: `${title}: Fragen` }),
+      page.getByRole("heading", { name: `${title}: Lerncheck` }),
     ).toBeVisible();
     await expect(page.getByText("Frage 1 von 5")).toBeVisible();
   });
 });
 
-test("quiz icon buttons align with topic buttons without stretching the list row", async ({
+test("learning check icon buttons align with topic buttons without stretching the list row", async ({
   page,
 }) => {
   await page.goto("/");
@@ -133,7 +136,7 @@ test("quiz icon buttons align with topic buttons without stretching the list row
     .getByRole("button", { name: title, exact: true })
     .boundingBox();
   const quizBox = await page
-    .getByRole("button", { name: `Fragen starten: ${title}` })
+    .getByRole("button", { name: `Lerncheck starten: ${title}` })
     .boundingBox();
   expect(topicBox).not.toBeNull();
   expect(quizBox).not.toBeNull();
@@ -188,7 +191,7 @@ test("five correct answers produce a passed summary with explanations and source
       }
       await page.getByRole("button", { name: "Zur Themenliste" }).click();
       await expect(
-        page.getByRole("navigation", { name: "Lernthemen" }),
+        page.getByRole("navigation", { name: "Themen" }),
       ).toBeVisible();
     },
   );
@@ -222,7 +225,7 @@ test("arbitrary answers complete a sourced check and allow returning to the topi
       ).toHaveAttribute("href", /^https:\/\//);
       await page.getByRole("button", { name: "Zur Themenliste" }).click();
       await expect(
-        page.getByRole("navigation", { name: "Lernthemen" }),
+        page.getByRole("navigation", { name: "Themen" }),
       ).toBeVisible();
     },
   );
@@ -296,21 +299,21 @@ test("a completed check can be repeated with five distinct questions and reset s
       ).toBeVisible();
       await page.getByRole("button", { name: "Zur Themenliste" }).click();
       await page
-        .getByRole("button", { name: `Fragen starten: ${topicTitle(id)}` })
+        .getByRole("button", { name: `Lerncheck starten: ${topicTitle(id)}` })
         .click();
       await answerRun(page, id);
       await page.getByRole("button", { name: "Zur Themenliste" }).click();
       await page
-        .getByRole("button", { name: `Fragen starten: ${topicTitle(id)}` })
+        .getByRole("button", { name: `Lerncheck starten: ${topicTitle(id)}` })
         .click();
       await expect(page.getByText("Frage 1 von 5")).toBeVisible();
       await expect(page.getByRole("status")).toHaveCount(0);
       await page.reload();
       await expect(
-        page.getByRole("navigation", { name: "Lernthemen" }),
+        page.getByRole("navigation", { name: "Themen" }),
       ).toBeVisible();
       await page
-        .getByRole("button", { name: `Fragen starten: ${topicTitle(id)}` })
+        .getByRole("button", { name: `Lerncheck starten: ${topicTitle(id)}` })
         .click();
       await expect(page.getByText("Frage 1 von 5")).toBeVisible();
     },
@@ -334,7 +337,7 @@ test("cancelling before or after an answer returns to the topic list and discard
         if (answered) await answer(page, id, true);
         await page.getByRole("button", { name: "Abbrechen" }).click();
         await expect(
-          page.getByRole("navigation", { name: "Lernthemen" }),
+          page.getByRole("navigation", { name: "Themen" }),
         ).toBeVisible();
         await expect(page.getByText("Frage 2 von 5")).toHaveCount(0);
       }
@@ -351,7 +354,7 @@ test("question and result inherit the editorial surfaces and remain usable", asy
     .locator(".topic-stage")
     .evaluate((element) => getComputedStyle(element).backgroundColor);
   await page
-    .getByRole("button", { name: `Fragen starten: ${topicTitle(id)}` })
+    .getByRole("button", { name: `Lerncheck starten: ${topicTitle(id)}` })
     .click();
   await expect(page.locator(".learning-check-overlay")).toHaveCSS(
     "background-color",
@@ -394,7 +397,7 @@ test("passed result uses the same dark palette and restrained success treatment"
     .locator(".topic-stage")
     .evaluate((element) => getComputedStyle(element).backgroundColor);
   await page
-    .getByRole("button", { name: `Fragen starten: ${topicTitle(id)}` })
+    .getByRole("button", { name: `Lerncheck starten: ${topicTitle(id)}` })
     .click();
   await expect(page.locator(".learning-check-overlay")).toHaveCSS(
     "background-color",
@@ -411,7 +414,5 @@ test("passed result uses the same dark palette and restrained success treatment"
   ).toBe("none");
   await expect(page.getByText("Als gelernt gespeichert.")).toBeVisible();
   await page.getByRole("button", { name: "Zur Themenliste" }).click();
-  await expect(
-    page.getByRole("navigation", { name: "Lernthemen" }),
-  ).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Themen" })).toBeVisible();
 });

@@ -3,17 +3,17 @@ import { describe, expect, it } from "vitest";
 import {
   availableLearningCheckTopicIds,
   questionsForTopic,
-} from "../../../src/verticals/learning-checks/questionCatalog";
-import { validateQuestionCatalog } from "../../../src/verticals/learning-checks/validateQuestionCatalog";
+} from "../../../src/verticals/learning-checks/questionPools";
+import { validateQuestionPools } from "../../../src/verticals/learning-checks/validateQuestionPools";
 import { topics } from "../../../src/verticals/topics/topics";
 
-describe("validateQuestionCatalog", () => {
+describe("validateQuestionPools", () => {
   it("validates every pool against its topic sources", () => {
-    expect(validateQuestionCatalog(topics.items)).toEqual([]);
+    expect(validateQuestionPools(topics.items)).toEqual([]);
   });
 
   it("reports every missing topic without stopping at the first pool", () => {
-    expect(validateQuestionCatalog([])).toEqual(
+    expect(validateQuestionPools([])).toEqual(
       availableLearningCheckTopicIds.map(
         (id) => `Missing topic for question pool: ${id}`,
       ),
@@ -21,7 +21,7 @@ describe("validateQuestionCatalog", () => {
   });
 
   it("reports invalid sources from every affected pool", () => {
-    const errors = validateQuestionCatalog(
+    const errors = validateQuestionPools(
       topics.items.map((topic) => ({ ...topic, sources: [] })),
     );
     expect(errors).toEqual(
@@ -29,7 +29,7 @@ describe("validateQuestionCatalog", () => {
         questionsForTopic(topicId)!.flatMap((question) =>
           question.options.map(
             (option) =>
-              `${question.id}/${option.id}: source is not attached to card`,
+              `${question.id}/${option.id}: source is not attached to topic`,
           ),
         ),
       ),

@@ -78,7 +78,7 @@ describe("TopicBrowser", () => {
     );
     expect(screen.getByText("10 / 45 Themen")).toBeTruthy();
     const summary = screen.getByRole("region", { name: "Aktive Lernpfade" });
-    const list = screen.getByRole("navigation", { name: "Lernthemen" });
+    const list = screen.getByRole("navigation", { name: "Themen" });
     expect(
       summary.compareDocumentPosition(list) & Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
@@ -152,11 +152,11 @@ describe("TopicBrowser", () => {
     );
   });
 
-  it("marks only saved quiz topics as learned, including after a catalog change", () => {
+  it("marks only saved topics with learning checks as learned, including after a topics change", () => {
     const quizTopic = topics.items[0];
     const plainTopic = {
       ...quizTopic,
-      id: "temporarily-without-quiz",
+      id: "temporarily-without-learning-check",
     };
     render(
       <TopicBrowser
@@ -173,17 +173,19 @@ describe("TopicBrowser", () => {
   });
 
   it("shows an accessible icon button for each available learning check", () => {
-    const quizItems = topics.items.slice(0, 16);
+    const topicsWithLearningCheck = topics.items.slice(0, 16);
     render(
       <TopicBrowser
-        availableLearningCheckTopicIds={quizItems.map((item) => item.id)}
+        availableLearningCheckTopicIds={topicsWithLearningCheck.map(
+          (item) => item.id,
+        )}
         onStartLearningCheck={() => {}}
       />,
     );
 
-    expect(quizItems).toHaveLength(16);
-    for (const item of quizItems) {
-      const label = `Fragen starten: ${item.title}`;
+    expect(topicsWithLearningCheck).toHaveLength(16);
+    for (const item of topicsWithLearningCheck) {
+      const label = `Lerncheck starten: ${item.title}`;
       const button = screen.getByRole("button", { name: label });
       expect(button.getAttribute("title")).toBe(label);
       expect(button.textContent).toBe("");
@@ -194,11 +196,9 @@ describe("TopicBrowser", () => {
   it("shows all forty-six topics in one semantic text overview", () => {
     render(<TopicBrowser />);
 
-    expect(screen.getByRole("navigation", { name: "Lernthemen" })).toBeTruthy();
+    expect(screen.getByRole("navigation", { name: "Themen" })).toBeTruthy();
     expect(
-      screen
-        .getByRole("navigation", { name: "Lernthemen" })
-        .querySelectorAll("li"),
+      screen.getByRole("navigation", { name: "Themen" }).querySelectorAll("li"),
     ).toHaveLength(45);
     expect(
       screen.getByRole("button", {
@@ -252,7 +252,7 @@ describe("TopicBrowser", () => {
       screen.getByRole("button", { name: "Lernpfade von Thema 1 filtern" }),
     );
     expect(
-      screen.getByRole("navigation", { name: "Lernthemen" }).textContent,
+      screen.getByRole("navigation", { name: "Themen" }).textContent,
     ).not.toContain("Thema 3");
     expect(screen.queryByRole("article", { name: "Thema 3" })).toBeNull();
     expect(filterSummary()).toBe("Gefiltert nach: Früher, Später");
@@ -386,7 +386,7 @@ describe("TopicBrowser", () => {
       sourceTitle("review-and-accept-ai-generated-changes", 0),
     ],
   ])(
-    "shows the new card %s with content, metadata, and sources",
+    "shows the topic %s with content, metadata, and sources",
     (title, sourceTitle) => {
       render(<TopicBrowser />);
       fireEvent.click(screen.getByRole("button", { name: title }));

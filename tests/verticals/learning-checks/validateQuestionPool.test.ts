@@ -39,7 +39,7 @@ function question(id: string): Question {
 }
 
 describe("question pool validation", () => {
-  it("requires 25 unique complete questions for a card", () => {
+  it("requires 25 unique complete questions for a topic", () => {
     const complete = Array.from({ length: 25 }, (_, index) =>
       question(`q-${index}`),
     );

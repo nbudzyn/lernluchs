@@ -1,12 +1,12 @@
 import {
   availableLearningCheckTopicIds,
   questionsForTopic,
-} from "./questionCatalog";
+} from "./questionPools";
 import { validateQuestionPool } from "./validateQuestionPool";
 
 type SourceOwner = { id: string; sources: { url: string }[] };
 
-export function validateQuestionCatalog(topics: SourceOwner[]): string[] {
+export function validateQuestionPools(topics: SourceOwner[]): string[] {
   const errors: string[] = [];
   const topicsById = new Map(topics.map((topic) => [topic.id, topic]));
 

@@ -34,9 +34,7 @@ function search(value: string) {
 
 function visibleTitles() {
   return Array.from(
-    screen
-      .getByRole("navigation", { name: "Lernthemen" })
-      .querySelectorAll("li"),
+    screen.getByRole("navigation", { name: "Themen" }).querySelectorAll("li"),
   ).map((row) => row.textContent);
 }
 

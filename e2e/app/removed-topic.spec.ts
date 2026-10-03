@@ -24,18 +24,18 @@ for (const learned of [false, true]) {
     });
     await page.reload();
     await expect(
-      page.getByRole("navigation", { name: "Lernthemen" }).locator("li"),
+      page.getByRole("navigation", { name: "Themen" }).locator("li"),
     ).toHaveCount(45);
     await expect(page.getByRole("button", { name: removedTitle })).toHaveCount(
       0,
     );
     await expect(
-      page.getByRole("button", { name: `Fragen starten: ${removedTitle}` }),
+      page.getByRole("button", { name: `Lerncheck starten: ${removedTitle}` }),
     ).toHaveCount(0);
     await expect(page.getByRole("alert")).toHaveCount(0);
     await expect(page.getByRole("img", { name: "Gelernt" })).toHaveCount(1);
     await page
-      .getByRole("button", { name: `Fragen starten: ${remainingTitle}` })
+      .getByRole("button", { name: `Lerncheck starten: ${remainingTitle}` })
       .click();
     await expect(page.getByText("Frage 1 von 5")).toBeVisible();
     await page.getByRole("button", { name: "Abbrechen" }).click();

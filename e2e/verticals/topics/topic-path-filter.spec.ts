@@ -83,7 +83,7 @@ test("shows all active path names above the list without horizontal overflow", a
   ).toBeLessThanOrEqual(320);
   const summaryBox = await summary.boundingBox();
   const listBox = await page
-    .getByRole("navigation", { name: "Lernthemen" })
+    .getByRole("navigation", { name: "Themen" })
     .boundingBox();
   expect(
     summaryBox && listBox && summaryBox.y + summaryBox.height <= listBox.y,
@@ -172,9 +172,7 @@ test("selects one short path, keeps its topics visible, and restores the icon fi
       exact: true,
     }),
   ).toHaveCount(0);
-  const rows = page
-    .getByRole("navigation", { name: "Lernthemen" })
-    .locator("li");
+  const rows = page.getByRole("navigation", { name: "Themen" }).locator("li");
   for (const row of await rows.all()) {
     const box = await row.boundingBox();
     expect(box?.y).toBeGreaterThanOrEqual(-1);

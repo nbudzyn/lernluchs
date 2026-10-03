@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 import {
   availableLearningCheckTopicIds,
   questionsForTopic,
-} from "../../src/verticals/learning-checks/questionCatalog";
+} from "../../src/verticals/learning-checks/questionPools";
 import { learningPaths } from "../../src/verticals/topics/learningPaths";
 
 async function fingerprint(value: unknown) {
@@ -25,9 +25,9 @@ describe("learning data organization", () => {
     ).map((path) => path.split("/").at(-1)!);
     expect(unitFiles.sort()).toEqual([
       "LearningCheck.test.tsx",
-      "questionCatalog.test.ts",
-      "validateQuestionCatalog.test.ts",
+      "questionPools.test.ts",
       "validateQuestionPool.test.ts",
+      "validateQuestionPools.test.ts",
     ]);
     const browserFiles = Object.keys(
       import.meta.glob("../../e2e/verticals/learning-checks/*.spec.ts"),
@@ -35,13 +35,13 @@ describe("learning data organization", () => {
     expect(browserFiles).toEqual(["learning-check.spec.ts"]);
   });
 
-  it("preserves every question, answer, source and stable ID in catalog order", async () => {
+  it("preserves questions, answers, sources and IDs apart from the agreed wording", async () => {
     const pools = Object.fromEntries(
       availableLearningCheckTopicIds.map((id) => [id, questionsForTopic(id)]),
     );
     expect(availableLearningCheckTopicIds).toHaveLength(45);
     expect(await fingerprint(pools)).toBe(
-      "2ebcf9abf03fbf862b5149bcbbea420f713a21e46e34328c871d626acdb5c7fa",
+      "aec2624ff64a466dec5bd0a6d72679ed8344b7e045dadae7b31074c3c6edd5ff",
     );
   });
 
@@ -52,7 +52,7 @@ describe("learning data organization", () => {
     );
   });
 
-  it("maintains all questions in one neutral catalog data file", () => {
+  it("maintains all questions in one neutral question data file", () => {
     const files = Object.keys(
       import.meta.glob("../../src/verticals/learning-checks/*.{ts,json}"),
     ).map((path) => path.split("/").at(-1)!);

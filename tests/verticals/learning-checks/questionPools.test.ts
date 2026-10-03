@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   availableLearningCheckTopicIds,
   questionsForTopic,
-} from "../../../src/verticals/learning-checks/questionCatalog";
+} from "../../../src/verticals/learning-checks/questionPools";
 import { validateQuestionPool } from "../../../src/verticals/learning-checks/validateQuestionPool";
 import { topics } from "../../../src/verticals/topics/topics";
 
@@ -56,7 +56,7 @@ const weakExamples: Record<string, string[]> = {
   ],
 };
 
-describe("questionCatalog", () => {
+describe("questionPools", () => {
   it("owns exactly the published topics by stable ID and rejects unknown IDs", () => {
     expect(availableLearningCheckTopicIds).toHaveLength(45);
     expect([...availableLearningCheckTopicIds].sort()).toEqual(

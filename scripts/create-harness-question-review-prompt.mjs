@@ -16,7 +16,7 @@ const server = await createServer({
 
 try {
   const { questionsForTopic } = await server.ssrLoadModule(
-    "/src/verticals/learning-checks/questionCatalog.ts",
+    "/src/verticals/learning-checks/questionPools.ts",
   );
   const pools = [
     ["OpenRewrite", "refactorings-and-migrations-with-openrewrite"],

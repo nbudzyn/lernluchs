@@ -370,7 +370,7 @@ export function TopicBrowser({
             </div>
           </section>
         )}
-        <nav aria-label="Lernthemen">
+        <nav aria-label="Themen">
           {visibleItems.length === 0 && (
             <p role="status">Keine Themen gefunden.</p>
           )}
@@ -427,10 +427,10 @@ export function TopicBrowser({
                     )}
                   {checkIds.has(item.id) && onStartLearningCheck && (
                     <button
-                      aria-label={`Fragen starten: ${item.title}`}
+                      aria-label={`Lerncheck starten: ${item.title}`}
                       className="learning-check-start-button"
                       type="button"
-                      title={`Fragen starten: ${item.title}`}
+                      title={`Lerncheck starten: ${item.title}`}
                       onClick={() => onStartLearningCheck(item.id, item.title)}
                     >
                       <svg

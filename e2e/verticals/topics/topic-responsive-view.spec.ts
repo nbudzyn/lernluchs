@@ -39,7 +39,7 @@ test("wide view restores the same filter, scroll and independent detail after a 
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto("/");
-  const list = page.getByRole("navigation", { name: "Lernthemen" });
+  const list = page.getByRole("navigation", { name: "Themen" });
   const guidance = page.getByRole("region", { name: "Hilfe zu Themen" });
   await expect(guidance).toBeVisible();
   await expect(page.getByRole("button", { name: "Hilfe öffnen" })).toBeHidden();
@@ -50,7 +50,7 @@ test("wide view restores the same filter, scroll and independent detail after a 
   ).toBeTruthy();
 
   await page
-    .getByRole("button", { name: `Fragen starten: ${firstTitle}` })
+    .getByRole("button", { name: `Lerncheck starten: ${firstTitle}` })
     .click();
   for (let answer = 0; answer < 5; answer += 1) {
     await page
@@ -70,7 +70,7 @@ test("wide view restores the same filter, scroll and independent detail after a 
   const detail = page.getByRole("article", { name: firstTitle });
   await expect(detail).toBeVisible();
   const check = page.getByRole("button", {
-    name: `Fragen starten: ${otherTitle}`,
+    name: `Lerncheck starten: ${otherTitle}`,
   });
   await check.scrollIntoViewIfNeeded();
   const scrollBefore = await page.evaluate(() => window.scrollY);
@@ -103,11 +103,9 @@ test("mobile list, help and topic return to the list at its former position", as
   await expect(
     page.getByRole("region", { name: "Hilfe zu Themen" }),
   ).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Themen" })).toBeHidden();
   await expect(
-    page.getByRole("navigation", { name: "Lernthemen" }),
-  ).toBeHidden();
-  await expect(
-    page.getByRole("button", { name: /^Fragen starten:/ }),
+    page.getByRole("button", { name: /^Lerncheck starten:/ }),
   ).toHaveCount(0);
   await page.getByRole("button", { name: "Zur Themenliste" }).click();
 
@@ -127,16 +125,14 @@ test("mobile list, help and topic return to the list at its former position", as
     .toBe(scrollBeforeTopic);
 
   const check = page.getByRole("button", {
-    name: `Fragen starten: ${otherTitle}`,
+    name: `Lerncheck starten: ${otherTitle}`,
   });
   await check.scrollIntoViewIfNeeded();
   const scrollBeforeCheck = await page.evaluate(() => window.scrollY);
   await check.click();
   await page.getByRole("button", { name: "Abbrechen" }).click();
   await expect(filter).toHaveAttribute("aria-pressed", "true");
-  await expect(
-    page.getByRole("navigation", { name: "Lernthemen" }),
-  ).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Themen" })).toBeVisible();
   await expect
     .poll(() => page.evaluate(() => window.scrollY))
     .toBe(scrollBeforeCheck);

@@ -29644,7 +29644,7 @@
         },
         {
           "id": "parallel-comparison-20-3",
-          "text": "Ein neues Thema im Katalog ohne Workflowdaten.",
+          "text": "Ein neues Thema ohne Workflowdaten.",
           "correct": false,
           "explanation": "Das erklärt den fehlerhaften Werkzeugschritt nicht.",
           "sourceUrl": "https://developers.openai.com/api/docs/guides/agent-evals"

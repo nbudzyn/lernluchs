@@ -1,14 +1,16 @@
 import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
-import { questionsForTopic } from "../../src/verticals/learning-checks/questionCatalog";
+import { questionsForTopic } from "../../src/verticals/learning-checks/questionPools";
 
 const key = "lernluchs.learning-progress.v1";
 const topicId = "human-ai-responsibility";
 const title = "Mensch und KI: Verantwortung bleibt menschlich";
 
 async function startCheck(page: Page) {
-  await page.getByRole("button", { name: `Fragen starten: ${title}` }).click();
+  await page
+    .getByRole("button", { name: `Lerncheck starten: ${title}` })
+    .click();
 }
 
 async function answerCheck(page: Page, correct: boolean) {

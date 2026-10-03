@@ -45,12 +45,12 @@ it.each([false, true])(
     expect(screen.getAllByRole("img", { name: "Gelernt" })).toHaveLength(1);
     fireEvent.click(
       screen.getByRole("button", {
-        name: "Fragen starten: Mensch und KI: Verantwortung bleibt menschlich",
+        name: "Lerncheck starten: Mensch und KI: Verantwortung bleibt menschlich",
       }),
     );
     expect(screen.getByText("Frage 1 von 5")).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "Abbrechen" }));
-    expect(screen.getByRole("navigation", { name: "Lernthemen" })).toBeTruthy();
+    expect(screen.getByRole("navigation", { name: "Themen" })).toBeTruthy();
     expect(localStorage.getItem(storageKey)).toBe(saved);
   },
 );

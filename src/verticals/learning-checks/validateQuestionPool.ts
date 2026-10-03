@@ -37,7 +37,7 @@ export function validateQuestionPool(
         )
       ) {
         errors.push(
-          `${question.id}/${option.id}: source is not attached to card`,
+          `${question.id}/${option.id}: source is not attached to topic`,
         );
       }
     }

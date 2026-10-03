@@ -56,10 +56,10 @@ const questions = rows.map((line) => {
 if (wrongReasons.size !== rows.length)
   throw new Error("Wrong-option explanation count differs from question count");
 
-for (const card of ["H", "A", "E", "P", "R", "S"]) {
-  if (counts.get(card) !== 25)
+for (const topic of ["H", "A", "E", "P", "R", "S"]) {
+  if (counts.get(topic) !== 25)
     throw new Error(
-      `Expected 25 questions for ${card}, got ${counts.get(card) ?? 0}`,
+      `Expected 25 questions for ${topic}, got ${counts.get(topic) ?? 0}`,
     );
 }
 

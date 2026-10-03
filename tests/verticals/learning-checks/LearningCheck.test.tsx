@@ -47,6 +47,12 @@ describe("LearningCheck", () => {
         random={() => 0}
       />,
     );
+    expect(
+      screen.getByRole("heading", { name: "Testthema: Lerncheck" }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole("region", { name: "Lerncheck zu Testthema" }),
+    ).toBeTruthy();
     for (let index = 0; index < 4; index += 1)
       fireEvent.click(screen.getByRole("button", { name: /^Richtig / }));
     expect(onPassed).not.toHaveBeenCalled();

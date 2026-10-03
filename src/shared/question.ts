@@ -1,4 +1,4 @@
-export type QuestionOption = {
+export type AnswerOption = {
   id: string;
   text: string;
   correct: boolean;
@@ -9,5 +9,5 @@ export type QuestionOption = {
 export type Question = {
   id: string;
   prompt: string;
-  options: QuestionOption[];
+  options: AnswerOption[];
 };

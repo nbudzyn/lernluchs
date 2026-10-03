@@ -12,15 +12,15 @@ describe("App", () => {
     expect(
       screen.getByRole("heading", { name: "Lernluchs KI – Themen" }),
     ).toBeTruthy();
-    expect(screen.getByRole("navigation", { name: "Lernthemen" })).toBeTruthy();
+    expect(screen.getByRole("navigation", { name: "Themen" })).toBeTruthy();
   });
 
-  it("starts a check from the list without opening the card and returns after cancellation", () => {
+  it("starts a check from the list without opening the topic and returns after cancellation", () => {
     render(<App />);
     expect(screen.queryByRole("article")).toBeNull();
     fireEvent.click(
       screen.getByRole("button", {
-        name: "Fragen starten: Mensch und KI: Verantwortung bleibt menschlich",
+        name: "Lerncheck starten: Mensch und KI: Verantwortung bleibt menschlich",
       }),
     );
     expect(
@@ -29,7 +29,7 @@ describe("App", () => {
     expect(screen.getByText("Frage 1 von 5")).toBeTruthy();
     expect(screen.queryByRole("article")).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "Abbrechen" }));
-    expect(screen.getByRole("navigation", { name: "Lernthemen" })).toBeTruthy();
+    expect(screen.getByRole("navigation", { name: "Themen" })).toBeTruthy();
     expect(screen.queryByText("Frage 1 von 5")).toBeNull();
   });
 
@@ -47,7 +47,7 @@ describe("App", () => {
     );
     fireEvent.click(
       screen.getByRole("button", {
-        name: "Fragen starten: Spec-Driven Development mit OpenSpec",
+        name: "Lerncheck starten: Spec-Driven Development mit OpenSpec",
       }),
     );
     expect(screen.getByText("Frage 1 von 5")).toBeTruthy();
