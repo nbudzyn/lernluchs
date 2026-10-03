@@ -33,6 +33,16 @@ dokumentierte Architekturentscheidung ersetzt werden.
   enthält nur Datentypen, IDs und Validierung, keine fachliche Abkürzung.
 - Jede Änderung ist klein, nachvollziehbar und rückgängig machbar.
 
+## Aufgabenbezogen lesen und prüfen
+
+- Zuerst `docs/INDEX.md` lesen, danach die für die Aufgabe relevante aktive
+  Spec und die dort verlinkten, für die Aufgabe benötigten dauerhaften
+  Dokumente. Fachlich unpassende Specs nicht vollständig lesen.
+- Bereits gelesene, unveränderte Dokumente innerhalb einer Session
+  wiederverwenden. Erneut lesen nur bei Änderungen oder konkreter Unsicherheit.
+- Bei Fragen, Screenshot-Prüfungen und reiner Diagnose keine Dateien ändern.
+- Erfolgreiche Tool-Ausgaben auf Ergebnis, Anzahl und Laufzeit begrenzen.
+
 ## TDD und Spec-Driven Development
 
 - Vor jeder Implementierung eines Teil-Features wird ein Test geschrieben und
@@ -40,11 +50,19 @@ dokumentierte Architekturentscheidung ersetzt werden.
 - Erst danach wird die kleinste Implementierung ergänzt, bis der Test besteht
   (**GREEN**).
 - Danach wird bei weiterhin grüner Testsuite refaktoriert (**REFACTOR**).
-- Erst nach erneut vollständig grüner Testsuite darf committet werden. Der
-  RED-Nachweis und die ausgeführten Prüfungen stehen in der Änderungs-Spec.
-- Spätestens unmittelbar vor jedem Commit wird die geänderte Anwendung lokal
-  im Browser ausprobiert. Der Nachweis (Browser, geprüfter Ablauf und Ergebnis)
-  steht in der Änderungs-Spec.
+- Während der Umsetzung die betroffenen Prüfungen ausführen. Die vollständige
+  Pflichtsuite nach der letzten produktrelevanten Änderung und vor einem
+  Commit ausführen. Produktrelevant sind Änderungen an Code, Tests,
+  Laufzeitinhalten, App-Konfiguration, Abhängigkeiten oder Prüfskripten.
+- Bestandene Prüfungen ohne relevante Änderung nicht wiederholen. Ein grüner
+  Nachweis gilt auch für den Commit, solange keine für die Prüfung relevante
+  Änderung hinzukommt und der geprüfte Stand eindeutig ist. Der RED-Nachweis
+  und die ausgeführten Prüfungen stehen in der Änderungs-Spec.
+- Reine Dokumentationsänderungen passend zu ihrem Inhalt prüfen; sie lösen
+  keine App-E2E-Tests oder manuelle Prüfung der Anwendung im Browser aus.
+- Bei produktrelevanten Änderungen spätestens unmittelbar vor dem Commit die
+  geänderte Anwendung lokal im Browser ausprobieren. Der Nachweis (Browser,
+  geprüfter Ablauf und Ergebnis) steht in der Änderungs-Spec.
 - Ein Commit erfolgt erst, nachdem der Nutzer die Änderung selbst manuell
   getestet und das Ergebnis ausdrücklich bestätigt hat.
 - Test- und Freigaberückmeldungen des Entwicklers werden in Git nur als

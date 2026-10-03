@@ -1,6 +1,6 @@
 # Arbeitsanweisungen für KI-Änderungen
 
-Lies für jede Aufgabe zuerst `docs/INDEX.md`, danach die aktive Änderungs-Spec und nur die dort verlinkten dauerhaften Dokumente. Lies nicht
+Lies für jede Aufgabe zuerst `docs/INDEX.md`, danach die für die Aufgabe relevante aktive Änderungs-Spec und nur die dort verlinkten dauerhaften Dokumente. Lies nicht
 pauschal die gesamte Dokumentation.
 
 ## Nicht verhandelbar
@@ -16,3 +16,19 @@ pauschal die gesamte Dokumentation.
 - Bei Unsicherheit über eine fachliche Aussage: nicht raten; Quellen prüfen und die Unsicherheit dokumentieren.
 
 Die vollständigen Regeln stehen in `docs/governance/durable-rules.md`.
+
+## Effizient arbeiten
+
+Diese Regeln gelten auch für Coding-Sessions und präzisieren den Lese- und Prüfumfang der verlinkten Vorgaben.
+
+- Bereits gelesene, unveränderte Dokumente innerhalb einer Session
+  wiederverwenden. Erneut lesen nur bei Änderungen oder konkreter Unsicherheit.
+- Aktive Specs nach Aufgabenrelevanz auswählen. Fachlich unpassende Specs
+  nicht vollständig lesen.
+- Bei Fragen, Screenshot-Prüfungen und reiner Diagnose keine Dateien ändern.
+- Während der Umsetzung betroffene Prüfungen ausführen.
+  Die vollständige Pflichtsuite nach der letzten produktrelevanten Änderung
+  und vor einem Commit ausführen.
+- Reine Dokumentations- oder IDE-Änderungen lösen keine App-E2E-Tests aus.
+- Bestandene Prüfungen ohne relevante Änderung nicht wiederholen.
+- Erfolgreiche Tool-Ausgaben auf Ergebnis, Anzahl und Laufzeit begrenzen.

@@ -56,7 +56,7 @@ Die Spec hält knapp fest: Ziel und Nicht-Ziele, betroffene Vertikalen, nötige 
   Quellenregeln gelten weiterhin.
 - Pro Teil-Feature zuerst den gezielten RED-Test, dann GREEN und die betroffene
   Testsuite ausführen. Die gesamte Pflichtsuite nach der letzten Änderung an
-  Code, Tests, Laufzeitinhalten, Konfiguration, Abhängigkeiten oder Prüfskripten
+  Code, Tests, Laufzeitinhalten, App-Konfiguration, Abhängigkeiten oder Prüfskripten
   zur Abnahme ausführen. Dieser grüne Nachweis gilt auch für den Commit, wenn
   danach ausschließlich Nachweise und Abnahmevermerk in der Änderungs-Spec
   ergänzt und diese archiviert wurde. Bei weiteren Änderungen oder unklarem

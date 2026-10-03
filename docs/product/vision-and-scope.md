@@ -20,8 +20,7 @@ dauerhaft gespeichert wurde.
 Die Liste enthält 13 Lernpfade. Zu den fünf bisherigen Pfaden kommen acht Pfade für Projektwissen, Auftragsklärung, Kontextsteuerung,
 Werkzeugwahl, Webgestaltung, Sicherheit, Automatisierung und lokale KI-Stacks hinzu. Sie lassen sich über das Icon eines Themas gemeinsam
 oder über ihren angezeigten Namen einzeln filtern. Themen, die mehreren Pfaden angehören, erscheinen in der gemeinsamen Liste nur einmal;
-auch das Git-Thema gehört jetzt zu einem Pfad. Die neuen Karten behandeln unter anderem OKF, Codegraphen, Skills, Spec-Frameworks,
-Web-Sicherheitsbaselines, Storybook/Penpot und alternative Agenten-Stacks.
+auch das Git-Thema gehört jetzt zu einem Pfad.
 
 Oberhalb der Themenliste steht ein Schnellfilter. Er sucht die vollständige Eingabe unabhängig von Groß-/Kleinschreibung in Titel, Problem,
 Kernkonzept, Java-/Web-Anwendung und Konzeptgrenzen; Quellen und Metadaten bleiben ausgeschlossen. Jede Eingabeänderung wirkt sofort und
