@@ -25,7 +25,7 @@ for (const learned of [false, true]) {
     await page.reload();
     await expect(
       page.getByRole("navigation", { name: "Themen" }).locator("li"),
-    ).toHaveCount(45);
+    ).toHaveCount(48);
     await expect(page.getByRole("button", { name: removedTitle })).toHaveCount(
       0,
     );

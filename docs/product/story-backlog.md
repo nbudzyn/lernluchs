@@ -7,45 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Neue Themen ergänzen
-Die folgenden Ansätze für drei neue Themen prüfen, ggf. als drei neue Themen integrieren. Recherche! Keine Themenüberschneidungen!
-
-- Agentensysteme verbinden und betreiben / MCP, A2A und ACP gezielt einsetzen
-  - Coding-Agenten und Spec-Systeme gezielt auswählen; Werkzeug-, Agenten- und Editor-Schnittstellen haben verschiedene Vertrauens- und Lebenszyklusmodelle ([MCP25], [A2A], [ACP], [OAI-API], [JB-ACP], [GH-SEP7], [GH-SEP21], [OAI-API], [OWASP-A], [OWASP-L], [OAI-SEC], [ANT-SEC])
-  - Autorisierung, Zustands- und Task-Lebenszyklus, Sandboxes, Observability, Kosten- und Sicherheitsprüfung
-- Modellwechsel und API-Lebenszyklen absichern
-  - Coding-Agenten und Spec-Systeme gezielt auswählen; Modelle, Tool-Fähigkeiten, Abkündigungen und Regressionen als Wartungsaufgabe behandeln ([OAI-API], [GEM-API]).
-- KI-Funktionen in Java-Webanwendungen bauen
-  - Modell- und API-Wahl, Spring-AI-Toolschleife, MCP-Server/-Client, strukturierte Ausgabe, multimodale Suche, Evaluation und Betrieb ; Spring AI 2.x schafft zusätzlich einen eigenständigen Anwendungsbau-Pfad ([SPR-M2], [SPR-2], [SPR-21])
-
-Integrieren =
-- Themen voll ausformulieren, aber noch ohne Fragenpools 
-  - Primär- und Sekundärquellen; gern auch YouTube; gern auch etwas auf Deutsch
-- Jedes Thema soll in mindestens einen Lernpfad aufgenommen werden (ggf. Maximallänge der Lernpfade erhöhen)
-- Themen sinnvoll in die Gesamtreihenfolge einreihen.
-  - Relative Reihenfolge der Lernpfade muss zur Gesamtreihenfolge passen.
-
-Außerdem token-efficiency-tools um fehlende Quellen (zu den nicht abgedeckten Tools) ergänzen, insbesondere um YouTube-Videos.
-
-Vor der Umsetzung Vorschlag machen!
-
-[MCP25]: https://blog.modelcontextprotocol.io/posts/2025-11-25-first-mcp-anniversary/
-[A2A]: https://a2a-protocol.org/latest/blog/
-[ACP]: https://blog.jetbrains.com/ai/2026/01/acp-agent-registry/
-[JB-ACP]: https://blog.jetbrains.com/ai/2025/12/bring-your-own-ai-agent-to-jetbrains-ides/
-[OAI-API]: https://developers.openai.com/api/docs/changelog
-[GH-SEP7]: https://github.blog/changelog/2026-09-10-GitHub-copilot-weekly-releases-september-7/
-[GH-SEP21]: https://github.blog/changelog/2026-09-25-github-copilot-weekly-releases-september-21/
-[GEM-API]: https://ai.google.dev/gemini-api/docs/changelog
-[SPR-M2]: https://spring.io/blog/2026/01/23/spring-ai-2-0-0-M2-available-now/
-[SPR-2]: https://spring.io/blog/2026/06/12/spring-ai-2-0-0-GA-available-now/
-[SPR-21]: https://spring.io/blog/2026/09/25/spring-ai-2-1-0-M1-available-now/
-[OWASP-A]: https://genai.owasp.org/2025/12/09/owasp-genai-security-project-releases-top-10-risks-and-mitigations-for-agentic-ai-security/
-[OWASP-L]: https://genai.owasp.org/2026/09/01/owasp-genai-security-project-unveils-2026-top-10-for-llm-applications-new-agent-control-standard-and-sponsors-as-community-tops-30000-members/
-[OAI-SEC]: https://openai.com/index/codex-security-now-in-research-preview/
-[ANT-SEC]: https://www.anthropic.com/news/claude-code-security
-[ANT-EVAL]: https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
-
 ## Jüngste Private Notizen in Themen (oder als neue Themen) übernehmen 
 - Jüngste Private Notizen in Themen (oder als neue Themen) übernehmen
 

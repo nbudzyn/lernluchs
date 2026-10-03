@@ -3,7 +3,7 @@ import type { Topics } from "./topicContract";
 
 // Themenreihenfolge: Einträge hier verschieben. IDs bleiben stabil.
 export const topics: Topics = {
-  version: "7",
+  version: "8",
   items: [
     {
       id: "human-ai-responsibility",
@@ -1308,19 +1308,47 @@ export const topics: Topics = {
         problem:
           "Lange Terminalausgaben und wiederholter Kontext können Agentensitzungen verteuern, ohne bessere Entscheidungen zu liefern.",
         coreConcept:
-          "RTK verdichtet typische Kommandoausgaben; headroom, Caveman und ponytail bieten weitere Kontext- und Ausgabeverdichtung. Vor Einsatz sollten Originaldaten, Fehlerdetails und tatsächliche Einsparung am eigenen Ablauf geprüft werden.",
+          "RTK verdichtet typische Kommandoausgaben; Headroom komprimiert eingehenden Kontext und hält Originale für erneuten Abruf vor. Caveman kürzt die Antwortprosa, Ponytail vermeidet unnötigen Code durch Wiederverwendung und begrenzten Umfang. Die Werkzeuge greifen an verschiedenen Stellen ein.",
         javaWebUse:
           "Ein Java-/Web-Team vergleicht einen Testlauf mit und ohne Verdichtung und kontrolliert, ob Fehlermeldungen und relevante Testnamen vollständig auffindbar bleiben.",
         boundary:
-          "Die ältere Variante Caveman Code wird seit August 2026 nicht mehr gepflegt. Verdichtung kann entscheidende Details auslassen und ist kein Ersatz für gezielte Suche.",
+          "Die ältere Variante Caveman Code wird seit August 2026 nicht mehr gepflegt. Projektbenchmarks und Videoangaben garantieren keine Einsparung im eigenen Ablauf. Verdichtung kann Fehlerdetails verlieren; knappe Antworten und weniger Code müssen die Anforderungen weiterhin vollständig erfüllen. Datenfluss und Zugriff auf Originale vor dem Einsatz prüfen.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2026-12-27",
+        reviewedAt: "2026-10-03",
+        reviewDueAt: "2027-01-03",
         status: "active",
       },
       sources: [
+        {
+          title: "Headroom – Kontextkompression und Originalabruf",
+          url: "https://github.com/headroomlabs-ai/headroom",
+          type: "repository",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-03",
+        },
+        {
+          title: "Ponytail – unnötigen Code vermeiden",
+          url: "https://github.com/DietrichGebert/ponytail",
+          type: "repository",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-03",
+        },
+        {
+          title: "How to Cut Token Use in an AI Agent System – Julian Goldie",
+          url: "https://www.youtube.com/watch?v=vq70qWphRfk",
+          type: "learning-video",
+          mediaType: "video",
+          duration: "6:57",
+          origin: "secondary",
+          language: "en",
+          checkedAt: "2026-10-03",
+        },
         {
           title: "RTK – Rust Token Killer",
           url: "https://github.com/rtk-ai/rtk",
@@ -1765,6 +1793,56 @@ export const topics: Topics = {
           origin: "secondary",
           language: "de",
           checkedAt: "2026-09-30",
+        },
+      ],
+    },
+    {
+      id: "model-and-api-lifecycle",
+      title: "Modellwechsel und API-Lebenszyklen absichern",
+      content: {
+        language: "de",
+        problem:
+          "Ein Modell oder API-Vertrag kann sich ändern oder abgekündigt werden, obwohl die Anwendung weiterhin dieselbe fachliche Leistung liefern soll.",
+        coreConcept:
+          "Modell-IDs, API- und SDK-Versionen, benötigte Tool- und Ausgabeformate sowie Abkündigungen werden als Wartungsgegenstand erfasst. Ein Wechsel wird mit repräsentativen Aufgaben auf Qualität, Regression, Latenz und Kosten geprüft; Freigabekriterien und eine verfügbare Rückfallstrategie gehören vorab dazu.",
+        javaWebUse:
+          "Ein Java-Team vergleicht für einen Support-Assistenten das bisherige und das Ersatzmodell mit denselben Testfällen: korrekte Toolargumente, gültige strukturierte Ausgabe, fachliche Antworten und Fehlerbehandlung. Erst nach der Auswertung wird die Konfiguration umgestellt; Zugangsdaten und sensible Testdaten bleiben geschützt.",
+        boundary:
+          "Eine kompatible API oder ein empfohlenes Ersatzmodell garantiert keine gleiche Antwortqualität. Eine Rückfallstrategie kann auf ein weiterhin verfügbares Modell oder eine begrenzte Funktion führen, aber kein abgeschaltetes Modell wieder verfügbar machen. Anbietertermine und Preview-Funktionen regelmäßig neu prüfen.",
+      },
+      editorial: {
+        publishedAt: "2026-10-03",
+        reviewedAt: "2026-10-03",
+        reviewDueAt: "2027-01-03",
+        status: "active",
+      },
+      sources: [
+        {
+          title: "Gemini API – Abkündigungen und Ersatzmodelle",
+          url: "https://ai.google.dev/gemini-api/docs/deprecations",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-03",
+        },
+        {
+          title: "Gemini API – Release notes",
+          url: "https://ai.google.dev/gemini-api/docs/changelog",
+          type: "official-publication",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-03",
+        },
+        {
+          title: "Emerging Patterns in Building GenAI Products – Evaluation",
+          url: "https://martinfowler.com/articles/gen-ai-patterns/",
+          type: "reference-site",
+          mediaType: "text",
+          origin: "secondary",
+          language: "en",
+          checkedAt: "2026-10-03",
         },
       ],
     },
@@ -2466,6 +2544,65 @@ export const topics: Topics = {
       ],
     },
     {
+      id: "agent-protocol-integration",
+      title: "Agentensysteme über MCP, A2A und ACP verbinden",
+      content: {
+        language: "de",
+        problem:
+          "Werkzeugzugriff, Zusammenarbeit mit entfernten Agenten und die Einbindung eines Coding-Agenten in einen Editor benötigen unterschiedliche Schnittstellen und Lebenszyklen.",
+        coreConcept:
+          "MCP verbindet eine KI-Anwendung mit Werkzeugen und Kontextquellen; A2A verbindet Agenten über Nachrichten, Tasks und Ergebnisse. ACP meint hier Agent Client Protocol und verbindet Editor beziehungsweise Client und Coding-Agent über Sitzungen, Fortschrittsmeldungen und Berechtigungsanfragen. Fähigkeiten, Authentifizierung, Zustände und Abbruch werden pro Verbindung geprüft.",
+        javaWebUse:
+          "Ein Java-Team stellt einen eng begrenzten Recherche-Service als MCP-Werkzeug bereit und delegiert eine länger laufende Recherche über A2A an einen separaten Agenten. Der Entwickler nutzt einen ACP-fähigen Editor für den Coding-Agenten. Task- und Sitzungskennungen, Zeitlimits, Fehlerzustände und Kostenbudgets machen den Ablauf nachvollziehbar.",
+        boundary:
+          "Protokollunterstützung allein garantiert weder gemeinsame Fähigkeiten noch fachliche Berechtigungen oder Isolation. MCP-Autorisierung hängt vom Transport ab; bei A2A können Rückfragen und abgebrochene Tasks auftreten, bei ACP sind Fähigkeiten teilweise optional. Bestehende Themen behandeln Rechtebegrenzung und Harness-Sandboxing im Detail; hier geht es um die Verbindungswahl und ihren Lebenszyklus.",
+      },
+      editorial: {
+        publishedAt: "2026-10-03",
+        reviewedAt: "2026-10-03",
+        reviewDueAt: "2027-01-03",
+        status: "active",
+      },
+      sources: [
+        {
+          title: "A2A and MCP – Aufgaben der beiden Protokolle",
+          url: "https://a2a-protocol.org/latest/topics/a2a-and-mcp/",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-03",
+        },
+        {
+          title: "A2A – Life of a Task",
+          url: "https://a2a-protocol.org/latest/topics/life-of-a-task/",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-03",
+        },
+        {
+          title: "Agent Client Protocol – Overview",
+          url: "https://agentclientprotocol.com/protocol/v1/overview",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-03",
+        },
+        {
+          title: "MCP – Authorization, Spezifikation 2025-11-25",
+          url: "https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-03",
+        },
+      ],
+    },
+    {
       id: "module-boundaries-and-public-interfaces",
       title: "Modulgrenzen und öffentliche Schnittstellen gestalten",
       content: {
@@ -2552,6 +2689,83 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-09-30",
+        },
+      ],
+    },
+    {
+      id: "java-ai-applications",
+      title: "KI-Funktionen in Java-Webanwendungen bauen",
+      content: {
+        language: "de",
+        problem:
+          "Eine Java-Webanwendung braucht für eine KI-Funktion mehr als einen Prompt: Modellzugriff, Datenbeschaffung, kontrollierte Werkzeuge und prüfbare Ergebnisse müssen zusammenarbeiten.",
+        coreConcept:
+          "Spring AI und LangChain4j abstrahieren Modellanbieter und unterstützen Tools, strukturierte Ausgabe, Chat Memory und Retrieval-Augmented Generation (RAG). Spring AI 2.0 organisiert Toolschleifen über Advisors und integriert MCP-Server und -Clients. LangChain4j bietet AI Services und eine Quarkus-Integration. Ein direktes Anbieter-SDK ist eine Option für begrenzte API-Nutzung; Spring AI Alibaba erweitert das Spring-AI-Ökosystem um Agentenabläufe.",
+        javaWebUse:
+          "Ein Support-Endpunkt sucht passende Dokumentabschnitte, lässt das Modell eine Antwort mit Quellenbezug erzeugen und validiert die Ausgabe. Fachliche Services werden gezielt als Tools angeboten. Das Team wählt nach Webframework, Modell- und API-Fähigkeiten, multimodalen Anforderungen und Betriebsintegration; es prüft Antwortqualität, Zugriffsgrenzen, Latenz und Kosten mit eigenen Evals und Messungen.",
+        boundary:
+          "Ein Framework macht Antworten und Toolentscheidungen nicht automatisch korrekt. Strukturierte Ausgabe braucht Validierung, Suche braucht Berechtigungsfilter und Toolaufrufe brauchen fachliche Kontrolle. Spring AI 2.0 setzt auf Spring Boot 4; Integrationsumfang und Reife sind versionsabhängig. Spring AI, LangChain4j und direkte SDKs sind keine vollständig austauschbaren Bausteine. KI-Anwendungsbau ist von der Auswahl eines Coding-Agenten getrennt.",
+      },
+      editorial: {
+        publishedAt: "2026-10-03",
+        reviewedAt: "2026-10-03",
+        reviewDueAt: "2027-01-03",
+        status: "active",
+      },
+      sources: [
+        {
+          title: "Spring AI 2.0.0 GA – Toolschleife und MCP-Integration",
+          url: "https://spring.io/blog/2026/06/12/spring-ai-2-0-0-GA-available-now/",
+          type: "official-publication",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-03",
+        },
+        {
+          title: "LangChain4j – Introduction",
+          url: "https://docs.langchain4j.dev/intro/",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-03",
+        },
+        {
+          title: "LangChain4j – Quarkus integration",
+          url: "https://docs.langchain4j.dev/integrations/frameworks/quarkus/",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-03",
+        },
+        {
+          title: "Google Gen AI Java SDK",
+          url: "https://github.com/googleapis/java-genai",
+          type: "repository",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-03",
+        },
+        {
+          title: "Spring AI Alibaba – Agent Framework",
+          url: "https://github.com/alibaba/spring-ai-alibaba",
+          type: "repository",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-03",
+        },
+        {
+          title: "Emerging Patterns in Building GenAI Products",
+          url: "https://martinfowler.com/articles/gen-ai-patterns/",
+          type: "reference-site",
+          mediaType: "text",
+          origin: "secondary",
+          language: "en",
+          checkedAt: "2026-10-03",
         },
       ],
     },

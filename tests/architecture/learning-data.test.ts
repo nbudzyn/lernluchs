@@ -45,9 +45,19 @@ describe("learning data organization", () => {
     );
   });
 
-  it("preserves every learning path and its topic order", async () => {
-    expect(learningPaths).toHaveLength(13);
-    expect(await fingerprint(learningPaths)).toBe(
+  it("preserves the original paths and their relative topic order", async () => {
+    // Die Integrationsthemen erweitern einen Pfad und fügen einen vierzehnten hinzu.
+    const additions = new Set([
+      "model-and-api-lifecycle",
+      "agent-protocol-integration",
+      "java-ai-applications",
+    ]);
+    expect(learningPaths).toHaveLength(14);
+    const originalPaths = learningPaths.slice(0, 13).map((path) => ({
+      ...path,
+      topicIds: path.topicIds.filter((id) => !additions.has(id)),
+    }));
+    expect(await fingerprint(originalPaths)).toBe(
       "73637290c7cacdca4f5f93c0c46ea438cfe1af52e142001329e2c7adafb84337",
     );
   });

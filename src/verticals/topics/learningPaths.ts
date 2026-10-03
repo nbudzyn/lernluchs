@@ -106,10 +106,12 @@ export const learningPaths: LearningPath[] = [
     topicIds: [
       "spec-driven-development-openspec",
       "coding-agent-interface-selection",
+      "model-and-api-lifecycle",
       "agent-skills-and-commands",
       "spec-framework-selection",
       "specialized-subagents-and-ownership",
       "agent-tool-and-mcp-permissions",
+      "agent-protocol-integration",
     ],
   },
   {
@@ -156,6 +158,19 @@ export const learningPaths: LearningPath[] = [
       "agent-tool-and-mcp-permissions",
       "local-model-stack-evaluation",
       "coding-harness-design",
+    ],
+  },
+  {
+    name: "KI-Funktionen in Java-Webanwendungen bauen",
+    topicIds: [
+      "protect-secrets-and-sensitive-data-with-ai",
+      "model-and-api-lifecycle",
+      "agent-tool-and-mcp-permissions",
+      "agent-protocol-integration",
+      "module-boundaries-and-public-interfaces",
+      "java-ai-applications",
+      "tdd-for-domain-behavior",
+      "web-security-baseline",
     ],
   },
 ];

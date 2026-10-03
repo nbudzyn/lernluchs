@@ -57,16 +57,33 @@ const weakExamples: Record<string, string[]> = {
 };
 
 describe("questionPools", () => {
-  it("owns exactly the published topics by stable ID and rejects unknown IDs", () => {
+  it("owns the published pools by stable ID and leaves new topics without pools", () => {
     expect(availableLearningCheckTopicIds).toHaveLength(45);
+    const topicsWithoutPool = [
+      "model-and-api-lifecycle",
+      "agent-protocol-integration",
+      "java-ai-applications",
+    ];
     expect([...availableLearningCheckTopicIds].sort()).toEqual(
-      topics.items.map((topic) => topic.id).sort(),
+      topics.items
+        .map((topic) => topic.id)
+        .filter((id) => !topicsWithoutPool.includes(id))
+        .sort(),
     );
+    for (const id of topicsWithoutPool) {
+      expect(
+        topics.items.some((topic) => topic.id === id),
+        id,
+      ).toBe(true);
+      expect(questionsForTopic(id), id).toBeUndefined();
+    }
     expect(questionsForTopic("unknown-topic")).toBeUndefined();
   });
 
   it("provides 25 valid, distinct and sourced questions in every published pool", () => {
-    for (const topic of topics.items) {
+    for (const topic of topics.items.filter((item) =>
+      availableLearningCheckTopicIds.includes(item.id),
+    )) {
       const questions = questionsForTopic(topic.id);
       expect.soft(questions, `${topic.id}: missing pool`).toBeDefined();
       if (!questions) continue;

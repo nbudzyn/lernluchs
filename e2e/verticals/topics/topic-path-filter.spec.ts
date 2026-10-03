@@ -26,7 +26,7 @@ test("filters with a keyboard accessible icon and keeps its row visible", async 
   await expect(icon).toHaveAttribute("aria-pressed", "true");
   const summary = page.locator(".path-filter-summary");
   await expect(summary.getByText("Gefiltert nach")).toBeVisible();
-  await expect(page.getByText("10 / 45 Themen")).toBeVisible();
+  await expect(page.getByText("10 / 48 Themen")).toBeVisible();
   const after = await row.boundingBox();
   const summaryBox = await summary.boundingBox();
   if (!after) throw new Error("Filtered topic row disappeared");
@@ -35,7 +35,7 @@ test("filters with a keyboard accessible icon and keeps its row visible", async 
   expect(summaryBox.y + summaryBox.height).toBeLessThanOrEqual(after.y);
   await page.getByRole("button", { name: "Filter aufheben" }).click();
   await expect(summary).toHaveCount(0);
-  await expect(page.getByText("45 Themen")).toBeVisible();
+  await expect(page.getByText("48 Themen")).toBeVisible();
   await page.getByRole("button", { name: title, exact: true }).click();
   await expect(
     page.getByRole("heading", {
@@ -77,7 +77,7 @@ test("shows all active path names above the list without horizontal overflow", a
     .click();
   const summary = page.getByRole("region", { name: "Aktive Lernpfade" });
   await expect(summary.locator(".path-name-button")).toHaveCount(3);
-  await expect(page.getByText("15 / 45 Themen")).toBeVisible();
+  await expect(page.getByText("17 / 48 Themen")).toBeVisible();
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth),
   ).toBeLessThanOrEqual(320);

@@ -6,7 +6,7 @@ test("zeigt einen Lernpfad und ein quellengebundenes Thema", async ({
 }) => {
   await page.goto("/");
   const navigation = page.getByRole("navigation", { name: "Themen" });
-  await expect(navigation.locator("li")).toHaveCount(45);
+  await expect(navigation.locator("li")).toHaveCount(48);
 
   await page
     .getByRole("button", {
@@ -50,6 +50,70 @@ test("zeigt einen Lernpfad und ein quellengebundenes Thema", async ({
 function topicTitle(id: string) {
   return topics.items.find((item) => item.id === id)!.title;
 }
+
+test("reads new integration topics through the Java AI path without learning checks", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const javaTitle = "KI-Funktionen in Java-Webanwendungen bauen";
+  await page
+    .getByRole("button", { name: `Lernpfade von ${javaTitle} filtern` })
+    .click();
+  await page
+    .getByRole("button", { name: javaTitle, exact: true })
+    .first()
+    .click();
+  const navigation = page.getByRole("navigation", { name: "Themen" });
+  await expect(navigation.locator("li")).toHaveCount(8);
+  for (const [title, source] of [
+    [
+      "Modellwechsel und API-Lebenszyklen absichern",
+      "Gemini API – Abkündigungen und Ersatzmodelle",
+    ],
+    [
+      "Agentensysteme über MCP, A2A und ACP verbinden",
+      "Agent Client Protocol – Overview",
+    ],
+    [javaTitle, "LangChain4j – Introduction"],
+  ]) {
+    await navigation.getByRole("button", { name: title, exact: true }).click();
+    const article = page.getByRole("article", { name: title });
+    await expect(
+      article.getByRole("link", { name: source, exact: true }),
+    ).toBeVisible();
+    await expect(article.getByText("2027-01-03")).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: `Lerncheck starten: ${title}` }),
+    ).toHaveCount(0);
+    if ((page.viewportSize()?.width ?? 0) < 800) {
+      await page.getByRole("button", { name: "Zur Themenliste" }).click();
+    }
+  }
+  await page.getByRole("button", { name: "Filter aufheben" }).click();
+  const tokenTitle = topicTitle("token-efficiency-tools");
+  await navigation
+    .getByRole("button", { name: tokenTitle, exact: true })
+    .click();
+  const tokenArticle = page.getByRole("article", { name: tokenTitle });
+  for (const source of [
+    "Headroom – Kontextkompression und Originalabruf",
+    "Ponytail – unnötigen Code vermeiden",
+  ]) {
+    await expect(
+      tokenArticle.getByRole("link", { name: source, exact: true }),
+    ).toBeVisible();
+  }
+  const videoRow = tokenArticle
+    .getByRole("link", {
+      name: "How to Cut Token Use in an AI Agent System – Julian Goldie",
+      exact: true,
+    })
+    .locator("..");
+  await expect(videoRow).toContainText("6:57");
+  await expect(
+    videoRow.getByRole("img", { name: "Video", exact: true }),
+  ).toBeVisible();
+});
 function sourceTitle(id: string, index: number) {
   return topics.items.find((item) => item.id === id)!.sources[index].title;
 }
@@ -94,7 +158,7 @@ for (const path of pathCases) {
   }) => {
     await page.goto("/");
     const navigation = page.getByRole("navigation", { name: "Themen" });
-    await expect(navigation.locator("li")).toHaveCount(45);
+    await expect(navigation.locator("li")).toHaveCount(48);
     await expect(
       page.getByRole("button", {
         name: topicTitle("focused-git-commits"),

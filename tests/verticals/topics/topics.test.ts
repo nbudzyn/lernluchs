@@ -5,6 +5,9 @@ import { topics } from "../../../src/verticals/topics/topics";
 import { validateTopics } from "../../../src/verticals/topics/validateTopics";
 
 const expandedTopicIds = [
+  "model-and-api-lifecycle",
+  "agent-protocol-integration",
+  "java-ai-applications",
   "domain-language-and-complexity",
   "project-documentation-and-checklists",
   "open-knowledge-format",
@@ -26,6 +29,69 @@ const expandedTopicIds = [
   "local-model-stack-evaluation",
   "coding-harness-design",
 ];
+
+it("publishes distinct integration topics with current sources", () => {
+  // Redaktionelle Abnahme: Protokolle, Lebenszyklen und Anwendungsbau getrennt halten.
+  for (const [id, concepts] of [
+    ["agent-protocol-integration", ["MCP", "A2A", "ACP"]],
+    ["model-and-api-lifecycle", ["Abkündigungen", "Regression", "Rückfall"]],
+    ["java-ai-applications", ["Spring AI", "LangChain4j", "Quarkus", "SDK"]],
+  ] as const) {
+    const topic = topics.items.find((item) => item.id === id);
+    expect.soft(topic, id).toBeDefined();
+    if (!topic) continue;
+    const text = Object.values(topic.content).join(" ");
+    for (const concept of concepts)
+      expect.soft(text, `${id}: ${concept}`).toContain(concept);
+    expect.soft(topic.editorial, id).toMatchObject({
+      publishedAt: "2026-10-03",
+      reviewedAt: "2026-10-03",
+      status: "active",
+    });
+    expect
+      .soft(
+        topic.sources.some((source) => source.origin === "primary"),
+        id,
+      )
+      .toBe(true);
+    expect
+      .soft(
+        topic.sources.every((source) => source.checkedAt === "2026-10-03"),
+        id,
+      )
+      .toBe(true);
+  }
+});
+
+it("sources tool-specific token guidance and the supplementary video", () => {
+  const tokenTopic = topics.items.find(
+    (item) => item.id === "token-efficiency-tools",
+  )!;
+  for (const url of [
+    "https://github.com/headroomlabs-ai/headroom",
+    "https://github.com/DietrichGebert/ponytail",
+  ])
+    expect
+      .soft(
+        tokenTopic.sources.map((source) => source.url),
+        url,
+      )
+      .toContain(url);
+  expect.soft(tokenTopic.content.coreConcept).toContain("unnötigen Code");
+  expect
+    .soft(
+      tokenTopic.sources.find(
+        (source) =>
+          source.url === "https://www.youtube.com/watch?v=vq70qWphRfk",
+      ),
+    )
+    .toMatchObject({
+      mediaType: "video",
+      origin: "secondary",
+      duration: "6:57",
+      checkedAt: "2026-10-03",
+    });
+});
 
 it("uses the current sandbox-security source for agent tool permissions", () => {
   const topic = topics.items.find(

@@ -35,4 +35,4 @@ Für Auswahl, Ergänzung und Ersatz von Quellen gelten die
 [Quellenregeln](source-selection.md). Jedes bestehende und neue Thema erhält kuratiert ausgewählte Quellen nach diesen Regeln.
 
 Für neue quellengebundene Fragen gelten die
-[Regeln zur Fragenerstellung und Prüfung](question-authoring.md). Alle 46 Themen der aktuellen Themen besitzen Fragen.
+[Regeln zur Fragenerstellung und Prüfung](question-authoring.md). 45 der 48 aktuellen Themen besitzen Fragen; die drei neuen Integrationsthemen zunächst nicht.

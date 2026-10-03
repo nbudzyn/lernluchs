@@ -54,6 +54,13 @@ const workflowTopicIds = [
   "coding-harness-design",
 ];
 
+// Neue Themen sind eigenständig; die relative Reihenfolge des Bestands bleibt.
+const integrationTopicIds = [
+  "model-and-api-lifecycle",
+  "agent-protocol-integration",
+  "java-ai-applications",
+];
+
 const coreLearningPaths = [
   {
     name: pathName(0),
@@ -122,7 +129,21 @@ const coreLearningPaths = [
 describe("vollständige Lernpfade", () => {
   it("ordnet alle Themen einmal in der gemeinsamen Liste", () => {
     const ids = topics.items.map((item) => item.id);
-    expect(ids).toHaveLength(coreTopicIds.length + workflowTopicIds.length);
+    expect(ids).toHaveLength(
+      coreTopicIds.length +
+        workflowTopicIds.length +
+        integrationTopicIds.length,
+    );
+    expect(ids.filter((id) => integrationTopicIds.includes(id))).toEqual(
+      integrationTopicIds,
+    );
+    for (const [id, predecessor] of [
+      [integrationTopicIds[0], "coding-agent-interface-selection"],
+      [integrationTopicIds[1], "agent-tool-and-mcp-permissions"],
+      [integrationTopicIds[2], "module-boundaries-and-public-interfaces"],
+    ]) {
+      expect(ids.indexOf(id), id).toBe(ids.indexOf(predecessor) + 1);
+    }
     expect(new Set(ids).size).toBe(ids.length);
     expect(ids.filter((id) => coreTopicIds.includes(id))).toEqual(coreTopicIds);
     expect(ids.filter((id) => workflowTopicIds.includes(id))).toEqual(
@@ -131,7 +152,9 @@ describe("vollständige Lernpfade", () => {
     for (const id of workflowTopicIds) {
       const topic = topics.items.find((item) => item.id === id);
       expect(topic, id).toBeDefined();
-      expect(topic?.editorial.reviewedAt, id).toBe("2026-09-27");
+      expect(topic?.editorial.reviewedAt, id).toBe(
+        id === "token-efficiency-tools" ? "2026-10-03" : "2026-09-27",
+      );
       expect(
         topic?.sources.some((source) => source.origin === "primary"),
         id,
@@ -176,14 +199,32 @@ describe("vollständige Lernpfade", () => {
       pathName(10),
       pathName(11),
       pathName(12),
+      "KI-Funktionen in Java-Webanwendungen bauen",
     ]);
     const positions = new Map(
       topics.items.map((item, index) => [item.id, index]),
     );
     const assigned = new Set(topics.paths?.flatMap((path) => path.topicIds));
-    for (const id of [...coreTopicIds, ...workflowTopicIds]) {
+    for (const id of [
+      ...coreTopicIds,
+      ...workflowTopicIds,
+      ...integrationTopicIds,
+    ]) {
       expect(assigned.has(id), id).toBe(true);
     }
+    const selection = topics.paths?.find((path) => path.name === pathName(8));
+    expect(selection?.topicIds).toContain("model-and-api-lifecycle");
+    expect(selection?.topicIds).toContain("agent-protocol-integration");
+    expect(topics.paths?.at(-1)?.topicIds).toEqual([
+      "protect-secrets-and-sensitive-data-with-ai",
+      "model-and-api-lifecycle",
+      "agent-tool-and-mcp-permissions",
+      "agent-protocol-integration",
+      "module-boundaries-and-public-interfaces",
+      "java-ai-applications",
+      "tdd-for-domain-behavior",
+      "web-security-baseline",
+    ]);
     for (const path of topics.paths ?? []) {
       const pathPositions = path.topicIds.map((id) => positions.get(id));
       expect(pathPositions, path.name).toEqual(

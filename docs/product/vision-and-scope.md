@@ -1,11 +1,11 @@
 # Produktstand
 
-Lernluchs ist eine öffentliche, statische Lernanwendung für KI-unterstützte Java- und Webentwicklung. Lernende können derzeit 45 Themen in
+Lernluchs ist eine öffentliche, statische Lernanwendung für KI-unterstützte Java- und Webentwicklung. Lernende können derzeit 48 Themen in
 einer gemeinsamen Liste auswählen und deren kurze Inhalte mit kuratierten Quellen und Aktualitätsangaben lesen. Jedes Thema, auch ein
 künftig ergänztes, erhält Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md). Die Inhalte werden redaktionell
 geprüft und als versionierte, nur lesbare Themen veröffentlicht.
 
-Für alle 45 Themen stehen quellengebundene Fragen bereit, auch für die Themen zu Fachsprache, Projektwissen, Git, OKF, Zielklärung,
+Für die bisherigen 45 Themen stehen quellengebundene Fragen bereit, auch für die Themen zu Fachsprache, Projektwissen, Git, OKF, Zielklärung,
 Legacy-Spezifikation, Standards, LLM-Fehlbarkeit, Agentenkontext, Codegraphen, Tokenwerkzeugen, Coding-Agent-Oberflächen, Skills,
 Spec-Frameworks, Automatisierung, Web-Sicherheitsbaselines, parallelen Agentengrenzen, Worktrees, Context7,
 UI-Komponenten mit Penpot und Storybook, Java-API-Dokumentation, Bug-Triage bis zum PR, lokale KI-Stacks, spezialisierte Subagents,
@@ -20,8 +20,10 @@ dauerhaft gespeichert wurde.
 Das Thema zur Symbol- und Referenzsuche wurde einschließlich Quellen, Fragen und Lernpfad-Zuordnungen entfernt. Ein vorhandener lokaler
 Lernstand für seine ID wird ignoriert; der Lernstand anderer Themen bleibt erhalten.
 
-Die Liste enthält 13 Lernpfade. Zu den fünf bisherigen Pfaden kommen acht Pfade für Projektwissen, Auftragsklärung, Kontextsteuerung,
-Werkzeugwahl, Webgestaltung, Sicherheit, Automatisierung und lokale KI-Stacks hinzu. Sie lassen sich über das Icon eines Themas gemeinsam
+Die drei neuen Themen behandeln Protokollintegration mit MCP, A2A und ACP, Modell- und API-Lebenszyklen sowie KI-Funktionen in Java-Webanwendungen mit Spring AI, LangChain4j und weiteren Integrationsoptionen. Sie besitzen zunächst keine Fragenpools. Das Token-Thema unterscheidet Kommandoausgabekompression, Kontextkompression, knappe Prosa und die Vermeidung unnötigen Codes; Quellen für Headroom und Ponytail sowie ein ergänzendes Video sind verfügbar.
+
+Die Liste enthält 14 Lernpfade. Zu den fünf bisherigen Pfaden kommen neun Pfade für Projektwissen, Auftragsklärung, Kontextsteuerung,
+Werkzeugwahl, Webgestaltung, Sicherheit, Automatisierung, lokale KI-Stacks und Java-KI-Anwendungsbau hinzu. Sie lassen sich über das Icon eines Themas gemeinsam
 oder über ihren angezeigten Namen einzeln filtern. Themen, die mehreren Pfaden angehören, erscheinen in der gemeinsamen Liste nur einmal;
 auch das Git-Thema gehört jetzt zu einem Pfad.
 
