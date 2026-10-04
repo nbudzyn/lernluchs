@@ -1101,6 +1101,16 @@ export const topics: Topics = {
           checkedAt: "2026-09-27",
         },
         {
+          title: "RAG und KI-Agenten in Java",
+          url: "https://notebooklm.link.google/rkHWvtT6wD5S",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "17:22",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
+        },
+        {
           title: "Effektives Context Engineering für KI Agenten",
           url: "https://www.youtube.com/watch?v=dPhyDkU-0zA",
           type: "learning-video",
@@ -1265,6 +1275,16 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-09-27",
+        },
+        {
+          title: "MCP und Code-Graphen stoppen Token-Verschwendung",
+          url: "https://notebooklm.link.google/he847C693xb5",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "17:40",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title:
@@ -1856,6 +1876,16 @@ export const topics: Topics = {
           checkedAt: "2026-10-03",
         },
         {
+          title: "Resiliente Architekturen für produktive KI Agenten",
+          url: "https://notebooklm.link.google/dJnOZfMw39BC",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "23:10",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
+        },
+        {
           title: "Emerging Patterns in Building GenAI Products – Evaluation",
           url: "https://martinfowler.com/articles/gen-ai-patterns/",
           type: "reference-site",
@@ -1922,6 +1952,16 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-09-27",
+        },
+        {
+          title: "Zero Trust für KI-Agenten",
+          url: "https://notebooklm.link.google/3r54pMvsIYVd",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "24:24",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title:
