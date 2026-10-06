@@ -10,7 +10,11 @@ aus Themen, Quellen und Aktualitätsmetadaten sowie dessen Anzeige. Sie enthält
 weder Fragen noch persönlichen Zustand. Die Themenliste erhält die IDs der
 verfügbaren Lernchecks und der gelernten Themen über ihre öffentliche
 Komponentenschnittstelle. Ihr öffentlicher Einstiegspunkt exportiert die
-Themenliste.
+Themenliste. Sie verantwortet auch den Browser-Rückweg aus schmalen Themen- und
+Hilfeansichten. Für einen aktiven Lerncheck erhält sie von `app` einen optionalen
+Abbruchrückruf; der Browser-Rückweg zeigt dann bei jeder Breite die Liste und
+beendet den Check über diesen Rückruf. Einzelne Fragen erzeugen keine eigenen
+Verlaufseinträge. Der Vorwärtsbutton behält sein natives Verhalten.
 
 ## Bestehende Vertikale: Hilfe
 

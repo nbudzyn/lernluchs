@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 
 import { TopicHelp } from "../help";
 import { topics } from "./topics";
+import { useBrowserBack } from "./useBrowserBack";
 import type {
   EditorialStatus,
   LearningPath,
@@ -95,12 +96,14 @@ export function TopicBrowser({
   learnedTopicIds = [],
   availableLearningCheckTopicIds = [],
   onStartLearningCheck,
+  onExitLearningCheck,
 }: {
   items?: Topic[];
   paths?: LearningPath[];
   learnedTopicIds?: string[];
   availableLearningCheckTopicIds?: string[];
   onStartLearningCheck?: (id: string, title: string) => void;
+  onExitLearningCheck?: () => void;
 }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [filter, setFilter] = useState<PathFilter>(null);
@@ -239,6 +242,23 @@ export function TopicBrowser({
     }
   }
   const selectedItem = items.find((item) => item.id === selectedId);
+  useLayoutEffect(() => {
+    const narrow = window.matchMedia?.("(max-width: 799px)");
+    if (!narrow || !selectedItem || mobileView !== "list") return;
+
+    function showWideSelection(event?: MediaQueryListEvent) {
+      if (!(event?.matches ?? narrow?.matches)) {
+        // The selected topic is visible again on the right. Retain that detail
+        // view and its Back entry when the window is subsequently narrowed.
+        setMobileView("topic");
+      }
+    }
+
+    narrow.addEventListener("change", showWideSelection);
+    showWideSelection();
+    return () => narrow.removeEventListener("change", showWideSelection);
+  }, [selectedItem, mobileView]);
+
   function openMobileView(view: "topic" | "help") {
     if (window.matchMedia?.("(max-width: 799px)").matches) {
       listScrollY.current = window.scrollY;
@@ -253,6 +273,14 @@ export function TopicBrowser({
       requestAnimationFrame(() => window.scrollTo(0, listScrollY.current));
     }
   }
+  useBrowserBack(
+    mobileView !== "list",
+    () => {
+      returnToList();
+      onExitLearningCheck?.();
+    },
+    onExitLearningCheck !== undefined,
+  );
   const topicSections = selectedItem
     ? [
         ["Problem", selectedItem.content.problem],
@@ -431,7 +459,10 @@ export function TopicBrowser({
                       className="learning-check-start-button"
                       type="button"
                       title={`Lerncheck starten: ${item.title}`}
-                      onClick={() => onStartLearningCheck(item.id, item.title)}
+                      onClick={() => {
+                        listScrollY.current = window.scrollY;
+                        onStartLearningCheck(item.id, item.title);
+                      }}
                     >
                       <svg
                         aria-hidden="true"

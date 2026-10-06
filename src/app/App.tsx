@@ -22,6 +22,13 @@ export function App() {
     questions: Question[];
   } | null>(null);
 
+  function exitLearningCheck() {
+    setActiveCheck(null);
+    requestAnimationFrame(() =>
+      checkTrigger.current?.focus({ preventScroll: true }),
+    );
+  }
+
   return (
     <main>
       <div
@@ -36,6 +43,7 @@ export function App() {
         <TopicBrowser
           learnedTopicIds={learningState.learnedTopicIds}
           availableLearningCheckTopicIds={availableLearningCheckTopicIds}
+          onExitLearningCheck={activeCheck ? exitLearningCheck : undefined}
           onStartLearningCheck={(id, title) => {
             const questions = questionsForTopic(id);
             if (questions) {
@@ -54,12 +62,7 @@ export function App() {
             topicId={activeCheck.id}
             title={activeCheck.title}
             questions={activeCheck.questions}
-            onExit={() => {
-              setActiveCheck(null);
-              requestAnimationFrame(() =>
-                checkTrigger.current?.focus({ preventScroll: true }),
-              );
-            }}
+            onExit={exitLearningCheck}
             onPassed={learningState.markLearned}
           />
         </div>

@@ -7,17 +7,25 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Back-Button im Browser berücksichtigen
-Der Back-Button im Browser soll an einigen Stellen berücksichtigt werden.
-Angenommen, der Lernende kommt von www.google.de auf Lernfuchs und klickt den Browser-Backbutton. Dann kehrt er im Moment auf www.google.de zurück.
-Das soll wie folgt geändert werden:
-- Falls der User in der "schmalen" Ansicht ist und es wird ein Thema oder die Hilfe gezeigt, aber nicht nicht die Themenliste, löst der Back-Button die Funktion "Zur Themenliste" aus: Der Lernende wird also zu Themenliste zurückgeschickt.
-  - ACHTUNG: Das soll auch dann passieren, wenn der User die "schmale" Ansicht dadurch erreicht hat, dass er (z.B. auf dem PC) das Browserfenster aus der breiten Ansicht heraus schmaler gezogen hat.
-- Falls der User in der "breiten" Ansicht ist und es werden ein Thema (oder die Hilfe) und zugleich die Themenliste gezeigt, führt der Back-Button unverändert zu www.google.de.
-  - ACHTUNG: Das soll auch dann passieren, wenn der User die "breite" Ansicht dadurch erreicht hat, dass er (z.B. auf dem PC) das Browserfenster aus der "schmalen" Ansicht heraus, IN DER NUR EIN THEMA ODER DIE HILFE GEZEIGT WURDE, schmaler gezogen hat.
-- Falls der User gerade eine Frage gezeigt bekommt (egal, ob Frage 1, 2...), löst der Backbutton die "Abbrechen"-Funktion aus - der User wird also zur Themenliste zurückgeführt. DER USER WIRD NICHT ZUR VORIGEN FRAGEN GEFÜHRT!
-- Falls der User die abschließende Antwortenübersicht (am Ende eines Lernchecks) angezeigt bekommt, führt der Backbutton zur Themenliste zurück.
-- Aus der Themenliste heraus führt der Back-Button immer zur vorherigen Seite (im Beispiel www.google.de) zurück (egal, was zwischendrin passiert ist).
+## Sicherheitslücke in source-map-js schließen
+
+Der Audit meldet für die transitive Entwicklungsabhängigkeit `source-map-js@1.2.1` eine hohe DoS-Sicherheitslücke
+([GHSA-68fv-2mgg-jv7q](https://github.com/advisories/GHSA-68fv-2mgg-jv7q)). Der Patch ist ab Version `1.2.2` verfügbar.
+
+- Vor der Umsetzung eine eigene Änderungs-Spec anlegen und den aktuellen Befund bestätigen.
+- Den notwendigen Abhängigkeitspatch einspielen und den Lockfile-Diff prüfen. Der bisherige Dry-Run aktualisiert nur `source-map-js` auf `1.2.2`.
+- Pflichtsuite und Audit prüfen; der hohe Befund muss behoben sein.
+- Als eigenen Sicherheits-Commit abschließen, getrennt von der Node-Umstellung.
+
+## Node 24 für Entwicklung und CI vereinheitlichen
+
+Die derzeit verwendete Node-Version `25.9.0` liegt außerhalb der unterstützten Versionen mehrerer Entwicklungsabhängigkeiten.
+Entwicklung und CI sollen eine einheitliche, unterstützte Node-24-Version verwenden; die derzeitigen Engine-Anforderungen verlangen mindestens `24.15.0`.
+
+- Vor der Umsetzung eine eigene Änderungs-Spec anlegen und eine aktuelle, unterstützte Node-24-Patchversion festlegen.
+- Lokale Versionsvorgaben, Projektkonfiguration, CI und Entwicklungsdokumentation auf diese Version abstimmen.
+- Installation mit `npm ci`, Pflichtsuite und Audit unter Node 24 prüfen; die bisherigen Node-Engine-Warnungen müssen entfallen.
+- Getrennt vom Sicherheitspatch umsetzen und committen.
 
 ## Jüngste Private Notizen in Themen (oder als neue Themen) übernehmen 
 - Jüngste Private Notizen in Themen (oder als neue Themen) übernehmen

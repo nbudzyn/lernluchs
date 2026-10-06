@@ -72,15 +72,23 @@ test("wide view restores the same filter, scroll and independent detail after a 
   const check = page.getByRole("button", {
     name: `Lerncheck starten: ${otherTitle}`,
   });
-  await check.scrollIntoViewIfNeeded();
-  const scrollBefore = await page.evaluate(() => window.scrollY);
-  await check.click();
-  await page.getByRole("button", { name: "Abbrechen" }).click();
-  await expect(filter).toHaveAttribute("aria-pressed", "true");
-  await expect(detail).toBeVisible();
-  await expect
-    .poll(() => page.evaluate(() => window.scrollY))
-    .toBe(scrollBefore);
+  for (const returnMode of ["button", "browser back"]) {
+    await test.step(returnMode, async () => {
+      await check.scrollIntoViewIfNeeded();
+      const scrollBefore = await page.evaluate(() => window.scrollY);
+      await check.click();
+      if (returnMode === "button") {
+        await page.getByRole("button", { name: "Abbrechen" }).click();
+      } else {
+        await page.goBack();
+      }
+      await expect(filter).toHaveAttribute("aria-pressed", "true");
+      await expect(detail).toBeVisible();
+      await expect
+        .poll(() => page.evaluate(() => window.scrollY))
+        .toBe(scrollBefore);
+    });
+  }
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
@@ -114,28 +122,49 @@ test("mobile list, help and topic return to the list at its former position", as
   });
   await filter.click();
   const topic = page.getByRole("button", { name: firstTitle, exact: true });
-  await topic.scrollIntoViewIfNeeded();
-  const scrollBeforeTopic = await page.evaluate(() => window.scrollY);
-  await topic.click();
-  await expect(page.getByRole("article", { name: firstTitle })).toBeVisible();
-  await expect(help).toHaveCount(0);
-  await page.getByRole("button", { name: "Zur Themenliste" }).click();
-  await expect
-    .poll(() => page.evaluate(() => window.scrollY))
-    .toBe(scrollBeforeTopic);
+  for (const returnMode of ["button", "browser back"]) {
+    await test.step(`topic, ${returnMode}`, async () => {
+      await topic.scrollIntoViewIfNeeded();
+      const scrollBeforeTopic = await page.evaluate(() => window.scrollY);
+      await topic.click();
+      await expect(
+        page.getByRole("article", { name: firstTitle }),
+      ).toBeVisible();
+      await expect(help).toHaveCount(0);
+      if (returnMode === "button") {
+        await page.getByRole("button", { name: "Zur Themenliste" }).click();
+      } else {
+        await page.goBack();
+      }
+      await expect(filter).toHaveAttribute("aria-pressed", "true");
+      await expect
+        .poll(() => page.evaluate(() => window.scrollY))
+        .toBe(scrollBeforeTopic);
+    });
+  }
 
   const check = page.getByRole("button", {
     name: `Lerncheck starten: ${otherTitle}`,
   });
-  await check.scrollIntoViewIfNeeded();
-  const scrollBeforeCheck = await page.evaluate(() => window.scrollY);
-  await check.click();
-  await page.getByRole("button", { name: "Abbrechen" }).click();
-  await expect(filter).toHaveAttribute("aria-pressed", "true");
-  await expect(page.getByRole("navigation", { name: "Themen" })).toBeVisible();
-  await expect
-    .poll(() => page.evaluate(() => window.scrollY))
-    .toBe(scrollBeforeCheck);
+  for (const returnMode of ["button", "browser back"]) {
+    await test.step(`check, ${returnMode}`, async () => {
+      await check.scrollIntoViewIfNeeded();
+      const scrollBeforeCheck = await page.evaluate(() => window.scrollY);
+      await check.click();
+      if (returnMode === "button") {
+        await page.getByRole("button", { name: "Abbrechen" }).click();
+      } else {
+        await page.goBack();
+      }
+      await expect(filter).toHaveAttribute("aria-pressed", "true");
+      await expect(
+        page.getByRole("navigation", { name: "Themen" }),
+      ).toBeVisible();
+      await expect
+        .poll(() => page.evaluate(() => window.scrollY))
+        .toBe(scrollBeforeCheck);
+    });
+  }
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
