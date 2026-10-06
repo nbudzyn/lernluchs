@@ -7,16 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Sicherheitslücke in source-map-js schließen
-
-Der Audit meldet für die transitive Entwicklungsabhängigkeit `source-map-js@1.2.1` eine hohe DoS-Sicherheitslücke
-([GHSA-68fv-2mgg-jv7q](https://github.com/advisories/GHSA-68fv-2mgg-jv7q)). Der Patch ist ab Version `1.2.2` verfügbar.
-
-- Vor der Umsetzung eine eigene Änderungs-Spec anlegen und den aktuellen Befund bestätigen.
-- Den notwendigen Abhängigkeitspatch einspielen und den Lockfile-Diff prüfen. Der bisherige Dry-Run aktualisiert nur `source-map-js` auf `1.2.2`.
-- Pflichtsuite und Audit prüfen; der hohe Befund muss behoben sein.
-- Als eigenen Sicherheits-Commit abschließen, getrennt von der Node-Umstellung.
-
 ## Node 24 für Entwicklung und CI vereinheitlichen
 
 Die derzeit verwendete Node-Version `25.9.0` liegt außerhalb der unterstützten Versionen mehrerer Entwicklungsabhängigkeiten.
