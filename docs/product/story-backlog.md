@@ -7,7 +7,7 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Einschätzung von ChatGPT zu neuen Entwicklungen 2026 einarbeiten
+## Neue Entwicklungen einarbeiten
 Wir wollen die Inhalte von Lernluchs aktualisieren und aktuelle Entwicklungen ergänzen, damit nichts Wichtiges Neues fehlt. Dabei wollen wir die Anzahl der Themen oder Lernpfade nicht aufblähen, damit die App übersichtlich bleibt.
 
 Sieh dir dazu `latest-development.md` an.
