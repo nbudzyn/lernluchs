@@ -3,7 +3,7 @@ import type { Topics } from "./topicContract";
 
 // Themenreihenfolge: Einträge hier verschieben. IDs bleiben stabil.
 export const topics: Topics = {
-  version: "8",
+  version: "9",
   items: [
     {
       id: "human-ai-responsibility",
@@ -1252,18 +1252,18 @@ export const topics: Topics = {
       content: {
         language: "de",
         problem:
-          "In einem großen Repository sind Aufrufketten und Auswirkungen schwer allein durch wiederholtes Öffnen einzelner Dateien zu erkennen.",
+          "Wo wird ein Java-Service aufgerufen, und welche Web-Routen wären von einer Änderung betroffen? In großen oder verteilten Repositories liefert das Öffnen immer weiterer Dateien darauf oft nur Bruchstücke.",
         coreConcept:
-          "Codebase Memory MCP, Graphify und der JetBrains MCP-Server indexieren Code zu einem abfragbaren Graphen für Struktur- und Abhängigkeitsfragen. Befunde werden gegen aktuelle Quelldateien geprüft.",
+          "Ein Codegraph hält Symbole und ihre Beziehungen fest; Codebase Memory MCP macht solche Struktur- und Abhängigkeitsfragen abfragbar. Eine semantische Suche wie JetBrains Context sucht dagegen nach passenden Begriffen und Codeabschnitten, auch über mehrere Repositories. Der JetBrains MCP-Server bietet IDE-Werkzeuge wie Symbolinformationen und Refactorings. Diese Zugänge ergänzen sich, haben aber unterschiedliche Aufgaben.",
         javaWebUse:
-          "Vor einer Änderung an einem Java-Service werden Aufrufer und verbundene Web-Routen im Graphen gesucht und anschließend im Code bestätigt.",
+          "Vor dem Umbau eines Spring-Service sucht das Team im Codegraphen nach Aufrufern und über semantische Suche nach ähnlichen Implementierungen in anderen Projekten. Die gefundenen Stellen werden im aktuellen Code geprüft; die IDE hilft anschließend bei Navigation und Refactoring.",
         boundary:
-          "Ein Index kann veralten oder dynamische Beziehungen übersehen. Hersteller-Benchmarks zu Zeit und Tokenverbrauch gelten nicht automatisch für das eigene Repository.",
+          "Ein Index kann veralten und dynamische Beziehungen übersehen. JetBrains Context sendet laut Dokumentation Codeabschnitte mit Dateipfaden an seinen Server; vor dem Einsatz müssen Datenfluss und Projektfreigabe passen. Hersteller-Benchmarks zu Zeit und Tokenverbrauch sind ein Ausgangspunkt für eigene Messungen, kein zugesicherter Gewinn im eigenen Repository.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2026-12-27",
+        reviewedAt: "2026-10-07",
+        reviewDueAt: "2027-01-07",
         status: "active",
       },
       sources: [
@@ -1274,7 +1274,7 @@ export const topics: Topics = {
           mediaType: "text",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-09-27",
+          checkedAt: "2026-10-07",
         },
         {
           title: "MCP und Code-Graphen stoppen Token-Verschwendung",
@@ -1317,6 +1317,34 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-09-30",
+        },
+        {
+          title: "JetBrains MCP-Server – IDE-Werkzeuge und Symbolinformationen",
+          url: "https://www.jetbrains.com/help/idea/mcp-server.html",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
+        },
+        {
+          title: "JetBrains Context – semantische Suche und Datenfluss",
+          url: "https://www.jetbrains.com/help/jetbrains-console/getting-started-with-jetbrains-context.html",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
+        },
+        {
+          title:
+            "JetBrains Context – Einordnung von Suche und Hersteller-Benchmarks",
+          url: "https://www.dsebastien.net/jetbrains-context/",
+          type: "reference-site",
+          mediaType: "text",
+          origin: "secondary",
+          language: "en",
+          checkedAt: "2026-10-07",
         },
       ],
     },
@@ -1723,18 +1751,18 @@ export const topics: Topics = {
       content: {
         language: "de",
         problem:
-          "Mehrere Agentenoberflächen wirken austauschbar, unterscheiden sich aber bei Repository-Zugriff, Planung, Werkzeugen und menschlicher Kontrolle.",
+          "Ein Agent im Terminal, einer in IntelliJ und einer auf einer Cloud-Plattform können dieselbe Aufgabe übernehmen. Für das Team macht es trotzdem einen Unterschied, wo Code, Werkzeuge und Prüfergebnisse landen und wann jemand eingreifen kann.",
         coreConcept:
-          "Codex, Copilot, Claude Code und Kiro werden an einer konkreten Aufgabe nach Laufumgebung, Rechten, Review und Kosten verglichen. Gemini Gems sind wiederverwendbare Assistenten, aber kein Ersatz für einen Coding-Workflow.",
+          "Codex, Copilot, Claude Code, Kiro und Junie werden an einer konkreten Aufgabe nach Laufumgebung, Rechten, Review und Kosten verglichen. Junie arbeitet in JetBrains-IDEs und im Terminal. Lokale Ausführung erleichtert die Arbeit mit vorhandenen Tools und dem Debugger; Cloud-Ausführung kann Aufgaben asynchron in einer eingerichteten Umgebung bearbeiten. Gemini Gems sind wiederverwendbare Assistenten, aber kein Ersatz für einen Coding-Workflow.",
         javaWebUse:
-          "Ein Team führt dieselbe begrenzte Java-/Web-Aufgabe in zwei zugelassenen Umgebungen aus und vergleicht Diff, Tests, Review-Aufwand und Datenfluss.",
+          "Das Team lässt dieselbe begrenzte Spring-Änderung einmal in seiner IDE und einmal in einer zugelassenen Cloud-Umgebung bearbeiten. Es prüft, ob Build und Tests dort funktionieren, wie Zugangsdaten bereitgestellt werden und wie viel Nacharbeit der Diff verlangt. Entscheidend sind Ergebnis, Datenfluss und Review-Aufwand, nicht die schönste Oberfläche.",
         boundary:
-          "Funktionen und Preise ändern sich; ein Produktname sagt nichts über die Freigabe für sensible Projektdaten. Eine zweite Oberfläche ist nur bei messbarem Nutzen sinnvoll.",
+          "Ein lokales Terminal bedeutet keine lokale Modellverarbeitung: Ein Agent kann Code an einen externen Modellanbieter senden. Eine Cloud-Umgebung ist nur so reproduzierbar wie ihre Einrichtung. Funktionen und Preise ändern sich; Produktnamen ersetzen weder Datenfreigaben noch eigene Messungen.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2026-12-27",
+        reviewedAt: "2026-10-07",
+        reviewDueAt: "2027-01-07",
         status: "active",
       },
       sources: [
@@ -1834,6 +1862,24 @@ export const topics: Topics = {
           language: "de",
           checkedAt: "2026-09-30",
         },
+        {
+          title: "Junie – Coding-Agent in JetBrains-IDE und Terminal",
+          url: "https://blog.jetbrains.com/junie/2026/06/junie-coding-agent-out-of-beta/",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
+        },
+        {
+          title: "Copilot cloud agent – Recherche, Plan, Branch und PR",
+          url: "https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/research-plan-iterate",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
+        },
       ],
     },
     {
@@ -1902,18 +1948,18 @@ export const topics: Topics = {
       content: {
         language: "de",
         problem:
-          "Ein langer globaler Prompt oder eine ungeprüfte fremde Skill-Sammlung macht wiederkehrende Aufgaben schwer wartbar und kann unnötige Rechte verlangen.",
+          "Ein Spring-Migrationsablauf klappt im Chat, beim nächsten Mal fehlen aber die Hälfte der Prüfschritte. Ein riesiger globaler Prompt wäre schwer zu pflegen; ein kleiner, erprobter Skill kann den wiederkehrenden Ablauf greifbar machen.",
         coreConcept:
-          "Ein Skill bündelt eine kleine wiederholbare Anleitung mit optionalen Ressourcen. Ein Slash Command kann die Verwendung eines Skills anfordern; Berechtigungen für Tools und für den konkreten Datenzugriff müssen separat geprüft werden.",
+          "Agent Skills ist ein offenes Format für Fähigkeiten aus einer SKILL.md-Anleitung und optionalen Ressourcen. Unterstützende Agenten laden die Beschreibung und die benötigten Anweisungen bedarfsgerecht. Ein Slash Command kann einen Skill ausdrücklich anfordern. Welche Werkzeuge und Daten der Agent nutzen darf, wird unabhängig davon festgelegt.",
         javaWebUse:
-          "Ein erprobter Spring-Migrationsablauf wird erst nach mehreren erfolgreichen Durchläufen als Skill mit Tests, Abbruchfällen und Quellen verpackt.",
+          "Nach mehreren erfolgreichen Spring-Migrationen bündelt das Team Vorbereitung, Umsetzung, Tests und Abbruchfälle in einem Skill. Ändert sich die Anleitung, prüfen eigene Evals an repräsentativen Aufgaben, ob der Agent die nötigen Tests noch ausführt und problematische Fälle erkennt. So wird aus einer guten Einzelanweisung ein überprüfter Arbeitsprozess.",
         boundary:
-          "Ein Skill sorgt nicht für Sicherheit und eine Rollenbeschreibung ersetzt keine überprüfbaren Akzeptanzkriterien. Fremde Skills vor Installation auf Herkunft und Verhalten prüfen.",
+          "Das offene Format garantiert nicht, dass jede Oberfläche alle Ressourcen gleich behandelt. Ein Skill sorgt auch nicht für Sicherheit: Fremde Anleitungen und Skripte vor Installation auf Herkunft, Verhalten und benötigte Rechte prüfen. Eine Rollenbeschreibung ersetzt keine konkreten Akzeptanzkriterien.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2026-12-27",
+        reviewedAt: "2026-10-07",
+        reviewDueAt: "2027-01-07",
         status: "active",
       },
       sources: [
@@ -1951,7 +1997,7 @@ export const topics: Topics = {
           mediaType: "text",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-09-27",
+          checkedAt: "2026-10-07",
         },
         {
           title: "Zero Trust für KI-Agenten",
@@ -2004,6 +2050,15 @@ export const topics: Topics = {
           language: "en",
           checkedAt: "2026-09-30",
         },
+        {
+          title: "Agent Skills – offenes Format und bedarfsgerechtes Laden",
+          url: "https://agentskills.io/home",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
+        },
       ],
     },
     {
@@ -2013,17 +2068,18 @@ export const topics: Topics = {
       content: {
         language: "de",
         problem:
-          "Ein Team kann mehrere Spec-Driven-Development-Tools installieren und dadurch doppelte Wahrheiten statt klarer Anforderungen schaffen.",
+          "Wenn mehrere Spec-Tools parallel Anforderungen, Pläne und Tasks erzeugen, weiß das Team bald nicht mehr, welche Fassung gilt. Gleichzeitig hilft die schönste Spec wenig, wenn der fertige Code etwas anderes tut.",
         coreConcept:
-          "OpenSpec und GitHub Spec Kit organisieren Anforderungen und Umsetzung unterschiedlich; Kiro bringt Specs in eine eigene Entwicklungsumgebung. Umfangreichere Frameworks wie Superpowers oder BMAD sollten nur bei konkreter Prozesslücke geprüft werden.",
+          "OpenSpec, GitHub Spec Kit und Kiro strukturieren Anforderungen und Umsetzung unterschiedlich. Bei Spec Kit ergänzt /speckit.converge die Umsetzung um einen erneuten Abgleich von Spec und Code. Im Pilotprojekt zählen deshalb nicht nur erzeugte Dokumente, sondern auch Aktualisierung, überprüfbare Übergänge und der Aufwand, Widersprüche zu beheben. Umfangreichere Frameworks wie Superpowers oder BMAD kommen bei einer konkreten Prozesslücke infrage.",
         javaWebUse:
-          "Für eine mittelgroße Java-/Web-Änderung nutzt das Team genau einen Pilotablauf, prüft Spec, Aufgaben, Diff und Tests und entscheidet dann über Beibehaltung.",
-        boundary: "Ein Framework erzeugt keine richtigen Fachregeln.",
+          "Für einen Spring-Endpunkt hält das Team im gewählten Ablauf Berechtigungen, Fehlerfälle und Abnahme fest. Nach der Implementierung vergleicht es Spec, Diff und Tests erneut: Wurde der vereinbarte Fehlerstatus umgesetzt? Gibt es Code ohne vereinbarten Zweck? Neue Erkenntnisse fließen zurück in die maßgeblichen Dokumente.",
+        boundary:
+          "Ein automatischer Abgleich kann einen Widerspruch finden, aber eine fehlende Anforderung übersehen. Fehlt etwa die Berechtigungsprüfung schon in der Spec, können Spec und Code wunderbar zusammenpassen und der Endpunkt trotzdem unsicher sein. Fachliche Klärung, passende Tests und menschliches Review bleiben deshalb Teil des Ablaufs.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2026-12-27",
+        reviewedAt: "2026-10-07",
+        reviewDueAt: "2027-01-07",
         status: "active",
       },
       sources: [
@@ -2122,6 +2178,34 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-09-30",
+        },
+        {
+          title: "GitHub Spec Kit – Convergence Loop nach der Implementierung",
+          url: "https://github.com/github/spec-kit/blob/main/newsletters/2026-June.md",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
+        },
+        {
+          title: "GitHub Spec Kit – Entwicklung des Prozessmodells",
+          url: "https://github.com/github/spec-kit/blob/main/docs/history.md",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
+        },
+        {
+          title:
+            "Spec-Driven AI Delivery – Akka-Fallstudie und offene Prüfgrenzen",
+          url: "https://www.infoq.com/news/2026/10/ai-spec-driven-delivery/",
+          type: "reference-site",
+          mediaType: "text",
+          origin: "secondary",
+          language: "en",
+          checkedAt: "2026-10-07",
         },
       ],
     },
@@ -2639,18 +2723,18 @@ export const topics: Topics = {
       content: {
         language: "de",
         problem:
-          "Werkzeugzugriff, Zusammenarbeit mit entfernten Agenten und die Einbindung eines Coding-Agenten in einen Editor benötigen unterschiedliche Schnittstellen und Lebenszyklen.",
+          "Ein Java-Service soll Werkzeuge anbieten, ein anderer Agent übernimmt eine Recherche, und der Entwickler steuert seinen Coding-Agenten im Editor. Für diese drei Verbindungen werden unterschiedliche Protokolle und Lebenszyklen gebraucht.",
         coreConcept:
-          "MCP verbindet eine KI-Anwendung mit Werkzeugen und Kontextquellen; A2A verbindet Agenten über Nachrichten, Tasks und Ergebnisse. ACP meint hier Agent Client Protocol und verbindet Editor beziehungsweise Client und Coding-Agent über Sitzungen, Fortschrittsmeldungen und Berechtigungsanfragen. Fähigkeiten, Authentifizierung, Zustände und Abbruch werden pro Verbindung geprüft.",
+          "MCP verbindet eine KI-Anwendung mit Werkzeugen und Kontextquellen; A2A verbindet Agenten über Nachrichten, Tasks und Ergebnisse. ACP meint hier Agent Client Protocol und verbindet Editor beziehungsweise Client und Coding-Agent. MCP 2026-07-28 führt einen zustandslosen Protokollkern ein: Anfragen tragen ihre nötigen Angaben selbst, Rückfragen verwenden Multi Round-Trip Requests, und Zusatzfähigkeiten werden über Erweiterungen organisiert.",
         javaWebUse:
-          "Ein Java-Team stellt einen eng begrenzten Recherche-Service als MCP-Werkzeug bereit und delegiert eine länger laufende Recherche über A2A an einen separaten Agenten. Der Entwickler nutzt einen ACP-fähigen Editor für den Coding-Agenten. Task- und Sitzungskennungen, Zeitlimits, Fehlerzustände und Kostenbudgets machen den Ablauf nachvollziehbar.",
+          "Das Team bietet einen begrenzten Recherche-Service als MCP-Werkzeug an und delegiert längere Arbeit über A2A. Vor der Verbindung prüft es die tatsächlich unterstützte Protokollrevision: Die aktive Java-SDK-Linie 2.0.x unterstützt MCP 2025-11-25; die Roadmap sieht 2026-07-28 für 3.x vor. Der Editor nutzt ACP für Sitzungen, Fortschritt und Berechtigungsanfragen.",
         boundary:
-          "Protokollunterstützung allein garantiert weder gemeinsame Fähigkeiten noch fachliche Berechtigungen oder Isolation. MCP-Autorisierung hängt vom Transport ab; bei A2A können Rückfragen und abgebrochene Tasks auftreten, bei ACP sind Fähigkeiten teilweise optional. Bestehende Themen behandeln Rechtebegrenzung und Harness-Sandboxing im Detail; hier geht es um die Verbindungswahl und ihren Lebenszyklus.",
+          "Eine aktuelle Spezifikation ist noch kein Nachweis, dass das eingesetzte SDK sie unterstützt. Auch ein zustandsloses Protokoll macht die Anwendung nicht zustandslos: Eine Recherche kann weiterhin eine explizite Task-Kennung brauchen. Erweiterungen, Authentifizierung, Abbruch und fachliche Zugriffsrechte müssen auf beiden Seiten passen.",
       },
       editorial: {
         publishedAt: "2026-10-03",
-        reviewedAt: "2026-10-03",
-        reviewDueAt: "2027-01-03",
+        reviewedAt: "2026-10-07",
+        reviewDueAt: "2027-01-07",
         status: "active",
       },
       sources: [
@@ -2689,6 +2773,43 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-10-03",
+        },
+        {
+          title: "MCP 2026-07-28 – zustandsloser Kern und Erweiterungen",
+          url: "https://blog.modelcontextprotocol.io/posts/2026-07-28/",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
+        },
+        {
+          title: "MCP Java SDK – gepflegte Linien und Protokollrevisionen",
+          url: "https://github.com/modelcontextprotocol/java-sdk/blob/main/CHANGELOG.md",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
+        },
+        {
+          title: "MCP Java SDK – Roadmap für die nächste Protokollrevision",
+          url: "https://github.com/modelcontextprotocol/java-sdk/blob/main/ROADMAP.md",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
+        },
+        {
+          title:
+            "MCP wird zustandslos – Einordnung von Skalierung und Migration",
+          url: "https://www.infoq.com/news/2026/08/mcp-stateless-gateway/",
+          type: "reference-site",
+          mediaType: "text",
+          origin: "secondary",
+          language: "en",
+          checkedAt: "2026-10-07",
         },
       ],
     },
@@ -2788,18 +2909,18 @@ export const topics: Topics = {
       content: {
         language: "de",
         problem:
-          "Eine Java-Webanwendung braucht für eine KI-Funktion mehr als einen Prompt: Modellzugriff, Datenbeschaffung, kontrollierte Werkzeuge und prüfbare Ergebnisse müssen zusammenarbeiten.",
+          "Ein Support-Endpunkt soll Fragen mit Bezug auf interne Dokumente beantworten. Ein Prompt allein löst weder die Suche nach passenden Daten noch kontrollierte Toolaufrufe, Quellenbezug und Fehlerbehandlung.",
         coreConcept:
-          "Spring AI und LangChain4j abstrahieren Modellanbieter und unterstützen Tools, strukturierte Ausgabe, Chat Memory und Retrieval-Augmented Generation (RAG). Spring AI 2.0 organisiert Toolschleifen über Advisors und integriert MCP-Server und -Clients. LangChain4j bietet AI Services und eine Quarkus-Integration. Ein direktes Anbieter-SDK ist eine Option für begrenzte API-Nutzung; Spring AI Alibaba erweitert das Spring-AI-Ökosystem um Agentenabläufe.",
+          "Spring AI und LangChain4j verbinden Modellzugriff mit Tools, strukturierter Ausgabe, Chat Memory und Retrieval-Augmented Generation (RAG). Spring AI 2.0 organisiert Toolschleifen über Advisors und integriert MCP-Server und -Clients. LangChain4j bietet AI Services und eine Quarkus-Integration. Ein direktes Anbieter-SDK passt für begrenzte API-Nutzung; Spring AI Alibaba ist eine weitere Integrationsoption für Agentenabläufe.",
         javaWebUse:
-          "Ein Support-Endpunkt sucht passende Dokumentabschnitte, lässt das Modell eine Antwort mit Quellenbezug erzeugen und validiert die Ausgabe. Fachliche Services werden gezielt als Tools angeboten. Das Team wählt nach Webframework, Modell- und API-Fähigkeiten, multimodalen Anforderungen und Betriebsintegration; es prüft Antwortqualität, Zugriffsgrenzen, Latenz und Kosten mit eigenen Evals und Messungen.",
+          "Der Support-Endpunkt sucht berechtigte Dokumentabschnitte, erzeugt eine Antwort mit Quellenbezug und validiert die Ausgabe. Das Team wählt nach Webframework, Modellfähigkeiten und Betriebsintegration. Stand der Prüfung ist Spring AI 2.0.1 stabil; 2.1.0-M1 bietet als Milestone unter anderem die OpenAI Responses API und ein neues Message-Modell. Neue Funktionen werden erst in einem begrenzten Versuch mit eigenen Evals, Latenz- und Kostenmessungen geprüft.",
         boundary:
-          "Ein Framework macht Antworten und Toolentscheidungen nicht automatisch korrekt. Strukturierte Ausgabe braucht Validierung, Suche braucht Berechtigungsfilter und Toolaufrufe brauchen fachliche Kontrolle. Spring AI 2.0 setzt auf Spring Boot 4; Integrationsumfang und Reife sind versionsabhängig. Spring AI, LangChain4j und direkte SDKs sind keine vollständig austauschbaren Bausteine. KI-Anwendungsbau ist von der Auswahl eines Coding-Agenten getrennt.",
+          "Strukturierte Ausgabe kann formal gültig und fachlich falsch sein; RAG braucht Berechtigungsfilter, Tools brauchen fachliche Kontrolle. Spring AI 2.0 setzt auf Spring Boot 4, und der Milestone 2.1.0-M1 hebt seine Baseline auf Spring Boot 4.2-Milestone an. Die separate Spring-Agentenunterstützung ist für November 2026 angekündigt, nicht als stabile Funktion verfügbar. Frameworks und direkte SDKs sind keine vollständig austauschbaren Bausteine.",
       },
       editorial: {
         publishedAt: "2026-10-03",
-        reviewedAt: "2026-10-03",
-        reviewDueAt: "2027-01-03",
+        reviewedAt: "2026-10-07",
+        reviewDueAt: "2027-01-07",
         status: "active",
       },
       sources: [
@@ -2819,7 +2940,7 @@ export const topics: Topics = {
           mediaType: "text",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-10-03",
+          checkedAt: "2026-10-07",
         },
         {
           title: "LangChain4j – Quarkus integration",
@@ -2828,7 +2949,7 @@ export const topics: Topics = {
           mediaType: "text",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-10-03",
+          checkedAt: "2026-10-07",
         },
         {
           title: "Google Gen AI Java SDK",
@@ -2856,6 +2977,26 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-10-03",
+        },
+        {
+          title:
+            "Spring AI – MCP-Integration und stabile beziehungsweise Preview-Versionen",
+          url: "https://docs.spring.io/spring-ai/reference/api/mcp/mcp-overview.html",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
+        },
+        {
+          title:
+            "Spring AI 2.1.0-M1 – neue APIs und angekündigte Agentenunterstützung",
+          url: "https://spring.io/blog/2026/09/25/spring-ai-2-1-0-M1-available-now/",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
         },
       ],
     },
@@ -3032,18 +3173,18 @@ export const topics: Topics = {
       content: {
         language: "de",
         problem:
-          "Ein Agent kann eine Änderung als fertig melden, obwohl Tests, Lint oder Sicherheitsprüfungen nicht gelaufen sind oder fehlschlagen.",
+          "Der Agent meldet fertig, aber die Tests wurden nicht ausgeführt. Oder die Tests sind grün, während ein Support-Assistent überzeugend falsche Antworten gibt. Für diese beiden Probleme braucht das Team unterschiedliche Prüfungen.",
         coreConcept:
-          "Ein Harness oder CI-Ablauf führt fest definierte Prüfungen selbst aus und sperrt die Übernahme bei Fehlern. Testbefehle, Exitcodes und Pflichtstatus sind maschinell prüfbar.",
+          "Harness und CI führen feste technische Prüfungen selbst aus und sperren die Übernahme bei Fehlern. Befehle, Exitcodes und Pflichtstatus sind maschinell prüfbar. Evals ergänzen diese Gates um repräsentative Agentenaufgaben und ausdrückliche Bewertungsmaßstäbe für Ergebnisse und Toolabläufe. Eine qualitative Bewertung wird dadurch nachvollziehbar, aber nicht automatisch fehlerfrei.",
         javaWebUse:
-          "Für einen Spring- und React-Patch laufen Build, Typprüfung, Unit- und Browser-Tests als feste Gates; ein fehlgeschlagener Pflichtcheck verhindert die Übernahme.",
+          "Für einen Spring- und React-Patch laufen Build, Typprüfung, Unit- und Browser-Tests als feste Gates. Ändert der Patch den Support-Agenten, vergleicht das Team zusätzlich dessen Antworten, Quellen und Toolentscheidungen mit einer festgelegten Eval-Suite. Technische Checks und fachliche Mindestkriterien müssen vor der Übernahme erfüllt sein.",
         boundary:
-          "Grüne Checks ersetzen weder passende Testfälle noch Review. Ein übersprungener oder falsch konfigurierter Check kann grün erscheinen; auch das Gate selbst muss geprüft werden.",
+          "Ein übersprungener oder falsch konfigurierter Check kann grün erscheinen. Auch ein Eval kann am eigentlichen Problem vorbeimessen, etwa nur schöne Formulierungen statt korrekter Quellen bewerten. Das Team prüft daher Testfälle, Bewertungsmaßstäbe und Gate-Konfiguration; grüne Ergebnisse ersetzen kein fachliches Review.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2026-12-27",
+        reviewedAt: "2026-10-07",
+        reviewDueAt: "2027-01-07",
         status: "active",
       },
       sources: [
@@ -3063,7 +3204,7 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           mediaType: "text",
-          checkedAt: "2026-09-27",
+          checkedAt: "2026-10-07",
         },
         {
           title: "Prozesse mit GitHub Actions // deutsch",
@@ -3105,6 +3246,69 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-09-30",
+        },
+      ],
+    },
+    {
+      id: "agent-evals-and-traces",
+      title: "Agenten mit Evals und Traces systematisch prüfen",
+      content: {
+        language: "de",
+        problem:
+          "Der Support-Agent beantwortet die Demo-Frage überzeugend. Bei einer unklaren Anfrage erfindet er aber eine Quelle oder ruft das falsche Werkzeug auf. Ein einzelner guter Durchlauf zeigt noch nicht, wie zuverlässig der ganze Ablauf funktioniert.",
+        coreConcept:
+          // Bewusste Textbindung: topics.test.ts sichert die vereinbarten Eval-Aspekte ab.
+          "Evals prüfen Agenten an repräsentativen Aufgaben und bekannten Fehlerfällen. Ergebnisqualität und Toolabläufe werden getrennt bewertet. Traces halten Modell- und Werkzeugaufrufe sowie Übergaben fest und helfen, die Stelle eines Fehlers zu finden. Eindeutige Regeln prüft Code; für qualitative Kriterien ergänzen Menschen oder ein LLM-Judge die Bewertung. Wiederholte Läufe unter dokumentierten Bedingungen machen Regressionen nach Änderungen sichtbar.",
+        javaWebUse:
+          "Für einen Spring-Support-Assistenten sammelt das Team typische Anfragen, unklare Fälle und fehlende Berechtigungen. Es prüft Quellenbezug, korrekte Toolargumente und ob der Agent bei fehlenden Informationen nachfragt. Nach einem Modell-, Prompt-, Skill- oder Harness-Wechsel läuft derselbe Datensatz erneut. Fehler aus geprüften Traces werden zu weiteren Testfällen; Latenz und Kosten werden neben der Qualität verglichen.",
+        boundary:
+          "Ein hoher Gesamtscore kann einzelne kritische Fehler verdecken. Deshalb braucht es ausdrückliche Mindestkriterien und repräsentative Daten statt nur leichter Demo-Fragen. Ein LLM-Judge kann selbst falsch urteilen oder längere Antworten bevorzugen; sein Urteil wird mit menschlich bewerteten Beispielen abgeglichen. Traces können sensible Eingaben und Tooldaten enthalten: nur benötigte Daten erfassen und passend schützen. Evals ergänzen technische Tests und menschliches Review.",
+      },
+      editorial: {
+        publishedAt: "2026-10-07",
+        reviewedAt: "2026-10-07",
+        reviewDueAt: "2027-01-07",
+        status: "active",
+      },
+      sources: [
+        {
+          title:
+            "Evaluate agent workflows – Traces, Datensätze und Regressionen",
+          url: "https://developers.openai.com/api/docs/guides/agent-evals",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
+        },
+        {
+          title:
+            "Evaluation Best Practices – Kriterien und menschlicher Abgleich von Judges",
+          url: "https://developers.openai.com/api/docs/guides/evaluation-best-practices",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
+        },
+        {
+          title: "Google ADK – Ergebnisse und Toolabläufe getrennt evaluieren",
+          url: "https://adk.dev/evaluate/",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
+        },
+        {
+          title:
+            "Build Trustworthy AI Agents Powered by Evals – Testμ-Konferenzbericht, September 2026",
+          url: "https://www.testmuai.com/blog/build-trustworthy-ai-agents/",
+          type: "reference-site",
+          mediaType: "text",
+          origin: "secondary",
+          language: "en",
+          checkedAt: "2026-10-07",
         },
       ],
     },
@@ -3880,20 +4084,20 @@ export const topics: Topics = {
       content: {
         language: "de",
         problem:
-          "Ein plausibler KI-Patch kann Anforderungen verfehlen, Sicherheitsregeln verletzen oder unnötige Abhängigkeiten einführen. Der erzeugende Agent kann solche Fehler bei der eigenen Prüfung übersehen.",
+          "Ein Agent liefert einen großen, plausiblen Patch. Beim Lesen fällt auf: Der neue Spring-Endpunkt behandelt den Erfolgsfall, überspringt aber eine Berechtigungsprüfung. Je mehr Code erzeugt wird, desto leichter verschwindet so ein Detail im Diff.",
         coreConcept:
-          // Bewusste Textbindung: completeLearningPaths.test.ts prüft „zweite“ als unabhängige Review-Perspektive.
-          "Menschen prüfen den Diff gegen den Entwicklungsauftrag und die Architektur, führen passende Tests und Sicherheitsprüfungen aus und entscheiden erst anhand der Ergebnisse über die Übernahme. Bei höherem Risiko ergänzt eine zweite, nicht an der Änderung beteiligte Review-Perspektive diese Prüfung.",
+          // Bewusste Textbindung: learningPaths.test.ts prüft „zweite“ als unabhängige Review-Perspektive.
+          "Menschen prüfen den Diff gegen Auftrag und Architektur, führen passende Tests und Sicherheitsprüfungen aus und entscheiden anhand der Ergebnisse über die Übernahme. Eine zweite, nicht an der Änderung beteiligte Review-Perspektive ergänzt die Prüfung bei höherem Risiko. Ein Review-Agent kann verdächtige Stellen und mögliche Fehler vorsortieren; seine Hinweise werden am Code nachvollzogen.",
         javaWebUse:
-          "Bei einem geänderten Spring-Endpoint werden Berechtigungsprüfung, Fehlerfälle und neue Bibliotheken im Diff kontrolliert und mit gezielten Java- und Browser-Tests geprüft. Eine unabhängige Person prüft zusätzlich API-Vertrag und Berechtigungen.",
+          "Das Team begrenzt den Patch auf einen nachvollziehbaren Zweck und prüft Berechtigungen, Fehlerfälle, API-Vertrag und neue Bibliotheken. Review-Aufwand und nötige Nacharbeit gehören zur Bewertung des Agenten: Ein schneller erzeugter Diff bringt wenig, wenn niemand ihn gründlich prüfen kann. Eine unabhängige Person kontrolliert besonders riskante Änderungen zusätzlich.",
         boundary:
-          // Bewusste Textbindung: completeLearningPaths.test.ts prüft den Grenzfall „Review-Agent“.
-          "Grüne Tests und Scanner decken nur ihre geprüften Fälle ab. Ein Review-Agent ersetzt weder die fachliche Bewertung noch die menschliche Freigabe; auch mehrfache Reviews garantieren keine Qualität.",
+          // Bewusste Textbindung: learningPaths.test.ts prüft den Grenzfall „Review-Agent“.
+          "Ein Review-Agent kann Fehler übersehen oder unzutreffende Hinweise geben. Grüne Tests und Scanner decken nur ihre geprüften Fälle ab; auch mehrere Reviews garantieren keine Qualität. Die fachliche Bewertung und die Entscheidung zur Übernahme bleiben bei den verantwortlichen Menschen.",
       },
       editorial: {
         publishedAt: "2026-09-26",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2027-03-27",
+        reviewedAt: "2026-10-07",
+        reviewDueAt: "2027-01-07",
         status: "active",
       },
       sources: [
@@ -3904,7 +4108,7 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           mediaType: "text",
-          checkedAt: "2026-09-27",
+          checkedAt: "2026-10-07",
         },
         {
           title: "Safety in building agents – OpenAI",
@@ -3965,6 +4169,16 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-09-30",
+        },
+        {
+          title:
+            "GitHub Copilot Code Review – unterstützender Review und Grenzen",
+          url: "https://docs.github.com/en/copilot/concepts/agents/code-review",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
         },
       ],
     },
@@ -4238,18 +4452,18 @@ export const topics: Topics = {
       content: {
         language: "de",
         problem:
-          "Ein Agent mit Tool-Zugriff kann einen guten Prompt trotzdem falsch ausführen oder mehr Daten und Rechte nutzen als nötig.",
+          "Ein Agent arbeitet eine Stunde an einer Migration. Dann reißt die Verbindung ab: Welche Änderungen sind gespeichert, welche Tests liefen, und darf er beim nächsten Versuch dieselbe Aktion noch einmal ausführen? Ein guter Prompt beantwortet diese Betriebsfragen nicht.",
         coreConcept:
-          "Ein Harness verbindet Tools, Kontext, Zustände, Sandbox, Netzwerkregeln und deterministische Prüfungen. Identität und Zugangsdaten bleiben außerhalb der nicht vertrauenswürdigen Ausführungsumgebung, soweit die Architektur es erlaubt.",
+          "Ein Harness verbindet Modell, Tools, Kontext, Zustände, Sandbox, Netzwerkregeln und deterministische Prüfungen. Für lange Läufe kommen gespeicherte Sitzungen, Wiederaufnahme, Abbruch und ein Budget für Zeit, Kosten und Versuche hinzu. Die Agents API ist ein Beispiel für verwaltete Sitzungen und Ausführung; in einem eigenen Harness muss das Team die Zuständigkeiten selbst gestalten.",
         javaWebUse:
-          "Für einen Java-/Web-Patch läuft der Agent in isoliertem Checkout mit begrenzten Schreibrechten; CI entscheidet anhand fester Tests über die Übernahme.",
+          "Eine Java-Migration läuft in einem isolierten Checkout mit begrenzten Rechten. Der Harness hält Task-Kennung und prüfbare Zwischenstände fest. Nach einer Unterbrechung liest der Agent den gespeicherten Stand und kontrolliert den tatsächlichen Diff sowie Tests, bevor er weiterarbeitet. Das Budget begrenzt Wiederholungen; externe Schreibaktionen benötigen eine passende Freigabe und einen Umgang mit doppelten Aufrufen.",
         boundary:
-          "Einen eigenen Harness aufzubauen ist ein Projekt mit Wartungs- und Sicherheitskosten. Ein MCP-Zugang zu OpenRewrite ist nur eine Zugriffsmöglichkeit auf die existierenden OpenRewrite-Rezepte und eröffnet keine grundsätzlich neuen Migrationsmöglichkeiten.",
+          "Abbruch bedeutet nicht, dass bereits ausgeführte Aktionen rückgängig werden. Eine gespeicherte Agentensitzung ist auch keine Garantie, dass ihre Sandbox noch existiert. Identität und Zugangsdaten bleiben möglichst außerhalb der nicht vertrauenswürdigen Ausführungsumgebung. Ein eigener Harness kostet Wartung und Sicherheitsarbeit; MCP-Zugriff auf OpenRewrite bietet Zugang zu bestehenden Rezepten, keine grundsätzlich neuen Migrationsmöglichkeiten.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2026-12-27",
+        reviewedAt: "2026-10-07",
+        reviewDueAt: "2027-01-07",
         status: "active",
       },
       sources: [
@@ -4296,7 +4510,7 @@ export const topics: Topics = {
           mediaType: "text",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-09-28",
+          checkedAt: "2026-10-07",
         },
         {
           title: "Das Geheimnis guter KI-Agents: Die Harness-Schicht erklärt",
@@ -4338,6 +4552,15 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-09-30",
+        },
+        {
+          title: "Agents API – verwalteter Harness und Ausführungsumgebung",
+          url: "https://developers.openai.com/api/docs/guides/agents-api/overview",
+          type: "official-guide",
+          mediaType: "text",
+          origin: "primary",
+          language: "en",
+          checkedAt: "2026-10-07",
         },
       ],
     },

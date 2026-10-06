@@ -60,6 +60,7 @@ describe("questionPools", () => {
   it("owns the published pools by stable ID and leaves new topics without pools", () => {
     expect(availableLearningCheckTopicIds).toHaveLength(45);
     const topicsWithoutPool = [
+      "agent-evals-and-traces",
       "model-and-api-lifecycle",
       "agent-protocol-integration",
       "java-ai-applications",

@@ -7,27 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Neue Entwicklungen einarbeiten
-Wir wollen die Inhalte von Lernluchs aktualisieren und aktuelle Entwicklungen ergänzen, damit nichts Wichtiges Neues fehlt. Dabei wollen wir die Anzahl der Themen oder Lernpfade nicht aufblähen, damit die App übersichtlich bleibt.
-
-Sieh dir dazu `latest-development.md` an.
-
-Bevor du Code änderst, mach im ersten Schritt eine tabellarische Übersicht:
-- Welche Details sollten wir bei bestehenden Themen ergänzen?
-  -- Brauchen wir vielleicht weitere Primärquellen zu diesen Themen?
-- Welchen (wenigen?) neuen Themen sollten wir ergänzen (und welche Punkte würden dazu gehören)?
-  -- Dazu brauchen wir dann jeweils Primärquellen und Sekundärquellen analog zu den anderen Themen. (Gern auch immer etwas YouTube auf Deutsch, aber nicht KI-übersetzt.)
-- Brauchen wir vielleicht sogar einen weiteren Lernpfad, um Themen abzudecken, die wir ganz übersehen haben.
-- Gibt es in unseren bestehenden Themen Inhalte, die deutlich veraltet sind oder schief formuliert, aus aktueller Sicht nicht mehr haltbar?
-- Aktualisiere auch das Aktualisierungsdatum, wenn es eine spürbare Überarbeitung gab 
-- Setze ggf. das Wiedervorlagedatum neu, falls das Thema durchgreifend geprüft wurde.
-
-Erst nach dem ersten Schritt (Tabelle) und Abstimmung mit den Entwickler wird entwickelt!
-
-Abgrenzung:
-- Keine NotebookLM-Podcasts (fügen wir später hinzu)
-- Fragen unverändert lassen - auch keine neuen Fragen(pools) einfügen.
-
 ## Node 24 für Entwicklung und CI vereinheitlichen
 
 Die derzeit verwendete Node-Version `25.9.0` liegt außerhalb der unterstützten Versionen mehrerer Entwicklungsabhängigkeiten.

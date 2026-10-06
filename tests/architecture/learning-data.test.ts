@@ -46,8 +46,9 @@ describe("learning data organization", () => {
   });
 
   it("preserves the original paths and their relative topic order", async () => {
-    // Die Integrationsthemen erweitern einen Pfad und fügen einen vierzehnten hinzu.
+    // Neue Integrationsthemen und Evals ergänzen die Pfade; der Bestand bleibt erhalten.
     const additions = new Set([
+      "agent-evals-and-traces",
       "model-and-api-lifecycle",
       "agent-protocol-integration",
       "java-ai-applications",

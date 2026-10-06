@@ -132,7 +132,8 @@ describe("vollständige Lernpfade", () => {
     expect(ids).toHaveLength(
       coreTopicIds.length +
         workflowTopicIds.length +
-        integrationTopicIds.length,
+        integrationTopicIds.length +
+        1,
     );
     expect(ids.filter((id) => integrationTopicIds.includes(id))).toEqual(
       integrationTopicIds,
@@ -153,7 +154,21 @@ describe("vollständige Lernpfade", () => {
       const topic = topics.items.find((item) => item.id === id);
       expect(topic, id).toBeDefined();
       expect(topic?.editorial.reviewedAt, id).toBe(
-        id === "token-efficiency-tools" ? "2026-10-03" : "2026-09-27",
+        [
+          "coding-harness-design",
+          "codegraphs-for-large-repos",
+          "spec-framework-selection",
+          "coding-agent-interface-selection",
+          "agent-skills-and-commands",
+          "review-and-accept-ai-generated-changes",
+          "deterministic-agent-verification-gates",
+          "agent-protocol-integration",
+          "java-ai-applications",
+        ].includes(id)
+          ? "2026-10-07"
+          : id === "token-efficiency-tools"
+            ? "2026-10-03"
+            : "2026-09-27",
       );
       expect(
         topic?.sources.some((source) => source.origin === "primary"),
@@ -205,6 +220,19 @@ describe("vollständige Lernpfade", () => {
       topics.items.map((item, index) => [item.id, index]),
     );
     const assigned = new Set(topics.paths?.flatMap((path) => path.topicIds));
+    expect(topics.paths).toHaveLength(14);
+    const evalId = "agent-evals-and-traces";
+    expect(
+      topics.items.map((topic) => topic.id).filter((id) => id === evalId),
+    ).toEqual([evalId]);
+    expect(
+      topics.paths
+        ?.filter((path) => path.topicIds.includes(evalId))
+        .map((path) => path.name),
+    ).toEqual([
+      "Wiederkehrende Entwicklungsarbeit kontrolliert automatisieren",
+      "KI-Funktionen in Java-Webanwendungen bauen",
+    ]);
     for (const id of [
       ...coreTopicIds,
       ...workflowTopicIds,
@@ -223,6 +251,7 @@ describe("vollständige Lernpfade", () => {
       "module-boundaries-and-public-interfaces",
       "java-ai-applications",
       "tdd-for-domain-behavior",
+      "agent-evals-and-traces",
       "web-security-baseline",
     ]);
     for (const path of topics.paths ?? []) {
@@ -304,7 +333,11 @@ it("provides sourced parallel agent topics in path order", () => {
       true,
     );
     expect(item?.editorial.reviewedAt).toBe(
-      id === "agent-tool-and-mcp-permissions" ? "2026-09-28" : "2026-09-27",
+      id === "deterministic-agent-verification-gates"
+        ? "2026-10-07"
+        : id === "agent-tool-and-mcp-permissions"
+          ? "2026-09-28"
+          : "2026-09-27",
     );
   }
   expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });

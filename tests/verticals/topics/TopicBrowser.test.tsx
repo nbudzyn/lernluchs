@@ -69,21 +69,21 @@ describe("TopicBrowser", () => {
   });
   it("shows active paths before the list and visible versus total topic counts", () => {
     render(<TopicBrowser />);
-    expect(screen.getByText("48 Themen")).toBeTruthy();
+    expect(screen.getByText("49 Themen")).toBeTruthy();
     expect(screen.queryByText("LERNTHEMEN")).toBeNull();
     fireEvent.click(
       screen.getByRole("button", {
         name: `Lernpfade von ${topicTitle("human-ai-responsibility")} filtern`,
       }),
     );
-    expect(screen.getByText("10 / 48 Themen")).toBeTruthy();
+    expect(screen.getByText("10 / 49 Themen")).toBeTruthy();
     const summary = screen.getByRole("region", { name: "Aktive Lernpfade" });
     const list = screen.getByRole("navigation", { name: "Themen" });
     expect(
       summary.compareDocumentPosition(list) & Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "Filter aufheben" }));
-    expect(screen.getByText("48 Themen")).toBeTruthy();
+    expect(screen.getByText("49 Themen")).toBeTruthy();
     expect(summary.isConnected).toBe(false);
   });
 
@@ -199,7 +199,7 @@ describe("TopicBrowser", () => {
     expect(screen.getByRole("navigation", { name: "Themen" })).toBeTruthy();
     expect(
       screen.getByRole("navigation", { name: "Themen" }).querySelectorAll("li"),
-    ).toHaveLength(48);
+    ).toHaveLength(49);
     expect(
       screen.getByRole("button", {
         name: topicTitle("human-ai-responsibility"),

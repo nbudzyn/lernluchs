@@ -1,6 +1,6 @@
 # Produktstand
 
-Lernluchs ist eine öffentliche, statische Lernanwendung für KI-unterstützte Java- und Webentwicklung. Lernende können derzeit 48 Themen in
+Lernluchs ist eine öffentliche, statische Lernanwendung für KI-unterstützte Java- und Webentwicklung. Lernende können derzeit 49 Themen in
 einer gemeinsamen Liste auswählen und deren kurze Inhalte mit kuratierten Quellen und Aktualitätsangaben lesen. Jedes Thema, auch ein
 künftig ergänztes, erhält Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md). Die Inhalte werden redaktionell
 geprüft und als versionierte, nur lesbare Themen veröffentlicht.
@@ -20,7 +20,9 @@ dauerhaft gespeichert wurde.
 Das Thema zur Symbol- und Referenzsuche wurde einschließlich Quellen, Fragen und Lernpfad-Zuordnungen entfernt. Ein vorhandener lokaler
 Lernstand für seine ID wird ignoriert; der Lernstand anderer Themen bleibt erhalten.
 
-Die drei neuen Themen behandeln Protokollintegration mit MCP, A2A und ACP, Modell- und API-Lebenszyklen sowie KI-Funktionen in Java-Webanwendungen mit Spring AI, LangChain4j und weiteren Integrationsoptionen. Sie besitzen zunächst keine Fragenpools. Das Token-Thema unterscheidet Kommandoausgabekompression, Kontextkompression, knappe Prosa und die Vermeidung unnötigen Codes; Quellen für Headroom und Ponytail sowie ein ergänzendes Video sind verfügbar.
+Die drei neuen Themen behandeln Protokollintegration mit MCP, A2A und ACP, Modell- und API-Lebenszyklen sowie KI-Funktionen in Java-Webanwendungen mit Spring AI, LangChain4j und weiteren Integrationsoptionen. Sie besitzen zunächst keine Fragenpools. Ein weiteres Thema erklärt Evals und Traces mit repräsentativen Aufgaben, getrennten Bewertungen von Ergebnissen und Toolabläufen sowie Grenzen von LLM-Judges. Es besitzt ebenfalls keinen Fragenpool und gehört zu den bestehenden Pfaden für Java-KI-Anwendungsbau und kontrollierte Automatisierung. Das Token-Thema unterscheidet Kommandoausgabekompression, Kontextkompression, knappe Prosa und die Vermeidung unnötigen Codes; Quellen für Headroom und Ponytail sowie ein ergänzendes Video sind verfügbar.
+
+Neun bestehende Themen wurden um aktuelle Entwicklungen zu Harness-Sitzungen, Repository-Suche, Spec-Abgleich, Laufumgebungen, Skills, MCP-Revisionen, Java-KI-Versionen, Reviews und Prüf-Gates ergänzt. Quellenprüfdaten werden einzeln gepflegt; die überarbeiteten Themen sind fachlich am 7. Oktober 2026 geprüft.
 
 Die Liste enthält 14 Lernpfade. Zu den fünf bisherigen Pfaden kommen neun Pfade für Projektwissen, Auftragsklärung, Kontextsteuerung,
 Werkzeugwahl, Webgestaltung, Sicherheit, Automatisierung, lokale KI-Stacks und Java-KI-Anwendungsbau hinzu. Sie lassen sich über das Icon eines Themas gemeinsam

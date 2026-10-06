@@ -4,7 +4,20 @@ import { topics } from "../../../src/verticals/topics/topics";
 
 import { validateTopics } from "../../../src/verticals/topics/validateTopics";
 
+const refreshedTopicIds = new Set([
+  "coding-harness-design",
+  "codegraphs-for-large-repos",
+  "spec-framework-selection",
+  "coding-agent-interface-selection",
+  "agent-skills-and-commands",
+  "review-and-accept-ai-generated-changes",
+  "deterministic-agent-verification-gates",
+  "agent-protocol-integration",
+  "java-ai-applications",
+]);
+
 const expandedTopicIds = [
+  "agent-evals-and-traces",
   "model-and-api-lifecycle",
   "agent-protocol-integration",
   "java-ai-applications",
@@ -30,22 +43,60 @@ const expandedTopicIds = [
   "coding-harness-design",
 ];
 
-it("publishes distinct integration topics with current sources", () => {
-  // Redaktionelle Abnahme: Protokolle, Lebenszyklen und Anwendungsbau getrennt halten.
+it("publishes current development topics with distinct concepts and sources", () => {
+  // Redaktionelle Abnahme: Die vereinbarten neuen Aspekte je Thema absichern.
   for (const [id, concepts] of [
-    ["agent-protocol-integration", ["MCP", "A2A", "ACP"]],
+    [
+      "agent-evals-and-traces",
+      ["Traces", "Toolabläufe", "LLM-Judge", "Regressionen"],
+    ],
+    ["coding-harness-design", ["Wiederaufnahme", "Abbruch", "Budget"]],
+    [
+      "codegraphs-for-large-repos",
+      ["Codegraph", "semantische Suche", "Codeabschnitte"],
+    ],
+    ["spec-framework-selection", ["converge", "fehlende Anforderung"]],
+    [
+      "coding-agent-interface-selection",
+      ["Junie", "Cloud", "Modellverarbeitung"],
+    ],
+    ["agent-skills-and-commands", ["Agent Skills", "bedarfsgerecht", "Evals"]],
+    [
+      "review-and-accept-ai-generated-changes",
+      ["zweite", "Review-Agent", "Review-Aufwand"],
+    ],
+    ["deterministic-agent-verification-gates", ["Evals", "Bewertungsmaßstäbe"]],
+    [
+      "agent-protocol-integration",
+      ["MCP", "A2A", "ACP", "2026-07-28", "2025-11-25"],
+    ],
     ["model-and-api-lifecycle", ["Abkündigungen", "Regression", "Rückfall"]],
-    ["java-ai-applications", ["Spring AI", "LangChain4j", "Quarkus", "SDK"]],
+    [
+      "java-ai-applications",
+      [
+        "Spring AI",
+        "LangChain4j",
+        "Quarkus",
+        "SDK",
+        "2.0.1",
+        "2.1.0-M1",
+        "angekündigt",
+      ],
+    ],
   ] as const) {
     const topic = topics.items.find((item) => item.id === id);
     expect.soft(topic, id).toBeDefined();
     if (!topic) continue;
     const text = Object.values(topic.content).join(" ");
-    for (const concept of concepts)
-      expect.soft(text, `${id}: ${concept}`).toContain(concept);
+    expect
+      .soft(
+        concepts.filter((concept) => !text.includes(concept)),
+        id,
+      )
+      .toEqual([]);
     expect.soft(topic.editorial, id).toMatchObject({
-      publishedAt: "2026-10-03",
-      reviewedAt: "2026-10-03",
+      reviewedAt:
+        id === "model-and-api-lifecycle" ? "2026-10-03" : "2026-10-07",
       status: "active",
     });
     expect
@@ -56,10 +107,32 @@ it("publishes distinct integration topics with current sources", () => {
       .toBe(true);
     expect
       .soft(
-        topic.sources.every((source) => source.checkedAt === "2026-10-03"),
+        topic.sources.every(
+          (source) => source.checkedAt <= topic.editorial.reviewedAt,
+        ),
         id,
       )
       .toBe(true);
+    if (id === "agent-evals-and-traces") {
+      expect.soft(topic.editorial, id).toMatchObject({
+        publishedAt: "2026-10-07",
+        reviewDueAt: "2027-01-07",
+      });
+      expect
+        .soft(
+          topic.sources.some((source) => source.origin === "secondary"),
+          id,
+        )
+        .toBe(true);
+      expect
+        .soft(
+          topic.sources.map((source) => source.url),
+          id,
+        )
+        .toContain(
+          "https://www.testmuai.com/blog/build-trustworthy-ai-agents/",
+        );
+    }
   }
 });
 
@@ -342,15 +415,20 @@ describe("public content topics", () => {
     expect(otherTopics).toHaveLength(19);
     expect(otherTopics.map((item) => item.id)).toContain("focused-git-commits");
     for (const item of otherTopics) {
-      const expectedReviewDate =
-        item.id === "agent-tool-and-mcp-permissions"
+      const expectedReviewDate = refreshedTopicIds.has(item.id)
+        ? "2026-10-07"
+        : item.id === "agent-tool-and-mcp-permissions"
           ? "2026-09-28"
           : "2026-09-27";
       expect(item.editorial.reviewedAt).toBe(expectedReviewDate);
       expect(
         item.sources
           .filter((source) => source.mediaType === "text")
-          .every((source) => source.checkedAt === expectedReviewDate),
+          .every(
+            (source) =>
+              source.checkedAt >= "2026-09-27" &&
+              source.checkedAt <= expectedReviewDate,
+          ),
       ).toBe(true);
     }
     const sourcesFor = (id: string) =>
@@ -439,7 +517,11 @@ describe("public content topics", () => {
       expect(
         item.sources
           .filter((source) => source.mediaType === "text")
-          .every((source) => source.checkedAt === "2026-09-27"),
+          .every(
+            (source) =>
+              source.checkedAt >= "2026-09-27" &&
+              source.checkedAt <= item.editorial.reviewedAt,
+          ),
       ).toBe(true);
     }
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
@@ -495,15 +577,23 @@ describe("public content topics", () => {
       expect(item.content.boundary.trim()).not.toBe("");
       expect(item.editorial).toMatchObject({
         publishedAt: "2026-09-26",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2027-03-27",
+        reviewedAt: refreshedTopicIds.has(item.id)
+          ? "2026-10-07"
+          : "2026-09-27",
+        reviewDueAt: refreshedTopicIds.has(item.id)
+          ? "2027-01-07"
+          : "2027-03-27",
         status: "active",
       });
       expect(item.sources.length).toBeGreaterThan(0);
       expect(
         item.sources
           .filter((source) => source.mediaType === "text")
-          .every((source) => source.checkedAt === "2026-09-27"),
+          .every(
+            (source) =>
+              source.checkedAt >= "2026-09-27" &&
+              source.checkedAt <= item.editorial.reviewedAt,
+          ),
       ).toBe(true);
     }
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
