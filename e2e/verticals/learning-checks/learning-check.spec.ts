@@ -256,12 +256,12 @@ test("a wrong answer retains both explanations and sources even when the source 
       await expect(page.getByText(/^Gewählt:/)).toHaveCount(1);
       await expect(page.getByText(/^Richtig:/)).toHaveCount(5);
       const row = page.getByRole("listitem").first();
-      await expect(
-        row.getByText(wrong.option.explanation, { exact: false }),
-      ).toBeVisible();
-      await expect(
-        row.getByText(right.explanation, { exact: false }),
-      ).toBeVisible();
+      const wrongExplanation = row.locator(".learning-check-incorrect + p");
+      const rightExplanation = row.locator(".learning-check-correct + p");
+      await expect(wrongExplanation).toBeVisible();
+      await expect(wrongExplanation).toContainText(wrong.option.explanation);
+      await expect(rightExplanation).toBeVisible();
+      await expect(rightExplanation).toContainText(right.explanation);
       const sources = row.getByRole("link", { name: "Quelle öffnen" });
       await expect(sources).toHaveCount(2);
       await expect(sources.first()).toHaveAttribute("href", right.sourceUrl);
