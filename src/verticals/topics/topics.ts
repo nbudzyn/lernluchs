@@ -1349,6 +1349,16 @@ export const topics: Topics = {
           checkedAt: "2026-10-03",
         },
         {
+          title: "Spring AI 2.0 oder LangChain4j",
+          url: "https://notebooklm.link.google/u0T0goRCcnks",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "24:16",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
+        },
+        {
           title: "Emerging Patterns in Building GenAI Products",
           url: "https://martinfowler.com/articles/gen-ai-patterns/",
           type: "reference-site",
@@ -1473,6 +1483,16 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-09-27",
+        },
+        {
+          title: "Sichere LLM Integration in Spring Boot",
+          url: "https://notebooklm.link.google/XF3Q0l2PVblq",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "22:51",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title:
@@ -1756,6 +1776,16 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-09-27",
+        },
+        {
+          title: "Sichere lokale KI-Agenten mit Java bauen",
+          url: "https://notebooklm.link.google/ecxzpX9FMo7r",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "17:12",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title: "Was ich über lokale KI gelernt habe",
@@ -2501,6 +2531,16 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-09-28",
+        },
+        {
+          title: "Warum KI-Code bei der Barrierefreiheit versagt",
+          url: "https://notebooklm.link.google/A394NdejfpNh",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "22:37",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title: "Storybook Crashkurs - Komponentenbasierte UI Entwicklung",
@@ -3517,6 +3557,16 @@ export const topics: Topics = {
           language: "en",
           mediaType: "text",
           checkedAt: "2026-09-28",
+        },
+        {
+          title: "Sichere Architekturen für KI-Coding-Agenten",
+          url: "https://notebooklm.link.google/LJGcfxbqoCLN",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "25:31",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title:

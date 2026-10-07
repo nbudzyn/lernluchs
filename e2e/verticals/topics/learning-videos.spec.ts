@@ -28,12 +28,17 @@ test("shows learning videos without external loading and opens one on request", 
   await expect(
     article.getByRole("img", { name: "Video", exact: true }),
   ).toHaveCount(4);
+  const germanVideoUrl = "https://www.youtube.com/watch?v=sNHZjpXlZl8";
+  const germanVideoTitle = videoTitle(
+    "human-ai-responsibility",
+    germanVideoUrl,
+  );
   const german = article.getByRole("link", {
-    name: sourceTitle("human-ai-responsibility", 3) + " [DE]",
+    name: germanVideoTitle + " [DE]",
     exact: true,
   });
   await expect(german.locator("..")).toHaveText(
-    `${sourceTitle("human-ai-responsibility", 3)} [DE] 19:43`,
+    `${germanVideoTitle} [DE] 19:43`,
   );
   await expect(german).toHaveAttribute("target", "_blank");
   await expect(page.locator("iframe, video, img[src*='youtube']")).toHaveCount(
@@ -44,7 +49,7 @@ test("shows learning videos without external loading and opens one on request", 
   await german.click();
   const popup = await popupReady;
   await popup.waitForLoadState();
-  expect(popup.url()).toBe("https://www.youtube.com/watch?v=sNHZjpXlZl8");
+  expect(popup.url()).toBe(germanVideoUrl);
   await popup.close();
 
   if ((page.viewportSize()?.width ?? 0) < 800)
@@ -74,7 +79,11 @@ test("shows learning videos without external loading and opens one on request", 
     })
     .click();
   const longVideo = article.getByRole("link", {
-    name: sourceTitle("agent-tool-and-mcp-permissions", 2) + " [DE]",
+    name:
+      videoTitle(
+        "agent-tool-and-mcp-permissions",
+        "https://www.youtube.com/watch?v=n9OiWOeyU-E&t=600s",
+      ) + " [DE]",
     exact: true,
   });
   await expect(longVideo.locator("..")).not.toContainText("Gesamtlänge:");
@@ -92,6 +101,10 @@ test("shows learning videos without external loading and opens one on request", 
 function topicTitle(id: string) {
   return topics.items.find((item) => item.id === id)!.title;
 }
-function sourceTitle(id: string, index: number) {
-  return topics.items.find((item) => item.id === id)!.sources[index].title;
+function videoTitle(id: string, url: string) {
+  const source = topics.items
+    .find((item) => item.id === id)
+    ?.sources.find((item) => item.mediaType === "video" && item.url === url);
+  expect(source, `Videoquelle für Thema ${id}: ${url}`).toBeDefined();
+  return source!.title;
 }
