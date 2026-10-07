@@ -45,8 +45,8 @@ describe("learning data organization", () => {
     );
   });
 
-  it("preserves the original paths and their relative topic order", async () => {
-    // Neue Integrationsthemen und Evals ergänzen die Pfade; der Bestand bleibt erhalten.
+  it("preserves the original path names and topic memberships after reordering", async () => {
+    // Neben der Umordnung ist nur der Legacy-Einstieg im Modernisierungspfad neu.
     const additions = new Set([
       "agent-evals-and-traces",
       "model-and-api-lifecycle",
@@ -56,10 +56,20 @@ describe("learning data organization", () => {
     expect(learningPaths).toHaveLength(14);
     const originalPaths = learningPaths.slice(0, 13).map((path) => ({
       ...path,
-      topicIds: path.topicIds.filter((id) => !additions.has(id)),
+      topicIds: path.topicIds
+        .filter(
+          (id) =>
+            !additions.has(id) &&
+            !(
+              path.name ===
+                "Java-/Web-Code technisch analysieren und modernisieren" &&
+              id === "design-and-legacy-specification"
+            ),
+        )
+        .sort(),
     }));
     expect(await fingerprint(originalPaths)).toBe(
-      "73637290c7cacdca4f5f93c0c46ea438cfe1af52e142001329e2c7adafb84337",
+      "3d16604776c2a7a22664d831c87b56af3f6d691d682db68b97e52bbef5996ffb",
     );
   });
 

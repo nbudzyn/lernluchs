@@ -7,6 +7,22 @@ export function TopicHelp() {
       <ul>
         <li>Klick auf ein Thema öffnet das Thema</li>
         <li>
+          „Kommt mir bekannt vor“ zeigt Situationen aus deinem Alltag als
+          Randnotiz beim Thema
+        </li>
+        <li>
+          Über der Liste wechselst du zwischen Themen und „Kommt mir bekannt
+          vor“
+        </li>
+        <li>
+          Beim ersten Besuch ist „Kommt mir bekannt vor“ ausgewählt. Dein
+          Browser merkt sich deine letzte Auswahl.
+        </li>
+        <li>
+          Der Schnellfilter durchsucht auch die Texte unter „Kommt mir bekannt
+          vor“ in beiden Ansichten
+        </li>
+        <li>
           <svg aria-hidden="true" viewBox="0 0 20 20">
             <path d="M3 4h14M5 9h10M8 14h4M10 14v3" />
           </svg>{" "}

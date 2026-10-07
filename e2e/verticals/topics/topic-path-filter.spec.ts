@@ -176,7 +176,9 @@ test("selects one short path, keeps its topics visible, and restores the icon fi
   for (const row of await rows.all()) {
     const box = await row.boundingBox();
     expect(box?.y).toBeGreaterThanOrEqual(-1);
-    expect((box?.y ?? 0) + (box?.height ?? 0)).toBeLessThanOrEqual(800);
+    expect((box?.y ?? 0) + (box?.height ?? 0)).toBeLessThanOrEqual(
+      page.viewportSize()!.height,
+    );
   }
   await path.click();
   await expect(path).toHaveAttribute("aria-pressed", "true");

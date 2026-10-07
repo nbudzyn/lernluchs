@@ -21,9 +21,20 @@ const editorialStatusLabels: Record<EditorialStatus, string> = {
 type PathFilter =
   { kind: "topic"; id: string } | { kind: "path"; index: number } | null;
 
+const listViewPreferenceKey = "lernluchs.topic-list-view.v1";
+
+function initialEverydayAnchorView() {
+  try {
+    return localStorage.getItem(listViewPreferenceKey) !== "topics";
+  } catch {
+    return true;
+  }
+}
+
 function matchesQuickFilter(item: Topic, query: string) {
   return [
     item.title,
+    item.everydayAnchor,
     item.content.problem,
     item.content.coreConcept,
     item.content.javaWebUse,
@@ -108,10 +119,34 @@ export function TopicBrowser({
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [filter, setFilter] = useState<PathFilter>(null);
   const [quickFilter, setQuickFilter] = useState("");
+  const [showEverydayAnchors, setShowEverydayAnchors] = useState(
+    initialEverydayAnchorView,
+  );
+  const [viewPreferenceNotSaved, setViewPreferenceNotSaved] = useState(false);
+  function changeListView(everydayAnchors: boolean) {
+    setShowEverydayAnchors(everydayAnchors);
+    try {
+      localStorage.setItem(
+        listViewPreferenceKey,
+        everydayAnchors ? "everydayAnchors" : "topics",
+      );
+      setViewPreferenceNotSaved(false);
+    } catch {
+      setViewPreferenceNotSaved(true);
+    }
+  }
   const [mobileView, setMobileView] = useState<"list" | "topic" | "help">(
     "list",
   );
   const listScrollY = useRef(0);
+  const checkScrollY = useRef(0);
+  const checkOpen = useRef(false);
+  useLayoutEffect(() => {
+    if (onExitLearningCheck && !checkOpen.current) {
+      checkScrollY.current = window.scrollY;
+    }
+    checkOpen.current = onExitLearningCheck !== undefined;
+  }, [onExitLearningCheck]);
   const rowRefs = useRef(new Map<string, HTMLLIElement>());
   const anchor = useRef<{ id: string; x: number; y: number } | null>(null);
   const scrollToPath = useRef(false);
@@ -278,6 +313,13 @@ export function TopicBrowser({
     () => {
       returnToList();
       onExitLearningCheck?.();
+      if (
+        onExitLearningCheck &&
+        !window.matchMedia?.("(max-width: 799px)").matches
+      ) {
+        // Native history restores its older position after popstate.
+        requestAnimationFrame(() => window.scrollTo(0, checkScrollY.current));
+      }
     },
     onExitLearningCheck !== undefined,
   );
@@ -345,6 +387,32 @@ export function TopicBrowser({
             </button>
           )}
         </div>
+        <div
+          className="topic-list-view"
+          role="group"
+          aria-label="Listenansicht"
+        >
+          <button
+            type="button"
+            aria-pressed={!showEverydayAnchors}
+            onClick={() => changeListView(false)}
+          >
+            Themen
+          </button>
+          <button
+            type="button"
+            aria-pressed={showEverydayAnchors}
+            onClick={() => changeListView(true)}
+          >
+            Kommt mir bekannt vor
+          </button>
+        </div>
+        {viewPreferenceNotSaved && (
+          <p role="status">
+            Diese Ansicht gilt für diesen Besuch. Dein Browser konnte die
+            Auswahl nicht speichern.
+          </p>
+        )}
         <div className="topic-quick-filter">
           <label htmlFor="topic-quick-filter">Schnellfilter</label>
           <input
@@ -434,6 +502,11 @@ export function TopicBrowser({
                     </button>
                   )}
                   <button
+                    className={
+                      showEverydayAnchors
+                        ? "topic-everyday-anchor-button"
+                        : undefined
+                    }
                     aria-pressed={item.id === selectedId}
                     onClick={() => {
                       setSelectedId(item.id);
@@ -441,7 +514,7 @@ export function TopicBrowser({
                     }}
                     type="button"
                   >
-                    {item.title}
+                    {showEverydayAnchors ? item.everydayAnchor : item.title}
                   </button>
                   {checkIds.has(item.id) &&
                     learnedTopicIds.includes(item.id) && (
@@ -509,6 +582,19 @@ export function TopicBrowser({
               Zur Themenliste
             </button>
             <h2 id="topic-title">{selectedItem.title}</h2>
+
+            <div
+              className="topic-everyday-anchor"
+              role="note"
+              aria-label="Kommt mir bekannt vor"
+            >
+              <p className="topic-everyday-anchor-label">
+                Kommt mir bekannt vor
+              </p>
+              <p className="topic-everyday-anchor-text">
+                {selectedItem.everydayAnchor}
+              </p>
+            </div>
 
             {topicSections.map(([heading, text]) => (
               <section key={heading}>

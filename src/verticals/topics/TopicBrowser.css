@@ -192,6 +192,55 @@
   font-size: 0.9rem;
 }
 
+.topic-list-view {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem;
+  margin-top: 1rem;
+}
+
+.topic-list-view button {
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 0.2rem;
+  background: transparent;
+  color: var(--body-ink);
+  cursor: pointer;
+}
+
+.topic-list-view button:hover,
+.topic-list-view button[aria-pressed="true"] {
+  background: var(--subtle);
+  color: var(--ink);
+}
+
+.topic-actions > .topic-everyday-anchor-button {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.0625rem;
+  font-style: italic;
+}
+
+.topic-browser-detail article .topic-everyday-anchor {
+  margin: 0 0 1.5rem;
+  padding: 0.25rem 0 0.25rem 0.95rem;
+  border-left: 1px solid var(--line);
+}
+
+.topic-browser-detail article .topic-everyday-anchor-label {
+  margin: 0 0 0.45rem;
+  color: var(--muted-ink);
+  font-size: 0.8rem;
+}
+
+.topic-browser-detail article .topic-everyday-anchor-text {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.1875rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
 .topic-quick-filter label {
   color: var(--muted-ink);
 }

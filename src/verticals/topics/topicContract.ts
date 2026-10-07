@@ -39,6 +39,7 @@ export type EditorialMetadata = {
 export type Topic = {
   id: string;
   title: string;
+  everydayAnchor: string;
   content: TopicContent;
   editorial: EditorialMetadata;
   sources: TopicSource[];

@@ -14,6 +14,8 @@ const refreshedTopicIds = new Set([
   "deterministic-agent-verification-gates",
   "agent-protocol-integration",
   "java-ai-applications",
+  "refactorings-and-migrations-with-openrewrite",
+  "technical-documentation-generation",
 ]);
 
 const expandedTopicIds = [
@@ -44,6 +46,40 @@ const expandedTopicIds = [
 ];
 
 it("publishes current development topics with distinct concepts and sources", () => {
+  const invalidAnchors = topics.items
+    .filter((topic) => {
+      const anchor = topic.everydayAnchor;
+      return typeof anchor !== "string" || !anchor.trim().endsWith(".");
+    })
+    .map((topic) => topic.id);
+  expect.soft(invalidAnchors, "Nicht vollständige Alltagsanker").toEqual([]);
+
+  expect
+    .soft(
+      topics.items.find(
+        (item) => item.id === "protect-secrets-and-sensitive-data-with-ai",
+      )?.everydayAnchor,
+    )
+    .toBe("Der Agent pusht meinen API-Key auf GitHub.");
+
+  expect
+    .soft(
+      topics.items.find((item) => item.id === "agent-evals-and-traces")
+        ?.everydayAnchor,
+    )
+    .toBe(
+      "Bei derselben Aufgabe liefert mein Agent mal gute Ergebnisse und mal Murks.",
+    );
+  // Bewusste redaktionelle Bindung: diese Beispiele müssen agentisches Coding adressieren.
+  for (const [id, field, required] of [
+    ["spec-framework-selection", "problem", "geprüften Umsetzung"],
+    ["agent-evals-and-traces", "javaWebUse", "Spring-Endpunkt"],
+    ["refactorings-and-migrations-with-openrewrite", "problem", "Coding-Agent"],
+    ["technical-documentation-generation", "problem", "Coding-Agent"],
+  ] as const) {
+    const topic = topics.items.find((item) => item.id === id)!;
+    expect.soft(topic.content[field], id).toContain(required);
+  }
   // Redaktionelle Abnahme: Die vereinbarten neuen Aspekte je Thema absichern.
   for (const [id, concepts] of [
     [
@@ -114,6 +150,14 @@ it("publishes current development topics with distinct concepts and sources", ()
       )
       .toBe(true);
     if (id === "agent-evals-and-traces") {
+      expect
+        .soft(
+          topic.sources.map((source) => source.url),
+          id,
+        )
+        .toContain(
+          "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+        );
       expect.soft(topic.editorial, id).toMatchObject({
         publishedAt: "2026-10-07",
         reviewDueAt: "2027-01-07",
@@ -182,6 +226,7 @@ function completeItem(id: string): Topic {
   return {
     id,
     title: "Testthema",
+    everydayAnchor: "Mein Agent hat sich verrannt.",
     content: {
       language: "de",
       problem: "Problem",
@@ -527,7 +572,7 @@ describe("public content topics", () => {
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
-  it("preserves the agreed order of the original twenty-six topics", () => {
+  it("uses the agreed problem-first order of all forty-nine topics", () => {
     const newIds = [
       "coding-agent-context-and-trust-boundaries",
       "protect-secrets-and-sensitive-data-with-ai",
@@ -535,32 +580,55 @@ describe("public content topics", () => {
     ];
     const ids = topics.items.map((item) => item.id);
 
-    const expandedIds = new Set(expandedTopicIds);
-    expect(ids.filter((id) => !expandedIds.has(id))).toEqual([
+    expect(ids).toEqual([
       "human-ai-responsibility",
       "problem-understanding-and-change-boundaries",
+      "domain-language-and-complexity",
+      "goal-discovery-and-stop-criteria",
+      "design-and-legacy-specification",
+      "standards-and-constraint-rationale",
+      "llm-fallibility-and-counterchecks",
+      "project-documentation-and-checklists",
+      "open-knowledge-format",
       "agents-md",
       "ears-requirements",
+      "research-plan-tasks",
+      "context-selection-and-reset",
+      "java-ai-applications",
+      "web-security-baseline",
       "coding-agent-context-and-trust-boundaries",
       "protect-secrets-and-sensitive-data-with-ai",
-      "research-plan-tasks",
+      "local-model-stack-evaluation",
+      "coding-agent-interface-selection",
+      "spec-framework-selection",
       "spec-driven-development-openspec",
-      "parallel-agent-task-boundaries",
-      "git-worktrees-for-isolated-changes",
-      "versioned-library-docs-with-context7",
-      "specialized-subagents-and-ownership",
-      "agent-context-handoffs",
-      "agent-tool-and-mcp-permissions",
+      "agent-skills-and-commands",
+      "codegraphs-for-large-repos",
+      "ui-design-system-workflow",
       "module-boundaries-and-public-interfaces",
       "tdd-for-domain-behavior",
       "archunit-for-java-architecture",
+      "automation-value-and-gates",
+      "parallel-agent-task-boundaries",
+      "git-worktrees-for-isolated-changes",
+      "versioned-library-docs-with-context7",
+      "token-efficiency-tools",
+      "specialized-subagents-and-ownership",
+      "agent-context-handoffs",
+      "agent-tool-and-mcp-permissions",
+      "agent-protocol-integration",
       "deterministic-agent-verification-gates",
+      "agent-evals-and-traces",
       "refactorings-and-migrations-with-openrewrite",
       "playwright-for-web-flows",
       "web-xss-and-safe-dom",
+      "technical-documentation-generation",
       "dependency-security-assessment",
       "review-and-accept-ai-generated-changes",
       "compare-parallel-and-serial-agent-work",
+      "bug-triage-and-pr-automation",
+      "coding-harness-design",
+      "model-and-api-lifecycle",
       "focused-git-commits",
     ]);
     expect(new Set(ids).size).toBe(ids.length);
@@ -631,9 +699,9 @@ describe("public content topics", () => {
           "human-ai-responsibility",
           "problem-understanding-and-change-boundaries",
           "agents-md",
+          "research-plan-tasks",
           "coding-agent-context-and-trust-boundaries",
           "protect-secrets-and-sensitive-data-with-ai",
-          "research-plan-tasks",
           "tdd-for-domain-behavior",
           "review-and-accept-ai-generated-changes",
         ],

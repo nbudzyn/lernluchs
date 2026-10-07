@@ -13,6 +13,13 @@ Engineering“ bleiben unübersetzt. Themen sind knapp, konkret und anwendungsna
 Jedes Thema beantwortet mindestens: Welches Problem löst es? Was ist das Kernkonzept? Wo würde es in Java-/Web-Entwicklung eingesetzt?
 Welche Grenze oder welches Gegenbeispiel ist wichtig?
 
+Jedes Thema enthält außerdem einen festen Alltagsanker (`everydayAnchor`, siehe
+[Glossar](../product/glossary.md#alltagsanker)): eine konkrete Alltagssituation
+aus Lernendensicht in umgangssprachlichem Ton, ohne vorweggenommene Lösung und
+mit Punkt am Satzende. Der Alltagsanker bleibt am Thema in `topics.ts`; er ist
+keine persönliche Eingabe und wird in beiden Listenansichten vom Schnellfilter
+durchsucht.
+
 ## Pflichtmetadaten
 
 Jeder veröffentlichte Inhalt besitzt eine dauerhafte ID und mindestens:

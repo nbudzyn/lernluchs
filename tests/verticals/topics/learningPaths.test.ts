@@ -8,19 +8,19 @@ const coreTopicIds = [
   "problem-understanding-and-change-boundaries",
   "agents-md",
   "ears-requirements",
+  "research-plan-tasks",
   "coding-agent-context-and-trust-boundaries",
   "protect-secrets-and-sensitive-data-with-ai",
-  "research-plan-tasks",
   "spec-driven-development-openspec",
+  "module-boundaries-and-public-interfaces",
+  "tdd-for-domain-behavior",
+  "archunit-for-java-architecture",
   "parallel-agent-task-boundaries",
   "git-worktrees-for-isolated-changes",
   "versioned-library-docs-with-context7",
   "specialized-subagents-and-ownership",
   "agent-context-handoffs",
   "agent-tool-and-mcp-permissions",
-  "module-boundaries-and-public-interfaces",
-  "tdd-for-domain-behavior",
-  "archunit-for-java-architecture",
   "deterministic-agent-verification-gates",
   "refactorings-and-migrations-with-openrewrite",
   "playwright-for-web-flows",
@@ -33,32 +33,32 @@ const coreTopicIds = [
 
 const workflowTopicIds = [
   "domain-language-and-complexity",
-  "project-documentation-and-checklists",
-  "open-knowledge-format",
   "goal-discovery-and-stop-criteria",
   "design-and-legacy-specification",
   "standards-and-constraint-rationale",
   "llm-fallibility-and-counterchecks",
+  "project-documentation-and-checklists",
+  "open-knowledge-format",
   "context-selection-and-reset",
-  "codegraphs-for-large-repos",
-  "token-efficiency-tools",
-  "coding-agent-interface-selection",
-  "agent-skills-and-commands",
-  "spec-framework-selection",
-  "automation-value-and-gates",
   "web-security-baseline",
+  "local-model-stack-evaluation",
+  "coding-agent-interface-selection",
+  "spec-framework-selection",
+  "agent-skills-and-commands",
+  "codegraphs-for-large-repos",
   "ui-design-system-workflow",
+  "automation-value-and-gates",
+  "token-efficiency-tools",
   "technical-documentation-generation",
   "bug-triage-and-pr-automation",
-  "local-model-stack-evaluation",
   "coding-harness-design",
 ];
 
-// Neue Themen sind eigenständig; die relative Reihenfolge des Bestands bleibt.
+// Alle Themen folgen der freigegebenen gemeinsamen Reihenfolge.
 const integrationTopicIds = [
-  "model-and-api-lifecycle",
-  "agent-protocol-integration",
   "java-ai-applications",
+  "agent-protocol-integration",
+  "model-and-api-lifecycle",
 ];
 
 const coreLearningPaths = [
@@ -92,9 +92,9 @@ const coreLearningPaths = [
       "human-ai-responsibility",
       "problem-understanding-and-change-boundaries",
       "agents-md",
+      "research-plan-tasks",
       "coding-agent-context-and-trust-boundaries",
       "protect-secrets-and-sensitive-data-with-ai",
-      "research-plan-tasks",
       "tdd-for-domain-behavior",
       "review-and-accept-ai-generated-changes",
     ],
@@ -102,11 +102,12 @@ const coreLearningPaths = [
   {
     name: pathName(3),
     topicIds: [
-      "git-worktrees-for-isolated-changes",
-      "versioned-library-docs-with-context7",
+      "design-and-legacy-specification",
       "module-boundaries-and-public-interfaces",
       "tdd-for-domain-behavior",
       "archunit-for-java-architecture",
+      "git-worktrees-for-isolated-changes",
+      "versioned-library-docs-with-context7",
       "refactorings-and-migrations-with-openrewrite",
       "playwright-for-web-flows",
     ],
@@ -138,12 +139,22 @@ describe("vollständige Lernpfade", () => {
     expect(ids.filter((id) => integrationTopicIds.includes(id))).toEqual(
       integrationTopicIds,
     );
-    for (const [id, predecessor] of [
-      [integrationTopicIds[0], "coding-agent-interface-selection"],
-      [integrationTopicIds[1], "agent-tool-and-mcp-permissions"],
-      [integrationTopicIds[2], "module-boundaries-and-public-interfaces"],
+    for (const [earlier, later] of [
+      ["design-and-legacy-specification", "ears-requirements"],
+      ["standards-and-constraint-rationale", "ears-requirements"],
+      ["spec-framework-selection", "spec-driven-development-openspec"],
+      ["java-ai-applications", "module-boundaries-and-public-interfaces"],
+      ["web-security-baseline", "web-xss-and-safe-dom"],
+      ["local-model-stack-evaluation", "coding-agent-interface-selection"],
+      ["ui-design-system-workflow", "playwright-for-web-flows"],
+      ["archunit-for-java-architecture", "git-worktrees-for-isolated-changes"],
+      ["versioned-library-docs-with-context7", "token-efficiency-tools"],
+      ["automation-value-and-gates", "parallel-agent-task-boundaries"],
+      ["agent-protocol-integration", "model-and-api-lifecycle"],
     ]) {
-      expect(ids.indexOf(id), id).toBe(ids.indexOf(predecessor) + 1);
+      expect(ids.indexOf(earlier), earlier + " vor " + later).toBeLessThan(
+        ids.indexOf(later),
+      );
     }
     expect(new Set(ids).size).toBe(ids.length);
     expect(ids.filter((id) => coreTopicIds.includes(id))).toEqual(coreTopicIds);
@@ -164,6 +175,7 @@ describe("vollständige Lernpfade", () => {
           "deterministic-agent-verification-gates",
           "agent-protocol-integration",
           "java-ai-applications",
+          "technical-documentation-generation",
         ].includes(id)
           ? "2026-10-07"
           : id === "token-efficiency-tools"
@@ -244,15 +256,15 @@ describe("vollständige Lernpfade", () => {
     expect(selection?.topicIds).toContain("model-and-api-lifecycle");
     expect(selection?.topicIds).toContain("agent-protocol-integration");
     expect(topics.paths?.at(-1)?.topicIds).toEqual([
+      "java-ai-applications",
+      "web-security-baseline",
       "protect-secrets-and-sensitive-data-with-ai",
-      "model-and-api-lifecycle",
+      "module-boundaries-and-public-interfaces",
+      "tdd-for-domain-behavior",
       "agent-tool-and-mcp-permissions",
       "agent-protocol-integration",
-      "module-boundaries-and-public-interfaces",
-      "java-ai-applications",
-      "tdd-for-domain-behavior",
       "agent-evals-and-traces",
-      "web-security-baseline",
+      "model-and-api-lifecycle",
     ]);
     for (const path of topics.paths ?? []) {
       const pathPositions = path.topicIds.map((id) => positions.get(id));
@@ -268,11 +280,12 @@ function pathName(index: number) {
   return topics.paths![index].name;
 }
 const modernizationTopicIds = [
-  "git-worktrees-for-isolated-changes",
-  "versioned-library-docs-with-context7",
+  "design-and-legacy-specification",
   "module-boundaries-and-public-interfaces",
   "tdd-for-domain-behavior",
   "archunit-for-java-architecture",
+  "git-worktrees-for-isolated-changes",
+  "versioned-library-docs-with-context7",
   "refactorings-and-migrations-with-openrewrite",
   "playwright-for-web-flows",
 ];
@@ -287,17 +300,21 @@ it("provides sourced modernization topics in path order", () => {
   ).toEqual(modernizationTopicIds);
 
   for (const id of [
-    modernizationTopicIds[0],
-    modernizationTopicIds[1],
-    modernizationTopicIds[2],
-    modernizationTopicIds[5],
+    "git-worktrees-for-isolated-changes",
+    "versioned-library-docs-with-context7",
+    "module-boundaries-and-public-interfaces",
+    "refactorings-and-migrations-with-openrewrite",
   ]) {
     const item = topics.items.find((candidate) => candidate.id === id);
     expect(item).toBeDefined();
     expect(item?.sources.some((source) => source.origin === "primary")).toBe(
       true,
     );
-    expect(item?.editorial.reviewedAt).toBe("2026-09-27");
+    expect(item?.editorial.reviewedAt, id).toBe(
+      id === "refactorings-and-migrations-with-openrewrite"
+        ? "2026-10-07"
+        : "2026-09-27",
+    );
   }
   expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
 });

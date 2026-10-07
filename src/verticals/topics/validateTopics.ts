@@ -76,6 +76,8 @@ export function validateTopics(candidate: Topics): TopicValidation {
 
     if (
       !hasText(item.title) ||
+      typeof item.everydayAnchor !== "string" ||
+      !hasText(item.everydayAnchor) ||
       !hasText(item.content.problem) ||
       !hasText(item.content.coreConcept) ||
       !hasText(item.content.javaWebUse) ||

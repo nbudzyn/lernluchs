@@ -35,6 +35,7 @@ describe("App", () => {
 
   it("keeps an independently selected topic and path filter through a check", () => {
     render(<App />);
+    fireEvent.click(screen.getByRole("button", { name: "Themen" }));
     fireEvent.click(
       screen.getByRole("button", {
         name: "Mensch und KI: Verantwortung bleibt menschlich",

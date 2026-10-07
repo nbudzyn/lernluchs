@@ -19,6 +19,10 @@ it("renders its guidance without topic data or callbacks", () => {
     "Klick auf einen Lernpfad filtert auf diesen einen Lernpfad",
     "startet einen Lerncheck",
     "Thema gelernt",
+    "„Kommt mir bekannt vor“ zeigt Situationen aus deinem Alltag als Randnotiz beim Thema",
+    "Über der Liste wechselst du zwischen Themen und „Kommt mir bekannt vor“",
+    "Beim ersten Besuch ist „Kommt mir bekannt vor“ ausgewählt. Dein Browser merkt sich deine letzte Auswahl.",
+    "Der Schnellfilter durchsucht auch die Texte unter „Kommt mir bekannt vor“ in beiden Ansichten",
   ]) {
     expect(screen.getByText(text)).toBeTruthy();
   }

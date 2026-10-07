@@ -1,10 +1,18 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { TopicBrowser } from "../../../src/verticals/topics/TopicBrowser";
 import { topics } from "../../../src/verticals/topics/topics";
 
-afterEach(cleanup);
+const viewPreferenceKey = "lernluchs.topic-list-view.v1";
+
+// Existing title workflows deliberately exercise the saved title preference.
+beforeEach(() => localStorage.setItem(viewPreferenceKey, "topics"));
+afterEach(() => {
+  cleanup();
+  vi.restoreAllMocks();
+  localStorage.clear();
+});
 
 function filterSummary() {
   const summary = document.querySelector(".path-filter-summary");
@@ -17,6 +25,79 @@ function filterSummary() {
 }
 
 describe("TopicBrowser", () => {
+  it("defaults to anchors and restores only valid local list preferences without touching other data", () => {
+    localStorage.setItem("synthetic-learning-state", "unchanged");
+    localStorage.setItem("unrelated", "unchanged");
+    for (const stored of [null, "topics", "everydayAnchors", "invalid"]) {
+      if (stored === null) localStorage.removeItem(viewPreferenceKey);
+      else localStorage.setItem(viewPreferenceKey, stored);
+      const writes = vi.spyOn(Storage.prototype, "setItem");
+      render(<TopicBrowser />);
+      const initial = stored === "topics" ? "Themen" : "Kommt mir bekannt vor";
+      const next = stored === "topics" ? "Kommt mir bekannt vor" : "Themen";
+      expect(
+        screen
+          .getByRole("button", { name: initial })
+          .getAttribute("aria-pressed"),
+        stored ?? "missing",
+      ).toBe("true");
+      expect(writes).not.toHaveBeenCalled();
+      fireEvent.click(screen.getByRole("button", { name: next }));
+      expect(localStorage.getItem(viewPreferenceKey)).toBe(
+        next === "Themen" ? "topics" : "everydayAnchors",
+      );
+      cleanup();
+      render(<TopicBrowser />);
+      expect(
+        screen.getByRole("button", { name: next }).getAttribute("aria-pressed"),
+      ).toBe("true");
+      expect(writes).toHaveBeenCalledTimes(1);
+      expect(localStorage.getItem("synthetic-learning-state")).toBe(
+        "unchanged",
+      );
+      expect(localStorage.getItem("unrelated")).toBe("unchanged");
+      cleanup();
+      writes.mockRestore();
+    }
+  });
+
+  it("keeps switching usable with blocked storage and clears the notice after a successful retry", () => {
+    const read = vi
+      .spyOn(Storage.prototype, "getItem")
+      .mockImplementation(() => {
+        throw new Error("blocked");
+      });
+    render(<TopicBrowser />);
+    expect(
+      screen
+        .getByRole("button", { name: "Kommt mir bekannt vor" })
+        .getAttribute("aria-pressed"),
+    ).toBe("true");
+    read.mockRestore();
+    const write = vi
+      .spyOn(Storage.prototype, "setItem")
+      .mockImplementation(() => {
+        throw new Error("blocked");
+      });
+    fireEvent.click(screen.getByRole("button", { name: "Themen" }));
+    expect(
+      screen
+        .getByRole("button", { name: "Themen" })
+        .getAttribute("aria-pressed"),
+    ).toBe("true");
+    expect(screen.getByRole("status").textContent).toContain(
+      "Auswahl nicht speichern",
+    );
+    write.mockRestore();
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: "Kommt mir bekannt vor",
+      }),
+    );
+    expect(screen.queryByRole("status")).toBeNull();
+    expect(localStorage.getItem(viewPreferenceKey)).toBe("everydayAnchors");
+  });
+
   it.each([
     ["active", "Aktiv"],
     ["watching", "Unter Beobachtung"],
@@ -409,6 +490,70 @@ describe("TopicBrowser", () => {
     },
   );
 
+  it("keeps selection, search, paths and learning checks when switching to everyday anchors", () => {
+    const topic = topics.items[0];
+    const calls: string[] = [];
+    render(
+      <TopicBrowser
+        items={topics.items.slice(0, 2)}
+        paths={[
+          {
+            name: "Gemeinsamer Pfad",
+            topicIds: topics.items.slice(0, 2).map((item) => item.id),
+          },
+        ]}
+        availableLearningCheckTopicIds={[topic.id]}
+        learnedTopicIds={[topic.id]}
+        onStartLearningCheck={(id, title) => calls.push(id, title)}
+      />,
+    );
+    const titles = screen.getByRole("button", { name: "Themen" });
+    const anchors = screen.getByRole("button", {
+      name: "Kommt mir bekannt vor",
+    });
+    expect(titles.getAttribute("aria-pressed")).toBe("true");
+    expect(anchors.getAttribute("aria-pressed")).toBe("false");
+    fireEvent.click(screen.getByRole("button", { name: topic.title }));
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: `Lernpfade von ${topic.title} filtern`,
+      }),
+    );
+    const input = screen.getByRole("textbox", { name: "Schnellfilter" });
+    fireEvent.change(input, { target: { value: topic.title } });
+    fireEvent.click(anchors);
+    expect(titles.getAttribute("aria-pressed")).toBe("false");
+    expect(anchors.getAttribute("aria-pressed")).toBe("true");
+    const row = screen.getByRole("button", {
+      name: topic.everydayAnchor,
+    });
+    expect(row.getAttribute("aria-pressed")).toBe("true");
+    expect((input as HTMLInputElement).value).toBe(topic.title);
+    expect(filterSummary()).toBe("Gefiltert nach: Gemeinsamer Pfad");
+    expect(
+      screen.getByRole("navigation", { name: "Themen" }).querySelectorAll("li"),
+    ).toHaveLength(1);
+    expect(screen.getByRole("article", { name: topic.title })).toBeTruthy();
+    expect(screen.getByRole("img", { name: "Gelernt" })).toBeTruthy();
+    fireEvent.click(
+      screen.getByRole("button", { name: `Lerncheck starten: ${topic.title}` }),
+    );
+    expect(calls).toEqual([topic.id, topic.title]);
+    fireEvent.click(titles);
+    expect(
+      screen
+        .getByRole("button", { name: topic.title })
+        .getAttribute("aria-pressed"),
+    ).toBe("true");
+    cleanup();
+    render(<TopicBrowser />);
+    expect(
+      screen
+        .getByRole("button", { name: "Themen" })
+        .getAttribute("aria-pressed"),
+    ).toBe("true");
+  });
+
   it("shows the complete topic after a user selects it", () => {
     render(<TopicBrowser />);
 
@@ -424,6 +569,18 @@ describe("TopicBrowser", () => {
       }),
     ).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Problem" })).toBeTruthy();
+    const article = screen.getByRole("article");
+    const note = screen.getByRole("note", { name: "Kommt mir bekannt vor" });
+    expect(note.textContent).toContain(topics.items[0].everydayAnchor);
+    const blocks = Array.from(article.children);
+    expect(blocks.indexOf(note)).toBe(
+      blocks.indexOf(
+        screen.getByRole("heading", {
+          name: topicTitle("human-ai-responsibility"),
+        }),
+      ) + 1,
+    );
+    expect(note.nextElementSibling?.textContent).toContain("Problem");
     expect(
       screen.getByText(
         "KI-Ausgaben können plausibel wirken, obwohl die KI falsche Annahmen über den Kontext getroffen hat oder Risiken und Folgen falsch eingeschätzt hat.",
@@ -609,3 +766,176 @@ function sourceTitle(id: string, index: number) {
 function pathName(index: number) {
   return topics.paths![index].name;
 }
+
+const fields = [
+  "title",
+  "everydayAnchor",
+  "problem",
+  "coreConcept",
+  "javaWebUse",
+  "boundary",
+] as const;
+const items = fields.map((field, index) => ({
+  ...topics.items[0],
+  id: `search-${index}`,
+  title: field === "title" ? "KONZEPT DER Suche" : `Thema ${index}`,
+  everydayAnchor:
+    field === "everydayAnchor"
+      ? "KONZEPT DER Suche"
+      : "Mein Agent hat sich verrannt.",
+  content: {
+    ...topics.items[0].content,
+    problem: field === "problem" ? "KONZEPT DER Suche" : "Problem",
+    coreConcept: field === "coreConcept" ? "KONZEPT DER Suche" : "Konzept",
+    javaWebUse: field === "javaWebUse" ? "KONZEPT DER Suche" : "Anwendung",
+    boundary: field === "boundary" ? "KONZEPT DER Suche" : "Grenzen",
+  },
+}));
+
+function search(value: string) {
+  fireEvent.change(screen.getByRole("textbox", { name: "Schnellfilter" }), {
+    target: { value },
+  });
+}
+
+function visibleTitles() {
+  return Array.from(
+    screen.getByRole("navigation", { name: "Themen" }).querySelectorAll("li"),
+  ).map((row) => row.textContent);
+}
+
+describe("Schnellfilter", () => {
+  it("clears only text with Escape in the field, preserving the path and focus", () => {
+    render(
+      <TopicBrowser
+        items={items}
+        paths={[{ name: "Suchpfad", topicIds: [items[0].id, items[1].id] }]}
+      />,
+    );
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: `Lernpfade von ${items[0].title} filtern`,
+      }),
+    );
+    search("Thema 1");
+    const input = screen.getByRole("textbox", {
+      name: "Schnellfilter",
+    }) as HTMLInputElement;
+    input.focus();
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(input.value).toBe("Thema 1");
+    fireEvent.keyDown(input, { key: "Escape" });
+    expect(input.value).toBe("");
+    expect(document.activeElement).toBe(input);
+    expect(visibleTitles()).toEqual(
+      items.slice(0, 2).map((item) => item.title),
+    );
+    expect(
+      screen.getByRole("region", { name: "Aktive Lernpfade" }),
+    ).toBeTruthy();
+    fireEvent.keyDown(input, { key: "Escape" });
+    expect(visibleTitles()).toHaveLength(2);
+    search("Thema 1");
+    const topic = screen.getByRole("button", { name: "Thema 1" });
+    topic.focus();
+    fireEvent.keyDown(topic, { key: "Escape" });
+    expect(input.value).toBe("Thema 1");
+  });
+
+  it("matches literal case-insensitive substrings in every field in both list views", () => {
+    for (const field of fields) {
+      for (const view of ["Themen", "Kommt mir bekannt vor"]) {
+        render(
+          <TopicBrowser items={[items[fields.indexOf(field)]]} paths={[]} />,
+        );
+        fireEvent.click(screen.getByRole("button", { name: view }));
+        const dataset = `${field} / ${view}`;
+        search("zept d");
+        expect.soft(visibleTitles(), dataset).toHaveLength(1);
+        search("zept der Suche!");
+        expect.soft(visibleTitles(), dataset).toEqual([]);
+        expect
+          .soft(screen.queryByText("Keine Themen gefunden."), dataset)
+          .toBeTruthy();
+        search("zept der");
+        expect.soft(visibleTitles(), dataset).toHaveLength(1);
+        search("");
+        expect.soft(visibleTitles(), dataset).toHaveLength(1);
+        expect
+          .soft(
+            screen.queryByRole("button", { name: "Filter aufheben" }),
+            dataset,
+          )
+          .toBeNull();
+        cleanup();
+      }
+    }
+  });
+
+  it("uses the complete literal text within one field and excludes sources and metadata", () => {
+    render(<TopicBrowser items={items} paths={[]} />);
+    search("zept d");
+    expect(visibleTitles()).toEqual(items.map((item) => item.title));
+    for (const query of [
+      "Konzept Suche",
+      "Problem Konzept",
+      " Suche ",
+      items[0].sources[0].url,
+      items[0].sources[0].title,
+      items[0].editorial.reviewedAt,
+      items[0].id,
+    ]) {
+      search(query);
+      expect(visibleTitles()).toEqual([]);
+    }
+  });
+
+  it("intersects with path filters and clears both even with no results", () => {
+    const paths = [{ name: "Suchpfad", topicIds: [items[0].id, items[1].id] }];
+    render(<TopicBrowser items={items} paths={paths} />);
+    search("zept d");
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: `Lernpfade von ${items[0].title} filtern`,
+      }),
+    );
+    expect(visibleTitles()).toEqual(
+      items.slice(0, 2).map((item) => item.title),
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Suchpfad" }));
+    search("Thema 4");
+    expect(visibleTitles()).toEqual([]);
+    search("");
+    expect(visibleTitles()).toHaveLength(2);
+    search("unauffindbar");
+    expect(
+      screen.getAllByRole("button", { name: "Filter aufheben" }),
+    ).toHaveLength(1);
+    fireEvent.click(screen.getByRole("button", { name: "Filter aufheben" }));
+    expect(
+      (
+        screen.getByRole("textbox", {
+          name: "Schnellfilter",
+        }) as HTMLInputElement
+      ).value,
+    ).toBe("");
+    expect(visibleTitles()).toEqual(items.map((item) => item.title));
+    expect(
+      screen.queryByRole("region", { name: "Aktive Lernpfade" }),
+    ).toBeNull();
+  });
+
+  it("keeps matching details, replaces excluded details with help, and does not reopen them", () => {
+    render(<TopicBrowser items={items} paths={[]} />);
+    fireEvent.click(screen.getByRole("button", { name: "Thema 1" }));
+    search("zept d");
+    expect(screen.getByRole("article", { name: "Thema 1" })).toBeTruthy();
+    search("Thema 4");
+    expect(screen.queryByRole("article")).toBeNull();
+    expect(
+      screen.getByRole("region", { name: "Hilfe zu Themen" }),
+    ).toBeTruthy();
+    search("");
+    expect(screen.queryByRole("article")).toBeNull();
+  });
+});

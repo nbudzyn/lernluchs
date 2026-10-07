@@ -11,6 +11,7 @@ describe("topic glossary", () => {
       ["Fragenpool", "Question pool"],
       ["Fragenpools", "Question pools"],
       ["Themen", "Topics"],
+      ["Alltagsanker", "Everyday anchor"],
       ["Thema", "Topic"],
       ["Lernpfad", "Learning path"],
       ["Primärquelle", "Primary source"],
@@ -32,6 +33,11 @@ describe("topic glossary", () => {
         .soft(entry?.match(/^\*\*Englisch:\*\* .+$/gm), heading)
         .toEqual([`**Englisch:** ${english}`]);
     }
+    const anchorEntry = glossary
+      .split("## Alltagsanker\n")[1]
+      ?.split(/\n## /)[0];
+    expect(anchorEntry).toContain("**GUI:** Kommt mir bekannt vor");
+    expect(anchorEntry).toContain("**Code:** everydayAnchor");
     const definitions = glossary.replace(/^\*\*Nicht verwenden:\*\*.*$/gm, "");
     expect(
       definitions.match(

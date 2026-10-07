@@ -7,25 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Einstieg über Problem, in denen sich der Lernende sofort wiederfindet
-
-- Zu jedem Thema ein "persönliches Problem" in griffiger Frageform (ich-Form) formulieren. 
-- Rechts direkt unter der Überschrift könnte das "persönliche Problem" als erstes darstellt werden. Über dem Rest, deutlich als *persönliche* Angabe herausgestellt. Die grafische Darstellung soll der UI-Sprache nicht widersprechen, sondern weiterhin analog eingebunden sein. Der Lernende soll mit dem Problem einen Anker finden, an dem er sich festhalten kann, um von seiner eigenen Erfahrung her das Thema zu erschließen.
-  - Mach dazu erst einen oder mehrere GUI-Entwürfe!
-- In der Themenliste kann man switchen zwischen der Anzeige wie bisher und der Anzeige mit den "persönlichen Problemen" an Stelle der bisherigen Überschriften.
-  - Oben über der Tabelle eine Schalten - Default ist die bisherige Ansicht.
-  - In der Liste die "persönlichen Probleme" auch in der grafischen Darstellung (Schriftart...), wie "persönliche Probleme" auf der rechten Seite dargestellt werden? Oder etwas gemäßigt?
-- Die Formulierung "Problem" oder "persönliches Problem" soll in der GUI nicht erscheinen - außer dort, wo jetzt schon "Problem" steht. Wir wollen den Lernenden abholen, aber nicht "Probleme aufdrücken". 
-  - Idee: Der User erkennt seine eigenen Probleme sofort und kann sich drauf stürzen
-- Legende in der Hilfe ergänzen.
-- Schnellfilter soll auch die "persönlichen Probleme" mit durchsuchen!
-
-Vor der Umsetzung:
-- Zu Beginn "Grilling", damit die Spec 95% verstanden ist.
-- GUI-Entwürfe zeigen
-- Liste einiger "persönlicher Probleme" für ausgewählte Themen zeigen und Sprache mit dem Entwickler abstimmen, - erst dann die "persönlichen Probleme" für alle Themen ermitteln und auch die vor der Entwicklung noch einmal dem Entwickler zeigen.
-
-
 ## Node 24 für Entwicklung und CI vereinheitlichen
 
 Die derzeit verwendete Node-Version `25.9.0` liegt außerhalb der unterstützten Versionen mehrerer Entwicklungsabhängigkeiten.

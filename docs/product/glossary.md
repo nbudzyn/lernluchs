@@ -5,7 +5,8 @@ behauptet nicht, dass die Funktion bereits umgesetzt ist. Neue Stories
 präzisieren Begriffe bei Bedarf in ihrer Spec.
 
 Die deutschen und englischen Begriffe gelten für Oberfläche, Code und aktuelle
-Vorgaben. „Nicht verwenden“ nennt bisherige oder unerwünschte Synonyme, die nur
+Vorgaben; eine ausdrücklich angegebene GUI-Beschriftung gilt für die Oberfläche.
+„Nicht verwenden“ nennt bisherige oder unerwünschte Synonyme, die nur
 hier zur Abgrenzung aufgeführt werden. Technische Standardbegriffe und fremde
 Produkt- oder Quellenbezeichnungen sind davon ausgenommen. Ein bestehender
 Speicherschlüssel bleibt als Kompatibilitätsvertrag erhalten.
@@ -53,6 +54,32 @@ heißen sie `questionPools`; ihre gemeinsame Validierung heißt `validateQuestio
 
 Die fachliche Vertikale für den versionierten, öffentlich lesbaren Bestand an Themen, Quellen und redaktionellen Metadaten sowie
 deren Anzeige. Sie enthält keinen persönlichen Lernstand und wird nicht durch Benutzereingaben verändert.
+
+## Alltagsanker
+
+**Englisch:** Everyday anchor
+
+**Code:** everydayAnchor
+
+**GUI:** Kommt mir bekannt vor
+
+**Nicht verwenden:** persönliches Problem, persönlicher Anker, Einstiegsfrage, personalAnchor.
+
+„Kommt mir bekannt vor“ beschriftet die Randnotiz und die alternative
+Listenansicht. In Code und fachlicher Dokumentation heißt das Konzept
+Alltagsanker / Everyday anchor.
+
+Eine feste, redaktionell formulierte Alltagssituation aus Sicht des Lernenden,
+in der er sich wiedererkennen kann. Der Alltagsanker benennt eine konkrete
+Schwierigkeit oder Unsicherheit in umgangssprachlichem Ton, ohne die Lösung
+vorwegzunehmen. Er steht als zurückhaltende Randnotiz beim Thema und kann in der
+Themenliste anstelle der fachlichen Überschrift angezeigt werden. Der
+Schnellfilter durchsucht ihn in beiden Listenansichten. Alltagsanker sind
+öffentliche Themeninhalte, keine persönlichen Eingaben oder gespeicherten
+Nutzererfahrungen. Beim ersten Besuch zeigt die Liste Alltagsanker. Die Wahl
+zwischen „Themen“ und „Kommt mir bekannt vor“ wird als lokale Anzeigepräferenz
+im Browser gespeichert und beim erneuten Laden wiederhergestellt; der Lernstand
+bleibt davon unabhängig.
 
 ## Kompetenzprofil
 

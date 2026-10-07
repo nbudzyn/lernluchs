@@ -6,8 +6,12 @@ Importregeln werden mit dependency-cruiser als Buildfehler geprüft.
 ## Bestehende Vertikale: Themen
 
 Die Vertikale Themen verantwortet den versionierten, öffentlich lesbaren Bestand
-aus Themen, Quellen und Aktualitätsmetadaten sowie dessen Anzeige. Sie enthält
-weder Fragen noch persönlichen Zustand. Die Themenliste erhält die IDs der
+aus Themen, Quellen und Aktualitätsmetadaten sowie dessen Anzeige. Der öffentliche
+Bestand enthält weder Fragen noch persönlichen Lernstand. Die Anzeige verantwortet
+zusätzlich die lokale Listenpräferenz (`lernluchs.topic-list-view.v1`): erster
+Besuch mit Alltagsankern, danach Wiederherstellung der ausdrücklichen Auswahl.
+Die Präferenz ist vom Lernstand getrennt und wird ausschließlich im Browser
+gespeichert. Die Themenliste erhält die IDs der
 verfügbaren Lernchecks und der gelernten Themen über ihre öffentliche
 Komponentenschnittstelle. Ihr öffentlicher Einstiegspunkt exportiert die
 Themenliste. Sie verantwortet auch den Browser-Rückweg aus schmalen Themen- und
@@ -18,7 +22,7 @@ Verlaufseinträge. Der Vorwärtsbutton behält sein natives Verhalten.
 
 ## Bestehende Vertikale: Hilfe
 
-Die Vertikale Hilfe besitzt die knappe Einführung zu Symbolen und Lernpfad-Filterung für die Themenansicht. Ihr öffentlicher Einstiegspunkt
+Die Vertikale Hilfe besitzt die knappe Einführung zu Symbolen, Alltagsankern, Listenumschaltung, Schnellfilter und Lernpfad-Filterung für die Themenansicht. Ihr öffentlicher Einstiegspunkt
 exportiert die präsentierende Komponente `TopicHelp` ohne Themen-Daten oder Rückrufvertrag. Die Hilfe importiert weder andere Vertikalen noch
 `shared` oder `app`. Die Abhängigkeit zeigt ausschließlich von Themen nach Hilfe: Themen importiert nur `help/index.ts` und verantwortet selbst, wann die Hilfe rechts oder als mobile Ansicht
 erscheint und wie der Rückweg zur Liste funktioniert. Die gerichtete Ausnahme ist in dependency-cruiser und einem Architekturtest
