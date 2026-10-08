@@ -7,6 +7,21 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Sich überschneidende Themen nach Prüfung zusammenlegen
+Prüfe, welche Themen sich deutlich überschneiden und gibt eine tabellarische Übersicht.
+Stimme mit dem Entwickler ab, welche Themen zusammengelegt werden sollen.
+Beim Zusammenlegen:
+- Themen-Titel und -Anker zusammenlegen
+- Probleme, Beschreibung und Grenzen zusammenlegen, dabei keine Informationen wegfallen lassen
+- Alle Fragen der Fragenpools zusammenfügen, so dass sich am Ende die doppelte Menge von Fragen ergibt (klare Duplikate entfernen); sollte eine Maximalgrenze für die Fragen überschritten sein, dann Grenze erhöhen.
+- Alle Quellen zusammenfügen und sortieren: Podcasts ganz oben bei den Sekundärquellen. Sollte eine Grenze überschritten sein, Grenze erhöhen
+
+Bei einigen Themen (die für sich stehen oder zusammengelegt werden) steht sehr im Vordergrund, dass eine Technologie zu prüfen / abzuwägen sei oder erst nach genauer Abwägung einzusetzen.
+- Im Titel soll die Technologie im Vordergrund stehen, nicht der Prüfbedarf
+- So auf im Anker
+- Das Problem kann gern weiter eingeschränkt werden, so dass klar wird in welche Kontext die Lösung sinnvoll ist
+- Die Beschreibung soll die Prüfung weiterhin erwähnen (solange sie nicht schon im Problem genannt ist). Trotzdem soll der eigentliche Inhalt klar werden und wie er das Problem (bestenfalls) löst.
+
 ## Node 24 für Entwicklung und CI vereinheitlichen
 
 Die derzeit verwendete Node-Version `25.9.0` liegt außerhalb der unterstützten Versionen mehrerer Entwicklungsabhängigkeiten.
