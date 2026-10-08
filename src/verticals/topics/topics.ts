@@ -3,7 +3,7 @@ import type { Topics } from "./topicContract";
 
 // Themenreihenfolge: Einträge hier verschieben. IDs bleiben stabil.
 export const topics: Topics = {
-  version: "14",
+  version: "15",
   items: [
     {
       id: "human-ai-responsibility",
@@ -16,16 +16,16 @@ export const topics: Topics = {
         problem:
           "KI-Ausgaben können plausibel wirken, obwohl die KI falsche Annahmen über den Kontext getroffen hat oder Risiken und Folgen falsch eingeschätzt hat.",
         coreConcept:
-          "Menschen legen Zweck und Grenzen von KI-Anwendungen sowie Prüfkriterien fest. Menschen bewerten KI-Ergebnisse und verantworten die Entscheidungen über den KI-Einsatz und seine Folgen.",
+          "Menschen legen Zweck und Grenzen von KI-Anwendungen sowie Prüfkriterien fest. Menschen bewerten KI-Ergebnisse und verantworten die Entscheidungen über den KI-Einsatz und seine Folgen. Der EU AI Act knüpft Pflichten an Rolle, Einsatzzweck und Risiko: Anbieter entwickeln oder vertreiben ein KI-System, Betreiber setzen es in eigener Verantwortung ein. Im Team werden diese Zuständigkeiten und die nötige KI-Kompetenz für den konkreten Einsatz geklärt.",
         javaWebUse:
-          "Bei einem Java-Webdienst prüft ein Mensch Vorschläge und Berechtigungen von KI-Agenten und prüft Tests und sicherheitsrelevante Änderungen, statt einen Agentenvorschlag ungeprüft zu übernehmen.",
+          "Bei einem Java-Webdienst prüft ein Mensch Vorschläge und Berechtigungen von KI-Agenten und prüft Tests und sicherheitsrelevante Änderungen, statt einen Agentenvorschlag ungeprüft zu übernehmen. Für einen Support-Assistenten legt das Team zusätzlich fest, wer das System bereitstellt und betreibt, wie Nutzer die KI erkennen und wann ein Mensch übernimmt.",
         boundary:
-          "Menschliche Kontrolle ist kein Ritual: Umfang und Form richten sich nach dem Risiko. Eine Antwort eines KI-Modells ist keine Freigabe oder Garantie.",
+          "Menschliche Kontrolle ist kein Ritual: Umfang und Form richten sich nach dem Risiko. Eine Antwort eines KI-Modells ist keine Freigabe oder Garantie. Eine Risikoeinordnung ersetzt nicht die einschlägigen Pflichten; Transparenz und Herkunft von veröffentlichten KI-Inhalten werden im Thema zur Kennzeichnung erklärt.",
       },
       editorial: {
         publishedAt: "2026-09-20",
-        reviewedAt: "2026-09-26",
-        reviewDueAt: "2027-03-20",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -88,6 +88,15 @@ export const topics: Topics = {
           language: "en",
           checkedAt: "2026-09-30",
         },
+        {
+          title: "EU AI Act – Rollen, Risiken und Pflichten",
+          url: "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+          type: "official-publication",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
       ],
     },
     {
@@ -102,14 +111,14 @@ export const topics: Topics = {
         coreConcept:
           "Vor dem Coding klärt ein gezieltes Gespräch Zielgruppe, Nutzen, gewünschtes Ergebnis, Beispiele und bekannte Fakten sowie erlaubten Umfang, Nicht-Ziele, prüfbare Akzeptanzkriterien und ein überprüfbares Ende. Bei Unsicherheit werden die entscheidungsrelevanten Fragen zuerst gestellt; fehlender Nutzen kann zum Abbruch führen.",
         javaWebUse:
-          "Vor einer neuen oder geänderten Spring-API werden betroffene Aufrufer, erlaubte Antworten, Fehlerfälle und Abnahme mit dem Auftraggeber besprochen. API-Vertrag, betroffene Schichten, Sicherheitsgrenzen und Regressionstests halten den Änderungsumfang fest.",
+          "Vor einer neuen oder geänderten Spring-API werden betroffene Aufrufer, erlaubte Antworten, Fehlerfälle und Abnahme mit dem Auftraggeber besprochen. API-Vertrag, betroffene fachliche Module, Sicherheitsgrenzen und Regressionstests halten den Änderungsumfang fest. Ein Interview-Skill wie grill-with-docs kann das Gespräch führen und gemeinsam verwendete Fachbegriffe sowie Entscheidungen in Glossar und ADRs festhalten; wayfinder zerlegt größere Vorhaben in voneinander abhängige Entscheidungen.",
         boundary:
           "Diese Klärung ist kein schwerer Prozess für jeden Tippfehler und keine verpflichtende lange Brainstorming-Runde. Bei kleinen, eindeutig isolierten Korrekturen reicht eine entsprechend kleine Prüfung; ungeklärte Fachregeln dürfen nicht geraten werden.",
       },
       editorial: {
         publishedAt: "2026-09-20",
-        reviewedAt: "2026-10-08",
-        reviewDueAt: "2027-03-20",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -241,6 +250,15 @@ export const topics: Topics = {
           language: "en",
           checkedAt: "2026-09-30",
         },
+        {
+          title: "Matt Pocock Skills – Interview, Glossar, Handoff und Review",
+          url: "https://github.com/mattpocock/skills",
+          type: "repository",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
       ],
     },
     {
@@ -253,16 +271,16 @@ export const topics: Topics = {
         problem:
           "Uneinheitliche Namen und mehrdeutige Bezeichnungen erschweren Änderungen: Menschen und Agenten sprechen scheinbar über dasselbe, meinen aber Verschiedenes.",
         coreConcept:
-          "Ein Team klärt Begriffe im abgegrenzten Fachkontext und nutzt dieselben Namen in Gespräch, Spec, Code und Tests. Verantwortlichkeiten werden so geschnitten, dass die wichtigen Entscheidungen nachvollziehbar bleiben.",
+          "Ein Team klärt Begriffe im abgegrenzten Fachkontext und nutzt dieselben Namen in Gespräch, Spec, Code und Tests. Verantwortlichkeiten werden so geschnitten, dass die wichtigen Entscheidungen nachvollziehbar bleiben. Wiederverwendung vorhandener Funktionen und Schnittstellen hält die Lösung klein. Neue Abstraktionen oder Abhängigkeiten entstehen für einen konkreten Bedarf, nicht vorsorglich.",
         javaWebUse:
-          "In einer Java-Bestellstrecke heißen Status und Aktionen in Controller, Service, Tests und Glossar gleich; ein zu großes Modul wird entlang fachlicher Verantwortungen geteilt.",
+          "In einer Java-Bestellstrecke heißen Status und Aktionen in Controller, Service, Tests und Glossar gleich; ein zu großes Modul wird entlang fachlicher Verantwortungen geteilt. Bei einem Datumsfeld verwendet das Team eine passende vorhandene Browserfunktion, bevor es eine zusätzliche Bibliothek einführt. Ponytail bündelt solche Regeln als Agentenanweisung.",
         boundary:
           "Eine feste Zahl von Klassen, Methoden oder Begriffen ist kein Architekturgesetz. Unterschiedliche Kontexte dürfen denselben Ausdruck verschieden definieren, wenn die Grenze sichtbar ist.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2027-03-27",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -326,6 +344,16 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-09-30",
+        },
+        {
+          title:
+            "Ponytail – vorhandene Lösungen nutzen und unnötigen Code vermeiden",
+          url: "https://github.com/DietrichGebert/ponytail",
+          type: "repository",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
         },
       ],
     },
@@ -430,16 +458,16 @@ export const topics: Topics = {
         problem:
           "Eine pauschale Normenliste oder ein unbegründetes Verbot lenken bei Änderungen vom eigentlichen Risiko ab.",
         coreConcept:
-          "Für den konkreten Einsatz werden passende Anforderungen ausgewählt und mit Zweck, Geltungsbereich und prüfbarem Verhalten verbunden. Einschränkungen nennen die Gefahr, die sie verhindern sollen.",
+          "Für den konkreten Einsatz werden passende Anforderungen ausgewählt und mit Zweck, Geltungsbereich und prüfbarem Verhalten verbunden. Einschränkungen nennen die Gefahr, die sie verhindern sollen. Auch projektspezifische Konventionen sind Referenzen: Das Team benennt ihre verbindliche Fundstelle und den Grund der Regel. Technisch ausdrückbare Regeln werden automatisiert abgesichert.",
         javaWebUse:
-          "Für einen öffentlichen Spring-Endpunkt wird eine passende ASVS-Anforderung zu Zugriffsschutz gewählt und durch einen Integrationstest geprüft.",
+          "Für einen öffentlichen Spring-Endpunkt wird eine passende ASVS-Anforderung zu Zugriffsschutz gewählt und durch einen Integrationstest geprüft. Ein ArchUnit-Test sichert die vereinbarte Modulgrenze: Fachliche vertikale Module greifen nur über freigegebene Schnittstellen aufeinander zu. Ein Format- oder Typcheck sichert weitere festgeschriebene Konventionen.",
         boundary:
           "ASVS ist ein Anforderungskatalog, kein Nachweis, dass ein System sicher ist. Version und der gewählte Prüfumfang müssen zum Projekt passen.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2027-03-27",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -529,6 +557,15 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-09-30",
+        },
+        {
+          title: "ArchUnit User Guide – eigene Architekturregeln ausdrücken",
+          url: "https://www.archunit.org/userguide/html/000_Index.html",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
         },
       ],
     },
@@ -869,16 +906,16 @@ export const topics: Topics = {
         problem:
           "Agenten kennen projektspezifische Befehle, Konventionen und Risiken nicht automatisch und erhalten sie sonst bei jeder Aufgabe uneinheitlich.",
         coreConcept:
-          "AGENTS.md ist eine gezielt gepflegte Markdown-Anweisung im Repository für Setup, Tests, Architekturgrenzen und weitere projektspezifische Besonderheiten.",
+          "AGENTS.md ist eine gezielt gepflegte Markdown-Anweisung im Repository für Setup, Tests, Architekturgrenzen und weitere projektspezifische Besonderheiten. Dauerhafte Projektregeln bleiben hier oder in gezielt verlinkten Referenzen; Verfahren für bestimmte Aufgaben werden als Skills bedarfsgerecht geladen.",
         javaWebUse:
           "In einem Java-/Web-Repository kann die Datei Gradle- oder npm-Prüfbefehle, Modulgrenzen und Regeln für Migrationsdateien nennen.",
         boundary:
-          "Sie ersetzt weder README noch fachliche Spezifikationen und darf keine Geheimnisse enthalten; spezifische Anweisungen für den konkreten Fall sind hilfreicher als ein allgemeines Handbuch.",
+          "Sie ersetzt weder README noch fachliche Spezifikationen und darf keine Geheimnisse enthalten; spezifische Anweisungen für den konkreten Fall sind hilfreicher als ein allgemeines Handbuch. Ein Promptverzeichnis braucht erkennbare Einsatzzwecke und gepflegte Anleitungen; eine Sammlung alter Chat-Prompts wird nicht automatisch zu verbindlichem Projektwissen.",
       },
       editorial: {
         publishedAt: "2026-09-20",
-        reviewedAt: "2026-09-26",
-        reviewDueAt: "2026-12-20",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -1145,12 +1182,12 @@ export const topics: Topics = {
         javaWebUse:
           "Für einen Spring-Fehler werden nur Endpunkt, aufgerufener Service und passende Tests gelesen; nach einem falschen Ansatz wird der geprüfte Stand neu zusammengefasst.",
         boundary:
-          "Durch Compaction können Details verloren gehen. Ein Kontext-Reset ersetzt weder Quellprüfung noch technische Isolation von Dateien, Rechten und Diensten.",
+          "Durch Compaction können Details verloren gehen. Ein Kontext-Reset ersetzt weder Quellprüfung noch technische Isolation von Dateien, Rechten und Diensten. Prompting ist außerdem modellabhängig: Die Leitfäden für Claude Fable 5 und Opus 5 unterscheiden sich etwa bei langen Aufgaben und zusätzlicher Überprüfung. Umfang und gewünschte Antwortlänge passend zum verwendeten Modell formulieren; vereinbarte Pflichtprüfungen bleiben verbindlich.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2026-12-27",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -1223,6 +1260,26 @@ export const topics: Topics = {
           origin: "secondary",
           language: "de",
           checkedAt: "2026-09-30",
+        },
+        {
+          title:
+            "Prompting Claude Fable 5 – Instruktionen, lange Aufgaben und Memory",
+          url: "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
+        {
+          title:
+            "Prompting Claude Opus 5 – Umfang, Antwortlänge und Überprüfung",
+          url: "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
         },
       ],
     },
@@ -1331,6 +1388,151 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-10-03",
+        },
+      ],
+    },
+    {
+      id: "task-based-model-routing",
+      title: "Aufgaben mit Modell-Routing an passende Modelle verteilen",
+      everydayAnchor:
+        "Mein Support-Assistent schickt jede kleine Anfrage an das teuerste Modell und reagiert trotzdem zu langsam.",
+      content: {
+        language: "de",
+        problem:
+          "Ein Java-Supportdienst bearbeitet kurze Standardanfragen und schwierige mehrstufige Fälle mit demselben großen Modell. Die einfachen Fälle verursachen unnötige Kosten und Wartezeit; ein kleines Modell für alles löst die schwierigen Fälle dagegen nicht zuverlässig.",
+        coreConcept:
+          "Modell-Routing ordnet eine Anfrage anhand von Aufgabe, benötigten Fähigkeiten, Qualitätsziel, Latenz und Kosten einem passenden Modell zu. Regeln oder ein Klassifikator wählen die Route; bei unklarer Zuordnung gibt es eine festgelegte Rückfallroute. Jev und Clef sind Beispiele für Decision Models: Sie liefern strukturierte Entscheidungen aus vorgegebenen Optionen statt freier Antwortprosa. Die Anwendung entscheidet, wie sie das Ergebnis verwendet.",
+        javaWebUse:
+          "Vor dem Modellaufruf klassifiziert ein Spring-Dienst Standardauskunft, Dokumentenfrage oder komplexen Toolablauf und wählt den dafür konfigurierten ChatClient. Bei fehlenden Fähigkeiten oder unklarer Route eskaliert er zum stärkeren Modell oder zu einem Menschen. Sensible Anfragen gelangen nur zu freigegebenen Anbietern; repräsentative Aufgaben zeigen, ob Qualität, Kosten und Laufzeit zum Bedarf passen.",
+        boundary:
+          "Routing selbst kostet Zeit und kann die falsche Route wählen. Typkonforme Entscheidungen und hohe Konfidenz sind keine Garantie fachlicher Korrektheit. Bei gleichartigen Aufgaben kann ein einzelnes Modell einfacher sein. Eine Rückfallroute benötigt passende Datenfreigaben und Budgets; Herstellerwerte sind keine zugesicherten Einsparungen im eigenen Dienst.",
+      },
+      editorial: {
+        publishedAt: "2026-10-09",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
+        status: "active",
+      },
+      sources: [
+        {
+          title: "Building Effective Agents – Routing und Evaluator-Optimizer",
+          url: "https://www.anthropic.com/engineering/building-effective-agents",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
+        {
+          title: "RouteLLM – Routing anhand von Präferenzdaten",
+          url: "https://arxiv.org/abs/2406.18665",
+          type: "conference-paper",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
+        {
+          title: "TypeSafe – Jev und strukturierte System-One-Entscheidungen",
+          url: "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+          type: "official-publication",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
+        {
+          title: "Ollama – Clef als Decision Model",
+          url: "https://ollama.com/library/clef",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
+        {
+          title: "IBM – Agent Gateways und Modell-Routing",
+          url: "https://www.ibm.com/think/topics/agent-gateway",
+          type: "reference-site",
+          origin: "secondary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
+        {
+          title: "LLM Routers Explained!!! – 1littlecoder",
+          url: "https://www.youtube.com/watch?v=cdvNTmDIvec",
+          type: "learning-video",
+          origin: "secondary",
+          language: "en",
+          mediaType: "video",
+          duration: "11:10",
+          checkedAt: "2026-10-09",
+        },
+      ],
+    },
+    {
+      id: "ai-content-provenance-and-disclosure",
+      title:
+        "KI-Inhalte mit Herkunftsnachweisen und Kennzeichnung veröffentlichen",
+      everydayAnchor:
+        "Eine Kundin will die Torte aus unserem Flyer bestellen. Die gibt’s gar nicht – das Bild war ein KI-Entwurf, aber das haben wir nicht dazugeschrieben.",
+      content: {
+        language: "de",
+        problem:
+          "Eine Webredaktion veröffentlicht KI-erzeugte Bilder und Texte. Nutzer können ihre Entstehung und Bearbeitung nicht nachvollziehen; beim Export oder Teilen verschwinden einfache Herkunftshinweise aus den Metadaten. Für bestimmte Veröffentlichungen braucht es außerdem eine erkennbare Offenlegung der KI-Beteiligung.",
+        coreConcept:
+          "Content Credentials nach C2PA verknüpfen digitale Inhalte kryptografisch mit signierten Angaben zu Herkunft und Bearbeitung. Wasserzeichen oder Fingerprints können helfen, zugehörige Herkunftsdaten nach entfernten Metadaten wiederzufinden. Eine sichtbare Kennzeichnung erklärt die KI-Beteiligung für Menschen; maschinenlesbare Markierung und sichtbare Offenlegung erfüllen unterschiedliche Aufgaben. Der EU AI Act unterscheidet Anbieter generativer Systeme, die synthetische Ausgaben grundsätzlich maschinenlesbar erkennbar machen müssen, und Betreiber, die etwa Deepfakes und bestimmte Texte zu Angelegenheiten von öffentlichem Interesse offenlegen müssen. Auch die KI-Interaktion, etwa mit einem Chatbot, muss in den einschlägigen Fällen erkennbar sein.",
+        javaWebUse:
+          "Ein Spring-/React-Publikationsablauf bewahrt Herkunftsdaten bei Upload, Bildverarbeitung und Download. Die Redaktion zeigt einen verständlichen Hinweis am betroffenen Inhalt und dokumentiert, wo KI eingesetzt wurde. Ein Support-Chat macht die KI-Interaktion beim ersten Kontakt kenntlich. Anbieter- und Betreiberrolle sowie die Art des Inhalts bestimmen, welche technische Markierung und Offenlegung für den konkreten Einsatz nötig sind.",
+        boundary:
+          "C2PA macht signierte Herkunftsangaben und nachträgliche Veränderungen nachvollziehbar, nicht die Wahrheit des Inhalts. Fehlende Credentials beweisen keinen KI-Ursprung; Wasserzeichen und Detektoren sind nicht unfehlbar. Der EU AI Act verlangt keine pauschale Kennzeichnung jedes KI-unterstützten Textes: Bei Texten von öffentlichem Interesse gilt insbesondere eine Ausnahme nach menschlicher Überprüfung oder redaktioneller Kontrolle, wenn eine Person die redaktionelle Verantwortung trägt. Weitere Ausnahmen und Inhaltsarten sind gesondert einzuordnen. C2PA allein ist kein vollständiger Nachweis der Einhaltung aller Pflichten.",
+      },
+      editorial: {
+        publishedAt: "2026-10-09",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
+        status: "active",
+      },
+      sources: [
+        {
+          title: "C2PA FAQ – Herkunftsnachweise und ihre Grenzen",
+          url: "https://c2pa.org/faqs/",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
+        {
+          title:
+            "EU-Kommission – Transparenzpflichten nach Artikel 50 des EU AI Act",
+          url: "https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act",
+          type: "official-publication",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
+        {
+          title:
+            "YouTube – Offenlegung von KI-Inhalten und Content Credentials",
+          url: "https://support.google.com/youtube/answer/15447836?hl=de",
+          type: "official-guide",
+          origin: "primary",
+          language: "de",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
+        {
+          title:
+            "Die Lehren aus dem C2PA-Debakel – Grenzen der Vertrauenskette",
+          url: "https://www.heise.de/news/Die-Lehren-aus-dem-C2PA-Debakel-Fotonews-der-Woche-39-2025-10672872.html",
+          type: "reference-site",
+          origin: "secondary",
+          language: "de",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
         },
       ],
     },
@@ -1785,16 +1987,16 @@ export const topics: Topics = {
         problem:
           "Ein Agent im Terminal, einer in IntelliJ und einer auf einer Cloud-Plattform können dieselbe Aufgabe übernehmen. Für das Team macht es trotzdem einen Unterschied, wo Code, Werkzeuge und Prüfergebnisse landen und wann jemand eingreifen kann.",
         coreConcept:
-          "Codex, Copilot, Claude Code, Kiro und Junie werden an einer konkreten Aufgabe nach Laufumgebung, Rechten, Review und Kosten verglichen. Junie arbeitet in JetBrains-IDEs und im Terminal. Lokale Ausführung erleichtert die Arbeit mit vorhandenen Tools und dem Debugger; Cloud-Ausführung kann Aufgaben asynchron in einer eingerichteten Umgebung bearbeiten. Gemini Gems sind wiederverwendbare Assistenten, aber kein Ersatz für einen Coding-Workflow.",
+          "Codex, Copilot, Claude Code, Kiro und Junie werden an einer konkreten Aufgabe nach Laufumgebung, Rechten, Review und Kosten verglichen. Junie arbeitet in JetBrains-IDEs und im Terminal. Lokale Ausführung erleichtert die Arbeit mit vorhandenen Tools und dem Debugger; Cloud-Ausführung kann Aufgaben asynchron in einer eingerichteten Umgebung bearbeiten. Gemini Gems sind wiederverwendbare Assistenten, aber kein Ersatz für einen Coding-Workflow. ChatGPT Dots sind ein Beispiel für dauerhaft arbeitende Cloud-Agenten mit eigenen Aufgaben und Erinnerung; sie können auch bei ausgeschaltetem lokalen Rechner weiterarbeiten.",
         javaWebUse:
           "Das Team lässt dieselbe begrenzte Spring-Änderung einmal in seiner IDE und einmal in einer zugelassenen Cloud-Umgebung bearbeiten. Es prüft, ob Build und Tests dort funktionieren, wie Zugangsdaten bereitgestellt werden und wie viel Nacharbeit der Diff verlangt. Entscheidend sind Ergebnis, Datenfluss und Review-Aufwand, nicht die schönste Oberfläche.",
         boundary:
-          "Ein lokales Terminal bedeutet keine lokale Modellverarbeitung: Ein Agent kann Code an einen externen Modellanbieter senden. Eine Cloud-Umgebung ist nur so reproduzierbar wie ihre Einrichtung. Funktionen und Preise ändern sich; Produktnamen ersetzen weder Datenfreigaben noch eigene Messungen.",
+          "Ein lokales Terminal bedeutet keine lokale Modellverarbeitung: Ein Agent kann Code an einen externen Modellanbieter senden. Eine Cloud-Umgebung ist nur so reproduzierbar wie ihre Einrichtung. Funktionen und Preise ändern sich; Produktnamen ersetzen weder Datenfreigaben noch eigene Messungen. Bei Dots hängt der Zugang von der schrittweisen Freischaltung ab; verbundene Anwendungen und der übergebene Kontext bestimmen ihre Handlungsmöglichkeiten.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-10-07",
-        reviewDueAt: "2027-01-07",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -1911,6 +2113,15 @@ export const topics: Topics = {
           origin: "secondary",
           language: "de",
           checkedAt: "2026-09-30",
+        },
+        {
+          title: "OpenAI Docs – Dots für fortlaufende Cloud-Arbeit",
+          url: "https://learn.chatgpt.com/docs/dots",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
         },
       ],
     },
@@ -2123,16 +2334,16 @@ export const topics: Topics = {
         problem:
           "Ein Spring-Migrationsablauf klappt im Chat, beim nächsten Mal fehlen aber die Hälfte der Prüfschritte. Ein riesiger globaler Prompt wäre schwer zu pflegen; ein kleiner, erprobter Skill kann den wiederkehrenden Ablauf greifbar machen.",
         coreConcept:
-          "Agent Skills ist ein offenes Format für Fähigkeiten aus einer SKILL.md-Anleitung und optionalen Ressourcen. Unterstützende Agenten laden die Beschreibung und die benötigten Anweisungen bedarfsgerecht. Ein Slash Command kann einen Skill ausdrücklich anfordern. Welche Werkzeuge und Daten der Agent nutzen darf, wird unabhängig davon festgelegt.",
+          "Agent Skills ist ein offenes Format für Fähigkeiten aus einer SKILL.md-Anleitung und optionalen Ressourcen. Unterstützende Agenten laden die Beschreibung und die benötigten Anweisungen bedarfsgerecht. Ein Slash Command kann einen Skill ausdrücklich anfordern. Welche Werkzeuge und Daten der Agent nutzen darf, wird unabhängig davon festgelegt. Ein wiederverwendbarer Skill kann auch nur gelegentlich gebraucht werden, etwa bei einer Migration. Dauerhafte Projektregeln gehören in AGENTS.md oder CLAUDE.md, das aufgabenspezifische Verfahren in den Skill.",
         javaWebUse:
-          "Nach mehreren erfolgreichen Spring-Migrationen bündelt das Team Vorbereitung, Umsetzung, Tests und Abbruchfälle in einem Skill. Ändert sich die Anleitung, prüfen eigene Evals an repräsentativen Aufgaben, ob der Agent die nötigen Tests noch ausführt und problematische Fälle erkennt. So wird aus einer guten Einzelanweisung ein überprüfter Arbeitsprozess.",
+          "Nach mehreren erfolgreichen Spring-Migrationen bündelt das Team Vorbereitung, Umsetzung, Tests und Abbruchfälle in einem Skill. Ändert sich die Anleitung, prüfen eigene Evals an repräsentativen Aufgaben, ob der Agent die nötigen Tests noch ausführt und problematische Fälle erkennt. So wird aus einer guten Einzelanweisung ein überprüfter Arbeitsprozess. Interview, teach, Handoff und Code-Review aus Matt Pococks Sammlung zeigen unterschiedliche Aufgabenformen. Ein gepflegtes Promptverzeichnis kann als Ausgangspunkt dienen; Einsatzbeschreibung, Ressourcen und Fehlerfälle machen daraus einen verwendbaren Skill.",
         boundary:
           "Das offene Format garantiert nicht, dass jede Oberfläche alle Ressourcen gleich behandelt. Ein Skill sorgt auch nicht für Sicherheit: Fremde Anleitungen und Skripte vor Installation auf Herkunft, Verhalten und benötigte Rechte prüfen. Eine Rollenbeschreibung ersetzt keine konkreten Akzeptanzkriterien.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-10-07",
-        reviewDueAt: "2027-01-07",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -2231,6 +2442,15 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-09-30",
+        },
+        {
+          title: "Matt Pocock Skills – Interview, Glossar, Handoff und Review",
+          url: "https://github.com/mattpocock/skills",
+          type: "repository",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
         },
       ],
     },
@@ -2688,22 +2908,22 @@ export const topics: Topics = {
       id: "archunit-for-java-architecture",
       title: "Java-Architekturregeln mit ArchUnit prüfen",
       everydayAnchor:
-        "Wir haben Schichtgrenzen vereinbart, aber im Code greift trotzdem alles auf alles zu.",
+        "Wir haben fachliche Module vereinbart, aber im Code greift trotzdem alles auf alles zu.",
       content: {
         language: "de",
         problem:
-          "Vereinbarte Paket- und Schichtgrenzen können bei späteren Codeänderungen unbemerkt verletzt werden.",
+          "Fachliche Module wie Bestellung und Versand sollen ihre internen Klassen verbergen. Bei späteren Änderungen entstehen unbemerkt direkte Zugriffe auf diese Interna oder zyklische Abhängigkeiten zwischen den Modulen.",
         coreConcept:
-          "ArchUnit formuliert Architekturregeln als automatisierte Tests über Java-Klassen und ihre Abhängigkeiten.",
+          "ArchUnit formuliert Architekturregeln als automatisierte Tests über Java-Klassen und ihre Abhängigkeiten. Für vertikale Module sichern diese Regeln erlaubte Abhängigkeiten, öffentliche Schnittstellen und die Freiheit von Zyklen ab.",
         javaWebUse:
-          "Ein ArchUnit-Test kann prüfen, dass Web-Controller nicht direkt auf Persistenzklassen zugreifen oder dass definierte Pakete keine Zyklen bilden.",
+          "Ein ArchUnit-Test sichert, dass Versand auf Bestellung nur über deren öffentliche API zugreift. Weitere Regeln verhindern unerlaubte Abhängigkeiten und Zyklen zwischen den fachlichen Modulen; Implementierungsdetails bleiben innerhalb ihres Moduls.",
         boundary:
           "ArchUnit erkennt die formulierten Strukturverstöße, aber weder fachlich falsches Verhalten noch Regeln, die nie als Test beschrieben wurden.",
       },
       editorial: {
         publishedAt: "2026-09-26",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2027-03-27",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -2714,7 +2934,7 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           mediaType: "text",
-          checkedAt: "2026-09-27",
+          checkedAt: "2026-10-09",
         },
         {
           title: "ArchUnit schützt deine Softwarearchitektur vor KI",
@@ -3338,8 +3558,8 @@ export const topics: Topics = {
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2026-12-27",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -3401,6 +3621,15 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-09-30",
+        },
+        {
+          title: "Matt Pocock Skills – Interview, Glossar, Handoff und Review",
+          url: "https://github.com/mattpocock/skills",
+          type: "repository",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
         },
       ],
     },
@@ -3621,16 +3850,16 @@ export const topics: Topics = {
         problem:
           "Der Agent meldet fertig, aber die Tests wurden nicht ausgeführt. Oder die Tests sind grün, während ein Support-Assistent überzeugend falsche Antworten gibt. Für diese beiden Probleme braucht das Team unterschiedliche Prüfungen.",
         coreConcept:
-          "Harness und CI führen feste technische Prüfungen selbst aus und sperren die Übernahme bei Fehlern. Befehle, Exitcodes und Pflichtstatus sind maschinell prüfbar. Evals ergänzen diese Gates um repräsentative Agentenaufgaben und ausdrückliche Bewertungsmaßstäbe für Ergebnisse und Toolabläufe. Eine qualitative Bewertung wird dadurch nachvollziehbar, aber nicht automatisch fehlerfrei.",
+          "Harness und CI führen feste technische Prüfungen selbst aus und sperren die Übernahme bei Fehlern. Befehle, Exitcodes und Pflichtstatus sind maschinell prüfbar. Evals ergänzen diese Gates um repräsentative Agentenaufgaben und ausdrückliche Bewertungsmaßstäbe für Ergebnisse und Toolabläufe. Eine qualitative Bewertung wird dadurch nachvollziehbar, aber nicht automatisch fehlerfrei. Shell-Hooks starten festgelegte Befehle an Ereignissen wie einem Toolaufruf oder Sitzungsende und können einen Schritt bei Fehlern blockieren.",
         javaWebUse:
           "Für einen Spring- und React-Patch laufen Build, Typprüfung, Unit- und Browser-Tests als feste Gates. Ändert der Patch den Support-Agenten, vergleicht das Team zusätzlich dessen Antworten, Quellen und Toolentscheidungen mit einer festgelegten Eval-Suite. Technische Checks und fachliche Mindestkriterien müssen vor der Übernahme erfüllt sein.",
         boundary:
-          "Ein übersprungener oder falsch konfigurierter Check kann grün erscheinen. Auch ein Eval kann am eigentlichen Problem vorbeimessen, etwa nur schöne Formulierungen statt korrekter Quellen bewerten. Das Team prüft daher Testfälle, Bewertungsmaßstäbe und Gate-Konfiguration; grüne Ergebnisse ersetzen kein fachliches Review.",
+          "Ein übersprungener oder falsch konfigurierter Check kann grün erscheinen. Auch ein Eval kann am eigentlichen Problem vorbeimessen, etwa nur schöne Formulierungen statt korrekter Quellen bewerten. Das Team prüft daher Testfälle, Bewertungsmaßstäbe und Gate-Konfiguration; grüne Ergebnisse ersetzen kein fachliches Review. Prompt- oder agentbasierte Hooks liefern modellbasierte Bewertungen und sind keine deterministischen Prüfnachweise. Auch Mods oder eine Vorschau riskanter Befehle ersetzen keine technisch begrenzten Werkzeugrechte.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-10-07",
-        reviewDueAt: "2027-01-07",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -3703,6 +3932,25 @@ export const topics: Topics = {
           language: "en",
           checkedAt: "2026-09-30",
         },
+        {
+          title: "Claude Code Hooks – Ereignisse und feste Shell-Prüfungen",
+          url: "https://code.claude.com/docs/en/hooks-guide",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
+        {
+          title:
+            "Claude Code Playground – Hooks, Konfiguration und Erweiterungsbeispiele",
+          url: "https://github.com/anthropics/claude-code-playground",
+          type: "repository",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
       ],
     },
     {
@@ -3718,14 +3966,14 @@ export const topics: Topics = {
           // Bewusste Textbindung: topics.test.ts sichert die vereinbarten Eval-Aspekte ab.
           "Evals prüfen Agenten an repräsentativen Aufgaben und bekannten Fehlerfällen. Ergebnisqualität und Toolabläufe werden getrennt bewertet. Traces halten Modell- und Werkzeugaufrufe sowie Übergaben fest und helfen, die Stelle eines Fehlers zu finden. Eindeutige Regeln prüft Code; für qualitative Kriterien ergänzen Menschen oder ein LLM-Judge die Bewertung. Wiederholte Läufe unter dokumentierten Bedingungen machen Regressionen nach Änderungen sichtbar.",
         javaWebUse:
-          "Für einen Spring-Endpunkt bearbeitet der Coding-Agent wiederholt klar beschriebene Fehler und Änderungen in isolierten, vergleichbaren Umgebungen. Tests prüfen das erwartete Verhalten und Regressionen; der Diff zeigt, ob der Umfang eingehalten wurde. Traces helfen zu prüfen, welche Dateien und Werkzeuge der Agent genutzt und welche Tests er ausgeführt hat. Nach Modell-, Prompt-, Skill- oder Harness-Wechseln werden dieselben Aufgaben erneut geprüft; Latenz und Kosten werden neben der Qualität verglichen.",
+          "Für einen Spring-Endpunkt bearbeitet der Coding-Agent wiederholt klar beschriebene Fehler und Änderungen in isolierten, vergleichbaren Umgebungen. Tests prüfen das erwartete Verhalten und Regressionen; der Diff zeigt, ob der Umfang eingehalten wurde. Traces helfen zu prüfen, welche Dateien und Werkzeuge der Agent genutzt und welche Tests er ausgeführt hat. Nach Modell-, Prompt-, Skill- oder Harness-Wechseln werden dieselben Aufgaben erneut geprüft; Latenz und Kosten werden neben der Qualität verglichen. Sicherheitsfälle enthalten auch unerwünschte Regelumgehung, Datenweitergabe oder verfälschte Erfolgsmeldungen. Zur Vermeidung von Testdatenkontamination bleiben zusätzliche Aufgaben zurückgehalten und werden erneuert: Eine Aufgabe aus dem Training kann sonst einen irreführend guten Benchmarkwert liefern.",
         boundary:
-          "Ein hoher Gesamtscore kann einzelne kritische Fehler verdecken. Deshalb braucht es ausdrückliche Mindestkriterien und repräsentative Aufgaben statt nur leichter Fälle. Ein LLM-Judge kann selbst falsch urteilen oder längere Antworten bevorzugen; sein Urteil wird mit menschlich bewerteten Beispielen abgeglichen. Traces können sensible Eingaben und Tooldaten enthalten: nur benötigte Daten erfassen und passend schützen. Evals ergänzen technische Tests und menschliches Review.",
+          "Ein hoher Gesamtscore kann einzelne kritische Fehler verdecken. Deshalb braucht es ausdrückliche Mindestkriterien und repräsentative Aufgaben statt nur leichter Fälle. Ein LLM-Judge kann selbst falsch urteilen oder längere Antworten bevorzugen; sein Urteil wird mit menschlich bewerteten Beispielen abgeglichen. Traces können sensible Eingaben und Tooldaten enthalten: nur benötigte Daten erfassen und passend schützen. Evals ergänzen technische Tests und menschliches Review. Forschung zu agentischem Fehlverhalten untersucht gezielte experimentelle Szenarien; daraus lässt sich keine Häufigkeit für den normalen Produktbetrieb ableiten. Ein Herkunftswasserzeichen bereinigt keine kontaminierten Eval-Datensätze.",
       },
       editorial: {
         publishedAt: "2026-10-07",
-        reviewedAt: "2026-10-07",
-        reviewDueAt: "2027-01-07",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -3777,6 +4025,25 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-10-07",
+        },
+        {
+          title:
+            "Agentic Misalignment – unerwünschtes zielgerichtetes Agentenverhalten",
+          url: "https://www.anthropic.com/research/agentic-misalignment",
+          type: "official-publication",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
+        {
+          title: "Proving Test Set Contamination in Black Box Language Models",
+          url: "https://arxiv.org/abs/2310.17623",
+          type: "conference-paper",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
         },
       ],
     },
@@ -4207,16 +4474,16 @@ export const topics: Topics = {
         problem:
           "Ein Agent liefert einen großen, plausiblen Patch. Beim Lesen fällt auf: Der neue Spring-Endpunkt behandelt den Erfolgsfall, überspringt aber eine Berechtigungsprüfung. Je mehr Code erzeugt wird, desto leichter verschwindet so ein Detail im Diff.",
         coreConcept:
-          "Menschen prüfen den Diff gegen Auftrag und Architektur, führen passende Tests und Sicherheitsprüfungen aus und entscheiden anhand der Ergebnisse über die Übernahme. Eine zweite, nicht an der Änderung beteiligte Review-Perspektive ergänzt die Prüfung bei höherem Risiko. Ein Review-Agent kann verdächtige Stellen und mögliche Fehler vorsortieren; seine Hinweise werden am Code nachvollzogen.",
+          "Menschen prüfen den Diff gegen Auftrag und Architektur, führen passende Tests und Sicherheitsprüfungen aus und entscheiden anhand der Ergebnisse über die Übernahme. Eine zweite, nicht an der Änderung beteiligte Review-Perspektive ergänzt die Prüfung bei höherem Risiko. Ein Review-Agent kann verdächtige Stellen und mögliche Fehler vorsortieren; seine Hinweise werden am Code nachvollzogen. Projektkonventionen und die fachliche Spec sind getrennte Review-Perspektiven: Ein Patch kann die Konventionen einhalten und trotzdem den Auftrag verfehlen.",
         javaWebUse:
-          "Das Team begrenzt den Patch auf einen nachvollziehbaren Zweck und prüft Berechtigungen, Fehlerfälle, API-Vertrag und neue Bibliotheken. Review-Aufwand und nötige Nacharbeit gehören zur Bewertung des Agenten: Ein schneller erzeugter Diff bringt wenig, wenn niemand ihn gründlich prüfen kann. Eine unabhängige Person kontrolliert besonders riskante Änderungen zusätzlich.",
+          "Das Team begrenzt den Patch auf einen nachvollziehbaren Zweck und prüft Berechtigungen, Fehlerfälle, API-Vertrag und neue Bibliotheken. Review-Aufwand und nötige Nacharbeit gehören zur Bewertung des Agenten: Ein schneller erzeugter Diff bringt wenig, wenn niemand ihn gründlich prüfen kann. Eine unabhängige Person kontrolliert besonders riskante Änderungen zusätzlich. Ein Review-Skill kann beide Perspektiven mit getrenntem Kontext untersuchen; jeder Befund nennt die relevante Regel oder Anforderung und die betroffene Stelle.",
         boundary:
           "Ein Review-Agent kann Fehler übersehen oder unzutreffende Hinweise geben. Grüne Tests und Scanner decken nur ihre geprüften Fälle ab; auch mehrere Reviews garantieren keine Qualität. Die fachliche Bewertung und die Entscheidung zur Übernahme bleiben bei den verantwortlichen Menschen.",
       },
       editorial: {
         publishedAt: "2026-09-26",
-        reviewedAt: "2026-10-07",
-        reviewDueAt: "2027-01-07",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -4298,6 +4565,15 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-09-30",
+        },
+        {
+          title: "Matt Pocock Skills – Interview, Glossar, Handoff und Review",
+          url: "https://github.com/mattpocock/skills",
+          type: "repository",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
         },
       ],
     },
@@ -4488,16 +4764,16 @@ export const topics: Topics = {
         problem:
           "Ein Agent arbeitet eine Stunde an einer Migration. Dann reißt die Verbindung ab: Welche Änderungen sind gespeichert, welche Tests liefen, und darf er beim nächsten Versuch dieselbe Aktion noch einmal ausführen? Ein guter Prompt beantwortet diese Betriebsfragen nicht.",
         coreConcept:
-          "Ein Harness verbindet Modell, Tools, Kontext, Zustände, Sandbox, Netzwerkregeln und deterministische Prüfungen. Für lange Läufe kommen gespeicherte Sitzungen, Wiederaufnahme, Abbruch und ein Budget für Zeit, Kosten und Versuche hinzu. Die Agents API ist ein Beispiel für verwaltete Sitzungen und Ausführung; in einem eigenen Harness muss das Team die Zuständigkeiten selbst gestalten.",
+          "Ein Harness verbindet Modell, Tools, Kontext, Zustände, Sandbox, Netzwerkregeln und deterministische Prüfungen. Für lange Läufe kommen gespeicherte Sitzungen, Wiederaufnahme, Abbruch und ein Budget für Zeit, Kosten und Versuche hinzu. Die Agents API ist ein Beispiel für verwaltete Sitzungen und Ausführung; in einem eigenen Harness muss das Team die Zuständigkeiten selbst gestalten. Loop Engineering gestaltet den wiederholten Zyklus aus Auftrag, Aktion, Ergebnis und nächstem Schritt. Ein separater Evaluator liefert Rückmeldung; Erfolg, fehlender Fortschritt und Budgetende beenden die Schleife. Graph Engineering macht Schritte, Verzweigungen und Übergänge explizit. Zustand hält den aktuellen Ablauf fest, Memory bewahrt relevantes Wissen über Sitzungen hinweg, Orchestrierung bestimmt, welcher Schritt oder Agent folgt.",
         javaWebUse:
-          "Eine Java-Migration läuft in einem isolierten Checkout mit begrenzten Rechten. Der Harness hält Task-Kennung und prüfbare Zwischenstände fest. Nach einer Unterbrechung liest der Agent den gespeicherten Stand und kontrolliert den tatsächlichen Diff sowie Tests, bevor er weiterarbeitet. Das Budget begrenzt Wiederholungen; externe Schreibaktionen benötigen eine passende Freigabe und einen Umgang mit doppelten Aufrufen.",
+          "Eine Java-Migration läuft in einem isolierten Checkout mit begrenzten Rechten. Der Harness hält Task-Kennung und prüfbare Zwischenstände fest. Nach einer Unterbrechung liest der Agent den gespeicherten Stand und kontrolliert den tatsächlichen Diff sowie Tests, bevor er weiterarbeitet. Das Budget begrenzt Wiederholungen; externe Schreibaktionen benötigen eine passende Freigabe und einen Umgang mit doppelten Aufrufen. Bei einer Migration führen getrennte Schritte Analyse, Änderung und unabhängige Ergebnisbewertung aus. Checkpoints erlauben Wiederaufnahme; ausbleibender Fortschritt führt zur Eskalation. Ein Zielauftrag arbeitet bis zum festgelegten Ergebnis, eine zeitgesteuerte Schleife startet wiederholt einen Auftrag.",
         boundary:
           "Abbruch bedeutet nicht, dass bereits ausgeführte Aktionen rückgängig werden. Eine gespeicherte Agentensitzung ist auch keine Garantie, dass ihre Sandbox noch existiert. Identität und Zugangsdaten bleiben möglichst außerhalb der nicht vertrauenswürdigen Ausführungsumgebung. Ein eigener Harness kostet Wartung und Sicherheitsarbeit; MCP-Zugriff auf OpenRewrite bietet Zugang zu bestehenden Rezepten, keine grundsätzlich neuen Migrationsmöglichkeiten.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-10-07",
-        reviewDueAt: "2027-01-07",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -4596,6 +4872,34 @@ export const topics: Topics = {
           language: "en",
           checkedAt: "2026-09-30",
         },
+        {
+          title:
+            "Building Effective Agents – Schleifen und unabhängige Evaluatoren",
+          url: "https://www.anthropic.com/engineering/building-effective-agents",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
+        {
+          title: "LangGraph – explizite Orchestrierung, Zustand und Memory",
+          url: "https://docs.langchain.com/oss/python/langgraph/overview",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
+        {
+          title: "LangGraph Persistence – Checkpoints und Wiederaufnahme",
+          url: "https://docs.langchain.com/oss/python/langgraph/persistence",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
       ],
     },
     {
@@ -4608,16 +4912,16 @@ export const topics: Topics = {
         problem:
           "Ein Modell oder API-Vertrag kann sich ändern oder abgekündigt werden, obwohl die Anwendung weiterhin dieselbe fachliche Leistung liefern soll.",
         coreConcept:
-          "Modell-IDs, API- und SDK-Versionen, benötigte Tool- und Ausgabeformate sowie Abkündigungen werden als Wartungsgegenstand erfasst. Ein Wechsel wird mit repräsentativen Aufgaben auf Qualität, Regression, Latenz und Kosten geprüft; Freigabekriterien und eine verfügbare Rückfallstrategie gehören vorab dazu.",
+          "Modell-IDs, API- und SDK-Versionen, benötigte Tool- und Ausgabeformate sowie Abkündigungen werden als Wartungsgegenstand erfasst. Ein Wechsel wird mit repräsentativen Aufgaben auf Qualität, Regression, Latenz und Kosten geprüft; Freigabekriterien und eine verfügbare Rückfallstrategie gehören vorab dazu. Beim Wechsel werden auch bisherige Prompt-Annahmen und Harness-Anweisungen an die dokumentierte Modellcharakteristik angepasst.",
         javaWebUse:
           "Ein Java-Team vergleicht für einen Support-Assistenten das bisherige und das Ersatzmodell mit denselben Testfällen: korrekte Toolargumente, gültige strukturierte Ausgabe, fachliche Antworten und Fehlerbehandlung. Erst nach der Auswertung wird die Konfiguration umgestellt; Zugangsdaten und sensible Testdaten bleiben geschützt.",
         boundary:
-          "Eine kompatible API oder ein empfohlenes Ersatzmodell garantiert keine gleiche Antwortqualität. Eine Rückfallstrategie kann auf ein weiterhin verfügbares Modell oder eine begrenzte Funktion führen, aber kein abgeschaltetes Modell wieder verfügbar machen. Anbietertermine und Preview-Funktionen regelmäßig neu prüfen.",
+          "Eine kompatible API oder ein empfohlenes Ersatzmodell garantiert keine gleiche Antwortqualität. Eine Rückfallstrategie kann auf ein weiterhin verfügbares Modell oder eine begrenzte Funktion führen, aber kein abgeschaltetes Modell wieder verfügbar machen. Anbietertermine und Preview-Funktionen regelmäßig neu prüfen. Die Leitfäden für Fable 5 und Opus 5 sind modellbezogene Hinweise; sie heben keine eigenen verbindlichen Tests oder Kontrollpunkte auf.",
       },
       editorial: {
         publishedAt: "2026-10-03",
-        reviewedAt: "2026-10-03",
-        reviewDueAt: "2027-01-03",
+        reviewedAt: "2026-10-09",
+        reviewDueAt: "2027-01-09",
         status: "active",
       },
       sources: [
@@ -4657,6 +4961,26 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-10-03",
+        },
+        {
+          title:
+            "Prompting Claude Fable 5 – Instruktionen, lange Aufgaben und Memory",
+          url: "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
+        },
+        {
+          title:
+            "Prompting Claude Opus 5 – Umfang, Antwortlänge und Überprüfung",
+          url: "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5",
+          type: "official-guide",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-09",
         },
       ],
     },

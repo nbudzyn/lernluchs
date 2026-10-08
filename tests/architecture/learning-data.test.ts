@@ -44,13 +44,21 @@ describe("learning data organization", () => {
       "a0fb39192cd37da1e476380da29b9b97210f20cc7e5d274bb03017bb60fbe5e1",
     );
   });
-  it("preserves all path names and merged memberships", async () => {
+  it("preserves all path names and merged memberships when new topics are added", async () => {
     expect(learningPaths).toHaveLength(14);
     expect(
       await fingerprint(
         learningPaths.map((path) => ({
           ...path,
-          topicIds: [...path.topicIds].sort(),
+          topicIds: path.topicIds
+            .filter(
+              (id) =>
+                ![
+                  "task-based-model-routing",
+                  "ai-content-provenance-and-disclosure",
+                ].includes(id),
+            )
+            .sort(),
         })),
       ),
     ).toBe("4cb98c2f718ebbd53fed95945855e41c27df16b6142b5ce9d58c314381753d42");

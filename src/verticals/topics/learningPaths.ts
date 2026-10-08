@@ -103,6 +103,7 @@ export const learningPaths: LearningPath[] = [
   {
     name: "Coding-Agenten und Spec-Systeme gezielt auswählen",
     topicIds: [
+      "task-based-model-routing",
       "coding-agent-interface-selection",
       "spec-driven-development-openspec",
       "agent-skills-and-commands",
@@ -127,6 +128,7 @@ export const learningPaths: LearningPath[] = [
     name: "Sicherheit und Qualität eines Webprodukts bewerten",
     topicIds: [
       "standards-and-constraint-rationale",
+      "ai-content-provenance-and-disclosure",
       "web-security-baseline",
       "coding-agent-context-and-trust-boundaries",
       "protect-secrets-and-sensitive-data-with-ai",
@@ -140,6 +142,7 @@ export const learningPaths: LearningPath[] = [
   {
     name: "Wiederkehrende Entwicklungsarbeit kontrolliert automatisieren",
     topicIds: [
+      "task-based-model-routing",
       "automation-value-and-gates",
       "parallel-agent-task-boundaries",
       "git-worktrees-for-isolated-changes",
@@ -163,6 +166,8 @@ export const learningPaths: LearningPath[] = [
     name: "KI-Funktionen in Java-Webanwendungen bauen",
     topicIds: [
       "java-ai-applications",
+      "task-based-model-routing",
+      "ai-content-provenance-and-disclosure",
       "web-security-baseline",
       "protect-secrets-and-sensitive-data-with-ai",
       "module-boundaries-and-public-interfaces",

@@ -6,7 +6,7 @@ test("zeigt einen Lernpfad und ein quellengebundenes Thema", async ({
 }) => {
   await page.goto("/");
   const navigation = page.getByRole("navigation", { name: "Themen" });
-  await expect(navigation.locator("li")).toHaveCount(46);
+  await expect(navigation.locator("li")).toHaveCount(48);
 
   await page
     .getByRole("button", {
@@ -64,12 +64,12 @@ test("reads current integration and eval topics through their paths without lear
     .first()
     .click();
   const navigation = page.getByRole("navigation", { name: "Themen" });
-  await expect(navigation.locator("li")).toHaveCount(9);
+  await expect(navigation.locator("li")).toHaveCount(11);
   for (const [title, source, reviewDue] of [
     [
       "Modellwechsel und API-Lebenszyklen absichern",
       "Gemini API – Abkündigungen und Ersatzmodelle",
-      "2027-01-03",
+      "2027-01-09",
     ],
     [
       "Agentensysteme über MCP, A2A und ACP verbinden",
@@ -80,7 +80,7 @@ test("reads current integration and eval topics through their paths without lear
     [
       "Agenten mit Evals und Traces systematisch prüfen",
       "Google ADK – Ergebnisse und Toolabläufe getrennt evaluieren",
-      "2027-01-07",
+      "2027-01-09",
     ],
   ]) {
     await navigation.getByRole("button", { name: title, exact: true }).click();
@@ -107,7 +107,7 @@ test("reads current integration and eval topics through their paths without lear
       exact: true,
     })
     .click();
-  await expect(navigation.locator("li")).toHaveCount(8);
+  await expect(navigation.locator("li")).toHaveCount(9);
   await navigation
     .getByRole("button", { name: evalTitle, exact: true })
     .click();
@@ -199,7 +199,7 @@ for (const path of pathCases) {
   }) => {
     await page.goto("/");
     const navigation = page.getByRole("navigation", { name: "Themen" });
-    await expect(navigation.locator("li")).toHaveCount(46);
+    await expect(navigation.locator("li")).toHaveCount(48);
     await expect(
       page.getByRole("button", {
         name: topicTitle("focused-git-commits"),

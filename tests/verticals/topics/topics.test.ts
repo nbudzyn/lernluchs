@@ -4,6 +4,24 @@ import { topics } from "../../../src/verticals/topics/topics";
 
 import { validateTopics } from "../../../src/verticals/topics/validateTopics";
 
+const updatedTopicIds = new Set([
+  "human-ai-responsibility",
+  "problem-understanding-and-change-boundaries",
+  "domain-language-and-complexity",
+  "standards-and-constraint-rationale",
+  "archunit-for-java-architecture",
+  "agents-md",
+  "context-selection-and-reset",
+  "coding-agent-interface-selection",
+  "agent-skills-and-commands",
+  "agent-context-handoffs",
+  "deterministic-agent-verification-gates",
+  "agent-evals-and-traces",
+  "review-and-accept-ai-generated-changes",
+  "coding-harness-design",
+  "model-and-api-lifecycle",
+]);
+
 const refreshedTopicIds = new Set([
   "coding-harness-design",
   "codegraphs-for-large-repos",
@@ -19,6 +37,8 @@ const refreshedTopicIds = new Set([
 ]);
 
 const expandedTopicIds = [
+  "task-based-model-routing",
+  "ai-content-provenance-and-disclosure",
   "agent-evals-and-traces",
   "model-and-api-lifecycle",
   "agent-protocol-integration",
@@ -46,6 +66,105 @@ const expandedTopicIds = [
 ];
 
 it("publishes current development topics with distinct concepts and sources", () => {
+  // Redaktionelle Abnahme: neue Lösungen und die freigegebenen Ergänzungen.
+  for (const [id, concepts] of [
+    ["task-based-model-routing", ["Routing", "Jev", "Clef", "Rückfall"]],
+    [
+      "ai-content-provenance-and-disclosure",
+      ["C2PA", "Wasserzeichen", "EU AI Act", "Anbieter", "Betreiber"],
+    ],
+    ["human-ai-responsibility", ["EU AI Act", "Einsatzzweck"]],
+    ["agent-skills-and-commands", ["gelegentlich", "Projektregeln"]],
+    [
+      "standards-and-constraint-rationale",
+      ["projektspezifische", "automatisiert", "vertikale", "Modulgrenze"],
+    ],
+    [
+      "archunit-for-java-architecture",
+      ["vertikale", "Bestellung", "öffentliche", "Zyklen"],
+    ],
+    [
+      "coding-harness-design",
+      [
+        "Loop Engineering",
+        "Graph Engineering",
+        "Fortschritt",
+        "Zustand",
+        "Memory",
+        "Orchestrierung",
+      ],
+    ],
+    ["deterministic-agent-verification-gates", ["Hooks", "modellbasierte"]],
+    ["agent-evals-and-traces", ["Testdatenkontamination", "Regelumgehung"]],
+    ["coding-agent-interface-selection", ["Dots"]],
+    ["domain-language-and-complexity", ["Wiederverwendung"]],
+    ["review-and-accept-ai-generated-changes", ["Projektkonventionen"]],
+  ] as const) {
+    const topic = topics.items.find((item) => item.id === id);
+    expect.soft(topic, id).toBeDefined();
+    if (!topic) continue;
+    const text = Object.values(topic.content).join(" ");
+    expect
+      .soft(
+        concepts.filter((concept) => !text.includes(concept)),
+        id,
+      )
+      .toEqual([]);
+    expect.soft(topic.editorial.reviewedAt, id).toBe("2026-10-09");
+  }
+  for (const id of [
+    "problem-understanding-and-change-boundaries",
+    "standards-and-constraint-rationale",
+    "archunit-for-java-architecture",
+  ]) {
+    const topic = topics.items.find((item) => item.id === id)!;
+    expect
+      .soft(Object.values(topic.content).join(" "), id)
+      .not.toMatch(/Schicht/);
+  }
+  for (const id of [
+    "task-based-model-routing",
+    "ai-content-provenance-and-disclosure",
+  ]) {
+    const topic = topics.items.find((item) => item.id === id);
+    if (!topic) continue;
+    expect
+      .soft(
+        topic.sources.some((source) => source.origin === "primary"),
+        id,
+      )
+      .toBe(true);
+    expect
+      .soft(
+        topic.sources.some((source) => source.origin === "secondary"),
+        id,
+      )
+      .toBe(true);
+    expect.soft(topic.title, id).not.toMatch(/prüfen|verstehen/i);
+    expect.soft(topic.everydayAnchor, id).not.toMatch(/prüfen|verstehen/i);
+    expect
+      .soft(
+        topic.sources.every((source) => source.checkedAt === "2026-10-09"),
+        id,
+      )
+      .toBe(true);
+  }
+  const context = topics.items.find(
+    (item) => item.id === "context-selection-and-reset",
+  )!;
+  expect
+    .soft(
+      context.sources.find(
+        (source) =>
+          source.url ===
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5",
+      ),
+    )
+    .toMatchObject({
+      origin: "primary",
+      mediaType: "text",
+      checkedAt: "2026-10-09",
+    });
   for (const [id, title, anchorTerm] of [
     [
       "problem-understanding-and-change-boundaries",
@@ -196,8 +315,9 @@ it("publishes current development topics with distinct concepts and sources", ()
       )
       .toEqual([]);
     expect.soft(topic.editorial, id).toMatchObject({
-      reviewedAt:
-        id === "spec-driven-development-openspec"
+      reviewedAt: updatedTopicIds.has(id)
+        ? "2026-10-09"
+        : id === "spec-driven-development-openspec"
           ? "2026-10-08"
           : id === "model-and-api-lifecycle"
             ? "2026-10-03"
@@ -229,7 +349,7 @@ it("publishes current development topics with distinct concepts and sources", ()
         );
       expect.soft(topic.editorial, id).toMatchObject({
         publishedAt: "2026-10-07",
-        reviewDueAt: "2027-01-07",
+        reviewDueAt: "2027-01-09",
       });
       expect
         .soft(
@@ -529,8 +649,9 @@ describe("public content topics", () => {
     expect(otherTopics).toHaveLength(18);
     expect(otherTopics.map((item) => item.id)).toContain("focused-git-commits");
     for (const item of otherTopics) {
-      const expectedReviewDate =
-        item.id === "parallel-agent-task-boundaries"
+      const expectedReviewDate = updatedTopicIds.has(item.id)
+        ? "2026-10-09"
+        : item.id === "parallel-agent-task-boundaries"
           ? "2026-10-08"
           : refreshedTopicIds.has(item.id)
             ? "2026-10-07"
@@ -591,13 +712,15 @@ describe("public content topics", () => {
         },
         editorial: {
           publishedAt: "2026-09-20",
-          reviewedAt: [
-            "problem-understanding-and-change-boundaries",
-            "spec-driven-development-openspec",
-            "parallel-agent-task-boundaries",
-          ].includes(item.id)
-            ? "2026-10-08"
-            : "2026-09-26",
+          reviewedAt: updatedTopicIds.has(item.id)
+            ? "2026-10-09"
+            : [
+                  "problem-understanding-and-change-boundaries",
+                  "spec-driven-development-openspec",
+                  "parallel-agent-task-boundaries",
+                ].includes(item.id)
+              ? "2026-10-08"
+              : "2026-09-26",
           reviewDueAt: expect.stringMatching(/^202[67]-\d{2}-\d{2}$/),
           status: "active",
         },
@@ -635,8 +758,12 @@ describe("public content topics", () => {
       expect(item.content.boundary.trim()).not.toBe("");
       expect(item.sources.length).toBeGreaterThan(0);
       expect(item.editorial.publishedAt).toBe("2026-09-26");
-      expect(item.editorial.reviewedAt).toBe("2026-09-27");
-      expect(item.editorial.reviewDueAt).toBe("2027-03-27");
+      expect(item.editorial.reviewedAt).toBe(
+        updatedTopicIds.has(item.id) ? "2026-10-09" : "2026-09-27",
+      );
+      expect(item.editorial.reviewDueAt).toBe(
+        updatedTopicIds.has(item.id) ? "2027-01-09" : "2027-03-27",
+      );
       expect(
         item.sources
           .filter((source) => source.mediaType === "text")
@@ -650,7 +777,7 @@ describe("public content topics", () => {
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
-  it("uses the agreed problem-first order of all forty-six topics", () => {
+  it("uses the agreed problem-first order of all published topics", () => {
     const newIds = [
       "coding-agent-context-and-trust-boundaries",
       "protect-secrets-and-sensitive-data-with-ai",
@@ -672,6 +799,8 @@ describe("public content topics", () => {
       "research-plan-tasks",
       "context-selection-and-reset",
       "java-ai-applications",
+      "task-based-model-routing",
+      "ai-content-provenance-and-disclosure",
       "web-security-baseline",
       "coding-agent-context-and-trust-boundaries",
       "protect-secrets-and-sensitive-data-with-ai",
@@ -720,12 +849,16 @@ describe("public content topics", () => {
       expect(item.content.boundary.trim()).not.toBe("");
       expect(item.editorial).toMatchObject({
         publishedAt: "2026-09-26",
-        reviewedAt: refreshedTopicIds.has(item.id)
-          ? "2026-10-07"
-          : "2026-09-27",
-        reviewDueAt: refreshedTopicIds.has(item.id)
-          ? "2027-01-07"
-          : "2027-03-27",
+        reviewedAt: updatedTopicIds.has(item.id)
+          ? "2026-10-09"
+          : refreshedTopicIds.has(item.id)
+            ? "2026-10-07"
+            : "2026-09-27",
+        reviewDueAt: updatedTopicIds.has(item.id)
+          ? "2027-01-09"
+          : refreshedTopicIds.has(item.id)
+            ? "2027-01-07"
+            : "2027-03-27",
         status: "active",
       });
       expect(item.sources.length).toBeGreaterThan(0);

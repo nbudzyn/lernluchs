@@ -1,11 +1,11 @@
 # Produktstand
 
-Lernluchs ist eine öffentliche, statische Lernanwendung für KI-unterstützte Java- und Webentwicklung. Lernende können derzeit 49 Themen in
+Lernluchs ist eine öffentliche, statische Lernanwendung für KI-unterstützte Java- und Webentwicklung. Lernende können derzeit 48 Themen in
 einer gemeinsamen Liste auswählen und deren kurze Inhalte mit kuratierten Quellen und Aktualitätsangaben lesen. Jedes Thema, auch ein
 künftig ergänztes, erhält Quellen nach den [Regeln zur Quellenauswahl](../content/source-selection.md). Die Inhalte werden redaktionell
 geprüft und als versionierte, nur lesbare Themen veröffentlicht.
 
-Für die bisherigen 45 Themen stehen quellengebundene Fragen bereit, auch für die Themen zu Fachsprache, Projektwissen, Git, OKF, Zielklärung,
+Für 42 Themen stehen quellengebundene Fragen bereit, auch für die Themen zu Fachsprache, Projektwissen, Git, OKF, Zielklärung,
 Legacy-Spezifikation, Standards, LLM-Fehlbarkeit, Agentenkontext, Codegraphen, Tokenwerkzeugen, Coding-Agent-Oberflächen, Skills,
 Spec-Frameworks, Automatisierung, Web-Sicherheitsbaselines, parallelen Agentengrenzen, Worktrees, Context7,
 UI-Komponenten mit Penpot und Storybook, Java-API-Dokumentation, Bug-Triage bis zum PR, lokale KI-Stacks, spezialisierte Subagents,
@@ -23,6 +23,8 @@ Lernstand für seine ID wird ignoriert; der Lernstand anderer Themen bleibt erha
 Die drei neuen Themen behandeln Protokollintegration mit MCP, A2A und ACP, Modell- und API-Lebenszyklen sowie KI-Funktionen in Java-Webanwendungen mit Spring AI, LangChain4j und weiteren Integrationsoptionen. Sie besitzen zunächst keine Fragenpools. Ein weiteres Thema erklärt Evals und Traces mit repräsentativen Aufgaben, getrennten Bewertungen von Ergebnissen und Toolabläufen sowie Grenzen von LLM-Judges. Es besitzt ebenfalls keinen Fragenpool und gehört zu den bestehenden Pfaden für Java-KI-Anwendungsbau und kontrollierte Automatisierung. Das Token-Thema unterscheidet Kommandoausgabekompression, Kontextkompression, knappe Prosa und die Vermeidung unnötigen Codes; Quellen für Headroom und Ponytail sowie ein ergänzendes Video sind verfügbar.
 
 Neun bestehende Themen wurden um aktuelle Entwicklungen zu Harness-Sitzungen, Repository-Suche, Spec-Abgleich, Laufumgebungen, Skills, MCP-Revisionen, Java-KI-Versionen, Reviews und Prüf-Gates ergänzt. Quellenprüfdaten werden einzeln gepflegt; die überarbeiteten Themen sind fachlich am 7. Oktober 2026 geprüft.
+
+Zwei weitere Themen lösen die Verteilung unterschiedlicher Aufgaben auf passende Modelle sowie die Veröffentlichung von KI-Inhalten mit Herkunftsnachweisen und Kennzeichnung. Sie besitzen Primär- und Sekundärquellen und ergänzen vier vorhandene Lernpfade in der allgemeinen Themenreihenfolge; neue Fragenpools entstehen nicht. Transparenzpflichten des EU AI Act gehören zum Thema für Herkunft und Kennzeichnung, Rollen, Einsatzzweck, Risiko und KI-Kompetenz zum bestehenden Verantwortungsthema. Fünfzehn bestehende Themen erhielten dazu, zu fachlichen Modulgrenzen und zu aktuellen Agentenverfahren fachliche oder Quellen-Ergänzungen am 9. Oktober 2026.
 
 Die Liste enthält 14 Lernpfade. Zu den fünf bisherigen Pfaden kommen neun Pfade für Projektwissen, Auftragsklärung, Kontextsteuerung,
 Werkzeugwahl, Webgestaltung, Sicherheit, Automatisierung, lokale KI-Stacks und Java-KI-Anwendungsbau hinzu. Sie lassen sich über das Icon eines Themas gemeinsam

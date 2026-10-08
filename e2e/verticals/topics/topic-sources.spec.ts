@@ -8,6 +8,16 @@ test("shows the curated sources of topics outside the foundation path", async ({
 
   for (const [topic, expectedLinks, audioTitle] of [
     [
+      "Aufgaben mit Modell-Routing an passende Modelle verteilen",
+      ["Building Effective Agents – Routing und Evaluator-Optimizer"],
+      null,
+    ],
+    [
+      "KI-Inhalte mit Herkunftsnachweisen und Kennzeichnung veröffentlichen",
+      ["C2PA FAQ – Herkunftsnachweise und ihre Grenzen"],
+      null,
+    ],
+    [
       topicTitle("coding-agent-context-and-trust-boundaries"),
       [
         sourceTitle("web-security-baseline", 5),
@@ -44,6 +54,22 @@ test("shows the curated sources of topics outside the foundation path", async ({
     await expect(
       article.getByRole("heading", { name: "Sekundärquellen" }),
     ).toHaveCount(1);
+    if (
+      topic === "Aufgaben mit Modell-Routing an passende Modelle verteilen" ||
+      topic ===
+        "KI-Inhalte mit Herkunftsnachweisen und Kennzeichnung veröffentlichen"
+    ) {
+      await expect(
+        page.getByRole("button", {
+          name: `Lerncheck starten: ${topic}`,
+          exact: true,
+        }),
+      ).toHaveCount(0);
+      const secondary = article
+        .getByRole("heading", { name: "Sekundärquellen" })
+        .locator("..");
+      await expect(secondary.getByRole("link").first()).toBeVisible();
+    }
     expect(
       (await article.getByRole("link").allTextContents()).slice(
         0,

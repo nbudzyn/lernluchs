@@ -20,7 +20,7 @@ describe("central topic editing", () => {
     expect(source).not.toMatch(/\bfunction\b|\.map\(/);
     expect(topics.paths).toHaveLength(14);
     const ids = topics.items.map((item) => item.id);
-    expect(new Set(ids).size).toBe(46);
+    expect(new Set(ids).size).toBe(48);
     for (const removed of [
       "goal-discovery-and-stop-criteria",
       "spec-framework-selection",
@@ -31,6 +31,7 @@ describe("central topic editing", () => {
     const expectedSources: Record<string, string[]> = {
       "problem-understanding-and-change-boundaries": [
         "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results",
+        "https://github.com/mattpocock/skills",
         "https://notebook.google.com/notebook/6e538076-e980-4471-a351-01d34903567f/artifact/0a86fe92-0c28-46d5-b30e-10349a67802a",
         "https://notebooklm.link.google/h0fbMDINkgRw",
         "https://openai.com/business/guides-and-resources/how-openai-uses-codex/",

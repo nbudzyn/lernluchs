@@ -51,9 +51,24 @@ const workflowTopicIds = [
   "coding-harness-design",
 ];
 
+const updatedReviewIds = new Set([
+  "archunit-for-java-architecture",
+  "domain-language-and-complexity",
+  "standards-and-constraint-rationale",
+  "context-selection-and-reset",
+  "coding-agent-interface-selection",
+  "agent-skills-and-commands",
+  "review-and-accept-ai-generated-changes",
+  "coding-harness-design",
+  "agent-context-handoffs",
+  "deterministic-agent-verification-gates",
+]);
+
 // Alle Themen folgen der freigegebenen gemeinsamen Reihenfolge.
 const integrationTopicIds = [
   "java-ai-applications",
+  "task-based-model-routing",
+  "ai-content-provenance-and-disclosure",
   "agent-protocol-integration",
   "model-and-api-lifecycle",
 ];
@@ -160,22 +175,24 @@ describe("vollständige Lernpfade", () => {
       const topic = topics.items.find((item) => item.id === id);
       expect(topic, id).toBeDefined();
       expect(topic?.editorial.reviewedAt, id).toBe(
-        [
-          "coding-harness-design",
-          "codegraphs-for-large-repos",
-          "spec-driven-development-openspec",
-          "coding-agent-interface-selection",
-          "agent-skills-and-commands",
-          "review-and-accept-ai-generated-changes",
-          "deterministic-agent-verification-gates",
-          "agent-protocol-integration",
-          "java-ai-applications",
-          "technical-documentation-generation",
-        ].includes(id)
-          ? "2026-10-07"
-          : id === "token-efficiency-tools"
-            ? "2026-10-03"
-            : "2026-09-27",
+        updatedReviewIds.has(id)
+          ? "2026-10-09"
+          : [
+                "coding-harness-design",
+                "codegraphs-for-large-repos",
+                "spec-driven-development-openspec",
+                "coding-agent-interface-selection",
+                "agent-skills-and-commands",
+                "review-and-accept-ai-generated-changes",
+                "deterministic-agent-verification-gates",
+                "agent-protocol-integration",
+                "java-ai-applications",
+                "technical-documentation-generation",
+              ].includes(id)
+            ? "2026-10-07"
+            : id === "token-efficiency-tools"
+              ? "2026-10-03"
+              : "2026-09-27",
       );
       expect(
         topic?.sources.some((source) => source.origin === "primary"),
@@ -249,9 +266,15 @@ describe("vollständige Lernpfade", () => {
     }
     const selection = topics.paths?.find((path) => path.name === pathName(8));
     expect(selection?.topicIds).toContain("model-and-api-lifecycle");
+    expect(selection?.topicIds).toContain("task-based-model-routing");
+    expect(
+      topics.paths?.find((path) => path.name === pathName(10))?.topicIds,
+    ).toContain("ai-content-provenance-and-disclosure");
     expect(selection?.topicIds).toContain("agent-protocol-integration");
     expect(topics.paths?.at(-1)?.topicIds).toEqual([
       "java-ai-applications",
+      "task-based-model-routing",
+      "ai-content-provenance-and-disclosure",
       "web-security-baseline",
       "protect-secrets-and-sensitive-data-with-ai",
       "module-boundaries-and-public-interfaces",
@@ -344,13 +367,15 @@ it("provides sourced parallel agent topics in path order", () => {
       true,
     );
     expect(item?.editorial.reviewedAt).toBe(
-      id === "parallel-agent-task-boundaries"
-        ? "2026-10-08"
-        : id === "deterministic-agent-verification-gates"
-          ? "2026-10-07"
-          : id === "agent-tool-and-mcp-permissions"
-            ? "2026-09-28"
-            : "2026-09-27",
+      updatedReviewIds.has(id)
+        ? "2026-10-09"
+        : id === "parallel-agent-task-boundaries"
+          ? "2026-10-08"
+          : id === "deterministic-agent-verification-gates"
+            ? "2026-10-07"
+            : id === "agent-tool-and-mcp-permissions"
+              ? "2026-09-28"
+              : "2026-09-27",
     );
   }
   expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
