@@ -6,7 +6,7 @@ test("zeigt einen Lernpfad und ein quellengebundenes Thema", async ({
 }) => {
   await page.goto("/");
   const navigation = page.getByRole("navigation", { name: "Themen" });
-  await expect(navigation.locator("li")).toHaveCount(49);
+  await expect(navigation.locator("li")).toHaveCount(46);
 
   await page
     .getByRole("button", {
@@ -183,7 +183,6 @@ const pathCases = [
     titles: [
       topicTitle("parallel-agent-task-boundaries"),
       topicTitle("git-worktrees-for-isolated-changes"),
-      topicTitle("specialized-subagents-and-ownership"),
       topicTitle("agent-context-handoffs"),
       topicTitle("agent-tool-and-mcp-permissions"),
       topicTitle("deterministic-agent-verification-gates"),
@@ -200,7 +199,7 @@ for (const path of pathCases) {
   }) => {
     await page.goto("/");
     const navigation = page.getByRole("navigation", { name: "Themen" });
-    await expect(navigation.locator("li")).toHaveCount(49);
+    await expect(navigation.locator("li")).toHaveCount(46);
     await expect(
       page.getByRole("button", {
         name: topicTitle("focused-git-commits"),

@@ -18,7 +18,6 @@ const coreTopicIds = [
   "parallel-agent-task-boundaries",
   "git-worktrees-for-isolated-changes",
   "versioned-library-docs-with-context7",
-  "specialized-subagents-and-ownership",
   "agent-context-handoffs",
   "agent-tool-and-mcp-permissions",
   "deterministic-agent-verification-gates",
@@ -33,7 +32,6 @@ const coreTopicIds = [
 
 const workflowTopicIds = [
   "domain-language-and-complexity",
-  "goal-discovery-and-stop-criteria",
   "design-and-legacy-specification",
   "standards-and-constraint-rationale",
   "llm-fallibility-and-counterchecks",
@@ -43,7 +41,6 @@ const workflowTopicIds = [
   "web-security-baseline",
   "local-model-stack-evaluation",
   "coding-agent-interface-selection",
-  "spec-framework-selection",
   "agent-skills-and-commands",
   "codegraphs-for-large-repos",
   "ui-design-system-workflow",
@@ -117,7 +114,6 @@ const coreLearningPaths = [
     topicIds: [
       "parallel-agent-task-boundaries",
       "git-worktrees-for-isolated-changes",
-      "specialized-subagents-and-ownership",
       "agent-context-handoffs",
       "agent-tool-and-mcp-permissions",
       "deterministic-agent-verification-gates",
@@ -142,7 +138,6 @@ describe("vollständige Lernpfade", () => {
     for (const [earlier, later] of [
       ["design-and-legacy-specification", "ears-requirements"],
       ["standards-and-constraint-rationale", "ears-requirements"],
-      ["spec-framework-selection", "spec-driven-development-openspec"],
       ["java-ai-applications", "module-boundaries-and-public-interfaces"],
       ["web-security-baseline", "web-xss-and-safe-dom"],
       ["local-model-stack-evaluation", "coding-agent-interface-selection"],
@@ -168,7 +163,7 @@ describe("vollständige Lernpfade", () => {
         [
           "coding-harness-design",
           "codegraphs-for-large-repos",
-          "spec-framework-selection",
+          "spec-driven-development-openspec",
           "coding-agent-interface-selection",
           "agent-skills-and-commands",
           "review-and-accept-ai-generated-changes",
@@ -322,7 +317,6 @@ it("provides sourced modernization topics in path order", () => {
 const parallelAgentTopicIds = [
   "parallel-agent-task-boundaries",
   "git-worktrees-for-isolated-changes",
-  "specialized-subagents-and-ownership",
   "agent-context-handoffs",
   "agent-tool-and-mcp-permissions",
   "deterministic-agent-verification-gates",
@@ -350,11 +344,13 @@ it("provides sourced parallel agent topics in path order", () => {
       true,
     );
     expect(item?.editorial.reviewedAt).toBe(
-      id === "deterministic-agent-verification-gates"
-        ? "2026-10-07"
-        : id === "agent-tool-and-mcp-permissions"
-          ? "2026-09-28"
-          : "2026-09-27",
+      id === "parallel-agent-task-boundaries"
+        ? "2026-10-08"
+        : id === "deterministic-agent-verification-gates"
+          ? "2026-10-07"
+          : id === "agent-tool-and-mcp-permissions"
+            ? "2026-09-28"
+            : "2026-09-27",
     );
   }
   expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });

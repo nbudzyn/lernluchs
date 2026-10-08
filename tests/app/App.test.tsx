@@ -48,7 +48,7 @@ describe("App", () => {
     );
     fireEvent.click(
       screen.getByRole("button", {
-        name: "Lerncheck starten: Spec-Driven Development mit OpenSpec",
+        name: "Lerncheck starten: Spec-Driven Development mit OpenSpec, Spec Kit und Kiro",
       }),
     );
     expect(screen.getByText("Frage 1 von 5")).toBeTruthy();

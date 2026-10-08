@@ -2705,6 +2705,681 @@
           "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
         }
       ]
+    },
+    {
+      "id": "GD01",
+      "prompt": "Ein Coding-Agent soll einen unklaren Änderungswunsch bearbeiten. Was gehört laut GitHub zu einem gut abgegrenzten Auftrag?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Problem, Abnahmekriterien und betroffene Dateien",
+          "correct": true,
+          "explanation": "GitHub nennt diese drei Angaben für einen klar umrissenen Auftrag.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "b",
+          "text": "Nur ein gewünschter Dateiname",
+          "correct": false,
+          "explanation": "Der Dateiname hilft, beschreibt aber weder Problem noch Abnahme.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        },
+        {
+          "id": "c",
+          "text": "Nur die gewünschte Implementierungssprache",
+          "correct": false,
+          "explanation": "Die Sprache legt das fachliche Ergebnis und seine Prüfung nicht fest.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
+        }
+      ]
+    },
+    {
+      "id": "GD02",
+      "prompt": "Ein Team kann den Nutzen einer gewünschten Funktion nicht benennen. Was sollte es zuerst hinterfragen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Warum diese Funktion gebraucht wird",
+          "correct": true,
+          "explanation": "Die Quelle empfiehlt, bei unklarem Ziel den Grund für die Funktion erneut zu prüfen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#focus-on-the-goal"
+        },
+        {
+          "id": "b",
+          "text": "Welche vorhandene UI-Komponente wiederverwendet wird",
+          "correct": false,
+          "explanation": "Komponentenwahl kann später helfen, erklärt aber den fehlenden Nutzen nicht.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#focus-on-the-goal"
+        },
+        {
+          "id": "c",
+          "text": "Welches Framework den kürzesten Implementierungsweg bietet",
+          "correct": false,
+          "explanation": "Ein technischer Weg klärt nicht, warum die Funktion gebraucht wird.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#focus-on-the-goal"
+        }
+      ]
+    },
+    {
+      "id": "GD03",
+      "prompt": "Welche drei Angaben sollen eine User Story nach dem Service Manual mindestens erklären?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Akteur, Bedarf und Ziel",
+          "correct": true,
+          "explanation": "Die Story benennt, wer etwas braucht, was gebraucht wird und warum.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#what-to-include"
+        },
+        {
+          "id": "b",
+          "text": "Framework, Datenbank und Hosting",
+          "correct": false,
+          "explanation": "Technische Mittel können nötig werden, ersetzen aber keine Bedarfserklärung.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#what-to-include"
+        },
+        {
+          "id": "c",
+          "text": "Priorität, Aufwand und Termin",
+          "correct": false,
+          "explanation": "Planungsdaten erklären weder den Akteur noch seinen Bedarf.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#what-to-include"
+        }
+      ]
+    },
+    {
+      "id": "GD04",
+      "prompt": "Woran lässt sich bei einer Story erkennen, ob der Dienst den Bedarf erfüllt?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An beobachtbaren Ergebnissen als Abnahmekriterien",
+          "correct": true,
+          "explanation": "Abnahmekriterien benennen Ergebnisse, an denen die Erfüllung geprüft wird.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria"
+        },
+        {
+          "id": "b",
+          "text": "An abgeschlossenen Implementierungsaufgaben",
+          "correct": false,
+          "explanation": "Abgeschlossene Tasks belegen noch nicht das Ergebnis für die Nutzenden.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria"
+        },
+        {
+          "id": "c",
+          "text": "An der Zahl bestandener interner Unit-Tests allein",
+          "correct": false,
+          "explanation": "Interne Tests können helfen, zeigen aber ohne passende Abnahme keinen erfüllten Nutzerbedarf.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria"
+        }
+      ]
+    },
+    {
+      "id": "GD05",
+      "prompt": "Eine Abnahmebedingung braucht fachliche Belege. Wie kann die Story diese nachvollziehbar machen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Das Kriterium mit vorhandenen Nachweisen verknüpfen",
+          "correct": true,
+          "explanation": "Die Quelle empfiehlt, Abnahmekriterien mit stützender Evidenz zu verbinden.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria"
+        },
+        {
+          "id": "b",
+          "text": "Belege erst nach der Freigabe suchen",
+          "correct": false,
+          "explanation": "Ohne Beleg bleibt eine entscheidende Bedingung bei der Abnahme offen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria"
+        },
+        {
+          "id": "c",
+          "text": "Nur eine technische Aufwandsschätzung anfügen",
+          "correct": false,
+          "explanation": "Aufwand belegt nicht das fachliche Ergebnis.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria"
+        }
+      ]
+    },
+    {
+      "id": "GD06",
+      "prompt": "Ein Auftrag lautet nur „Baut ein neues Portal“. Welcher erste Schritt hilft bei der Zielklärung?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Die vorgegebene Lösung als Problem und Bedarf neu formulieren",
+          "correct": true,
+          "explanation": "Die Discovery-Anleitung empfiehlt, eine vorgegebene Lösung zunächst zu hinterfragen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#define-the-problem"
+        },
+        {
+          "id": "b",
+          "text": "Sofort eine Portal-Komponente programmieren",
+          "correct": false,
+          "explanation": "Ein Prototyp kann später helfen, klärt aber den Bedarf noch nicht.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#define-the-problem"
+        },
+        {
+          "id": "c",
+          "text": "Den Namen des Portals endgültig festlegen",
+          "correct": false,
+          "explanation": "Ein Name erklärt weder Problem noch Nutzen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#define-the-problem"
+        }
+      ]
+    },
+    {
+      "id": "GD07",
+      "prompt": "Warum gehört ein Nicht-Ziel in die Klärung eines Änderungswunsches?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Es grenzt ab, was das Team nicht lösen soll",
+          "correct": true,
+          "explanation": "Die Quelle nennt ausdrücklich die Einigung darüber, was nicht zum Problem gehört.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#define-the-problem"
+        },
+        {
+          "id": "b",
+          "text": "Es ersetzt die Beschreibung des gewünschten Ergebnisses",
+          "correct": false,
+          "explanation": "Eine Grenze allein beschreibt noch keinen positiven Nutzen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#define-the-problem"
+        },
+        {
+          "id": "c",
+          "text": "Es macht Abnahmekriterien überflüssig",
+          "correct": false,
+          "explanation": "Auch im begrenzten Umfang muss Erfolg prüfbar sein.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#define-the-problem"
+        }
+      ]
+    },
+    {
+      "id": "GD08",
+      "prompt": "Wessen tatsächliche Ziele sollte eine Discovery vor einer Service-Änderung untersuchen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Die Ziele der Menschen, die den Dienst nutzen",
+          "correct": true,
+          "explanation": "Die Quelle stellt Nutzer und deren beabsichtigte Aufgaben in den Mittelpunkt.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-users-and-their-context"
+        },
+        {
+          "id": "b",
+          "text": "Nur die technischen Vorlieben des Implementierungsteams",
+          "correct": false,
+          "explanation": "Technikvorlieben können relevant sein, beschreiben aber keinen Nutzerbedarf.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-users-and-their-context"
+        },
+        {
+          "id": "c",
+          "text": "Nur die Formulierung im ersten Ticket",
+          "correct": false,
+          "explanation": "Ein Ticket kann Annahmen enthalten und muss gegen den tatsächlichen Bedarf geprüft werden.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-users-and-their-context"
+        }
+      ]
+    },
+    {
+      "id": "GD09",
+      "prompt": "Was hilft, wenn ein Webdienst nur einen Teil einer längeren Nutzerreise abdeckt?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Den weiteren Ablauf und beteiligte Stellen untersuchen",
+          "correct": true,
+          "explanation": "Die Discovery betrachtet den größeren Weg und die beteiligten Organisationen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-users-and-their-context"
+        },
+        {
+          "id": "b",
+          "text": "Nur die eigene Startseite bewerten",
+          "correct": false,
+          "explanation": "Die Startseite zeigt nicht, was vor und nach dem Dienst geschieht.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-users-and-their-context"
+        },
+        {
+          "id": "c",
+          "text": "Alle Nachbarprozesse als irrelevant markieren",
+          "correct": false,
+          "explanation": "Gerade Schnittstellen können den Bedarf und die Grenzen bestimmen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-users-and-their-context"
+        }
+      ]
+    },
+    {
+      "id": "GD10",
+      "prompt": "Ein bestehender Prozess erschwert eine sinnvolle Verbesserung, kann aber geändert werden. Wie ist er einzuordnen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Als möglicherweise weiche Einschränkung",
+          "correct": true,
+          "explanation": "Die Quelle unterscheidet veränderbare Prozesse von harten Grenzen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
+        },
+        {
+          "id": "b",
+          "text": "Als unveränderbares Gesetz",
+          "correct": false,
+          "explanation": "Ein Organisationsprozess ist nicht automatisch eine rechtliche Pflicht.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
+        },
+        {
+          "id": "c",
+          "text": "Als bereits erfülltes Abnahmekriterium",
+          "correct": false,
+          "explanation": "Eine Einschränkung belegt kein erreichtes Ergebnis.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
+        }
+      ]
+    },
+    {
+      "id": "GD11",
+      "prompt": "Ein rechtlich festgelegter Rahmen verhindert eine geplante Webfunktion. Was ist für die weitere Planung entscheidend?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Prüfen, ob der Nutzen innerhalb der harten Grenze erreichbar ist",
+          "correct": true,
+          "explanation": "Harte Grenzen beeinflussen, ob eine Fortsetzung sinnvoll ist.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
+        },
+        {
+          "id": "b",
+          "text": "Den Rahmen als technische Schuld ausblenden",
+          "correct": false,
+          "explanation": "Eine rechtliche Grenze verschwindet nicht durch Umbenennung.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
+        },
+        {
+          "id": "c",
+          "text": "Die ursprüngliche Funktion trotzdem als abgenommen markieren",
+          "correct": false,
+          "explanation": "Eine unerfüllbare Funktion ist kein bestätigtes Ergebnis.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
+        }
+      ]
+    },
+    {
+      "id": "GD12",
+      "prompt": "Warum sollten besonders riskante Annahmen vor einer umfangreichen Umsetzung sichtbar sein?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sie bestimmen, was früh geprüft werden muss",
+          "correct": true,
+          "explanation": "Die Quelle verbindet bekannte Einschränkungen mit der Priorisierung riskanter Annahmen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
+        },
+        {
+          "id": "b",
+          "text": "Sie machen Nutzertests grundsätzlich unnötig",
+          "correct": false,
+          "explanation": "Annahmen müssen durch passende Beobachtungen geprüft werden.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
+        },
+        {
+          "id": "c",
+          "text": "Sie beweisen die Wirtschaftlichkeit des Projekts",
+          "correct": false,
+          "explanation": "Ein Risiko ist noch kein Nutzen-Kosten-Nachweis.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
+        }
+      ]
+    },
+    {
+      "id": "GD13",
+      "prompt": "Eine Bedarfsklärung zeigt, dass bessere Informationen das Problem lösen könnten. Was folgt daraus?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Eine Alternative zum Bau neuer Software prüfen",
+          "correct": true,
+          "explanation": "Die Quelle nennt Informationsangebote als mögliche Alternative zu einem neuen Dienst.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#identify-improvements-you-might-be-able-to-make"
+        },
+        {
+          "id": "b",
+          "text": "Trotzdem zwingend einen neuen Dienst bauen",
+          "correct": false,
+          "explanation": "Der gewünschte Nutzen kann auf anderem Weg erreicht werden.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#identify-improvements-you-might-be-able-to-make"
+        },
+        {
+          "id": "c",
+          "text": "Den Bedarf ignorieren, weil kein Code nötig ist",
+          "correct": false,
+          "explanation": "Auch eine Lösung ohne neuen Code kann den Bedarf erfüllen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#identify-improvements-you-might-be-able-to-make"
+        }
+      ]
+    },
+    {
+      "id": "GD14",
+      "prompt": "Wann ist die Discovery nach dem Service Manual abgeschlossen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wenn über Fortsetzung oder Stopp entschieden wurde",
+          "correct": true,
+          "explanation": "Die Phase endet mit der Entscheidung, ob eine Alpha-Phase sinnvoll ist.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
+        },
+        {
+          "id": "b",
+          "text": "Sobald der erste Bildschirm programmiert ist",
+          "correct": false,
+          "explanation": "In der Discovery soll noch kein Dienst gebaut werden.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
+        },
+        {
+          "id": "c",
+          "text": "Sobald jede denkbare Frage beantwortet ist",
+          "correct": false,
+          "explanation": "Die Entscheidung verlangt ausreichend relevante Erkenntnisse, nicht Allwissen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
+        }
+      ]
+    },
+    {
+      "id": "GD15",
+      "prompt": "Welche zwei Gesichtspunkte tragen eine Fortsetzungsentscheidung nach Discovery?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nutzbare Lösungsmöglichkeit und Verhältnis von Kosten zu Verbesserung",
+          "correct": true,
+          "explanation": "Die Quelle nennt einen tragfähigen Dienst und die Wirtschaftlichkeit als Faktoren.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
+        },
+        {
+          "id": "b",
+          "text": "Nur die Menge bereits geschriebener Tickets",
+          "correct": false,
+          "explanation": "Ticketmenge misst weder Nutzen noch Kosten.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
+        },
+        {
+          "id": "c",
+          "text": "Nur die Wahl eines Frameworks",
+          "correct": false,
+          "explanation": "Ein Framework beantwortet die Entscheidungsfrage nicht.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
+        }
+      ]
+    },
+    {
+      "id": "GD16",
+      "prompt": "Die Recherche zeigt, dass ein geplanter Dienst kaum Nutzen bringt. Welche Entscheidung ist fachlich möglich?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Die Arbeit am Dienst beenden",
+          "correct": true,
+          "explanation": "Die Quelle beschreibt den Stopp nach Discovery ausdrücklich als zulässiges Ergebnis.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
+        },
+        {
+          "id": "b",
+          "text": "Den Dienst allein wegen der Vorarbeit bauen",
+          "correct": false,
+          "explanation": "Bereits investierte Zeit rechtfertigt keinen ungenügenden Nutzen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
+        },
+        {
+          "id": "c",
+          "text": "Den fehlenden Nutzen aus der Abnahme ausklammern",
+          "correct": false,
+          "explanation": "Die Entscheidung muss den tatsächlichen Nutzen berücksichtigen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
+        }
+      ]
+    },
+    {
+      "id": "GD17",
+      "prompt": "Warum ist vor einer Verbesserung eine Ausgangsmessung nützlich?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nur mit einem Ausgangswert lässt sich Veränderung bewerten",
+          "correct": true,
+          "explanation": "Die Quelle empfiehlt eine Baseline, um spätere Verbesserungen einordnen zu können.",
+          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#discovery-spot-problems-and-estimate-how-much-theyre-costing"
+        },
+        {
+          "id": "b",
+          "text": "Sie ersetzt die Definition des Nutzerproblems",
+          "correct": false,
+          "explanation": "Eine Zahl ohne Bedarf erklärt nicht, was verbessert werden soll.",
+          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#discovery-spot-problems-and-estimate-how-much-theyre-costing"
+        },
+        {
+          "id": "c",
+          "text": "Sie garantiert den Erfolg der gewählten Lösung",
+          "correct": false,
+          "explanation": "Ein Ausgangswert sagt nichts über die spätere Wirkung aus.",
+          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#discovery-spot-problems-and-estimate-how-much-theyre-costing"
+        }
+      ]
+    },
+    {
+      "id": "GD18",
+      "prompt": "Welche Beobachtung eignet sich als Ausgangswert für einen umständlichen Webablauf?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Die bisher benötigte Zeit für eine Nutzeraufgabe",
+          "correct": true,
+          "explanation": "Die Quelle nennt die Dauer einer Aufgabe als messbare Größe des Problems.",
+          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#discovery-spot-problems-and-estimate-how-much-theyre-costing"
+        },
+        {
+          "id": "b",
+          "text": "Die angestrebte Dauer des neuen Ablaufs",
+          "correct": false,
+          "explanation": "Ein Zielwert beschreibt den Sollzustand, nicht die bisherige Belastung.",
+          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#discovery-spot-problems-and-estimate-how-much-theyre-costing"
+        },
+        {
+          "id": "c",
+          "text": "Die geschätzte Zahl künftiger Formularschritte",
+          "correct": false,
+          "explanation": "Eine Entwurfsschätzung misst den bisherigen Ablauf nicht.",
+          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#discovery-spot-problems-and-estimate-how-much-theyre-costing"
+        }
+      ]
+    },
+    {
+      "id": "GD19",
+      "prompt": "Welche Annahmen sollte ein Team bei mehreren Lösungsideen zuerst erproben?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Die mit dem größten Risiko für Machbarkeit und Nutzen",
+          "correct": true,
+          "explanation": "Die Alpha-Anleitung empfiehlt, besonders riskante Annahmen zu untersuchen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#alpha-test-different-solutions"
+        },
+        {
+          "id": "b",
+          "text": "Nur Annahmen mit leicht zu bauender Demo",
+          "correct": false,
+          "explanation": "Leichte Demonstrierbarkeit trifft nicht zwingend das entscheidende Risiko.",
+          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#alpha-test-different-solutions"
+        },
+        {
+          "id": "c",
+          "text": "Nur bereits bestätigte Annahmen",
+          "correct": false,
+          "explanation": "Deren erneute Prüfung klärt die offenen Risiken kaum.",
+          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#alpha-test-different-solutions"
+        }
+      ]
+    },
+    {
+      "id": "GD20",
+      "prompt": "Ein Pilot erreicht den erwarteten Nutzen nicht. Was sollte die Fortsetzungsentscheidung berücksichtigen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gemessenen Nutzen, Kosten und mögliche Änderung oder Stopp",
+          "correct": true,
+          "explanation": "Die Quelle verlangt den Vergleich mit Erwartungen und erwägt Fortsetzung, Änderung oder Ende.",
+          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#decide-whether-you-should-continue-your-project"
+        },
+        {
+          "id": "b",
+          "text": "Nur die ursprünglich geplante Lieferfrist",
+          "correct": false,
+          "explanation": "Ein Termin allein beantwortet die Nutzenfrage nicht.",
+          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#decide-whether-you-should-continue-your-project"
+        },
+        {
+          "id": "c",
+          "text": "Nur die bereits investierten Entwicklungstage",
+          "correct": false,
+          "explanation": "Vergangener Aufwand ersetzt keine Bewertung der weiteren Wirkung.",
+          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#decide-whether-you-should-continue-your-project"
+        }
+      ]
+    },
+    {
+      "id": "GD21",
+      "prompt": "Ein Agentenauftrag enthält viele ungeprüfte Annahmen. Welcher Ablauf ist laut GitHub sinnvoll?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Erst Recherche und Plan, dann gezielte Codeänderungen",
+          "correct": true,
+          "explanation": "GitHub beschreibt die iterative Klärung vor dem Pull Request als möglichen Ablauf.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results#researching-planning-and-iterating-before-opening-a-pull-request"
+        },
+        {
+          "id": "b",
+          "text": "Den Pull Request ohne Prüfung sofort öffnen",
+          "correct": false,
+          "explanation": "Die Quelle empfiehlt bei unklarem Umfang erst Recherche und Planung.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results#researching-planning-and-iterating-before-opening-a-pull-request"
+        },
+        {
+          "id": "c",
+          "text": "Alle Annahmen als bereits bestätigte Fakten behandeln",
+          "correct": false,
+          "explanation": "Ungeprüfte Annahmen müssen vor der Umsetzung geklärt werden.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results#researching-planning-and-iterating-before-opening-a-pull-request"
+        }
+      ]
+    },
+    {
+      "id": "GD22",
+      "prompt": "Ein Ticket nennt nur „API reparieren“. Welche Ergänzung macht es für einen Coding-Agenten aussagekräftiger?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Das konkrete Fehlerbild und prüfbare Erfolgsbedingungen",
+          "correct": true,
+          "explanation": "Problem und Abnahme gehören laut GitHub zu einem klar begrenzten Auftrag.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results#making-sure-your-issues-are-well-scoped"
+        },
+        {
+          "id": "b",
+          "text": "Eine Liste beliebiger denkbarer Frameworks",
+          "correct": false,
+          "explanation": "Technologieoptionen beschreiben das Fehlerbild nicht.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results#making-sure-your-issues-are-well-scoped"
+        },
+        {
+          "id": "c",
+          "text": "Eine allgemeine Aufforderung, besonders gründlich zu sein",
+          "correct": false,
+          "explanation": "Gründlichkeit ersetzt keine konkrete Ziel- und Prüfbeschreibung.",
+          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results#making-sure-your-issues-are-well-scoped"
+        }
+      ]
+    },
+    {
+      "id": "GD23",
+      "prompt": "Wozu hilft das Ziel einer User Story bei der Abnahme?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Es zeigt, wann der Bedarf tatsächlich erfüllt ist",
+          "correct": true,
+          "explanation": "Die Quelle verbindet das Ziel mit der Entscheidung, wann die Story fertig ist.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#focus-on-the-goal"
+        },
+        {
+          "id": "b",
+          "text": "Es legt die Anzahl der Commits fest",
+          "correct": false,
+          "explanation": "Commit-Zahl ist kein Merkmal eines erfüllten Bedarfs.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#focus-on-the-goal"
+        },
+        {
+          "id": "c",
+          "text": "Es ersetzt alle Beispiele und Randfälle",
+          "correct": false,
+          "explanation": "Das Ziel leitet die Abnahme, weitere Fälle können trotzdem nötig sein.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#focus-on-the-goal"
+        }
+      ]
+    },
+    {
+      "id": "GD24",
+      "prompt": "Was sollte vor der Umsetzung für einen verbesserten Service feststehen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Welche Daten und Kennzahlen den Erfolg zeigen",
+          "correct": true,
+          "explanation": "Die Discovery-Anleitung verlangt Überlegungen zu Messdaten und Leistungskennzahlen.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-youll-measure-success"
+        },
+        {
+          "id": "b",
+          "text": "Welche technische Lösung das Team bevorzugt",
+          "correct": false,
+          "explanation": "Eine Präferenz für die Umsetzung legt noch keine Erfolgsmessung fest.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-youll-measure-success"
+        },
+        {
+          "id": "c",
+          "text": "Wie viele Tickets im ersten Sprint geschlossen werden",
+          "correct": false,
+          "explanation": "Ticketdurchsatz sagt für sich nichts über den Nutzen des Dienstes aus.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-youll-measure-success"
+        }
+      ]
+    },
+    {
+      "id": "GD25",
+      "prompt": "Eine geplante Änderung würde mehrere Wochen Entwicklung und Abnahme brauchen. Welche Größenanpassung empfiehlt das Service Manual, wenn möglich?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In kleinere, einzeln abnehmbare Stories teilen",
+          "correct": true,
+          "explanation": "Große Epics sollen möglichst in innerhalb einer Iteration abschließbare Stories zerlegt werden.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#epics"
+        },
+        {
+          "id": "b",
+          "text": "Die große Story nur mit mehr Parallelität bearbeiten",
+          "correct": false,
+          "explanation": "Zusätzliche Parallelität macht einen zu großen Abnahmeumfang nicht automatisch überschaubar.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#epics"
+        },
+        {
+          "id": "c",
+          "text": "Die Abnahme bis zum Ende aller Teilbereiche verschieben",
+          "correct": false,
+          "explanation": "Das ließe die einzelnen nutzbaren Ergebnisse länger ungeprüft.",
+          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#epics"
+        }
+      ]
     }
   ],
   "research-plan-tasks": [
@@ -4057,6 +4732,438 @@
           "correct": false,
           "explanation": "OpenSpec verwaltet Spezifikationsänderungen; Git bleibt davon getrennt für Versionsverwaltung.",
           "sourceUrl": "https://openspec.dev/docs/quickstart"
+        }
+      ]
+    },
+    {
+      "id": "SF10",
+      "prompt": "Ein OpenSpec-Pilot betrifft zwei getrennte Fähigkeiten. Wie werden die Verhaltensänderungen abgelegt?",
+      "options": [
+        {
+          "id": "SF10-1",
+          "text": "Je Fähigkeit in einer eigenen Delta-Spec.",
+          "correct": true,
+          "explanation": "Das Schema sieht eine spec.md pro Capability-Pfad vor.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "SF10-2",
+          "text": "Alle Anforderungen in design.md.",
+          "correct": false,
+          "explanation": "Design beschreibt den Bauweg, nicht alle Capability-Verträge.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "SF10-3",
+          "text": "Jede Fähigkeit als Dateiname in tasks.md.",
+          "correct": false,
+          "explanation": "Aufgaben ersetzen keine Delta-Specs.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        }
+      ]
+    },
+    {
+      "id": "SF11",
+      "prompt": "Welche Phase folgt im Kernablauf von GitHub Spec Kit direkt auf Specify?",
+      "options": [
+        {
+          "id": "SF11-1",
+          "text": "Plan.",
+          "correct": true,
+          "explanation": "Der dokumentierte Kernablauf ist Specify → Plan → Tasks → Implement → Converge.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        },
+        {
+          "id": "SF11-2",
+          "text": "Implement.",
+          "correct": false,
+          "explanation": "Vor Implement liegen Plan und Tasks.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        },
+        {
+          "id": "SF11-3",
+          "text": "Converge.",
+          "correct": false,
+          "explanation": "Converge schließt den Ablauf ab.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        }
+      ]
+    },
+    {
+      "id": "SF12",
+      "prompt": "Was entsteht in Spec Kit vor der Implementierungsphase aus dem Plan?",
+      "options": [
+        {
+          "id": "SF12-1",
+          "text": "Eine gegliederte Aufgabenfolge.",
+          "correct": true,
+          "explanation": "Tasks baut auf Specify und Plan auf.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        },
+        {
+          "id": "SF12-2",
+          "text": "Ein automatischer Produktiv-Release.",
+          "correct": false,
+          "explanation": "Der Ablauf setzt einen Release nicht als Folgeschritt voraus.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        },
+        {
+          "id": "SF12-3",
+          "text": "Eine Berechtigung für alle Agentenwerkzeuge.",
+          "correct": false,
+          "explanation": "Planung erteilt keine Rechte.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        }
+      ]
+    },
+    {
+      "id": "SF13",
+      "prompt": "Welcher Spec-Kit-Prozess kann als eigenständiger Einstieg dienen, ohne sofort eine Implementierung zu starten?",
+      "options": [
+        {
+          "id": "SF13-1",
+          "text": "Idea Assessment.",
+          "correct": true,
+          "explanation": "Die Dokumentation beschreibt Assessment als unabhängigen, optionalen Einstieg.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        },
+        {
+          "id": "SF13-2",
+          "text": "Der Implement-Schritt des SDD-Kernablaufs.",
+          "correct": false,
+          "explanation": "Implement setzt die vorherigen SDD-Artefakte voraus.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        },
+        {
+          "id": "SF13-3",
+          "text": "Der Converge-Schritt des SDD-Kernablaufs.",
+          "correct": false,
+          "explanation": "Converge steht am Ende des Umsetzungsablaufs.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        }
+      ]
+    },
+    {
+      "id": "SF14",
+      "prompt": "Welches Format tragen die zentralen Spec-Kit-Artefakte?",
+      "options": [
+        {
+          "id": "SF14-1",
+          "text": "Markdown-Dateien für die aufeinanderfolgenden Phasen.",
+          "correct": true,
+          "explanation": "Die Dokumentation beschreibt Markdown-Artefakte.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        },
+        {
+          "id": "SF14-2",
+          "text": "Kompilierten Java-Code.",
+          "correct": false,
+          "explanation": "Das Framework organisiert Spezifikationsartefakte.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        },
+        {
+          "id": "SF14-3",
+          "text": "Einträge in einer proprietären Datenbank.",
+          "correct": false,
+          "explanation": "Die genannten Artefakte sind Dateien.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        }
+      ]
+    },
+    {
+      "id": "SF15",
+      "prompt": "Ein Team möchte Spec Kit mit einem anderen Coding-Agenten erproben. Was unterstützt die Dokumentation?",
+      "options": [
+        {
+          "id": "SF15-1",
+          "text": "Agentenspezifische Integrationen samt generischer Ausweichmöglichkeit.",
+          "correct": true,
+          "explanation": "Spec Kit nennt Integrationen und eine generische Variante.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        },
+        {
+          "id": "SF15-2",
+          "text": "Eine Pflicht zur Nutzung eines einzelnen Agenten.",
+          "correct": false,
+          "explanation": "Die Dokumentation beschreibt mehrere Integrationen.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        },
+        {
+          "id": "SF15-3",
+          "text": "Eine automatische fachliche Freigabe des gewählten Agenten.",
+          "correct": false,
+          "explanation": "Integration ersetzt keine fachliche Prüfung.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        }
+      ]
+    },
+    {
+      "id": "SF16",
+      "prompt": "Warum ist bei Spec Kit ein Pilot in einem bestehenden Repository sinnvoll abzugrenzen?",
+      "options": [
+        {
+          "id": "SF16-1",
+          "text": "Es gibt eine eigene Anleitung für bestehende Codebasen.",
+          "correct": true,
+          "explanation": "Der Einstieg unterscheidet bestehende Projekte.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        },
+        {
+          "id": "SF16-2",
+          "text": "Weil jede Codebasis zuerst neu erzeugt werden muss.",
+          "correct": false,
+          "explanation": "Der Leitfaden sieht bestehende Projekte ausdrücklich vor.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        },
+        {
+          "id": "SF16-3",
+          "text": "Weil Specs dort keine Rolle mehr spielen.",
+          "correct": false,
+          "explanation": "Der Ablauf bleibt spezifikationsgeführt.",
+          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
+        }
+      ]
+    },
+    {
+      "id": "SF17",
+      "prompt": "Welche drei Kerndateien bilden eine Kiro-Feature-Spec?",
+      "options": [
+        {
+          "id": "SF17-1",
+          "text": "requirements.md, design.md und tasks.md.",
+          "correct": true,
+          "explanation": "Kiro nennt diese drei Dateien als Grundstruktur.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF17-2",
+          "text": "proposal.md, changelog.md und package.json.",
+          "correct": false,
+          "explanation": "Das sind nicht die drei Kiro-Spec-Dateien.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF17-3",
+          "text": "README.md, Dockerfile und build.gradle.",
+          "correct": false,
+          "explanation": "Diese Dateien gehören nicht zum Spec-Kernablauf.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        }
+      ]
+    },
+    {
+      "id": "SF18",
+      "prompt": "Wofür nutzt Kiro bei einem Fehlerfall bugfix.md?",
+      "options": [
+        {
+          "id": "SF18-1",
+          "text": "Für Analyse des aktuellen, erwarteten und unveränderten Verhaltens.",
+          "correct": true,
+          "explanation": "Bugfix-Specs halten die Fehleranalyse fest.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF18-2",
+          "text": "Für die Liste aller installierten Plugins.",
+          "correct": false,
+          "explanation": "Die Datei dient der Fehler-Spezifikation.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF18-3",
+          "text": "Für automatisch akzeptierte Codeänderungen.",
+          "correct": false,
+          "explanation": "Eine Bugfix-Spec ist keine Freigabe.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        }
+      ]
+    },
+    {
+      "id": "SF19",
+      "prompt": "Was beschreibt in Kiro design.md?",
+      "options": [
+        {
+          "id": "SF19-1",
+          "text": "Architektur, Datenfluss und Implementierungsüberlegungen.",
+          "correct": true,
+          "explanation": "Die Designphase hält den technischen Ansatz fest.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF19-2",
+          "text": "Das ursprüngliche Nutzerproblem.",
+          "correct": false,
+          "explanation": "Das gehört in Requirements oder Bugfix-Analyse.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF19-3",
+          "text": "Den aktuellen Aufgabenstatus.",
+          "correct": false,
+          "explanation": "Aufgabenstatus liegt bei Tasks.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        }
+      ]
+    },
+    {
+      "id": "SF20",
+      "prompt": "Was enthält in Kiro tasks.md?",
+      "options": [
+        {
+          "id": "SF20-1",
+          "text": "Diskrete, nachverfolgbare Umsetzungsschritte.",
+          "correct": true,
+          "explanation": "Tasks ist die detaillierte Implementierungsplanung.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF20-2",
+          "text": "Den gesamten Originalquellcode.",
+          "correct": false,
+          "explanation": "Tasks beschreibt Arbeiten, nicht den vollständigen Code.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF20-3",
+          "text": "Die endgültige fachliche Abnahme.",
+          "correct": false,
+          "explanation": "Eine Aufgabenliste ersetzt keine Abnahme.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        }
+      ]
+    },
+    {
+      "id": "SF21",
+      "prompt": "Eine Anforderung ist schon technisch klar. Welche Kiro-Variante kann mit dem Design beginnen?",
+      "options": [
+        {
+          "id": "SF21-1",
+          "text": "Design-First.",
+          "correct": true,
+          "explanation": "Kiro unterscheidet Requirements-First und Design-First.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF21-2",
+          "text": "Bugfix-Only für jedes neue Feature.",
+          "correct": false,
+          "explanation": "Bugfix betrifft Fehleranalyse.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF21-3",
+          "text": "Tasks-Only als einzige Spec-Phase.",
+          "correct": false,
+          "explanation": "Kiro beschreibt auch Anforderungen und Design.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        }
+      ]
+    },
+    {
+      "id": "SF22",
+      "prompt": "Ein Team möchte zuerst Nutzerverhalten und Abnahme klären. Welche Kiro-Variante passt?",
+      "options": [
+        {
+          "id": "SF22-1",
+          "text": "Requirements-First.",
+          "correct": true,
+          "explanation": "Hier beginnt die Feature-Spec mit Anforderungen.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF22-2",
+          "text": "Design-First mit ausgelassenen Anforderungen.",
+          "correct": false,
+          "explanation": "Die Frage priorisiert die Klärung des Nutzerverhaltens.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF22-3",
+          "text": "Task-Ausführung vor der Problemklärung.",
+          "correct": false,
+          "explanation": "Tasks folgen aus den Spec-Phasen.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        }
+      ]
+    },
+    {
+      "id": "SF23",
+      "prompt": "Wie behandelt Kiro unabhängige Aufgaben beim Ausführen aller Spec-Tasks?",
+      "options": [
+        {
+          "id": "SF23-1",
+          "text": "Es kann Abhängigkeiten analysieren und unabhängige Tasks parallel ausführen.",
+          "correct": true,
+          "explanation": "Die Dokumentation beschreibt Abhängigkeitswellen.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF23-2",
+          "text": "Es erklärt alle Tasks automatisch für unabhängig.",
+          "correct": false,
+          "explanation": "Abhängigkeiten werden gerade berücksichtigt.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF23-3",
+          "text": "Es ersetzt die Tasks durch einen unstrukturierten Prompt.",
+          "correct": false,
+          "explanation": "Die Tasks-Liste bleibt Grundlage.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        }
+      ]
+    },
+    {
+      "id": "SF24",
+      "prompt": "Welcher Kiro-Ablauf erzeugt Anforderungen, Design und Tasks für ein klar verstandenes Feature in einem Durchgang?",
+      "options": [
+        {
+          "id": "SF24-1",
+          "text": "Quick Spec.",
+          "correct": true,
+          "explanation": "Kiro beschreibt Quick Spec für gut verstandene Features.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF24-2",
+          "text": "Bugfix-Spec.",
+          "correct": false,
+          "explanation": "Dieser Ablauf beginnt mit Fehleranalyse.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        },
+        {
+          "id": "SF24-3",
+          "text": "Ein MCP-Server ohne Spec.",
+          "correct": false,
+          "explanation": "Er erstellt die drei Spec-Artefakte nicht.",
+          "sourceUrl": "https://kiro.dev/docs/specs/"
+        }
+      ]
+    },
+    {
+      "id": "SF25",
+      "prompt": "Woran kann ein Java-/Web-Team in einem kleinen Framework-Pilot die Trennung von fachlichem Was und technischem Wie prüfen?",
+      "options": [
+        {
+          "id": "SF25-1",
+          "text": "An getrennter Verhaltens-Spec und Design-Artefakt.",
+          "correct": true,
+          "explanation": "OpenSpec ordnet Verhalten den Specs und den Bauweg dem Design zu.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "SF25-2",
+          "text": "An einer gemeinsamen Aufgabenliste für Verhalten und Bauweg.",
+          "correct": false,
+          "explanation": "Tasks sind die Umsetzungscheckliste und ersetzen die getrennten Artefakte nicht.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
+        },
+        {
+          "id": "SF25-3",
+          "text": "An einem Proposal mit technischen Schritten allein.",
+          "correct": false,
+          "explanation": "Das Proposal erklärt den Grund der Änderung, nicht beide Ebenen.",
+          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
         }
       ]
     }
@@ -11504,683 +12611,6 @@
           "correct": false,
           "explanation": "Die Attestation vergleicht Laufbeleg und Ergebnis, nicht nur einen Link.",
           "sourceUrl": "https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/main/SPEC.md#106-verification-versus-attestation"
-        }
-      ]
-    }
-  ],
-  "goal-discovery-and-stop-criteria": [
-    {
-      "id": "GD01",
-      "prompt": "Ein Coding-Agent soll einen unklaren Änderungswunsch bearbeiten. Was gehört laut GitHub zu einem gut abgegrenzten Auftrag?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Problem, Abnahmekriterien und betroffene Dateien",
-          "correct": true,
-          "explanation": "GitHub nennt diese drei Angaben für einen klar umrissenen Auftrag.",
-          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
-        },
-        {
-          "id": "b",
-          "text": "Nur ein gewünschter Dateiname",
-          "correct": false,
-          "explanation": "Der Dateiname hilft, beschreibt aber weder Problem noch Abnahme.",
-          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
-        },
-        {
-          "id": "c",
-          "text": "Nur die gewünschte Implementierungssprache",
-          "correct": false,
-          "explanation": "Die Sprache legt das fachliche Ergebnis und seine Prüfung nicht fest.",
-          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results"
-        }
-      ]
-    },
-    {
-      "id": "GD02",
-      "prompt": "Ein Team kann den Nutzen einer gewünschten Funktion nicht benennen. Was sollte es zuerst hinterfragen?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Warum diese Funktion gebraucht wird",
-          "correct": true,
-          "explanation": "Die Quelle empfiehlt, bei unklarem Ziel den Grund für die Funktion erneut zu prüfen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#focus-on-the-goal"
-        },
-        {
-          "id": "b",
-          "text": "Welche vorhandene UI-Komponente wiederverwendet wird",
-          "correct": false,
-          "explanation": "Komponentenwahl kann später helfen, erklärt aber den fehlenden Nutzen nicht.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#focus-on-the-goal"
-        },
-        {
-          "id": "c",
-          "text": "Welches Framework den kürzesten Implementierungsweg bietet",
-          "correct": false,
-          "explanation": "Ein technischer Weg klärt nicht, warum die Funktion gebraucht wird.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#focus-on-the-goal"
-        }
-      ]
-    },
-    {
-      "id": "GD03",
-      "prompt": "Welche drei Angaben sollen eine User Story nach dem Service Manual mindestens erklären?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Akteur, Bedarf und Ziel",
-          "correct": true,
-          "explanation": "Die Story benennt, wer etwas braucht, was gebraucht wird und warum.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#what-to-include"
-        },
-        {
-          "id": "b",
-          "text": "Framework, Datenbank und Hosting",
-          "correct": false,
-          "explanation": "Technische Mittel können nötig werden, ersetzen aber keine Bedarfserklärung.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#what-to-include"
-        },
-        {
-          "id": "c",
-          "text": "Priorität, Aufwand und Termin",
-          "correct": false,
-          "explanation": "Planungsdaten erklären weder den Akteur noch seinen Bedarf.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#what-to-include"
-        }
-      ]
-    },
-    {
-      "id": "GD04",
-      "prompt": "Woran lässt sich bei einer Story erkennen, ob der Dienst den Bedarf erfüllt?",
-      "options": [
-        {
-          "id": "a",
-          "text": "An beobachtbaren Ergebnissen als Abnahmekriterien",
-          "correct": true,
-          "explanation": "Abnahmekriterien benennen Ergebnisse, an denen die Erfüllung geprüft wird.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria"
-        },
-        {
-          "id": "b",
-          "text": "An abgeschlossenen Implementierungsaufgaben",
-          "correct": false,
-          "explanation": "Abgeschlossene Tasks belegen noch nicht das Ergebnis für die Nutzenden.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria"
-        },
-        {
-          "id": "c",
-          "text": "An der Zahl bestandener interner Unit-Tests allein",
-          "correct": false,
-          "explanation": "Interne Tests können helfen, zeigen aber ohne passende Abnahme keinen erfüllten Nutzerbedarf.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria"
-        }
-      ]
-    },
-    {
-      "id": "GD05",
-      "prompt": "Eine Abnahmebedingung braucht fachliche Belege. Wie kann die Story diese nachvollziehbar machen?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Das Kriterium mit vorhandenen Nachweisen verknüpfen",
-          "correct": true,
-          "explanation": "Die Quelle empfiehlt, Abnahmekriterien mit stützender Evidenz zu verbinden.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria"
-        },
-        {
-          "id": "b",
-          "text": "Belege erst nach der Freigabe suchen",
-          "correct": false,
-          "explanation": "Ohne Beleg bleibt eine entscheidende Bedingung bei der Abnahme offen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria"
-        },
-        {
-          "id": "c",
-          "text": "Nur eine technische Aufwandsschätzung anfügen",
-          "correct": false,
-          "explanation": "Aufwand belegt nicht das fachliche Ergebnis.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria"
-        }
-      ]
-    },
-    {
-      "id": "GD06",
-      "prompt": "Ein Auftrag lautet nur „Baut ein neues Portal“. Welcher erste Schritt hilft bei der Zielklärung?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Die vorgegebene Lösung als Problem und Bedarf neu formulieren",
-          "correct": true,
-          "explanation": "Die Discovery-Anleitung empfiehlt, eine vorgegebene Lösung zunächst zu hinterfragen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#define-the-problem"
-        },
-        {
-          "id": "b",
-          "text": "Sofort eine Portal-Komponente programmieren",
-          "correct": false,
-          "explanation": "Ein Prototyp kann später helfen, klärt aber den Bedarf noch nicht.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#define-the-problem"
-        },
-        {
-          "id": "c",
-          "text": "Den Namen des Portals endgültig festlegen",
-          "correct": false,
-          "explanation": "Ein Name erklärt weder Problem noch Nutzen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#define-the-problem"
-        }
-      ]
-    },
-    {
-      "id": "GD07",
-      "prompt": "Warum gehört ein Nicht-Ziel in die Klärung eines Änderungswunsches?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Es grenzt ab, was das Team nicht lösen soll",
-          "correct": true,
-          "explanation": "Die Quelle nennt ausdrücklich die Einigung darüber, was nicht zum Problem gehört.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#define-the-problem"
-        },
-        {
-          "id": "b",
-          "text": "Es ersetzt die Beschreibung des gewünschten Ergebnisses",
-          "correct": false,
-          "explanation": "Eine Grenze allein beschreibt noch keinen positiven Nutzen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#define-the-problem"
-        },
-        {
-          "id": "c",
-          "text": "Es macht Abnahmekriterien überflüssig",
-          "correct": false,
-          "explanation": "Auch im begrenzten Umfang muss Erfolg prüfbar sein.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#define-the-problem"
-        }
-      ]
-    },
-    {
-      "id": "GD08",
-      "prompt": "Wessen tatsächliche Ziele sollte eine Discovery vor einer Service-Änderung untersuchen?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Die Ziele der Menschen, die den Dienst nutzen",
-          "correct": true,
-          "explanation": "Die Quelle stellt Nutzer und deren beabsichtigte Aufgaben in den Mittelpunkt.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-users-and-their-context"
-        },
-        {
-          "id": "b",
-          "text": "Nur die technischen Vorlieben des Implementierungsteams",
-          "correct": false,
-          "explanation": "Technikvorlieben können relevant sein, beschreiben aber keinen Nutzerbedarf.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-users-and-their-context"
-        },
-        {
-          "id": "c",
-          "text": "Nur die Formulierung im ersten Ticket",
-          "correct": false,
-          "explanation": "Ein Ticket kann Annahmen enthalten und muss gegen den tatsächlichen Bedarf geprüft werden.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-users-and-their-context"
-        }
-      ]
-    },
-    {
-      "id": "GD09",
-      "prompt": "Was hilft, wenn ein Webdienst nur einen Teil einer längeren Nutzerreise abdeckt?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Den weiteren Ablauf und beteiligte Stellen untersuchen",
-          "correct": true,
-          "explanation": "Die Discovery betrachtet den größeren Weg und die beteiligten Organisationen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-users-and-their-context"
-        },
-        {
-          "id": "b",
-          "text": "Nur die eigene Startseite bewerten",
-          "correct": false,
-          "explanation": "Die Startseite zeigt nicht, was vor und nach dem Dienst geschieht.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-users-and-their-context"
-        },
-        {
-          "id": "c",
-          "text": "Alle Nachbarprozesse als irrelevant markieren",
-          "correct": false,
-          "explanation": "Gerade Schnittstellen können den Bedarf und die Grenzen bestimmen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-users-and-their-context"
-        }
-      ]
-    },
-    {
-      "id": "GD10",
-      "prompt": "Ein bestehender Prozess erschwert eine sinnvolle Verbesserung, kann aber geändert werden. Wie ist er einzuordnen?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Als möglicherweise weiche Einschränkung",
-          "correct": true,
-          "explanation": "Die Quelle unterscheidet veränderbare Prozesse von harten Grenzen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
-        },
-        {
-          "id": "b",
-          "text": "Als unveränderbares Gesetz",
-          "correct": false,
-          "explanation": "Ein Organisationsprozess ist nicht automatisch eine rechtliche Pflicht.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
-        },
-        {
-          "id": "c",
-          "text": "Als bereits erfülltes Abnahmekriterium",
-          "correct": false,
-          "explanation": "Eine Einschränkung belegt kein erreichtes Ergebnis.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
-        }
-      ]
-    },
-    {
-      "id": "GD11",
-      "prompt": "Ein rechtlich festgelegter Rahmen verhindert eine geplante Webfunktion. Was ist für die weitere Planung entscheidend?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Prüfen, ob der Nutzen innerhalb der harten Grenze erreichbar ist",
-          "correct": true,
-          "explanation": "Harte Grenzen beeinflussen, ob eine Fortsetzung sinnvoll ist.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
-        },
-        {
-          "id": "b",
-          "text": "Den Rahmen als technische Schuld ausblenden",
-          "correct": false,
-          "explanation": "Eine rechtliche Grenze verschwindet nicht durch Umbenennung.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
-        },
-        {
-          "id": "c",
-          "text": "Die ursprüngliche Funktion trotzdem als abgenommen markieren",
-          "correct": false,
-          "explanation": "Eine unerfüllbare Funktion ist kein bestätigtes Ergebnis.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
-        }
-      ]
-    },
-    {
-      "id": "GD12",
-      "prompt": "Warum sollten besonders riskante Annahmen vor einer umfangreichen Umsetzung sichtbar sein?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Sie bestimmen, was früh geprüft werden muss",
-          "correct": true,
-          "explanation": "Die Quelle verbindet bekannte Einschränkungen mit der Priorisierung riskanter Annahmen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
-        },
-        {
-          "id": "b",
-          "text": "Sie machen Nutzertests grundsätzlich unnötig",
-          "correct": false,
-          "explanation": "Annahmen müssen durch passende Beobachtungen geprüft werden.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
-        },
-        {
-          "id": "c",
-          "text": "Sie beweisen die Wirtschaftlichkeit des Projekts",
-          "correct": false,
-          "explanation": "Ein Risiko ist noch kein Nutzen-Kosten-Nachweis.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#understanding-constraints"
-        }
-      ]
-    },
-    {
-      "id": "GD13",
-      "prompt": "Eine Bedarfsklärung zeigt, dass bessere Informationen das Problem lösen könnten. Was folgt daraus?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Eine Alternative zum Bau neuer Software prüfen",
-          "correct": true,
-          "explanation": "Die Quelle nennt Informationsangebote als mögliche Alternative zu einem neuen Dienst.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#identify-improvements-you-might-be-able-to-make"
-        },
-        {
-          "id": "b",
-          "text": "Trotzdem zwingend einen neuen Dienst bauen",
-          "correct": false,
-          "explanation": "Der gewünschte Nutzen kann auf anderem Weg erreicht werden.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#identify-improvements-you-might-be-able-to-make"
-        },
-        {
-          "id": "c",
-          "text": "Den Bedarf ignorieren, weil kein Code nötig ist",
-          "correct": false,
-          "explanation": "Auch eine Lösung ohne neuen Code kann den Bedarf erfüllen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#identify-improvements-you-might-be-able-to-make"
-        }
-      ]
-    },
-    {
-      "id": "GD14",
-      "prompt": "Wann ist die Discovery nach dem Service Manual abgeschlossen?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Wenn über Fortsetzung oder Stopp entschieden wurde",
-          "correct": true,
-          "explanation": "Die Phase endet mit der Entscheidung, ob eine Alpha-Phase sinnvoll ist.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
-        },
-        {
-          "id": "b",
-          "text": "Sobald der erste Bildschirm programmiert ist",
-          "correct": false,
-          "explanation": "In der Discovery soll noch kein Dienst gebaut werden.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
-        },
-        {
-          "id": "c",
-          "text": "Sobald jede denkbare Frage beantwortet ist",
-          "correct": false,
-          "explanation": "Die Entscheidung verlangt ausreichend relevante Erkenntnisse, nicht Allwissen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
-        }
-      ]
-    },
-    {
-      "id": "GD15",
-      "prompt": "Welche zwei Gesichtspunkte tragen eine Fortsetzungsentscheidung nach Discovery?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Nutzbare Lösungsmöglichkeit und Verhältnis von Kosten zu Verbesserung",
-          "correct": true,
-          "explanation": "Die Quelle nennt einen tragfähigen Dienst und die Wirtschaftlichkeit als Faktoren.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
-        },
-        {
-          "id": "b",
-          "text": "Nur die Menge bereits geschriebener Tickets",
-          "correct": false,
-          "explanation": "Ticketmenge misst weder Nutzen noch Kosten.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
-        },
-        {
-          "id": "c",
-          "text": "Nur die Wahl eines Frameworks",
-          "correct": false,
-          "explanation": "Ein Framework beantwortet die Entscheidungsfrage nicht.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
-        }
-      ]
-    },
-    {
-      "id": "GD16",
-      "prompt": "Die Recherche zeigt, dass ein geplanter Dienst kaum Nutzen bringt. Welche Entscheidung ist fachlich möglich?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Die Arbeit am Dienst beenden",
-          "correct": true,
-          "explanation": "Die Quelle beschreibt den Stopp nach Discovery ausdrücklich als zulässiges Ergebnis.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
-        },
-        {
-          "id": "b",
-          "text": "Den Dienst allein wegen der Vorarbeit bauen",
-          "correct": false,
-          "explanation": "Bereits investierte Zeit rechtfertigt keinen ungenügenden Nutzen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
-        },
-        {
-          "id": "c",
-          "text": "Den fehlenden Nutzen aus der Abnahme ausklammern",
-          "correct": false,
-          "explanation": "Die Entscheidung muss den tatsächlichen Nutzen berücksichtigen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-you-know-discovery-is-finished"
-        }
-      ]
-    },
-    {
-      "id": "GD17",
-      "prompt": "Warum ist vor einer Verbesserung eine Ausgangsmessung nützlich?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Nur mit einem Ausgangswert lässt sich Veränderung bewerten",
-          "correct": true,
-          "explanation": "Die Quelle empfiehlt eine Baseline, um spätere Verbesserungen einordnen zu können.",
-          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#discovery-spot-problems-and-estimate-how-much-theyre-costing"
-        },
-        {
-          "id": "b",
-          "text": "Sie ersetzt die Definition des Nutzerproblems",
-          "correct": false,
-          "explanation": "Eine Zahl ohne Bedarf erklärt nicht, was verbessert werden soll.",
-          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#discovery-spot-problems-and-estimate-how-much-theyre-costing"
-        },
-        {
-          "id": "c",
-          "text": "Sie garantiert den Erfolg der gewählten Lösung",
-          "correct": false,
-          "explanation": "Ein Ausgangswert sagt nichts über die spätere Wirkung aus.",
-          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#discovery-spot-problems-and-estimate-how-much-theyre-costing"
-        }
-      ]
-    },
-    {
-      "id": "GD18",
-      "prompt": "Welche Beobachtung eignet sich als Ausgangswert für einen umständlichen Webablauf?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Die bisher benötigte Zeit für eine Nutzeraufgabe",
-          "correct": true,
-          "explanation": "Die Quelle nennt die Dauer einer Aufgabe als messbare Größe des Problems.",
-          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#discovery-spot-problems-and-estimate-how-much-theyre-costing"
-        },
-        {
-          "id": "b",
-          "text": "Die angestrebte Dauer des neuen Ablaufs",
-          "correct": false,
-          "explanation": "Ein Zielwert beschreibt den Sollzustand, nicht die bisherige Belastung.",
-          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#discovery-spot-problems-and-estimate-how-much-theyre-costing"
-        },
-        {
-          "id": "c",
-          "text": "Die geschätzte Zahl künftiger Formularschritte",
-          "correct": false,
-          "explanation": "Eine Entwurfsschätzung misst den bisherigen Ablauf nicht.",
-          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#discovery-spot-problems-and-estimate-how-much-theyre-costing"
-        }
-      ]
-    },
-    {
-      "id": "GD19",
-      "prompt": "Welche Annahmen sollte ein Team bei mehreren Lösungsideen zuerst erproben?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Die mit dem größten Risiko für Machbarkeit und Nutzen",
-          "correct": true,
-          "explanation": "Die Alpha-Anleitung empfiehlt, besonders riskante Annahmen zu untersuchen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#alpha-test-different-solutions"
-        },
-        {
-          "id": "b",
-          "text": "Nur Annahmen mit leicht zu bauender Demo",
-          "correct": false,
-          "explanation": "Leichte Demonstrierbarkeit trifft nicht zwingend das entscheidende Risiko.",
-          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#alpha-test-different-solutions"
-        },
-        {
-          "id": "c",
-          "text": "Nur bereits bestätigte Annahmen",
-          "correct": false,
-          "explanation": "Deren erneute Prüfung klärt die offenen Risiken kaum.",
-          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#alpha-test-different-solutions"
-        }
-      ]
-    },
-    {
-      "id": "GD20",
-      "prompt": "Ein Pilot erreicht den erwarteten Nutzen nicht. Was sollte die Fortsetzungsentscheidung berücksichtigen?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Gemessenen Nutzen, Kosten und mögliche Änderung oder Stopp",
-          "correct": true,
-          "explanation": "Die Quelle verlangt den Vergleich mit Erwartungen und erwägt Fortsetzung, Änderung oder Ende.",
-          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#decide-whether-you-should-continue-your-project"
-        },
-        {
-          "id": "b",
-          "text": "Nur die ursprünglich geplante Lieferfrist",
-          "correct": false,
-          "explanation": "Ein Termin allein beantwortet die Nutzenfrage nicht.",
-          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#decide-whether-you-should-continue-your-project"
-        },
-        {
-          "id": "c",
-          "text": "Nur die bereits investierten Entwicklungstage",
-          "correct": false,
-          "explanation": "Vergangener Aufwand ersetzt keine Bewertung der weiteren Wirkung.",
-          "sourceUrl": "https://www.gov.uk/service-manual/measuring-success/measuring-service-benefits#decide-whether-you-should-continue-your-project"
-        }
-      ]
-    },
-    {
-      "id": "GD21",
-      "prompt": "Ein Agentenauftrag enthält viele ungeprüfte Annahmen. Welcher Ablauf ist laut GitHub sinnvoll?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Erst Recherche und Plan, dann gezielte Codeänderungen",
-          "correct": true,
-          "explanation": "GitHub beschreibt die iterative Klärung vor dem Pull Request als möglichen Ablauf.",
-          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results#researching-planning-and-iterating-before-opening-a-pull-request"
-        },
-        {
-          "id": "b",
-          "text": "Den Pull Request ohne Prüfung sofort öffnen",
-          "correct": false,
-          "explanation": "Die Quelle empfiehlt bei unklarem Umfang erst Recherche und Planung.",
-          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results#researching-planning-and-iterating-before-opening-a-pull-request"
-        },
-        {
-          "id": "c",
-          "text": "Alle Annahmen als bereits bestätigte Fakten behandeln",
-          "correct": false,
-          "explanation": "Ungeprüfte Annahmen müssen vor der Umsetzung geklärt werden.",
-          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results#researching-planning-and-iterating-before-opening-a-pull-request"
-        }
-      ]
-    },
-    {
-      "id": "GD22",
-      "prompt": "Ein Ticket nennt nur „API reparieren“. Welche Ergänzung macht es für einen Coding-Agenten aussagekräftiger?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Das konkrete Fehlerbild und prüfbare Erfolgsbedingungen",
-          "correct": true,
-          "explanation": "Problem und Abnahme gehören laut GitHub zu einem klar begrenzten Auftrag.",
-          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results#making-sure-your-issues-are-well-scoped"
-        },
-        {
-          "id": "b",
-          "text": "Eine Liste beliebiger denkbarer Frameworks",
-          "correct": false,
-          "explanation": "Technologieoptionen beschreiben das Fehlerbild nicht.",
-          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results#making-sure-your-issues-are-well-scoped"
-        },
-        {
-          "id": "c",
-          "text": "Eine allgemeine Aufforderung, besonders gründlich zu sein",
-          "correct": false,
-          "explanation": "Gründlichkeit ersetzt keine konkrete Ziel- und Prüfbeschreibung.",
-          "sourceUrl": "https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results#making-sure-your-issues-are-well-scoped"
-        }
-      ]
-    },
-    {
-      "id": "GD23",
-      "prompt": "Wozu hilft das Ziel einer User Story bei der Abnahme?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Es zeigt, wann der Bedarf tatsächlich erfüllt ist",
-          "correct": true,
-          "explanation": "Die Quelle verbindet das Ziel mit der Entscheidung, wann die Story fertig ist.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#focus-on-the-goal"
-        },
-        {
-          "id": "b",
-          "text": "Es legt die Anzahl der Commits fest",
-          "correct": false,
-          "explanation": "Commit-Zahl ist kein Merkmal eines erfüllten Bedarfs.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#focus-on-the-goal"
-        },
-        {
-          "id": "c",
-          "text": "Es ersetzt alle Beispiele und Randfälle",
-          "correct": false,
-          "explanation": "Das Ziel leitet die Abnahme, weitere Fälle können trotzdem nötig sein.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#focus-on-the-goal"
-        }
-      ]
-    },
-    {
-      "id": "GD24",
-      "prompt": "Was sollte vor der Umsetzung für einen verbesserten Service feststehen?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Welche Daten und Kennzahlen den Erfolg zeigen",
-          "correct": true,
-          "explanation": "Die Discovery-Anleitung verlangt Überlegungen zu Messdaten und Leistungskennzahlen.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-youll-measure-success"
-        },
-        {
-          "id": "b",
-          "text": "Welche technische Lösung das Team bevorzugt",
-          "correct": false,
-          "explanation": "Eine Präferenz für die Umsetzung legt noch keine Erfolgsmessung fest.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-youll-measure-success"
-        },
-        {
-          "id": "c",
-          "text": "Wie viele Tickets im ersten Sprint geschlossen werden",
-          "correct": false,
-          "explanation": "Ticketdurchsatz sagt für sich nichts über den Nutzen des Dienstes aus.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works#how-youll-measure-success"
-        }
-      ]
-    },
-    {
-      "id": "GD25",
-      "prompt": "Eine geplante Änderung würde mehrere Wochen Entwicklung und Abnahme brauchen. Welche Größenanpassung empfiehlt das Service Manual, wenn möglich?",
-      "options": [
-        {
-          "id": "a",
-          "text": "In kleinere, einzeln abnehmbare Stories teilen",
-          "correct": true,
-          "explanation": "Große Epics sollen möglichst in innerhalb einer Iteration abschließbare Stories zerlegt werden.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#epics"
-        },
-        {
-          "id": "b",
-          "text": "Die große Story nur mit mehr Parallelität bearbeiten",
-          "correct": false,
-          "explanation": "Zusätzliche Parallelität macht einen zu großen Abnahmeumfang nicht automatisch überschaubar.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#epics"
-        },
-        {
-          "id": "c",
-          "text": "Die Abnahme bis zum Ende aller Teilbereiche verschieben",
-          "correct": false,
-          "explanation": "Das ließe die einzelnen nutzbaren Ergebnisse länger ungeprüft.",
-          "sourceUrl": "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#epics"
         }
       ]
     }
@@ -20309,683 +20739,6 @@
       ]
     }
   ],
-  "spec-framework-selection": [
-    {
-      "id": "SF01",
-      "prompt": "Welches OpenSpec-Artefakt hält zuerst fest, warum eine Änderung nötig ist?",
-      "options": [
-        {
-          "id": "SF01-1",
-          "text": "proposal.md",
-          "correct": true,
-          "explanation": "Das Proposal beschreibt die Motivation.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF01-2",
-          "text": "tasks.md",
-          "correct": false,
-          "explanation": "Tasks enthält die Umsetzungsschritte.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF01-3",
-          "text": "design.md",
-          "correct": false,
-          "explanation": "Design beschreibt den technischen Weg.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        }
-      ]
-    },
-    {
-      "id": "SF02",
-      "prompt": "Wo beschreibt OpenSpec das geänderte Verhalten einer Fähigkeit?",
-      "options": [
-        {
-          "id": "SF02-1",
-          "text": "In einer Delta-Spec unter specs/<capability-path>/spec.md.",
-          "correct": true,
-          "explanation": "Dieses Artefakt beschreibt, was sich fachlich ändert.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF02-2",
-          "text": "Im Dateinamen des Change-Ordners.",
-          "correct": false,
-          "explanation": "Der Ordnername ersetzt die Verhaltensbeschreibung nicht.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF02-3",
-          "text": "In der Aufgabenliste allein.",
-          "correct": false,
-          "explanation": "Tasks planen Arbeit, definieren aber nicht den Verhaltensvertrag.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        }
-      ]
-    },
-    {
-      "id": "SF03",
-      "prompt": "Welches OpenSpec-Artefakt beschreibt den technischen Lösungsweg?",
-      "options": [
-        {
-          "id": "SF03-1",
-          "text": "design.md",
-          "correct": true,
-          "explanation": "Das Design legt dar, wie die Änderung gebaut wird.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF03-2",
-          "text": "proposal.md",
-          "correct": false,
-          "explanation": "Das Proposal begründet die Änderung.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF03-3",
-          "text": "spec.md",
-          "correct": false,
-          "explanation": "Die Spec beschreibt das gewünschte Verhalten.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        }
-      ]
-    },
-    {
-      "id": "SF04",
-      "prompt": "Welche Datei dient im OpenSpec-Standard als Implementierungscheckliste?",
-      "options": [
-        {
-          "id": "SF04-1",
-          "text": "tasks.md",
-          "correct": true,
-          "explanation": "Tasks sammelt die umzusetzenden Schritte.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF04-2",
-          "text": "proposal.md",
-          "correct": false,
-          "explanation": "Das Proposal erklärt den Anlass.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF04-3",
-          "text": ".openspec.yaml",
-          "correct": false,
-          "explanation": "Diese Datei enthält Änderungsmetadaten.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        }
-      ]
-    },
-    {
-      "id": "SF05",
-      "prompt": "In welcher Reihenfolge beginnt der OpenSpec-Standardablauf?",
-      "options": [
-        {
-          "id": "SF05-1",
-          "text": "Mit dem Proposal vor Specs und Design.",
-          "correct": true,
-          "explanation": "Die dokumentierte Artefaktfolge startet mit dem Proposal.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF05-2",
-          "text": "Mit Tasks vor der Änderungsbegründung.",
-          "correct": false,
-          "explanation": "Tasks bauen auf den vorangehenden Artefakten auf.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF05-3",
-          "text": "Mit der Implementierung vor den Artefakten.",
-          "correct": false,
-          "explanation": "Apply folgt erst nach den erforderlichen Artefakten.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        }
-      ]
-    },
-    {
-      "id": "SF06",
-      "prompt": "Welche beiden OpenSpec-Artefakte können nach dem Proposal in beliebiger Reihenfolge entstehen?",
-      "options": [
-        {
-          "id": "SF06-1",
-          "text": "Specs und Design.",
-          "correct": true,
-          "explanation": "Der Standard erlaubt beide Reihenfolgen.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF06-2",
-          "text": "Proposal und Tasks.",
-          "correct": false,
-          "explanation": "Das Proposal steht vor den Tasks.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF06-3",
-          "text": "Tasks und Apply.",
-          "correct": false,
-          "explanation": "Apply folgt den Tasks.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        }
-      ]
-    },
-    {
-      "id": "SF07",
-      "prompt": "Wenn bei einer OpenSpec-Änderung weder Specs noch Design ausgelassen werden: Wann werden die Tasks vorbereitet?",
-      "options": [
-        {
-          "id": "SF07-1",
-          "text": "Nachdem Proposal, Specs und Design vorliegen.",
-          "correct": true,
-          "explanation": "Im vollständigen Standardablauf benötigen Tasks diese Artefakte; das Schema erlaubt bei anderen Änderungen Ausnahmen.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF07-2",
-          "text": "Schon vor dem Proposal.",
-          "correct": false,
-          "explanation": "Die Änderungsbegründung steht zuerst.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF07-3",
-          "text": "Erst nach dem Archivieren.",
-          "correct": false,
-          "explanation": "Archivieren folgt der umgesetzten Änderung.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        }
-      ]
-    },
-    {
-      "id": "SF08",
-      "prompt": "Was markiert im OpenSpec-Standard den Übergang zur Implementierung?",
-      "options": [
-        {
-          "id": "SF08-1",
-          "text": "Apply nach der Aufgabenliste.",
-          "correct": true,
-          "explanation": "Die dokumentierte Folge führt von Tasks zu Apply.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF08-2",
-          "text": "Proposal ohne weitere Prüfung.",
-          "correct": false,
-          "explanation": "Ein Proposal ist noch kein Implementierungsstart.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF08-3",
-          "text": "Das Anlegen des Change-Ordners allein.",
-          "correct": false,
-          "explanation": "Ein Ordner enthält noch keine umsetzbaren Artefakte.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        }
-      ]
-    },
-    {
-      "id": "SF09",
-      "prompt": "Eine kleine OpenSpec-Änderung braucht keinen eigenen Architekturentwurf. Was ist laut Schema möglich?",
-      "options": [
-        {
-          "id": "SF09-1",
-          "text": "Design auslassen, wenn dessen Bedingungen nicht gelten.",
-          "correct": true,
-          "explanation": "Das Standard-Schema erlaubt das Auslassen unter dieser Bedingung.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF09-2",
-          "text": "Den Grund für die Änderung auslassen.",
-          "correct": false,
-          "explanation": "Das Proposal steht am Anfang.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF09-3",
-          "text": "Tasks vor jeder Verhaltensbeschreibung schreiben.",
-          "correct": false,
-          "explanation": "Tasks benötigen die erforderlichen Vorarbeiten.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        }
-      ]
-    },
-    {
-      "id": "SF10",
-      "prompt": "Ein OpenSpec-Pilot betrifft zwei getrennte Fähigkeiten. Wie werden die Verhaltensänderungen abgelegt?",
-      "options": [
-        {
-          "id": "SF10-1",
-          "text": "Je Fähigkeit in einer eigenen Delta-Spec.",
-          "correct": true,
-          "explanation": "Das Schema sieht eine spec.md pro Capability-Pfad vor.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF10-2",
-          "text": "Alle Anforderungen in design.md.",
-          "correct": false,
-          "explanation": "Design beschreibt den Bauweg, nicht alle Capability-Verträge.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF10-3",
-          "text": "Jede Fähigkeit als Dateiname in tasks.md.",
-          "correct": false,
-          "explanation": "Aufgaben ersetzen keine Delta-Specs.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        }
-      ]
-    },
-    {
-      "id": "SF11",
-      "prompt": "Welche Phase folgt im Kernablauf von GitHub Spec Kit direkt auf Specify?",
-      "options": [
-        {
-          "id": "SF11-1",
-          "text": "Plan.",
-          "correct": true,
-          "explanation": "Der dokumentierte Kernablauf ist Specify → Plan → Tasks → Implement → Converge.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        },
-        {
-          "id": "SF11-2",
-          "text": "Implement.",
-          "correct": false,
-          "explanation": "Vor Implement liegen Plan und Tasks.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        },
-        {
-          "id": "SF11-3",
-          "text": "Converge.",
-          "correct": false,
-          "explanation": "Converge schließt den Ablauf ab.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        }
-      ]
-    },
-    {
-      "id": "SF12",
-      "prompt": "Was entsteht in Spec Kit vor der Implementierungsphase aus dem Plan?",
-      "options": [
-        {
-          "id": "SF12-1",
-          "text": "Eine gegliederte Aufgabenfolge.",
-          "correct": true,
-          "explanation": "Tasks baut auf Specify und Plan auf.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        },
-        {
-          "id": "SF12-2",
-          "text": "Ein automatischer Produktiv-Release.",
-          "correct": false,
-          "explanation": "Der Ablauf setzt einen Release nicht als Folgeschritt voraus.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        },
-        {
-          "id": "SF12-3",
-          "text": "Eine Berechtigung für alle Agentenwerkzeuge.",
-          "correct": false,
-          "explanation": "Planung erteilt keine Rechte.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        }
-      ]
-    },
-    {
-      "id": "SF13",
-      "prompt": "Welcher Spec-Kit-Prozess kann als eigenständiger Einstieg dienen, ohne sofort eine Implementierung zu starten?",
-      "options": [
-        {
-          "id": "SF13-1",
-          "text": "Idea Assessment.",
-          "correct": true,
-          "explanation": "Die Dokumentation beschreibt Assessment als unabhängigen, optionalen Einstieg.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        },
-        {
-          "id": "SF13-2",
-          "text": "Der Implement-Schritt des SDD-Kernablaufs.",
-          "correct": false,
-          "explanation": "Implement setzt die vorherigen SDD-Artefakte voraus.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        },
-        {
-          "id": "SF13-3",
-          "text": "Der Converge-Schritt des SDD-Kernablaufs.",
-          "correct": false,
-          "explanation": "Converge steht am Ende des Umsetzungsablaufs.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        }
-      ]
-    },
-    {
-      "id": "SF14",
-      "prompt": "Welches Format tragen die zentralen Spec-Kit-Artefakte?",
-      "options": [
-        {
-          "id": "SF14-1",
-          "text": "Markdown-Dateien für die aufeinanderfolgenden Phasen.",
-          "correct": true,
-          "explanation": "Die Dokumentation beschreibt Markdown-Artefakte.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        },
-        {
-          "id": "SF14-2",
-          "text": "Kompilierten Java-Code.",
-          "correct": false,
-          "explanation": "Das Framework organisiert Spezifikationsartefakte.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        },
-        {
-          "id": "SF14-3",
-          "text": "Einträge in einer proprietären Datenbank.",
-          "correct": false,
-          "explanation": "Die genannten Artefakte sind Dateien.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        }
-      ]
-    },
-    {
-      "id": "SF15",
-      "prompt": "Ein Team möchte Spec Kit mit einem anderen Coding-Agenten erproben. Was unterstützt die Dokumentation?",
-      "options": [
-        {
-          "id": "SF15-1",
-          "text": "Agentenspezifische Integrationen samt generischer Ausweichmöglichkeit.",
-          "correct": true,
-          "explanation": "Spec Kit nennt Integrationen und eine generische Variante.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        },
-        {
-          "id": "SF15-2",
-          "text": "Eine Pflicht zur Nutzung eines einzelnen Agenten.",
-          "correct": false,
-          "explanation": "Die Dokumentation beschreibt mehrere Integrationen.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        },
-        {
-          "id": "SF15-3",
-          "text": "Eine automatische fachliche Freigabe des gewählten Agenten.",
-          "correct": false,
-          "explanation": "Integration ersetzt keine fachliche Prüfung.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        }
-      ]
-    },
-    {
-      "id": "SF16",
-      "prompt": "Warum ist bei Spec Kit ein Pilot in einem bestehenden Repository sinnvoll abzugrenzen?",
-      "options": [
-        {
-          "id": "SF16-1",
-          "text": "Es gibt eine eigene Anleitung für bestehende Codebasen.",
-          "correct": true,
-          "explanation": "Der Einstieg unterscheidet bestehende Projekte.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        },
-        {
-          "id": "SF16-2",
-          "text": "Weil jede Codebasis zuerst neu erzeugt werden muss.",
-          "correct": false,
-          "explanation": "Der Leitfaden sieht bestehende Projekte ausdrücklich vor.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        },
-        {
-          "id": "SF16-3",
-          "text": "Weil Specs dort keine Rolle mehr spielen.",
-          "correct": false,
-          "explanation": "Der Ablauf bleibt spezifikationsgeführt.",
-          "sourceUrl": "https://github.com/github/spec-kit/blob/main/docs/index.md"
-        }
-      ]
-    },
-    {
-      "id": "SF17",
-      "prompt": "Welche drei Kerndateien bilden eine Kiro-Feature-Spec?",
-      "options": [
-        {
-          "id": "SF17-1",
-          "text": "requirements.md, design.md und tasks.md.",
-          "correct": true,
-          "explanation": "Kiro nennt diese drei Dateien als Grundstruktur.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF17-2",
-          "text": "proposal.md, changelog.md und package.json.",
-          "correct": false,
-          "explanation": "Das sind nicht die drei Kiro-Spec-Dateien.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF17-3",
-          "text": "README.md, Dockerfile und build.gradle.",
-          "correct": false,
-          "explanation": "Diese Dateien gehören nicht zum Spec-Kernablauf.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        }
-      ]
-    },
-    {
-      "id": "SF18",
-      "prompt": "Wofür nutzt Kiro bei einem Fehlerfall bugfix.md?",
-      "options": [
-        {
-          "id": "SF18-1",
-          "text": "Für Analyse des aktuellen, erwarteten und unveränderten Verhaltens.",
-          "correct": true,
-          "explanation": "Bugfix-Specs halten die Fehleranalyse fest.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF18-2",
-          "text": "Für die Liste aller installierten Plugins.",
-          "correct": false,
-          "explanation": "Die Datei dient der Fehler-Spezifikation.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF18-3",
-          "text": "Für automatisch akzeptierte Codeänderungen.",
-          "correct": false,
-          "explanation": "Eine Bugfix-Spec ist keine Freigabe.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        }
-      ]
-    },
-    {
-      "id": "SF19",
-      "prompt": "Was beschreibt in Kiro design.md?",
-      "options": [
-        {
-          "id": "SF19-1",
-          "text": "Architektur, Datenfluss und Implementierungsüberlegungen.",
-          "correct": true,
-          "explanation": "Die Designphase hält den technischen Ansatz fest.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF19-2",
-          "text": "Das ursprüngliche Nutzerproblem.",
-          "correct": false,
-          "explanation": "Das gehört in Requirements oder Bugfix-Analyse.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF19-3",
-          "text": "Den aktuellen Aufgabenstatus.",
-          "correct": false,
-          "explanation": "Aufgabenstatus liegt bei Tasks.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        }
-      ]
-    },
-    {
-      "id": "SF20",
-      "prompt": "Was enthält in Kiro tasks.md?",
-      "options": [
-        {
-          "id": "SF20-1",
-          "text": "Diskrete, nachverfolgbare Umsetzungsschritte.",
-          "correct": true,
-          "explanation": "Tasks ist die detaillierte Implementierungsplanung.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF20-2",
-          "text": "Den gesamten Originalquellcode.",
-          "correct": false,
-          "explanation": "Tasks beschreibt Arbeiten, nicht den vollständigen Code.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF20-3",
-          "text": "Die endgültige fachliche Abnahme.",
-          "correct": false,
-          "explanation": "Eine Aufgabenliste ersetzt keine Abnahme.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        }
-      ]
-    },
-    {
-      "id": "SF21",
-      "prompt": "Eine Anforderung ist schon technisch klar. Welche Kiro-Variante kann mit dem Design beginnen?",
-      "options": [
-        {
-          "id": "SF21-1",
-          "text": "Design-First.",
-          "correct": true,
-          "explanation": "Kiro unterscheidet Requirements-First und Design-First.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF21-2",
-          "text": "Bugfix-Only für jedes neue Feature.",
-          "correct": false,
-          "explanation": "Bugfix betrifft Fehleranalyse.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF21-3",
-          "text": "Tasks-Only als einzige Spec-Phase.",
-          "correct": false,
-          "explanation": "Kiro beschreibt auch Anforderungen und Design.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        }
-      ]
-    },
-    {
-      "id": "SF22",
-      "prompt": "Ein Team möchte zuerst Nutzerverhalten und Abnahme klären. Welche Kiro-Variante passt?",
-      "options": [
-        {
-          "id": "SF22-1",
-          "text": "Requirements-First.",
-          "correct": true,
-          "explanation": "Hier beginnt die Feature-Spec mit Anforderungen.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF22-2",
-          "text": "Design-First mit ausgelassenen Anforderungen.",
-          "correct": false,
-          "explanation": "Die Frage priorisiert die Klärung des Nutzerverhaltens.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF22-3",
-          "text": "Task-Ausführung vor der Problemklärung.",
-          "correct": false,
-          "explanation": "Tasks folgen aus den Spec-Phasen.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        }
-      ]
-    },
-    {
-      "id": "SF23",
-      "prompt": "Wie behandelt Kiro unabhängige Aufgaben beim Ausführen aller Spec-Tasks?",
-      "options": [
-        {
-          "id": "SF23-1",
-          "text": "Es kann Abhängigkeiten analysieren und unabhängige Tasks parallel ausführen.",
-          "correct": true,
-          "explanation": "Die Dokumentation beschreibt Abhängigkeitswellen.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF23-2",
-          "text": "Es erklärt alle Tasks automatisch für unabhängig.",
-          "correct": false,
-          "explanation": "Abhängigkeiten werden gerade berücksichtigt.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF23-3",
-          "text": "Es ersetzt die Tasks durch einen unstrukturierten Prompt.",
-          "correct": false,
-          "explanation": "Die Tasks-Liste bleibt Grundlage.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        }
-      ]
-    },
-    {
-      "id": "SF24",
-      "prompt": "Welcher Kiro-Ablauf erzeugt Anforderungen, Design und Tasks für ein klar verstandenes Feature in einem Durchgang?",
-      "options": [
-        {
-          "id": "SF24-1",
-          "text": "Quick Spec.",
-          "correct": true,
-          "explanation": "Kiro beschreibt Quick Spec für gut verstandene Features.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF24-2",
-          "text": "Bugfix-Spec.",
-          "correct": false,
-          "explanation": "Dieser Ablauf beginnt mit Fehleranalyse.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        },
-        {
-          "id": "SF24-3",
-          "text": "Ein MCP-Server ohne Spec.",
-          "correct": false,
-          "explanation": "Er erstellt die drei Spec-Artefakte nicht.",
-          "sourceUrl": "https://kiro.dev/docs/specs/"
-        }
-      ]
-    },
-    {
-      "id": "SF25",
-      "prompt": "Woran kann ein Java-/Web-Team in einem kleinen Framework-Pilot die Trennung von fachlichem Was und technischem Wie prüfen?",
-      "options": [
-        {
-          "id": "SF25-1",
-          "text": "An getrennter Verhaltens-Spec und Design-Artefakt.",
-          "correct": true,
-          "explanation": "OpenSpec ordnet Verhalten den Specs und den Bauweg dem Design zu.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF25-2",
-          "text": "An einer gemeinsamen Aufgabenliste für Verhalten und Bauweg.",
-          "correct": false,
-          "explanation": "Tasks sind die Umsetzungscheckliste und ersetzen die getrennten Artefakte nicht.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        },
-        {
-          "id": "SF25-3",
-          "text": "An einem Proposal mit technischen Schritten allein.",
-          "correct": false,
-          "explanation": "Das Proposal erklärt den Grund der Änderung, nicht beide Ebenen.",
-          "sourceUrl": "https://openspec.dev/docs/schemas/spec-driven"
-        }
-      ]
-    }
-  ],
   "automation-value-and-gates": [
     {
       "id": "AV01",
@@ -23015,6 +22768,465 @@
           "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
         }
       ]
+    },
+    {
+      "id": "subagent-ownership-05",
+      "prompt": "Welches Problem beobachtete Anthropic bei zu vagen Teilaufträgen?",
+      "options": [
+        {
+          "id": "subagent-ownership-05-1",
+          "text": "Subagents bearbeiteten dieselbe Recherche oder verfehlten Teilaspekte.",
+          "correct": true,
+          "explanation": "Ohne klare Grenzen kam es zu doppelter Arbeit und Lücken.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-05-2",
+          "text": "Die Suchwerkzeuge lieferten grundsätzlich keine Ergebnisse mehr.",
+          "correct": false,
+          "explanation": "Der geschilderte Fehler lag bei der Aufgabenzerlegung, nicht bei einem generellen Werkzeugausfall.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-05-3",
+          "text": "Die Hauptinstanz konnte keine Ergebnisse mehr lesen.",
+          "correct": false,
+          "explanation": "Der Bericht beschreibt weiterhin Rückgaben an die Hauptinstanz.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-06",
+      "prompt": "Welche Aufgabe übernimmt die Parent-Session bei GitHubs Subagent-Orchestrierung?",
+      "options": [
+        {
+          "id": "subagent-ownership-06-1",
+          "text": "Sie erhält Ereignisse und bindet das Subagent-Ergebnis in ihre Antwort ein.",
+          "correct": true,
+          "explanation": "GitHub beschreibt Ereignisstrom und Ergebnisintegration in die Parent-Session.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-06-2",
+          "text": "Sie wird durch den Subagent dauerhaft ersetzt.",
+          "correct": false,
+          "explanation": "Der Subagent arbeitet für einen Teilauftrag innerhalb der Parent-Session.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-06-3",
+          "text": "Sie führt jeden Werkzeugaufruf des Subagent selbst aus.",
+          "correct": false,
+          "explanation": "Der Subagent läuft mit eigenem Kontext und zugewiesenen Werkzeugen.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-07",
+      "prompt": "Was trennt beim beschriebenen GitHub-Copilot-SDK einen Subagent von der Parent-Session?",
+      "options": [
+        {
+          "id": "subagent-ownership-07-1",
+          "text": "Ein eigener Kontext und eine eigene Agentendefinition.",
+          "correct": true,
+          "explanation": "GitHub beschreibt isolierte Ausführung mit eigenem Prompt und Werkzeugumfang.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-07-2",
+          "text": "Eine eigene, dauerhaft unabhängige Benutzeranfrage.",
+          "correct": false,
+          "explanation": "Die Delegation bleibt Teil der bestehenden Sitzung und Anfrage.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-07-3",
+          "text": "Ein automatisch eigener Git-Commit.",
+          "correct": false,
+          "explanation": "Die Dokumentation beschreibt Agentenkontext, nicht automatische Commits.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-08",
+      "prompt": "Wofür hilft eine präzise `description` in einer Custom-Agent-Definition?",
+      "options": [
+        {
+          "id": "subagent-ownership-08-1",
+          "text": "Sie hilft der Laufzeit, passende Aufgaben dem Agenten zuzuordnen.",
+          "correct": true,
+          "explanation": "Die Beschreibung wird bei der Auswahl nach Nutzerabsicht berücksichtigt.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-08-2",
+          "text": "Sie garantiert die Korrektheit jedes Agentenergebnisses.",
+          "correct": false,
+          "explanation": "Die Beschreibung steuert Auswahl, nicht fachliche Qualität.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-08-3",
+          "text": "Sie legt automatisch Dateisperren im Repository an.",
+          "correct": false,
+          "explanation": "Eine Rollenbeschreibung richtet keine technische Dateisperre ein.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-09",
+      "prompt": "Welche beiden Angaben benötigt eine Custom-Agent-Definition im gezeigten Copilot SDK mindestens?",
+      "options": [
+        {
+          "id": "subagent-ownership-09-1",
+          "text": "Einen Namen und einen Prompt.",
+          "correct": true,
+          "explanation": "Die SDK-Dokumentation bezeichnet `name` und `prompt` als erforderlich.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-09-2",
+          "text": "Einen Worktree und einen Commit-Hash.",
+          "correct": false,
+          "explanation": "Beides gehört nicht zu den erforderlichen Agentenfeldern.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-09-3",
+          "text": "Eine Datenbank und einen MCP-Server.",
+          "correct": false,
+          "explanation": "MCP-Server sind optional; eine Datenbank ist keine Pflichtangabe.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-10",
+      "prompt": "Was bewirkt `infer: false` bei einem Custom Agent im beschriebenen SDK?",
+      "options": [
+        {
+          "id": "subagent-ownership-10-1",
+          "text": "Die automatische Auswahl dieses Agenten wird unterbunden.",
+          "correct": true,
+          "explanation": "GitHub zeigt `infer: false` für Agenten, die gezielt aufgerufen werden sollen.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-10-2",
+          "text": "Der Agent verliert seine definierten Werkzeuge.",
+          "correct": false,
+          "explanation": "Die Werkzeugliste wird separat konfiguriert.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-10-3",
+          "text": "Die Parent-Session verwirft seine Ergebnisse.",
+          "correct": false,
+          "explanation": "Die Option betrifft Auswahl, nicht Ergebnisintegration.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-11",
+      "prompt": "Welche Ereignisse eignen sich, um Beginn und Abschluss eines delegierten Teilauftrags zu erkennen?",
+      "options": [
+        {
+          "id": "subagent-ownership-11-1",
+          "text": "`subagent.started` und `subagent.completed`.",
+          "correct": true,
+          "explanation": "GitHub dokumentiert diese beiden Lebenszyklusereignisse.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-11-2",
+          "text": "`file.opened` und `file.closed`.",
+          "correct": false,
+          "explanation": "Dateiereignisse zeigen den Lebenszyklus eines Subagent-Auftrags nicht an.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-11-3",
+          "text": "`build.started` und `build.completed`.",
+          "correct": false,
+          "explanation": "Build-Ereignisse sind kein Ersatz für Subagent-Lebenszyklusereignisse.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-12",
+      "prompt": "Wie lässt sich im dokumentierten Ereignisstrom ein Subagent-Ergebnis seinem Start zuordnen?",
+      "options": [
+        {
+          "id": "subagent-ownership-12-1",
+          "text": "Über die gemeinsame `toolCallId` der Lebenszyklusereignisse.",
+          "correct": true,
+          "explanation": "Das Beispiel nutzt `toolCallId`, um den Agentenbaum zu rekonstruieren.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-12-2",
+          "text": "Über die Reihenfolge sämtlicher Textausgaben.",
+          "correct": false,
+          "explanation": "Bei mehreren Delegationen ist die reine Ausgabereihenfolge keine stabile Zuordnung.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-12-3",
+          "text": "Über den Dateinamen der ersten geänderten Datei.",
+          "correct": false,
+          "explanation": "Die Lebenszyklusereignisse verwenden eine Aufrufkennung, keinen Dateinamen.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-13",
+      "prompt": "Warum ist ein lesender Rechercheagent neben einem schreibenden Editoragenten ein sinnvolles Muster?",
+      "options": [
+        {
+          "id": "subagent-ownership-13-1",
+          "text": "Exploration und Änderung bekommen unterschiedliche Aufgaben und Werkzeugmengen.",
+          "correct": true,
+          "explanation": "GitHub zeigt genau dieses Paar als Spezialisierungsmuster.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-13-2",
+          "text": "Beide Agenten bearbeiten dadurch automatisch verschiedene Dateien.",
+          "correct": false,
+          "explanation": "Die Rollenaufteilung erzwingt keine Dateizuständigkeit.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-13-3",
+          "text": "Jeder Befund wird dadurch ohne Review korrekt.",
+          "correct": false,
+          "explanation": "Spezialisierung ersetzt keine Prüfung der Ergebnisse.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-14",
+      "prompt": "Welche zusätzliche Angabe verhindert bei parallelen Recherchen eher eine inhaltliche Lücke?",
+      "options": [
+        {
+          "id": "subagent-ownership-14-1",
+          "text": "Der ausdrücklich zu prüfende Teilaspekt und seine Grenze.",
+          "correct": true,
+          "explanation": "Anthropic verlangt klare Teilaufgaben, damit Bereiche nicht übersehen werden.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-14-2",
+          "text": "Ein identischer allgemeiner Suchauftrag für alle Agenten.",
+          "correct": false,
+          "explanation": "Identische vage Aufträge begünstigen Überschneidungen.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-14-3",
+          "text": "Die gewünschte Anzahl der Textabsätze ohne Sachziel.",
+          "correct": false,
+          "explanation": "Eine reine Längenvorgabe grenzt den Recherchegegenstand nicht ab.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-16",
+      "prompt": "Welche Kostenfolge beschreibt Anthropic für sein Multi-Agent-Research-System?",
+      "options": [
+        {
+          "id": "subagent-ownership-16-1",
+          "text": "Es verbraucht deutlich mehr Tokens als eine einfache Chat-Interaktion.",
+          "correct": true,
+          "explanation": "Der Bericht nennt erheblich höheren Tokenverbrauch und verlangt ausreichenden Aufgabennutzen.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-16-2",
+          "text": "Parallelität senkt den Tokenverbrauch zwangsläufig.",
+          "correct": false,
+          "explanation": "Der Bericht beschreibt gerade einen höheren Tokenverbrauch.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-16-3",
+          "text": "Koordination hat keinen messbaren Ressourcenbedarf.",
+          "correct": false,
+          "explanation": "Koordination und zusätzliche Agenten erhöhen den Aufwand.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-18",
+      "prompt": "Welche Rolle hat der CitationAgent im beschriebenen Research-System?",
+      "options": [
+        {
+          "id": "subagent-ownership-18-1",
+          "text": "Er ordnet Aussagen konkrete Fundstellen in den recherchierten Quellen zu.",
+          "correct": true,
+          "explanation": "Anthropic beschreibt eine eigene Zitierprüfung nach der Recherche.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-18-2",
+          "text": "Er wählt vor jeder Suche die Zahl der Subagents fest.",
+          "correct": false,
+          "explanation": "Die Planung und Delegation übernimmt der LeadResearcher.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-18-3",
+          "text": "Er ersetzt die ursprünglichen Quellen durch eigene Zusammenfassungen.",
+          "correct": false,
+          "explanation": "Der CitationAgent soll Aussagen den Originalfundstellen zuordnen.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-19",
+      "prompt": "Ein Team vermutet, dass seine Subagents unnötig lange suchen oder falsche Werkzeuge wählen. Wie untersuchte Anthropic solche Fehlmuster beim Prompt-Design?",
+      "options": [
+        {
+          "id": "subagent-ownership-19-1",
+          "text": "Mit Simulationen unter Verwendung der tatsächlichen Prompts und Werkzeuge.",
+          "correct": true,
+          "explanation": "Anthropic beobachtete simulierte Agentenläufe mit den Prompts und Tools des Systems Schritt für Schritt.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-19-2",
+          "text": "Mit einem Vergleich der Schlussberichte ohne Betrachtung der Zwischenschritte.",
+          "correct": false,
+          "explanation": "Die beschriebenen Simulationen machten gerade die einzelnen Entscheidungen und Fehlwege sichtbar.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-19-3",
+          "text": "Mit einer Auswertung des Tokenverbrauchs ohne Beobachtung der Werkzeugwahl.",
+          "correct": false,
+          "explanation": "Die Werkzeugwahl wurde in den simulierten Abläufen direkt beobachtet.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-20",
+      "prompt": "Welchen Nachteil synchroner Subagent-Ausführung nennt der Bericht?",
+      "options": [
+        {
+          "id": "subagent-ownership-20-1",
+          "text": "Die Hauptinstanz kann beim Warten auf einen Subagent blockiert sein.",
+          "correct": true,
+          "explanation": "Synchrones Warten erzeugt Engpässe im Informationsfluss.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-20-2",
+          "text": "Die Teilaufträge verlieren dadurch ihre Ziele.",
+          "correct": false,
+          "explanation": "Die Ziele sind eine Frage der Delegationsbeschreibung.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-20-3",
+          "text": "Quellen können dadurch nicht mehr zitiert werden.",
+          "correct": false,
+          "explanation": "Das Zitieren ist von der Synchronität der Ausführung getrennt.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-21",
+      "prompt": "Welche Schwierigkeit würde eine asynchrone Subagent-Ausführung zusätzlich schaffen?",
+      "options": [
+        {
+          "id": "subagent-ownership-21-1",
+          "text": "Ergebnisse, Zustand und Fehler müssten überlappend koordiniert werden.",
+          "correct": true,
+          "explanation": "Anthropic nennt Koordination, Zustandskonsistenz und Fehlerweitergabe.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-21-2",
+          "text": "Jeder Agent müsste denselben Prompt verwenden.",
+          "correct": false,
+          "explanation": "Asynchronität verlangt keine identischen Rollenprompts.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-21-3",
+          "text": "Die ursprüngliche Frage dürfte nicht mehr geändert werden.",
+          "correct": false,
+          "explanation": "Diese Einschränkung folgt nicht aus asynchroner Ausführung.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-22",
+      "prompt": "Warum können dauerhaft gespeicherte Subagent-Artefakte die Ergebnisübergabe verbessern?",
+      "options": [
+        {
+          "id": "subagent-ownership-22-1",
+          "text": "Die Hauptinstanz kann auf das Originalartefakt zugreifen statt auf eine verkürzte Nacherzählung.",
+          "correct": true,
+          "explanation": "Anthropic schlägt Artefakte und leichte Verweise gegen Informationsverlust vor.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-22-2",
+          "text": "Sie machen die fachliche Prüfung der Befunde überflüssig.",
+          "correct": false,
+          "explanation": "Ein persistiertes Artefakt kann weiterhin fehlerhafte Aussagen enthalten.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "id": "subagent-ownership-22-3",
+          "text": "Sie erlauben jedem Agenten dieselbe Datei gleichzeitig zu überschreiben.",
+          "correct": false,
+          "explanation": "Artefaktablage löst keine Schreibkonflikte im Projekt.",
+          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        }
+      ]
+    },
+    {
+      "id": "subagent-ownership-23",
+      "prompt": "Ein Custom Agent soll im Copilot SDK bestimmte Skills bereits beim Start im Kontext haben. Was muss konfiguriert werden?",
+      "options": [
+        {
+          "id": "subagent-ownership-23-1",
+          "text": "Die Skills ausdrücklich in seiner Agentendefinition aufführen.",
+          "correct": true,
+          "explanation": "Skills sind je Agent opt-in; Subagents erben sie nicht vom Parent.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-23-2",
+          "text": "Das Skill-Verzeichnis auf Sitzungsebene angeben, ohne Skills am Agenten einzutragen.",
+          "correct": false,
+          "explanation": "Das Verzeichnis stellt Skills bereit, lädt sie aber nicht automatisch in jeden Agentenkontext.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        },
+        {
+          "id": "subagent-ownership-23-3",
+          "text": "Die Skills beim Parent Agent eintragen und an den Subagent vererben lassen.",
+          "correct": false,
+          "explanation": "Subagents übernehmen die Skills des Parent Agents laut Dokumentation nicht automatisch.",
+          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
+        }
+      ]
     }
   ],
   "git-worktrees-for-isolated-changes": [
@@ -24367,683 +24579,6 @@
           "correct": false,
           "explanation": "Eine andere Version trägt die Aussage für 3.5 nicht zuverlässig.",
           "sourceUrl": "https://docs.spring.io/spring-boot/3.5/reference/index.html"
-        }
-      ]
-    }
-  ],
-  "specialized-subagents-and-ownership": [
-    {
-      "id": "subagent-ownership-01",
-      "prompt": "Zwei Subagents recherchieren denselben Teil einer Java-Migration. Was sollte die koordinierende Instanz zuerst verbessern?",
-      "options": [
-        {
-          "id": "subagent-ownership-01-1",
-          "text": "Teilaufträge mit getrennten Zielen und Grenzen formulieren.",
-          "correct": true,
-          "explanation": "Klare Teilaufträge verringern laut Anthropic doppelte Arbeit und Lücken.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-01-2",
-          "text": "Beide Agenten länger nach derselben Information suchen lassen.",
-          "correct": false,
-          "explanation": "Mehr Suche behebt die überlappenden Zuständigkeiten nicht.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-01-3",
-          "text": "Die Ergebnisse ohne Abgleich zusammenfügen.",
-          "correct": false,
-          "explanation": "Eine Zusammenführung ohne Abgleich kann widersprüchliche oder doppelte Befunde übernehmen.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-02",
-      "prompt": "Welche Angabe gehört zu einem brauchbaren Rechercheauftrag für einen spezialisierten Subagent?",
-      "options": [
-        {
-          "id": "subagent-ownership-02-1",
-          "text": "Ein erwartetes Ausgabeformat für die Befunde.",
-          "correct": true,
-          "explanation": "Anthropic nennt das Ausgabeformat als Teil eines klaren Teilauftrags.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-02-2",
-          "text": "Ein möglichst offenes Ziel ohne Ergebnisform.",
-          "correct": false,
-          "explanation": "Vage Aufträge führten im beschriebenen System zu Missverständnissen und Dopplungen.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-02-3",
-          "text": "Die Anweisung, jeden Fund sofort als Endergebnis zu behandeln.",
-          "correct": false,
-          "explanation": "Der koordinierende Agent muss Befunde bewerten und bei Bedarf weiter recherchieren.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-03",
-      "prompt": "Wie nutzt ein koordinierender Agent im beschriebenen Research-System die Ergebnisse seiner Subagents?",
-      "options": [
-        {
-          "id": "subagent-ownership-03-1",
-          "text": "Er führt Befunde zusammen und entscheidet über weiteren Recherchebedarf.",
-          "correct": true,
-          "explanation": "Der LeadResearcher synthetisiert Ergebnisse und kann seine Strategie anpassen.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-03-2",
-          "text": "Er überlässt jedem Subagent die endgültige Gesamtaussage.",
-          "correct": false,
-          "explanation": "Die Gesamtsynthese liegt beim koordinierenden Agenten.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-03-3",
-          "text": "Er behandelt die erste Rückgabe als vollständige Prüfung.",
-          "correct": false,
-          "explanation": "Das System kann zusätzliche Subagents starten oder weiter recherchieren.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-04",
-      "prompt": "Wann ist parallele Arbeit mehrerer Agenten nach der beschriebenen Erfahrung besonders passend?",
-      "options": [
-        {
-          "id": "subagent-ownership-04-1",
-          "text": "Bei weitgehend unabhängigen, umfangreichen Teilaufgaben.",
-          "correct": true,
-          "explanation": "Anthropic nennt schwere Parallelisierung und große Informationsmengen als geeignete Fälle.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-04-2",
-          "text": "Bei eng voneinander abhängigen Änderungen an derselben Datei.",
-          "correct": false,
-          "explanation": "Starke Abhängigkeiten erschweren Koordination und Parallelisierung.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-04-3",
-          "text": "Bei einer kleinen, klaren Faktenfrage mit wenig Recherche.",
-          "correct": false,
-          "explanation": "Für einfache Aufgaben soll der Aufwand kleiner ausfallen.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-05",
-      "prompt": "Welches Problem beobachtete Anthropic bei zu vagen Teilaufträgen?",
-      "options": [
-        {
-          "id": "subagent-ownership-05-1",
-          "text": "Subagents bearbeiteten dieselbe Recherche oder verfehlten Teilaspekte.",
-          "correct": true,
-          "explanation": "Ohne klare Grenzen kam es zu doppelter Arbeit und Lücken.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-05-2",
-          "text": "Die Suchwerkzeuge lieferten grundsätzlich keine Ergebnisse mehr.",
-          "correct": false,
-          "explanation": "Der geschilderte Fehler lag bei der Aufgabenzerlegung, nicht bei einem generellen Werkzeugausfall.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-05-3",
-          "text": "Die Hauptinstanz konnte keine Ergebnisse mehr lesen.",
-          "correct": false,
-          "explanation": "Der Bericht beschreibt weiterhin Rückgaben an die Hauptinstanz.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-06",
-      "prompt": "Welche Aufgabe übernimmt die Parent-Session bei GitHubs Subagent-Orchestrierung?",
-      "options": [
-        {
-          "id": "subagent-ownership-06-1",
-          "text": "Sie erhält Ereignisse und bindet das Subagent-Ergebnis in ihre Antwort ein.",
-          "correct": true,
-          "explanation": "GitHub beschreibt Ereignisstrom und Ergebnisintegration in die Parent-Session.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-06-2",
-          "text": "Sie wird durch den Subagent dauerhaft ersetzt.",
-          "correct": false,
-          "explanation": "Der Subagent arbeitet für einen Teilauftrag innerhalb der Parent-Session.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-06-3",
-          "text": "Sie führt jeden Werkzeugaufruf des Subagent selbst aus.",
-          "correct": false,
-          "explanation": "Der Subagent läuft mit eigenem Kontext und zugewiesenen Werkzeugen.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-07",
-      "prompt": "Was trennt beim beschriebenen GitHub-Copilot-SDK einen Subagent von der Parent-Session?",
-      "options": [
-        {
-          "id": "subagent-ownership-07-1",
-          "text": "Ein eigener Kontext und eine eigene Agentendefinition.",
-          "correct": true,
-          "explanation": "GitHub beschreibt isolierte Ausführung mit eigenem Prompt und Werkzeugumfang.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-07-2",
-          "text": "Eine eigene, dauerhaft unabhängige Benutzeranfrage.",
-          "correct": false,
-          "explanation": "Die Delegation bleibt Teil der bestehenden Sitzung und Anfrage.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-07-3",
-          "text": "Ein automatisch eigener Git-Commit.",
-          "correct": false,
-          "explanation": "Die Dokumentation beschreibt Agentenkontext, nicht automatische Commits.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-08",
-      "prompt": "Wofür hilft eine präzise `description` in einer Custom-Agent-Definition?",
-      "options": [
-        {
-          "id": "subagent-ownership-08-1",
-          "text": "Sie hilft der Laufzeit, passende Aufgaben dem Agenten zuzuordnen.",
-          "correct": true,
-          "explanation": "Die Beschreibung wird bei der Auswahl nach Nutzerabsicht berücksichtigt.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-08-2",
-          "text": "Sie garantiert die Korrektheit jedes Agentenergebnisses.",
-          "correct": false,
-          "explanation": "Die Beschreibung steuert Auswahl, nicht fachliche Qualität.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-08-3",
-          "text": "Sie legt automatisch Dateisperren im Repository an.",
-          "correct": false,
-          "explanation": "Eine Rollenbeschreibung richtet keine technische Dateisperre ein.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-09",
-      "prompt": "Welche beiden Angaben benötigt eine Custom-Agent-Definition im gezeigten Copilot SDK mindestens?",
-      "options": [
-        {
-          "id": "subagent-ownership-09-1",
-          "text": "Einen Namen und einen Prompt.",
-          "correct": true,
-          "explanation": "Die SDK-Dokumentation bezeichnet `name` und `prompt` als erforderlich.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-09-2",
-          "text": "Einen Worktree und einen Commit-Hash.",
-          "correct": false,
-          "explanation": "Beides gehört nicht zu den erforderlichen Agentenfeldern.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-09-3",
-          "text": "Eine Datenbank und einen MCP-Server.",
-          "correct": false,
-          "explanation": "MCP-Server sind optional; eine Datenbank ist keine Pflichtangabe.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-10",
-      "prompt": "Was bewirkt `infer: false` bei einem Custom Agent im beschriebenen SDK?",
-      "options": [
-        {
-          "id": "subagent-ownership-10-1",
-          "text": "Die automatische Auswahl dieses Agenten wird unterbunden.",
-          "correct": true,
-          "explanation": "GitHub zeigt `infer: false` für Agenten, die gezielt aufgerufen werden sollen.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-10-2",
-          "text": "Der Agent verliert seine definierten Werkzeuge.",
-          "correct": false,
-          "explanation": "Die Werkzeugliste wird separat konfiguriert.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-10-3",
-          "text": "Die Parent-Session verwirft seine Ergebnisse.",
-          "correct": false,
-          "explanation": "Die Option betrifft Auswahl, nicht Ergebnisintegration.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-11",
-      "prompt": "Welche Ereignisse eignen sich, um Beginn und Abschluss eines delegierten Teilauftrags zu erkennen?",
-      "options": [
-        {
-          "id": "subagent-ownership-11-1",
-          "text": "`subagent.started` und `subagent.completed`.",
-          "correct": true,
-          "explanation": "GitHub dokumentiert diese beiden Lebenszyklusereignisse.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-11-2",
-          "text": "`file.opened` und `file.closed`.",
-          "correct": false,
-          "explanation": "Dateiereignisse zeigen den Lebenszyklus eines Subagent-Auftrags nicht an.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-11-3",
-          "text": "`build.started` und `build.completed`.",
-          "correct": false,
-          "explanation": "Build-Ereignisse sind kein Ersatz für Subagent-Lebenszyklusereignisse.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-12",
-      "prompt": "Wie lässt sich im dokumentierten Ereignisstrom ein Subagent-Ergebnis seinem Start zuordnen?",
-      "options": [
-        {
-          "id": "subagent-ownership-12-1",
-          "text": "Über die gemeinsame `toolCallId` der Lebenszyklusereignisse.",
-          "correct": true,
-          "explanation": "Das Beispiel nutzt `toolCallId`, um den Agentenbaum zu rekonstruieren.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-12-2",
-          "text": "Über die Reihenfolge sämtlicher Textausgaben.",
-          "correct": false,
-          "explanation": "Bei mehreren Delegationen ist die reine Ausgabereihenfolge keine stabile Zuordnung.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-12-3",
-          "text": "Über den Dateinamen der ersten geänderten Datei.",
-          "correct": false,
-          "explanation": "Die Lebenszyklusereignisse verwenden eine Aufrufkennung, keinen Dateinamen.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-13",
-      "prompt": "Warum ist ein lesender Rechercheagent neben einem schreibenden Editoragenten ein sinnvolles Muster?",
-      "options": [
-        {
-          "id": "subagent-ownership-13-1",
-          "text": "Exploration und Änderung bekommen unterschiedliche Aufgaben und Werkzeugmengen.",
-          "correct": true,
-          "explanation": "GitHub zeigt genau dieses Paar als Spezialisierungsmuster.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-13-2",
-          "text": "Beide Agenten bearbeiten dadurch automatisch verschiedene Dateien.",
-          "correct": false,
-          "explanation": "Die Rollenaufteilung erzwingt keine Dateizuständigkeit.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-13-3",
-          "text": "Jeder Befund wird dadurch ohne Review korrekt.",
-          "correct": false,
-          "explanation": "Spezialisierung ersetzt keine Prüfung der Ergebnisse.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-14",
-      "prompt": "Welche zusätzliche Angabe verhindert bei parallelen Recherchen eher eine inhaltliche Lücke?",
-      "options": [
-        {
-          "id": "subagent-ownership-14-1",
-          "text": "Der ausdrücklich zu prüfende Teilaspekt und seine Grenze.",
-          "correct": true,
-          "explanation": "Anthropic verlangt klare Teilaufgaben, damit Bereiche nicht übersehen werden.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-14-2",
-          "text": "Ein identischer allgemeiner Suchauftrag für alle Agenten.",
-          "correct": false,
-          "explanation": "Identische vage Aufträge begünstigen Überschneidungen.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-14-3",
-          "text": "Die gewünschte Anzahl der Textabsätze ohne Sachziel.",
-          "correct": false,
-          "explanation": "Eine reine Längenvorgabe grenzt den Recherchegegenstand nicht ab.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-15",
-      "prompt": "Wie sollte die Zahl der Subagents für eine einfache Faktenfrage gewählt werden?",
-      "options": [
-        {
-          "id": "subagent-ownership-15-1",
-          "text": "Am geringen tatsächlichen Aufwand der Frage ausgerichtet.",
-          "correct": true,
-          "explanation": "Anthropic empfiehlt, den Agenteneinsatz an die Aufgabenkomplexität anzupassen.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-15-2",
-          "text": "Nach dem Maximum verfügbarer Agentenplätze.",
-          "correct": false,
-          "explanation": "Maximale Parallelität kann bei kleinen Aufgaben unnötige Kosten erzeugen.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-15-3",
-          "text": "Nach der Anzahl aller Dateien im Repository.",
-          "correct": false,
-          "explanation": "Die Dateizahl allein sagt wenig über die Zerlegbarkeit der Frage aus.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-16",
-      "prompt": "Welche Kostenfolge beschreibt Anthropic für sein Multi-Agent-Research-System?",
-      "options": [
-        {
-          "id": "subagent-ownership-16-1",
-          "text": "Es verbraucht deutlich mehr Tokens als eine einfache Chat-Interaktion.",
-          "correct": true,
-          "explanation": "Der Bericht nennt erheblich höheren Tokenverbrauch und verlangt ausreichenden Aufgabennutzen.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-16-2",
-          "text": "Parallelität senkt den Tokenverbrauch zwangsläufig.",
-          "correct": false,
-          "explanation": "Der Bericht beschreibt gerade einen höheren Tokenverbrauch.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-16-3",
-          "text": "Koordination hat keinen messbaren Ressourcenbedarf.",
-          "correct": false,
-          "explanation": "Koordination und zusätzliche Agenten erhöhen den Aufwand.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-17",
-      "prompt": "Warum eignet sich eine stark voneinander abhängige Coding-Aufgabe schlechter zur parallelen Aufteilung?",
-      "options": [
-        {
-          "id": "subagent-ownership-17-1",
-          "text": "Die Agenten brauchen denselben Kontext und müssen Zwischenstände eng abstimmen.",
-          "correct": true,
-          "explanation": "Anthropic nennt gemeinsame Kontexte und viele Abhängigkeiten als Hindernis.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-17-2",
-          "text": "Coding-Aufgaben besitzen grundsätzlich keine prüfbaren Teilaufgaben.",
-          "correct": false,
-          "explanation": "Der Bericht beschreibt geringere, nicht fehlende Parallelisierbarkeit.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-17-3",
-          "text": "Parallele Agenten können keine Dateien lesen.",
-          "correct": false,
-          "explanation": "Die Grenze ist die Koordination, nicht eine allgemeine Lesesperre.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-18",
-      "prompt": "Welche Rolle hat der CitationAgent im beschriebenen Research-System?",
-      "options": [
-        {
-          "id": "subagent-ownership-18-1",
-          "text": "Er ordnet Aussagen konkrete Fundstellen in den recherchierten Quellen zu.",
-          "correct": true,
-          "explanation": "Anthropic beschreibt eine eigene Zitierprüfung nach der Recherche.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-18-2",
-          "text": "Er wählt vor jeder Suche die Zahl der Subagents fest.",
-          "correct": false,
-          "explanation": "Die Planung und Delegation übernimmt der LeadResearcher.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-18-3",
-          "text": "Er ersetzt die ursprünglichen Quellen durch eigene Zusammenfassungen.",
-          "correct": false,
-          "explanation": "Der CitationAgent soll Aussagen den Originalfundstellen zuordnen.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-19",
-      "prompt": "Ein Team vermutet, dass seine Subagents unnötig lange suchen oder falsche Werkzeuge wählen. Wie untersuchte Anthropic solche Fehlmuster beim Prompt-Design?",
-      "options": [
-        {
-          "id": "subagent-ownership-19-1",
-          "text": "Mit Simulationen unter Verwendung der tatsächlichen Prompts und Werkzeuge.",
-          "correct": true,
-          "explanation": "Anthropic beobachtete simulierte Agentenläufe mit den Prompts und Tools des Systems Schritt für Schritt.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-19-2",
-          "text": "Mit einem Vergleich der Schlussberichte ohne Betrachtung der Zwischenschritte.",
-          "correct": false,
-          "explanation": "Die beschriebenen Simulationen machten gerade die einzelnen Entscheidungen und Fehlwege sichtbar.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-19-3",
-          "text": "Mit einer Auswertung des Tokenverbrauchs ohne Beobachtung der Werkzeugwahl.",
-          "correct": false,
-          "explanation": "Die Werkzeugwahl wurde in den simulierten Abläufen direkt beobachtet.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-20",
-      "prompt": "Welchen Nachteil synchroner Subagent-Ausführung nennt der Bericht?",
-      "options": [
-        {
-          "id": "subagent-ownership-20-1",
-          "text": "Die Hauptinstanz kann beim Warten auf einen Subagent blockiert sein.",
-          "correct": true,
-          "explanation": "Synchrones Warten erzeugt Engpässe im Informationsfluss.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-20-2",
-          "text": "Die Teilaufträge verlieren dadurch ihre Ziele.",
-          "correct": false,
-          "explanation": "Die Ziele sind eine Frage der Delegationsbeschreibung.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-20-3",
-          "text": "Quellen können dadurch nicht mehr zitiert werden.",
-          "correct": false,
-          "explanation": "Das Zitieren ist von der Synchronität der Ausführung getrennt.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-21",
-      "prompt": "Welche Schwierigkeit würde eine asynchrone Subagent-Ausführung zusätzlich schaffen?",
-      "options": [
-        {
-          "id": "subagent-ownership-21-1",
-          "text": "Ergebnisse, Zustand und Fehler müssten überlappend koordiniert werden.",
-          "correct": true,
-          "explanation": "Anthropic nennt Koordination, Zustandskonsistenz und Fehlerweitergabe.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-21-2",
-          "text": "Jeder Agent müsste denselben Prompt verwenden.",
-          "correct": false,
-          "explanation": "Asynchronität verlangt keine identischen Rollenprompts.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-21-3",
-          "text": "Die ursprüngliche Frage dürfte nicht mehr geändert werden.",
-          "correct": false,
-          "explanation": "Diese Einschränkung folgt nicht aus asynchroner Ausführung.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-22",
-      "prompt": "Warum können dauerhaft gespeicherte Subagent-Artefakte die Ergebnisübergabe verbessern?",
-      "options": [
-        {
-          "id": "subagent-ownership-22-1",
-          "text": "Die Hauptinstanz kann auf das Originalartefakt zugreifen statt auf eine verkürzte Nacherzählung.",
-          "correct": true,
-          "explanation": "Anthropic schlägt Artefakte und leichte Verweise gegen Informationsverlust vor.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-22-2",
-          "text": "Sie machen die fachliche Prüfung der Befunde überflüssig.",
-          "correct": false,
-          "explanation": "Ein persistiertes Artefakt kann weiterhin fehlerhafte Aussagen enthalten.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-22-3",
-          "text": "Sie erlauben jedem Agenten dieselbe Datei gleichzeitig zu überschreiben.",
-          "correct": false,
-          "explanation": "Artefaktablage löst keine Schreibkonflikte im Projekt.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-23",
-      "prompt": "Ein Custom Agent soll im Copilot SDK bestimmte Skills bereits beim Start im Kontext haben. Was muss konfiguriert werden?",
-      "options": [
-        {
-          "id": "subagent-ownership-23-1",
-          "text": "Die Skills ausdrücklich in seiner Agentendefinition aufführen.",
-          "correct": true,
-          "explanation": "Skills sind je Agent opt-in; Subagents erben sie nicht vom Parent.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-23-2",
-          "text": "Das Skill-Verzeichnis auf Sitzungsebene angeben, ohne Skills am Agenten einzutragen.",
-          "correct": false,
-          "explanation": "Das Verzeichnis stellt Skills bereit, lädt sie aber nicht automatisch in jeden Agentenkontext.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        },
-        {
-          "id": "subagent-ownership-23-3",
-          "text": "Die Skills beim Parent Agent eintragen und an den Subagent vererben lassen.",
-          "correct": false,
-          "explanation": "Subagents übernehmen die Skills des Parent Agents laut Dokumentation nicht automatisch.",
-          "sourceUrl": "https://docs.github.com/en/copilot/how-tos/copilot-sdk/features/custom-agents"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-24",
-      "prompt": "Welcher Fehler kann entstehen, wenn ein Koordinator für eine kleine Aufgabe sehr viele Subagents startet?",
-      "options": [
-        {
-          "id": "subagent-ownership-24-1",
-          "text": "Koordinations- und Rechercheaufwand übersteigen den Nutzen.",
-          "correct": true,
-          "explanation": "Der Bericht beschreibt übermäßige Delegation bei einfachen Anfragen als Fehlverhalten.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-24-2",
-          "text": "Die Aufgabe wird dadurch automatisch genauer abgegrenzt.",
-          "correct": false,
-          "explanation": "Mehr Agenten ersetzen keine klaren Teilaufträge.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-24-3",
-          "text": "Alle Subagents erhalten dadurch automatisch neue Quellen.",
-          "correct": false,
-          "explanation": "Die Agentenzahl erzeugt keine zusätzlichen relevanten Quellen.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        }
-      ]
-    },
-    {
-      "id": "subagent-ownership-25",
-      "prompt": "Was sollte ein Subagent zu einer abgegrenzten Recherche neben dem Ziel erhalten?",
-      "options": [
-        {
-          "id": "subagent-ownership-25-1",
-          "text": "Hinweise auf geeignete Werkzeuge und Quellen sowie eine Ergebnisform.",
-          "correct": true,
-          "explanation": "Anthropic nennt Werkzeug- und Quellenhinweise und Ausgabeformat im Teilauftrag.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-25-2",
-          "text": "Einen unbeschränkten Auftrag zur Gesamtentscheidung.",
-          "correct": false,
-          "explanation": "Eine unbegrenzte Gesamtaufgabe nimmt dem Koordinator die Aufgabenaufteilung.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
-        },
-        {
-          "id": "subagent-ownership-25-3",
-          "text": "Die Anweisung, andere Teilaufträge stillschweigend zu übernehmen.",
-          "correct": false,
-          "explanation": "Das würde Zuständigkeiten verwischen und Doppelarbeit fördern.",
-          "sourceUrl": "https://www.anthropic.com/engineering/multi-agent-research-system"
         }
       ]
     }

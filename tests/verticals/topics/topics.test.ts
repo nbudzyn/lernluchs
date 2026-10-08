@@ -7,7 +7,7 @@ import { validateTopics } from "../../../src/verticals/topics/validateTopics";
 const refreshedTopicIds = new Set([
   "coding-harness-design",
   "codegraphs-for-large-repos",
-  "spec-framework-selection",
+  "spec-driven-development-openspec",
   "coding-agent-interface-selection",
   "agent-skills-and-commands",
   "review-and-accept-ai-generated-changes",
@@ -26,7 +26,7 @@ const expandedTopicIds = [
   "domain-language-and-complexity",
   "project-documentation-and-checklists",
   "open-knowledge-format",
-  "goal-discovery-and-stop-criteria",
+  "problem-understanding-and-change-boundaries",
   "design-and-legacy-specification",
   "standards-and-constraint-rationale",
   "llm-fallibility-and-counterchecks",
@@ -35,7 +35,7 @@ const expandedTopicIds = [
   "token-efficiency-tools",
   "coding-agent-interface-selection",
   "agent-skills-and-commands",
-  "spec-framework-selection",
+  "spec-driven-development-openspec",
   "automation-value-and-gates",
   "web-security-baseline",
   "ui-design-system-workflow",
@@ -46,6 +46,71 @@ const expandedTopicIds = [
 ];
 
 it("publishes current development topics with distinct concepts and sources", () => {
+  for (const [id, title, anchorTerm] of [
+    [
+      "problem-understanding-and-change-boundaries",
+      "Problem, Ziel und Änderungsumfang klären",
+      "genug",
+    ],
+    [
+      "spec-driven-development-openspec",
+      "Spec-Driven Development mit OpenSpec, Spec Kit und Kiro",
+      "Chat",
+    ],
+    [
+      "parallel-agent-task-boundaries",
+      "Subagents mit klaren Aufgaben und Zuständigkeiten einsetzen",
+      "verantwortet",
+    ],
+    [
+      "agent-skills-and-commands",
+      "Agent Skills für wiederkehrende Entwicklungsabläufe",
+      "Skill",
+    ],
+    [
+      "versioned-library-docs-with-context7",
+      "Context7 für versionsbezogene Bibliotheksdokumentation",
+      "Bibliotheksversion",
+    ],
+    [
+      "local-model-stack-evaluation",
+      "Lokale KI-Stacks mit Qwen, Hermes und Bionic",
+      "lokal",
+    ],
+    [
+      "token-efficiency-tools",
+      "Tokenverbrauch mit RTK, Headroom, Caveman und Ponytail reduzieren",
+      "Tokens",
+    ],
+  ]) {
+    const topic = topics.items.find((item) => item.id === id);
+    expect.soft(topic?.title, id).toBe(title);
+    expect.soft(topic?.everydayAnchor, id).toContain(anchorTerm);
+  }
+  for (const topic of topics.items.filter((item) =>
+    [
+      "problem-understanding-and-change-boundaries",
+      "spec-driven-development-openspec",
+      "parallel-agent-task-boundaries",
+    ].includes(item.id),
+  )) {
+    const secondary = topic.sources.filter(
+      (source) => source.origin === "secondary",
+    );
+    const firstOther = secondary.findIndex(
+      (source) => source.mediaType !== "audio",
+    );
+    if (firstOther >= 0) {
+      expect
+        .soft(
+          secondary
+            .slice(firstOther)
+            .every((source) => source.mediaType !== "audio"),
+          topic.id + ": Podcasts zuerst",
+        )
+        .toBe(true);
+    }
+  }
   const invalidAnchors = topics.items
     .filter((topic) => {
       const anchor = topic.everydayAnchor;
@@ -72,7 +137,7 @@ it("publishes current development topics with distinct concepts and sources", ()
     );
   // Bewusste redaktionelle Bindung: diese Beispiele müssen agentisches Coding adressieren.
   for (const [id, field, required] of [
-    ["spec-framework-selection", "problem", "geprüften Umsetzung"],
+    ["spec-driven-development-openspec", "problem", "geprüften Umsetzung"],
     ["agent-evals-and-traces", "javaWebUse", "Spring-Endpunkt"],
     ["refactorings-and-migrations-with-openrewrite", "problem", "Coding-Agent"],
     ["technical-documentation-generation", "problem", "Coding-Agent"],
@@ -91,7 +156,7 @@ it("publishes current development topics with distinct concepts and sources", ()
       "codegraphs-for-large-repos",
       ["Codegraph", "semantische Suche", "Codeabschnitte"],
     ],
-    ["spec-framework-selection", ["converge", "fehlende Anforderung"]],
+    ["spec-driven-development-openspec", ["converge", "fehlende Anforderung"]],
     [
       "coding-agent-interface-selection",
       ["Junie", "Cloud", "Modellverarbeitung"],
@@ -132,7 +197,11 @@ it("publishes current development topics with distinct concepts and sources", ()
       .toEqual([]);
     expect.soft(topic.editorial, id).toMatchObject({
       reviewedAt:
-        id === "model-and-api-lifecycle" ? "2026-10-03" : "2026-10-07",
+        id === "spec-driven-development-openspec"
+          ? "2026-10-08"
+          : id === "model-and-api-lifecycle"
+            ? "2026-10-03"
+            : "2026-10-07",
       status: "active",
     });
     expect
@@ -261,7 +330,7 @@ describe("public content topics", () => {
       "https://developers.openai.com/plugins/build/skills",
     ],
     [
-      "spec-framework-selection",
+      "spec-driven-development-openspec",
       "https://openspec.dev/docs/schemas/spec-driven",
     ],
     [
@@ -457,14 +526,17 @@ describe("public content topics", () => {
     const otherTopics = topics.items.filter(
       (item) => !foundationIds.has(item.id) && !expandedIds.has(item.id),
     );
-    expect(otherTopics).toHaveLength(19);
+    expect(otherTopics).toHaveLength(18);
     expect(otherTopics.map((item) => item.id)).toContain("focused-git-commits");
     for (const item of otherTopics) {
-      const expectedReviewDate = refreshedTopicIds.has(item.id)
-        ? "2026-10-07"
-        : item.id === "agent-tool-and-mcp-permissions"
-          ? "2026-09-28"
-          : "2026-09-27";
+      const expectedReviewDate =
+        item.id === "parallel-agent-task-boundaries"
+          ? "2026-10-08"
+          : refreshedTopicIds.has(item.id)
+            ? "2026-10-07"
+            : item.id === "agent-tool-and-mcp-permissions"
+              ? "2026-09-28"
+              : "2026-09-27";
       expect(item.editorial.reviewedAt).toBe(expectedReviewDate);
       expect(
         item.sources
@@ -519,7 +591,13 @@ describe("public content topics", () => {
         },
         editorial: {
           publishedAt: "2026-09-20",
-          reviewedAt: "2026-09-26",
+          reviewedAt: [
+            "problem-understanding-and-change-boundaries",
+            "spec-driven-development-openspec",
+            "parallel-agent-task-boundaries",
+          ].includes(item.id)
+            ? "2026-10-08"
+            : "2026-09-26",
           reviewDueAt: expect.stringMatching(/^202[67]-\d{2}-\d{2}$/),
           status: "active",
         },
@@ -572,7 +650,7 @@ describe("public content topics", () => {
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
 
-  it("uses the agreed problem-first order of all forty-nine topics", () => {
+  it("uses the agreed problem-first order of all forty-six topics", () => {
     const newIds = [
       "coding-agent-context-and-trust-boundaries",
       "protect-secrets-and-sensitive-data-with-ai",
@@ -584,7 +662,6 @@ describe("public content topics", () => {
       "human-ai-responsibility",
       "problem-understanding-and-change-boundaries",
       "domain-language-and-complexity",
-      "goal-discovery-and-stop-criteria",
       "design-and-legacy-specification",
       "standards-and-constraint-rationale",
       "llm-fallibility-and-counterchecks",
@@ -600,7 +677,6 @@ describe("public content topics", () => {
       "protect-secrets-and-sensitive-data-with-ai",
       "local-model-stack-evaluation",
       "coding-agent-interface-selection",
-      "spec-framework-selection",
       "spec-driven-development-openspec",
       "agent-skills-and-commands",
       "codegraphs-for-large-repos",
@@ -613,7 +689,6 @@ describe("public content topics", () => {
       "git-worktrees-for-isolated-changes",
       "versioned-library-docs-with-context7",
       "token-efficiency-tools",
-      "specialized-subagents-and-ownership",
       "agent-context-handoffs",
       "agent-tool-and-mcp-permissions",
       "agent-protocol-integration",

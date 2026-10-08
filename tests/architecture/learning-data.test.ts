@@ -35,42 +35,25 @@ describe("learning data organization", () => {
     expect(browserFiles).toEqual(["learning-check.spec.ts"]);
   });
 
-  it("preserves questions, answers, sources and IDs apart from the agreed wording", async () => {
-    const pools = Object.fromEntries(
-      availableLearningCheckTopicIds.map((id) => [id, questionsForTopic(id)]),
-    );
-    expect(availableLearningCheckTopicIds).toHaveLength(45);
-    expect(await fingerprint(pools)).toBe(
-      "aec2624ff64a466dec5bd0a6d72679ed8344b7e045dadae7b31074c3c6edd5ff",
+  it("preserves unchanged questions, answers, sources and IDs after merging and deduplication", async () => {
+    const questions = availableLearningCheckTopicIds
+      .flatMap((id) => questionsForTopic(id)!)
+      .sort((a, b) => a.id.localeCompare(b.id));
+    expect(availableLearningCheckTopicIds).toHaveLength(42);
+    expect(await fingerprint(questions)).toBe(
+      "a0fb39192cd37da1e476380da29b9b97210f20cc7e5d274bb03017bb60fbe5e1",
     );
   });
-
-  it("preserves the original path names and topic memberships after reordering", async () => {
-    // Neben der Umordnung ist nur der Legacy-Einstieg im Modernisierungspfad neu.
-    const additions = new Set([
-      "agent-evals-and-traces",
-      "model-and-api-lifecycle",
-      "agent-protocol-integration",
-      "java-ai-applications",
-    ]);
+  it("preserves all path names and merged memberships", async () => {
     expect(learningPaths).toHaveLength(14);
-    const originalPaths = learningPaths.slice(0, 13).map((path) => ({
-      ...path,
-      topicIds: path.topicIds
-        .filter(
-          (id) =>
-            !additions.has(id) &&
-            !(
-              path.name ===
-                "Java-/Web-Code technisch analysieren und modernisieren" &&
-              id === "design-and-legacy-specification"
-            ),
-        )
-        .sort(),
-    }));
-    expect(await fingerprint(originalPaths)).toBe(
-      "3d16604776c2a7a22664d831c87b56af3f6d691d682db68b97e52bbef5996ffb",
-    );
+    expect(
+      await fingerprint(
+        learningPaths.map((path) => ({
+          ...path,
+          topicIds: [...path.topicIds].sort(),
+        })),
+      ),
+    ).toBe("4cb98c2f718ebbd53fed95945855e41c27df16b6142b5ce9d58c314381753d42");
   });
 
   it("maintains all questions in one neutral question data file", () => {

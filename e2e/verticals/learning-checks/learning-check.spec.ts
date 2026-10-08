@@ -203,7 +203,7 @@ test("arbitrary answers complete a sourced check and allow returning to the topi
   test.setTimeout(120_000);
   await forPools(
     [
-      "specialized-subagents-and-ownership",
+      "parallel-agent-task-boundaries",
       "agent-skills-and-commands",
       "context-selection-and-reset",
       "coding-harness-design",

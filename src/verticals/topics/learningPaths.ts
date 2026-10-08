@@ -1,6 +1,6 @@
 import type { LearningPath } from "./topicContract";
 
-// Themen über stabile IDs referenzieren, in Reihenfolge der Themenliste.
+// Stabile Themen-IDs; jede Pfadreihenfolge folgt der globalen Themenliste.
 export const learningPaths: LearningPath[] = [
   {
     name: "Grundlagen für KI-gestützte Softwareentwicklung",
@@ -57,7 +57,6 @@ export const learningPaths: LearningPath[] = [
     topicIds: [
       "parallel-agent-task-boundaries",
       "git-worktrees-for-isolated-changes",
-      "specialized-subagents-and-ownership",
       "agent-context-handoffs",
       "agent-tool-and-mcp-permissions",
       "deterministic-agent-verification-gates",
@@ -81,7 +80,6 @@ export const learningPaths: LearningPath[] = [
     name: "Unklare Änderungswünsche in prüfbare Aufträge übersetzen",
     topicIds: [
       "problem-understanding-and-change-boundaries",
-      "goal-discovery-and-stop-criteria",
       "design-and-legacy-specification",
       "standards-and-constraint-rationale",
       "llm-fallibility-and-counterchecks",
@@ -106,10 +104,9 @@ export const learningPaths: LearningPath[] = [
     name: "Coding-Agenten und Spec-Systeme gezielt auswählen",
     topicIds: [
       "coding-agent-interface-selection",
-      "spec-framework-selection",
       "spec-driven-development-openspec",
       "agent-skills-and-commands",
-      "specialized-subagents-and-ownership",
+      "parallel-agent-task-boundaries",
       "agent-tool-and-mcp-permissions",
       "agent-protocol-integration",
       "model-and-api-lifecycle",

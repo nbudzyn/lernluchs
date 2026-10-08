@@ -9,12 +9,12 @@ import { topics } from "../../../src/verticals/topics/topics";
 
 // These reviewed pools additionally reject giveaway absolutes in distractors.
 const reviewedDistractorPools = new Set([
-  "specialized-subagents-and-ownership",
+  "parallel-agent-task-boundaries",
   "agent-context-handoffs",
   "agent-tool-and-mcp-permissions",
   "deterministic-agent-verification-gates",
   "agent-skills-and-commands",
-  "spec-framework-selection",
+  "spec-driven-development-openspec",
   "automation-value-and-gates",
   "web-security-baseline",
   "ui-design-system-workflow",
@@ -58,7 +58,7 @@ const weakExamples: Record<string, string[]> = {
 
 describe("questionPools", () => {
   it("owns the published pools by stable ID and leaves new topics without pools", () => {
-    expect(availableLearningCheckTopicIds).toHaveLength(45);
+    expect(availableLearningCheckTopicIds).toHaveLength(42);
     const topicsWithoutPool = [
       "agent-evals-and-traces",
       "model-and-api-lifecycle",
@@ -88,7 +88,14 @@ describe("questionPools", () => {
       const questions = questionsForTopic(topic.id);
       expect.soft(questions, `${topic.id}: missing pool`).toBeDefined();
       if (!questions) continue;
-      expect.soft(questions, `${topic.id}: pool size`).toHaveLength(25);
+      const mergedSizes: Record<string, number> = {
+        "problem-understanding-and-change-boundaries": 50,
+        "spec-driven-development-openspec": 41,
+        "parallel-agent-task-boundaries": 42,
+      };
+      expect
+        .soft(questions, `${topic.id}: pool size`)
+        .toHaveLength(mergedSizes[topic.id] ?? 25);
       expect
         .soft(validateQuestionPool(topic, questions), `${topic.id}: validation`)
         .toEqual([]);
@@ -129,7 +136,14 @@ describe("questionPools", () => {
         expect
           .soft(weakExamples[topicId] ?? [], `${context}: unrelated answer`)
           .not.toContain(option.text);
-        if (reviewedDistractorPools.has(topicId)) {
+        // Preserve the extra review scope of each original pool after consolidation.
+        if (
+          reviewedDistractorPools.has(topicId) &&
+          (topicId !== "spec-driven-development-openspec" ||
+            question.id.startsWith("SF")) &&
+          (topicId !== "parallel-agent-task-boundaries" ||
+            question.id.startsWith("subagent-ownership-"))
+        ) {
           expect
             .soft(option.text, `${context}: giveaway absolute`)
             .not.toMatch(/\b(nur|immer|nie|ausschließlich)\b/i);
@@ -141,15 +155,11 @@ describe("questionPools", () => {
   it("retains all reviewed distinct concepts", () => {
     const concepts: [string, string, RegExp][] = [
       [
-        "specialized-subagents-and-ownership",
+        "parallel-agent-task-boundaries",
         "subagent-ownership-19",
         /Simulationen/,
       ],
-      [
-        "specialized-subagents-and-ownership",
-        "subagent-ownership-23",
-        /Skills/,
-      ],
+      ["parallel-agent-task-boundaries", "subagent-ownership-23", /Skills/],
       ["agent-context-handoffs", "agent-handoff-22", /Werkzeugnamen/],
       [
         "deterministic-agent-verification-gates",

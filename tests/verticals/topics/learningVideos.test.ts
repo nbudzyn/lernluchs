@@ -21,14 +21,31 @@ describe("agreed learning video selection", () => {
     const originalTopics = topics.items.filter(
       (topic) => topic.editorial.publishedAt < "2026-10-03",
     );
-    expect(originalTopics).toHaveLength(45);
+    expect(originalTopics).toHaveLength(42);
     for (const topic of originalTopics) {
       const videos = topic.sources.filter(
         (source) =>
           source.mediaType === "video" && source.checkedAt === "2026-09-30",
       );
-      const gap = withoutGermanVideo.includes(topic.id);
-      expect(videos, topic.id).toHaveLength(gap ? 3 : 4);
+      const merged = [
+        "problem-understanding-and-change-boundaries",
+        "spec-driven-development-openspec",
+        "parallel-agent-task-boundaries",
+      ].includes(topic.id);
+      const gap = withoutGermanVideo.includes(topic.id) && !merged;
+      expect(videos, topic.id).toHaveLength(
+        merged
+          ? (
+              {
+                "problem-understanding-and-change-boundaries": 6,
+                "spec-driven-development-openspec": 6,
+                "parallel-agent-task-boundaries": 8,
+              } as Record<string, number>
+            )[topic.id]
+          : gap
+            ? 3
+            : 4,
+      );
       expect(
         videos.some((source) => source.language === "de"),
         topic.id,
