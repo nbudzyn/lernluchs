@@ -7,6 +7,10 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## "Inhalte mit Hilfe von KI erstellt"
+Es braucht einen kleinen Hinweis "Inhalte mit Hilfe von KI erstellt" (o.Ä.). Er soll die Professionalität der Anzeige nicht stören (vielleicht in der Hilfe? - aber die sieht man nur so selten...). Der Hinweis soll auf keinen Fall dafür sorgen, dass die Inhalte noch weiter nach unten geschoben werden (außer vielleicht auf extrem schmalen Anzeigen).
+ 
+
 ## Node 24 für Entwicklung und CI vereinheitlichen
 
 Die derzeit verwendete Node-Version `25.9.0` liegt außerhalb der unterstützten Versionen mehrerer Entwicklungsabhängigkeiten.
