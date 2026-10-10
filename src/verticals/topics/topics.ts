@@ -4490,6 +4490,16 @@ export const topics: Topics = {
           checkedAt: "2026-09-27",
         },
         {
+          title: "Gefährliche Abhängigkeiten in KI-generiertem Code",
+          url: "https://notebooklm.link.google/HEqpUp9TtMsa",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "16:44",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
+        },
+        {
           title: "Supply Chain Security Explained - deutsch - 4k - 8k",
           url: "https://www.youtube.com/watch?v=2cEKEEJraDk",
           type: "learning-video",
@@ -4920,6 +4930,16 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-10-07",
+        },
+        {
+          title: "Der Agent Harness macht KI produktionsreif",
+          url: "https://notebooklm.link.google/YmTxJdAbk8qj",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "19:31",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title: "Das Geheimnis guter KI-Agents: Die Harness-Schicht erklärt",
