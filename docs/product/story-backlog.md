@@ -7,7 +7,7 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Liste der Lernpfade mit Filter (Einzelauswahl)
+## Lernpfade-Filter
 Die Themenliste um einen Lernpfade-Filter ergänzen.
 Der Lernende soll sofort sehen, dass man nach Lernpfaden filtern kann und (z.B. durch eine "Aufklicken") alle Lernpfade sehen und aus ihnen einen oder mehrere zur Filterung auswählen. Auch mit einer schnellen Möglichkeit zum "Filter zurücksetzen".
 Im Startzustand (ungefiltert) soll die Themenliste *nicht* weiter nach unten rutschen.
