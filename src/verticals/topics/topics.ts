@@ -1451,6 +1451,16 @@ export const topics: Topics = {
           checkedAt: "2026-10-09",
         },
         {
+          title: "Decision Models beenden das JSON-Gefrickel",
+          url: "https://notebooklm.link.google/cMwKUNuKYShC",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "23:11",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
+        },
+        {
           title: "IBM – Agent Gateways und Modell-Routing",
           url: "https://www.ibm.com/think/topics/agent-gateway",
           type: "reference-site",
@@ -1523,6 +1533,16 @@ export const topics: Topics = {
           language: "de",
           mediaType: "text",
           checkedAt: "2026-10-09",
+        },
+        {
+          title: "EU AI Act Umsetzung in Java",
+          url: "https://notebooklm.link.google/934uwq5BacgN",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "22:21",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title:
@@ -2842,15 +2862,6 @@ export const topics: Topics = {
           checkedAt: "2026-09-27",
         },
         {
-          title: "Test Driven Development - Martin Fowler",
-          url: "https://martinfowler.com/bliki/TestDrivenDevelopment.html",
-          type: "official-guide",
-          origin: "secondary",
-          language: "en",
-          mediaType: "text",
-          checkedAt: "2026-09-27",
-        },
-        {
           title: "KI bremst Senior-Devs ohne TDD aus",
           url: "https://notebook.google.com/notebook/86d98751-a331-480c-9e9e-41a66f3b0d0a/artifact/76d53329-bc1e-4184-8e4c-e52e581703ce",
           type: "audio-summary",
@@ -2859,6 +2870,15 @@ export const topics: Topics = {
           origin: "secondary",
           language: "de",
           checkedAt: "2026-09-29",
+        },
+        {
+          title: "Test Driven Development - Martin Fowler",
+          url: "https://martinfowler.com/bliki/TestDrivenDevelopment.html",
+          type: "official-guide",
+          origin: "secondary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-09-27",
         },
         {
           title: "Test-Driven Development (TDD) // deutsch",
@@ -4017,6 +4037,16 @@ export const topics: Topics = {
           checkedAt: "2026-10-07",
         },
         {
+          title: "Autonome KI-Agenten in CICD-Pipelines testen",
+          url: "https://notebooklm.link.google/LxibEYMXuVso",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "20:57",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
+        },
+        {
           title:
             "Build Trustworthy AI Agents Powered by Evals – Testμ-Konferenzbericht, September 2026",
           url: "https://www.testmuai.com/blog/build-trustworthy-ai-agents/",
@@ -4659,6 +4689,16 @@ export const topics: Topics = {
           checkedAt: "2026-09-27",
         },
         {
+          title: "Warum KI-generierter Code Entwickler bremst",
+          url: "https://notebooklm.link.google/owKNvSq1CVIx",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "19:50",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-09-29",
+        },
+        {
           title:
             "Single Agent Vs. Multi-Agent Systems in AI | How To Choose The Right Architecture",
           url: "https://www.youtube.com/watch?v=2lTFI6FAqhk",
@@ -4750,6 +4790,16 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-09-28",
+        },
+        {
+          title: "Unberechenbare KI-Agenten im Code sicher bändigen",
+          url: "https://notebooklm.link.google/jf4yBA6m0ijv",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "25:23",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-09-29",
         },
         {
           title: "Reviewing proposed changes in a pull request – GitHub Docs",

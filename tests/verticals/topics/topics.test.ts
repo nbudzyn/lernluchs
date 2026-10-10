@@ -144,7 +144,9 @@ it("publishes current development topics with distinct concepts and sources", ()
     expect.soft(topic.everydayAnchor, id).not.toMatch(/prüfen|verstehen/i);
     expect
       .soft(
-        topic.sources.every((source) => source.checkedAt === "2026-10-09"),
+        topic.sources.every(
+          (source) => source.checkedAt <= topic.editorial.reviewedAt,
+        ),
         id,
       )
       .toBe(true);

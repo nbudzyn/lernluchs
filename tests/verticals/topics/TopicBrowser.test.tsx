@@ -654,8 +654,8 @@ describe("TopicBrowser", () => {
         .slice(0, 3),
     ).toEqual([
       sourceTitle("tdd-for-domain-behavior", 0),
-      sourceTitle("tdd-for-domain-behavior", 1),
-      sourceTitle("tdd-for-domain-behavior", 2) + " [DE]",
+      sourceTitle("tdd-for-domain-behavior", 1) + " [DE]",
+      sourceTitle("tdd-for-domain-behavior", 2),
     ]);
     cleanup();
     const item = topics.items[0];
