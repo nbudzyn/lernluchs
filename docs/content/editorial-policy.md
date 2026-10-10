@@ -1,31 +1,35 @@
 # Redaktionelle Richtlinie
 
+## Gemeinsame Inhaltsregeln
+
+Pflege Themen, Quellen und Metadaten in `src/verticals/topics/topics.ts`; die Eintragsreihenfolge bestimmt die Themenliste.
+Lernpfade stehen in `src/verticals/topics/learningPaths.ts` und referenzieren stabile Themen-IDs in Listenreihenfolge.
+IDs bei Textänderungen erhalten. Quellenprüfdaten nur je Quelle ändern, nicht pauschal für andere Quellen.
+Fragen bleiben in der Lernchecks-Vertikale. Bewusste Testbindungen an redaktionelle Texte sind an deren Definition kommentiert.
+
+Anwendung und Inhalte sind deutsch. Etablierte englische Fachbegriffe wie „Worktree“, „Spec-Driven Development“ oder „Context
+Engineering“ bleiben unübersetzt.
+
+Vor jeder Integration zusätzlich die [fachliche Qualitätsprüfung](#fachliche-qualitätsprüfung) beachten.
+
 ## Sprache und Stil
 
-Themen einschließlich aller Quellen und Metadaten werden in `src/verticals/topics/topics.ts` gepflegt; die Reihenfolge der Einträge ist
-die Themenlistenreihenfolge. Lernpfade stehen separat in `src/verticals/topics/learningPaths.ts` und referenzieren stabile Themen-IDs in
-Listenreihenfolge. IDs bleiben bei Textänderungen erhalten. Quellenprüfdaten werden je Quelle geändert, nicht pauschal für andere Quellen.
-Fragen bleiben in der Lernchecks-Vertikale. Bewusste Testbindungen an einzelne redaktionelle Texte sind an deren Definition kommentiert.
+Themen sind knapp, konkret und anwendungsnah; sie ersetzen keine langen Originaldokumentationen.
 
-Die Anwendung und ihre Inhalte sind deutsch. Etablierte englische Fachbegriffe wie „Worktree“, „Spec-Driven Development“ oder „Context
-Engineering“ bleiben unübersetzt. Themen sind knapp, konkret und anwendungsnah; sie ersetzen keine langen Originaldokumentationen.
+Jedes Thema erklärt mindestens: gelöstes Problem, Kernkonzept, Einsatz in Java-/Web-Entwicklung und wichtige Grenze oder Gegenbeispiel.
 
-Jedes Thema beantwortet mindestens: Welches Problem löst es? Was ist das Kernkonzept? Wo würde es in Java-/Web-Entwicklung eingesetzt?
-Welche Grenze oder welches Gegenbeispiel ist wichtig?
-
-Themen gehen von einem konkreten Problem aus und stellen die passende Lösung dar. Ist eine Lösung nur in bestimmten Fällen sinnvoll,
-wird der Problemkontext entsprechend eingegrenzt. Titel und Alltagsanker stellen Lösung bzw. Bedarf heraus. Prüfung und Abwägung
-unterstützen die Anwendung oder erklären Grenzen; sie werden nicht zum Hauptgegenstand eines Technologie- oder Lösungsthemas.
-Ausdrücklich bestehende Themen über Tests, Reviews oder Evals behalten ihren fachlichen Prüfgegenstand.
+Gehe vom konkreten Problem aus und zeige die passende Lösung. Grenze den Problemkontext ein, wenn die Lösung nur in bestimmten Fällen
+sinnvoll ist. Titel stellen die Lösung, Alltagsanker den Bedarf heraus. Prüfung und Abwägung unterstützen die Anwendung oder erklären
+Grenzen; sie sind nicht Hauptgegenstand eines Technologie- oder Lösungsthemas. Bestehende Themen über Tests, Reviews oder Evals behalten
+ihren fachlichen Prüfgegenstand.
 
 Architekturbeispiele stellen fachliche vertikale Module mit öffentlichen Schnittstellen und kontrollierten Abhängigkeiten in den Vordergrund.
 
-Jedes Thema enthält außerdem einen festen Alltagsanker (`everydayAnchor`, siehe
-[Glossar](../product/glossary.md#alltagsanker)): eine konkrete Alltagssituation
-aus Lernendensicht in umgangssprachlichem Ton, ohne vorweggenommene Lösung und
-mit Punkt am Satzende. Der Alltagsanker bleibt am Thema in `topics.ts`; er ist
-keine persönliche Eingabe und wird in beiden Listenansichten vom Schnellfilter
-durchsucht.
+Jedes Thema hat einen festen Alltagsanker (`everydayAnchor`, siehe
+[Glossar](../product/glossary.md#alltagsanker)): konkrete Alltagssituation aus
+Lernendensicht, umgangssprachlich, ohne vorweggenommene Lösung, mit Punkt am Satzende.
+Er bleibt am Thema in `topics.ts`, ist keine persönliche Eingabe und wird in beiden
+Listenansichten vom Schnellfilter durchsucht.
 
 ## Pflichtmetadaten
 
@@ -41,9 +45,9 @@ Der Status macht den veröffentlichten Stand kenntlich. Fachliche Inhaltsversion
 
 ## Fachliche Qualitätsprüfung
 
-Vor jeder Integration werden Aussagen gegen aktuelle, möglichst primäre Quellen geprüft. Konkurrenztechnologien werden einbezogen, wenn sie
-die Einordnung verändern könnten. Die Prüfung dokumentiert Quelle, Datum, Unsicherheiten und ggf. bewusste Auslassungen. Die bestehende
-Tool-Landkarte ist dafür ein Rechercheausgangspunkt, keine Autorität.
+Prüfe Aussagen vor jeder Integration gegen aktuelle, möglichst primäre Quellen. Beziehe Konkurrenztechnologien ein, wenn sie die
+Einordnung verändern könnten. Dokumentiere Quelle, Datum, Unsicherheiten und gegebenenfalls bewusste Auslassungen. Die bestehende
+Tool-Landkarte dient als Rechercheausgangspunkt, nicht als Autorität.
 
 Für Auswahl, Ergänzung und Ersatz von Quellen gelten die
 [Quellenregeln](source-selection.md). Jedes bestehende und neue Thema erhält kuratiert ausgewählte Quellen nach diesen Regeln.

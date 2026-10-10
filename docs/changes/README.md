@@ -2,72 +2,76 @@
 
 ## Eine Backlog-Story vollständig umsetzen
 
-Bei einem Auftrag wie „Wir wollen Story 1 implementieren“ ist die erste Story im
-[Story-Backlog](../product/story-backlog.md) gemeint. Der Auftrag umfasst Refinement,
-Aktivierung, Implementierung und Prüfung in dieser Reihenfolge; für den Übergang
-zwischen diesen Schritten ist kein weiterer Auftrag nötig.
+„Wir wollen Story 1 implementieren“ beauftragt die erste Story im
+[Story-Backlog](../product/story-backlog.md): Refinement, Aktivierung, Implementierung
+und Prüfung in dieser Reihenfolge. Die Übergänge brauchen keinen weiteren Auftrag.
 
-1. Die Story gemeinsam mit dem Nutzer verfeinern. Fachliche Unklarheiten aktiv
-   erfragen, bis mit mindestens 95 % Sicherheit klar ist, was umgesetzt werden
-   soll. Antworten und Entscheidungen in der Backlog-Story festhalten. Solange
-   eine für die Umsetzung wesentliche Antwort fehlt, die Story nicht aktivieren
-   oder implementieren.
-2. Die geklärte Story wie unten beschrieben als aktive Spec übernehmen und aus
+1. Die Story nach [Refinement](#erste-backlog-story-vorbereiten) klären.
+2. Die geklärte Story nach den [Aktivierungsregeln](#erste-backlog-story-vorbereiten) als aktive Spec übernehmen und aus
    dem Backlog entfernen. Abnahme, Risiken und nötige Entscheidungen ergänzen.
-3. Die aktive Spec pro Teil-Feature mit RED → GREEN → REFACTOR umsetzen und die
-   Nachweise eintragen. Anschließend die vollständig verpflichtenden Prüfungen
-   und den lokalen Browserablauf durchführen.
+3. Die aktive Spec nach [TDD und Spec-Nachweisen](#tdd-und-spec-nachweise)
+   umsetzen und nach [Qualitätsstrategie](../quality/verification-strategy.md#prüfumfang-und-nachweise) prüfen.
 4. Dem Nutzer die fertige Änderung zur eigenen manuellen Prüfung bereitstellen.
-   Erst nach seiner ausdrücklichen positiven Bestätigung, grüner Pflichtsuite
-   und aktuellem Browsernachweis die Spec archivieren und committen. Der
-   Implementierungsauftrag allein gilt nicht als Bestätigung für den Commit.
+   Den [Abschluss und die Archivierung](#abschluss-und-archivierung) durchführen.
 
-Ist der Auftrag ausdrücklich auf Refinement oder Aktivierung begrenzt, endet
-die Arbeit nach dem jeweiligen Schritt. Dafür gelten die folgenden Regeln.
+Bei ausdrücklich auf Refinement oder Aktivierung begrenztem Auftrag nach diesem
+Schritt enden. Dafür gelten die folgenden Regeln.
 
 ## Erste Backlog-Story vorbereiten
 
 Bei Formulierungen wie „Refinement der ersten Story“ oder „Refine die erste Story“ gilt:
 
 1. Die erste Story im [Story-Backlog](../product/story-backlog.md) prüfen.
-2. Den Nutzer so lange befragen, bis mit mindestens 95 % Sicherheit klar ist, was implementiert werden soll. Die geklärten Ergebnisse in diese Backlog-Story übernehmen.
-3. Noch keine aktive Spec anlegen und noch nichts implementieren.
+2. Befrage den Nutzer, bis mit mindestens 95 % Sicherheit klar ist, was umgesetzt werden soll. Halte die Ergebnisse in dieser Backlog-Story fest.
+3. Die betroffenen Vertikalen ermitteln und die [Rückfrage beim Entwickler](../../AGENTS.md#nicht-verhandelbar) bereits im Refinement anwenden.
+4. Noch keine aktive Spec anlegen und noch nichts implementieren.
+
+Fehlt eine umsetzungsrelevante Antwort, die Story nicht aktivieren oder
+implementieren. Jede Story liefert im Browser nachvollziehbaren Geschäftswert.
+Interne Verträge, Datenbestände oder Grundlagen sind Teil einer solchen vertikalen
+Scheibe, kein alleiniger Liefergegenstand.
 
 Bei Formulierungen wie „Aktiviere die erste Story“ oder „Erzeuge eine active Spec“ gilt:
 
-1. Die erste Story aus dem Backlog einschließlich Überschrift und vollständigem Inhalt wortgetreu als aktive Spec unter `active/` übernehmen.
-2. Nach der überprüften Übernahme diese Story vollständig aus dem Backlog entfernen; die nächste geplante Story rückt an die erste Stelle.
+1. Übernimm die erste Backlog-Story mit Überschrift und vollständigem Inhalt wortgetreu als aktive Spec unter `active/`.
+2. Prüfe die Übernahme und entferne danach die Story vollständig aus dem Backlog. Die nächste geplante Story rückt an die erste Stelle.
 3. Die weiteren Kapitel analog zu [0005](implemented/0005-weave-next-learning-path.md) ergänzen, insbesondere Risiken und Abnahme sowie Umsetzung und Nachweise. Noch nicht erbrachte Nachweise nicht als erledigt darstellen.
 4. Noch nichts implementieren.
 
-Jede fachliche oder architektonische Änderung erhält vor der Implementierung **eine** Datei direkt unter `active/`. Der englische Dateiname ist kurz, eindeutig und ohne Datum oder Nummer, zum Beispiel `weave-next-learning-path.md`.
+Lege vor jeder fachlichen oder architektonischen Implementierung **eine** Datei direkt unter `active/` an. Der englische Dateiname ist kurz, eindeutig, ohne Datum oder Nummer, etwa `weave-next-learning-path.md`.
 
-Die Spec hält knapp fest: Ziel und Nicht-Ziele, betroffene Vertikalen, nötige Entscheidungen und Risiken, prüfbare Abnahme sowie pro Teil-Feature RED → GREEN → REFACTOR. RED-Grund, grüne Prüfungen, Quellenprüfung bei Inhalten und der lokale Browsernachweis (Browser, Ablauf, Ergebnis) werden während der Arbeit in derselben Datei ergänzt. Vor einem Commit bleiben keine offenen Platzhalter.
+Die Spec enthält knapp: Ziel und Nicht-Ziele, betroffene Vertikalen, Entscheidungen und Risiken, prüfbare Abnahme sowie RED → GREEN → REFACTOR pro Teil-Feature. Ergänze während der Arbeit RED-Grund, grüne Prüfungen, Quellenprüfung bei Inhalten und lokalen Browsernachweis (Browser, Ablauf, Ergebnis) in derselben Datei. Vor dem Commit alle Platzhalter ausfüllen.
 
 ## Prüfung mit gezieltem Aufwand
 
-- Den Lese- und Ausgabeumfang nach [AGENTS.md](../../AGENTS.md#vor-jedem-lesen-und-tool-aufruf) begrenzen: zuerst `docs/INDEX.md`, dann die
-  relevante aktive Spec oder ausschließlich die erste Backlog-Story. Danach nur benötigte Abschnitte der verlinkten Vorgaben und gezielte
-  Ausschnitte aus Code und Tests lesen. Weitere Dateien nur bei konkretem Klärungsbedarf hinzunehmen.
-- Bei fachlichen Inhalten vor dem Coding eine knappe Quellenübersicht in der
-  Spec festhalten: Aussage, möglichst primäre Quelle, Prüftag und Grenze oder
-  Unsicherheit. Mehrere Aussagen gebündelt prüfen; die redaktionellen
-  Quellenregeln gelten weiterhin.
-- Pro Teil-Feature zuerst den gezielten RED-Test, dann GREEN und die betroffene
-  Testsuite ausführen. Die gesamte Pflichtsuite nach der letzten Änderung an
-  Code, Tests, Laufzeitinhalten, App-Konfiguration, Abhängigkeiten oder Prüfskripten
-  zur Abnahme ausführen. Dieser grüne Nachweis gilt auch für den Commit, wenn
-  danach ausschließlich Nachweise und Abnahmevermerk in der Änderungs-Spec
-  ergänzt und diese archiviert wurde. Bei weiteren Änderungen oder unklarem
-  Stand die Pflichtsuite erneut ausführen. Unmittelbar vor dem Commit den
-  Arbeitsbaum und den gestagten Diff auf unerwartete Änderungen und
-  Whitespace-Fehler prüfen.
-- Den lokalen Browsercheck auf einen vorher festgelegten, für die Story
-  aussagekräftigen Ablauf konzentrieren. Automatisierte Desktop- und
-  Mobiltests prüfen die übrige Breite. Unmittelbar vor jedem Commit den
-  geänderten Ablauf lokal im Browser ausprobieren und Browser, Ablauf und
-  Ergebnis in der Spec dokumentieren.
+Lese- und Ausgabeumfang regelt [AGENTS.md](../../AGENTS.md#vor-jedem-lesen-und-tool-aufruf).
+Für Testorganisation, Runner, Prüfumfang und die Gültigkeit von Nachweisen ist
+die [Qualitätsstrategie](../quality/verification-strategy.md) maßgeblich; die
+passenden Abschnitte sind gemäß [Index](../INDEX.md) vor der Handlung zu lesen.
 
-Nach fertiger Änderung, grünen Prüfungen und manueller Prüfung wird die vollständig ausgefüllte Datei direkt nach `implemented/` verschoben. Dort erhält sie die nächste vierstellige Nummer, zum Beispiel `0005-weave-next-learning-path.md`. Die Nummer zeigt die Reihenfolge des Abschlusses; Datum und Commit-Kennung stehen nicht in der Datei. Archivierte Specs werden nicht nachträglich umgeschrieben. Spätere Korrekturen bekommen eine neue Spec.
+### TDD und Spec-Nachweise
 
-Die Verschiebung und die fachliche Änderung gehören zum selben Commit. Ein fachlicher Commit betrifft höchstens zwei Vertikalen; breitere Architekturausnahmen brauchen eine ausdrückliche Begründung und Architekturtests. Unmittelbar vor jedem Commit gelten die [dauerhaften Vorgaben](../governance/durable-rules.md).
+Pro Teil-Feature in dieser Reihenfolge arbeiten:
+
+1. **RED:** Vor der Implementierung einen Test schreiben und ausführen, der aus
+   fachlich korrektem Grund fehlschlägt. Vorher die Testorganisation beachten.
+2. **GREEN:** Die kleinste Implementierung ergänzen, bis der Test besteht.
+3. **REFACTOR:** Bei weiterhin grüner Testsuite refaktorieren.
+
+Ergänze Nachweise in derselben aktiven Spec. Halte bei fachlichen Inhalten vor dem
+Coding knapp fest: Aussage, möglichst primäre Quelle, Prüftag und Grenze oder
+Unsicherheit. Prüfe Aussagen gebündelt; die einschlägigen Inhaltsregeln gelten zusätzlich.
+
+## Abschluss und Archivierung
+
+Es gelten die Freigabeschranken aus [AGENTS.md](../../AGENTS.md#nicht-verhandelbar).
+Der Implementierungsauftrag allein ist keine manuelle Commit-Freigabe. Prüfe
+unmittelbar vor dem Commit Arbeitsbaum und gestagten Diff auf unerwartete Änderungen
+und Whitespace-Fehler. Vermerke Test- und Freigaberückmeldungen des Entwicklers in Git
+nur als erfolgt, ohne Wortlaut oder weitere Details.
+
+Nach fertiger Änderung, grünen Prüfungen und manueller Prüfung die vollständig ausgefüllte Spec direkt nach `implemented/` verschieben. Vergib die nächste vierstellige Nummer, etwa `0005-weave-next-learning-path.md`, nach Abschlussreihenfolge. Keine Datums- oder Commit-Kennung in der Datei. Archivierte Specs nicht umschreiben; spätere Korrekturen erhalten eine neue Spec.
+
+Die Verschiebung und die fachliche Änderung gehören zum selben Commit.
+Architekturausnahmen richten sich nach den [Architekturregeln](../governance/durable-rules.md#architektur-und-änderungen);
+sie heben die Vertikalgrenze aus AGENTS.md nicht auf.
