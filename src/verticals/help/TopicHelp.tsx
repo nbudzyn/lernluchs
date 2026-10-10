@@ -15,16 +15,15 @@ export function TopicHelp() {
           vor“
         </li>
         <li>
-          Beim ersten Besuch ist „Kommt mir bekannt vor“ ausgewählt. Dein
-          Browser merkt sich deine letzte Auswahl.
+          Mit „Lernpfade“ am Schnellfilter wählst du einen oder mehrere
+          Lernpfade aus
         </li>
         <li>
-          Der Schnellfilter durchsucht auch die Texte unter „Kommt mir bekannt
-          vor“ in beiden Ansichten
-        </li>
-        <li>
-          <svg aria-hidden="true" viewBox="0 0 20 20">
-            <path d="M3 4h14M5 9h10M8 14h4M10 14v3" />
+          {/* Lucide route; ISC-Lizenz: public/licenses/lucide-route.txt */}
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <circle cx="6" cy="19" r="3" />
+            <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+            <circle cx="18" cy="5" r="3" />
           </svg>{" "}
           <span>filtert nach allen Lernpfaden mit diesem Thema</span>
         </li>

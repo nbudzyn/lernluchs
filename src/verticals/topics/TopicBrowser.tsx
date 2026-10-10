@@ -1,4 +1,11 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import { TopicHelp } from "../help";
 import { topics } from "./topics";
@@ -19,7 +26,10 @@ const editorialStatusLabels: Record<EditorialStatus, string> = {
 };
 
 type PathFilter =
-  { kind: "topic"; id: string } | { kind: "path"; index: number } | null;
+  | { kind: "topic"; id: string }
+  | { kind: "path"; index: number }
+  | { kind: "paths"; indices: number[] }
+  | null;
 
 const listViewPreferenceKey = "lernluchs.topic-list-view.v1";
 
@@ -119,6 +129,54 @@ export function TopicBrowser({
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [filter, setFilter] = useState<PathFilter>(null);
   const [quickFilter, setQuickFilter] = useState("");
+  const [pathPickerOpen, setPathPickerOpen] = useState(false);
+  const filterControlsRef = useRef<HTMLDivElement>(null);
+  const pathPickerTriggerRef = useRef<HTMLButtonElement>(null);
+  const pathPickerRef = useRef<HTMLElement>(null);
+  useLayoutEffect(() => {
+    if (!pathPickerOpen) return;
+    const fitPicker = () => {
+      const picker = pathPickerRef.current;
+      if (!picker) return;
+      const available =
+        window.innerHeight - picker.getBoundingClientRect().top - 12;
+      picker.style.maxHeight = `${Math.max(96, Math.min(544, available))}px`;
+    };
+    fitPicker();
+    window.addEventListener("resize", fitPicker);
+    window.addEventListener("scroll", fitPicker, { passive: true });
+    return () => {
+      window.removeEventListener("resize", fitPicker);
+      window.removeEventListener("scroll", fitPicker);
+    };
+  }, [pathPickerOpen, filter, quickFilter]);
+  const closePathPicker = useCallback(
+    (restoreFocus: boolean) => {
+      setPathPickerOpen(false);
+      setFilter((current) =>
+        current?.kind === "paths" && current.indices.length === paths.length
+          ? null
+          : current,
+      );
+      if (restoreFocus) {
+        pathPickerTriggerRef.current?.focus({ preventScroll: true });
+      }
+    },
+    [paths.length],
+  );
+  useEffect(() => {
+    if (!pathPickerOpen) return;
+    const closeOutside = (event: PointerEvent) => {
+      if (
+        event.target instanceof Node &&
+        !filterControlsRef.current?.contains(event.target)
+      ) {
+        closePathPicker(false);
+      }
+    };
+    document.addEventListener("pointerdown", closeOutside);
+    return () => document.removeEventListener("pointerdown", closeOutside);
+  }, [pathPickerOpen, closePathPicker]);
   const [showEverydayAnchors, setShowEverydayAnchors] = useState(
     initialEverydayAnchorView,
   );
@@ -150,35 +208,46 @@ export function TopicBrowser({
   const rowRefs = useRef(new Map<string, HTMLLIElement>());
   const anchor = useRef<{ id: string; x: number; y: number } | null>(null);
   const scrollToPath = useRef(false);
-  const itemIndex = new Map(items.map((item, index) => [item.id, index]));
+  // Lexikografisch nach der vollständigen Themenfolge; kürzere Präfixe zuerst.
+  // Einmal pro Katalogbestand, gemeinsam für Auswahl und Zusammenfassung.
+  const orderedPaths = useMemo(() => {
+    const itemIndex = new Map(items.map((item, index) => [item.id, index]));
+    return [...paths].sort((first, second) => {
+      for (
+        let index = 0;
+        index < Math.min(first.topicIds.length, second.topicIds.length);
+        index += 1
+      ) {
+        const a = itemIndex.get(first.topicIds[index]) ?? Infinity;
+        const b = itemIndex.get(second.topicIds[index]) ?? Infinity;
+        if (a !== b) return a - b;
+      }
+      return first.topicIds.length - second.topicIds.length;
+    });
+  }, [items, paths]);
   const checkIds = new Set(availableLearningCheckTopicIds);
   const pathsFor = (id: string) =>
     paths.filter((path) => path.topicIds.includes(id));
   const activePaths = filter
     ? filter.kind === "topic"
       ? pathsFor(filter.id)
-      : paths[filter.index]
-        ? [paths[filter.index]]
-        : []
+      : filter.kind === "paths"
+        ? paths.filter((_, index) => filter.indices.includes(index))
+        : paths[filter.index]
+          ? [paths[filter.index]]
+          : []
     : [];
+  const pathFilterActive =
+    activePaths.length > 0 &&
+    !(filter?.kind === "paths" && activePaths.length === paths.length);
   const activeIds = new Set(activePaths.flatMap((path) => path.topicIds));
-  const visibleItems = items.filter(
-    (item) =>
-      (!activePaths.length || activeIds.has(item.id)) &&
-      matchesQuickFilter(item, quickFilter),
+  const pathItems = items.filter(
+    (item) => !pathFilterActive || activeIds.has(item.id),
   );
-  const sortedPaths = [...activePaths].sort((first, second) => {
-    for (
-      let index = 0;
-      index < Math.min(first.topicIds.length, second.topicIds.length);
-      index += 1
-    ) {
-      const a = itemIndex.get(first.topicIds[index]) ?? Infinity;
-      const b = itemIndex.get(second.topicIds[index]) ?? Infinity;
-      if (a !== b) return a - b;
-    }
-    return first.topicIds.length - second.topicIds.length;
-  });
+  const visibleItems = pathItems.filter((item) =>
+    matchesQuickFilter(item, quickFilter),
+  );
+  const sortedPaths = orderedPaths.filter((path) => activePaths.includes(path));
   useLayoutEffect(() => {
     if (scrollToPath.current) {
       scrollToPath.current = false;
@@ -252,6 +321,31 @@ export function TopicBrowser({
     setFilter({ kind: "path", index });
   }
 
+  function toggleSelectedPath(index: number) {
+    const indices = activePaths.map((path) => paths.indexOf(path));
+    const next = indices.includes(index)
+      ? indices.filter((current) => current !== index)
+      : [...indices, index];
+    anchor.current = null;
+    scrollToPath.current = false;
+    if (
+      selectedId &&
+      next.length > 0 &&
+      next.length < paths.length &&
+      !next.some((current) => paths[current].topicIds.includes(selectedId))
+    ) {
+      setSelectedId(null);
+      setMobileView("list");
+    }
+    setFilter(next.length ? { kind: "paths", indices: next } : null);
+  }
+
+  function resetPathFilter() {
+    anchor.current = null;
+    scrollToPath.current = false;
+    setFilter(null);
+  }
+
   function clearFilter() {
     const firstVisibleId = visibleItems[0]?.id;
     if (firstVisibleId) {
@@ -262,9 +356,7 @@ export function TopicBrowser({
         )
         ?.focus({ preventScroll: true });
     }
-    anchor.current = null;
-    scrollToPath.current = false;
-    setFilter(null);
+    resetPathFilter();
     setQuickFilter("");
   }
 
@@ -365,27 +457,28 @@ export function TopicBrowser({
         <div className="topic-list-header">
           <div>
             <h2>Themen</h2>
-            {!filter && (
+            {!pathFilterActive && (
               <p className="topic-list-count">
                 {quickFilter && `${visibleItems.length} / `}
                 {items.length} Themen
               </p>
             )}
           </div>
-          {mobileView === "list" && (
-            <button
-              aria-label="Hilfe öffnen"
-              className="topic-help-button"
-              type="button"
-              title="Hilfe öffnen"
-              onClick={() => openMobileView("help")}
-            >
-              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M9.5 9a2.5 2.5 0 1 1 4.3 1.7c-.9.8-1.8 1.3-1.8 2.8M12 17h.01" />
-              </svg>
-            </button>
-          )}
+          <button
+            aria-label="Hilfe öffnen"
+            className="topic-help-button"
+            type="button"
+            title="Hilfe öffnen"
+            onClick={() => {
+              setSelectedId(null);
+              openMobileView("help");
+            }}
+          >
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M9.5 9a2.5 2.5 0 1 1 4.3 1.7c-.9.8-1.8 1.3-1.8 2.8M12 17h.01" />
+            </svg>
+          </button>
         </div>
         <div
           className="topic-list-view"
@@ -413,27 +506,94 @@ export function TopicBrowser({
             Auswahl nicht speichern.
           </p>
         )}
-        <div className="topic-quick-filter">
-          <label htmlFor="topic-quick-filter">Schnellfilter</label>
+        <div
+          className="topic-quick-filter"
+          ref={filterControlsRef}
+          onKeyDown={(event) => {
+            if (event.key === "Escape" && pathPickerOpen) {
+              event.preventDefault();
+              closePathPicker(true);
+            }
+          }}
+        >
+          <div className="topic-filter-labels">
+            <label htmlFor="topic-quick-filter">Schnellfilter</label>
+            {paths.length > 0 && (
+              <button
+                type="button"
+                className="learning-path-picker-trigger"
+                ref={pathPickerTriggerRef}
+                aria-expanded={pathPickerOpen}
+                aria-controls="learning-path-picker"
+                onClick={() => {
+                  if (pathPickerOpen) closePathPicker(true);
+                  else setPathPickerOpen(true);
+                }}
+              >
+                Lernpfade{" "}
+                <span aria-hidden="true">{pathPickerOpen ? "▴" : "▾"}</span>
+              </button>
+            )}
+          </div>
           <input
             id="topic-quick-filter"
             type="text"
             value={quickFilter}
             onChange={(event) => changeQuickFilter(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key === "Escape" && quickFilter) {
+              if (event.key === "Escape" && quickFilter && !pathPickerOpen) {
                 event.preventDefault();
                 changeQuickFilter("");
               }
             }}
           />
-          {quickFilter && activePaths.length === 0 && (
+          {quickFilter && !pathFilterActive && (
             <button type="button" onClick={clearFilter}>
               Filter aufheben
             </button>
           )}
+          {pathPickerOpen && (
+            <section
+              className="learning-path-picker"
+              id="learning-path-picker"
+              ref={pathPickerRef}
+            >
+              <div className="learning-path-picker-header">
+                <div className="learning-path-picker-heading">
+                  <h3>Lernpfade</h3>
+                  <div className="learning-path-picker-actions">
+                    <button type="button" onClick={resetPathFilter}>
+                      Zurücksetzen
+                    </button>
+                    <button type="button" onClick={() => closePathPicker(true)}>
+                      Schließen
+                    </button>
+                  </div>
+                </div>
+                <p className="learning-path-picker-count" aria-live="polite">
+                  {activePaths.length} / {paths.length} Lernpfade (
+                  {pathItems.length === items.length
+                    ? "alle Themen"
+                    : `${pathItems.length} / ${items.length} Themen`}
+                  )
+                </p>
+              </div>
+              <fieldset aria-label="Lernpfade auswählen">
+                {orderedPaths.map((path) => (
+                  <label key={paths.indexOf(path)}>
+                    <input
+                      type="checkbox"
+                      checked={activePaths.includes(path)}
+                      onChange={() => toggleSelectedPath(paths.indexOf(path))}
+                    />
+                    <span>{path.name}</span>
+                  </label>
+                ))}
+              </fieldset>
+            </section>
+          )}
         </div>
-        {activePaths.length > 0 && (
+        {pathFilterActive && (
           <section
             className="path-filter-summary"
             aria-label="Aktive Lernpfade"
@@ -491,13 +651,16 @@ export function TopicBrowser({
                       title={`Lernpfade von ${item.title} filtern`}
                       onClick={() => toggleFilter(item.id)}
                     >
+                      {/* Lucide route; ISC-Lizenz: public/licenses/lucide-route.txt */}
                       <svg
                         aria-hidden="true"
                         focusable="false"
-                        viewBox="0 0 20 20"
+                        viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <path d="M3 4h14M5 9h10M8 14h4M10 14v3" />
+                        <circle cx="6" cy="19" r="3" />
+                        <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+                        <circle cx="18" cy="5" r="3" />
                       </svg>
                     </button>
                   )}

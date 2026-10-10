@@ -1,4 +1,10 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  within,
+} from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { TopicBrowser } from "../../../src/verticals/topics/TopicBrowser";
@@ -218,7 +224,13 @@ describe("TopicBrowser", () => {
         name: topicTitle("human-ai-responsibility"),
       }),
     ).toBeTruthy();
-    expect(screen.queryByRole("button", { name: "Hilfe öffnen" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "Hilfe öffnen" }));
+    expect(screen.queryByRole("article")).toBeNull();
+    expect(
+      screen.getByRole("region", { name: "Hilfe zu Themen" }),
+    ).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Zur Themenliste" }));
+    expect(screen.queryByRole("article")).toBeNull();
   });
 
   it("shows the descriptive foundation path name in the filter summary", () => {
@@ -244,6 +256,7 @@ describe("TopicBrowser", () => {
         items={[plainTopic, quizTopic]}
         learnedTopicIds={[quizTopic.id, plainTopic.id, "temporarily-missing"]}
         availableLearningCheckTopicIds={[quizTopic.id]}
+        onStartLearningCheck={() => {}}
       />,
     );
     const rows = screen.getAllByRole("listitem");
@@ -251,6 +264,16 @@ describe("TopicBrowser", () => {
     expect(rows[1].textContent).toContain("✓");
     expect(rows[1].textContent).not.toContain("Gelernt");
     expect(screen.getByRole("img", { name: "Gelernt" })).toBeTruthy();
+    expect(
+      Array.from(rows[1].querySelector(".topic-actions")?.children ?? []).map(
+        (element) => element.getAttribute("aria-label") ?? element.textContent,
+      ),
+    ).toEqual([
+      `Lernpfade von ${quizTopic.title} filtern`,
+      quizTopic.title,
+      "Gelernt",
+      `Lerncheck starten: ${quizTopic.title}`,
+    ]);
   });
 
   it("shows an accessible icon button for each available learning check", () => {
@@ -446,6 +469,12 @@ describe("TopicBrowser", () => {
       screen.getByRole("button", { name: "Lernpfade von Geändert 0 filtern" }),
     );
     expect(filterSummary()).toBe("Gefiltert nach: Kurz, Lang früh, Lang spät");
+    const picker = openPathPicker();
+    expect(
+      within(picker)
+        .getAllByRole("checkbox")
+        .map((checkbox) => checkbox.closest("label")?.textContent),
+    ).toEqual(["Kurz", "Lang früh", "Lang spät"]);
     expect(
       screen
         .getAllByRole("button", { name: /^Geändert \d$/ })
@@ -754,6 +783,178 @@ describe("TopicBrowser", () => {
     expect(
       untimedSource.parentElement?.querySelector("svg[aria-label='Audio']"),
     ).toBeTruthy();
+  });
+});
+
+function openPathPicker() {
+  const trigger = screen.queryByRole("button", {
+    name: "Lernpfade",
+  });
+  if (!trigger) throw new Error("Der direkte Lernpfad-Einstieg fehlt.");
+  fireEvent.click(trigger);
+  return screen.getByRole("group", { name: "Lernpfade auswählen" });
+}
+
+describe("Lernpfade-Auswahl", () => {
+  const items = topics.items.slice(0, 4).map((item, index) => ({
+    ...item,
+    title: `Menüthema ${index}`,
+  }));
+  const paths = [
+    { name: "Später", topicIds: [items[1].id, items[2].id] },
+    { name: "Früher", topicIds: [items[0].id, items[1].id] },
+    { name: "Viertes", topicIds: [items[3].id] },
+  ];
+  const checkedNames = (picker: HTMLElement) =>
+    within(picker)
+      .getAllByRole("checkbox")
+      .filter((checkbox) => (checkbox as HTMLInputElement).checked)
+      .map((checkbox) => checkbox.closest("label")?.textContent);
+
+  it("filters immediately by a union, keeps the search and closes hidden details", () => {
+    render(<TopicBrowser items={items} paths={paths} />);
+    fireEvent.click(screen.getByRole("button", { name: "Menüthema 0" }));
+    const picker = openPathPicker();
+    expect(checkedNames(picker)).toEqual([]);
+    expect(
+      document.querySelector(".learning-path-picker-count")?.textContent,
+    ).toBe("0 / 3 Lernpfade (alle Themen)");
+    for (const name of ["Früher", "Später"]) {
+      fireEvent.click(within(picker).getByRole("checkbox", { name }));
+    }
+    expect(checkedNames(picker)).toEqual(["Früher", "Später"]);
+    expect(
+      document.querySelector(".learning-path-picker-count")?.textContent,
+    ).toBe("2 / 3 Lernpfade (3 / 4 Themen)");
+    expect(
+      within(screen.getByRole("navigation", { name: "Themen" }))
+        .getAllByRole("button", { name: /^Menüthema/ })
+        .map((button) => button.textContent),
+    ).toEqual(["Menüthema 0", "Menüthema 1", "Menüthema 2"]);
+    fireEvent.click(within(picker).getByRole("checkbox", { name: "Früher" }));
+    expect(screen.queryByRole("article", { name: "Menüthema 0" })).toBeNull();
+    fireEvent.change(screen.getByRole("textbox", { name: "Schnellfilter" }), {
+      target: { value: "Menüthema 2" },
+    });
+    expect(
+      within(screen.getByRole("navigation", { name: "Themen" })).getAllByRole(
+        "listitem",
+      ),
+    ).toHaveLength(1);
+    fireEvent.click(within(picker).getByRole("checkbox", { name: "Später" }));
+    expect(checkedNames(picker)).toEqual([]);
+    expect(filterSummary()).toBeUndefined();
+    fireEvent.click(screen.getByRole("button", { name: "Schließen" }));
+    expect(checkedNames(openPathPicker())).toEqual([]);
+    fireEvent.click(screen.getByRole("button", { name: "Schließen" }));
+    fireEvent.click(screen.getByRole("button", { name: "Filter aufheben" }));
+    expect(screen.queryByRole("article", { name: "Menüthema 0" })).toBeNull();
+    expect(
+      within(screen.getByRole("navigation", { name: "Themen" })).getAllByRole(
+        "listitem",
+      ),
+    ).toHaveLength(4);
+  });
+
+  it("keeps a full selection while open and normalizes it only on closing", () => {
+    render(<TopicBrowser items={items} paths={paths} />);
+    fireEvent.change(screen.getByRole("textbox", { name: "Schnellfilter" }), {
+      target: { value: "Menüthema 0" },
+    });
+    const picker = openPathPicker();
+    for (const checkbox of within(picker).getAllByRole("checkbox")) {
+      fireEvent.click(checkbox);
+    }
+    expect(checkedNames(picker)).toEqual(["Früher", "Später", "Viertes"]);
+    expect(
+      document.querySelector(".learning-path-picker-count")?.textContent,
+    ).toBe("3 / 3 Lernpfade (alle Themen)");
+    fireEvent.click(within(picker).getByRole("checkbox", { name: "Viertes" }));
+    expect(checkedNames(picker)).toEqual(["Früher", "Später"]);
+    fireEvent.click(within(picker).getByRole("checkbox", { name: "Viertes" }));
+    fireEvent.click(screen.getByRole("button", { name: "Schließen" }));
+    expect(filterSummary()).toBeUndefined();
+    expect(
+      (
+        screen.getByRole("textbox", {
+          name: "Schnellfilter",
+        }) as HTMLInputElement
+      ).value,
+    ).toBe("Menüthema 0");
+    expect(checkedNames(openPathPicker())).toEqual([]);
+  });
+
+  it("restores icon and single-path selections and closes with Escape or outside click", () => {
+    render(<TopicBrowser items={items} paths={paths} />);
+    fireEvent.click(
+      screen.getByRole("button", { name: "Lernpfade von Menüthema 1 filtern" }),
+    );
+    let picker = openPathPicker();
+    expect(checkedNames(picker)).toEqual(["Früher", "Später"]);
+    fireEvent.keyDown(picker, { key: "Escape" });
+    expect(
+      screen.queryByRole("group", { name: "Lernpfade auswählen" }),
+    ).toBeNull();
+    expect(document.activeElement).toBe(
+      screen.getByRole("button", { name: "Lernpfade" }),
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Später" }));
+    picker = openPathPicker();
+    expect(checkedNames(picker)).toEqual(["Später"]);
+    fireEvent.pointerDown(document.body);
+    expect(
+      screen.queryByRole("group", { name: "Lernpfade auswählen" }),
+    ).toBeNull();
+    expect(checkedNames(openPathPicker())).toEqual(["Später"]);
+  });
+
+  it("resets only the path selection without closing the picker or clearing search", () => {
+    render(<TopicBrowser items={items} paths={paths} />);
+    const picker = openPathPicker();
+    fireEvent.click(within(picker).getByRole("checkbox", { name: "Früher" }));
+    fireEvent.change(screen.getByRole("textbox", { name: "Schnellfilter" }), {
+      target: { value: "Menüthema 1" },
+    });
+    const reset = screen.queryByRole("button", { name: "Zurücksetzen" });
+    if (!reset) throw new Error("Zurücksetzen fehlt in der Lernpfadauswahl.");
+    expect(
+      document.querySelector(".learning-path-picker-count")?.textContent,
+    ).toBe("1 / 3 Lernpfade (2 / 4 Themen)");
+    fireEvent.click(reset);
+    expect(checkedNames(picker)).toEqual([]);
+    expect(screen.getByRole("group", { name: "Lernpfade auswählen" })).toBe(
+      picker,
+    );
+    expect(
+      document.querySelector(".learning-path-picker-count")?.textContent,
+    ).toBe("0 / 3 Lernpfade (alle Themen)");
+    expect(
+      (
+        screen.getByRole("textbox", {
+          name: "Schnellfilter",
+        }) as HTMLInputElement
+      ).value,
+    ).toBe("Menüthema 1");
+    expect(filterSummary()).toBeUndefined();
+    fireEvent.click(within(picker).getByRole("checkbox", { name: "Später" }));
+    expect(checkedNames(picker)).toEqual(["Später"]);
+  });
+
+  it("labels complete topic coverage as all topics even with only some paths selected", () => {
+    render(
+      <TopicBrowser
+        items={items}
+        paths={[
+          ...paths,
+          { name: "Alle", topicIds: items.map((item) => item.id) },
+        ]}
+      />,
+    );
+    const picker = openPathPicker();
+    fireEvent.click(within(picker).getByRole("checkbox", { name: "Alle" }));
+    expect(
+      document.querySelector(".learning-path-picker-count")?.textContent,
+    ).toBe("1 / 4 Lernpfade (alle Themen)");
   });
 });
 

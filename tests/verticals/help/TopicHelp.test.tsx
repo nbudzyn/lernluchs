@@ -21,9 +21,10 @@ it("renders its guidance without topic data or callbacks", () => {
     "Thema gelernt",
     "„Kommt mir bekannt vor“ zeigt Situationen aus deinem Alltag als Randnotiz beim Thema",
     "Über der Liste wechselst du zwischen Themen und „Kommt mir bekannt vor“",
-    "Beim ersten Besuch ist „Kommt mir bekannt vor“ ausgewählt. Dein Browser merkt sich deine letzte Auswahl.",
-    "Der Schnellfilter durchsucht auch die Texte unter „Kommt mir bekannt vor“ in beiden Ansichten",
+    "Mit „Lernpfade“ am Schnellfilter wählst du einen oder mehrere Lernpfade aus",
   ]) {
     expect(screen.getByText(text)).toBeTruthy();
   }
+  expect(screen.queryByText(/Beim ersten Besuch/)).toBeNull();
+  expect(screen.queryByText(/Der Schnellfilter durchsucht/)).toBeNull();
 });

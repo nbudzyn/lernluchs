@@ -4,6 +4,7 @@
 
 Pflege Themen, Quellen und Metadaten in `src/verticals/topics/topics.ts`; die Eintragsreihenfolge bestimmt die Themenliste.
 Lernpfade stehen in `src/verticals/topics/learningPaths.ts` und referenzieren stabile Themen-IDs in Listenreihenfolge.
+Auswahl und „Gefiltert nach“ verwenden dieselbe Sortierung: Die Themen-IDs zweier Pfade werden positionsweise anhand der gemeinsamen Themenliste verglichen; die erste unterschiedliche Position entscheidet. Bei gleichem Anfang steht der kürzere Pfad zuerst, bei identischer Folge bleibt die Definitionsreihenfolge erhalten. Die Anzeige berechnet diese Ordnung einmal pro unverändertem Katalogbestand. Neue Pfade und Änderungen ihrer Themenfolge werden so automatisch eingeordnet.
 IDs bei Textänderungen erhalten. Quellenprüfdaten nur je Quelle ändern, nicht pauschal für andere Quellen.
 Fragen bleiben in der Lernchecks-Vertikale. Bewusste Testbindungen an redaktionelle Texte sind an deren Definition kommentiert.
 

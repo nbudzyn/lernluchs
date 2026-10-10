@@ -33,7 +33,7 @@ test("opens the same guidance as a mobile view and returns to the list", async (
   await expect(help.getByText("startet einen Lerncheck")).toBeVisible();
   await expect(
     help.getByText(
-      "Der Schnellfilter durchsucht auch die Texte unter „Kommt mir bekannt vor“ in beiden Ansichten",
+      "Mit „Lernpfade“ am Schnellfilter wählst du einen oder mehrere Lernpfade aus",
     ),
   ).toBeVisible();
   await page.getByRole("button", { name: "Zur Themenliste" }).click();
