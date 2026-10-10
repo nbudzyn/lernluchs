@@ -7,6 +7,20 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Liste der Lernpfade mit Filter (Einzelauswahl)
+Die Themenliste um einen Lernpfade-Filter ergänzen.
+Der Lernende soll sofort sehen, dass man nach Lernpfaden filtern kann und (z.B. durch eine "Aufklicken") alle Lernpfade sehen und aus ihnen einen oder mehrere zur Filterung auswählen. Auch mit einer schnellen Möglichkeit zum "Filter zurücksetzen".
+Im Startzustand (ungefiltert) soll die Themenliste *nicht* weiter nach unten rutschen.
+Der Filter soll in breiter und schmaler Anzeige funktionieren.
+Wenn nach Lernpfaden gefiltert ist, soll eine Anzeige "Gefiltert nach" erscheinen, wie bisher auch. Das spricht eigentlich dafür, den Einstieg zum Lernpfadfilter unmittelbar an dieser Stelle anzuzeigen (immer, wenn nicht nach Lernpfaden gefiltert ist)? - Aber: Ich möchte nicht, dass die Themen weiter nach unten rutschen.
+
+Die Darstellung soll der bestehenden Design-Sprache entsprechen und die professionelle Gestaltung der Anwendung erhalten (oder sogar verbessern).
+
+Vor dem Design stell mir Fragen, wie beim Refinement üblich.
+
+Dann beauftrage 3 Subagents und stelle mir die Design-Alternativen vor.
+
+
 ## Einmal manuell alle Podcast-Links durchprüfen, dann checked-Datum aktualisieren
 
 ## Hilfe ausdünnen
@@ -36,10 +50,6 @@ Entwicklung und CI sollen eine einheitliche, unterstützte Node-24-Version verwe
 
 ## Jüngste Private Notizen in Themen (oder als neue Themen) übernehmen 
 - Jüngste Private Notizen in Themen (oder als neue Themen) übernehmen
-
-## Liste der Lernpfade mit Filter (Einzelauswahl)
-
-- ein kompakten alternativer Einstieg über einen oder mehrere Lernpfade auf derselben Seite.
 
 ## Verwendung von nmp prüfen, ggf. regulieren
 
