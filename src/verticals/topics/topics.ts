@@ -4089,6 +4089,16 @@ export const topics: Topics = {
           checkedAt: "2026-09-27",
         },
         {
+          title: "Code-Migration mit OpenRewrite und KI-Agenten",
+          url: "https://notebooklm.link.google/koj4x9y1KFDR",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "14:44",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
+        },
+        {
           title:
             "Upgrading your Java & Spring Boot applications with OpenRewrite in IntelliJ",
           url: "https://www.youtube.com/watch?v=e4R6AZHpAD8",
@@ -4162,6 +4172,16 @@ export const topics: Topics = {
           language: "en",
           mediaType: "text",
           checkedAt: "2026-09-27",
+        },
+        {
+          title: "Selbstheilende E2E Tests mit Playwright und KI",
+          url: "https://notebooklm.link.google/9FBmz1GGO8Fb",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "27:11",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title:
@@ -4240,6 +4260,16 @@ export const topics: Topics = {
           language: "en",
           mediaType: "text",
           checkedAt: "2026-09-27",
+        },
+        {
+          title: "Wie KI Assistenten XSS Payloads ins Frontend bringen",
+          url: "https://notebooklm.link.google/eFTu05z5WLtm",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "20:00",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title: "Schwachstellen einfach erklärt: Cross-Site-Scripting (XSS)",
@@ -4334,6 +4364,16 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-10-07",
+        },
+        {
+          title: "Javadoc als ausführbarer KI-Vertrag",
+          url: "https://notebooklm.link.google/wVpTdfz6d0ZE",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "22:00",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-03",
         },
         {
           title: "Javadoc - Dokumentationskommentare",
@@ -4579,7 +4619,7 @@ export const topics: Topics = {
     },
     {
       id: "compare-parallel-and-serial-agent-work",
-      title: "Einsatz von parallelen Agenten gegen den seriellen Ablauf messen",
+      title: "Bewusst zwischen parallelen Agenten und seriellem Ablauf wählen",
       everydayAnchor:
         "Ich setze mehr Agenten ein, aber mein Aufwand und meine Kosten steigen trotzdem.",
       content: {

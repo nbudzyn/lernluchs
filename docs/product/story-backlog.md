@@ -7,6 +7,17 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Hilfe ausdünnen
+Die Zeilen "Beim ersten Besuch..." und "der Schnellfilter durchsucht..." entfernen.
+
+(Warum? Das merkt der Lernende von selbst.)
+
+## Hilfe-Link
+Ein Hilfe-Link, vielleicht rechts ausgerichtet in der Zeile "X Themen" und in derselben Schriftart, öffnet die Hilfe.
+- Ist ein Thema geöffnet, wird das Thema geschlossen
+- Ist die Hilfe bereits geöffnet, passiert nichts.
+- Funktioniert in schmaler und breiter Ansicht. Insbesondere funktionieren die bestehenden Tests für den Backbutton ganz genau analog (Tests ergänzen oder duplizieren und anpassen)
+
 ## "Inhalte mit Hilfe von KI erstellt"
 Es braucht einen kleinen Hinweis "Inhalte mit Hilfe von KI erstellt" (o.Ä.). Er soll die Professionalität der Anzeige nicht stören (vielleicht in der Hilfe? - aber die sieht man nur so selten...). Der Hinweis soll auf keinen Fall dafür sorgen, dass die Inhalte noch weiter nach unten geschoben werden (außer vielleicht auf extrem schmalen Anzeigen).
  
