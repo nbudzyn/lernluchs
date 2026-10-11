@@ -39,7 +39,7 @@ Die Handlungsschranken in AGENTS.md gelten unabhängig von dieser Rangfolge:
 1. Die konkrete, aktive Änderungs-Spec in `docs/changes/active/`.
 2. Die dauerhaften Vorgaben in `docs/governance/`.
 3. Architektur-, Produkt-, Qualitäts- und Inhaltsdokumente.
-4. Beschreibende Bestandsdokumente wie die Tool-Landkarte.
+4. Beschreibende Bestandsdokumente.
 
 Bei widersprüchlichen Vorgaben nicht raten: Arbeit anhalten und Spec oder
 dauerhafte Vorgabe ausdrücklich korrigieren.

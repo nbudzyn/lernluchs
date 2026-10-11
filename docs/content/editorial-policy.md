@@ -47,8 +47,7 @@ Der Status macht den veröffentlichten Stand kenntlich. Fachliche Inhaltsversion
 ## Fachliche Qualitätsprüfung
 
 Prüfe Aussagen vor jeder Integration gegen aktuelle, möglichst primäre Quellen. Beziehe Konkurrenztechnologien ein, wenn sie die
-Einordnung verändern könnten. Dokumentiere Quelle, Datum, Unsicherheiten und gegebenenfalls bewusste Auslassungen. Die bestehende
-Tool-Landkarte dient als Rechercheausgangspunkt, nicht als Autorität.
+Einordnung verändern könnten. Dokumentiere Quelle, Datum, Unsicherheiten und gegebenenfalls bewusste Auslassungen.
 
 Für Auswahl, Ergänzung und Ersatz von Quellen gelten die
 [Quellenregeln](source-selection.md). Jedes bestehende und neue Thema erhält kuratiert ausgewählte Quellen nach diesen Regeln.
