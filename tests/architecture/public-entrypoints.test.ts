@@ -25,7 +25,13 @@ describe("public vertical entrypoints", () => {
       .sort((first, second) => first.localeCompare(second));
     expect
       .soft(entrypoints)
-      .toEqual(["help", "learning-checks", "learning-state", "topics"]);
+      .toEqual([
+        "help",
+        "imprint",
+        "learning-checks",
+        "learning-state",
+        "topics",
+      ]);
     const violations = Object.entries(sourceFiles).flatMap(
       ([path, contents]) => {
         const currentContract = contents.replaceAll(
@@ -46,11 +52,7 @@ describe("public vertical entrypoints", () => {
     const violations = Object.entries(appFiles).flatMap(([path, contents]) => {
       return [...contents.matchAll(/from\s+["']([^"']+)["']/g)]
         .map((match) => match[1])
-        .filter((specifier) =>
-          /verticals\/(topics|help|learning-checks|learning-state)\//.test(
-            specifier,
-          ),
-        )
+        .filter((specifier) => /verticals\/[^/]+\//.test(specifier))
         .map((specifier) => `${path}: ${specifier}`);
     });
     expect(violations).toEqual([]);

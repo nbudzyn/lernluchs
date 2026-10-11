@@ -13,7 +13,7 @@ Die Präferenz bleibt vom Lernstand getrennt und ausschließlich im Browser gesp
 verfügbaren Lernchecks und der gelernten Themen über ihre öffentliche
 Komponentenschnittstelle. Ihr öffentlicher Einstiegspunkt exportiert die
 Themenliste. Sie verantwortet auch den Browser-Rückweg aus schmalen Themen- und
-Hilfeansichten. Für einen aktiven Lerncheck erhält sie von `app` einen optionalen
+Hilfe- und Impressumansichten. Für einen aktiven Lerncheck erhält sie von `app` einen optionalen
 Abbruchrückruf; der Browser-Rückweg zeigt dann bei jeder Breite die Liste und
 beendet den Check über diesen Rückruf. Einzelne Fragen erzeugen keine eigenen
 Verlaufseinträge. Der Vorwärtsbutton behält sein natives Verhalten.
@@ -25,6 +25,15 @@ Ihr öffentlicher Einstiegspunkt exportiert `TopicHelp` als präsentierende Komp
 Hilfe importiert weder andere Vertikalen noch `shared` oder `app`. Nur Themen hängt von Hilfe ab, importiert ausschließlich `help/index.ts`
 und steuert die rechte oder mobile Hilfeansicht sowie den Rückweg zur Liste. dependency-cruiser und ein Architekturtest sichern diese
 gerichtete Ausnahme ab. Hilfe-Tests liegen unter `tests/verticals/help/` und `e2e/verticals/help/`.
+
+## Bestehende Vertikale: Impressum
+
+Die Vertikale Impressum (`imprint`) besitzt die abgestimmten Autor- und Projekthinweise und deren Präsentation.
+Ihr öffentlicher Einstiegspunkt exportiert `Imprint` ohne Themen-Daten oder Rückrufvertrag. Sie importiert weder andere Vertikalen
+noch `shared` oder `app`. Nur Themen hängt über `imprint/index.ts` vom Impressum ab und nutzt für Positionierung, Ansichtswechsel,
+Scrollwiederherstellung und Rückweg dieselbe Logik wie für Hilfe. dependency-cruiser und ein gemeinsamer Architekturtest sichern
+die gerichteten Verträge. Inhaltstests liegen unter `tests/verticals/imprint/` und `e2e/verticals/imprint/`; gemeinsame Navigationsabläufe
+unter Themen beziehungsweise `e2e/app/`.
 
 ## Bestehende Vertikale: Lernchecks
 

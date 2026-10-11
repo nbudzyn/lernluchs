@@ -8,6 +8,7 @@ import {
 } from "react";
 
 import { TopicHelp } from "../help";
+import { Imprint } from "../imprint";
 import { topics } from "./topics";
 import { useBrowserBack } from "./useBrowserBack";
 import type {
@@ -193,9 +194,9 @@ export function TopicBrowser({
       setViewPreferenceNotSaved(true);
     }
   }
-  const [mobileView, setMobileView] = useState<"list" | "topic" | "help">(
-    "list",
-  );
+  const [mobileView, setMobileView] = useState<
+    "list" | "topic" | "help" | "imprint"
+  >("list");
   const listScrollY = useRef(0);
   const checkScrollY = useRef(0);
   const checkOpen = useRef(false);
@@ -369,6 +370,7 @@ export function TopicBrowser({
     }
   }
   const selectedItem = items.find((item) => item.id === selectedId);
+  const supplementaryView = mobileView === "help" || mobileView === "imprint";
   useLayoutEffect(() => {
     const narrow = window.matchMedia?.("(max-width: 799px)");
     if (!narrow || !selectedItem || mobileView !== "list") return;
@@ -386,12 +388,17 @@ export function TopicBrowser({
     return () => narrow.removeEventListener("change", showWideSelection);
   }, [selectedItem, mobileView]);
 
-  function openMobileView(view: "topic" | "help") {
+  function openMobileView(view: "topic" | "help" | "imprint") {
     if (window.matchMedia?.("(max-width: 799px)").matches) {
       listScrollY.current = window.scrollY;
       window.scrollTo(0, 0);
     }
     setMobileView(view);
+  }
+
+  function openSupplementaryView(view: "help" | "imprint") {
+    setSelectedId(null);
+    openMobileView(view);
   }
 
   function returnToList() {
@@ -464,21 +471,32 @@ export function TopicBrowser({
               </p>
             )}
           </div>
-          <button
-            aria-label="Hilfe öffnen"
-            className="topic-help-button"
-            type="button"
-            title="Hilfe öffnen"
-            onClick={() => {
-              setSelectedId(null);
-              openMobileView("help");
-            }}
-          >
-            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M9.5 9a2.5 2.5 0 1 1 4.3 1.7c-.9.8-1.8 1.3-1.8 2.8M12 17h.01" />
-            </svg>
-          </button>
+          <div className="topic-list-info-actions">
+            <button
+              aria-label="Impressum öffnen"
+              className="topic-info-button"
+              type="button"
+              title="Impressum öffnen"
+              onClick={() => openSupplementaryView("imprint")}
+            >
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 11v6M12 7h.01" />
+              </svg>
+            </button>
+            <button
+              aria-label="Hilfe öffnen"
+              className="topic-info-button"
+              type="button"
+              title="Hilfe öffnen"
+              onClick={() => openSupplementaryView("help")}
+            >
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M9.5 9a2.5 2.5 0 1 1 4.3 1.7c-.9.8-1.8 1.3-1.8 2.8M12 17h.01" />
+              </svg>
+            </button>
+          </div>
         </div>
         <div
           className="topic-list-view"
@@ -720,9 +738,9 @@ export function TopicBrowser({
       </div>
 
       <div className="topic-browser-detail">
-        {(mobileView === "help" || !selectedItem) && (
+        {(supplementaryView || !selectedItem) && (
           <>
-            {mobileView === "help" && (
+            {supplementaryView && (
               <button
                 className="topic-back-button"
                 type="button"
@@ -731,11 +749,11 @@ export function TopicBrowser({
                 Zur Themenliste
               </button>
             )}
-            <TopicHelp />
+            {mobileView === "imprint" ? <Imprint /> : <TopicHelp />}
           </>
         )}
 
-        {selectedItem && mobileView !== "help" && (
+        {selectedItem && !supplementaryView && (
           <article aria-labelledby="topic-title">
             <button
               className="topic-back-button"

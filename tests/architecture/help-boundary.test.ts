@@ -14,16 +14,29 @@ const helpFiles = import.meta.glob("../../src/verticals/help/**/*.{ts,tsx}", {
   import: "default",
   eager: true,
 }) as Record<string, string>;
+const imprintFiles = import.meta.glob(
+  "../../src/verticals/imprint/**/*.{ts,tsx}",
+  {
+    query: "?raw",
+    import: "default",
+    eager: true,
+  },
+) as Record<string, string>;
 
-it("connects topics to the public help entrypoint without a reverse import", () => {
-  expect(Object.keys(helpFiles).length).toBeGreaterThan(0);
-  const helpImports = Object.values(topicFiles).flatMap((contents) =>
-    [...contents.matchAll(/from\s+["'](\.\.\/help[^"']*)["']/g)].map(
-      (match) => match[1],
-    ),
-  );
-  expect(helpImports).toEqual(["../help"]);
-  for (const contents of Object.values(helpFiles)) {
-    expect(contents).not.toMatch(/from\s+["']\.\.\//);
+it("connects topics to public supplementary entrypoints without reverse imports", () => {
+  for (const [vertical, files] of [
+    ["help", helpFiles],
+    ["imprint", imprintFiles],
+  ] as const) {
+    expect.soft(Object.keys(files).length, vertical).toBeGreaterThan(0);
+    const imports = Object.values(topicFiles).flatMap((contents) =>
+      [...contents.matchAll(/from\s+["']([^"']+)["']/g)]
+        .map((match) => match[1])
+        .filter((specifier) => specifier.startsWith(`../${vertical}`)),
+    );
+    expect.soft(imports, vertical).toEqual([`../${vertical}`]);
+    for (const [path, contents] of Object.entries(files)) {
+      expect.soft(contents, path).not.toMatch(/from\s+["']\.\.\//);
+    }
   }
 });

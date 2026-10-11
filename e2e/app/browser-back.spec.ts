@@ -3,6 +3,10 @@ import type { Page } from "@playwright/test";
 
 const topicTitle = "Mensch und KI: Verantwortung bleibt menschlich";
 const previousUrl = "https://previous.example/";
+const supplementaryViews = [
+  { name: "help", button: "Hilfe öffnen" },
+  { name: "imprint", button: "Impressum öffnen" },
+];
 
 async function enterFromPreviousPage(page: Page, baseURL: string) {
   const appUrl = new URL("?source=back-test#entry", baseURL).href;
@@ -17,13 +21,28 @@ async function enterFromPreviousPage(page: Page, baseURL: string) {
   await expect(page.getByRole("navigation", { name: "Themen" })).toBeVisible();
 }
 
-test("browser back returns narrow topics and help to the list, then leaves the app", async ({
+test("browser back returns narrow details to the list, then leaves the app", async ({
   page,
   baseURL,
 }) => {
   for (const scenario of [
     { name: "narrow topic", widths: [390], help: false },
-    { name: "narrow help", widths: [390], help: true },
+    ...supplementaryViews.flatMap(({ name, button }) => [
+      { name: `narrow ${name}`, widths: [390], help: true, button },
+      { name: `${name} below breakpoint`, widths: [799], help: true, button },
+      {
+        name: `${name} resized wide and narrow`,
+        widths: [390, 1280, 390],
+        help: true,
+        button,
+      },
+      {
+        name: `switched wide ${name} resized narrow`,
+        widths: [1280, 390],
+        help: true,
+        button,
+      },
+    ]),
     { name: "topic below breakpoint", widths: [799], help: false },
     { name: "wide topic resized narrow", widths: [1280, 390], help: false },
     {
@@ -32,18 +51,13 @@ test("browser back returns narrow topics and help to the list, then leaves the a
       help: false,
       returnedToList: true,
     },
-    {
-      name: "help resized wide and narrow",
-      widths: [390, 1280, 390],
-      help: true,
-    },
   ]) {
     await test.step(scenario.name, async () => {
       await page.setViewportSize({ width: scenario.widths[0], height: 740 });
       await enterFromPreviousPage(page, baseURL!);
       await page.getByRole("textbox", { name: "Schnellfilter" }).fill("KI");
       const open = page.getByRole("button", {
-        name: scenario.help ? "Hilfe öffnen" : topicTitle,
+        name: "button" in scenario ? scenario.button : topicTitle,
         exact: true,
       });
       await open.scrollIntoViewIfNeeded();
@@ -51,6 +65,14 @@ test("browser back returns narrow topics and help to the list, then leaves the a
       const listScroll = await page.evaluate(() => window.scrollY);
       const appUrl = page.url();
       await open.click();
+      if ("button" in scenario && scenario.widths[0] >= 800) {
+        const historyLength = await page.evaluate(() => history.length);
+        for (const view of supplementaryViews) {
+          await page.getByRole("button", { name: view.button }).click();
+          expect(await page.evaluate(() => history.length)).toBe(historyLength);
+        }
+        await open.click();
+      }
       if ("returnedToList" in scenario) {
         await page.setViewportSize({ width: 390, height: 740 });
         await page.getByRole("button", { name: "Zur Themenliste" }).click();
@@ -108,7 +130,7 @@ test("list back leaves after repeated returns, native forward or reload without 
       await expect(page).toHaveURL(previousUrl);
     });
   }
-  for (const view of ["topic", "help", "check"] as const) {
+  for (const view of ["topic", "help", "imprint", "check"] as const) {
     for (const returnMode of ["button", "forward", "reload"] as const) {
       await test.step(`${view}, ${returnMode}`, async () => {
         await page.setViewportSize({ width: 390, height: 740 });
@@ -119,7 +141,9 @@ test("list back leaves after repeated returns, native forward or reload without 
               ? `Lerncheck starten: ${topicTitle}`
               : view === "help"
                 ? "Hilfe öffnen"
-                : topicTitle,
+                : view === "imprint"
+                  ? "Impressum öffnen"
+                  : topicTitle,
           exact: true,
         });
         for (let repeat = 0; repeat < 2; repeat += 1) {
@@ -153,7 +177,7 @@ test("list back leaves after repeated returns, native forward or reload without 
   }
 });
 
-test("browser back leaves wide topics and help immediately, including after resize", async ({
+test("browser back leaves wide details immediately, including after resize", async ({
   page,
   baseURL,
 }) => {
@@ -173,16 +197,25 @@ test("browser back leaves wide topics and help immediately, including after resi
       returnedToList: true,
     },
     { name: "initial wide help", widths: [1280], help: true },
+    ...supplementaryViews.flatMap(({ name, button }) => [
+      { name: `explicit wide ${name}`, widths: [1280], help: true, button },
+      { name: `${name} at breakpoint`, widths: [800], help: true, button },
+      {
+        name: `narrow ${name} resized wide`,
+        widths: [390, 1280],
+        help: true,
+        button,
+      },
+    ]),
     { name: "narrow topic resized wide", widths: [390, 1280], help: false },
-    { name: "narrow help resized wide", widths: [390, 1280], help: true },
   ]) {
     await test.step(scenario.name, async () => {
       await page.setViewportSize({ width: scenario.widths[0], height: 740 });
       await enterFromPreviousPage(page, baseURL!);
-      if (!scenario.help || scenario.widths[0] < 800) {
+      if ("button" in scenario || !scenario.help || scenario.widths[0] < 800) {
         await page
           .getByRole("button", {
-            name: scenario.help ? "Hilfe öffnen" : topicTitle,
+            name: "button" in scenario ? scenario.button : topicTitle,
             exact: true,
           })
           .click();

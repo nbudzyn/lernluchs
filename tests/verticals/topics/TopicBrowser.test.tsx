@@ -192,8 +192,20 @@ describe("TopicBrowser", () => {
     expect(screen.getByText("1 / 1 Themen")).toBeTruthy();
   });
 
-  it("shows the guidance before selection and opens help from the list", () => {
+  it("shows the guidance before selection and opens supplementary views from the list", () => {
     render(<TopicBrowser />);
+    const imprintCircle = screen
+      .getByRole("button", { name: "Impressum öffnen" })
+      .querySelector("svg circle");
+    const helpCircle = screen
+      .getByRole("button", { name: "Hilfe öffnen" })
+      .querySelector("svg circle");
+    expect(imprintCircle).not.toBeNull();
+    for (const attribute of ["cx", "cy", "r"]) {
+      expect(imprintCircle?.getAttribute(attribute), attribute).toBe(
+        helpCircle?.getAttribute(attribute),
+      );
+    }
     expect(
       screen.getByRole("region", { name: "Hilfe zu Themen" }),
     ).toBeTruthy();
@@ -209,28 +221,30 @@ describe("TopicBrowser", () => {
     expect(
       document.querySelectorAll(".topic-help-content li svg"),
     ).toHaveLength(2);
-    fireEvent.click(screen.getByRole("button", { name: "Hilfe öffnen" }));
-    expect(
-      screen.getByRole("button", { name: "Zur Themenliste" }),
-    ).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: "Zur Themenliste" }));
-    fireEvent.click(
-      screen.getByRole("button", {
-        name: topicTitle("human-ai-responsibility"),
-      }),
-    );
-    expect(
-      screen.getByRole("article", {
-        name: topicTitle("human-ai-responsibility"),
-      }),
-    ).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: "Hilfe öffnen" }));
-    expect(screen.queryByRole("article")).toBeNull();
-    expect(
-      screen.getByRole("region", { name: "Hilfe zu Themen" }),
-    ).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: "Zur Themenliste" }));
-    expect(screen.queryByRole("article")).toBeNull();
+    for (const [button, region] of [
+      ["Hilfe öffnen", "Hilfe zu Themen"],
+      ["Impressum öffnen", "Impressum"],
+    ]) {
+      fireEvent.click(screen.getByRole("button", { name: button }));
+      expect(screen.getByRole("region", { name: region }), button).toBeTruthy();
+      fireEvent.click(screen.getByRole("button", { name: "Zur Themenliste" }));
+      fireEvent.click(
+        screen.getByRole("button", {
+          name: topicTitle("human-ai-responsibility"),
+        }),
+      );
+      expect(
+        screen.getByRole("article", {
+          name: topicTitle("human-ai-responsibility"),
+        }),
+        button,
+      ).toBeTruthy();
+      fireEvent.click(screen.getByRole("button", { name: button }));
+      expect(screen.queryByRole("article"), button).toBeNull();
+      expect(screen.getByRole("region", { name: region }), button).toBeTruthy();
+      fireEvent.click(screen.getByRole("button", { name: "Zur Themenliste" }));
+      expect(screen.queryByRole("article"), button).toBeNull();
+    }
   });
 
   it("shows the descriptive foundation path name in the filter summary", () => {

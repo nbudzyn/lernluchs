@@ -1,0 +1,38 @@
+.imprint-content {
+  overflow-wrap: anywhere;
+}
+
+.imprint-content h2 {
+  margin: 0 0 0.65rem;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.7rem, 2.5vw, 2.35rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.imprint-content ul {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.imprint-content li {
+  display: flex;
+  align-items: start;
+  gap: 0.65rem;
+  min-height: 2.75rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--line);
+  line-height: 1.5;
+}
+
+.imprint-content li::before {
+  content: "·";
+  flex: none;
+  width: 1.3rem;
+  color: var(--accent);
+  font-weight: 700;
+  text-align: center;
+}

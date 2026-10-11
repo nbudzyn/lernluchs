@@ -29,16 +29,24 @@ module.exports = {
       severity: "error",
       from: { path: "^src/app/" },
       to: {
-        path: "^src/verticals/(topics|help|learning-checks|learning-state)/(?!index\\.ts$)",
+        path: "^src/verticals/[^/]+/(?!index\\.ts$)",
       },
     },
     {
-      name: "topics-import-only-public-help",
+      name: "topics-import-only-public-supplementary-views",
       comment:
-        "Themen dürfen nur den öffentlichen Hilfe-Einstiegspunkt importieren.",
+        "Themen dürfen nur öffentliche Hilfe- und Impressum-Einstiegspunkte importieren.",
       severity: "error",
       from: { path: "^src/verticals/topics/" },
-      to: { path: "^src/verticals/(?!topics/|help/index\\.ts$)" },
+      to: { path: "^src/verticals/(?!topics/|(?:help|imprint)/index\\.ts$)" },
+    },
+    {
+      name: "imprint-is-self-contained",
+      comment:
+        "Das Impressum hängt von keiner anderen App-Vertikale und keinem Shared-Modul ab.",
+      severity: "error",
+      from: { path: "^src/verticals/imprint/" },
+      to: { path: "^src/(shared/|verticals/(?!imprint/))" },
     },
     {
       name: "help-is-self-contained",

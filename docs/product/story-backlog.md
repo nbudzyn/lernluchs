@@ -7,28 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Impressum
-Mach ein kleines "Impressum", in dem allerdings nur "N. Budzyn" als Autor steht, keine weiteren persönlichen Daten. - Sonst generell wie rechtlich in der EU vorgesehen.
-
-- Auf jeden Fall ein kleiner Hinweis "Inhalte mithilfe von KI erstellt" (o.Ä.). 
-- Auch ein Hinweis, dass keine Verantwortung für verlinkte Inhalte übernommen wird
-
-Einstieg in das Impressum als ein separater Button (selbst generieren oder Symbol aus einem Zeichensatz, NICHT AUS DEM INTERNET LADEN!) links neben dem Fragezeichen-Symbol für die Hilfe.
-
-Anzeige genau wie die Hilfe. Vor allem auch mit identischer Logik für schmale / breite Bildschirme und identischer Back-Button-Logik.
-- Wenn du vollständig separaten Code baust, dann Tests entsprechend duplizieren.
-- Wo du Code wiederverwendest / generalisierst, dort entsprechend die Tests jeweils nur einmal.
-
-NEUE VERTIKALE für das Impressum, getrennt von Hilfe und Themen!
-
-Das Impressum soll die Professionalität der Anwendung erhalten, sich in die grafische Designsprache der Anwendung harmonisch einfügen und nach Möglichkeit keine neuen Designelemente oder Design-Strukturen einbauen.
-Hinterher unbedingt HILFE und IMPRESSUM vergleich und grafische Konsistenz herstellen.
-
-Vorher dreistufige Abstimmung mit dem Entwickler:
-- Refinement / offene Fragen
-- Vorschlag für Texte / fachliche Inhalte des Impressums
-- Vorschlag für das Design inkl. Vergleich mit dem Design der Hilfe
-
 ## Redaktionelle Metadaten ausdünnen
 Status in den redaktionellen Metadaten eines jeden Themas entfernen - auch aus der Anwendung insgesamt.
 - Oder ist wird der Status aktuell fachlich verwendet?
