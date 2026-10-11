@@ -7,17 +7,37 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Einmal manuell alle Podcast-Links durchprüfen, dann checked-Datum aktualisieren
+## Impressum
+Mach ein kleines "Impressum", in dem allerdings nur "N. Budzyn" als Autor steht, keine weiteren persönlichen Daten. - Sonst generell wie rechtlich in der EU vorgesehen.
 
-## Hilfe-Link
-Ein Hilfe-Link, vielleicht rechts ausgerichtet in der Zeile "X Themen" und in derselben Schriftart, öffnet die Hilfe.
-- Ist ein Thema geöffnet, wird das Thema geschlossen
-- Ist die Hilfe bereits geöffnet, passiert nichts.
-- Funktioniert in schmaler und breiter Ansicht. Insbesondere funktionieren die bestehenden Tests für den Backbutton ganz genau analog (Tests ergänzen oder duplizieren und anpassen)
+- Auf jeden Fall ein kleiner Hinweis "Inhalte mithilfe von KI erstellt" (o.Ä.). 
+- Auch ein Hinweis, dass keine Verantwortung für verlinkte Inhalte übernommen wird
 
-## "Inhalte mit Hilfe von KI erstellt"
-Es braucht einen kleinen Hinweis "Inhalte mit Hilfe von KI erstellt" (o.Ä.). Er soll die Professionalität der Anzeige nicht stören (vielleicht in der Hilfe? - aber die sieht man nur so selten...). Der Hinweis soll auf keinen Fall dafür sorgen, dass die Inhalte noch weiter nach unten geschoben werden (außer vielleicht auf extrem schmalen Anzeigen).
- 
+Einstieg in das Impressum als ein separater Button (selbst generieren oder Symbol aus einem Zeichensatz, NICHT AUS DEM INTERNET LADEN!) links neben dem Fragezeichen-Symbol für die Hilfe.
+
+Anzeige genau wie die Hilfe. Vor allem auch mit identischer Logik für schmale / breite Bildschirme und identischer Back-Button-Logik.
+- Wenn du vollständig separaten Code baust, dann Tests entsprechend duplizieren.
+- Wo du Code wiederverwendest / generalisierst, dort entsprechend die Tests jeweils nur einmal.
+
+NEUE VERTIKALE für das Impressum, getrennt von Hilfe und Themen!
+
+Das Impressum soll die Professionalität der Anwendung erhalten, sich in die grafische Designsprache der Anwendung harmonisch einfügen und nach Möglichkeit keine neuen Designelemente oder Design-Strukturen einbauen.
+Hinterher unbedingt HILFE und IMPRESSUM vergleich und grafische Konsistenz herstellen.
+
+Vorher dreistufige Abstimmung mit dem Entwickler:
+- Refinement / offene Fragen
+- Vorschlag für Texte / fachliche Inhalte des Impressums
+- Vorschlag für das Design inkl. Vergleich mit dem Design der Hilfe
+
+## Redaktionelle Metadaten ausdünnen
+Status in den redaktionellen Metadaten eines jeden Themas entfernen - auch aus der Anwendung insgesamt.
+- Oder ist wird der Status aktuell fachlich verwendet?
+
+"Wiedervorlage" intern erhalten - aber aus der Themen-Detailanzeige entfernen.
+
+Anzeige von veröffentlicht und fachlich geprüft ändern: "September 2026".
+
+Der Entwickler hat außerdem alle Podcast-Links am 11.10.2026 geprüft (manuell - NICHT erneut prüfen!) - setze das Prüfdatum (checkedAt) auf diesen Tag.
 
 ## Node 24 für Entwicklung und CI vereinheitlichen
 
@@ -28,9 +48,6 @@ Entwicklung und CI sollen eine einheitliche, unterstützte Node-24-Version verwe
 - Lokale Versionsvorgaben, Projektkonfiguration, CI und Entwicklungsdokumentation auf diese Version abstimmen.
 - Installation mit `npm ci`, Pflichtsuite und Audit unter Node 24 prüfen; die bisherigen Node-Engine-Warnungen müssen entfallen.
 - Getrennt vom Sicherheitspatch umsetzen und committen.
-
-## Jüngste Private Notizen in Themen (oder als neue Themen) übernehmen 
-- Jüngste Private Notizen in Themen (oder als neue Themen) übernehmen
 
 ## Verwendung von nmp prüfen, ggf. regulieren
 
@@ -60,17 +77,6 @@ Vielleicht eine eigene Datei, die dann durchgegangen wird, wenn ein Kalenderdatu
 
 Nur Tests der Vertikalen laufen lassen? Alle Tests erst, wenn die grün sind? Vor dem Commit immer alle Tests
 
-## Link zu ChatGPT zum Lernen?
-
-Ein Link oder Button öffnet ChatGPT mit dem Prompt "Das hier möchte ich lernen: " und dann dem vollständigen Texte des Themas inkl. Primär-
-und vielleicht Sekundärquellen
-Man könnte den /teach-Skill von Matt einbinden
-
-## Link zur Google-KI zum Lernen
-
-Ein Link oder Button öffnet die online-Google-KI mit dem Prompt "Das hier möchte ich lernen: " und dann dem vollständigen Texte des Themas
-inkl. Primär- und vielleicht Sekundärquellen
-
 ## NF: Regelmäßig nachfragen
 
 Regelmäßig nachfragen:
@@ -88,32 +94,6 @@ Statt User oder Benutzer oder Nutzer wollen wir zukünftig differenzieren:
 - Die KI: Das LLM, hier in der Regel Codex, die große Teile der Entwicklung durchführt
 
 Bezeichnungen überall umbenennen. Auch ins glossar eintragen, auch mit englischen Übersetzungen.
-
-## NF: Language Server einbinden
-
-Language Server einbinden
-
-Ziel: Suchen und Code-Bearbeitung beschleunigen
-
-- LSP
-    - IntelliJ MCP? oder ACP
-
-## Detaillierte redaktionelle Metadaten nur auf Wunsch zeigen
-
-Bei redaktionelle Metadaten nur fachlich geprüft anzeigen ( "September 2026") - den Rest erst auf Klick aufklappen
-
-## NF: Empfehlungen für AGENTS.md-Dateien hart prüfen
-
-Empfehlungen für AGENTS.md-Dateien aktuell ermitteln und mit Architektur-Tests (oder Commit-Hooks?) hart prüfen.
-
-Erster Ansatz:
-
-- Keine AGENTS.md-Datei soll länger als 150 (?) Zeilen sein.
-- Es gibt eine AGENTS.md-Datei auf oberster Ebene (weitere sind erlaubt)
-
-Auch CLAUDE.md anlegen, Verweis (mit @) auf AGENTS.md-Datei oder nur als Symlink.
-
-Außerdem einmal prüfen, ob es widersprüchliche Regeln im Projekt gibt.
 
 ## Initial in einem Projekt angewendet / umfassend in einem Projekt umgesetzt
 
@@ -216,14 +196,12 @@ aktuellen iPhone geprüft. Browser, Version, Ablauf und Ergebnis werden in der �
 dokumentiert. Die bereits eingerichtete GitHub-Pages-Bereitstellung wird mit der installierbaren Version erneut geprüft. Nach grünem
 Nachweis beschreibt die Qualitätsstrategie die tatsächlich eingerichteten Gates und Geräteprüfungen.
 
-Vertikale: PWA/Zuverlässigkeit
-
 Dokumentation nach Umsetzung: Unterstützte Browser, nachgewiesene Abläufe und Release-Gates knapp in Produktstand und Qualitätsstrategie
 ergänzen.
 
 ## Aktualisierte und ersetzte Themen nachvollziehen
 
-Lernende erkennen bei einem geänderten oder ersetzten Thema das fachliche Prüfdatum und gegebenenfalls einen Nachfolger. Ein archiviertes
+Lernende erkennen bei einem geänderten oder ersetzten Thema das geänderte fachliche Prüfdatum und gegebenenfalls einen Nachfolger. Ein archiviertes
 Thema bleibt lesbar, damit frühere Lernschritte nachvollziehbar sind. Redaktionell werden fachliche Prüfung und bloße Textänderung getrennt
 erfasst. Tests prüfen Archivierung und Nachfolgerhinweis.
 
@@ -283,10 +261,6 @@ Vertikalen: Lernziele, PWA/Zuverlässigkeit
 
 Dokumentation nach Umsetzung: Berechtigungen, unterstützte Browser und Fallback knapp in Produktstand, Architektur und Qualitätsstrategie
 ergänzen.
-
-## Für TDD: TIA Parasoft
-
-Für TDD: TIA Parasoft
 
 ## Persönliche Daten exportieren und wiederherstellen
 
