@@ -11,6 +11,9 @@ Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden E
 Einmaliges Code-Review jeder einzelnen Vertikale sowie von app und shared durch den Code-Review-Agenten
 - Jeweils getrennt Prod und Test
 
+## Prüfen, dass Hooks auch ohne Einträge im .codex-USER-Verzeichnis funktionieren
+Prüfen, dass Hooks auch ohne Einträge im .codex-USER-Verzeichnis funktionieren
+
 ## Schärfere Abhängigkeitsregeln
 Schärfere Abhängigkeitsregeln:
 - app darf die Vertikalen und shared referenzieren. (app steckt die Anwendung zusammen.)
@@ -30,6 +33,9 @@ Da wir eine einheitliche GUI haben wollen vermute ich: Besser nur ein zentrales 
 Nach wir vor soll der fachliche Code vorrangig in "seiner" Vertikale stehen - nicht einfach den fachlichen Code nach app schieben und "Problem gelöst"!!
 
 Die Regeln (wie bisher auch schon?) durch ein statisches Tool prüfen lassen (analog zu ArchUnit in Java).
+
+## Code-Review nach jedem GREEN?
+Code-Review nach jedem GREEN (nicht nur nach dem letzten)?
 
 ## Spracheingabe für Codex probieren
 Spracheingabe für Codex probieren
