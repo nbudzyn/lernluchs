@@ -7,6 +7,132 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Auf Git Worktrees umstellen
+Auf Git Worktrees umstellen
+- Ziele:
+  - Der Entwickler kann parallel arbeiten (z.B. am story-backlog)
+  - Leichteres Commit (keine parallelen Änderungen oder alte Änderungen durch den Entwickler)
+  - Möglicherweise parallel arbeitende Agenten
+  - Evtl. später separate Worktrees für Sub-Agenten
+
+Jeder Worktree soll bei Bedarf separat in IntelliJ geöffnet werden können (auch parallel.)
+
+- Vorher recherchieren, was in unserem Setup zu beachten ist
+  - IntelliJ?
+    - Muss man eine oder mehrere gewisse IntelliJ-Dateien (workspace.xml?) in .gitignore aufnehmen (und ggf. aus dem Branch entfernen?)
+  - Jeder Agent kann nur seinen einzelnen Worktree lesen?
+
+Push geschieht weiterhin nur durch den Entwickler
+
+Sollte man parallele lokale Installationen (Testläufe) unterstützen?
+- Abwägung Vor- und Nachteile, auch mit Blick auf die bisherigen Projektvorgaben
+- Was wäre zu tun, um die Anwendung mehrfach lokal zu installieren?
+- Lokale GUI-Tests?
+- Dynamische Ports? Jeder Worktree seine eigenen (konfigurierten) Ports?
+  - Sollte man dazu ein spezielles Tool / Skript verwenden?
+
+Sollten wir Dopplungen (Ver-dreifachungen,...) vermeiden, indem wir Dateien sharen?
+
+Hat am Ende jeder Worktree seinen eigenen Branch? Oder geht es auch einfacher (z.B. Änderungen im Story-Backlog)?
+
+Klare Vorgabe (auch als Info an den Entwickler, wenn relevant): Workspace darf nicht einfach im Dateisystem gelöscht werden, sondern muss mit git worktree remove (oder so ähnlich) entfernt werden. (Recherchieren!)
+
+## Von Subaggent Code-Review machen lassen
+Von eigenem Agenten Code-Review machen lassen.
+- Aufwand begrenzen: Jeweils nur 1 mal
+- Hauptagent sollte nur mit gutem Grund ablehnen und die Ablehnung dokumentieren (z.B. Verweis auf Projektvorgaben)
+- Ziel: Fokussiertes Code-Review, kein Bias, wenn du es gerade selbst programmiert hast, keine Verwässerung des Haupt-Contexts.
+- Subagent:
+  - Reiner Lesezugriff (technisch durch eine Konfiguration bei der Erstellung des Sub-Agenten sicherstellen?) aufs Projekt
+  - Tools für Subagenten verbieten (npm,...) - Notiz für später: Falls wir einmal Tools zum Lesen des Codes verwenden, dann diese Tools erlauben 
+- Für das Hand-off:
+  - Der Hauptagent übergibt die geänderten Vertikalen (in aller Regel max. 2) 
+  - Hin-Übergabe: 
+    - Erwartetes Ergebnis
+      - Liste von konkreten möglichen Code-Verbesserungen (Refactorings)
+      - Immer ausgehende, von den Änderungen im Worktree
+        - Kein Review überall im Projekt!
+        - Ausgehend von den Änderungen im Worktree dann mit Blick auf den gesamten Code der vorgegebenen Vertikalen (sowie von app und shared), was z.B. Dopplungen, Neid o.Ä. betrifft
+      - Ziel:
+        - Gute Wartbarkeit, gute Lesbarkeit, lokales Verständnis, keine unnötige Komplexität
+        - Code Smells nach Martin Fowler suchen (Neid, ...) auf Lösungsvorschläge prüfen 
+        - Innerhalb je einer Vertikale einheitliche Konzepte, nichts mehr als 2x
+        - Fachlichen Code und Technischen Code trennen, so dass der Code gut fachlich lesbar ist
+        - Übliches (weitgehend aktuelles) idiomatisches TypeScript
+        - Technischer Code, der mehr als 2x auftritt (oder mehr als 2x dasselbe Problem löst) sollte in shared oder app stehen und dort zu 1x zusammengefasst sein.
+    - Bereits geklärte überprüfbare Fakten mit Quellen (relevant?)
+    - Was darf der Subagent
+      - Keine Veränderung der Funktionalität
+    - Herkunft (Adressat klar machen)
+    - Bestätigen lassen (Akzeptiert). - Was bringt das?
+    - Rückfragen erlaubt? (Nicht sinnvoll, oder?)
+  - Klare und Datensparsame Rück-Übergabe des Ergebnisses:
+    - Klare Verweise auf die Code-Stelle, klare Benennung der Methode(n), Variable(n) o.Ä.
+      - Beschreibung kurz und unter Verwendung von Fach-Terminologie:
+        - z.B. Name des Refactorings, Name des Ziel-Musters, Name der Zielarchitektur
+        - Beschreibung der Parameter (Neuer Name, Einzelne Klassen des Ziel-Musters)
+        - Dinge, die immer gleich sind, in einer Datei nennen (gemeinsame Datei), im Subagenten-Prompt nur auf die Datei verweisen
+        - Wichtigkeit
+        - Sinnvolle Reihenfolge
+
+Fehlt noch etwas? Gewisse technische Konfigurationen / CSS / HTML-Templates?
+
+Der bisherige REFACTOR-Schritt (TDD) entfällt und wird durch dieses (jeweils einmalige) Code-Review ersetzt.
+
+## Einmaliges Code-Review jeder einzelnen Vertikale sowie von app und shared
+Einmaliges Code-Review jeder einzelnen Vertikale sowie von app und shared durch den Code-Review-Agenten
+- Jeweils getrennt Prod und Test
+
+## Schärfere Abhängigkeitsregeln
+Schärfere Abhängigkeitsregeln:
+- app darf die Vertikalen und shared referenzieren. (app steckt die Anwendung zusammen.)
+- Die Vertikalen dürfen sich nicht untereinander referenzieren
+- Die Vertikalen dürfen shard referenzieren
+- shared darf nichts vom weiteren Code referenzieren
+
+Vorher eine Aufstellung machen (aktueller Stand).
+Auch prüfen, ob die Regeln genauso für den Test-Code sinnvoll sind.
+
+In Java würde man vieles zu schmalen Interfaces umbauen, die in app liegen (damit Vertikale X die Vertikale Y z.B. starten oder einbinden kann). Wie macht man es idiomatisch in TypeScript?
+
+In Java würden wir hier Reflection verbieten (Class.forName("Questions")), höchstens suchen über z.B. Interface-Implementierungen (alle Implementierungen von X finden, dann einbinden). Was wären analoge - aber übliche! - Regeln für TypeScript?
+
+Da wir eine einheitliche GUI haben wollen vermute ich: Besser nur ein zentrales CSS?
+
+Nach wir vor soll der fachliche Code vorrangig in "seiner" Vertikale stehen - nicht einfach den fachlichen Code nach app schieben und "Problem gelöst"!!
+
+Die Regeln (wie bisher auch schon?) durch ein statisches Tool prüfen lassen (analog zu ArchUnit in Java).
+
+## Spracheingabe für Codex probieren
+Spracheingabe für Codex probieren
+- Verlässlichkeit, Tokenverbrauch
+- Separates Tool ("Whisper")?
+
+## Guardrails prüfen: Enthalten sie Allgemeinwissen?
+Guardrails prüfen: Enthalten sie Allgemeinwissen? - Dann entfernen
+Ziel: Kontext sparen - bei gleichbleibender Code-Ergebnis-Qualität
+Keine Liste aller Dateien mit Funden als Zwischenschritt erstellen (ich kann später einzeln prüfen)
+Eventuell an zentraler / passender Stelle als Vorgaben notieren
+
+## Content Lists zu Beginn der Guideline-Dateien? 
+Content Lists zu Beginn der Guideline-Dateien?
+Vorher abschätzen: Spart Tokens?
+NICHT beim Story-Backlog! (Soll leicht manuell pflegbar bleiben)
+
+## Lernluchs kryptische oder ähnliche Kapitel zusammenführen (lassen)
+Lernluchs kryptische oder ähnliche Kapitel zusammenführen (lassen)
+
+## Teach Skill von Matt Pocock einbinden und nutzen (JavaScript...)
+Teach Skill von Matt Pocock einbinden und nutzen (JavaScript...)
+
+## Vor dem Refinement: Explore-Phase
+Vor dem Refinement: Explore-Phase (in separatem Agenten, um im Tokens zu sparen und Context Rot im Hauptagenten zu vermeiden?
+- Die Explore Phase soll liefern, wie es gerade ist. (Sofern überhaupt nötig.)
+- Die Ermittlung von Vorschlägen und der Blick auf die Projektvorgaben liegt beim Hauptagenten.
+- 
+Abwägung: Um wieviel erhöht sich der Gesamtaufwand?
+- Wenn der Subagent alle Projektvorgaben erneut lesen muss - oder wenn der Hauptagent ohnehin alles lesen muss - dann wäre das eher eine Verschlechterung?
+
 ## Redaktionelle Metadaten ausdünnen
 Status in den redaktionellen Metadaten eines jeden Themas entfernen - auch aus der Anwendung insgesamt.
 - Oder ist wird der Status aktuell fachlich verwendet?
@@ -27,6 +153,10 @@ Entwicklung und CI sollen eine einheitliche, unterstützte Node-24-Version verwe
 - Installation mit `npm ci`, Pflichtsuite und Audit unter Node 24 prüfen; die bisherigen Node-Engine-Warnungen müssen entfallen.
 - Getrennt vom Sicherheitspatch umsetzen und committen.
 
+## Generell Subagenten für Kontextintensive Aufgaben einsetzen, wenn danach weitergearbeitet werden soll - oder für klar eingegrenzte Aufgaben, die Fokus brauchen
+Generell Subagenten für Kontextintensive Aufgaben einsetzen, wenn danach weitergearbeitet werden soll - oder für klar eingegrenzte Aufgaben, die Fokus brauchen
+- Zusätzlichen Context-Bedarf reduzieren.
+
 ## Verwendung von nmp prüfen, ggf. regulieren
 
 Verwendung von nmp prüfen, ggf. regulieren
@@ -36,6 +166,9 @@ Verwendung von nmp prüfen, ggf. regulieren
 OWASP Dependency Check einbinden
 
 - Immer? Nach jeder Änderung von... was? Am Ende vor dem Commit? Vor jedem install...?
+
+## OKF einführen?
+OKF prüfen (welche Vor- und Nachteile; Tokenverbrauch), ggf. Einführen
 
 ## Regelmäßige Aktivitäten planen und zeitgesteuert auf Ausführung hinweisen
 
