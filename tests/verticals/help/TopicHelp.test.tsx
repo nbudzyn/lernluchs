@@ -23,7 +23,7 @@ it("renders its guidance without topic data or callbacks", () => {
     "Über der Liste wechselst du zwischen Themen und „Kommt mir bekannt vor“",
     "Mit „Lernpfade“ am Schnellfilter wählst du einen oder mehrere Lernpfade aus",
   ]) {
-    expect(screen.getByText(text)).toBeTruthy();
+    expect.soft(screen.queryByText(text), text).not.toBeNull();
   }
   expect(screen.queryByText(/Beim ersten Besuch/)).toBeNull();
   expect(screen.queryByText(/Der Schnellfilter durchsucht/)).toBeNull();
