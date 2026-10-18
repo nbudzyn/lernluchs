@@ -24,7 +24,10 @@ function topicTitle(id: string) {
 }
 
 // A broken pool must not prevent the remaining data sets from being exercised.
-async function forPools(ids: string[], check: (id: string) => Promise<void>) {
+async function forPools(
+  ids: readonly string[],
+  check: (id: string) => Promise<void>,
+) {
   const failures: string[] = [];
   for (const id of ids) {
     try {

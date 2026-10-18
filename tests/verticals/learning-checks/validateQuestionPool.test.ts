@@ -1,14 +1,13 @@
 import { describe, expect, it } from "vitest";
 
 import { validateQuestionPool } from "../../../src/verticals/learning-checks/validateQuestionPool";
-import type { Question } from "../../../src/shared/question";
 
 const item = {
   id: "agents-md",
   sources: [{ url: "https://agents.md/" }],
 };
 
-function question(id: string): Question {
+function question(id: string) {
   return {
     id,
     prompt: `Was gilt für ${id}?`,

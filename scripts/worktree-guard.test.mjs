@@ -562,7 +562,8 @@ it.skipIf(process.platform !== "win32")(
       "after\n",
     );
   },
-  30000,
+  // Real PowerShell/Git round trips exceed 30 s on Windows; hook limits stay unchanged.
+  90000,
 );
 
 it("lets a new session inspect instructions and the diff before adopting dirty work", () => {

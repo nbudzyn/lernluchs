@@ -31,6 +31,30 @@ function filterSummary() {
 }
 
 describe("TopicBrowser", () => {
+  it("uses the explicit check status for browser back and calls the current exit action", () => {
+    const push = vi
+      .spyOn(window.history, "pushState")
+      .mockImplementation(() => {});
+    const firstExit = vi.fn();
+    const currentExit = vi.fn();
+    const { rerender } = render(
+      <TopicBrowser learningCheck={{ status: "closed" }} />,
+    );
+    expect(push).not.toHaveBeenCalled();
+
+    rerender(
+      <TopicBrowser learningCheck={{ status: "open", onExit: firstExit }} />,
+    );
+    expect(push).toHaveBeenCalledTimes(1);
+    rerender(
+      <TopicBrowser learningCheck={{ status: "open", onExit: currentExit }} />,
+    );
+    expect(push).toHaveBeenCalledTimes(1);
+    fireEvent.popState(window, { state: null });
+    expect(currentExit).toHaveBeenCalledTimes(1);
+    expect(firstExit).not.toHaveBeenCalled();
+  });
+
   it("defaults to anchors and restores only valid local list preferences without touching other data", () => {
     localStorage.setItem("synthetic-learning-state", "unchanged");
     localStorage.setItem("unrelated", "unchanged");

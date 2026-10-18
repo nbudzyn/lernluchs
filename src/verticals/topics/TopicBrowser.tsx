@@ -118,14 +118,14 @@ export function TopicBrowser({
   learnedTopicIds = [],
   availableLearningCheckTopicIds = [],
   onStartLearningCheck,
-  onExitLearningCheck,
+  learningCheck = { status: "closed" },
 }: {
   items?: Topic[];
   paths?: LearningPath[];
   learnedTopicIds?: string[];
-  availableLearningCheckTopicIds?: string[];
+  availableLearningCheckTopicIds?: readonly string[];
   onStartLearningCheck?: (id: string, title: string) => void;
-  onExitLearningCheck?: () => void;
+  learningCheck?: { status: "closed" } | { status: "open"; onExit: () => void };
 }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [filter, setFilter] = useState<PathFilter>(null);
@@ -200,12 +200,13 @@ export function TopicBrowser({
   const listScrollY = useRef(0);
   const checkScrollY = useRef(0);
   const checkOpen = useRef(false);
+  const isLearningCheckOpen = learningCheck.status === "open";
   useLayoutEffect(() => {
-    if (onExitLearningCheck && !checkOpen.current) {
+    if (isLearningCheckOpen && !checkOpen.current) {
       checkScrollY.current = window.scrollY;
     }
-    checkOpen.current = onExitLearningCheck !== undefined;
-  }, [onExitLearningCheck]);
+    checkOpen.current = isLearningCheckOpen;
+  }, [isLearningCheckOpen]);
   const rowRefs = useRef(new Map<string, HTMLLIElement>());
   const anchor = useRef<{ id: string; x: number; y: number } | null>(null);
   const scrollToPath = useRef(false);
@@ -411,16 +412,15 @@ export function TopicBrowser({
     mobileView !== "list",
     () => {
       returnToList();
-      onExitLearningCheck?.();
-      if (
-        onExitLearningCheck &&
-        !window.matchMedia?.("(max-width: 799px)").matches
-      ) {
-        // Native history restores its older position after popstate.
-        requestAnimationFrame(() => window.scrollTo(0, checkScrollY.current));
+      if (learningCheck.status === "open") {
+        learningCheck.onExit();
+        if (!window.matchMedia?.("(max-width: 799px)").matches) {
+          // Native history restores its older position after popstate.
+          requestAnimationFrame(() => window.scrollTo(0, checkScrollY.current));
+        }
       }
     },
-    onExitLearningCheck !== undefined,
+    isLearningCheckOpen,
   );
   const topicSections = selectedItem
     ? [

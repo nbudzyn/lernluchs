@@ -1,13 +1,13 @@
 export type AnswerOption = {
-  id: string;
-  text: string;
-  correct: boolean;
-  explanation: string;
-  sourceUrl: string;
+  readonly id: string;
+  readonly text: string;
+  readonly correct: boolean;
+  readonly explanation: string;
+  readonly sourceUrl: string;
 };
 
 export type Question = {
-  id: string;
-  prompt: string;
-  options: AnswerOption[];
+  readonly id: string;
+  readonly prompt: string;
+  readonly options: readonly AnswerOption[];
 };

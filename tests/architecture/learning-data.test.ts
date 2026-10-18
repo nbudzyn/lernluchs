@@ -25,7 +25,9 @@ describe("learning data organization", () => {
     ).map((path) => path.split("/").at(-1)!);
     expect(unitFiles.sort()).toEqual([
       "LearningCheck.test.tsx",
+      "checkLogic.test.ts",
       "questionPools.test.ts",
+      "useLearningCheck.test.ts",
       "validateQuestionPool.test.ts",
       "validateQuestionPools.test.ts",
     ]);

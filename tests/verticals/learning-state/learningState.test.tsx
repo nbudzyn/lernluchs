@@ -1,8 +1,18 @@
 import { act, cleanup, renderHook } from "@testing-library/react";
 import { StrictMode } from "react";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  expectTypeOf,
+  it,
+  vi,
+} from "vitest";
 
 import { useLearningState } from "../../../src/verticals/learning-state";
+
+import type { Snapshot } from "../../../src/verticals/learning-state/learningState";
 
 const key = "lernluchs.learning-progress.v1";
 
@@ -13,6 +23,32 @@ afterEach(() => {
 });
 
 describe("learning state", () => {
+  it("represents storage capability and reset requirements through distinct states", () => {
+    expectTypeOf<Snapshot["status"]>().toEqualTypeOf<
+      "ready" | "unavailable" | "damaged"
+    >();
+    expectTypeOf<keyof Snapshot>().toEqualTypeOf<
+      "status" | "learnedTopicIds" | "notice"
+    >();
+    expectTypeOf<
+      Extract<Snapshot, { status: "ready" }>["learnedTopicIds"]
+    >().toEqualTypeOf<string[]>();
+    expectTypeOf<
+      Extract<
+        Snapshot,
+        { status: "unavailable" | "damaged" }
+      >["learnedTopicIds"]
+    >().toEqualTypeOf<[]>();
+    expectTypeOf<
+      Extract<Snapshot, { status: "unavailable" }>["notice"]
+    >().toEqualTypeOf<"Der Lernstand konnte nicht geladen werden.">();
+    expectTypeOf<
+      Extract<Snapshot, { status: "damaged" }>["notice"]
+    >().toEqualTypeOf<
+      | null
+      | "Der gespeicherte Lernstand ist beschädigt und konnte nicht zurückgesetzt werden."
+    >();
+  });
   it("loads existing learned IDs, stores new ones and restores them after remount", () => {
     localStorage.setItem(
       key,

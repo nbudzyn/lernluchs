@@ -19,7 +19,7 @@ export function App() {
   const [activeCheck, setActiveCheck] = useState<{
     id: string;
     title: string;
-    questions: Question[];
+    questions: readonly Question[];
   } | null>(null);
 
   function exitLearningCheck() {
@@ -43,7 +43,11 @@ export function App() {
         <TopicBrowser
           learnedTopicIds={learningState.learnedTopicIds}
           availableLearningCheckTopicIds={availableLearningCheckTopicIds}
-          onExitLearningCheck={activeCheck ? exitLearningCheck : undefined}
+          learningCheck={
+            activeCheck
+              ? { status: "open", onExit: exitLearningCheck }
+              : { status: "closed" }
+          }
           onStartLearningCheck={(id, title) => {
             const questions = questionsForTopic(id);
             if (questions) {
