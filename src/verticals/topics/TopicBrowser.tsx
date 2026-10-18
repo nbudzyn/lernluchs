@@ -123,7 +123,7 @@ export function TopicBrowser({
   items?: Topic[];
   paths?: LearningPath[];
   learnedTopicIds?: string[];
-  availableLearningCheckTopicIds?: string[];
+  availableLearningCheckTopicIds?: readonly string[];
   onStartLearningCheck?: (id: string, title: string) => void;
   learningCheck?: { status: "closed" } | { status: "open"; onExit: () => void };
 }) {

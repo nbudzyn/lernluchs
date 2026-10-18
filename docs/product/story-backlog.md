@@ -33,22 +33,6 @@ Hoch: vor der nächsten größeren Erweiterung; mittel: bei der passenden Änder
 - Abgrenzung: Fachlichkeit bleibt in `topics`; keine neue Abhängigkeit und keine Inhaltsänderung allein für das Refactoring. Den Lerncheck-Vertrag mit der App-Story abstimmen.
 - Abnahme: Bestehendes Filter-, Pfad-, Ansichts-, History-, Fokus- und Scrollverhalten auf Desktop und Smartphone erhalten; passende Unit-/Komponenten- und E2E-Nachweise nach Qualitätsstrategie. Erledigte oder begründet verworfene Kandidaten in der aktiven Spec festhalten; genau ein abschließendes Subagentenreview gemäß Reviewvertrag.
 
-## Fowler-Refactorings: Lernchecks
-
-Als Entwickler möchte ich Ablauf, Bewertung und Darstellung in `learning-checks`
-getrennt ändern können. Die folgenden Befunde haben mittlere Priorität; vor
-Umsetzung bestätigen und überschneidende Umbauten bündeln.
-
-| Priorität | Befund / Smells und Ausgangspunkt | Konkretes Refactoring | Umsetzungsrisiken |
-| --- | --- | --- | --- |
-| Mittel | Ablauf, Bewertung und Darstellung vermischt: Long Function, Divergent Change, Feature Envy als Kandidat (`src/verticals/learning-checks/LearningCheck.tsx`). | Reine Bewertungsfunktionen, `useLearningCheck` für den Ablauf sowie Komponenten für Frage und Ergebnisübersicht extrahieren. | Bestehensmeldung und Speicherung genau einmal ausführen; Zufallsaufrufe, Fragenreihenfolge und Fokuswechsel erhalten. |
-| Mittel | Checklänge mehrfach kodiert: Shotgun Surgery, Duplicated Code (`chooseQuestions`, Abschluss, letzte Antwort, Anzeige). | `QUESTIONS_PER_CHECK` einführen und Auswahl, Abschluss, letzte Antwort sowie Anzeige daraus ableiten; unabhängige Zahlen 5 und 4 entfernen. | Zu kurze Pools nicht durch Ableitung aus der tatsächlich gewählten Menge versehentlich als gültigen Check behandeln. |
-| Mittel | Endzustand über optionale Werte verteilt: Temporary Field, Primitive Obsession (`congratulation`, `saveSucceeded`, Antworten). | Diskriminierten Zustand `answering`, `passed`, `failed` einführen; Glückwunsch und benannter Speicherstatus gehören zu `passed`. | Fehlende optionale Speicherung von fehlgeschlagener Speicherung unterscheiden; Antworten und Phase konsistent halten. |
-| Mittel | Originale Fragenpools und Themen-IDs herausgegeben: Mutable Data, Global Data (`questionPools.ts`). | Unveränderliche Poolansichten und Themen-ID-Liste anbieten; gemischte Arrays weiterhin lokal erzeugen. Mit Shared-Vertrag koordinieren. | Auch verschachtelte Optionen schützen; Kopien bei jeder Abfrage wären zusätzliche Laufzeitkosten. |
-| Mittel | Doppelte `SourceOwner`-Definition: Duplicated Code (`validateQuestionPool.ts`, `validateQuestionPools.ts`). | Ein internes Vertragsmodul für beide Validatoren einführen. | Typ nicht unnötig nach Shared verschieben oder an interne Themenstrukturen koppeln. |
-
-- Abgrenzung: Verhalten und Frageninhalte erhalten; die unveränderlichen Typen mit der Shared-Story abstimmen und nicht zweimal implementieren.
-- Abnahme: Auswahl, Mischen, Bewertung, Abschluss, optionale Speicherung, Fehleranzeige und Fokus durch passende bestehende und gezielt ergänzte Prüfungen absichern; genau ein abschließendes Subagentenreview gemäß Reviewvertrag.
 
 ## Fowler-Prüfung: Hilfe
 
@@ -67,6 +51,7 @@ Als Entwickler möchte ich versehentliche Änderungen gemeinsam genutzter Fragen
 verhindern. Mittlere Priorität: Mutable Data im Vertrag
 `src/shared/question.ts` (`Question`, `AnswerOption`, `options`).
 
+- Koordination: [Lernchecks-Refactoring](../changes/implemented/0069-fowler-learning-checks.md) hat den readonly-Fragenvertrag einschließlich verschachtelter Optionen und die Laufzeitabsicherung der Pools umgesetzt. Nur verbleibenden Bedarf prüfen; erledigte Arbeit nicht wiederholen.
 - Konkretes Refactoring: Felder und verschachtelte Optionsarrays unveränderlich typisieren. Zusammen mit den unveränderlichen Poolzugriffen der Lernchecks-Story abstimmen; Mischfunktionen akzeptieren unveränderliche Eingaben und erzeugen neue Arrays.
 - Risiken: Alle Verbraucher und Testdaten sind vom Typvertrag betroffen. Oberflächliches `readonly` genügt nicht für verschachtelte Daten; TypeScript bietet allein keine Laufzeitabsicherung.
 - Abnahme: Verbraucher kompilieren ohne Mutation der Originaldaten; Auswahl und Mischen bleiben unverändert. Passende Prüfungen und genau ein abschließendes Subagentenreview gemäß Reviewvertrag. Keine Fachlogik nach Shared verlagern; bereits in der Lernchecks-Story erledigte Vertragsteile nicht doppelt umsetzen.

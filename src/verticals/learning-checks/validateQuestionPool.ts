@@ -1,10 +1,10 @@
 import type { Question } from "../../shared/question";
 
-type SourceOwner = { id: string; sources: { url: string }[] };
+import type { SourceOwner } from "./sourceOwner";
 
 export function validateQuestionPool(
   item: SourceOwner,
-  questions: Question[],
+  questions: readonly Question[],
 ): string[] {
   const errors: string[] = [];
   const seen = new Set<string>();

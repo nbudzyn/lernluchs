@@ -112,19 +112,24 @@ describe("LearningCheck", () => {
   });
 
   it("asks five different questions one at a time and reveals the result only at the end", () => {
+    const random = vi.fn(() => 0);
+    const original = structuredClone(questions);
     render(
       <LearningCheck
         title="Testthema"
         topicId="topic-a"
         questions={questions}
         onExit={vi.fn()}
-        random={() => 0}
+        random={random}
       />,
     );
+    expect(random).toHaveBeenCalledTimes(16);
     const seen = new Set<string>();
     for (let index = 0; index < 5; index += 1) {
       const heading = screen.getByRole("heading", { level: 2 });
       seen.add(heading.textContent ?? "");
+      expect(heading.textContent).toBe(`Frage ${index + 1}`);
+      expect(screen.getByText(`Frage ${index + 1} von 5`)).toBeTruthy();
       expect(screen.queryByText("Lerncheck bestanden")).toBeNull();
       expect(screen.queryByRole("status")).toBeNull();
       fireEvent.click(screen.getByRole("button", { name: /^Richtig / }));
@@ -139,6 +144,36 @@ describe("LearningCheck", () => {
     );
     expect(screen.getAllByRole("listitem")).toHaveLength(5);
     expect(screen.getAllByRole("link")).toHaveLength(5);
+    expect(random).toHaveBeenCalledTimes(17);
+    expect(questions).toEqual(original);
+    expect(screen.queryByText("Als gelernt gespeichert.")).toBeNull();
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+
+  it("does not pass or save a pool with fewer than five questions", () => {
+    for (const size of [0, 1, 4]) {
+      const onPassed = vi.fn(() => true);
+      const view = render(
+        <LearningCheck
+          title="Testthema"
+          topicId="topic-a"
+          questions={questions.slice(0, size)}
+          onExit={vi.fn()}
+          onPassed={onPassed}
+          random={() => 0}
+        />,
+      );
+      for (let index = 0; index < size; index += 1)
+        fireEvent.click(screen.getByRole("button", { name: /^Richtig / }));
+      expect
+        .soft(screen.queryByText("Lerncheck bestanden"), `${size} questions`)
+        .toBeNull();
+      expect
+        .soft(screen.queryByText("Antworten im Überblick"), `${size} questions`)
+        .toBeNull();
+      expect.soft(onPassed, `${size} questions`).not.toHaveBeenCalled();
+      view.unmount();
+    }
   });
 
   it("can select the last of the 50 congratulations", () => {
@@ -159,13 +194,16 @@ describe("LearningCheck", () => {
   });
 
   it("shows the chosen wrong option, explanations, and a deliberate source link", () => {
+    const onPassed = vi.fn(() => true);
+    const random = vi.fn(() => 0);
     render(
       <LearningCheck
         title="Testthema"
         topicId="topic-a"
         questions={questions}
         onExit={vi.fn()}
-        random={() => 0}
+        random={random}
+        onPassed={onPassed}
       />,
     );
     fireEvent.click(screen.getByRole("button", { name: /^Falsch / }));
@@ -179,6 +217,8 @@ describe("LearningCheck", () => {
       "_blank",
     );
     expect(screen.queryByRole("button", { name: /^Richtig / })).toBeNull();
+    expect(onPassed).not.toHaveBeenCalled();
+    expect(random).toHaveBeenCalledTimes(16);
   });
 
   it("discards a run when cancelled", () => {

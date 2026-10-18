@@ -57,6 +57,30 @@ const weakExamples: Record<string, string[]> = {
 };
 
 describe("questionPools", () => {
+  it("reuses deeply immutable pools and the published topic ID list", () => {
+    expect(Object.isFrozen(availableLearningCheckTopicIds)).toBe(true);
+    for (const id of availableLearningCheckTopicIds) {
+      const pool = questionsForTopic(id)!;
+      expect.soft(questionsForTopic(id), `${id}: stable view`).toBe(pool);
+      expect.soft(Object.isFrozen(pool), `${id}: pool`).toBe(true);
+      for (const question of pool) {
+        expect
+          .soft(Object.isFrozen(question), `${id}/${question.id}`)
+          .toBe(true);
+        expect
+          .soft(
+            Object.isFrozen(question.options),
+            `${id}/${question.id}: options`,
+          )
+          .toBe(true);
+        for (const option of question.options)
+          expect
+            .soft(Object.isFrozen(option), `${id}/${question.id}/${option.id}`)
+            .toBe(true);
+      }
+    }
+  });
+
   it("owns the published pools by stable ID and leaves new topics without pools", () => {
     expect(availableLearningCheckTopicIds).toHaveLength(42);
     const topicsWithoutPool = [

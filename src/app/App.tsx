@@ -19,7 +19,7 @@ export function App() {
   const [activeCheck, setActiveCheck] = useState<{
     id: string;
     title: string;
-    questions: Question[];
+    questions: readonly Question[];
   } | null>(null);
 
   function exitLearningCheck() {

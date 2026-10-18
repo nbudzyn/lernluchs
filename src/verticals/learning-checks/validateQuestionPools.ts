@@ -4,9 +4,11 @@ import {
 } from "./questionPools";
 import { validateQuestionPool } from "./validateQuestionPool";
 
-type SourceOwner = { id: string; sources: { url: string }[] };
+import type { SourceOwner } from "./sourceOwner";
 
-export function validateQuestionPools(topics: SourceOwner[]): string[] {
+export function validateQuestionPools(
+  topics: readonly SourceOwner[],
+): string[] {
   const errors: string[] = [];
   const topicsById = new Map(topics.map((topic) => [topic.id, topic]));
 
