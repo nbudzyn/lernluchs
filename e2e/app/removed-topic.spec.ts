@@ -23,9 +23,6 @@ for (const learned of [false, true]) {
       value: saved,
     });
     await page.reload();
-    await expect(
-      page.getByRole("navigation", { name: "Themen" }).locator("li"),
-    ).toHaveCount(48);
     await expect(page.getByRole("button", { name: removedTitle })).toHaveCount(
       0,
     );

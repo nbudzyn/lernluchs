@@ -19,9 +19,8 @@ it("separates topic content from app code and keeps production chunks below the 
     expect.arrayContaining([expect.stringMatching(/[\\/]app[\\/]App\.tsx$/)]),
   );
   for (const chunk of chunks) {
-    expect(
-      new TextEncoder().encode(chunk.code).byteLength,
-      chunk.fileName,
-    ).toBeLessThan(500_000);
+    expect
+      .soft(new TextEncoder().encode(chunk.code).byteLength, chunk.fileName)
+      .toBeLessThan(500_000);
   }
 }, 30_000);

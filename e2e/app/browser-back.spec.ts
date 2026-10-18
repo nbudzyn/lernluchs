@@ -8,6 +8,20 @@ const supplementaryViews = [
   { name: "imprint", button: "Impressum öffnen" },
 ];
 
+async function collectScenarioFailures(
+  failures: string[],
+  name: string,
+  check: () => Promise<void>,
+) {
+  try {
+    await test.step(name, check);
+  } catch (error) {
+    failures.push(
+      `${name}: ${error instanceof Error ? error.stack : String(error)}`,
+    );
+  }
+}
+
 async function enterFromPreviousPage(page: Page, baseURL: string) {
   const appUrl = new URL("?source=back-test#entry", baseURL).href;
   await page.route(previousUrl, (route) =>
@@ -25,6 +39,7 @@ test("browser back returns narrow details to the list, then leaves the app", asy
   page,
   baseURL,
 }) => {
+  const failures: string[] = [];
   for (const scenario of [
     { name: "narrow topic", widths: [390], help: false },
     ...supplementaryViews.flatMap(({ name, button }) => [
@@ -52,7 +67,7 @@ test("browser back returns narrow details to the list, then leaves the app", asy
       returnedToList: true,
     },
   ]) {
-    await test.step(scenario.name, async () => {
+    await collectScenarioFailures(failures, scenario.name, async () => {
       await page.setViewportSize({ width: scenario.widths[0], height: 740 });
       await enterFromPreviousPage(page, baseURL!);
       await page.getByRole("textbox", { name: "Schnellfilter" }).fill("KI");
@@ -115,6 +130,7 @@ test("browser back returns narrow details to the list, then leaves the app", asy
       await expect(page).toHaveURL(previousUrl);
     });
   }
+  expect(failures, "Failures by navigation scenario").toEqual([]);
 });
 
 test("list back leaves after repeated returns, native forward or reload without restoring views", async ({
@@ -122,65 +138,78 @@ test("list back leaves after repeated returns, native forward or reload without 
   baseURL,
 }) => {
   test.setTimeout(120_000);
+  const failures: string[] = [];
   for (const width of [390, 1280]) {
-    await test.step(`initial list, ${width}px`, async () => {
-      await page.setViewportSize({ width, height: 740 });
-      await enterFromPreviousPage(page, baseURL!);
-      await page.goBack();
-      await expect(page).toHaveURL(previousUrl);
-    });
+    await collectScenarioFailures(
+      failures,
+      `initial list, ${width}px`,
+      async () => {
+        await page.setViewportSize({ width, height: 740 });
+        await enterFromPreviousPage(page, baseURL!);
+        await page.goBack();
+        await expect(page).toHaveURL(previousUrl);
+      },
+    );
   }
   for (const view of ["topic", "help", "imprint", "check"] as const) {
     for (const returnMode of ["button", "forward", "reload"] as const) {
-      await test.step(`${view}, ${returnMode}`, async () => {
-        await page.setViewportSize({ width: 390, height: 740 });
-        await enterFromPreviousPage(page, baseURL!);
-        const open = page.getByRole("button", {
-          name:
-            view === "check"
-              ? `Lerncheck starten: ${topicTitle}`
-              : view === "help"
-                ? "Hilfe öffnen"
-                : view === "imprint"
-                  ? "Impressum öffnen"
-                  : topicTitle,
-          exact: true,
-        });
-        for (let repeat = 0; repeat < 2; repeat += 1) {
-          await open.click();
-          if (returnMode === "button") {
-            await page
-              .getByRole("button", {
-                name: view === "check" ? "Abbrechen" : "Zur Themenliste",
-              })
-              .click();
-          } else if (returnMode === "reload") {
-            await page.reload();
-          } else {
-            await page.goBack();
+      await collectScenarioFailures(
+        failures,
+        `${view}, ${returnMode}`,
+        async () => {
+          await page.setViewportSize({ width: 390, height: 740 });
+          await enterFromPreviousPage(page, baseURL!);
+          const open = page.getByRole("button", {
+            name:
+              view === "check"
+                ? `Lerncheck starten: ${topicTitle}`
+                : view === "help"
+                  ? "Hilfe öffnen"
+                  : view === "imprint"
+                    ? "Impressum öffnen"
+                    : topicTitle,
+            exact: true,
+          });
+          for (let repeat = 0; repeat < 2; repeat += 1) {
+            await open.click();
+            if (returnMode === "button") {
+              await page
+                .getByRole("button", {
+                  name: view === "check" ? "Abbrechen" : "Zur Themenliste",
+                })
+                .click();
+            } else if (returnMode === "reload") {
+              await page.reload();
+            } else {
+              await page.goBack();
+              await expect(
+                page.getByRole("navigation", { name: "Themen" }),
+              ).toBeVisible();
+              const length = await page.evaluate(() => history.length);
+              await page.goForward();
+              expect(await page.evaluate(() => history.length)).toBe(length);
+            }
             await expect(
               page.getByRole("navigation", { name: "Themen" }),
             ).toBeVisible();
-            const length = await page.evaluate(() => history.length);
-            await page.goForward();
-            expect(await page.evaluate(() => history.length)).toBe(length);
+            await expect(page.locator(".learning-check-overlay")).toHaveCount(
+              0,
+            );
           }
-          await expect(
-            page.getByRole("navigation", { name: "Themen" }),
-          ).toBeVisible();
-          await expect(page.locator(".learning-check-overlay")).toHaveCount(0);
-        }
-        await page.goBack();
-        await expect(page).toHaveURL(previousUrl);
-      });
+          await page.goBack();
+          await expect(page).toHaveURL(previousUrl);
+        },
+      );
     }
   }
+  expect(failures, "Failures by navigation scenario").toEqual([]);
 });
 
 test("browser back leaves wide details immediately, including after resize", async ({
   page,
   baseURL,
 }) => {
+  const failures: string[] = [];
   for (const scenario of [
     { name: "wide topic", widths: [1280], help: false },
     { name: "topic at breakpoint", widths: [800], help: false },
@@ -209,7 +238,7 @@ test("browser back leaves wide details immediately, including after resize", asy
     ]),
     { name: "narrow topic resized wide", widths: [390, 1280], help: false },
   ]) {
-    await test.step(scenario.name, async () => {
+    await collectScenarioFailures(failures, scenario.name, async () => {
       await page.setViewportSize({ width: scenario.widths[0], height: 740 });
       await enterFromPreviousPage(page, baseURL!);
       if ("button" in scenario || !scenario.help || scenario.widths[0] < 800) {
@@ -251,6 +280,7 @@ test("browser back leaves wide details immediately, including after resize", asy
       await expect(page).toHaveURL(previousUrl);
     });
   }
+  expect(failures, "Failures by navigation scenario").toEqual([]);
 });
 
 test("browser back cancels questions and results and discards the check at any width", async ({
@@ -258,53 +288,59 @@ test("browser back cancels questions and results and discards the check at any w
   baseURL,
 }) => {
   test.setTimeout(120_000);
+  const failures: string[] = [];
   for (const width of [390, 1280]) {
     for (const answered of [0, 1, 2, 3, 4, 5]) {
-      await test.step(`${width}px, ${answered} answered`, async () => {
-        await page.setViewportSize({ width: 1280, height: 740 });
-        await enterFromPreviousPage(page, baseURL!);
-        await page.getByRole("textbox", { name: "Schnellfilter" }).fill("KI");
-        await page
-          .getByRole("button", { name: topicTitle, exact: true })
-          .click();
-        const start = page.getByRole("button", {
-          name: `Lerncheck starten: ${topicTitle}`,
-        });
-        await start.click();
-        await page.setViewportSize({ width, height: 740 });
-        for (let index = 0; index < answered; index += 1) {
+      await collectScenarioFailures(
+        failures,
+        `${width}px, ${answered} answered`,
+        async () => {
+          await page.setViewportSize({ width: 1280, height: 740 });
+          await enterFromPreviousPage(page, baseURL!);
+          await page.getByRole("textbox", { name: "Schnellfilter" }).fill("KI");
           await page
-            .getByRole("group", { name: "Antwortoptionen" })
-            .getByRole("button")
-            .first()
+            .getByRole("button", { name: topicTitle, exact: true })
             .click();
-        }
-        if (answered === 5) {
+          const start = page.getByRole("button", {
+            name: `Lerncheck starten: ${topicTitle}`,
+          });
+          await start.click();
+          await page.setViewportSize({ width, height: 740 });
+          for (let index = 0; index < answered; index += 1) {
+            await page
+              .getByRole("group", { name: "Antwortoptionen" })
+              .getByRole("button")
+              .first()
+              .click();
+          }
+          if (answered === 5) {
+            await expect(
+              page.getByRole("button", { name: "Zur Themenliste" }),
+            ).toBeVisible();
+          } else {
+            await expect(
+              page.getByText(`Frage ${answered + 1} von 5`),
+            ).toBeVisible();
+          }
+          await page.goBack();
           await expect(
-            page.getByRole("button", { name: "Zur Themenliste" }),
+            page.getByRole("navigation", { name: "Themen" }),
           ).toBeVisible();
-        } else {
+          await expect(page.locator(".learning-check-overlay")).toHaveCount(0);
           await expect(
-            page.getByText(`Frage ${answered + 1} von 5`),
+            page.getByRole("textbox", { name: "Schnellfilter" }),
+          ).toHaveValue("KI");
+          await start.click();
+          await expect(page.getByText("Frage 1 von 5")).toBeVisible();
+          await page.goBack();
+          await expect(
+            page.getByRole("navigation", { name: "Themen" }),
           ).toBeVisible();
-        }
-        await page.goBack();
-        await expect(
-          page.getByRole("navigation", { name: "Themen" }),
-        ).toBeVisible();
-        await expect(page.locator(".learning-check-overlay")).toHaveCount(0);
-        await expect(
-          page.getByRole("textbox", { name: "Schnellfilter" }),
-        ).toHaveValue("KI");
-        await start.click();
-        await expect(page.getByText("Frage 1 von 5")).toBeVisible();
-        await page.goBack();
-        await expect(
-          page.getByRole("navigation", { name: "Themen" }),
-        ).toBeVisible();
-        await page.goBack();
-        await expect(page).toHaveURL(previousUrl);
-      });
+          await page.goBack();
+          await expect(page).toHaveURL(previousUrl);
+        },
+      );
     }
   }
+  expect(failures, "Failures by navigation scenario").toEqual([]);
 });
