@@ -61,16 +61,6 @@ nicht Teil dieser Story. Deshalb ist derzeit kein konkretes Refactoring beauftra
 - Risiken: Unnötige Zusammenführung von Icons könnte die bewusst unabhängige Vertikale an andere Bereiche koppeln; reine Text- oder DOM-Umbauten können Darstellung und Accessibility beeinflussen.
 - Abnahme: Entweder konkret belegte Verbesserungen mit passenden Prüfungen umsetzen oder ohne Codeänderung schließen. Keine niedrigen Befunde aufnehmen und keine Refactoring-Quote erfüllen. Das eine Subagentenreview nach Reviewvertrag ist bei einer produktrelevanten Umsetzung am Ende durchzuführen; bei rein dokumentiertem Ergebnis gilt die Dokumentationsausnahme.
 
-## Fowler-Prüfung: Impressum
-
-Als Entwickler möchte ich die Vertikale `imprint` anhand der 24 Fowler-Smells
-bewerten. Bisher gibt es keine überzeugenden Befunde hoher oder mittlerer Priorität;
-deshalb ist derzeit kein konkretes Refactoring beauftragt.
-
-- Umfang: Vor Umsetzung gezielt `src/verticals/imprint/` und zugehörige Tests prüfen. Nur bei einem belegten Befund hoher oder mittlerer Priorität ein konkretes verhaltenserhaltendes Refactoring samt Priorität und Risiken in der aktiven Spec festlegen.
-- Risiken: Künstliche Abstraktionen könnten die unabhängige Vertikale unnötig koppeln; Änderungen an Inhalt, Links oder Semantik wären kein bloßes Refactoring.
-- Abnahme: Belegte Verbesserungen mit passenden Prüfungen umsetzen oder ohne Codeänderung schließen. Keine niedrigen Befunde und keine erzwungenen Umbauten. Bei produktrelevanter Umsetzung genau ein abschließendes Subagentenreview gemäß Reviewvertrag; bei rein dokumentiertem Ergebnis gilt die Dokumentationsausnahme.
-
 ## Fowler-Refactorings: App
 
 Als Entwickler möchte ich den geöffneten Lerncheck ausdrücklich im Vertrag zwischen
