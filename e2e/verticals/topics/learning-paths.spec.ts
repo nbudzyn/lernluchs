@@ -1,5 +1,6 @@
 import { topics } from "../../../src/verticals/topics/topics";
 import { expect, test } from "@playwright/test";
+import { checkCases } from "./checkCases";
 
 test("zeigt einen Lernpfad und ein quellengebundenes Thema", async ({
   page,
@@ -54,48 +55,55 @@ function topicTitle(id: string) {
 test("reads current integration and eval topics through their paths without learning checks", async ({
   page,
 }) => {
-  await page.goto("/");
   const javaTitle = "KI-Funktionen in Java-Webanwendungen bauen";
-  await page
-    .getByRole("button", { name: `Lernpfade von ${javaTitle} filtern` })
-    .click();
-  await page
-    .getByRole("button", { name: javaTitle, exact: true })
-    .first()
-    .click();
   const navigation = page.getByRole("navigation", { name: "Themen" });
-  await expect(navigation.locator("li")).toHaveCount(11);
-  for (const [title, source, reviewDue] of [
-    [
-      "Modellwechsel und API-Lebenszyklen absichern",
-      "Gemini API – Abkündigungen und Ersatzmodelle",
-      "2027-01-09",
-    ],
-    [
-      "Agentensysteme über MCP, A2A und ACP verbinden",
-      "Agent Client Protocol – Overview",
-      "2027-01-07",
-    ],
-    [javaTitle, "LangChain4j – Introduction", "2027-01-07"],
-    [
-      "Agenten mit Evals und Traces systematisch prüfen",
-      "Google ADK – Ergebnisse und Toolabläufe getrennt evaluieren",
-      "2027-01-09",
-    ],
-  ]) {
-    await navigation.getByRole("button", { name: title, exact: true }).click();
-    const article = page.getByRole("article", { name: title });
-    await expect(
-      article.getByRole("link", { name: source, exact: true }),
-    ).toBeVisible();
-    await expect(article.getByText(reviewDue)).toBeVisible();
-    await expect(
-      page.getByRole("button", { name: `Lerncheck starten: ${title}` }),
-    ).toHaveCount(0);
-    if ((page.viewportSize()?.width ?? 0) < 800) {
-      await page.getByRole("button", { name: "Zur Themenliste" }).click();
-    }
+  async function openIntegrationPath() {
+    await page.goto("/");
+    await page
+      .getByRole("button", { name: `Lernpfade von ${javaTitle} filtern` })
+      .click();
+    await page
+      .getByRole("button", { name: javaTitle, exact: true })
+      .first()
+      .click();
+    await expect(navigation.locator("li")).toHaveCount(11);
   }
+  await checkCases(
+    [
+      [
+        "Modellwechsel und API-Lebenszyklen absichern",
+        "Gemini API – Abkündigungen und Ersatzmodelle",
+        "2027-01-09",
+      ],
+      [
+        "Agentensysteme über MCP, A2A und ACP verbinden",
+        "Agent Client Protocol – Overview",
+        "2027-01-07",
+      ],
+      [javaTitle, "LangChain4j – Introduction", "2027-01-07"],
+      [
+        "Agenten mit Evals und Traces systematisch prüfen",
+        "Google ADK – Ergebnisse und Toolabläufe getrennt evaluieren",
+        "2027-01-09",
+      ],
+    ],
+    ([title]) => title,
+    async ([title, source, reviewDue]) => {
+      await openIntegrationPath();
+      await navigation
+        .getByRole("button", { name: title, exact: true })
+        .click();
+      const article = page.getByRole("article", { name: title });
+      await expect(
+        article.getByRole("link", { name: source, exact: true }),
+      ).toBeVisible();
+      await expect(article.getByText(reviewDue)).toBeVisible();
+      await expect(
+        page.getByRole("button", { name: `Lerncheck starten: ${title}` }),
+      ).toHaveCount(0);
+    },
+  );
+  await openIntegrationPath();
   await page.getByRole("button", { name: "Filter aufheben" }).click();
   const evalTitle = "Agenten mit Evals und Traces systematisch prüfen";
   await page
@@ -193,48 +201,52 @@ const pathCases = [
   },
 ] as const;
 
-for (const path of pathCases) {
-  test(`shows the ${path.name} path with sourced topics and a learning check`, async ({
-    page,
-  }) => {
-    await page.goto("/");
-    const navigation = page.getByRole("navigation", { name: "Themen" });
-    await expect(navigation.locator("li")).toHaveCount(48);
-    await expect(
-      page.getByRole("button", {
-        name: topicTitle("focused-git-commits"),
-        exact: true,
-      }),
-    ).toBeVisible();
+test("shows paths with sourced topics and a learning check", async ({
+  page,
+}) => {
+  await checkCases(
+    pathCases,
+    (path) => path.name,
+    async (path) => {
+      await page.goto("/");
+      const navigation = page.getByRole("navigation", { name: "Themen" });
+      await expect(navigation.locator("li")).toHaveCount(48);
+      await expect(
+        page.getByRole("button", {
+          name: topicTitle("focused-git-commits"),
+          exact: true,
+        }),
+      ).toBeVisible();
 
-    await page
-      .getByRole("button", {
-        name: `Lernpfade von ${path.startingTopic} filtern`,
-      })
-      .click();
-    await page.getByRole("button", { name: path.name, exact: true }).click();
-    await expect(
-      navigation.locator(
-        "li .topic-actions > button:not(.path-filter-button):not(.learning-check-start-button)",
-      ),
-    ).toHaveText(path.titles);
+      await page
+        .getByRole("button", {
+          name: `Lernpfade von ${path.startingTopic} filtern`,
+        })
+        .click();
+      await page.getByRole("button", { name: path.name, exact: true }).click();
+      await expect(
+        navigation.locator(
+          "li .topic-actions > button:not(.path-filter-button):not(.learning-check-start-button)",
+        ),
+      ).toHaveText(path.titles);
 
-    await page
-      .getByRole("button", { name: path.startingTopic, exact: true })
-      .click();
-    const article = page.getByRole("article", { name: path.startingTopic });
-    await expect(article).toBeVisible();
-    await expect(
-      article.getByRole("link", { name: path.source }),
-    ).toBeVisible();
-    await expect(article.getByText("2026-09-27").first()).toBeVisible();
-    if ((page.viewportSize()?.width ?? 0) < 800) {
-      await page.getByRole("button", { name: "Zur Themenliste" }).click();
-    }
-    await expect(
-      page.getByRole("button", {
-        name: `Lerncheck starten: ${path.startingTopic}`,
-      }),
-    ).toHaveCount(1);
-  });
-}
+      await page
+        .getByRole("button", { name: path.startingTopic, exact: true })
+        .click();
+      const article = page.getByRole("article", { name: path.startingTopic });
+      await expect(article).toBeVisible();
+      await expect(
+        article.getByRole("link", { name: path.source }),
+      ).toBeVisible();
+      await expect(article.getByText("2026-09-27").first()).toBeVisible();
+      if ((page.viewportSize()?.width ?? 0) < 800) {
+        await page.getByRole("button", { name: "Zur Themenliste" }).click();
+      }
+      await expect(
+        page.getByRole("button", {
+          name: `Lerncheck starten: ${path.startingTopic}`,
+        }),
+      ).toHaveCount(1);
+    },
+  );
+});

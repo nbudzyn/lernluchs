@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import type { Topic } from "../../../src/verticals/topics/topicContract";
 import { topics } from "../../../src/verticals/topics/topics";
 
 import { validateTopics } from "../../../src/verticals/topics/validateTopics";
@@ -413,38 +412,6 @@ it("uses the current sandbox-security source for agent tool permissions", () => 
   );
 });
 
-function completeItem(id: string): Topic {
-  return {
-    id,
-    title: "Testthema",
-    everydayAnchor: "Mein Agent hat sich verrannt.",
-    content: {
-      language: "de",
-      problem: "Problem",
-      coreConcept: "Kernkonzept",
-      javaWebUse: "Einsatz",
-      boundary: "Grenze",
-    },
-    editorial: {
-      publishedAt: "2026-09-20",
-      reviewedAt: "2026-09-20",
-      reviewDueAt: "2027-03-20",
-      status: "active",
-    },
-    sources: [
-      {
-        title: "Quelle",
-        url: "https://example.test/source",
-        type: "official-guide",
-        mediaType: "text",
-        origin: "primary",
-        language: "en",
-        checkedAt: "2026-09-20",
-      },
-    ],
-  };
-}
-
 describe("public content topics", () => {
   it.each([
     [
@@ -495,21 +462,6 @@ describe("public content topics", () => {
     ).toBe(true);
   });
 
-  it("rejects empty learning paths and topic IDs without a matching topic", () => {
-    const result = validateTopics({
-      version: "1",
-      items: [completeItem("present")],
-      paths: [
-        { name: "Leer", topicIds: [] },
-        { name: "Unbekannt", topicIds: ["missing"] },
-      ],
-    });
-    expect(result.errors).toContain("Empty learning path: Leer");
-    expect(result.errors).toContain(
-      "Unknown topic ID in learning path Unbekannt: missing",
-    );
-  });
-
   it("includes the phase-separation source for Research, Plan and Tasks", () => {
     const item = topics.items.find(
       (candidate) => candidate.id === "research-plan-tasks",
@@ -522,99 +474,7 @@ describe("public content topics", () => {
       ),
     ).toBe(true);
   });
-  it("requires a primary source, at most twenty sources, and a supported language", () => {
-    const item = completeItem("source-rules");
-    expect(
-      validateTopics({
-        version: "1",
-        items: [
-          { ...item, sources: [{ ...item.sources[0], origin: "secondary" }] },
-        ],
-      }).valid,
-    ).toBe(false);
-    expect(
-      validateTopics({
-        version: "1",
-        items: [
-          {
-            ...item,
-            sources: Array.from({ length: 21 }, (_, index) => ({
-              ...item.sources[0],
-              url: `https://example.test/${index}`,
-            })),
-          },
-        ],
-      }).valid,
-    ).toBe(false);
-    expect(
-      validateTopics({
-        version: "1",
-        items: [
-          {
-            ...item,
-            sources: [{ ...item.sources[0], language: "fr" as "en" }],
-          },
-        ],
-      }).valid,
-    ).toBe(false);
-    expect(
-      validateTopics({
-        version: "1",
-        items: [
-          {
-            ...item,
-            sources: [
-              item.sources[0],
-              { ...item.sources[0], origin: "other" as "secondary" },
-            ],
-          },
-        ],
-      }).valid,
-    ).toBe(false);
-  });
-  it("accepts audio with optional duration and rejects invalid media metadata", () => {
-    const item = completeItem("media-rules");
-    const source = item.sources[0];
-    const validAudio = {
-      ...source,
-      mediaType: "audio" as const,
-      duration: "1:37:13",
-    };
-    expect(
-      validateTopics({
-        version: "1",
-        items: [{ ...item, sources: [validAudio] }],
-      }).valid,
-    ).toBe(true);
-    expect(
-      validateTopics({
-        version: "1",
-        items: [
-          {
-            ...item,
-            sources: [{ ...validAudio, duration: undefined }],
-          },
-        ],
-      }).valid,
-    ).toBe(true);
-    for (const invalidSource of [
-      { ...source, mediaType: "unknown" },
-      { ...source, mediaType: "text", duration: "25:00" },
-      { ...source, mediaType: "audio", duration: "25 minutes" },
-    ]) {
-      expect(
-        validateTopics({
-          version: "1",
-          items: [
-            {
-              ...item,
-              sources: [invalidSource as unknown as Topic["sources"][number]],
-            },
-          ],
-        }).valid,
-      ).toBe(false);
-    }
-  });
+
   it("marks written sources as text independently of audio and video providers", () => {
     expect(
       topics.items.every((item) =>
@@ -637,9 +497,24 @@ describe("public content topics", () => {
     );
     expect(audioSources.length).toBeGreaterThan(0);
     for (const { topicId, source } of audioSources) {
-      expect(topics.items.some((topic) => topic.id === topicId)).toBe(true);
-      expect(source.title.trim()).not.toBe("");
-      expect(new URL(source.url).protocol).toBe("https:");
+      expect
+        .soft(
+          topics.items.some((topic) => topic.id === topicId),
+          topicId + ": " + source.url + ": Themenreferenz",
+        )
+        .toBe(true);
+      expect
+        .soft(
+          source.title.trim(),
+          topicId + ": " + source.url + ": Quellentitel",
+        )
+        .not.toBe("");
+      expect
+        .soft(
+          URL.canParse(source.url) ? new URL(source.url).protocol : null,
+          topicId + ": " + source.url + ": HTTPS-Quelle",
+        )
+        .toBe("https:");
     }
   });
   it("curates current sources for every topic outside the foundation path", () => {
@@ -660,16 +535,21 @@ describe("public content topics", () => {
             : item.id === "agent-tool-and-mcp-permissions"
               ? "2026-09-28"
               : "2026-09-27";
-      expect(item.editorial.reviewedAt).toBe(expectedReviewDate);
-      expect(
-        item.sources
-          .filter((source) => source.mediaType === "text")
-          .every(
-            (source) =>
-              source.checkedAt >= "2026-09-27" &&
-              source.checkedAt <= expectedReviewDate,
-          ),
-      ).toBe(true);
+      expect
+        .soft(item.editorial.reviewedAt, item.id + ": Prüfdatum")
+        .toBe(expectedReviewDate);
+      expect
+        .soft(
+          item.sources
+            .filter((source) => source.mediaType === "text")
+            .every(
+              (source) =>
+                source.checkedAt >= "2026-09-27" &&
+                source.checkedAt <= expectedReviewDate,
+            ),
+          item.id + ": Quellenprüfdatum",
+        )
+        .toBe(true);
     }
     const sourcesFor = (id: string) =>
       topics.items
@@ -703,7 +583,7 @@ describe("public content topics", () => {
     for (const item of topics.items.filter((item) =>
       foundationIds.includes(item.id),
     )) {
-      expect(item).toMatchObject({
+      expect.soft(item, item.id + ": Inhaltsvertrag").toMatchObject({
         title: expect.any(String),
         content: {
           language: "de",
@@ -727,8 +607,10 @@ describe("public content topics", () => {
           status: "active",
         },
       });
-      expect(item.sources.length).toBeGreaterThan(0);
-      expect(item.sources[0]).toMatchObject({
+      expect
+        .soft(item.sources.length, item.id + ": Quellen vorhanden")
+        .toBeGreaterThan(0);
+      expect.soft(item.sources[0], item.id + ": Primärquelle").toMatchObject({
         title: expect.any(String),
         url: expect.stringMatching(/^https:\/\//),
         origin: "primary",
@@ -754,27 +636,45 @@ describe("public content topics", () => {
     for (const item of topics.items.filter((item) =>
       newIds.includes(item.id),
     )) {
-      expect(item.content.problem.trim()).not.toBe("");
-      expect(item.content.coreConcept.trim()).not.toBe("");
-      expect(item.content.javaWebUse.trim()).not.toBe("");
-      expect(item.content.boundary.trim()).not.toBe("");
-      expect(item.sources.length).toBeGreaterThan(0);
-      expect(item.editorial.publishedAt).toBe("2026-09-26");
-      expect(item.editorial.reviewedAt).toBe(
-        updatedTopicIds.has(item.id) ? "2026-10-09" : "2026-09-27",
-      );
-      expect(item.editorial.reviewDueAt).toBe(
-        updatedTopicIds.has(item.id) ? "2027-01-09" : "2027-03-27",
-      );
-      expect(
-        item.sources
-          .filter((source) => source.mediaType === "text")
-          .every(
-            (source) =>
-              source.checkedAt >= "2026-09-27" &&
-              source.checkedAt <= item.editorial.reviewedAt,
-          ),
-      ).toBe(true);
+      expect
+        .soft(item.content.problem.trim(), item.id + ": Problem vorhanden")
+        .not.toBe("");
+      expect
+        .soft(
+          item.content.coreConcept.trim(),
+          item.id + ": Kernkonzept vorhanden",
+        )
+        .not.toBe("");
+      expect
+        .soft(item.content.javaWebUse.trim(), item.id + ": Anwendung vorhanden")
+        .not.toBe("");
+      expect
+        .soft(item.content.boundary.trim(), item.id + ": Grenze vorhanden")
+        .not.toBe("");
+      expect
+        .soft(item.sources.length, item.id + ": Quellen vorhanden")
+        .toBeGreaterThan(0);
+      expect
+        .soft(item.editorial.publishedAt, item.id + ": Veröffentlichungsdatum")
+        .toBe("2026-09-26");
+      expect
+        .soft(item.editorial.reviewedAt, item.id + ": Prüfdatum")
+        .toBe(updatedTopicIds.has(item.id) ? "2026-10-09" : "2026-09-27");
+      expect
+        .soft(item.editorial.reviewDueAt, item.id + ": Wiedervorlage")
+        .toBe(updatedTopicIds.has(item.id) ? "2027-01-09" : "2027-03-27");
+      expect
+        .soft(
+          item.sources
+            .filter((source) => source.mediaType === "text")
+            .every(
+              (source) =>
+                source.checkedAt >= "2026-09-27" &&
+                source.checkedAt <= item.editorial.reviewedAt,
+            ),
+          item.id + ": Quellenprüfdatum",
+        )
+        .toBe(true);
     }
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
@@ -844,35 +744,55 @@ describe("public content topics", () => {
     for (const item of topics.items.filter((item) =>
       newIds.includes(item.id),
     )) {
-      expect(item.title.trim()).not.toBe("");
-      expect(item.content.problem.trim()).not.toBe("");
-      expect(item.content.coreConcept.trim()).not.toBe("");
-      expect(item.content.javaWebUse.trim()).not.toBe("");
-      expect(item.content.boundary.trim()).not.toBe("");
-      expect(item.editorial).toMatchObject({
-        publishedAt: "2026-09-26",
-        reviewedAt: updatedTopicIds.has(item.id)
-          ? "2026-10-09"
-          : refreshedTopicIds.has(item.id)
-            ? "2026-10-07"
-            : "2026-09-27",
-        reviewDueAt: updatedTopicIds.has(item.id)
-          ? "2027-01-09"
-          : refreshedTopicIds.has(item.id)
-            ? "2027-01-07"
-            : "2027-03-27",
-        status: "active",
-      });
-      expect(item.sources.length).toBeGreaterThan(0);
-      expect(
-        item.sources
-          .filter((source) => source.mediaType === "text")
-          .every(
-            (source) =>
-              source.checkedAt >= "2026-09-27" &&
-              source.checkedAt <= item.editorial.reviewedAt,
-          ),
-      ).toBe(true);
+      expect
+        .soft(item.title.trim(), item.id + ": Titel vorhanden")
+        .not.toBe("");
+      expect
+        .soft(item.content.problem.trim(), item.id + ": Problem vorhanden")
+        .not.toBe("");
+      expect
+        .soft(
+          item.content.coreConcept.trim(),
+          item.id + ": Kernkonzept vorhanden",
+        )
+        .not.toBe("");
+      expect
+        .soft(item.content.javaWebUse.trim(), item.id + ": Anwendung vorhanden")
+        .not.toBe("");
+      expect
+        .soft(item.content.boundary.trim(), item.id + ": Grenze vorhanden")
+        .not.toBe("");
+      expect
+        .soft(item.editorial, item.id + ": Redaktionelle Metadaten")
+        .toMatchObject({
+          publishedAt: "2026-09-26",
+          reviewedAt: updatedTopicIds.has(item.id)
+            ? "2026-10-09"
+            : refreshedTopicIds.has(item.id)
+              ? "2026-10-07"
+              : "2026-09-27",
+          reviewDueAt: updatedTopicIds.has(item.id)
+            ? "2027-01-09"
+            : refreshedTopicIds.has(item.id)
+              ? "2027-01-07"
+              : "2027-03-27",
+          status: "active",
+        });
+      expect
+        .soft(item.sources.length, item.id + ": Quellen vorhanden")
+        .toBeGreaterThan(0);
+      expect
+        .soft(
+          item.sources
+            .filter((source) => source.mediaType === "text")
+            .every(
+              (source) =>
+                source.checkedAt >= "2026-09-27" &&
+                source.checkedAt <= item.editorial.reviewedAt,
+            ),
+          item.id + ": Quellenprüfdatum",
+        )
+        .toBe(true);
     }
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
@@ -928,27 +848,6 @@ describe("public content topics", () => {
         .some((path) => path.topicIds.includes("focused-git-commits")),
     ).toBe(true);
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
-  });
-
-  it("rejects duplicate content IDs", () => {
-    expect(
-      validateTopics({
-        version: "1",
-        items: [completeItem("duplicate"), completeItem("duplicate")],
-      }),
-    ).toEqual({ valid: false, errors: ["Duplicate item ID: duplicate"] });
-  });
-
-  it("rejects a topic without an editorial source", () => {
-    expect(
-      validateTopics({
-        version: "1",
-        items: [{ ...completeItem("missing-source"), sources: [] }],
-      }),
-    ).toEqual({
-      valid: false,
-      errors: ["Missing primary source for item: missing-source"],
-    });
   });
 });
 

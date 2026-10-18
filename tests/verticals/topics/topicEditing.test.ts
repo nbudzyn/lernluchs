@@ -82,9 +82,12 @@ describe("central topic editing", () => {
       ],
     };
     for (const [id, identities] of Object.entries(expectedSources)) {
-      const topic = topics.items.find((item) => item.id === id)!;
+      const topic = topics.items.find((item) => item.id === id);
+      expect.soft(topic, id + ": Thema vorhanden").toBeDefined();
+      if (!topic) continue;
       const actual = topic.sources
         .map((source) => {
+          if (!URL.canParse(source.url)) return source.url;
           const url = new URL(source.url);
           return source.mediaType === "video" &&
             url.hostname === "www.youtube.com"
@@ -92,13 +95,21 @@ describe("central topic editing", () => {
             : source.url;
         })
         .sort();
-      expect(actual, id + ": vereinigte Quellen").toEqual(identities);
+      expect.soft(actual, id + ": vereinigte Quellen").toEqual(identities);
     }
     for (const path of topics.paths ?? []) {
-      expect(new Set(path.topicIds).size).toBe(path.topicIds.length);
-      expect(ids.filter((id) => path.topicIds.includes(id))).toEqual(
-        path.topicIds,
-      );
+      expect
+        .soft(
+          new Set(path.topicIds).size,
+          path.name + ": Eindeutige Themenreferenzen",
+        )
+        .toBe(path.topicIds.length);
+      expect
+        .soft(
+          ids.filter((id) => path.topicIds.includes(id)),
+          path.name + ": Themenfolge",
+        )
+        .toEqual(path.topicIds);
     }
   });
 });

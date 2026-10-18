@@ -64,6 +64,14 @@ function hasText(value: string): boolean {
   return value.trim().length > 0;
 }
 
+function isHttpsUrl(value: string): boolean {
+  try {
+    return new URL(value).protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
 export function validateTopics(candidate: Topics): TopicValidation {
   const seenIds = new Set<string>();
   const errors: string[] = [];
@@ -110,7 +118,7 @@ export function validateTopics(candidate: Topics): TopicValidation {
       seenSources.add(identity);
       if (
         !hasText(source.title) ||
-        !source.url.startsWith("https://") ||
+        !isHttpsUrl(source.url) ||
         !sourceTypes.has(source.type) ||
         !validMedia(source) ||
         !["primary", "secondary"].includes(source.origin) ||

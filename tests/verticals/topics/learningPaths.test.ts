@@ -286,10 +286,12 @@ describe("vollständige Lernpfade", () => {
     ]);
     for (const path of topics.paths ?? []) {
       const pathPositions = path.topicIds.map((id) => positions.get(id));
-      expect(pathPositions, path.name).toEqual(
-        [...pathPositions].sort((a, b) => (a ?? 0) - (b ?? 0)),
-      );
-      expect(new Set(path.topicIds).size, path.name).toBe(path.topicIds.length);
+      expect
+        .soft(pathPositions, path.name)
+        .toEqual([...pathPositions].sort((a, b) => (a ?? 0) - (b ?? 0)));
+      expect
+        .soft(new Set(path.topicIds).size, path.name)
+        .toBe(path.topicIds.length);
     }
   });
 });

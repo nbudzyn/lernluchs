@@ -33,7 +33,7 @@ describe("agreed learning video selection", () => {
         "parallel-agent-task-boundaries",
       ].includes(topic.id);
       const gap = withoutGermanVideo.includes(topic.id) && !merged;
-      expect(videos, topic.id).toHaveLength(
+      expect.soft(videos, topic.id).toHaveLength(
         merged
           ? (
               {
@@ -46,20 +46,32 @@ describe("agreed learning video selection", () => {
             ? 3
             : 4,
       );
-      expect(
-        videos.some((source) => source.language === "de"),
-        topic.id,
-      ).toBe(!gap);
-      expect(
-        new Set(
-          videos.map((source) => new URL(source.url).searchParams.get("v")),
-        ).size,
-      ).toBe(videos.length);
-      expect(
-        videos.every(
-          (source) => source.duration && source.checkedAt === "2026-09-30",
-        ),
-      ).toBe(true);
+      expect
+        .soft(
+          videos.some((source) => source.language === "de"),
+          topic.id,
+        )
+        .toBe(!gap);
+      expect
+        .soft(
+          new Set(
+            videos.map((source) =>
+              URL.canParse(source.url)
+                ? new URL(source.url).searchParams.get("v")
+                : source.url,
+            ),
+          ).size,
+          topic.id + ": Eindeutige Videoquellen",
+        )
+        .toBe(videos.length);
+      expect
+        .soft(
+          videos.every(
+            (source) => source.duration && source.checkedAt === "2026-09-30",
+          ),
+          topic.id + ": Laufzeit und Prüfdatum",
+        )
+        .toBe(true);
     }
     expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
   });
