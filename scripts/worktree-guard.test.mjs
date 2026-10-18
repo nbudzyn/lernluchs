@@ -9,10 +9,15 @@ import {
   writeFileSync,
 } from "node:fs";
 import { execFileSync, spawn } from "node:child_process";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
 import { join, resolve, sep } from "node:path";
-import { WorktreeGuard, handleHook } from "./worktree-guard.mjs";
+import {
+  WorktreeGuard,
+  handleHook,
+  inspectWorkspace,
+} from "./worktree-guard.mjs";
 
 let directory;
 let workspace;
@@ -46,6 +51,203 @@ afterEach(() => {
 function adopt() {
   guard.adopt("session-a", guard.review().fingerprint);
 }
+
+function startFixture() {
+  const repository = join(directory, "repository");
+  mkdirSync(repository);
+  const git = (...args) =>
+    execFileSync("git", args, {
+      cwd: repository,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+    }).trim();
+  git("init", "-b", "main");
+  git(
+    "-c",
+    "user.name=Test",
+    "-c",
+    "user.email=test@example.invalid",
+    "commit",
+    "--allow-empty",
+    "-m",
+    "fixture",
+  );
+  git("worktree", "add", "-b", "codex/previous", workspace.root);
+  const stateBase = join(directory, "start-state");
+  const stateDirectory = join(
+    stateBase,
+    createHash("sha256").update(workspace.root.toLowerCase()).digest("hex"),
+  );
+  const startGuard = new WorktreeGuard({
+    stateDirectory,
+    inspect: () => inspectWorkspace(workspace.root),
+  });
+  return { startGuard, git, repository, stateBase };
+}
+
+describe("new story start", () => {
+  it("preserves the current turn's ownership across the branch and task transition", () => {
+    const { startGuard } = startFixture();
+    startGuard.claim("session-a", "turn-a");
+    const before = startGuard.review();
+    startGuard.start("session-a", "turn-a", "codex/next");
+    const after = startGuard.review();
+    expect(after.workspace.branch).toBe("codex/next");
+    expect(after.task.branch).toBe("codex/next");
+    expect(after.writer).toEqual(before.writer);
+    expect(() => startGuard.claim("session-b", "turn-b")).toThrow(/belegt/);
+    startGuard.refresh("session-a", "turn-a");
+    startGuard.release("session-a", "turn-a");
+    expect(startGuard.review().writer).toBeNull();
+  }, 30000);
+
+  it("starts a clean free worktree without requiring a turn ID", () => {
+    const { startGuard } = startFixture();
+    startGuard.start("session-a", undefined, "codex/next");
+    const after = startGuard.review();
+    expect(after.workspace.branch).toBe("codex/next");
+    expect(after.task.branch).toBe("codex/next");
+    expect(after.writer).toBeNull();
+  }, 30000);
+
+  it("rejects other sessions, other or missing turns and interrupted ownership without changing state", () => {
+    const { startGuard } = startFixture();
+    startGuard.claim("session-a", "turn-a");
+    for (const [session, turn] of [
+      ["session-b", "turn-a"],
+      ["session-a", "turn-b"],
+      ["session-a", undefined],
+    ]) {
+      const before = startGuard.review();
+      expect
+        .soft(
+          () => startGuard.start(session, turn, "codex/next"),
+          `${session}/${turn}`,
+        )
+        .toThrow(/belegt|Turn/);
+      expect.soft(startGuard.review()).toEqual(before);
+    }
+    startGuard.interrupt("session-a", "turn-a");
+    const before = startGuard.review();
+    expect(() => startGuard.start("session-a", "turn-a", "codex/next")).toThrow(
+      /belegt|unterbrochen/,
+    );
+    expect(startGuard.review()).toEqual(before);
+  }, 30000);
+
+  it("preserves clean-start safeguards even for the current writer", () => {
+    const { startGuard, git, repository } = startFixture();
+    startGuard.claim("session-a", "turn-a");
+    for (const branch of ["main", "../outside", "codex/previous"]) {
+      const before = startGuard.review();
+      expect
+        .soft(() => startGuard.start("session-a", "turn-a", branch), branch)
+        .toThrow();
+      expect.soft(startGuard.review(), branch).toEqual(before);
+    }
+    const pending = join(workspace.root, "pending.txt");
+    writeFileSync(pending, "uncommitted\n");
+    const dirty = startGuard.review();
+    expect(() => startGuard.start("session-a", "turn-a", "codex/next")).toThrow(
+      /Arbeit/,
+    );
+    expect(startGuard.review()).toEqual(dirty);
+    rmSync(pending);
+    const active = join(workspace.root, "docs/changes/active");
+    mkdirSync(active, { recursive: true });
+    const spec = join(active, "pending.md");
+    writeFileSync(spec, "active spec\n");
+    git("-C", workspace.root, "add", "docs");
+    git(
+      "-C",
+      workspace.root,
+      "-c",
+      "user.name=Test",
+      "-c",
+      "user.email=test@example.invalid",
+      "commit",
+      "-m",
+      "active story",
+    );
+    startGuard.refresh("session-a", "turn-a");
+    const withSpec = startGuard.review();
+    expect(withSpec.task.specs).toEqual(withSpec.workspace.specs);
+    expect(() => startGuard.start("session-a", "turn-a", "codex/next")).toThrow(
+      /ohne aktive Spec/,
+    );
+    expect(startGuard.review()).toEqual(withSpec);
+    rmSync(spec);
+    git("-C", workspace.root, "add", "docs");
+    git(
+      "-C",
+      workspace.root,
+      "-c",
+      "user.name=Test",
+      "-c",
+      "user.email=test@example.invalid",
+      "commit",
+      "-m",
+      "completed story",
+    );
+    startGuard.refresh("session-a", "turn-a");
+    const unmerged = startGuard.review();
+    expect(() =>
+      startGuard.start("session-a", "turn-a", "codex/next"),
+    ).toThrow();
+    expect(startGuard.review()).toEqual(unmerged);
+    const developerGuard = new WorktreeGuard({
+      stateDirectory: join(directory, "developer-state"),
+      inspect: () => inspectWorkspace(repository),
+    });
+    expect(() =>
+      developerGuard.start("session-a", undefined, "codex/next"),
+    ).toThrow(/Worktree/);
+  }, 30000);
+
+  it.skipIf(process.platform !== "win32")(
+    "passes the current turn through the PowerShell entry point and permits the post hook",
+    () => {
+      const { startGuard, stateBase } = startFixture();
+      startGuard.claim("session-a", "turn-a");
+      const before = startGuard.review().writer;
+      const script = fileURLToPath(
+        new URL("./worktree-guard.ps1", import.meta.url),
+      );
+      const result = execFileSync(
+        "powershell.exe",
+        [
+          "-NoProfile",
+          "-File",
+          script,
+          "start",
+          "-Session",
+          "session-a",
+          "-Turn",
+          "turn-a",
+          "-Branch",
+          "codex/next",
+        ],
+        {
+          cwd: workspace.root,
+          env: { ...process.env, LERNLUCHS_GUARD_STATE_DIR: stateBase },
+          encoding: "utf8",
+        },
+      );
+      expect(JSON.parse(result)).toEqual({ result: "OK", action: "start" });
+      handleHook(
+        {
+          hook_event_name: "PostToolUse",
+          session_id: "session-a",
+          turn_id: "turn-a",
+        },
+        startGuard,
+      );
+      expect(startGuard.review().task.branch).toBe("codex/next");
+      expect(startGuard.review().writer).toEqual(before);
+    },
+    30000,
+  );
+});
 
 describe("worktree write ownership", () => {
   it("allows one writer and rejects another session without changing its work", () => {

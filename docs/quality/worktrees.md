@@ -36,12 +36,12 @@ powershell.exe -NoProfile -File scripts/worktree-guard.ps1 review
 
 Die Ausgabe nennt Pfad, Branch, aktive Spec, Git-Status, Story-Zuordnung, vorhandene Schreibsperre und einen Prüf-Fingerabdruck. Zusätzlich den Diff und die aktive Spec lesen. Ein unveränderter Fingerabdruck schützt vor einer inzwischen geänderten Übernahmegrundlage. Sitzung und Turn stammen aus dem aktuellen Codex-Hook-Ereignis; keine fremden IDs erfinden. Platzhalter in den folgenden Beispielen ersetzen.
 
-- **Neue Story:** freier, sauberer Worktree ohne aktive Spec; der bisherige Stand muss in `main` enthalten sein. Mit `start` wird ein neuer Aufgabenbranch ab dem lokalen `main` angelegt. `main` muss zuvor bewusst auf den gewünschten integrierten Stand gebracht werden. Kein automatisches Pull, Merge oder Verwerfen.
+- **Neue Story:** sauberer Worktree ohne aktive Spec und ohne fremde oder unterbrochene Schreibsperre; der bisherige Stand muss in `main` enthalten sein. Mit `start` wird ein neuer Aufgabenbranch ab dem lokalen `main` angelegt. Hat ein Tool-Hook bereits die eigene Sperre gesetzt, zusätzlich `-Turn` mit der tatsächlichen Turn-ID aus `review` übergeben. Sitzung und Turn müssen exakt zur Sperre passen; sie bleibt während des Starts erhalten. Ohne Sperre bleibt `-Turn` optional. `main` muss zuvor bewusst auf den gewünschten integrierten Stand gebracht werden. Kein automatisches Pull, Merge oder Verwerfen außerhalb der ausdrücklich freigegebenen lokalen Integration beim Story-Abschluss.
 - **Fortsetzung:** passende bestehende Story und Diff prüfen. Uncommittete Änderungen sind dabei ausdrücklich erlaubt. Ohne Schreibsperre kann `adopt` die geprüfte Story-Zuordnung bestätigen. Bei bereits passender Zuordnung sind normale weitere Turns möglich.
 - **Abbruch / Absturz:** Änderungen bleiben bestehen. Bei Unterbrechung bleibt die Schreibsperre erhalten; beim normalen Turn-Ende wird nur sie freigegeben. Eine neue Sitzung darf bestehende Arbeit nach Prüfung fortsetzen. Kein Zeitlimit löscht eine Sperre. Bei nachweislich beendetem Besitzerprozess erlaubt `recover` die Wiederaufnahme; PID und Prozessstartzeit werden gemeinsam geprüft. Ist die Prozessidentität unbekannt oder lebt sie noch, zuerst den alten Chat und seine Prozesse prüfen und stoppen. Erst danach seine konkrete Sitzungs-ID als inaktiv bestätigen. Kein automatisches Übergehen eines laufenden Chats.
 
 ```powershell
-powershell.exe -NoProfile -File scripts/worktree-guard.ps1 start -Session AKTUELLE_SITZUNG -Branch codex/neue-story
+powershell.exe -NoProfile -File scripts/worktree-guard.ps1 start -Session AKTUELLE_SITZUNG -Turn AKTUELLER_TURN -Branch codex/neue-story
 powershell.exe -NoProfile -File scripts/worktree-guard.ps1 adopt -Session AKTUELLE_SITZUNG -Review FINGERABDRUCK
 powershell.exe -NoProfile -File scripts/worktree-guard.ps1 recover -Session AKTUELLE_SITZUNG -Review FINGERABDRUCK
 # Nur nach tatsächlicher Prüfung und Stilllegung der konkreten alten Sitzung:
@@ -51,6 +51,8 @@ powershell.exe -NoProfile -File scripts/worktree-guard.ps1 recover -Session AKTU
 Die Befehle sind Alternativen je Situation, keine gemeinsam auszuführende Befehlsfolge. Bei geändertem Fingerabdruck erneut prüfen. Der Windows-Mutex serialisiert die Schutzoperationen; dauerhaft gespeicherter Zustand liegt unter `%LOCALAPPDATA%\Lernluchs\codex-worktrees\<Pfad-Hash>`. Beschädigter Status wird nicht überschrieben. Sitzungsdaten, Sicherungen und Fehlermeldungen gehören nicht nach Git oder an externe Dienste.
 
 Die Hooks schützen unterstützte Codex-Werkzeugaufrufe zusätzlich zu den Agentenanweisungen. Sie sind keine vollständige Sicherheitsgrenze für beliebige Shellbefehle, externe Programme, bereits laufende Hintergrundprozesse oder eigene IntelliJ-Änderungen. Vor einer Wiederaufnahme auch gestartete Server und Tests berücksichtigen. Ein Interrupt-Hook kann bei einem harten Prozessabbruch ausfallen; die zuvor gespeicherte Schreibsperre bleibt dann maßgeblich.
+
+`Stop` läuft beim regulären Ende eines Agenten-Turns, also nach einer abschließenden Antwort; der Chat muss dafür nicht geschlossen oder archiviert werden. `SessionEnd` gibt ebenfalls nur die passende Sperre frei. Die Story-Zuordnung bleibt erhalten. Nach einer Unterbrechung geben diese Ereignisse die Sperre absichtlich nicht frei; dann gilt der geprüfte Wiederaufnahmeablauf. Die Schreibsperre reserviert den Worktree für eine Sitzung und einen Turn und weist konkurrierende, vom Hook geschützte Werkzeugaufrufe ab. Manche lesenden oder umhüllenden Tool-Aufrufe können sie ebenfalls setzen; sie ist keine Dateisystemsperre und verhindert keine externen Änderungen.
 
 ## Eigene Änderungen, Abbruch und Integration
 
@@ -64,15 +66,14 @@ powershell.exe -NoProfile -File scripts/worktree-guard.ps1 checkpoint -Session A
 
 Der Befehl sichert den kombinierten Patch gegen HEAD und nicht ignorierte neue Dateien außerhalb des Repositorys. Er verändert den Arbeitsbaum nicht und erhält nicht die Trennung zwischen gestagten und ungestagten Änderungen. Ignorierte Dateien wie `.env.local`, persönliche IDE-Dateien und gegebenenfalls lokale Daten separat prüfen und sichern. Die Sicherung ist kein Ersatz für ein Backup; nicht automatisch nach Git übernehmen. Erst nach ausdrücklicher Entscheidung Änderungen gezielt bereinigen oder in einem separaten Worktree aufbewahren.
 
-Nach grüner Pflichtsuite und ausdrücklich positivem manuellen Test darf Codex die abgeschlossene Story samt archivierter Spec committen. Der Entwickler integriert und pusht. Für diese erste Story nach ihrem Commit und bei sauberem Entwickler-Checkout auf `main`:
+Nach grüner Pflichtsuite und ausdrücklich positivem manuellen Test fragt Codex ausdrücklich nach Freigabe für **Commit und lokale Fast-forward-Integration in `main`**. Nach dieser gemeinsamen Freigabe darf Codex die abgeschlossene Story samt archivierter Spec committen und im sauberen Entwickler-Checkout auf `main` lokal per `--ff-only` integrieren. Eine reine Commit-Freigabe umfasst die Integration nicht. Branch und Arbeitsbaum unmittelbar vor der Integration prüfen; bei Änderungen, anderem Branch oder abweichender Historie anhalten. Push führt ausschließlich der Entwickler aus. Beispiel für eine freigegebene lokale Integration:
 
 ```powershell
 # Im Entwickler-Checkout auf main:
 git merge --ff-only codex/worktree-workflow
-git push origin main
 ```
 
-Bei abgelehntem Fast-forward nicht erzwingen, sondern abweichende Commits prüfen. Alternativ den Aufgabenbranch aus dessen Worktree gezielt pushen. Den dauerhaften Codex-Ordner anschließend behalten; für die nächste Story über den geprüften Startablauf den Branch wechseln. Handoff in den Entwickler-Checkout gehört nicht zum Standard dieses festen Zwei-Projekt-Ablaufs.
+Bei abgelehntem Fast-forward nicht erzwingen, sondern abweichende Commits prüfen. Nach erfolgreicher Integration kann der Entwickler `main` selbst pushen. Den dauerhaften Codex-Ordner anschließend behalten; für die nächste Story einen neuen lokalen Chat mit **New worktree AUS** öffnen und über den geprüften Startablauf den Branch wechseln. Die Freigabe der Schreibsperre erledigt der reguläre Turn-Abschluss; ein Hintergrundprozess zum Story-Start ist nicht erforderlich. Handoff in den Entwickler-Checkout gehört nicht zum Standard dieses festen Zwei-Projekt-Ablaufs.
 
 ## Parallele App- und Teststarts
 

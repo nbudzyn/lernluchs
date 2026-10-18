@@ -145,6 +145,36 @@ export class WorktreeGuard {
       );
     this.saveTask(review.workspace);
   }
+  start(sessionId, turnId, branch) {
+    identity(sessionId);
+    if (turnId !== undefined) identity(turnId);
+    if (!/^codex\/[a-z0-9][a-z0-9/-]*$/.test(branch || ""))
+      throw new Error("Neuer Aufgabenbranch muss mit codex/ beginnen.");
+    const review = this.review();
+    if (
+      review.writer &&
+      (review.writer.sessionId !== sessionId ||
+        review.writer.turnId !== turnId ||
+        review.writer.interrupted)
+    )
+      throw new Error(
+        "Worktree belegt; Story-Start nur ohne Sperre oder im eigenen aktuellen, nicht unterbrochenen Turn.",
+      );
+    this.checkStory(review);
+    if (review.workspace.dirty || review.workspace.specs.length)
+      throw new Error(
+        "Vorhandene Arbeit zuerst fortsetzen oder sichern; neuer Story-Start benötigt einen sauberen Worktree ohne aktive Spec.",
+      );
+    const root = review.workspace.root;
+    if (!inspectWorkspace(root).linked)
+      throw new Error("Start nur im Codex-Worktree.");
+    execFileSync("git", ["merge-base", "--is-ancestor", "HEAD", "main"], {
+      cwd: root,
+      stdio: "pipe",
+    });
+    git(root, "switch", "-c", branch, "main");
+    this.saveTask(this.inspect());
+  }
   claim(sessionId, turnId) {
     identity(sessionId);
     identity(turnId);
@@ -462,29 +492,8 @@ export function run(args) {
     guard.release(session, "recovery");
   } else if (action === "checkpoint")
     return { checkpoint: guard.checkpoint(session) };
-  else if (action === "start") {
-    identity(session);
-    if (!/^codex\/[a-z0-9][a-z0-9/-]*$/.test(values.branch || ""))
-      throw new Error("Neuer Aufgabenbranch muss mit codex/ beginnen.");
-    const review = guard.review();
-    if (
-      review.writer ||
-      review.workspace.dirty ||
-      review.workspace.specs.length
-    )
-      throw new Error(
-        "Vorhandene Arbeit zuerst fortsetzen oder sichern; neuer Story-Start benötigt einen freien sauberen Worktree.",
-      );
-    const root = review.workspace.root;
-    if (!inspectWorkspace(root).linked)
-      throw new Error("Start nur im Codex-Worktree.");
-    execFileSync("git", ["merge-base", "--is-ancestor", "HEAD", "main"], {
-      cwd: root,
-      stdio: "pipe",
-    });
-    git(root, "switch", "-c", values.branch, "main");
-    guard.adopt(session, guard.review().fingerprint);
-  } else throw new Error("Unbekannte Schutzaktion.");
+  else if (action === "start") guard.start(session, values.turn, values.branch);
+  else throw new Error("Unbekannte Schutzaktion.");
   return { result: "OK", action };
 }
 if (
