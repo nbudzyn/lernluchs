@@ -60,17 +60,6 @@ erkennen können. Mittlere Priorität: Primitive Obsession in
 - Risiken: Beschädigte Daten, nicht verfügbarer Speicher und fehlgeschlagener Reset müssen unterscheidbar bleiben. Speicherschlüssel und gespeichertes Format erhalten; ausschließlich den eigenen beschädigten Eintrag zurücksetzen.
 - Abnahme: Laden, Rücksetzen und Speichern einschließlich Fehlerfällen verhalten sich unverändert; passende Prüfungen und genau ein abschließendes Subagentenreview gemäß Reviewvertrag. Keine Synchronisation oder zusätzliche Speicherung einführen.
 
-## Fowler-Prüfung: Hilfe
-
-Als Entwickler möchte ich die Vertikale `help` anhand der 24 Fowler-Smells bewerten,
-ohne künstlichen Änderungsbedarf zu erzeugen. Bisher gibt es keine überzeugenden
-Befunde hoher oder mittlerer Priorität; niedrig priorisierte SVG-Duplikate sind
-nicht Teil dieser Story. Deshalb ist derzeit kein konkretes Refactoring beauftragt.
-
-- Umfang: Vor Umsetzung gezielt `src/verticals/help/` und zugehörige Tests auf belegte Befunde hoher oder mittlerer Priorität prüfen. Nur bei einem neuen Beleg konkretes verhaltenserhaltendes Refactoring samt Priorität und Risiken in der aktiven Spec festlegen.
-- Risiken: Unnötige Zusammenführung von Icons könnte die bewusst unabhängige Vertikale an andere Bereiche koppeln; reine Text- oder DOM-Umbauten können Darstellung und Accessibility beeinflussen.
-- Abnahme: Entweder konkret belegte Verbesserungen mit passenden Prüfungen umsetzen oder ohne Codeänderung schließen. Keine niedrigen Befunde aufnehmen und keine Refactoring-Quote erfüllen. Das eine Subagentenreview nach Reviewvertrag ist bei einer produktrelevanten Umsetzung am Ende durchzuführen; bei rein dokumentiertem Ergebnis gilt die Dokumentationsausnahme.
-
 ## Fowler-Prüfung: Impressum
 
 Als Entwickler möchte ich die Vertikale `imprint` anhand der 24 Fowler-Smells
