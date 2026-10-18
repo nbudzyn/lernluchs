@@ -35,6 +35,36 @@ const questions: Question[] = Array.from({ length: 7 }, (_, index) => ({
 afterEach(cleanup);
 
 describe("LearningCheck", () => {
+  it("focuses each question and the result after keyboard answers", () => {
+    for (const correct of [true, false]) {
+      const view = render(
+        <LearningCheck
+          title="Testthema"
+          topicId="topic-a"
+          questions={questions}
+          onExit={vi.fn()}
+          random={() => 0}
+        />,
+      );
+      for (let index = 0; index < 5; index += 1) {
+        expect
+          .soft(document.activeElement)
+          .toBe(screen.getByRole("heading", { level: 2 }));
+        const option = screen.getByRole("button", {
+          name: correct ? /^Richtig / : /^Falsch /,
+        });
+        option.focus();
+        fireEvent.click(option);
+      }
+      expect.soft(document.activeElement).toBe(
+        screen.getByRole("heading", {
+          name: correct ? "Lerncheck bestanden" : "Antworten im Überblick",
+        }),
+      );
+      view.unmount();
+    }
+  });
+
   it("saves a perfect run immediately after the fifth answer", () => {
     const onPassed = vi.fn(() => true);
     render(

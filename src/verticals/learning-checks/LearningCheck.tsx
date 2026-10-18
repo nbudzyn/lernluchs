@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import type { Question } from "../../shared/question";
 import { congratulations } from "./congratulations";
@@ -46,6 +46,10 @@ export function LearningCheck({
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [congratulation, setCongratulation] = useState<string | null>(null);
   const [saveSucceeded, setSaveSucceeded] = useState<boolean | null>(null);
+  const stepHeading = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    stepHeading.current?.focus();
+  }, [answers.length]);
   const current = selected[answers.length];
   const complete = answers.length === 5;
   const allCorrect = answers.every(
@@ -77,7 +81,9 @@ export function LearningCheck({
           <p className="learning-check-count">
             Frage {answers.length + 1} von 5
           </p>
-          <h2>{current.prompt}</h2>
+          <h2 ref={stepHeading} tabIndex={-1}>
+            {current.prompt}
+          </h2>
           <div
             className="learning-check-options"
             role="group"
@@ -109,7 +115,9 @@ export function LearningCheck({
               className="learning-check-celebration"
               aria-label="Glückwunsch"
             >
-              <h2>Lerncheck bestanden</h2>
+              <h2 ref={stepHeading} tabIndex={-1}>
+                Lerncheck bestanden
+              </h2>
               <p role="status">{congratulation}</p>
               {saveSucceeded === true && <p>Als gelernt gespeichert.</p>}
               {saveSucceeded === false && (
@@ -119,7 +127,9 @@ export function LearningCheck({
               )}
             </section>
           ) : (
-            <h2>Antworten im Überblick</h2>
+            <h2 ref={stepHeading} tabIndex={-1}>
+              Antworten im Überblick
+            </h2>
           )}
           <ol className="learning-check-results">
             {answers.map(({ question, optionId }) => {

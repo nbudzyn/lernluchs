@@ -124,6 +124,33 @@ test("each published topic starts its corresponding check using the keyboard", a
       page.getByRole("heading", { name: `${title}: Lerncheck` }),
     ).toBeVisible();
     await expect(page.getByText("Frage 1 von 5")).toBeVisible();
+    if (id === availableLearningCheckTopicIds[0]) {
+      for (let number = 1; number <= 5; number += 1) {
+        const heading = page.getByRole("heading", { level: 2 });
+        await expect(heading).toBeFocused();
+        const prompt = await heading.textContent();
+        const correct = questionsForTopic(id)!
+          .find((candidate) => candidate.prompt === prompt)!
+          .options.find((option) => option.correct)!;
+        const options = page
+          .getByRole("group", { name: "Antwortoptionen" })
+          .getByRole("button");
+        const texts = await options.allTextContents();
+        const correctIndex = texts.indexOf(correct.text);
+        expect(correctIndex, `${id}: correct option`).toBeGreaterThanOrEqual(0);
+        for (let index = 0; index <= correctIndex; index += 1)
+          await page.keyboard.press("Tab");
+        await expect(options.nth(correctIndex)).toBeFocused();
+        await page.keyboard.press("Enter");
+      }
+      await expect(
+        page.getByRole("heading", { name: "Lerncheck bestanden" }),
+      ).toBeFocused();
+      const exit = page.getByRole("button", { name: "Zur Themenliste" });
+      await exit.focus();
+      await page.keyboard.press("Enter");
+      await expect(button).toBeFocused();
+    }
   });
 });
 

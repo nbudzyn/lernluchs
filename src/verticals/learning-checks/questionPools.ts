@@ -6,5 +6,7 @@ const questionPools: Record<string, Question[]> = questions;
 export const availableLearningCheckTopicIds = Object.keys(questionPools);
 
 export function questionsForTopic(topicId: string): Question[] | undefined {
-  return questionPools[topicId];
+  return Object.hasOwn(questionPools, topicId)
+    ? questionPools[topicId]
+    : undefined;
 }

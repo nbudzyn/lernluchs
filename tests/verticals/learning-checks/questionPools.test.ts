@@ -80,7 +80,14 @@ describe("questionPools", () => {
       ).toBe(true);
       expect(questionsForTopic(id), id).toBeUndefined();
     }
-    expect(questionsForTopic("unknown-topic")).toBeUndefined();
+    for (const id of [
+      "unknown-topic",
+      "toString",
+      "constructor",
+      "__proto__",
+    ]) {
+      expect.soft(questionsForTopic(id), id).toBeUndefined();
+    }
   });
 
   it("provides 25 valid, distinct and sourced questions in every published pool", () => {
