@@ -45,17 +45,6 @@ nicht Teil dieser Story. Deshalb ist derzeit kein konkretes Refactoring beauftra
 - Risiken: Unnötige Zusammenführung von Icons könnte die bewusst unabhängige Vertikale an andere Bereiche koppeln; reine Text- oder DOM-Umbauten können Darstellung und Accessibility beeinflussen.
 - Abnahme: Entweder konkret belegte Verbesserungen mit passenden Prüfungen umsetzen oder ohne Codeänderung schließen. Keine niedrigen Befunde aufnehmen und keine Refactoring-Quote erfüllen. Das eine Subagentenreview nach Reviewvertrag ist bei einer produktrelevanten Umsetzung am Ende durchzuführen; bei rein dokumentiertem Ergebnis gilt die Dokumentationsausnahme.
 
-## Fowler-Refactorings: Shared
-
-Als Entwickler möchte ich versehentliche Änderungen gemeinsam genutzter Fragen
-verhindern. Mittlere Priorität: Mutable Data im Vertrag
-`src/shared/question.ts` (`Question`, `AnswerOption`, `options`).
-
-- Koordination: [Lernchecks-Refactoring](../changes/implemented/0069-fowler-learning-checks.md) hat den readonly-Fragenvertrag einschließlich verschachtelter Optionen und die Laufzeitabsicherung der Pools umgesetzt. Nur verbleibenden Bedarf prüfen; erledigte Arbeit nicht wiederholen.
-- Konkretes Refactoring: Felder und verschachtelte Optionsarrays unveränderlich typisieren. Zusammen mit den unveränderlichen Poolzugriffen der Lernchecks-Story abstimmen; Mischfunktionen akzeptieren unveränderliche Eingaben und erzeugen neue Arrays.
-- Risiken: Alle Verbraucher und Testdaten sind vom Typvertrag betroffen. Oberflächliches `readonly` genügt nicht für verschachtelte Daten; TypeScript bietet allein keine Laufzeitabsicherung.
-- Abnahme: Verbraucher kompilieren ohne Mutation der Originaldaten; Auswahl und Mischen bleiben unverändert. Passende Prüfungen und genau ein abschließendes Subagentenreview gemäß Reviewvertrag. Keine Fachlogik nach Shared verlagern; bereits in der Lernchecks-Story erledigte Vertragsteile nicht doppelt umsetzen.
-
 ## Prüfen, dass Hooks auch ohne Einträge im .codex-USER-Verzeichnis funktionieren
 Prüfen, dass Hooks auch ohne Einträge im .codex-USER-Verzeichnis funktionieren
 

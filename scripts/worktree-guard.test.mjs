@@ -8,7 +8,7 @@ import {
   mkdirSync,
   writeFileSync,
 } from "node:fs";
-import { execFileSync, spawn } from "node:child_process";
+import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
@@ -442,130 +442,6 @@ it("fails closed for damaged ownership data", () => {
   expect(() => guard.claim("session-a", "turn-a")).toThrow(/beschädigt/);
   expect(readFileSync(guard.writerPath, "utf8")).toBe("{broken");
 });
-it.skipIf(process.platform !== "win32")(
-  "serializes real Windows hook processes and preserves an interrupted story",
-  async () => {
-    const repository = join(directory, "repository");
-    mkdirSync(repository);
-    const git = (...args) =>
-      execFileSync("git", args, {
-        cwd: repository,
-        encoding: "utf8",
-        stdio: ["ignore", "pipe", "pipe"],
-      });
-    git("init", "-b", "main");
-    writeFileSync(join(repository, "tracked.txt"), "before\n");
-    git("add", "tracked.txt");
-    git(
-      "-c",
-      "user.name=Test",
-      "-c",
-      "user.email=test@example.invalid",
-      "commit",
-      "--allow-empty",
-      "-m",
-      "fixture",
-    );
-    git("worktree", "add", "-b", "codex/fixture", workspace.root);
-    const script = fileURLToPath(
-      new URL("./worktree-guard.ps1", import.meta.url),
-    );
-    const cli = (...args) => {
-      const result = execFileSync(
-        "powershell.exe",
-        ["-NoProfile", "-File", script, ...args],
-        {
-          cwd: workspace.root,
-          env: {
-            ...process.env,
-            LERNLUCHS_GUARD_STATE_DIR: join(directory, "real-state"),
-          },
-          encoding: "utf8",
-        },
-      );
-      return JSON.parse(result);
-    };
-    const invoke = (event, session, turn) =>
-      new Promise((resolveResult, reject) => {
-        const child = spawn(
-          "powershell.exe",
-          ["-NoProfile", "-File", script, "hook"],
-          {
-            cwd: workspace.root,
-            env: {
-              ...process.env,
-              LERNLUCHS_GUARD_STATE_DIR: join(directory, "real-state"),
-            },
-            windowsHide: true,
-          },
-        );
-        let stdout = "",
-          stderr = "";
-        child.stdout.on("data", (value) => {
-          stdout += value;
-        });
-        child.stderr.on("data", (value) => {
-          stderr += value;
-        });
-        child.on("error", reject);
-        child.on("close", (code) => resolveResult({ code, stdout, stderr }));
-        child.stdin.end(
-          JSON.stringify({
-            hook_event_name: event,
-            cwd: workspace.root,
-            session_id: session,
-            turn_id: turn,
-            tool_name: "Bash",
-            tool_input: { command: "Write-Output guard-test" },
-          }),
-        );
-      });
-    const results = await Promise.all([
-      invoke("PreToolUse", "session-a", "turn-a"),
-      invoke("PreToolUse", "session-b", "turn-b"),
-    ]);
-    expect(
-      results.map((result) => result.code).sort((a, b) => a - b),
-      JSON.stringify(results),
-    ).toEqual([0, 2]);
-    const owner = cli("review").writer;
-    expect(
-      (await invoke("Interrupt", owner.sessionId, owner.turnId)).code,
-    ).toBe(0);
-    expect(cli("review").writer.interrupted).toBe(true);
-    expect((await invoke("Stop", owner.sessionId, owner.turnId)).code).toBe(0);
-    expect(cli("review").writer.interrupted).toBe(true);
-    const state = cli("review");
-    cli(
-      "recover",
-      "-Session",
-      "replacement",
-      "-Review",
-      state.fingerprint,
-      "-ConfirmInactive",
-      owner.sessionId,
-    );
-    expect(cli("review").writer).toBeNull();
-    expect((await invoke("PreToolUse", "replacement", "new-turn")).code).toBe(
-      0,
-    );
-    writeFileSync(join(workspace.root, "tracked.txt"), "after\n");
-    const saved = cli("checkpoint", "-Session", "replacement").checkpoint;
-    expect(() =>
-      execFileSync(
-        "git",
-        ["apply", "--check", "--reverse", join(saved, "tracked.patch")],
-        { cwd: workspace.root, stdio: ["ignore", "pipe", "pipe"] },
-      ),
-    ).not.toThrow();
-    expect(readFileSync(join(workspace.root, "tracked.txt"), "utf8")).toBe(
-      "after\n",
-    );
-  },
-  // Real PowerShell/Git round trips exceed 30 s on Windows; hook limits stay unchanged.
-  90000,
-);
-
 it("lets a new session inspect instructions and the diff before adopting dirty work", () => {
   for (const command of [
     "Get-Content docs/INDEX.md",

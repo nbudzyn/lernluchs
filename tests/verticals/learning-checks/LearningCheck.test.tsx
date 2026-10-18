@@ -4,33 +4,39 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { LearningCheck } from "../../../src/verticals/learning-checks";
 import type { Question } from "../../../src/verticals/learning-checks";
 
-const questions: Question[] = Array.from({ length: 7 }, (_, index) => ({
-  id: `q-${index}`,
-  prompt: `Frage ${index}`,
-  options: [
-    {
-      id: "a",
-      text: `Richtig ${index}`,
-      correct: true,
-      explanation: "Belegt.",
-      sourceUrl: "https://example.org/a",
-    },
-    {
-      id: "b",
-      text: `Falsch ${index}`,
-      correct: false,
-      explanation: "Nicht belegt.",
-      sourceUrl: "https://example.org/b",
-    },
-    {
-      id: "c",
-      text: "Andere Antwort",
-      correct: false,
-      explanation: "Unpassend.",
-      sourceUrl: "https://example.org/c",
-    },
-  ],
-}));
+const questions: readonly Question[] = Object.freeze(
+  Array.from({ length: 7 }, (_, index) =>
+    Object.freeze({
+      id: `q-${index}`,
+      prompt: `Frage ${index}`,
+      options: Object.freeze(
+        [
+          {
+            id: "a",
+            text: `Richtig ${index}`,
+            correct: true,
+            explanation: "Belegt.",
+            sourceUrl: "https://example.org/a",
+          },
+          {
+            id: "b",
+            text: `Falsch ${index}`,
+            correct: false,
+            explanation: "Nicht belegt.",
+            sourceUrl: "https://example.org/b",
+          },
+          {
+            id: "c",
+            text: "Andere Antwort",
+            correct: false,
+            explanation: "Unpassend.",
+            sourceUrl: "https://example.org/c",
+          },
+        ].map((option) => Object.freeze(option)),
+      ),
+    }),
+  ),
+);
 
 afterEach(cleanup);
 
