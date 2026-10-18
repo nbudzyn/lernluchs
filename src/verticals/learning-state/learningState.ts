@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 // Bestehender Speichervertrag: Der neue Vertikalenname verändert gespeicherten Lernstand nicht.
 const storageKey = "lernluchs.learning-progress.v1";
@@ -7,6 +7,7 @@ type Snapshot = {
   learnedTopicIds: string[];
   notice: string | null;
   canSave: boolean;
+  needsReset?: boolean;
 };
 
 function readLearningState(): Snapshot {
@@ -48,6 +49,15 @@ function readLearningState(): Snapshot {
     // Invalid JSON is treated like an invalid schema below.
   }
 
+  return {
+    learnedTopicIds: [],
+    notice: null,
+    canSave: false,
+    needsReset: true,
+  };
+}
+
+function resetDamagedLearningState(): Snapshot {
   try {
     localStorage.removeItem(storageKey);
     return {
@@ -69,8 +79,15 @@ function readLearningState(): Snapshot {
 export function useLearningState() {
   const [snapshot, setSnapshot] = useState(readLearningState);
 
+  useEffect(() => {
+    if (readLearningState().needsReset) {
+      setSnapshot(resetDamagedLearningState());
+    }
+  }, []);
+
   const markLearned = useCallback((topicId: string): boolean => {
-    const current = readLearningState();
+    const stored = readLearningState();
+    const current = stored.needsReset ? resetDamagedLearningState() : stored;
     if (!current.canSave) {
       setSnapshot(current);
       return false;
