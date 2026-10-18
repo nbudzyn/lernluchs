@@ -36,8 +36,9 @@ der Hauptagent prüft die geänderten Vorgaben, Verweise und ihre Konsistenz sel
 Gesucht sind konkrete Verbesserungen für Wartbarkeit, Lesbarkeit, lokales
 Verständnis und einfache Konzepte:
 
-- Code Smells wie Feature Envy, Duplikate, unklare Verantwortlichkeiten und unnötige
-  Indirektion anhand konkreter Stellen prüfen; keine spekulativen Umbauten.
+- Vorrangig die 24 Code Smells aus Martin Fowlers *Refactoring*, 2. Auflage,
+  anhand konkreter Stellen prüfen; Maßstab und Einordnung stehen im folgenden
+  Abschnitt. Keine spekulativen Umbauten.
 - Innerhalb einer Vertikale einheitliche Konzepte verwenden. Fachlich gleiche
   Lösungen nicht mehr als zweimal wiederholen; geeignete Zusammenführung vorschlagen.
 - Technischen Code, der dasselbe Problem mehr als zweimal löst, an einem zulässigen
@@ -48,6 +49,58 @@ Verständnis und einfache Konzepte:
   bleibt. Idiomatisches TypeScript im vorhandenen Projektstil bevorzugen.
 - Tests auf verständliche fachliche Aussagen und passende Organisation prüfen;
   Styles, Templates und Konfiguration auf konkrete Wartbarkeitsprobleme prüfen.
+
+### Vorrangiger Fokus: die 24 Code Smells nach Martin Fowler
+
+Innerhalb des vereinbarten Reviewumfangs diese Smells als Prüfraster verwenden:
+
+1. Global Data
+2. Shotgun Surgery
+3. Mutable Data
+4. Duplicated Code
+5. Divergent Change
+6. Insider Trading
+7. Large Class
+8. Feature Envy
+9. Primitive Obsession
+10. Repeated Switches
+11. Long Function
+12. Mysterious Name
+13. Message Chains
+14. Refused Bequest
+15. Speculative Generality
+16. Temporary Field
+17. Data Clumps
+18. Long Parameter List
+19. Alternative Classes with Different Interfaces
+20. Data Class
+21. Middle Man
+22. Lazy Element
+23. Comments
+24. Loops
+
+Die Reihenfolge ist keine Schweregrad-Rangliste von Fowler. Nach konkretem
+Fehlerrisiko, Änderungskosten und Schaden für lokales Verständnis priorisieren.
+Ein Smell ist ein Hinweis auf ein mögliches Problem, kein automatischer Fehler.
+Belegte Probleme von bloßen Kandidaten unterscheiden; fehlende Belege und
+Unsicherheit ausdrücklich benennen. Keine Funde oder Refactorings erzwingen.
+
+Das Prüfraster idiomatisch auf React/TypeScript anwenden: Eine überladene
+Komponente kann etwa Long Function und sinngemäß Large Class zeigen; gekoppelte
+Hook-Zustände können Temporary Field oder Data Clumps entsprechen. Reine
+Datentypen, benannte Props, öffentliche Re-Exports, DOM-Refs, erklärende Kommentare
+und Schleifen sind für sich genommen keine Probleme. Vererbungs-Smells ohne
+Vererbung nicht künstlich übertragen. Überschneidende Funde zu einer konkreten
+Refactoring-Aufgabe bündeln, statt denselben Umbau mehrfach zu fordern.
+
+Pro belegtem Fund den Smell, seine konkrete Auswirkung, ein verhaltenserhaltendes
+Refactoring und dessen Umsetzungsrisiken nennen. Vorrangiger Smell-Fokus ersetzt
+weder die übrigen Qualitätsmaßstäbe noch die Prüfung konkreter Funktionsfehler,
+Datenschutzprobleme oder Projektregelverletzungen. Die bestehenden Lesegrenzen
+und genau eine Reviewrunde bleiben unverändert.
+
+Quellen: [Smell-Liste der 2. Auflage beim Verlag](https://www.informit.com/store/refactoring-improving-the-design-of-existing-code-9780134757711),
+[Fowlers Einordnung von Code Smells](https://martinfowler.com/bliki/CodeSmell.html).
 
 ## Verbindliche Lesegrenzen
 
@@ -96,6 +149,8 @@ Erwartetes Ergebnis der Story: <knappe, überprüfbare Abnahme>
 Bereits geklärte Fakten: <nur relevante Fakten mit Beleg, oder keine>
 
 Prüfe ausgehend vom Diff gezielt Zusammenhänge in den genannten Bereichen.
+Lege den Schwerpunkt auf die 24 Fowler-Smells aus dem Reviewvertrag; belege
+Probleme, bündle Überschneidungen und nenne konkrete Refactorings samt Risiken.
 Kein projektweites Bestandsreview. Gib konkrete, priorisierte Verbesserungen
 gemäß Rückgabeformat des Reviewvertrags an den Hauptagenten zurück.
 Konkrete Verständnisfragen sind erlaubt; keine separate Akzeptiert-Nachricht.
@@ -109,9 +164,11 @@ Toolprotokolle. Pro Vorschlag:
 1. Priorität: hoch (konkrete Verletzung oder erhebliches Wartbarkeitsproblem),
    mittel (belegte strukturelle Verbesserung) oder niedrig (lokale Vereinfachung).
 2. Datei, Zeile und betroffene Methode, Variable, Regel oder anderer Bezeichner.
-3. Konkretes Problem und Beleg mit Bezug zur Storyänderung.
+3. Konkretes Problem und Beleg mit Bezug zur Storyänderung; zutreffende Fowler-Smells
+   benennen und bloße Kandidaten als solche kennzeichnen.
 4. Konkretes Refactoring oder Zielmuster einschließlich vorgeschlagenem Namen,
-   Zielort und betroffenen Teilen; erwartete Wirkung ohne Funktionsänderung.
+   Zielort und betroffenen Teilen; erwartete Wirkung ohne Funktionsänderung sowie
+   konkrete Umsetzungsrisiken und dafür relevante Prüfungen.
 5. Sinnvolle Umsetzungsreihenfolge und gegebenenfalls Abhängigkeit zu einem
    anderen Vorschlag. Unsicherheit ausdrücklich benennen.
 
