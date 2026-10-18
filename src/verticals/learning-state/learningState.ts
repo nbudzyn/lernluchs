@@ -3,12 +3,26 @@ import { useCallback, useEffect, useState } from "react";
 // Bestehender Speichervertrag: Der neue Vertikalenname verändert gespeicherten Lernstand nicht.
 const storageKey = "lernluchs.learning-progress.v1";
 
-type Snapshot = {
-  learnedTopicIds: string[];
-  notice: string | null;
-  canSave: boolean;
-  needsReset?: boolean;
-};
+export type Snapshot =
+  | {
+      status: "ready";
+      learnedTopicIds: string[];
+      notice:
+        | null
+        | "Der gespeicherte Lernstand war beschädigt und wurde zurückgesetzt.";
+    }
+  | {
+      status: "unavailable";
+      learnedTopicIds: [];
+      notice: "Der Lernstand konnte nicht geladen werden.";
+    }
+  | {
+      status: "damaged";
+      learnedTopicIds: [];
+      notice:
+        | null
+        | "Der gespeicherte Lernstand ist beschädigt und konnte nicht zurückgesetzt werden.";
+    };
 
 function readLearningState(): Snapshot {
   let value: string | null;
@@ -18,12 +32,12 @@ function readLearningState(): Snapshot {
     return {
       learnedTopicIds: [],
       notice: "Der Lernstand konnte nicht geladen werden.",
-      canSave: false,
+      status: "unavailable",
     };
   }
 
   if (value === null)
-    return { learnedTopicIds: [], notice: null, canSave: true };
+    return { status: "ready", learnedTopicIds: [], notice: null };
 
   try {
     const parsed: unknown = JSON.parse(value);
@@ -42,7 +56,7 @@ function readLearningState(): Snapshot {
       return {
         learnedTopicIds: parsed.learnedTopicIds,
         notice: null,
-        canSave: true,
+        status: "ready",
       };
     }
   } catch {
@@ -52,8 +66,7 @@ function readLearningState(): Snapshot {
   return {
     learnedTopicIds: [],
     notice: null,
-    canSave: false,
-    needsReset: true,
+    status: "damaged",
   };
 }
 
@@ -64,14 +77,14 @@ function resetDamagedLearningState(): Snapshot {
       learnedTopicIds: [],
       notice:
         "Der gespeicherte Lernstand war beschädigt und wurde zurückgesetzt.",
-      canSave: true,
+      status: "ready",
     };
   } catch {
     return {
       learnedTopicIds: [],
       notice:
         "Der gespeicherte Lernstand ist beschädigt und konnte nicht zurückgesetzt werden.",
-      canSave: false,
+      status: "damaged",
     };
   }
 }
@@ -80,15 +93,16 @@ export function useLearningState() {
   const [snapshot, setSnapshot] = useState(readLearningState);
 
   useEffect(() => {
-    if (readLearningState().needsReset) {
+    if (readLearningState().status === "damaged") {
       setSnapshot(resetDamagedLearningState());
     }
   }, []);
 
   const markLearned = useCallback((topicId: string): boolean => {
     const stored = readLearningState();
-    const current = stored.needsReset ? resetDamagedLearningState() : stored;
-    if (!current.canSave) {
+    const current =
+      stored.status === "damaged" ? resetDamagedLearningState() : stored;
+    if (current.status !== "ready") {
       setSnapshot(current);
       return false;
     }

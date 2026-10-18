@@ -50,16 +50,6 @@ Umsetzung bestätigen und überschneidende Umbauten bündeln.
 - Abgrenzung: Verhalten und Frageninhalte erhalten; die unveränderlichen Typen mit der Shared-Story abstimmen und nicht zweimal implementieren.
 - Abnahme: Auswahl, Mischen, Bewertung, Abschluss, optionale Speicherung, Fehleranzeige und Fokus durch passende bestehende und gezielt ergänzte Prüfungen absichern; genau ein abschließendes Subagentenreview gemäß Reviewvertrag.
 
-## Fowler-Refactorings: Lernstand
-
-Als Entwickler möchte ich gültige Speicherzustände in `learning-state` ausdrücklich
-erkennen können. Mittlere Priorität: Primitive Obsession in
-`src/verticals/learning-state/learningState.ts`, Typ `Snapshot`.
-
-- Konkretes Refactoring: Kombination aus `canSave`, optionalem `needsReset` und `notice` durch diskriminierte Varianten wie `ready`, `unavailable` und `damaged` ersetzen; Speicherfähigkeit und Resetbedarf daraus ableiten.
-- Risiken: Beschädigte Daten, nicht verfügbarer Speicher und fehlgeschlagener Reset müssen unterscheidbar bleiben. Speicherschlüssel und gespeichertes Format erhalten; ausschließlich den eigenen beschädigten Eintrag zurücksetzen.
-- Abnahme: Laden, Rücksetzen und Speichern einschließlich Fehlerfällen verhalten sich unverändert; passende Prüfungen und genau ein abschließendes Subagentenreview gemäß Reviewvertrag. Keine Synchronisation oder zusätzliche Speicherung einführen.
-
 ## Fowler-Prüfung: Hilfe
 
 Als Entwickler möchte ich die Vertikale `help` anhand der 24 Fowler-Smells bewerten,
