@@ -798,7 +798,11 @@ describe("public content topics", () => {
   });
 
   it("preserves the existing learning paths and assigns the Git topic to a new path", () => {
-    expect(topics.paths?.slice(0, 3)).toEqual([
+    expect(
+      topics.paths
+        ?.slice(0, 3)
+        .map(({ name, topicIds }) => ({ name, topicIds })),
+    ).toEqual([
       {
         name: pathName(0),
         topicIds: [

@@ -51,7 +51,7 @@ describe("learning data organization", () => {
     expect(
       await fingerprint(
         learningPaths.map((path) => ({
-          ...path,
+          name: path.name,
           topicIds: path.topicIds
             .filter(
               (id) =>

@@ -10,53 +10,56 @@ export type SourceType =
   | "learning-video";
 
 export type TopicSource = {
-  title: string;
-  url: string;
-  type: SourceType;
-  mediaType: "text" | "audio" | "video";
-  duration?: string;
-  learningSegment?: { start: string; end: string };
-  origin: "primary" | "secondary";
-  language: "de" | "en";
-  checkedAt: string;
+  readonly title: string;
+  readonly url: string;
+  readonly type: SourceType;
+  readonly mediaType: "text" | "audio" | "video";
+  readonly duration?: string;
+  readonly learningSegment?: { readonly start: string; readonly end: string };
+  readonly origin: "primary" | "secondary";
+  readonly language: "de" | "en";
+  readonly checkedAt: string;
 };
 
 export type TopicContent = {
-  language: "de";
-  problem: string;
-  coreConcept: string;
-  javaWebUse: string;
-  boundary: string;
+  readonly language: "de";
+  readonly problem: string;
+  readonly coreConcept: string;
+  readonly javaWebUse: string;
+  readonly boundary: string;
 };
 
 export type EditorialMetadata = {
-  publishedAt: string;
-  reviewedAt: string;
-  reviewDueAt: string;
-  status: EditorialStatus;
+  readonly publishedAt: string;
+  readonly reviewedAt: string;
+  readonly reviewDueAt: string;
+  readonly status: EditorialStatus;
 };
 
 export type Topic = {
-  id: string;
-  title: string;
-  everydayAnchor: string;
-  content: TopicContent;
-  editorial: EditorialMetadata;
-  sources: TopicSource[];
+  readonly id: string;
+  readonly title: string;
+  readonly everydayAnchor: string;
+  readonly content: TopicContent;
+  readonly editorial: EditorialMetadata;
+  readonly sources: readonly TopicSource[];
 };
 
 export type Topics = {
-  version: string;
-  items: Topic[];
-  paths?: LearningPath[];
+  readonly version: string;
+  readonly items: readonly Topic[];
+  readonly paths?: readonly LearningPath[];
 };
 
+export type LearningPathId = string;
+
 export type LearningPath = {
-  name: string;
-  topicIds: string[];
+  readonly id: LearningPathId;
+  readonly name: string;
+  readonly topicIds: readonly string[];
 };
 
 export type TopicValidation = {
-  valid: boolean;
-  errors: string[];
+  readonly valid: boolean;
+  readonly errors: string[];
 };

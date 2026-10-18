@@ -75,8 +75,7 @@
   cursor: pointer;
 }
 
-.topic-actions
-  > button:not(.path-filter-button):not(.learning-check-start-button) {
+.topic-actions > .topic-select-button {
   flex: 1;
   min-width: 0;
   min-height: 3.5rem;
@@ -86,10 +85,7 @@
   overflow-wrap: anywhere;
 }
 
-.topic-actions
-  > button:not(.path-filter-button):not(
-    .learning-check-start-button
-  )[aria-pressed="true"] {
+.topic-actions > .topic-select-button[aria-pressed="true"] {
   background: var(--subtle);
   color: var(--ink);
 }
@@ -537,8 +533,7 @@
 
   .topic-browser[data-mobile-view="list"] .topic-browser-detail,
   .topic-browser[data-mobile-view="topic"] .topic-browser-list,
-  .topic-browser[data-mobile-view="help"] .topic-browser-list,
-  .topic-browser[data-mobile-view="imprint"] .topic-browser-list {
+  .topic-browser[data-supplementary-view="true"] .topic-browser-list {
     display: none;
   }
 

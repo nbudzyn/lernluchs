@@ -8,32 +8,6 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht e
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
 
-## Fowler-Refactorings: Themen
-
-Als Entwickler möchte ich die Vertikale `topics` leichter verstehen und ändern können.
-Die folgenden statisch ermittelten Befunde vor Umsetzung am aktuellen Stand bestätigen;
-Kandidaten sind keine nachgewiesenen Funktionsfehler. Innerhalb der Prioritäten in
-kleinen, verhaltenserhaltenden Schritten vorgehen und überschneidende Umbauten bündeln.
-Hoch: vor der nächsten größeren Erweiterung; mittel: bei der passenden Änderung.
-
-| Priorität | Befund / Smells und Ausgangspunkt | Konkretes Refactoring | Umsetzungsrisiken |
-| --- | --- | --- | --- |
-| Hoch | Überladener `TopicBrowser`: Long Function, sinngemäß Large Class, Divergent Change (`src/verticals/topics/TopicBrowser.tsx`, `TopicBrowser`). | `TopicList`, `LearningPathPicker` und `TopicDetails` extrahieren; Filterberechnung und Navigation in getrennte Hooks beziehungsweise reine Funktionen verschieben. `TopicBrowser` verbindet die Teile. | DOM-Änderungen beeinflussen CSS, Fokus, Accessibility und Scrollverhalten. Nicht lediglich die Komplexität in zahlreiche Props verschieben. |
-| Hoch | Ansichtenwechsel verteilt: Shotgun Surgery, Repeated Switches (`mobileView`, `supplementaryView`, Öffnungsfunktionen, Rendering und `TopicBrowser.css`). | Benannten Ansichtstyp und gemeinsames Modell ergänzender Ansichten einführen; Hilfe und Impressum über eine Zuordnung rendern und eine gemeinsame CSS-Kennung ergänzender Ansichten verwenden. | Desktop und Smartphone behandeln Auswahl und Sichtbarkeit unterschiedlich; Unterschiede und Browser-Rückweg erhalten. |
-| Mittel | Wiederholte Filterübergänge: Duplicated Code, Data Clumps, Repeated Switches (`toggleFilter`, `selectPath`, `toggleSelectedPath`, `changeQuickFilter`). | Reine Funktion `transitionFilter` für nächsten Filter, weiterhin gültige Themenauswahl und erforderlichen Ansichtswechsel extrahieren; Handler verwenden dieselbe Übergangslogik. | Alle Pfade, keine Auswahl und Themenfilter haben unterschiedliche Bedeutungen; weder Themen verstecken noch Auswahl zu früh löschen. |
-| Mittel | Implizite Scrollaufträge: Mutable Data, Temporary Field, Data Clumps (`anchor`, `scrollToPath`). | Einen diskriminierten Scrollauftrag für keine Aktion, Positionsbewahrung oder Sichtbarmachen gefilterter Themen einführen; ein Hook verarbeitet und verbraucht ihn. | Layout-, Scroll- und Fokusreihenfolge erhalten; Sprünge, doppelte Ausführung und verlorenen Fokus verhindern. |
-| Mittel | Fokuslogik kennt DOM-Innereien: Duplicated Code, Insider Trading als Kandidat (`querySelector` in Layout-Effekt und `clearFilter`, Ausschlussselektoren in CSS). | Direkte Themenbutton-Refs und `focusTopic(id)` einführen; ausdrückliche Buttonklasse statt Ausschluss anderer Aktionen verwenden. | Refs bei Filterung und Entfernen aufräumen; CSS-Spezifität und Fokusziel können sich ändern. |
-| Mittel | Bildschirmgrenze mehrfach gepflegt: Shotgun Surgery, Duplicated Code (`TopicBrowser`, `useBrowserBack`, CSS: 799/800 px). | TypeScript-Abfragen über gemeinsamen `useNarrowViewport`-Hook beziehungsweise dieselbe Media-Query-Konstante führen; Übereinstimmung mit CSS durch gezielten Vertragstest sichern. | Grenzwerte und Resize-Ereignisse erhalten. CSS und TypeScript bleiben getrennte Repräsentationen; der Test sichert ihre Kopplung. |
-| Mittel | Pfadidentität über Position: Primitive Obsession (`PathFilter`, `paths.indexOf`, React-Keys). | Stabile `LearningPathId` einführen; Filter und Keys verwenden IDs, eine Map löst sie auf. | IDs eindeutig und dauerhaft halten; Identität nicht mit Sortierreihenfolge verwechseln. |
-| Mittel | Fachliche Katalogoperationen in der UI: Feature Envy als Kandidat (`orderedPaths`, `pathsFor`, `activePaths`). | Reine interne Funktionen `sortLearningPaths`, `pathsForTopic` und `resolvePathFilter` extrahieren. | Lexikografische Reihenfolge einschließlich kürzerer Präfixe erhalten; keine versteckten React-Zustandsabhängigkeiten schaffen. |
-| Mittel | Veränderliche Kataloge: Global Data, Mutable Data (`topics.ts`, `learningPaths.ts`, `topicContract.ts`). | Themen, Quellen, Pfade und verschachtelte Arrays durchgängig `readonly` typisieren; vor Sortierungen kopieren. | Mutierende Testaufbauten brauchen eigene Kopien; TypeScript bietet keine Laufzeitsperre. |
-| Mittel | Inhaltsfelder mehrfach aufgezählt: Duplicated Code (`matchesQuickFilter`, `validateTopics`, `topicSections`). | Typisierte Abschnittsliste mit Feldschlüssel und Überschrift für Suche, Vollständigkeitsprüfung und Darstellung verwenden. | Künftige Felder sind eventuell nicht zugleich sichtbar, durchsuchbar und verpflichtend; Eigenschaften bei Bedarf getrennt beschreiben. |
-| Mittel | Zeitwerte als Strings: Primitive Obsession (`TopicSource.duration`, `learningSegment`, redaktionelle Datumswerte). | Bestehende Zeitformatprüfung und Umrechnung in `parseDuration` kapseln; Validierung nutzt geparste Sekunden. Datumsprüfung zentralisieren, öffentliches Inhaltsformat erhalten. | Akzeptierte Werte nicht nebenbei verändern. Strengere Kalender- oder Formatregeln sind eine separat zu spezifizierende Verhaltensänderung. |
-
-- Abgrenzung: Fachlichkeit bleibt in `topics`; keine neue Abhängigkeit und keine Inhaltsänderung allein für das Refactoring. Den Lerncheck-Vertrag mit der App-Story abstimmen.
-- Abnahme: Bestehendes Filter-, Pfad-, Ansichts-, History-, Fokus- und Scrollverhalten auf Desktop und Smartphone erhalten; passende Unit-/Komponenten- und E2E-Nachweise nach Qualitätsstrategie. Erledigte oder begründet verworfene Kandidaten in der aktiven Spec festhalten; genau ein abschließendes Subagentenreview gemäß Reviewvertrag.
-
-
 ## Fowler-Prüfung: Hilfe
 
 Als Entwickler möchte ich die Vertikale `help` anhand der 24 Fowler-Smells bewerten,

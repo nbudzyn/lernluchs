@@ -55,6 +55,26 @@ describe("TopicBrowser", () => {
     expect(firstExit).not.toHaveBeenCalled();
   });
 
+  it("keeps the selected path and topic when path definitions are reordered", () => {
+    const items = topics.items.slice(0, 2);
+    const paths = items.map((item) => ({
+      id: item.id,
+      name: `Pfad ${item.id}`,
+      topicIds: [item.id],
+    }));
+    const { rerender } = render(<TopicBrowser items={items} paths={paths} />);
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: `Lernpfade von ${items[0].title} filtern`,
+      }),
+    );
+    fireEvent.click(screen.getByRole("button", { name: paths[0].name }));
+    fireEvent.click(screen.getByRole("button", { name: items[0].title }));
+    rerender(<TopicBrowser items={items} paths={[...paths].reverse()} />);
+    expect(filterSummary()).toBe(`Gefiltert nach: ${paths[0].name}`);
+    expect(screen.getByRole("article", { name: items[0].title })).toBeTruthy();
+  });
+
   it("defaults to anchors and restores only valid local list preferences without touching other data", () => {
     localStorage.setItem("synthetic-learning-state", "unchanged");
     localStorage.setItem("unrelated", "unchanged");
@@ -201,6 +221,7 @@ describe("TopicBrowser", () => {
   it("shows every matching path without a fixed path limit", () => {
     const item = topics.items[0];
     const paths = Array.from({ length: 12 }, (_, index) => ({
+      id: `fixture-path-${index}`,
       name: `Lernpfad ${index + 1}`,
       topicIds: [item.id],
     }));
@@ -381,8 +402,8 @@ describe("TopicBrowser", () => {
       title: `Thema ${index}`,
     }));
     const paths = [
-      { name: "Später", topicIds: ["test-1", "test-2"] },
-      { name: "Früher", topicIds: ["test-0", "test-1"] },
+      { id: "fixture-1", name: "Später", topicIds: ["test-1", "test-2"] },
+      { id: "fixture-2", name: "Früher", topicIds: ["test-0", "test-1"] },
     ];
     render(<TopicBrowser items={items} paths={paths} />);
 
@@ -441,8 +462,16 @@ describe("TopicBrowser", () => {
       title: `Pfadthema ${index}`,
     }));
     const paths = [
-      { name: "Erster Pfad", topicIds: ["path-test-0", "path-test-1"] },
-      { name: "Zweiter Pfad", topicIds: ["path-test-0", "path-test-2"] },
+      {
+        id: "fixture-3",
+        name: "Erster Pfad",
+        topicIds: ["path-test-0", "path-test-1"],
+      },
+      {
+        id: "fixture-4",
+        name: "Zweiter Pfad",
+        topicIds: ["path-test-0", "path-test-2"],
+      },
     ];
     render(<TopicBrowser items={items} paths={paths} />);
 
@@ -477,8 +506,12 @@ describe("TopicBrowser", () => {
   it("keeps details for a topic that remains in the selected single path", () => {
     const items = topics.items.slice(0, 2);
     const paths = [
-      { name: "Beide", topicIds: items.map((item) => item.id) },
-      { name: "Nur erstes", topicIds: [items[0].id] },
+      {
+        id: "fixture-5",
+        name: "Beide",
+        topicIds: items.map((item) => item.id),
+      },
+      { id: "fixture-6", name: "Nur erstes", topicIds: [items[0].id] },
     ];
     render(<TopicBrowser items={items} paths={paths} />);
     fireEvent.click(screen.getByRole("button", { name: items[0].title }));
@@ -498,9 +531,17 @@ describe("TopicBrowser", () => {
       title: `Geändert ${index}`,
     }));
     const paths = [
-      { name: "Lang spät", topicIds: ["changed-0", "changed-2"] },
-      { name: "Kurz", topicIds: ["changed-0"] },
-      { name: "Lang früh", topicIds: ["changed-0", "changed-1"] },
+      {
+        id: "fixture-7",
+        name: "Lang spät",
+        topicIds: ["changed-0", "changed-2"],
+      },
+      { id: "fixture-8", name: "Kurz", topicIds: ["changed-0"] },
+      {
+        id: "fixture-9",
+        name: "Lang früh",
+        topicIds: ["changed-0", "changed-1"],
+      },
     ];
     render(<TopicBrowser items={items} paths={paths} />);
     fireEvent.click(
@@ -565,6 +606,7 @@ describe("TopicBrowser", () => {
         items={topics.items.slice(0, 2)}
         paths={[
           {
+            id: "fixture-10",
             name: "Gemeinsamer Pfad",
             topicIds: topics.items.slice(0, 2).map((item) => item.id),
           },
@@ -839,9 +881,9 @@ describe("Lernpfade-Auswahl", () => {
     title: `Menüthema ${index}`,
   }));
   const paths = [
-    { name: "Später", topicIds: [items[1].id, items[2].id] },
-    { name: "Früher", topicIds: [items[0].id, items[1].id] },
-    { name: "Viertes", topicIds: [items[3].id] },
+    { id: "fixture-11", name: "Später", topicIds: [items[1].id, items[2].id] },
+    { id: "fixture-12", name: "Früher", topicIds: [items[0].id, items[1].id] },
+    { id: "fixture-13", name: "Viertes", topicIds: [items[3].id] },
   ];
   const checkedNames = (picker: HTMLElement) =>
     within(picker)
@@ -984,7 +1026,11 @@ describe("Lernpfade-Auswahl", () => {
         items={items}
         paths={[
           ...paths,
-          { name: "Alle", topicIds: items.map((item) => item.id) },
+          {
+            id: "fixture-14",
+            name: "Alle",
+            topicIds: items.map((item) => item.id),
+          },
         ]}
       />,
     );
@@ -1048,7 +1094,13 @@ describe("Schnellfilter", () => {
     render(
       <TopicBrowser
         items={items}
-        paths={[{ name: "Suchpfad", topicIds: [items[0].id, items[1].id] }]}
+        paths={[
+          {
+            id: "fixture-15",
+            name: "Suchpfad",
+            topicIds: [items[0].id, items[1].id],
+          },
+        ]}
       />,
     );
     fireEvent.click(
@@ -1130,7 +1182,13 @@ describe("Schnellfilter", () => {
   });
 
   it("intersects with path filters and clears both even with no results", () => {
-    const paths = [{ name: "Suchpfad", topicIds: [items[0].id, items[1].id] }];
+    const paths = [
+      {
+        id: "fixture-16",
+        name: "Suchpfad",
+        topicIds: [items[0].id, items[1].id],
+      },
+    ];
     render(<TopicBrowser items={items} paths={paths} />);
     search("zept d");
     fireEvent.click(

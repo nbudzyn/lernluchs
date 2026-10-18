@@ -75,13 +75,33 @@ function completeTopic(id: string): Topic {
 }
 
 describe("topic validation", () => {
+  it("requires nonempty unique learning path IDs", () => {
+    const item = completeTopic("present");
+    const result = validateTopics({
+      version: "1",
+      items: [item],
+      paths: [
+        { id: "same", name: "Erster", topicIds: [item.id] },
+        { id: "same", name: "Zweiter", topicIds: [item.id] },
+        { id: " ", name: "Leer", topicIds: [item.id] },
+      ],
+    });
+    expect(result).toEqual({
+      valid: false,
+      errors: [
+        "Invalid learning path ID: Zweiter",
+        "Invalid learning path ID: Leer",
+      ],
+    });
+  });
+
   it("rejects empty learning paths and topic IDs without a matching topic", () => {
     const result = validateTopics({
       version: "1",
       items: [completeTopic("present")],
       paths: [
-        { name: "Leer", topicIds: [] },
-        { name: "Unbekannt", topicIds: ["missing"] },
+        { id: "fixture-1", name: "Leer", topicIds: [] },
+        { id: "fixture-2", name: "Unbekannt", topicIds: ["missing"] },
       ],
     });
     expect(result.errors).toContain("Empty learning path: Leer");

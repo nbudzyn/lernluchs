@@ -1,7 +1,7 @@
 import type { Topics, TopicSource, TopicValidation } from "./topicContract";
 
-const datePattern = /^\d{4}-\d{2}-\d{2}$/;
-const durationPattern = /^(?:\d+:)?\d{1,2}:[0-5]\d$/;
+import { isEditorialDate, parseDuration } from "./topicFormats";
+import { topicSections } from "./topicSections";
 const sourceTypes = new Set([
   "official-publication",
   "official-guide",
@@ -12,33 +12,29 @@ const sourceTypes = new Set([
   "learning-video",
 ]);
 
-function seconds(duration: string): number {
-  return duration
-    .split(":")
-    .reduce((total, part) => total * 60 + Number(part), 0);
-}
-
 function validMedia(source: TopicSource): boolean {
   if (!["text", "audio", "video"].includes(source.mediaType)) return false;
   if (source.type === "learning-video" && source.mediaType !== "video")
     return false;
   if (source.mediaType === "video" && !source.duration) return false;
+  const duration =
+    source.duration === undefined ? null : parseDuration(source.duration);
   if (
     source.duration !== undefined &&
-    (source.mediaType === "text" ||
-      !durationPattern.test(source.duration) ||
-      seconds(source.duration) <= 0)
+    (source.mediaType === "text" || duration === null || duration <= 0)
   )
     return false;
   const segment = source.learningSegment;
+  const start = segment && parseDuration(segment.start);
+  const end = segment && parseDuration(segment.end);
   return (
     segment === undefined ||
     (source.mediaType === "video" &&
-      source.duration !== undefined &&
-      durationPattern.test(segment.start) &&
-      durationPattern.test(segment.end) &&
-      seconds(segment.start) < seconds(segment.end) &&
-      seconds(segment.end) <= seconds(source.duration))
+      duration !== null &&
+      start != null &&
+      end != null &&
+      start < end &&
+      end <= duration)
   );
 }
 
@@ -86,18 +82,15 @@ export function validateTopics(candidate: Topics): TopicValidation {
       !hasText(item.title) ||
       typeof item.everydayAnchor !== "string" ||
       !hasText(item.everydayAnchor) ||
-      !hasText(item.content.problem) ||
-      !hasText(item.content.coreConcept) ||
-      !hasText(item.content.javaWebUse) ||
-      !hasText(item.content.boundary)
+      topicSections.some(({ key }) => !hasText(item.content[key]))
     ) {
       errors.push(`Incomplete topic: ${item.id}`);
     }
 
     if (
-      !datePattern.test(item.editorial.publishedAt) ||
-      !datePattern.test(item.editorial.reviewedAt) ||
-      !datePattern.test(item.editorial.reviewDueAt) ||
+      !isEditorialDate(item.editorial.publishedAt) ||
+      !isEditorialDate(item.editorial.reviewedAt) ||
+      !isEditorialDate(item.editorial.reviewDueAt) ||
       !editorialStatuses.has(item.editorial.status)
     ) {
       errors.push(`Invalid editorial metadata for item: ${item.id}`);
@@ -123,14 +116,23 @@ export function validateTopics(candidate: Topics): TopicValidation {
         !validMedia(source) ||
         !["primary", "secondary"].includes(source.origin) ||
         !["de", "en"].includes(source.language) ||
-        !datePattern.test(source.checkedAt)
+        !isEditorialDate(source.checkedAt)
       ) {
         errors.push(`Invalid source for item: ${item.id}`);
       }
     }
   }
 
+  const seenPathIds = new Set<string>();
   for (const path of candidate.paths ?? []) {
+    if (
+      typeof path.id !== "string" ||
+      !hasText(path.id) ||
+      seenPathIds.has(path.id)
+    ) {
+      errors.push(`Invalid learning path ID: ${path.name}`);
+    }
+    seenPathIds.add(path.id);
     if (path.topicIds.length === 0) {
       errors.push(`Empty learning path: ${path.name}`);
     }

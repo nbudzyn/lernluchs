@@ -1,8 +1,9 @@
 import type { LearningPath } from "./topicContract";
 
 // Stabile Themen-IDs; jede Pfadreihenfolge folgt der globalen Themenliste.
-export const learningPaths: LearningPath[] = [
+export const learningPaths: readonly LearningPath[] = [
   {
+    id: "learning-path-1",
     name: "Grundlagen für KI-gestützte Softwareentwicklung",
     topicIds: [
       "human-ai-responsibility",
@@ -14,6 +15,7 @@ export const learningPaths: LearningPath[] = [
     ],
   },
   {
+    id: "learning-path-2",
     name: "Änderungen gestalten und absichern",
     topicIds: [
       "problem-understanding-and-change-boundaries",
@@ -27,6 +29,7 @@ export const learningPaths: LearningPath[] = [
     ],
   },
   {
+    id: "learning-path-3",
     name: "Sicher mit Coding-Agenten arbeiten",
     topicIds: [
       "human-ai-responsibility",
@@ -40,6 +43,7 @@ export const learningPaths: LearningPath[] = [
     ],
   },
   {
+    id: "learning-path-4",
     name: "Java-/Web-Code technisch analysieren und modernisieren",
     topicIds: [
       "design-and-legacy-specification",
@@ -53,6 +57,7 @@ export const learningPaths: LearningPath[] = [
     ],
   },
   {
+    id: "learning-path-5",
     name: "Parallele Coding-Agenten kritisch erproben",
     topicIds: [
       "parallel-agent-task-boundaries",
@@ -65,6 +70,7 @@ export const learningPaths: LearningPath[] = [
     ],
   },
   {
+    id: "learning-path-6",
     name: "Projektwissen für kleine Java-/Web-Teams pflegen",
     topicIds: [
       "problem-understanding-and-change-boundaries",
@@ -77,6 +83,7 @@ export const learningPaths: LearningPath[] = [
     ],
   },
   {
+    id: "learning-path-7",
     name: "Unklare Änderungswünsche in prüfbare Aufträge übersetzen",
     topicIds: [
       "problem-understanding-and-change-boundaries",
@@ -89,6 +96,7 @@ export const learningPaths: LearningPath[] = [
     ],
   },
   {
+    id: "learning-path-8",
     name: "Agentenkontext in großen Repositories steuern",
     topicIds: [
       "project-documentation-and-checklists",
@@ -101,6 +109,7 @@ export const learningPaths: LearningPath[] = [
     ],
   },
   {
+    id: "learning-path-9",
     name: "Coding-Agenten und Spec-Systeme gezielt auswählen",
     topicIds: [
       "task-based-model-routing",
@@ -114,6 +123,7 @@ export const learningPaths: LearningPath[] = [
     ],
   },
   {
+    id: "learning-path-10",
     name: "Weboberflächen und technische Dokumentation gestalten",
     topicIds: [
       "ui-design-system-workflow",
@@ -125,6 +135,7 @@ export const learningPaths: LearningPath[] = [
     ],
   },
   {
+    id: "learning-path-11",
     name: "Sicherheit und Qualität eines Webprodukts bewerten",
     topicIds: [
       "standards-and-constraint-rationale",
@@ -140,6 +151,7 @@ export const learningPaths: LearningPath[] = [
     ],
   },
   {
+    id: "learning-path-12",
     name: "Wiederkehrende Entwicklungsarbeit kontrolliert automatisieren",
     topicIds: [
       "task-based-model-routing",
@@ -154,6 +166,7 @@ export const learningPaths: LearningPath[] = [
     ],
   },
   {
+    id: "learning-path-13",
     name: "Lokale KI-Stacks für sensible Projekte prüfen",
     topicIds: [
       "local-model-stack-evaluation",
@@ -163,6 +176,7 @@ export const learningPaths: LearningPath[] = [
     ],
   },
   {
+    id: "learning-path-14",
     name: "KI-Funktionen in Java-Webanwendungen bauen",
     topicIds: [
       "java-ai-applications",

@@ -228,7 +228,11 @@ describe("vollständige Lernpfade", () => {
   });
 
   it("bewahrt die Kernpfade und ordnet jedes Thema mindestens einem Pfad zu", () => {
-    expect(topics.paths?.slice(0, 5)).toEqual(coreLearningPaths);
+    expect(
+      topics.paths
+        ?.slice(0, 5)
+        .map(({ name, topicIds }) => ({ name, topicIds })),
+    ).toEqual(coreLearningPaths);
     expect(topics.paths?.slice(5).map((path) => path.name)).toEqual([
       pathName(5),
       pathName(6),

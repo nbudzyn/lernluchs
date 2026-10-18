@@ -1,5 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 
+import { narrowViewportQuery } from "./useNarrowViewport";
+
 const entryKey = "lernluchsBack";
 
 function isBackEntry(state: unknown) {
@@ -28,10 +30,10 @@ export function useBrowserBack(
   });
 
   useLayoutEffect(() => {
-    const narrow = window.matchMedia?.("(max-width: 799px)");
+    const narrow = window.matchMedia?.(narrowViewportQuery);
     const enabled = () =>
       alwaysEnabled ||
-      (detailOpen && !!window.matchMedia?.("(max-width: 799px)").matches);
+      (detailOpen && !!window.matchMedia?.(narrowViewportQuery).matches);
 
     function synchronize() {
       const current = navigation.current;
