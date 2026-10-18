@@ -2,52 +2,10 @@
 
 Dieses Backlog enthält nur geplante, noch nicht aktive Stories in vorgesehener Umsetzungsreihenfolge. Unmittelbar vor der Umsetzung erhält
 jede Story eine eigene Änderungs-Spec unter
-`docs/changes/active/`; danach wird sie aus dem Backlog entfernt. Die Spec dokumentiert RED → GREEN → REFACTOR.
+`docs/changes/active/`; danach wird sie aus dem Backlog entfernt. Die Spec dokumentiert RED → GREEN je Teil-Feature und ein Subagentenreview nach dem letzten GREEN der Story; reine Dokumentations-Stories sind vom Review ausgenommen.
 
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
-
-## Von Subaggent Code-Review machen lassen
-Von eigenem Agenten Code-Review machen lassen.
-- Aufwand begrenzen: Jeweils nur 1 mal
-- Hauptagent sollte nur mit gutem Grund ablehnen und die Ablehnung dokumentieren (z.B. Verweis auf Projektvorgaben)
-- Ziel: Fokussiertes Code-Review, kein Bias, wenn du es gerade selbst programmiert hast, keine Verwässerung des Haupt-Contexts.
-- Subagent:
-  - Reiner Lesezugriff (technisch durch eine Konfiguration bei der Erstellung des Sub-Agenten sicherstellen?) aufs Projekt
-  - Tools für Subagenten verbieten (npm,...) - Notiz für später: Falls wir einmal Tools zum Lesen des Codes verwenden, dann diese Tools erlauben 
-- Für das Hand-off:
-  - Der Hauptagent übergibt die geänderten Vertikalen (in aller Regel max. 2) 
-  - Hin-Übergabe: 
-    - Erwartetes Ergebnis
-      - Liste von konkreten möglichen Code-Verbesserungen (Refactorings)
-      - Immer ausgehende, von den Änderungen im Worktree
-        - Kein Review überall im Projekt!
-        - Ausgehend von den Änderungen im Worktree dann mit Blick auf den gesamten Code der vorgegebenen Vertikalen (sowie von app und shared), was z.B. Dopplungen, Neid o.Ä. betrifft
-      - Ziel:
-        - Gute Wartbarkeit, gute Lesbarkeit, lokales Verständnis, keine unnötige Komplexität
-        - Code Smells nach Martin Fowler suchen (Neid, ...) auf Lösungsvorschläge prüfen 
-        - Innerhalb je einer Vertikale einheitliche Konzepte, nichts mehr als 2x
-        - Fachlichen Code und Technischen Code trennen, so dass der Code gut fachlich lesbar ist
-        - Übliches (weitgehend aktuelles) idiomatisches TypeScript
-        - Technischer Code, der mehr als 2x auftritt (oder mehr als 2x dasselbe Problem löst) sollte in shared oder app stehen und dort zu 1x zusammengefasst sein.
-    - Bereits geklärte überprüfbare Fakten mit Quellen (relevant?)
-    - Was darf der Subagent
-      - Keine Veränderung der Funktionalität
-    - Herkunft (Adressat klar machen)
-    - Bestätigen lassen (Akzeptiert). - Was bringt das?
-    - Rückfragen erlaubt? (Nicht sinnvoll, oder?)
-  - Klare und Datensparsame Rück-Übergabe des Ergebnisses:
-    - Klare Verweise auf die Code-Stelle, klare Benennung der Methode(n), Variable(n) o.Ä.
-      - Beschreibung kurz und unter Verwendung von Fach-Terminologie:
-        - z.B. Name des Refactorings, Name des Ziel-Musters, Name der Zielarchitektur
-        - Beschreibung der Parameter (Neuer Name, Einzelne Klassen des Ziel-Musters)
-        - Dinge, die immer gleich sind, in einer Datei nennen (gemeinsame Datei), im Subagenten-Prompt nur auf die Datei verweisen
-        - Wichtigkeit
-        - Sinnvolle Reihenfolge
-
-Fehlt noch etwas? Gewisse technische Konfigurationen / CSS / HTML-Templates?
-
-Der bisherige REFACTOR-Schritt (TDD) entfällt und wird durch dieses (jeweils einmalige) Code-Review ersetzt.
 
 ## Einmaliges Code-Review jeder einzelnen Vertikale sowie von app und shared
 Einmaliges Code-Review jeder einzelnen Vertikale sowie von app und shared durch den Code-Review-Agenten

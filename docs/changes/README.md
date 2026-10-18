@@ -10,7 +10,9 @@ und Prüfung in dieser Reihenfolge. Die Übergänge brauchen keinen weiteren Auf
 2. Die geklärte Story nach den [Aktivierungsregeln](#erste-backlog-story-vorbereiten) als aktive Spec übernehmen und aus
    dem Backlog entfernen. Abnahme, Risiken und nötige Entscheidungen ergänzen.
 3. Die aktive Spec nach [TDD und Spec-Nachweisen](#tdd-und-spec-nachweise)
-   umsetzen und nach [Qualitätsstrategie](../quality/verification-strategy.md#prüfumfang-und-nachweise) prüfen.
+   umsetzen. Nach dem letzten GREEN genau ein [Subagentenreview](../quality/code-review.md)
+   durchführen, Vorschläge bearbeiten und anschließend nach
+   [Qualitätsstrategie](../quality/verification-strategy.md#prüfumfang-und-nachweise) prüfen.
 4. Dem Nutzer die fertige Änderung zur eigenen manuellen Prüfung bereitstellen.
    Den [Abschluss und die Archivierung](#abschluss-und-archivierung) durchführen.
 
@@ -40,7 +42,7 @@ Bei Formulierungen wie „Aktiviere die erste Story“ oder „Erzeuge eine acti
 
 Lege vor jeder fachlichen oder architektonischen Implementierung **eine** Datei direkt unter `active/` an. Der englische Dateiname ist kurz, eindeutig, ohne Datum oder Nummer, etwa `weave-next-learning-path.md`.
 
-Die Spec enthält knapp: Ziel und Nicht-Ziele, betroffene Vertikalen, Entscheidungen und Risiken, prüfbare Abnahme sowie RED → GREEN → REFACTOR pro Teil-Feature. Ergänze während der Arbeit RED-Grund, grüne Prüfungen, Quellenprüfung bei Inhalten und lokalen Browsernachweis (Browser, Ablauf, Ergebnis) in derselben Datei. Vor dem Commit alle Platzhalter ausfüllen.
+Die Spec enthält knapp: Ziel und Nicht-Ziele, betroffene Vertikalen, Entscheidungen und Risiken, prüfbare Abnahme sowie RED → GREEN pro Teil-Feature und das einmalige Subagentenreview nach dem letzten GREEN der Story (ausgenommen reine Dokumentations-Stories). Ergänze während der Arbeit RED-Grund, grüne Prüfungen, Reviewentscheidungen, Quellenprüfung bei Inhalten und lokalen Browsernachweis (Browser, Ablauf, Ergebnis) in derselben Datei. Vor dem Commit alle Platzhalter ausfüllen.
 
 ## Prüfung mit gezieltem Aufwand
 
@@ -56,7 +58,16 @@ Pro Teil-Feature in dieser Reihenfolge arbeiten:
 1. **RED:** Vor der Implementierung einen Test schreiben und ausführen, der aus
    fachlich korrektem Grund fehlschlägt. Vorher die Testorganisation beachten.
 2. **GREEN:** Die kleinste Implementierung ergänzen, bis der Test besteht.
-3. **REFACTOR:** Bei weiterhin grüner Testsuite refaktorieren.
+
+Nach dem letzten GREEN jeder Story erfolgt genau ein fokussiertes Review durch
+einen eigenen Subagenten nach dem [Reviewvertrag](../quality/code-review.md).
+Der Hauptagent setzt
+begründete Verbesserungen um und dokumentiert begründete Ablehnungen in der aktiven
+Spec. Danach folgen die abschließenden Prüfungen und die Nutzerfreigabe. Auch nach
+Reviewkorrekturen gibt es keine zweite Reviewrunde. Neue Funktionalität gehört
+nicht in diese Korrekturen; dafür bleibt RED → GREEN erforderlich.
+
+Bei reinen Dokumentations-Stories entfällt das Review.
 
 Ergänze Nachweise in derselben aktiven Spec. Halte bei fachlichen Inhalten vor dem
 Coding knapp fest: Aussage, möglichst primäre Quelle, Prüftag und Grenze oder

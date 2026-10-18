@@ -31,6 +31,7 @@ bereits gelesene, unveränderte Vorgaben wieder.
 | die erste Story verfeinerst oder aktivierst | [Erste Backlog-Story vorbereiten](changes/README.md#erste-backlog-story-vorbereiten) |
 | eine Story vollständig umsetzen willst | [Eine Backlog-Story vollständig umsetzen](changes/README.md#eine-backlog-story-vollständig-umsetzen) |
 | eine fachliche oder architektonische Änderung implementierst | die aktive Spec und [TDD und Spec-Nachweise](changes/README.md#tdd-und-spec-nachweise) |
+| nach dem letzten GREEN einer Story das verpflichtende Subagentenreview durchführst | [Reviewvertrag und Übergabe](quality/code-review.md) |
 | committen willst | [Abschluss und Archivierung](changes/README.md#abschluss-und-archivierung) und [Prüfumfang und Nachweise](quality/verification-strategy.md#prüfumfang-und-nachweise) |
 
 ## Geltungsreihenfolge

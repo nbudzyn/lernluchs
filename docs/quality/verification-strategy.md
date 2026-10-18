@@ -29,6 +29,12 @@ Browser-E2E und Audit laufen separat und sind keine Voraussetzung für den Pages
   Pflichtsuite nach der letzten produktrelevanten Änderung und vor dem Commit aus.
   Produktrelevant: Code, Tests, Laufzeitinhalte, App-Konfiguration, Abhängigkeiten
   und Prüfskripte. Pflichtumfang: [CI-Prüfungen](#derzeit-ausgeführte-ci-prüfungen).
+- Nach dem letzten GREEN jeder Story findet genau ein
+  [Subagentenreview](code-review.md) statt. Der Hauptagent bearbeitet die Vorschläge
+  vor dem abschließenden Testdurchlauf und der Nutzerfreigabe. Der Reviewer führt
+  selbst keine Tests aus. Reviewkorrekturen werden im passenden Umfang geprüft;
+  eine zweite Reviewrunde entfällt. Reine Dokumentations-Stories sind vom Review
+  ausgenommen; es genügen die unten geregelten inhaltlichen Prüfungen.
 - Wiederhole bestandene Prüfungen nur bei relevanter Änderung oder unklarem Stand.
   Grüne Nachweise gelten auch für den Commit, solange der geprüfte Stand eindeutig
   und für die Prüfung unverändert ist. Reine Spec-Nachweise und deren Archivierung

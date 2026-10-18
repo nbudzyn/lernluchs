@@ -22,7 +22,13 @@ Implementierungsaufgaben standardmäßig im dauerhaften Codex-Worktree `C:\proje
 
 ## Nicht verhandelbar
 
-- Teil-Features nur mit aktiver Spec und in der Reihenfolge RED → GREEN → REFACTOR implementieren.
+- Teil-Features nur mit aktiver Spec in der Reihenfolge RED → GREEN implementieren.
+- Nach dem letzten GREEN jeder Story genau ein fokussiertes Subagentenreview nach
+  [Reviewvertrag und Übergabe](docs/quality/code-review.md) durchführen. Es ersetzt
+  den bisherigen eigenständigen REFACTOR-Schritt. Der Hauptagent bearbeitet die
+  Vorschläge vor den abschließenden Prüfungen und der Nutzerfreigabe; begründete
+  Ablehnungen in der aktiven Spec festhalten. Keine zweite Reviewrunde.
+  Reine Dokumentations-Stories sind von dieser Reviewpflicht ausgenommen.
 - Committe nur bei vollständig grüner Pflichtsuite und ausdrücklich positiver Bestätigung des manuellen Tests durch den Nutzer.
 - Pro Commit höchstens zwei fachliche Vertikalen ändern; App und Shared zählen nicht mit.
   Bei mehr als zwei betroffenen Vertikalen immer vorab den Entwickler fragen,
