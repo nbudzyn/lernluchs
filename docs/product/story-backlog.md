@@ -61,17 +61,6 @@ nicht Teil dieser Story. Deshalb ist derzeit kein konkretes Refactoring beauftra
 - Risiken: Unnötige Zusammenführung von Icons könnte die bewusst unabhängige Vertikale an andere Bereiche koppeln; reine Text- oder DOM-Umbauten können Darstellung und Accessibility beeinflussen.
 - Abnahme: Entweder konkret belegte Verbesserungen mit passenden Prüfungen umsetzen oder ohne Codeänderung schließen. Keine niedrigen Befunde aufnehmen und keine Refactoring-Quote erfüllen. Das eine Subagentenreview nach Reviewvertrag ist bei einer produktrelevanten Umsetzung am Ende durchzuführen; bei rein dokumentiertem Ergebnis gilt die Dokumentationsausnahme.
 
-## Fowler-Refactorings: App
-
-Als Entwickler möchte ich den geöffneten Lerncheck ausdrücklich im Vertrag zwischen
-App und Themen erkennen. Mittlere Priorität: Mysterious Name und implizite Kopplung
-in `src/app/App.tsx`, Prop `onExitLearningCheck` des `TopicBrowser`.
-
-- Konkretes Refactoring: Die Doppelfunktion des optionalen Callbacks durch einen expliziten Vertrag ersetzen, etwa `learningCheck: { status: "closed" } | { status: "open"; onExit: () => void }`. Themen leitet den Offen-Zustand nicht mehr aus der Anwesenheit einer Funktion ab.
-- Risiken: App und Themen müssen gemeinsam umgestellt werden. Browser-Back, Scrollwiederherstellung und Fokus nach Checkende hängen an diesem Vertrag.
-- Abhängigkeit: Mit dem Navigationsrefactoring der Themen-Story und dem bereits geplanten einmaligen App-Bestandsreview abstimmen; bereits erledigte Arbeit nicht wiederholen.
-- Abnahme: Öffnen, Abbrechen, Abschluss und Browser-Rückweg erhalten; passende App- und Navigationstests sowie genau ein abschließendes Subagentenreview gemäß Reviewvertrag. Fachlogik bleibt in ihrer Vertikale.
-
 ## Fowler-Refactorings: Shared
 
 Als Entwickler möchte ich versehentliche Änderungen gemeinsam genutzter Fragen

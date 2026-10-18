@@ -13,9 +13,10 @@ Die Präferenz bleibt vom Lernstand getrennt und ausschließlich im Browser gesp
 verfügbaren Lernchecks und der gelernten Themen über ihre öffentliche
 Komponentenschnittstelle. Ihr öffentlicher Einstiegspunkt exportiert die
 Themenliste. Sie verantwortet auch den Browser-Rückweg aus schmalen Themen- und
-Hilfe- und Impressumansichten. Für einen aktiven Lerncheck erhält sie von `app` einen optionalen
-Abbruchrückruf; der Browser-Rückweg zeigt dann bei jeder Breite die Liste und
-beendet den Check über diesen Rückruf. Einzelne Fragen erzeugen keine eigenen
+Hilfe- und Impressumansichten. Für Lernchecks erhält sie von `app` den expliziten Vertrag
+`learningCheck: { status: "closed" } | { status: "open"; onExit: () => void }`;
+ohne Angabe ist der Check geschlossen. Der Browser-Rückweg zeigt bei offenem Check
+bei jeder Breite die Liste und beendet ihn über `onExit`. Einzelne Fragen erzeugen keine eigenen
 Verlaufseinträge. Der Vorwärtsbutton behält sein natives Verhalten.
 
 ## Bestehende Vertikale: Hilfe
