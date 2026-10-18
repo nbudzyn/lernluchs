@@ -5,6 +5,8 @@ Bei unklarem Vorgehen zu Sessionbeginn gilt diese Reihenfolge:
 Die verbindlichen Schritte und der Umfang eines Implementierungsauftrags stehen
 im [Änderungs-Workflow](README.md); die Handlungsschranken in [AGENTS.md](../../AGENTS.md).
 
+Vor einer Implementierung den [Worktree-Ablauf](../quality/worktrees.md) anwenden: dauerhaften Codex-Worktree vom festen Entwickler-Checkout trennen, bei paralleler Arbeit zusätzliche Worktrees verwenden und vor Änderungen die Story-Zuordnung sowie den Schreibbesitzer prüfen und alle Edits sowie Tests im zugeordneten Arbeitsordner ausführen.
+
 1. Neue Stories und Ideen zuerst im [Story-Backlog](../product/story-backlog.md) nach geplanter Umsetzungsreihenfolge eintragen.
 2. Die erste Story mit dem Entwickler verfeinern, offene Fragen klären und Ergebnisse in der Story festhalten.
 3. Erst danach die Story als aktive Spec unter `docs/changes/active/` übernehmen und aus dem Backlog entfernen.

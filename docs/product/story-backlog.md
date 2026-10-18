@@ -7,36 +7,6 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Auf Git Worktrees umstellen
-Auf Git Worktrees umstellen
-- Ziele:
-  - Der Entwickler kann parallel arbeiten (z.B. am story-backlog)
-  - Leichteres Commit (keine parallelen Änderungen oder alte Änderungen durch den Entwickler)
-  - Möglicherweise parallel arbeitende Agenten
-  - Evtl. später separate Worktrees für Sub-Agenten
-
-Jeder Worktree soll bei Bedarf separat in IntelliJ geöffnet werden können (auch parallel.)
-
-- Vorher recherchieren, was in unserem Setup zu beachten ist
-  - IntelliJ?
-    - Muss man eine oder mehrere gewisse IntelliJ-Dateien (workspace.xml?) in .gitignore aufnehmen (und ggf. aus dem Branch entfernen?)
-  - Jeder Agent kann nur seinen einzelnen Worktree lesen?
-
-Push geschieht weiterhin nur durch den Entwickler
-
-Sollte man parallele lokale Installationen (Testläufe) unterstützen?
-- Abwägung Vor- und Nachteile, auch mit Blick auf die bisherigen Projektvorgaben
-- Was wäre zu tun, um die Anwendung mehrfach lokal zu installieren?
-- Lokale GUI-Tests?
-- Dynamische Ports? Jeder Worktree seine eigenen (konfigurierten) Ports?
-  - Sollte man dazu ein spezielles Tool / Skript verwenden?
-
-Sollten wir Dopplungen (Ver-dreifachungen,...) vermeiden, indem wir Dateien sharen?
-
-Hat am Ende jeder Worktree seinen eigenen Branch? Oder geht es auch einfacher (z.B. Änderungen im Story-Backlog)?
-
-Klare Vorgabe (auch als Info an den Entwickler, wenn relevant): Workspace darf nicht einfach im Dateisystem gelöscht werden, sondern muss mit git worktree remove (oder so ähnlich) entfernt werden. (Recherchieren!)
-
 ## Von Subaggent Code-Review machen lassen
 Von eigenem Agenten Code-Review machen lassen.
 - Aufwand begrenzen: Jeweils nur 1 mal

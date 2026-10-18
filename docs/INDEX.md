@@ -8,6 +8,7 @@ bereits gelesene, unveränderte Vorgaben wieder.
 | Wenn du … | lies zuerst |
 | --- | --- |
 | zu Beginn einer Session den Entwicklungsablauf klären willst | [Entwicklungsablauf im Überblick](changes/development-flow.md) |
+| Implementierungsaufgaben beginnst, Arbeitsorte oder parallele lokale Starts einrichtest | [Worktree-Ablauf](quality/worktrees.md) |
 | den aktuellen Funktionsumfang verstehen willst | [Produktstand](product/vision-and-scope.md) |
 | den aktuellen Aufbau oder Architekturgrenzen brauchst | [Architektur und Leitplanken](architecture/target-architecture.md) |
 | einen Begriff nachschlagen willst | [Glossar](product/glossary.md) |

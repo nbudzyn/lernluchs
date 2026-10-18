@@ -4,6 +4,10 @@ Lies zuerst `docs/INDEX.md` und bestimme alle Pflichtlektüren für den Auftrag.
 Bei Story-Arbeit lies danach die relevante aktive Spec oder Backlog-Story.
 Hier stehen die Kernregeln; der Index verlinkt die maßgeblichen Details.
 
+## Arbeitsort
+
+Implementierungsaufgaben standardmäßig im dauerhaften Codex-Worktree `C:\projects\2026\lernluchs\workspace-codex-primary\lernluchs` bearbeiten; der feste Entwickler-Checkout `C:\projects\2026\lernluchs\workspace\lernluchs` bleibt beim Entwickler. Parallele unabhängige Arbeit bekommt eigene temporäre Worktrees und Branches. Vor dem ersten Edit den [Worktree-Ablauf](docs/quality/worktrees.md) lesen, tatsächlichen Arbeitsort, Branch, aktive Spec und Schreibbesitzer prüfen. Alle Edits und Tests im zugeordneten Worktree ausführen. Bestehende Story-Arbeit darf uncommittet fortgesetzt werden; niemals wegen einer neuen Sitzung verwerfen. Neue Story nur im freien sauberen Worktree, Wiederaufnahme nach Abbruch nur mit geprüfter Übernahme. Schutzstatus und Sicherungen bleiben lokal außerhalb von Git. Hooks erst nach bewusster Vertrauensprüfung verwenden; sie ersetzen nicht den sicheren Ablauf. Fremde Änderungen nicht übernehmen oder stagen. Push führt ausschließlich der Entwickler aus. Den dauerhaften Worktree nach einer Story oder Chat-Archivierung behalten. Temporäre Worktrees über Codex beziehungsweise `git worktree remove` entfernen, nie durch Löschen des Ordners.
+
 ## Vor jedem Lesen und Tool-Aufruf
 
 - Bei „erste Story“ nur bis zur nächsten gleichrangigen Backlog-Überschrift lesen.

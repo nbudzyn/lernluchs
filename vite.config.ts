@@ -1,5 +1,6 @@
 import { configDefaults, defineConfig } from "vitest/config";
 import { loadEnv } from "vite";
+import { localServers } from "./local-servers";
 import react from "@vitejs/plugin-react";
 import questions from "./src/verticals/learning-checks/questions.json" with { type: "json" };
 import type { Question } from "./src/shared/question";
@@ -72,7 +73,10 @@ export default ${JSON.stringify(rows)}.map(([id, prompt, options]) => ({
 export default defineConfig(({ mode }) => {
   const { PAGES_BASE_PATH: pagesBasePath } = loadEnv(mode, "", "");
 
+  const { devPort } = localServers(mode);
+
   return {
+    server: { host: "127.0.0.1", port: devPort, strictPort: true },
     base: pagesBasePath || "/",
     plugins: [react(), questionPoolModules()],
     build: {

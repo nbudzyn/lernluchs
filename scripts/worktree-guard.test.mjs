@@ -1,0 +1,405 @@
+// @vitest-environment node
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import {
+  mkdtempSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  mkdirSync,
+  writeFileSync,
+} from "node:fs";
+import { execFileSync, spawn } from "node:child_process";
+import { fileURLToPath } from "node:url";
+import { tmpdir } from "node:os";
+import { join, resolve, sep } from "node:path";
+import { WorktreeGuard, handleHook } from "./worktree-guard.mjs";
+
+let directory;
+let workspace;
+let processStatus;
+let guard;
+beforeEach(() => {
+  directory = mkdtempSync(join(tmpdir(), "lernluchs-guard-test-"));
+  workspace = {
+    root: join(directory, "project"),
+    linked: true,
+    branch: "codex/current-story",
+    head: "a".repeat(40),
+    specs: ["git-worktrees.md"],
+    dirty: true,
+    diff: "public source patch",
+    untracked: [],
+  };
+  processStatus = "alive";
+  guard = new WorktreeGuard({
+    stateDirectory: join(directory, "state"),
+    inspect: () => ({ ...workspace }),
+    ownerProcess: () => ({ pid: 123, startedAt: "identity-1" }),
+    processStatus: () => processStatus,
+  });
+});
+afterEach(() => {
+  if (!resolve(directory).startsWith(resolve(tmpdir()) + sep))
+    throw new Error("Unsafe cleanup path.");
+  rmSync(directory, { recursive: true, force: true });
+});
+function adopt() {
+  guard.adopt("session-a", guard.review().fingerprint);
+}
+
+describe("worktree write ownership", () => {
+  it("allows one writer and rejects another session without changing its work", () => {
+    adopt();
+    guard.claim("session-a", "turn-a");
+    const before = guard.review();
+    expect(() => guard.claim("session-b", "turn-b")).toThrow(/belegt/);
+    expect(guard.review()).toEqual(before);
+  });
+
+  it("keeps the story while releasing only the matching completed turn", () => {
+    adopt();
+    guard.claim("session-a", "turn-a");
+    guard.release("session-b", "turn-a");
+    guard.release("session-a", "wrong-turn");
+    expect(() => guard.claim("session-b", "turn-b")).toThrow(/belegt/);
+    guard.release("session-a", "turn-a");
+    guard.claim("session-b", "turn-b");
+    expect(guard.review().writer.sessionId).toBe("session-b");
+    expect(guard.review().task.branch).toBe("codex/current-story");
+  });
+
+  it("requires review for an existing dirty story and preserves changes on continuation", () => {
+    expect(() => guard.claim("session-a", "turn-a")).toThrow(/prüfen/);
+    adopt();
+    guard.claim("session-a", "turn-a");
+    guard.release("session-a", "turn-a");
+    guard.claim("session-b", "turn-b");
+    expect(workspace.diff).toBe("public source patch");
+    expect(guard.review().task.specs).toEqual(["git-worktrees.md"]);
+  });
+
+  it("rejects developer checkouts, unexpected branches and changed story identities", () => {
+    for (const update of [
+      { linked: false },
+      { branch: "main" },
+      { branch: null },
+    ]) {
+      const original = { ...workspace };
+      Object.assign(workspace, update);
+      expect(
+        () => guard.adopt("session-a", guard.review().fingerprint),
+        JSON.stringify(update),
+      ).toThrow(/Worktree|Branch/);
+      Object.assign(workspace, original);
+    }
+    adopt();
+    for (const update of [
+      { branch: "codex/other" },
+      { specs: ["other-story.md"] },
+    ]) {
+      const original = { ...workspace };
+      Object.assign(workspace, update);
+      expect(
+        () => guard.claim("session-a", "turn-a"),
+        JSON.stringify(update),
+      ).toThrow(/Story/);
+      Object.assign(workspace, original);
+    }
+  });
+
+  it("allows clean new worktrees while keeping independent worktrees separate", () => {
+    workspace.dirty = false;
+    workspace.specs = [];
+    guard.claim("session-a", "turn-a");
+    const other = new WorktreeGuard({
+      stateDirectory: join(directory, "other-state"),
+      inspect: () => ({ ...workspace, root: join(directory, "other-project") }),
+      ownerProcess: () => null,
+      processStatus: () => "unknown",
+    });
+    other.claim("session-b", "turn-b");
+    expect(guard.review().writer.sessionId).toBe("session-a");
+    expect(other.review().writer.sessionId).toBe("session-b");
+  });
+
+  it("preserves interrupted ownership and ignores lock age", () => {
+    adopt();
+    guard.claim("session-a", "turn-a");
+    guard.interrupt("session-a", "turn-a");
+    expect(guard.review().writer.interrupted).toBe(true);
+    expect(() => guard.claim("session-b", "turn-b")).toThrow(/belegt/);
+    expect(() =>
+      guard.recover("session-b", "turn-b", guard.review().fingerprint),
+    ).toThrow(/inaktiv/);
+  });
+
+  it("recovers a dead owner only after reviewing the unchanged work", () => {
+    adopt();
+    guard.claim("session-a", "turn-a");
+    processStatus = "dead";
+    const review = guard.review();
+    workspace.diff = "new edit after review";
+    expect(() =>
+      guard.recover("session-b", "turn-b", review.fingerprint),
+    ).toThrow(/erneut prüfen/);
+    guard.recover("session-b", "turn-b", guard.review().fingerprint);
+    expect(guard.review().writer.sessionId).toBe("session-b");
+    expect(workspace.diff).toBe("new edit after review");
+  });
+
+  it("requires explicit inactivity confirmation for unknown or still-live owners", () => {
+    for (const state of ["alive", "unknown"]) {
+      processStatus = state;
+      adopt();
+      guard.claim("session-a", "turn-a");
+      expect(() =>
+        guard.recover("session-b", "turn-b", guard.review().fingerprint),
+      ).toThrow(/inaktiv/);
+      guard.recover(
+        "session-b",
+        "turn-b",
+        guard.review().fingerprint,
+        "session-a",
+      );
+      expect(guard.review().writer.sessionId).toBe("session-b");
+      guard.release("session-b", "turn-b");
+    }
+  });
+
+  it("rejects stale reviews, invalid session identifiers and corrupted ownership", () => {
+    const review = guard.review();
+    workspace.diff = "changed";
+    expect(() => guard.adopt("session-a", review.fingerprint)).toThrow(
+      /erneut prüfen/,
+    );
+    expect(() => guard.adopt("../other", guard.review().fingerprint)).toThrow(
+      /Sitzung/,
+    );
+    adopt();
+    guard.claim("session-a", "turn-a");
+    const files = readdirSync(join(directory, "state"));
+    expect(files).toContain("writer.json");
+    expect(
+      readFileSync(join(directory, "state", "writer.json"), "utf8"),
+    ).not.toContain("public source patch");
+  });
+});
+
+it("does not block read-only post events in developer checkouts", () => {
+  workspace.linked = false;
+  workspace.branch = "main";
+  expect(() =>
+    handleHook(
+      {
+        hook_event_name: "PostToolUse",
+        session_id: "reader",
+        turn_id: "read-turn",
+      },
+      guard,
+    ),
+  ).not.toThrow();
+});
+it("rejects outside paths for direct edits and patch moves", () => {
+  adopt();
+  for (const tool_input of [
+    { file_path: join(directory, "outside.txt") },
+    { input: "*** Update File: safe.txt\n*** Move to: ../outside.txt\n" },
+  ]) {
+    expect(() =>
+      handleHook(
+        {
+          hook_event_name: "PreToolUse",
+          tool_name: "Write",
+          tool_input,
+          session_id: "session-a",
+          turn_id: "turn-a",
+        },
+        guard,
+      ),
+    ).toThrow(/Worktree/);
+  }
+});
+it("saves tracked and untracked changes locally without editing the worktree", () => {
+  mkdirSync(workspace.root);
+  const source = join(workspace.root, "new.txt");
+  writeFileSync(source, "new source\n");
+  workspace.untracked = [{ path: "new.txt" }];
+  adopt();
+  const saved = guard.checkpoint("session-a");
+  expect(readFileSync(join(saved, "tracked.patch"), "utf8")).toBe(
+    workspace.diff,
+  );
+  expect(readFileSync(join(saved, "untracked/new.txt"), "utf8")).toBe(
+    "new source\n",
+  );
+  expect(readFileSync(source, "utf8")).toBe("new source\n");
+});
+it("fails closed for damaged ownership data", () => {
+  adopt();
+  writeFileSync(guard.writerPath, "{broken");
+  expect(() => guard.claim("session-a", "turn-a")).toThrow(/beschädigt/);
+  expect(readFileSync(guard.writerPath, "utf8")).toBe("{broken");
+});
+it.skipIf(process.platform !== "win32")(
+  "serializes real Windows hook processes and preserves an interrupted story",
+  async () => {
+    const repository = join(directory, "repository");
+    mkdirSync(repository);
+    const git = (...args) =>
+      execFileSync("git", args, {
+        cwd: repository,
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "pipe"],
+      });
+    git("init", "-b", "main");
+    writeFileSync(join(repository, "tracked.txt"), "before\n");
+    git("add", "tracked.txt");
+    git(
+      "-c",
+      "user.name=Test",
+      "-c",
+      "user.email=test@example.invalid",
+      "commit",
+      "--allow-empty",
+      "-m",
+      "fixture",
+    );
+    git("worktree", "add", "-b", "codex/fixture", workspace.root);
+    const script = fileURLToPath(
+      new URL("./worktree-guard.ps1", import.meta.url),
+    );
+    const cli = (...args) => {
+      const result = execFileSync(
+        "powershell.exe",
+        ["-NoProfile", "-File", script, ...args],
+        {
+          cwd: workspace.root,
+          env: {
+            ...process.env,
+            LERNLUCHS_GUARD_STATE_DIR: join(directory, "real-state"),
+          },
+          encoding: "utf8",
+        },
+      );
+      return JSON.parse(result);
+    };
+    const invoke = (event, session, turn) =>
+      new Promise((resolveResult, reject) => {
+        const child = spawn(
+          "powershell.exe",
+          ["-NoProfile", "-File", script, "hook"],
+          {
+            cwd: workspace.root,
+            env: {
+              ...process.env,
+              LERNLUCHS_GUARD_STATE_DIR: join(directory, "real-state"),
+            },
+            windowsHide: true,
+          },
+        );
+        let stdout = "",
+          stderr = "";
+        child.stdout.on("data", (value) => {
+          stdout += value;
+        });
+        child.stderr.on("data", (value) => {
+          stderr += value;
+        });
+        child.on("error", reject);
+        child.on("close", (code) => resolveResult({ code, stdout, stderr }));
+        child.stdin.end(
+          JSON.stringify({
+            hook_event_name: event,
+            cwd: workspace.root,
+            session_id: session,
+            turn_id: turn,
+            tool_name: "Bash",
+            tool_input: { command: "Write-Output guard-test" },
+          }),
+        );
+      });
+    const results = await Promise.all([
+      invoke("PreToolUse", "session-a", "turn-a"),
+      invoke("PreToolUse", "session-b", "turn-b"),
+    ]);
+    expect(
+      results.map((result) => result.code).sort((a, b) => a - b),
+      JSON.stringify(results),
+    ).toEqual([0, 2]);
+    const owner = cli("review").writer;
+    expect(
+      (await invoke("Interrupt", owner.sessionId, owner.turnId)).code,
+    ).toBe(0);
+    expect(cli("review").writer.interrupted).toBe(true);
+    expect((await invoke("Stop", owner.sessionId, owner.turnId)).code).toBe(0);
+    expect(cli("review").writer.interrupted).toBe(true);
+    const state = cli("review");
+    cli(
+      "recover",
+      "-Session",
+      "replacement",
+      "-Review",
+      state.fingerprint,
+      "-ConfirmInactive",
+      owner.sessionId,
+    );
+    expect(cli("review").writer).toBeNull();
+    expect((await invoke("PreToolUse", "replacement", "new-turn")).code).toBe(
+      0,
+    );
+    writeFileSync(join(workspace.root, "tracked.txt"), "after\n");
+    const saved = cli("checkpoint", "-Session", "replacement").checkpoint;
+    expect(() =>
+      execFileSync(
+        "git",
+        ["apply", "--check", "--reverse", join(saved, "tracked.patch")],
+        { cwd: workspace.root, stdio: ["ignore", "pipe", "pipe"] },
+      ),
+    ).not.toThrow();
+    expect(readFileSync(join(workspace.root, "tracked.txt"), "utf8")).toBe(
+      "after\n",
+    );
+  },
+  30000,
+);
+
+it("lets a new session inspect instructions and the diff before adopting dirty work", () => {
+  for (const command of [
+    "Get-Content docs/INDEX.md",
+    "Get-Content -Raw docs/quality/worktrees.md",
+    "Get-Content AGENTS.md",
+    "git diff",
+  ]) {
+    expect(
+      () =>
+        handleHook(
+          {
+            hook_event_name: "PreToolUse",
+            tool_name: "Bash",
+            tool_input: { command },
+            session_id: "new-session",
+            turn_id: "new-turn",
+          },
+          guard,
+        ),
+      command,
+    ).not.toThrow();
+  }
+  expect(guard.review().writer).toBeNull();
+  expect(guard.review().task).toBeNull();
+  expect(() =>
+    handleHook(
+      {
+        hook_event_name: "PreToolUse",
+        tool_name: "Bash",
+        tool_input: {
+          command:
+            "Get-Content docs/INDEX.md; Set-Content modified.txt changed",
+        },
+        session_id: "new-session",
+        turn_id: "new-turn",
+      },
+      guard,
+    ),
+  ).toThrow(/prüfen/);
+});

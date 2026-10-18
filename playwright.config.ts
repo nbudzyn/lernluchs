@@ -1,17 +1,20 @@
 import { defineConfig, devices } from "@playwright/test";
+import { localServers } from "./local-servers";
+
+const { e2ePort, e2eOrigin } = localServers();
 
 export default defineConfig({
   testDir: "./e2e",
   fullyParallel: false,
   reporter: "list",
   use: {
-    baseURL: "http://127.0.0.1:4173",
+    baseURL: e2eOrigin,
     // Existing title workflows represent a returning user's explicit choice.
     storageState: {
       cookies: [],
       origins: [
         {
-          origin: "http://127.0.0.1:4173",
+          origin: e2eOrigin,
           localStorage: [
             { name: "lernluchs.topic-list-view.v1", value: "topics" },
           ],
@@ -24,8 +27,8 @@ export default defineConfig({
     { name: "mobile-chromium", use: { ...devices["Pixel 7"] } },
   ],
   webServer: {
-    command: "node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173",
-    url: "http://127.0.0.1:4173",
-    reuseExistingServer: true,
+    command: `node node_modules/vite/bin/vite.js --host 127.0.0.1 --port ${e2ePort} --strictPort`,
+    url: e2eOrigin,
+    reuseExistingServer: false,
   },
 });

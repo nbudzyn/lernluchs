@@ -4,10 +4,12 @@ import { expect, test } from "@playwright/test";
 test("shows learning videos without external loading and opens one on request", async ({
   page,
   context,
+  baseURL,
 }) => {
+  const appOrigin = new URL(baseURL!).origin;
   const externalRequests: string[] = [];
   context.on("request", (request) => {
-    if (!request.url().startsWith("http://127.0.0.1:4173"))
+    if (new URL(request.url()).origin !== appOrigin)
       externalRequests.push(request.url());
   });
   await context.route("https://www.youtube.com/**", (route) =>

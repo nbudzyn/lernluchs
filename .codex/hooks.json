@@ -1,0 +1,83 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "powershell.exe -NoProfile -Command \"& (Join-Path (& git rev-parse --show-toplevel) 'scripts/worktree-guard.ps1') hook\"",
+            "timeout": 15,
+            "type": "command",
+            "commandWindows": "powershell.exe -NoProfile -Command \"& (Join-Path (& git rev-parse --show-toplevel) 'scripts/worktree-guard.ps1') hook\""
+          }
+        ],
+        "matcher": ".*"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "powershell.exe -NoProfile -Command \"& (Join-Path (& git rev-parse --show-toplevel) 'scripts/worktree-guard.ps1') hook\"",
+            "timeout": 15,
+            "type": "command",
+            "commandWindows": "powershell.exe -NoProfile -Command \"& (Join-Path (& git rev-parse --show-toplevel) 'scripts/worktree-guard.ps1') hook\""
+          }
+        ],
+        "matcher": ".*"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "powershell.exe -NoProfile -Command \"& (Join-Path (& git rev-parse --show-toplevel) 'scripts/worktree-guard.ps1') hook\"",
+            "timeout": 15,
+            "type": "command",
+            "commandWindows": "powershell.exe -NoProfile -Command \"& (Join-Path (& git rev-parse --show-toplevel) 'scripts/worktree-guard.ps1') hook\""
+          }
+        ],
+        "matcher": ".*"
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "command": "powershell.exe -NoProfile -Command \"& (Join-Path (& git rev-parse --show-toplevel) 'scripts/worktree-guard.ps1') hook\"",
+            "timeout": 15,
+            "type": "command",
+            "commandWindows": "powershell.exe -NoProfile -Command \"& (Join-Path (& git rev-parse --show-toplevel) 'scripts/worktree-guard.ps1') hook\""
+          }
+        ],
+        "matcher": ".*"
+      }
+    ],
+    "Interrupt": [
+      {
+        "hooks": [
+          {
+            "command": "powershell.exe -NoProfile -Command \"& (Join-Path (& git rev-parse --show-toplevel) 'scripts/worktree-guard.ps1') hook\"",
+            "timeout": 3,
+            "type": "command",
+            "commandWindows": "powershell.exe -NoProfile -Command \"& (Join-Path (& git rev-parse --show-toplevel) 'scripts/worktree-guard.ps1') hook\""
+          }
+        ],
+        "matcher": ".*"
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "command": "powershell.exe -NoProfile -Command \"& (Join-Path (& git rev-parse --show-toplevel) 'scripts/worktree-guard.ps1') hook\"",
+            "timeout": 3,
+            "type": "command",
+            "commandWindows": "powershell.exe -NoProfile -Command \"& (Join-Path (& git rev-parse --show-toplevel) 'scripts/worktree-guard.ps1') hook\""
+          }
+        ],
+        "matcher": ".*"
+      }
+    ]
+  },
+  "description": "Lokaler Windows-Worktree-Schutz; Definitionen vor Aktivierung prüfen."
+}

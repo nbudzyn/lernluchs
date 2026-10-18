@@ -9,8 +9,8 @@
   "scripts": {
     "dev": "vite",
     "typecheck": "tsc --noEmit",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx}\" \"tests/**/*.{ts,tsx}\" \"e2e/**/*.ts\" \"scripts/**/*.mjs\" \".github/workflows/*.yml\" \"*.{json,ts,cjs}\"",
-    "lint": "oxlint --type-aware --deny-warnings src tests e2e scripts vite.config.ts playwright.config.ts dependency-cruiser.cjs",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\" \"tests/**/*.{ts,tsx}\" \"e2e/**/*.ts\" \"scripts/**/*.mjs\" \".github/workflows/*.yml\" \"*.{json,ts,cjs}\" \".codex/hooks.json\"",
+    "lint": "oxlint --type-aware --deny-warnings src tests e2e scripts local-servers.ts vite.config.ts playwright.config.ts dependency-cruiser.cjs",
     "test": "vitest",
     "test:unit": "node scripts/test-runner.mjs unit",
     "test:e2e": "node scripts/test-runner.mjs e2e",
