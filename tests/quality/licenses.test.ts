@@ -17,6 +17,7 @@ describe("license gate", () => {
     "AGPL-3.0-only",
     "SSPL-1.0",
     "UNLICENSED",
+    "Apache-2.0 AND GPL-3.0-only",
     undefined,
   ])("rejects prohibited or unknown license %s", (license) =>
     expect(checkLicenses(lock(license))).not.toEqual([]),
@@ -28,5 +29,6 @@ describe("license gate", () => {
   });
   it("accepts known permissive licenses", () => {
     expect(checkLicenses(lock("MIT"))).toEqual([]);
+    expect(checkLicenses(lock("Apache-2.0 AND MIT"))).toEqual([]);
   });
 });
