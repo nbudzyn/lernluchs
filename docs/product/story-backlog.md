@@ -9,6 +9,8 @@ Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden E
 
 ## Zehn respektable Quellen oder Persönlichkeiten finden, die aktuelle Entwicklungen bei der agentengetriebenen Software-Entwicklung vorantreiben und dokumentieren
 Zehn respektable Quellen oder Persönlichkeiten finden, die aktuelle Entwicklungen bei der agentengetriebenen Software-Entwicklung vorantreiben und dokumentieren.
+Woher überlegen, wo solche Personen sich aufhalten würden und wie man sie findet.
+
 Dann jeweils die letzten Entwicklungen (letzte 6 Monate) ermitteln und je Quelle als Stichworte zusammen stellen.
 - Dabei nennen:
   - neue / geänderte Vorgehensweisen
