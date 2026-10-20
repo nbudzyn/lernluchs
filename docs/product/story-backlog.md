@@ -25,6 +25,11 @@ Danach auf Themen verteilen. Konkret bleiben. Wenn angebracht, Aktualitätsdaten
 
 Themen die auch danach noch kryptische oder sehr ähnlich sind, zusammenführen (lassen)
 
+## Primärquellen in NotebookLM werfen
+Primärquellen in NotebookLM werfen
+- Von Hand? Tool schreiben lassen? In die Anwendung integrieren?!
+- Mit Adressaten und Aktualitätsvorgabe
+
 ## Prozess schärfen, ggf. vereinfachen
 Prozess schärfen, ggf. vereinfachen
 - Entwickeln immer in dem Workspace, der für die Session gewählt wurde?
