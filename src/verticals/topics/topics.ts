@@ -3,7 +3,7 @@ import type { Topics } from "./topicContract";
 
 // Themenreihenfolge: Einträge hier verschieben. IDs bleiben stabil.
 export const topics: Topics = {
-  version: "16",
+  version: "17",
   items: [
     {
       id: "human-ai-responsibility",
@@ -1101,7 +1101,7 @@ export const topics: Topics = {
       },
       editorial: {
         publishedAt: "2026-09-20",
-        reviewedAt: "2026-09-26",
+        reviewedAt: "2026-10-21",
         reviewDueAt: "2026-12-20",
         status: "active",
       },
@@ -1134,6 +1134,25 @@ export const topics: Topics = {
           language: "en",
           mediaType: "text",
           checkedAt: "2026-09-26",
+        },
+        {
+          title: "Boris Tane – How I Use Claude Code",
+          url: "https://boristane.com/blog/how-i-use-claude-code/",
+          type: "reference-site",
+          origin: "primary",
+          mediaType: "text",
+          language: "en",
+          checkedAt: "2026-10-21",
+        },
+        {
+          title: "Warum KI-Agenten ohne Markdown-Plan scheitern",
+          url: "https://notebook.google.com/notebook/4d11bf4c-c3b3-4f0e-a69e-8dc0be511835/artifact/13a375b4-f5fd-4e99-aa84-9c0565a3b164",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "20:03",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-21",
         },
         {
           title: "Vom Senior-Entwickler zum kritischen KI-Verifier",
@@ -2401,7 +2420,7 @@ export const topics: Topics = {
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-10-20",
+        reviewedAt: "2026-10-21",
         reviewDueAt: "2027-01-20",
         status: "active",
       },
@@ -2450,6 +2469,16 @@ export const topics: Topics = {
           origin: "primary",
           language: "en",
           checkedAt: "2026-10-07",
+        },
+        {
+          title: "Agent Skills und Evals für verlässlichen Code",
+          url: "https://notebook.google.com/notebook/ae71e380-e0d3-4e72-b918-7d0640e22297/artifact/e2cbd97e-5cb1-4bff-9573-bd9a94f36f8c",
+          type: "audio-summary",
+          mediaType: "audio",
+          duration: "22:33",
+          origin: "secondary",
+          language: "de",
+          checkedAt: "2026-10-21",
         },
         {
           title: "Zero Trust für KI-Agenten",

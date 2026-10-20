@@ -16,6 +16,7 @@ bereits gelesene, unveränderte Vorgaben wieder.
 | Code oder Laufzeitverhalten änderst | [Architekturregeln](governance/durable-rules.md#architektur-und-änderungen) |
 | in einer Vertikalen implementierst | die passende Änderungs-Spec, [übergreifende Grenzen](architecture/verticals-and-boundaries.md#übergreifende-grenzen) und die Abschnitte der betroffenen Vertikalen |
 | Themen, Quellen, Lernpfade oder Fragen bearbeitest oder prüfst | [Gemeinsame Inhaltsregeln](content/editorial-policy.md#gemeinsame-inhaltsregeln) |
+| NotebookLM-Podcasts aus Primärquellen beauftragst, prüfst oder übernimmst | [Podcast-Ablauf](content/notebooklm-podcasts.md) |
 | bestehende Thementexte, Titel oder Alltagsanker änderst | [Sprache und Stil](content/editorial-policy.md#sprache-und-stil) |
 | redaktionelle Metadaten bearbeitest | [Pflichtmetadaten](content/editorial-policy.md#pflichtmetadaten) |
 | fachliche Aussagen oder Quellen prüfst oder änderst | [Fachliche Qualitätsprüfung](content/editorial-policy.md#fachliche-qualitätsprüfung) und [Quellenregeln](content/source-selection.md) |

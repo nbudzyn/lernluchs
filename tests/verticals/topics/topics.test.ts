@@ -16,7 +16,7 @@ const expectedEditorialDatesByTopic: Record<string, readonly [string, string]> =
     "open-knowledge-format": ["2026-09-27", "2026-12-27"],
     "agents-md": ["2026-10-09", "2027-01-09"],
     "ears-requirements": ["2026-09-26", "2027-03-20"],
-    "research-plan-tasks": ["2026-09-26", "2026-12-20"],
+    "research-plan-tasks": ["2026-10-21", "2026-12-20"],
     "context-selection-and-reset": ["2026-10-20", "2027-01-20"],
     "java-ai-applications": ["2026-10-07", "2027-01-07"],
     "task-based-model-routing": ["2026-10-09", "2027-01-09"],
@@ -27,7 +27,7 @@ const expectedEditorialDatesByTopic: Record<string, readonly [string, string]> =
     "local-model-stack-evaluation": ["2026-09-27", "2026-12-27"],
     "coding-agent-interface-selection": ["2026-10-20", "2027-01-20"],
     "spec-driven-development-openspec": ["2026-10-08", "2026-12-20"],
-    "agent-skills-and-commands": ["2026-10-20", "2027-01-20"],
+    "agent-skills-and-commands": ["2026-10-21", "2027-01-20"],
     "codegraphs-for-large-repos": ["2026-10-07", "2027-01-07"],
     "ui-design-system-workflow": ["2026-09-27", "2026-12-27"],
     "module-boundaries-and-public-interfaces": ["2026-09-27", "2027-03-27"],
@@ -640,6 +640,48 @@ describe("public content topics", () => {
         )
         .toBe("https:");
     }
+  });
+  it("places the new primary-source podcast first and retains the earlier audio", () => {
+    for (const [id, duration, oldUrl] of [
+      [
+        "agent-skills-and-commands",
+        "22:33",
+        "https://notebooklm.link.google/3r54pMvsIYVd",
+      ],
+      [
+        "research-plan-tasks",
+        "20:03",
+        "https://notebook.google.com/notebook/e8f2213d-6d4e-4a47-a523-fd9163a6a96e/artifact/afab811e-4bd2-4fb2-96fc-59406ac984be",
+      ],
+    ]) {
+      const topic = topics.items.find((item) => item.id === id);
+      const [newest, ...earlier] =
+        topic?.sources.filter((source) => source.origin === "secondary") ?? [];
+
+      expect.soft(newest).toMatchObject({
+        type: "audio-summary",
+        mediaType: "audio",
+        origin: "secondary",
+        language: "de",
+        checkedAt: "2026-10-21",
+        duration,
+      });
+      expect.soft(newest?.duration).toMatch(/^(?:\d+:)?\d{1,2}:[0-5]\d$/);
+      expect.soft(earlier.map((source) => source.url)).toContain(oldUrl);
+    }
+  });
+  it("includes an independent research and planning practice as a textual primary source", () => {
+    const topic = topics.items.find(
+      (item) => item.id === "research-plan-tasks",
+    );
+    expect(topic?.sources).toContainEqual(
+      expect.objectContaining({
+        url: "https://boristane.com/blog/how-i-use-claude-code/",
+        origin: "primary",
+        mediaType: "text",
+        checkedAt: "2026-10-21",
+      }),
+    );
   });
   it("curates current sources for every topic outside the foundation path", () => {
     const foundationIds = new Set(topics.paths?.[0].topicIds);

@@ -8,11 +8,6 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Primärquellen in NotebookLM werfen
-Primärquellen in NotebookLM werfen
-- Von Hand? Tool schreiben lassen? In die Anwendung integrieren?!
-- Mit Adressaten und Aktualitätsvorgabe
-
 ## Prozess schärfen, ggf. vereinfachen
 Prozess schärfen, ggf. vereinfachen
 - Entwickeln immer in dem Workspace, der für die Session gewählt wurde?
