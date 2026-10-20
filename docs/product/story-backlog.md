@@ -8,23 +8,6 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Zehn respektable Quellen oder Persönlichkeiten finden, die aktuelle Entwicklungen bei der agentengetriebenen Software-Entwicklung vorantreiben und dokumentieren
-Zehn respektable Quellen oder Persönlichkeiten finden, die aktuelle Entwicklungen bei der agentengetriebenen Software-Entwicklung vorantreiben und dokumentieren.
-Woher überlegen, wo solche Personen sich aufhalten würden und wie man sie findet.
-
-Dann jeweils die letzten Entwicklungen (letzte 6 Monate) ermitteln und je Quelle als Stichworte zusammen stellen.
-- Dabei nennen:
-  - neue / geänderte Vorgehensweisen
-  - neue / geänderte Standards
-  - "Rising" Tools, Default-Standard-Tools
-  - veraltetes Vorgehen / Tools
-
-Irrelevant: Herstellerspezifika, neue Modellversionen
-
-Danach auf Themen verteilen. Konkret bleiben. Wenn angebracht, Aktualitätsdaten erhöhen.
-
-Themen die auch danach noch kryptische oder sehr ähnlich sind, zusammenführen (lassen)
-
 ## Primärquellen in NotebookLM werfen
 Primärquellen in NotebookLM werfen
 - Von Hand? Tool schreiben lassen? In die Anwendung integrieren?!

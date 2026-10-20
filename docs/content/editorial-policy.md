@@ -52,6 +52,11 @@ Einordnung verändern könnten. Dokumentiere Quelle, Datum, Unsicherheiten und g
 Für Auswahl, Ergänzung und Ersatz von Quellen gelten die
 [Quellenregeln](source-selection.md). Jedes bestehende und neue Thema erhält kuratiert ausgewählte Quellen nach diesen Regeln.
 
+Die Quellenregeln beschreiben auch [geeignete Quellentypen](source-selection.md#welche-quellen-helfen),
+das [Finden prägender Personen](source-selection.md#wie-findet-man-die-personen)
+und das [gezielte Aktualisieren von Themen](source-selection.md#themen-gezielt-aktualisieren).
+Persönliche Empfehlungen, belegte Änderungen und Popularitätssignale getrennt einordnen.
+
 Für neue quellengebundene Fragen gelten die
 [Regeln zur Fragenerstellung und Prüfung](question-authoring.md). 42 der 48 aktuellen Themen besitzen Fragen; die drei bisherigen Integrationsthemen,
 Evals und Traces sowie Modell-Routing und Herkunft/Kennzeichnung von KI-Inhalten zunächst nicht.

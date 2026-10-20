@@ -3,7 +3,7 @@ import type { Topics } from "./topicContract";
 
 // Themenreihenfolge: Einträge hier verschieben. IDs bleiben stabil.
 export const topics: Topics = {
-  version: "15",
+  version: "16",
   items: [
     {
       id: "human-ai-responsibility",
@@ -111,14 +111,14 @@ export const topics: Topics = {
         coreConcept:
           "Vor dem Coding klärt ein gezieltes Gespräch Zielgruppe, Nutzen, gewünschtes Ergebnis, Beispiele und bekannte Fakten sowie erlaubten Umfang, Nicht-Ziele, prüfbare Akzeptanzkriterien und ein überprüfbares Ende. Bei Unsicherheit werden die entscheidungsrelevanten Fragen zuerst gestellt; fehlender Nutzen kann zum Abbruch führen.",
         javaWebUse:
-          "Vor einer neuen oder geänderten Spring-API werden betroffene Aufrufer, erlaubte Antworten, Fehlerfälle und Abnahme mit dem Auftraggeber besprochen. API-Vertrag, betroffene fachliche Module, Sicherheitsgrenzen und Regressionstests halten den Änderungsumfang fest. Ein Interview-Skill wie grill-with-docs kann das Gespräch führen und gemeinsam verwendete Fachbegriffe sowie Entscheidungen in Glossar und ADRs festhalten; wayfinder zerlegt größere Vorhaben in voneinander abhängige Entscheidungen.",
+          "Vor einer neuen oder geänderten Spring-API werden betroffene Aufrufer, erlaubte Antworten, Fehlerfälle und Abnahme mit dem Auftraggeber besprochen. API-Vertrag, betroffene fachliche Module, Sicherheitsgrenzen und Regressionstests halten den Änderungsumfang fest. Ein Interview-Skill wie grill-with-docs kann das Gespräch führen und gemeinsam verwendete Fachbegriffe sowie Entscheidungen in Glossar und ADRs festhalten; wayfinder zerlegt größere Vorhaben in voneinander abhängige Entscheidungen. Vincents Superpowers-Ansatz vom Oktober 2026 ergänzt das Interview: den Bedarf zuerst zurückspiegeln und den Prozess danach bemessen. Für einen kleinen API-Fix reicht eine kurze Vereinbarung; eine neue Bestellfunktion braucht geklärte Fachregeln und ein Design.",
         boundary:
           "Diese Klärung ist kein schwerer Prozess für jeden Tippfehler und keine verpflichtende lange Brainstorming-Runde. Bei kleinen, eindeutig isolierten Korrekturen reicht eine entsprechend kleine Prüfung; ungeklärte Fachregeln dürfen nicht geraten werden.",
       },
       editorial: {
         publishedAt: "2026-09-20",
-        reviewedAt: "2026-10-09",
-        reviewDueAt: "2027-01-09",
+        reviewedAt: "2026-10-20",
+        reviewDueAt: "2027-01-20",
         status: "active",
       },
       sources: [
@@ -259,6 +259,15 @@ export const topics: Topics = {
           mediaType: "text",
           checkedAt: "2026-10-09",
         },
+        {
+          title: "Jesse Vincent – bedarfsgerechtes Brainstorming",
+          url: "https://blog.fsck.com/2026/10/09/what-a-year/",
+          type: "reference-site",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
+        },
       ],
     },
     {
@@ -370,14 +379,14 @@ export const topics: Topics = {
         coreConcept:
           "Beobachtungen aus Code, Tests, Anwenderbeobachtung und Fachgespräch werden getrennt von Annahmen festgehalten. Für riskante Änderungen skizzieren Datenstrukturen, Pseudocode und Gegenbeispiele die beabsichtigte Lösung.",
         javaWebUse:
-          "Vor dem Ersatz einer Java-Berechnungsroutine werden repräsentative Ein- und Ausgaben aufgenommen und als Regressionstests festgehalten; erst danach wird die neue Struktur entworfen.",
+          "Vor dem Ersatz einer Java-Berechnungsroutine werden repräsentative Ein- und Ausgaben aufgenommen und als Regressionstests festgehalten; erst danach wird die neue Struktur entworfen. Majors betont beobachtetes Verhalten als zusätzliche Grundlage: Charakterisierungstests und Capture/Replay können vorhandene Erwartungen vor einer Migration sichtbar machen. Für einen Spring-Dienst lassen sich bereinigte Beispielanfragen gegen alte und neue Implementierung vergleichen. Das ist eine redaktionelle Übertragung ihrer Betriebsperspektive; Beobachtung beweist nicht, dass das Altverhalten fachlich richtig ist.",
         boundary:
           "Eine von KI erzeugte Spezifikation bleibt eine Hypothese, bis sie gegen Systemverhalten und Fachwissen geprüft wurde. GOAP ist ein Planungsmodell, kein Standard für jede Webänderung.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-09-27",
-        reviewDueAt: "2027-03-27",
+        reviewedAt: "2026-10-20",
+        reviewDueAt: "2027-01-20",
         status: "active",
       },
       sources: [
@@ -445,6 +454,16 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-09-30",
+        },
+        {
+          title:
+            "Charity Majors – Verhalten, Observability und Engineering-Disziplin",
+          url: "https://charity.wtf/p/ai-demands-more-engineering-discipline",
+          type: "reference-site",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
         },
       ],
     },
@@ -1180,14 +1199,14 @@ export const topics: Topics = {
         coreConcept:
           "Relevante Ausschnitte werden gezielt gesucht. Ergebnisse werden knapp mit Fundstellen verdichtet und bei Widersprüchen neu geprüft. Unabhängige Aufgaben können in getrennten Kontexten bearbeitet werden.",
         javaWebUse:
-          "Für einen Spring-Fehler werden nur Endpunkt, aufgerufener Service und passende Tests gelesen; nach einem falschen Ansatz wird der geprüfte Stand neu zusammengefasst.",
+          "Für einen Spring-Fehler werden nur Endpunkt, aufgerufener Service und passende Tests gelesen; nach einem falschen Ansatz wird der geprüfte Stand neu zusammengefasst. Horthy beschreibt bewusste Verdichtung: Recherche mit Fundstellen abschließen, einen geprüften Designstand festhalten und die Umsetzung in einem frischen Kontext darauf aufbauen. Bei einer Spring-Migration bleibt so die entschiedene API-Regel erhalten, während verworfene Ansätze nicht den nächsten Lauf bestimmen. Seine Token-Grenzwerte sind Erfahrungswerte, keine allgemeine technische Grenze.",
         boundary:
           "Durch Compaction können Details verloren gehen. Ein Kontext-Reset ersetzt weder Quellprüfung noch technische Isolation von Dateien, Rechten und Diensten. Prompting ist außerdem modellabhängig: Die Leitfäden für Claude Fable 5 und Opus 5 unterscheiden sich etwa bei langen Aufgaben und zusätzlicher Überprüfung. Umfang und gewünschte Antwortlänge passend zum verwendeten Modell formulieren; vereinbarte Pflichtprüfungen bleiben verbindlich.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-10-09",
-        reviewDueAt: "2027-01-09",
+        reviewedAt: "2026-10-20",
+        reviewDueAt: "2027-01-20",
         status: "active",
       },
       sources: [
@@ -1280,6 +1299,16 @@ export const topics: Topics = {
           language: "en",
           mediaType: "text",
           checkedAt: "2026-10-09",
+        },
+        {
+          title:
+            "Dex Horthy – bewusste Verdichtung und begrenzte Automatisierung",
+          url: "https://newsletter.pragmaticengineer.com/p/context-engineering-with-dex-horthy",
+          type: "reference-site",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
         },
       ],
     },
@@ -2009,14 +2038,14 @@ export const topics: Topics = {
         coreConcept:
           "Codex, Copilot, Claude Code, Kiro und Junie werden an einer konkreten Aufgabe nach Laufumgebung, Rechten, Review und Kosten verglichen. Junie arbeitet in JetBrains-IDEs und im Terminal. Lokale Ausführung erleichtert die Arbeit mit vorhandenen Tools und dem Debugger; Cloud-Ausführung kann Aufgaben asynchron in einer eingerichteten Umgebung bearbeiten. Gemini Gems sind wiederverwendbare Assistenten, aber kein Ersatz für einen Coding-Workflow. ChatGPT Dots sind ein Beispiel für dauerhaft arbeitende Cloud-Agenten mit eigenen Aufgaben und Erinnerung; sie können auch bei ausgeschaltetem lokalen Rechner weiterarbeiten.",
         javaWebUse:
-          "Das Team lässt dieselbe begrenzte Spring-Änderung einmal in seiner IDE und einmal in einer zugelassenen Cloud-Umgebung bearbeiten. Es prüft, ob Build und Tests dort funktionieren, wie Zugangsdaten bereitgestellt werden und wie viel Nacharbeit der Diff verlangt. Entscheidend sind Ergebnis, Datenfluss und Review-Aufwand, nicht die schönste Oberfläche.",
+          "Das Team lässt dieselbe begrenzte Spring-Änderung einmal in seiner IDE und einmal in einer zugelassenen Cloud-Umgebung bearbeiten. Es prüft, ob Build und Tests dort funktionieren, wie Zugangsdaten bereitgestellt werden und wie viel Nacharbeit der Diff verlangt. Entscheidend sind Ergebnis, Datenfluss und Review-Aufwand, nicht die schönste Oberfläche. Spracheingabe kann Anforderungen mit einer lokalen Web-Vorschau verbinden. Willison beschrieb im Oktober 2026 einen solchen Ablauf; danach korrigierte er den generierten Import im PR-Review. Für einen Spring-/React-Ablauf bedeutet das: Eingabeform nach Aufgabe wählen und Verhalten, Diff sowie Zugangsdaten weiterhin bewusst prüfen.",
         boundary:
           "Ein lokales Terminal bedeutet keine lokale Modellverarbeitung: Ein Agent kann Code an einen externen Modellanbieter senden. Eine Cloud-Umgebung ist nur so reproduzierbar wie ihre Einrichtung. Funktionen und Preise ändern sich; Produktnamen ersetzen weder Datenfreigaben noch eigene Messungen. Bei Dots hängt der Zugang von der schrittweisen Freischaltung ab; verbundene Anwendungen und der übergebene Kontext bestimmen ihre Handlungsmöglichkeiten.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-10-09",
-        reviewDueAt: "2027-01-09",
+        reviewedAt: "2026-10-20",
+        reviewDueAt: "2027-01-20",
         status: "active",
       },
       sources: [
@@ -2142,6 +2171,16 @@ export const topics: Topics = {
           language: "en",
           mediaType: "text",
           checkedAt: "2026-10-09",
+        },
+        {
+          title:
+            "Simon Willison – Spracheingabe, lokale Vorschau und abschließendes Review",
+          url: "https://simonwillison.net/2026/Oct/9/built-using-my-voice/",
+          type: "reference-site",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
         },
       ],
     },
@@ -2358,12 +2397,12 @@ export const topics: Topics = {
         javaWebUse:
           "Nach mehreren erfolgreichen Spring-Migrationen bündelt das Team Vorbereitung, Umsetzung, Tests und Abbruchfälle in einem Skill. Ändert sich die Anleitung, prüfen eigene Evals an repräsentativen Aufgaben, ob der Agent die nötigen Tests noch ausführt und problematische Fälle erkennt. So wird aus einer guten Einzelanweisung ein überprüfter Arbeitsprozess. Interview, teach, Handoff und Code-Review aus Matt Pococks Sammlung zeigen unterschiedliche Aufgabenformen. Ein gepflegtes Promptverzeichnis kann als Ausgangspunkt dienen; Einsatzbeschreibung, Ressourcen und Fehlerfälle machen daraus einen verwendbaren Skill.",
         boundary:
-          "Das offene Format garantiert nicht, dass jede Oberfläche alle Ressourcen gleich behandelt. Ein Skill sorgt auch nicht für Sicherheit: Fremde Anleitungen und Skripte vor Installation auf Herkunft, Verhalten und benötigte Rechte prüfen. Eine Rollenbeschreibung ersetzt keine konkreten Akzeptanzkriterien.",
+          "Das offene Format garantiert nicht, dass jede Oberfläche alle Ressourcen gleich behandelt. Ein Skill sorgt auch nicht für Sicherheit: Fremde Anleitungen und Skripte vor Installation auf Herkunft, Verhalten und benötigte Rechte prüfen. Eine Rollenbeschreibung ersetzt keine konkreten Akzeptanzkriterien. Skills regelmäßig ausdünnen: Pocock entfernte im Oktober 2026 resolving-merge-conflicts, weil ein eigener Skill dafür nicht mehr nötig war. Sein retro trennt mechanisch prüfbare Regeln von Ermessensfragen: Erstere gehören in Linter oder CI. Huntleys Kritik an großen Skill-Paketen ist eine Gegenposition, kein Beleg, dass Skills generell veraltet sind.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-10-09",
-        reviewDueAt: "2027-01-09",
+        reviewedAt: "2026-10-20",
+        reviewDueAt: "2027-01-20",
         status: "active",
       },
       sources: [
@@ -2471,6 +2510,26 @@ export const topics: Topics = {
           language: "en",
           mediaType: "text",
           checkedAt: "2026-10-09",
+        },
+        {
+          title:
+            "Matt Pocock – entfernte Skills und technische Regeln (Release 1.3.1)",
+          url: "https://github.com/mattpocock/skills/releases/tag/v1.3.1",
+          type: "repository",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
+        },
+        {
+          title:
+            "Geoffrey Huntley – Gegenposition zu umfangreichen Skill-Paketen",
+          url: "https://ghuntley.com/agency/",
+          type: "reference-site",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
         },
       ],
     },
@@ -3116,14 +3175,14 @@ export const topics: Topics = {
         coreConcept:
           "Ein koordinierender Agent vergibt begrenzte Teilaufträge an spezialisierte Subagents mit eigener Aufgabe, eigenem Kontext, Eingaben, festgelegten Tools und erwartetem Ergebnis. Vor der Delegation werden unabhängige Ergebnisse, Dateibesitz, Entscheidungszuständigkeiten, Akzeptanzkriterien und Abbruchbedingungen auf Basis von Zeit, Kosten oder fehlender Evidenz festgelegt.",
         javaWebUse:
-          "Ein Agent untersucht die Java-API und ein anderer den React-Aufrufvertrag; beide liefern Befunde zu getrennten Dateien, bevor ein Mensch die gemeinsame Änderung plant. Bei einer Spring-Migration prüft ein Subagent die Tests, ein anderer die Dokumentationsfolgen; die Hauptinstanz bewertet beide Befunde gegen denselben API-Vertrag.",
+          "Ein Agent untersucht die Java-API und ein anderer den React-Aufrufvertrag; beide liefern Befunde zu getrennten Dateien, bevor ein Mensch die gemeinsame Änderung plant. Bei einer Spring-Migration prüft ein Subagent die Tests, ein anderer die Dokumentationsfolgen; die Hauptinstanz bewertet beide Befunde gegen denselben API-Vertrag. Pococks implement-spec bildet Tickets als Abhängigkeitsgraph ab: Nur Aufgaben mit erfüllten Voraussetzungen starten parallel in eigenen Worktrees. Ein Integrationsbranch sammelt geprüfte Ergebnisse. Eine Änderung am gemeinsamen API-Vertrag muss vor den davon abhängigen Implementierungen geklärt werden.",
         boundary:
           "Parallelität hilft bei tatsächlich trennbaren Aufgaben. Gemeinsame Schnittstellen und widersprüchliche Befunde brauchen eine koordinierte Entscheidung. Rollenbeschreibungen schränken Änderungsrechte nicht technisch ein: getrennte Worktrees, begrenzte Rechte und ein abschließender Diff-Review bleiben nötig. Ein zusätzlicher Agent ist kein Selbstzweck; einfache Aufgaben können seriell schneller sein.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-10-08",
-        reviewDueAt: "2026-12-27",
+        reviewedAt: "2026-10-20",
+        reviewDueAt: "2027-01-20",
         status: "active",
       },
       sources: [
@@ -3257,6 +3316,15 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-09-30",
+        },
+        {
+          title: "Matt Pocock – implement-spec, pr und retro (Release 1.3.1)",
+          url: "https://github.com/mattpocock/skills/releases/tag/v1.3.1",
+          type: "repository",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
         },
       ],
     },
@@ -3460,14 +3528,14 @@ export const topics: Topics = {
         coreConcept:
           "RTK verdichtet typische Kommandoausgaben; Headroom komprimiert eingehenden Kontext und hält Originale für erneuten Abruf vor. Caveman kürzt die Antwortprosa, Ponytail vermeidet unnötigen Code durch Wiederverwendung und begrenzten Umfang. Die Werkzeuge greifen an verschiedenen Stellen ein.",
         javaWebUse:
-          "Ein Java-/Web-Team vergleicht einen Testlauf mit und ohne Verdichtung und kontrolliert, ob Fehlermeldungen und relevante Testnamen vollständig auffindbar bleiben.",
+          "Ein Java-/Web-Team vergleicht einen Testlauf mit und ohne Verdichtung und kontrolliert, ob Fehlermeldungen und relevante Testnamen vollständig auffindbar bleiben. Code Mode ergänzt Ausgabefilter: Der Agent schreibt begrenzten Code, der strukturierte Werkzeugergebnisse kombiniert und nur relevante Befunde ins Modellfenster zurückgibt. Bei hundert Java-Buildmeldungen werden etwa Fehler nach Modul gruppiert; vollständige Diagnosen bleiben lokal auffindbar. Ronacher beschreibt dies im Oktober 2026 als Ergänzung zu Shell und MCP.",
         boundary:
           "Die ältere Variante Caveman Code wird seit August 2026 nicht mehr gepflegt. Projektbenchmarks und Videoangaben garantieren keine Einsparung im eigenen Ablauf. Verdichtung kann Fehlerdetails verlieren; knappe Antworten und weniger Code müssen die Anforderungen weiterhin vollständig erfüllen. Datenfluss und Zugriff auf Originale vor dem Einsatz prüfen.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-10-03",
-        reviewDueAt: "2027-01-03",
+        reviewedAt: "2026-10-20",
+        reviewDueAt: "2027-01-20",
         status: "active",
       },
       sources: [
@@ -3557,6 +3625,16 @@ export const topics: Topics = {
           origin: "secondary",
           language: "en",
           checkedAt: "2026-09-30",
+        },
+        {
+          title:
+            "Armin Ronacher – Code Mode und strukturierte Werkzeugausgaben",
+          url: "https://lucumr.pocoo.org/2026/10/6/codemode/",
+          type: "reference-site",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
         },
       ],
     },
@@ -3762,7 +3840,7 @@ export const topics: Topics = {
         problem:
           "Ein Java-Service soll Werkzeuge anbieten, ein anderer Agent übernimmt eine Recherche, und der Entwickler steuert seinen Coding-Agenten im Editor. Für diese drei Verbindungen werden unterschiedliche Protokolle und Lebenszyklen gebraucht.",
         coreConcept:
-          "MCP verbindet eine KI-Anwendung mit Werkzeugen und Kontextquellen; A2A verbindet Agenten über Nachrichten, Tasks und Ergebnisse. ACP meint hier Agent Client Protocol und verbindet Editor beziehungsweise Client und Coding-Agent. MCP 2026-07-28 führt einen zustandslosen Protokollkern ein: Anfragen tragen ihre nötigen Angaben selbst, Rückfragen verwenden Multi Round-Trip Requests, und Zusatzfähigkeiten werden über Erweiterungen organisiert.",
+          "MCP verbindet eine KI-Anwendung mit Werkzeugen und Kontextquellen; A2A verbindet Agenten über Nachrichten, Tasks und Ergebnisse. ACP meint hier Agent Client Protocol und verbindet Editor beziehungsweise Client und Coding-Agent. MCP 2026-07-28 führt einen zustandslosen Protokollkern ein: Anfragen tragen ihre nötigen Angaben selbst, Rückfragen verwenden Multi Round-Trip Requests, und Zusatzfähigkeiten werden über Erweiterungen organisiert. Im ACP-Changelog 1.11.0 vom 9. Oktober 2026 sind Sitzungsmeldungen und Compaction stabilisiert; als unstable oder v2 markierte Erweiterungen sind davon zu unterscheiden. Bei MCP 2026-07-28 entfallen initialize/initialized und der Mcp-Session-Id-Header. Eine Anwendung mit älterer Revision braucht weiterhin deren Vertrag; Schema-/SDK-Versionen sind keine Protokollrevisionen.",
         javaWebUse:
           "Das Team bietet einen begrenzten Recherche-Service als MCP-Werkzeug an und delegiert längere Arbeit über A2A. Vor der Verbindung prüft es die tatsächlich unterstützte Protokollrevision: Die aktive Java-SDK-Linie 2.0.x unterstützt MCP 2025-11-25; die Roadmap sieht 2026-07-28 für 3.x vor. Der Editor nutzt ACP für Sitzungen, Fortschritt und Berechtigungsanfragen.",
         boundary:
@@ -3770,8 +3848,8 @@ export const topics: Topics = {
       },
       editorial: {
         publishedAt: "2026-10-03",
-        reviewedAt: "2026-10-07",
-        reviewDueAt: "2027-01-07",
+        reviewedAt: "2026-10-20",
+        reviewDueAt: "2027-01-20",
         status: "active",
       },
       sources: [
@@ -3818,7 +3896,7 @@ export const topics: Topics = {
           mediaType: "text",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-10-07",
+          checkedAt: "2026-10-20",
         },
         {
           title: "MCP Java SDK – gepflegte Linien und Protokollrevisionen",
@@ -3827,7 +3905,7 @@ export const topics: Topics = {
           mediaType: "text",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-10-07",
+          checkedAt: "2026-10-20",
         },
         {
           title: "MCP Java SDK – Roadmap für die nächste Protokollrevision",
@@ -3836,7 +3914,7 @@ export const topics: Topics = {
           mediaType: "text",
           origin: "primary",
           language: "en",
-          checkedAt: "2026-10-07",
+          checkedAt: "2026-10-20",
         },
         {
           title: "Wie ACP, MCP und A2A KI-Agenten verbinden",
@@ -3858,6 +3936,16 @@ export const topics: Topics = {
           language: "en",
           checkedAt: "2026-10-07",
         },
+        {
+          title:
+            "Agent Client Protocol – stabilisierte und experimentelle Änderungen",
+          url: "https://github.com/agentclientprotocol/agent-client-protocol/blob/main/CHANGELOG.md",
+          type: "repository",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
+        },
       ],
     },
     {
@@ -3872,14 +3960,14 @@ export const topics: Topics = {
         coreConcept:
           "Harness und CI führen feste technische Prüfungen selbst aus und sperren die Übernahme bei Fehlern. Befehle, Exitcodes und Pflichtstatus sind maschinell prüfbar. Evals ergänzen diese Gates um repräsentative Agentenaufgaben und ausdrückliche Bewertungsmaßstäbe für Ergebnisse und Toolabläufe. Eine qualitative Bewertung wird dadurch nachvollziehbar, aber nicht automatisch fehlerfrei. Shell-Hooks starten festgelegte Befehle an Ereignissen wie einem Toolaufruf oder Sitzungsende und können einen Schritt bei Fehlern blockieren.",
         javaWebUse:
-          "Für einen Spring- und React-Patch laufen Build, Typprüfung, Unit- und Browser-Tests als feste Gates. Ändert der Patch den Support-Agenten, vergleicht das Team zusätzlich dessen Antworten, Quellen und Toolentscheidungen mit einer festgelegten Eval-Suite. Technische Checks und fachliche Mindestkriterien müssen vor der Übernahme erfüllt sein.",
+          "Für einen Spring- und React-Patch laufen Build, Typprüfung, Unit- und Browser-Tests als feste Gates. Ändert der Patch den Support-Agenten, vergleicht das Team zusätzlich dessen Antworten, Quellen und Toolentscheidungen mit einer festgelegten Eval-Suite. Technische Checks und fachliche Mindestkriterien müssen vor der Übernahme erfüllt sein. Huntley fordert, auch die Ausführungsumgebung reproduzierbar unter Test zu stellen, etwa mit Nix. Für einen Spring-/React-Build umfasst das festgelegte Laufzeiten, Abhängigkeiten und isolierte Testdaten. Eine Schleife braucht maschinenprüfbare Erfolgskriterien und ein Ende bei fehlendem Fortschritt; seine Kritik am manuellen Review ist keine Freigabe, risikoreiche Änderungen ungeprüft zu übernehmen.",
         boundary:
           "Ein übersprungener oder falsch konfigurierter Check kann grün erscheinen. Auch ein Eval kann am eigentlichen Problem vorbeimessen, etwa nur schöne Formulierungen statt korrekter Quellen bewerten. Das Team prüft daher Testfälle, Bewertungsmaßstäbe und Gate-Konfiguration; grüne Ergebnisse ersetzen kein fachliches Review. Prompt- oder agentbasierte Hooks liefern modellbasierte Bewertungen und sind keine deterministischen Prüfnachweise. Auch Mods oder eine Vorschau riskanter Befehle ersetzen keine technisch begrenzten Werkzeugrechte.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-10-09",
-        reviewDueAt: "2027-01-09",
+        reviewedAt: "2026-10-20",
+        reviewDueAt: "2027-01-20",
         status: "active",
       },
       sources: [
@@ -3971,6 +4059,15 @@ export const topics: Topics = {
           mediaType: "text",
           checkedAt: "2026-10-09",
         },
+        {
+          title: "Geoffrey Huntley – Loop Engineering und Systemverifikation",
+          url: "https://ghuntley.com/agency/",
+          type: "reference-site",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
+        },
       ],
     },
     {
@@ -3984,7 +4081,7 @@ export const topics: Topics = {
           "Ein Coding-Agent behebt einen Fehler in einem Spring-Endpunkt. Beim nächsten Lauf übersieht er einen Randfall oder ändert unnötige Dateien. Ein einzelner guter Patch zeigt noch nicht, wie zuverlässig der Agent vergleichbare Programmieraufgaben löst.",
         coreConcept:
           // Bewusste Textbindung: topics.test.ts sichert die vereinbarten Eval-Aspekte ab.
-          "Evals prüfen Agenten an repräsentativen Aufgaben und bekannten Fehlerfällen. Ergebnisqualität und Toolabläufe werden getrennt bewertet. Traces halten Modell- und Werkzeugaufrufe sowie Übergaben fest und helfen, die Stelle eines Fehlers zu finden. Eindeutige Regeln prüft Code; für qualitative Kriterien ergänzen Menschen oder ein LLM-Judge die Bewertung. Wiederholte Läufe unter dokumentierten Bedingungen machen Regressionen nach Änderungen sichtbar.",
+          "Evals prüfen Agenten an repräsentativen Aufgaben und bekannten Fehlerfällen. Ergebnisqualität und Toolabläufe werden getrennt bewertet. Traces halten Modell- und Werkzeugaufrufe sowie Übergaben fest und helfen, die Stelle eines Fehlers zu finden. Eindeutige Regeln prüft Code; für qualitative Kriterien ergänzen Menschen oder ein LLM-Judge die Bewertung. Wiederholte Läufe unter dokumentierten Bedingungen machen Regressionen nach Änderungen sichtbar. Shankar und Husain empfehlen Fehleranalyse vor neuer Eval-Infrastruktur: reale fehlgeschlagene Läufe ansehen, Fehlermuster bündeln und gezielte Kriterien ableiten. Erst den End-to-End-Erfolg bewerten, danach einzelne Toolschritte diagnostizieren. Ein erfolgreicher Toolaufruf allein belegt kein gelöstes Nutzerproblem.",
         javaWebUse:
           "Für einen Spring-Endpunkt bearbeitet der Coding-Agent wiederholt klar beschriebene Fehler und Änderungen in isolierten, vergleichbaren Umgebungen. Tests prüfen das erwartete Verhalten und Regressionen; der Diff zeigt, ob der Umfang eingehalten wurde. Traces helfen zu prüfen, welche Dateien und Werkzeuge der Agent genutzt und welche Tests er ausgeführt hat. Nach Modell-, Prompt-, Skill- oder Harness-Wechseln werden dieselben Aufgaben erneut geprüft; Latenz und Kosten werden neben der Qualität verglichen. Sicherheitsfälle enthalten auch unerwünschte Regelumgehung, Datenweitergabe oder verfälschte Erfolgsmeldungen. Zur Vermeidung von Testdatenkontamination bleiben zusätzliche Aufgaben zurückgehalten und werden erneuert: Eine Aufgabe aus dem Training kann sonst einen irreführend guten Benchmarkwert liefern.",
         boundary:
@@ -3992,8 +4089,8 @@ export const topics: Topics = {
       },
       editorial: {
         publishedAt: "2026-10-07",
-        reviewedAt: "2026-10-09",
-        reviewDueAt: "2027-01-09",
+        reviewedAt: "2026-10-20",
+        reviewDueAt: "2027-01-20",
         status: "active",
       },
       sources: [
@@ -4074,6 +4171,16 @@ export const topics: Topics = {
           language: "en",
           mediaType: "text",
           checkedAt: "2026-10-09",
+        },
+        {
+          title:
+            "Shreya Shankar und Hamel Husain – Fehleranalyse und Coding-Agent-Evals",
+          url: "https://hamel.dev/blog/posts/evals-faq/index.html",
+          type: "reference-site",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
         },
       ],
     },
@@ -4556,14 +4663,14 @@ export const topics: Topics = {
         coreConcept:
           "Menschen prüfen den Diff gegen Auftrag und Architektur, führen passende Tests und Sicherheitsprüfungen aus und entscheiden anhand der Ergebnisse über die Übernahme. Eine zweite, nicht an der Änderung beteiligte Review-Perspektive ergänzt die Prüfung bei höherem Risiko. Ein Review-Agent kann verdächtige Stellen und mögliche Fehler vorsortieren; seine Hinweise werden am Code nachvollzogen. Projektkonventionen und die fachliche Spec sind getrennte Review-Perspektiven: Ein Patch kann die Konventionen einhalten und trotzdem den Auftrag verfehlen.",
         javaWebUse:
-          "Das Team begrenzt den Patch auf einen nachvollziehbaren Zweck und prüft Berechtigungen, Fehlerfälle, API-Vertrag und neue Bibliotheken. Review-Aufwand und nötige Nacharbeit gehören zur Bewertung des Agenten: Ein schneller erzeugter Diff bringt wenig, wenn niemand ihn gründlich prüfen kann. Eine unabhängige Person kontrolliert besonders riskante Änderungen zusätzlich. Ein Review-Skill kann beide Perspektiven mit getrenntem Kontext untersuchen; jeder Befund nennt die relevante Regel oder Anforderung und die betroffene Stelle.",
+          "Das Team begrenzt den Patch auf einen nachvollziehbaren Zweck und prüft Berechtigungen, Fehlerfälle, API-Vertrag und neue Bibliotheken. Review-Aufwand und nötige Nacharbeit gehören zur Bewertung des Agenten: Ein schneller erzeugter Diff bringt wenig, wenn niemand ihn gründlich prüfen kann. Eine unabhängige Person kontrolliert besonders riskante Änderungen zusätzlich. Ein Review-Skill kann beide Perspektiven mit getrenntem Kontext untersuchen; jeder Befund nennt die relevante Regel oder Anforderung und die betroffene Stelle. Ein Nachweispaket nennt Zweck, begrenzten Diff, ausgeführte Prüfungen, Vorher-/Nachher-Verhalten und offene Risiken. Osmani empfiehlt, Teständerungen besonders aufmerksam zu lesen: Eine an falsches Verhalten angepasste Assertion kann einen grünen Lauf erzeugen. Fehlende Nachweise gehen zur Ergänzung zurück, bevor Reviewzeit verbraucht wird.",
         boundary:
-          "Ein Review-Agent kann Fehler übersehen oder unzutreffende Hinweise geben. Grüne Tests und Scanner decken nur ihre geprüften Fälle ab; auch mehrere Reviews garantieren keine Qualität. Die fachliche Bewertung und die Entscheidung zur Übernahme bleiben bei den verantwortlichen Menschen.",
+          "Ein Review-Agent kann Fehler übersehen oder unzutreffende Hinweise geben. Grüne Tests und Scanner decken nur ihre geprüften Fälle ab; auch mehrere Reviews garantieren keine Qualität. Die fachliche Bewertung und die Entscheidung zur Übernahme bleiben bei den verantwortlichen Menschen. Anthropics Bericht vom Oktober 2026 beschreibt Engpässe bei Quellverwaltung, Builds und CI unter stark gestiegenem Änderungsvolumen. Die berichtete Mergezahl belegt weder fachlichen Nutzen noch Fehlerfreiheit. Das dortige interne Versionskontrollsystem begründet keine allgemeine Ablösung von Git.",
       },
       editorial: {
         publishedAt: "2026-09-26",
-        reviewedAt: "2026-10-09",
-        reviewDueAt: "2027-01-09",
+        reviewedAt: "2026-10-20",
+        reviewDueAt: "2027-01-20",
         status: "active",
       },
       sources: [
@@ -4654,6 +4761,25 @@ export const topics: Topics = {
           language: "en",
           mediaType: "text",
           checkedAt: "2026-10-09",
+        },
+        {
+          title: "Addy Osmani – Agentic Code Review",
+          url: "https://addyosmani.com/blog/agentic-code-review/",
+          type: "reference-site",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
+        },
+        {
+          title:
+            "Anthropic – Integrationsengpässe als interner Erfahrungsbericht",
+          url: "https://www.anthropic.com/research/redesigning-source-control",
+          type: "reference-site",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
         },
       ],
     },
@@ -4866,14 +4992,14 @@ export const topics: Topics = {
         coreConcept:
           "Ein Harness verbindet Modell, Tools, Kontext, Zustände, Sandbox, Netzwerkregeln und deterministische Prüfungen. Für lange Läufe kommen gespeicherte Sitzungen, Wiederaufnahme, Abbruch und ein Budget für Zeit, Kosten und Versuche hinzu. Die Agents API ist ein Beispiel für verwaltete Sitzungen und Ausführung; in einem eigenen Harness muss das Team die Zuständigkeiten selbst gestalten. Loop Engineering gestaltet den wiederholten Zyklus aus Auftrag, Aktion, Ergebnis und nächstem Schritt. Ein separater Evaluator liefert Rückmeldung; Erfolg, fehlender Fortschritt und Budgetende beenden die Schleife. Graph Engineering macht Schritte, Verzweigungen und Übergänge explizit. Zustand hält den aktuellen Ablauf fest, Memory bewahrt relevantes Wissen über Sitzungen hinweg, Orchestrierung bestimmt, welcher Schritt oder Agent folgt.",
         javaWebUse:
-          "Eine Java-Migration läuft in einem isolierten Checkout mit begrenzten Rechten. Der Harness hält Task-Kennung und prüfbare Zwischenstände fest. Nach einer Unterbrechung liest der Agent den gespeicherten Stand und kontrolliert den tatsächlichen Diff sowie Tests, bevor er weiterarbeitet. Das Budget begrenzt Wiederholungen; externe Schreibaktionen benötigen eine passende Freigabe und einen Umgang mit doppelten Aufrufen. Bei einer Migration führen getrennte Schritte Analyse, Änderung und unabhängige Ergebnisbewertung aus. Checkpoints erlauben Wiederaufnahme; ausbleibender Fortschritt führt zur Eskalation. Ein Zielauftrag arbeitet bis zum festgelegten Ergebnis, eine zeitgesteuerte Schleife startet wiederholt einen Auftrag.",
+          "Eine Java-Migration läuft in einem isolierten Checkout mit begrenzten Rechten. Der Harness hält Task-Kennung und prüfbare Zwischenstände fest. Nach einer Unterbrechung liest der Agent den gespeicherten Stand und kontrolliert den tatsächlichen Diff sowie Tests, bevor er weiterarbeitet. Das Budget begrenzt Wiederholungen; externe Schreibaktionen benötigen eine passende Freigabe und einen Umgang mit doppelten Aufrufen. Bei einer Migration führen getrennte Schritte Analyse, Änderung und unabhängige Ergebnisbewertung aus. Checkpoints erlauben Wiederaufnahme; ausbleibender Fortschritt führt zur Eskalation. Ein Zielauftrag arbeitet bis zum festgelegten Ergebnis, eine zeitgesteuerte Schleife startet wiederholt einen Auftrag. Zechner trennt in seinem Praxisprojekt Oberfläche, Server und Werkzeuge. Für eine Java-/Web-Anwendung lässt sich daraus ableiten: Bei einer Unterbrechung auch laufende Tools behandeln und nachhalten, was bereits ausgeführt wurde. Ronacher unterscheidet zusätzlich die Sandbox für Tool-Orchestrierung von der Umgebung, in der Shellbefehle laufen; deren Rechte sind separat zu begrenzen. OpenAI beschreibt im Februar 2026 eine startbare App und lokale Diagnosen je Worktree als Arbeitsgrundlage für Agenten. Das ist eine ältere Selbstauskunft, keine neue Entwicklung des aktuellen Halbjahres und kein unabhängiger Nachweis für die beworbene Zeitersparnis.",
         boundary:
           "Abbruch bedeutet nicht, dass bereits ausgeführte Aktionen rückgängig werden. Eine gespeicherte Agentensitzung ist auch keine Garantie, dass ihre Sandbox noch existiert. Identität und Zugangsdaten bleiben möglichst außerhalb der nicht vertrauenswürdigen Ausführungsumgebung. Ein eigener Harness kostet Wartung und Sicherheitsarbeit; MCP-Zugriff auf OpenRewrite bietet Zugang zu bestehenden Rezepten, keine grundsätzlich neuen Migrationsmöglichkeiten.",
       },
       editorial: {
         publishedAt: "2026-09-27",
-        reviewedAt: "2026-10-09",
-        reviewDueAt: "2027-01-09",
+        reviewedAt: "2026-10-20",
+        reviewDueAt: "2027-01-20",
         status: "active",
       },
       sources: [
@@ -5009,6 +5135,36 @@ export const topics: Topics = {
           language: "en",
           mediaType: "text",
           checkedAt: "2026-10-09",
+        },
+        {
+          title:
+            "Mario Zechner – Agentenbausteine und Unterbrechung im Praxisprojekt",
+          url: "https://mariozechner.at/posts/2026-05-30-shitty-robot/",
+          type: "reference-site",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
+        },
+        {
+          title:
+            "OpenAI – Harness Engineering als interner Erfahrungsbericht (Februar 2026)",
+          url: "https://openai.com/index/harness-engineering/",
+          type: "reference-site",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
+        },
+        {
+          title:
+            "Armin Ronacher – getrennte Harness- und Ausführungsumgebungen",
+          url: "https://lucumr.pocoo.org/2026/10/6/codemode/",
+          type: "reference-site",
+          origin: "primary",
+          language: "en",
+          mediaType: "text",
+          checkedAt: "2026-10-20",
         },
       ],
     },

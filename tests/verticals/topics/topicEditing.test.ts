@@ -95,7 +95,9 @@ describe("central topic editing", () => {
             : source.url;
         })
         .sort();
-      expect.soft(actual, id + ": vereinigte Quellen").toEqual(identities);
+      expect
+        .soft(actual, id + ": bisherige Quellen erhalten")
+        .toEqual(expect.arrayContaining(identities));
     }
     for (const path of topics.paths ?? []) {
       expect

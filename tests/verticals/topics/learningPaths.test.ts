@@ -53,19 +53,6 @@ const workflowTopicIds = [
   "coding-harness-design",
 ];
 
-const updatedReviewIds = new Set([
-  "archunit-for-java-architecture",
-  "domain-language-and-complexity",
-  "standards-and-constraint-rationale",
-  "context-selection-and-reset",
-  "coding-agent-interface-selection",
-  "agent-skills-and-commands",
-  "review-and-accept-ai-generated-changes",
-  "coding-harness-design",
-  "agent-context-handoffs",
-  "deterministic-agent-verification-gates",
-]);
-
 // Alle Themen folgen der freigegebenen gemeinsamen Reihenfolge.
 const integrationTopicIds = [
   "java-ai-applications",
@@ -176,26 +163,6 @@ describe("vollständige Lernpfade", () => {
     for (const id of workflowTopicIds) {
       const topic = topics.items.find((item) => item.id === id);
       expect(topic, id).toBeDefined();
-      expect(topic?.editorial.reviewedAt, id).toBe(
-        updatedReviewIds.has(id)
-          ? "2026-10-09"
-          : [
-                "coding-harness-design",
-                "codegraphs-for-large-repos",
-                "spec-driven-development-openspec",
-                "coding-agent-interface-selection",
-                "agent-skills-and-commands",
-                "review-and-accept-ai-generated-changes",
-                "deterministic-agent-verification-gates",
-                "agent-protocol-integration",
-                "java-ai-applications",
-                "technical-documentation-generation",
-              ].includes(id)
-            ? "2026-10-07"
-            : id === "token-efficiency-tools"
-              ? "2026-10-03"
-              : "2026-09-27",
-      );
       expect(
         topic?.sources.some((source) => source.origin === "primary"),
         id,
@@ -332,11 +299,6 @@ it("provides sourced modernization topics in path order", () => {
     expect(item?.sources.some((source) => source.origin === "primary")).toBe(
       true,
     );
-    expect(item?.editorial.reviewedAt, id).toBe(
-      id === "refactorings-and-migrations-with-openrewrite"
-        ? "2026-10-07"
-        : "2026-09-27",
-    );
   }
   expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
 });
@@ -369,17 +331,6 @@ it("provides sourced parallel agent topics in path order", () => {
     expect(item).toBeDefined();
     expect(item?.sources.some((source) => source.origin === "primary")).toBe(
       true,
-    );
-    expect(item?.editorial.reviewedAt).toBe(
-      updatedReviewIds.has(id)
-        ? "2026-10-09"
-        : id === "parallel-agent-task-boundaries"
-          ? "2026-10-08"
-          : id === "deterministic-agent-verification-gates"
-            ? "2026-10-07"
-            : id === "agent-tool-and-mcp-permissions"
-              ? "2026-09-28"
-              : "2026-09-27",
     );
   }
   expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });

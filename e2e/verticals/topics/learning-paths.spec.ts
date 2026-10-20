@@ -73,22 +73,19 @@ test("reads current integration and eval topics through their paths without lear
       [
         "Modellwechsel und API-Lebenszyklen absichern",
         "Gemini API – Abkündigungen und Ersatzmodelle",
-        "2027-01-09",
       ],
       [
         "Agentensysteme über MCP, A2A und ACP verbinden",
         "Agent Client Protocol – Overview",
-        "2027-01-07",
       ],
-      [javaTitle, "LangChain4j – Introduction", "2027-01-07"],
+      [javaTitle, "LangChain4j – Introduction"],
       [
         "Agenten mit Evals und Traces systematisch prüfen",
         "Google ADK – Ergebnisse und Toolabläufe getrennt evaluieren",
-        "2027-01-09",
       ],
     ],
     ([title]) => title,
-    async ([title, source, reviewDue]) => {
+    async ([title, source]) => {
       await openIntegrationPath();
       await navigation
         .getByRole("button", { name: title, exact: true })
@@ -97,7 +94,11 @@ test("reads current integration and eval topics through their paths without lear
       await expect(
         article.getByRole("link", { name: source, exact: true }),
       ).toBeVisible();
-      await expect(article.getByText(reviewDue)).toBeVisible();
+      // Exakte Redaktionstermine prüft topics.test.ts; hier ihre Anzeige.
+      const topic = topics.items.find((item) => item.title === title)!;
+      await expect(
+        article.getByText(topic.editorial.reviewDueAt),
+      ).toBeVisible();
       await expect(
         page.getByRole("button", { name: `Lerncheck starten: ${title}` }),
       ).toHaveCount(0);

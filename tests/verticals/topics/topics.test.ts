@@ -3,37 +3,170 @@ import { topics } from "../../../src/verticals/topics/topics";
 
 import { validateTopics } from "../../../src/verticals/topics/validateTopics";
 
-const updatedTopicIds = new Set([
-  "human-ai-responsibility",
-  "problem-understanding-and-change-boundaries",
-  "domain-language-and-complexity",
-  "standards-and-constraint-rationale",
-  "archunit-for-java-architecture",
-  "agents-md",
-  "context-selection-and-reset",
-  "coding-agent-interface-selection",
-  "agent-skills-and-commands",
-  "agent-context-handoffs",
-  "deterministic-agent-verification-gates",
-  "agent-evals-and-traces",
-  "review-and-accept-ai-generated-changes",
-  "coding-harness-design",
-  "model-and-api-lifecycle",
-]);
+// Bewusste redaktionelle Abnahme: exakte Prüfdaten nur an dieser Stelle.
+const expectedEditorialDatesByTopic: Record<string, readonly [string, string]> =
+  {
+    "human-ai-responsibility": ["2026-10-09", "2027-01-09"],
+    "problem-understanding-and-change-boundaries": ["2026-10-20", "2027-01-20"],
+    "domain-language-and-complexity": ["2026-10-09", "2027-01-09"],
+    "design-and-legacy-specification": ["2026-10-20", "2027-01-20"],
+    "standards-and-constraint-rationale": ["2026-10-09", "2027-01-09"],
+    "llm-fallibility-and-counterchecks": ["2026-09-27", "2027-03-27"],
+    "project-documentation-and-checklists": ["2026-09-27", "2027-03-27"],
+    "open-knowledge-format": ["2026-09-27", "2026-12-27"],
+    "agents-md": ["2026-10-09", "2027-01-09"],
+    "ears-requirements": ["2026-09-26", "2027-03-20"],
+    "research-plan-tasks": ["2026-09-26", "2026-12-20"],
+    "context-selection-and-reset": ["2026-10-20", "2027-01-20"],
+    "java-ai-applications": ["2026-10-07", "2027-01-07"],
+    "task-based-model-routing": ["2026-10-09", "2027-01-09"],
+    "ai-content-provenance-and-disclosure": ["2026-10-09", "2027-01-09"],
+    "web-security-baseline": ["2026-09-27", "2026-12-27"],
+    "coding-agent-context-and-trust-boundaries": ["2026-09-27", "2027-03-27"],
+    "protect-secrets-and-sensitive-data-with-ai": ["2026-09-27", "2027-03-27"],
+    "local-model-stack-evaluation": ["2026-09-27", "2026-12-27"],
+    "coding-agent-interface-selection": ["2026-10-20", "2027-01-20"],
+    "spec-driven-development-openspec": ["2026-10-08", "2026-12-20"],
+    "agent-skills-and-commands": ["2026-10-20", "2027-01-20"],
+    "codegraphs-for-large-repos": ["2026-10-07", "2027-01-07"],
+    "ui-design-system-workflow": ["2026-09-27", "2026-12-27"],
+    "module-boundaries-and-public-interfaces": ["2026-09-27", "2027-03-27"],
+    "tdd-for-domain-behavior": ["2026-09-27", "2027-03-27"],
+    "archunit-for-java-architecture": ["2026-10-09", "2027-01-09"],
+    "automation-value-and-gates": ["2026-09-27", "2026-12-27"],
+    "parallel-agent-task-boundaries": ["2026-10-20", "2027-01-20"],
+    "git-worktrees-for-isolated-changes": ["2026-09-27", "2027-03-27"],
+    "versioned-library-docs-with-context7": ["2026-09-27", "2026-12-27"],
+    "token-efficiency-tools": ["2026-10-20", "2027-01-20"],
+    "agent-context-handoffs": ["2026-10-09", "2027-01-09"],
+    "agent-tool-and-mcp-permissions": ["2026-09-28", "2026-12-27"],
+    "agent-protocol-integration": ["2026-10-20", "2027-01-20"],
+    "deterministic-agent-verification-gates": ["2026-10-20", "2027-01-20"],
+    "agent-evals-and-traces": ["2026-10-20", "2027-01-20"],
+    "refactorings-and-migrations-with-openrewrite": [
+      "2026-10-07",
+      "2026-12-27",
+    ],
+    "playwright-for-web-flows": ["2026-09-27", "2027-03-27"],
+    "web-xss-and-safe-dom": ["2026-09-27", "2027-03-27"],
+    "technical-documentation-generation": ["2026-10-07", "2027-03-27"],
+    "dependency-security-assessment": ["2026-09-27", "2027-03-27"],
+    "review-and-accept-ai-generated-changes": ["2026-10-20", "2027-01-20"],
+    "compare-parallel-and-serial-agent-work": ["2026-09-27", "2026-12-27"],
+    "bug-triage-and-pr-automation": ["2026-09-27", "2026-12-27"],
+    "coding-harness-design": ["2026-10-20", "2027-01-20"],
+    "model-and-api-lifecycle": ["2026-10-09", "2027-01-09"],
+    "focused-git-commits": ["2026-09-27", "2027-03-27"],
+  };
 
-const refreshedTopicIds = new Set([
-  "coding-harness-design",
-  "codegraphs-for-large-repos",
-  "spec-driven-development-openspec",
-  "coding-agent-interface-selection",
-  "agent-skills-and-commands",
-  "review-and-accept-ai-generated-changes",
-  "deterministic-agent-verification-gates",
-  "agent-protocol-integration",
-  "java-ai-applications",
-  "refactorings-and-migrations-with-openrewrite",
-  "technical-documentation-generation",
-]);
+it("keeps the agreed review and revisit dates for all published topics", () => {
+  expect(topics.items.map(({ id }) => id).sort()).toEqual(
+    Object.keys(expectedEditorialDatesByTopic).sort(),
+  );
+  for (const topic of topics.items) {
+    expect
+      .soft([topic.editorial.reviewedAt, topic.editorial.reviewDueAt], topic.id)
+      .toEqual(expectedEditorialDatesByTopic[topic.id]);
+  }
+});
+
+// Redaktionelle Abnahme: konkrete neue Praktiken mit Originalbelegen;
+// vorhandene Quellen behalten ihren eigenen bisherigen Prüftag.
+const practitionerUpdates = [
+  [
+    "agent-protocol-integration",
+    "Sitzungsmeldungen",
+    "https://github.com/agentclientprotocol/agent-client-protocol/blob/main/CHANGELOG.md",
+  ],
+  [
+    "problem-understanding-and-change-boundaries",
+    "zurückspiegeln",
+    "https://blog.fsck.com/2026/10/09/what-a-year/",
+  ],
+  [
+    "parallel-agent-task-boundaries",
+    "Abhängigkeitsgraph",
+    "https://github.com/mattpocock/skills/releases/tag/v1.3.1",
+  ],
+  [
+    "agent-skills-and-commands",
+    "resolving-merge-conflicts",
+    "https://github.com/mattpocock/skills/releases/tag/v1.3.1",
+  ],
+  [
+    "token-efficiency-tools",
+    "Code Mode",
+    "https://lucumr.pocoo.org/2026/10/6/codemode/",
+  ],
+  [
+    "coding-harness-design",
+    "Unterbrechung",
+    "https://mariozechner.at/posts/2026-05-30-shitty-robot/",
+  ],
+  [
+    "coding-harness-design",
+    "je Worktree",
+    "https://openai.com/index/harness-engineering/",
+  ],
+  [
+    "review-and-accept-ai-generated-changes",
+    "Mergezahl",
+    "https://www.anthropic.com/research/redesigning-source-control",
+  ],
+  [
+    "coding-agent-interface-selection",
+    "Spracheingabe",
+    "https://simonwillison.net/2026/Oct/9/built-using-my-voice/",
+  ],
+  [
+    "review-and-accept-ai-generated-changes",
+    "Nachweispaket",
+    "https://addyosmani.com/blog/agentic-code-review/",
+  ],
+  [
+    "context-selection-and-reset",
+    "bewusste Verdichtung",
+    "https://newsletter.pragmaticengineer.com/p/context-engineering-with-dex-horthy",
+  ],
+  [
+    "design-and-legacy-specification",
+    "Capture/Replay",
+    "https://charity.wtf/p/ai-demands-more-engineering-discipline",
+  ],
+  [
+    "agent-evals-and-traces",
+    "Fehleranalyse",
+    "https://hamel.dev/blog/posts/evals-faq/index.html",
+  ],
+  [
+    "deterministic-agent-verification-gates",
+    "Nix",
+    "https://ghuntley.com/agency/",
+  ],
+] as const;
+
+it("publishes practitioner-led workflow updates with dated primary evidence", () => {
+  const violations: string[] = [];
+  for (const [id, concept, url] of practitionerUpdates) {
+    const topic = topics.items.find((item) => item.id === id);
+    if (!topic) {
+      violations.push(`${id}: Thema fehlt`);
+      continue;
+    }
+    if (!Object.values(topic.content).join(" ").includes(concept))
+      violations.push(`${id}: ${concept} fehlt`);
+    if (
+      !topic.sources.some(
+        (source) =>
+          source.url === url &&
+          source.origin === "primary" &&
+          source.checkedAt === "2026-10-20",
+      )
+    )
+      violations.push(`${id}: geprüfter Originalbeleg fehlt`);
+  }
+  expect(violations).toEqual([]);
+});
 
 const expandedTopicIds = [
   "task-based-model-routing",
@@ -109,7 +242,6 @@ it("publishes current development topics with distinct concepts and sources", ()
         id,
       )
       .toEqual([]);
-    expect.soft(topic.editorial.reviewedAt, id).toBe("2026-10-09");
   }
   for (const id of [
     "problem-understanding-and-change-boundaries",
@@ -316,13 +448,6 @@ it("publishes current development topics with distinct concepts and sources", ()
       )
       .toEqual([]);
     expect.soft(topic.editorial, id).toMatchObject({
-      reviewedAt: updatedTopicIds.has(id)
-        ? "2026-10-09"
-        : id === "spec-driven-development-openspec"
-          ? "2026-10-08"
-          : id === "model-and-api-lifecycle"
-            ? "2026-10-03"
-            : "2026-10-07",
       status: "active",
     });
     expect
@@ -350,7 +475,6 @@ it("publishes current development topics with distinct concepts and sources", ()
         );
       expect.soft(topic.editorial, id).toMatchObject({
         publishedAt: "2026-10-07",
-        reviewDueAt: "2027-01-09",
       });
       expect
         .soft(
@@ -526,18 +650,7 @@ describe("public content topics", () => {
     expect(otherTopics).toHaveLength(18);
     expect(otherTopics.map((item) => item.id)).toContain("focused-git-commits");
     for (const item of otherTopics) {
-      const expectedReviewDate = updatedTopicIds.has(item.id)
-        ? "2026-10-09"
-        : item.id === "parallel-agent-task-boundaries"
-          ? "2026-10-08"
-          : refreshedTopicIds.has(item.id)
-            ? "2026-10-07"
-            : item.id === "agent-tool-and-mcp-permissions"
-              ? "2026-09-28"
-              : "2026-09-27";
-      expect
-        .soft(item.editorial.reviewedAt, item.id + ": Prüfdatum")
-        .toBe(expectedReviewDate);
+      const expectedReviewDate = expectedEditorialDatesByTopic[item.id]![0];
       expect
         .soft(
           item.sources
@@ -594,16 +707,6 @@ describe("public content topics", () => {
         },
         editorial: {
           publishedAt: "2026-09-20",
-          reviewedAt: updatedTopicIds.has(item.id)
-            ? "2026-10-09"
-            : [
-                  "problem-understanding-and-change-boundaries",
-                  "spec-driven-development-openspec",
-                  "parallel-agent-task-boundaries",
-                ].includes(item.id)
-              ? "2026-10-08"
-              : "2026-09-26",
-          reviewDueAt: expect.stringMatching(/^202[67]-\d{2}-\d{2}$/),
           status: "active",
         },
       });
@@ -657,12 +760,6 @@ describe("public content topics", () => {
       expect
         .soft(item.editorial.publishedAt, item.id + ": Veröffentlichungsdatum")
         .toBe("2026-09-26");
-      expect
-        .soft(item.editorial.reviewedAt, item.id + ": Prüfdatum")
-        .toBe(updatedTopicIds.has(item.id) ? "2026-10-09" : "2026-09-27");
-      expect
-        .soft(item.editorial.reviewDueAt, item.id + ": Wiedervorlage")
-        .toBe(updatedTopicIds.has(item.id) ? "2027-01-09" : "2027-03-27");
       expect
         .soft(
           item.sources
@@ -766,16 +863,6 @@ describe("public content topics", () => {
         .soft(item.editorial, item.id + ": Redaktionelle Metadaten")
         .toMatchObject({
           publishedAt: "2026-09-26",
-          reviewedAt: updatedTopicIds.has(item.id)
-            ? "2026-10-09"
-            : refreshedTopicIds.has(item.id)
-              ? "2026-10-07"
-              : "2026-09-27",
-          reviewDueAt: updatedTopicIds.has(item.id)
-            ? "2027-01-09"
-            : refreshedTopicIds.has(item.id)
-              ? "2027-01-07"
-              : "2027-03-27",
           status: "active",
         });
       expect
