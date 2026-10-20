@@ -7,6 +7,16 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Lernpfade-Filter speichern
+Der Lernpfade-Filter soll gespeichert werden.
+- Speichern bei jeder Änderung
+- Speichern in derselben Technologie wie die gelernt-Häkchen bei den Themen
+  - Die beiden Dinge sollen sich nicht beeinflussen
+- Nicht gefiltert und "alle ausgewählt" ist ein Unterschied.
+- Ist nichts gespeichert, gilt das als "nicht gefiltert"
+- Sollte der Filter einen Lernpfad enthalten, der nicht (mehr) existiert, wird der Lernpfad nicht berücksichtigt. 
+  - Enthält der Filter ausschließlich Lernpfade, die nicht (mehr) existieren, gilt der Filter als "nicht gefiltert"
+
 ## Prüfen, dass Hooks auch ohne Einträge im .codex-USER-Verzeichnis funktionieren
 Prüfen, dass Hooks auch ohne Einträge im .codex-USER-Verzeichnis funktionieren
 
