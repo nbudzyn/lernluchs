@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
-import { questionsForTopic } from "../../src/verticals/learning-checks/questionPools";
+import { questionsForTopic } from "../../src/verticals/learning-checks/data";
 
 const key = "lernluchs.learning-progress.v1";
 const topicId = "human-ai-responsibility";

@@ -4,7 +4,8 @@ Dieses Backlog enthält nur geplante, noch nicht aktive Stories in vorgesehener 
 jede Story eine eigene Änderungs-Spec unter
 `docs/changes/active/`; danach wird sie aus dem Backlog entfernt. Die Spec dokumentiert RED → GREEN je Teil-Feature und ein Subagentenreview nach dem letzten GREEN der Story; reine Dokumentations-Stories sind vom Review ausgenommen.
 
-Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
+Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
+brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
 ## Zehn respektable Quellen oder Persönlichkeiten finden, die aktuelle Entwicklungen bei der agentengetriebenen Software-Entwicklung vorantreiben und dokumentieren
@@ -35,25 +36,14 @@ Prozess schärfen, ggf. vereinfachen
   - Sicherstellen, dass auch bei mehreren parellel laufenden Sessions der Push nichts überschreibt?
 - Workspace des Entwicklers immer unangetastet lassen?
 
-## Schärfere Abhängigkeitsregeln
-Schärfere Abhängigkeitsregeln:
-- app darf die Vertikalen und shared referenzieren. (app steckt die Anwendung zusammen.)
-- Die Vertikalen dürfen sich nicht untereinander referenzieren
-- Die Vertikalen dürfen shard referenzieren
-- shared darf nichts vom weiteren Code referenzieren
+## Visuelle Gestaltung über Vertikalen vereinheitlichen
 
-Vorher eine Aufstellung machen (aktueller Stand).
-Auch prüfen, ob die Regeln genauso für den Test-Code sinnvoll sind.
-
-In Java würde man vieles zu schmalen Interfaces umbauen, die in app liegen (damit Vertikale X die Vertikale Y z.B. starten oder einbinden kann). Wie macht man es idiomatisch in TypeScript?
-
-In Java würden wir hier Reflection verbieten (Class.forName("Questions")), höchstens suchen über z.B. Interface-Implementierungen (alle Implementierungen von X finden, dann einbinden). Was wären analoge - aber übliche! - Regeln für TypeScript?
-
-Da wir eine einheitliche GUI haben wollen vermute ich: Besser nur ein zentrales CSS?
-
-Nach wir vor soll der fachliche Code vorrangig in "seiner" Vertikale stehen - nicht einfach den fachlichen Code nach app schieben und "Problem gelöst"!!
-
-Die Regeln (wie bisher auch schon?) durch ein statisches Tool prüfen lassen (analog zu ArchUnit in Java).
+Nach visueller Bestandsaufnahme gemeinsame Farben, Schriftrollen,
+Überschriften-Zeilenhöhen, Fokusmarkierungen und wiederkehrende Bedienelemente
+vereinheitlichen. Aufgabenbezogene Layouts und Abstände bewusst erhalten.
+Zentrale Gestaltungsvorgaben mit lokalen Komponentenstilen verwenden.
+Mindestens Themen, Hilfe, Impressum und Lernchecks prüfen; Umfang vor Aktivierung
+abstimmen und die Grenze von zwei Vertikalen je Commit einhalten.
 
 ## Prüfen, dass Hooks auch ohne Einträge im .codex-USER-Verzeichnis funktionieren
 Prüfen, dass Hooks auch ohne Einträge im .codex-USER-Verzeichnis funktionieren

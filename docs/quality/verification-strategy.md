@@ -52,6 +52,15 @@ Browser-E2E und Audit laufen separat und sind keine Voraussetzung für den Pages
 
 Bündle Unit-Tests für `X.ts` in `X.test.ts`, Komponententests für `X.tsx` in
 `X.test.tsx` und E2E-Tests je Nutzerablauf oder Funktion (etwa `learning-check.spec.ts`).
+Vertikaltests importieren eigene Interna, Shared und gemeinsame Testhilfen, keine
+andere Vertikale oder App. Fachliche Prüfungen mehrerer Vertikalen gehören nach
+tests/app bzw. e2e/app und nutzen nur öffentliche Vertikal-Einstiegspunkte (index.ts, für UI-freie
+Daten/Validierung data.ts). Inline-Typimporte sind zugunsten statischer import type-
+Deklarationen ausgeschlossen.
+tests/architecture prüft Strukturregeln und deren Negativbeispiele; fachliche
+Datenregressionen bleiben bei ihrem Besitzer. Gemeinsame Testhilfen importieren
+keine Vertikalen. Architektur-Dateisuche per Glob ist für die Codeprüfung erlaubt.
+
 Prüfe dieselbe Anforderung mit verschiedenen Daten in einem Test über alle
 betreffenden Datensätze. Unterschiedliche Anforderungen behalten eigene Tests.
 Fehler nennen Datenkennungen und verletzte Regeln. Prüfe unabhängige Datensätze

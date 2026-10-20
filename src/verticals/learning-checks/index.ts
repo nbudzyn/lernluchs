@@ -2,5 +2,7 @@ export { LearningCheck } from "./LearningCheck";
 export {
   availableLearningCheckTopicIds,
   questionsForTopic,
-} from "./questionPools";
-export type { Question } from "../../shared/question";
+  validateQuestionPool,
+  validateQuestionPools,
+} from "./data";
+export type { Question } from "./data";

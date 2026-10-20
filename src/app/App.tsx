@@ -11,6 +11,8 @@ import {
   LearningStateNotice,
   useLearningState,
 } from "../verticals/learning-state";
+import { TopicHelp } from "../verticals/help";
+import { Imprint } from "../verticals/imprint";
 import "./App.css";
 
 export function App() {
@@ -41,6 +43,7 @@ export function App() {
         </header>
         <LearningStateNotice notice={learningState.notice} />
         <TopicBrowser
+          supplementaryViews={{ help: <TopicHelp />, imprint: <Imprint /> }}
           learnedTopicIds={learningState.learnedTopicIds}
           availableLearningCheckTopicIds={availableLearningCheckTopicIds}
           learningCheck={

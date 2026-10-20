@@ -7,8 +7,26 @@ import {
 } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { TopicBrowser } from "../../../src/verticals/topics/TopicBrowser";
+import type { ComponentProps } from "react";
+import { TopicBrowser as TopicBrowserView } from "../../../src/verticals/topics/TopicBrowser";
 import { topics } from "../../../src/verticals/topics/topics";
+
+function TopicBrowser(
+  props: Omit<ComponentProps<typeof TopicBrowserView>, "supplementaryViews"> &
+    Partial<
+      Pick<ComponentProps<typeof TopicBrowserView>, "supplementaryViews">
+    >,
+) {
+  return (
+    <TopicBrowserView
+      supplementaryViews={{
+        help: <section aria-label="Hilfe zu Themen">Help fixture</section>,
+        imprint: <section aria-label="Impressum">Imprint fixture</section>,
+      }}
+      {...props}
+    />
+  );
+}
 
 const viewPreferenceKey = "lernluchs.topic-list-view.v1";
 
@@ -31,6 +49,26 @@ function filterSummary() {
 }
 
 describe("TopicBrowser", () => {
+  it("renders supplied supplementary content without owning its implementation", () => {
+    render(
+      <TopicBrowser
+        supplementaryViews={{
+          help: <section aria-label="Injected help">Help fixture</section>,
+          imprint: (
+            <section aria-label="Injected imprint">Imprint fixture</section>
+          ),
+        }}
+      />,
+    );
+    expect(screen.getByRole("region", { name: "Injected help" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Impressum öffnen" }));
+    expect(
+      screen.getByRole("region", { name: "Injected imprint" }),
+    ).toBeTruthy();
+    expect(screen.queryByRole("region", { name: "Injected help" })).toBeNull();
+    cleanup();
+    window.history.replaceState(null, "");
+  });
   it("uses the explicit check status for browser back and calls the current exit action", () => {
     const push = vi
       .spyOn(window.history, "pushState")
@@ -233,18 +271,6 @@ describe("TopicBrowser", () => {
     expect(
       screen.getByRole("region", { name: "Hilfe zu Themen" }),
     ).toBeTruthy();
-    for (const text of [
-      "filtert nach allen Lernpfaden mit diesem Thema",
-      "Aktive Lernpfade stehen über der Themenliste",
-      "Klick auf einen Lernpfad filtert auf diesen einen Lernpfad",
-      "startet einen Lerncheck",
-      "Thema gelernt",
-    ]) {
-      expect(screen.getByText(text)).toBeTruthy();
-    }
-    expect(
-      document.querySelectorAll(".topic-help-content li svg"),
-    ).toHaveLength(2);
     for (const [button, region] of [
       ["Hilfe öffnen", "Hilfe zu Themen"],
       ["Impressum öffnen", "Impressum"],

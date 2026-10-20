@@ -52,7 +52,9 @@ describe("public vertical entrypoints", () => {
     const violations = Object.entries(appFiles).flatMap(([path, contents]) => {
       return [...contents.matchAll(/from\s+["']([^"']+)["']/g)]
         .map((match) => match[1])
-        .filter((specifier) => /verticals\/[^/]+\//.test(specifier))
+        .filter((specifier) =>
+          /verticals\/[^/]+\/(?!data["']?$)/.test(specifier),
+        )
         .map((specifier) => `${path}: ${specifier}`);
     });
     expect(violations).toEqual([]);

@@ -854,3 +854,9 @@ describe("public content topics", () => {
 function pathName(index: number) {
   return topics.paths![index].name;
 }
+
+it("removes obsolete topic path references", () => {
+  expect(topics.paths?.flatMap((path) => path.topicIds)).not.toContain(
+    "code-navigation-with-symbols-and-references",
+  );
+});

@@ -7,8 +7,7 @@ import {
   useState,
 } from "react";
 
-import { TopicHelp } from "../help";
-import { Imprint } from "../imprint";
+import type { ReactNode } from "react";
 import { topics } from "./topics";
 import { useBrowserBack } from "./useBrowserBack";
 import {
@@ -117,9 +116,11 @@ export function TopicBrowser({
   paths = topics.paths ?? [],
   learnedTopicIds = [],
   availableLearningCheckTopicIds = [],
+  supplementaryViews,
   onStartLearningCheck,
   learningCheck = { status: "closed" },
 }: {
+  supplementaryViews: { help: ReactNode; imprint: ReactNode };
   items?: Topic[];
   paths?: LearningPath[];
   learnedTopicIds?: string[];
@@ -744,7 +745,11 @@ export function TopicBrowser({
                 Zur Themenliste
               </button>
             )}
-            {mobileView === "imprint" ? <Imprint /> : <TopicHelp />}
+            <div className="topic-browser-supplementary">
+              {mobileView === "imprint"
+                ? supplementaryViews.imprint
+                : supplementaryViews.help}
+            </div>
           </>
         )}
 

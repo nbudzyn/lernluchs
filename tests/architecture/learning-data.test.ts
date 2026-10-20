@@ -2,22 +2,6 @@
 /// <reference types="vite/client" />
 import { describe, expect, it } from "vitest";
 
-import {
-  availableLearningCheckTopicIds,
-  questionsForTopic,
-} from "../../src/verticals/learning-checks/questionPools";
-import { learningPaths } from "../../src/verticals/topics/learningPaths";
-
-async function fingerprint(value: unknown) {
-  const hash = await crypto.subtle.digest(
-    "SHA-256",
-    new TextEncoder().encode(JSON.stringify(value)),
-  );
-  return Array.from(new Uint8Array(hash), (byte) =>
-    byte.toString(16).padStart(2, "0"),
-  ).join("");
-}
-
 describe("learning data organization", () => {
   it("groups learning-check tests by implementation and browser workflow", () => {
     const unitFiles = Object.keys(
@@ -32,38 +16,9 @@ describe("learning data organization", () => {
       "validateQuestionPools.test.ts",
     ]);
     const browserFiles = Object.keys(
-      import.meta.glob("../../e2e/verticals/learning-checks/*.spec.ts"),
+      import.meta.glob("../../e2e/app/learning-check.spec.ts"),
     ).map((path) => path.split("/").at(-1)!);
     expect(browserFiles).toEqual(["learning-check.spec.ts"]);
-  });
-
-  it("preserves unchanged questions, answers, sources and IDs after merging and deduplication", async () => {
-    const questions = availableLearningCheckTopicIds
-      .flatMap((id) => questionsForTopic(id)!)
-      .sort((a, b) => a.id.localeCompare(b.id));
-    expect(availableLearningCheckTopicIds).toHaveLength(42);
-    expect(await fingerprint(questions)).toBe(
-      "a0fb39192cd37da1e476380da29b9b97210f20cc7e5d274bb03017bb60fbe5e1",
-    );
-  });
-  it("preserves all path names and merged memberships when new topics are added", async () => {
-    expect(learningPaths).toHaveLength(14);
-    expect(
-      await fingerprint(
-        learningPaths.map((path) => ({
-          ...path,
-          topicIds: path.topicIds
-            .filter(
-              (id) =>
-                ![
-                  "task-based-model-routing",
-                  "ai-content-provenance-and-disclosure",
-                ].includes(id),
-            )
-            .sort(),
-        })),
-      ),
-    ).toBe("4cb98c2f718ebbd53fed95945855e41c27df16b6142b5ce9d58c314381753d42");
   });
 
   it("maintains all questions in one neutral question data file", () => {

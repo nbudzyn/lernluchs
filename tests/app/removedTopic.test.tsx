@@ -5,8 +5,8 @@ import { App } from "../../src/app/App";
 import {
   availableLearningCheckTopicIds,
   questionsForTopic,
-} from "../../src/verticals/learning-checks";
-import { topics } from "../../src/verticals/topics/topics";
+} from "../../src/verticals/learning-checks/data";
+import { topicReferences } from "../../src/verticals/topics/data";
 
 const removedId = "code-navigation-with-symbols-and-references";
 const removedTitle =
@@ -19,10 +19,7 @@ afterEach(() => {
 });
 
 it("removes the topic, its sources, path references and question pool", () => {
-  expect(topics.items.some((topic) => topic.id === removedId)).toBe(false);
-  expect(topics.paths?.flatMap((path) => path.topicIds)).not.toContain(
-    removedId,
-  );
+  expect(topicReferences.some((topic) => topic.id === removedId)).toBe(false);
   expect(availableLearningCheckTopicIds).not.toContain(removedId);
   expect(questionsForTopic(removedId)).toBeUndefined();
 });

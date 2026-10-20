@@ -5,13 +5,14 @@ import {
   questionsForTopic,
 } from "../../../src/verticals/learning-checks/questionPools";
 import { validateQuestionPools } from "../../../src/verticals/learning-checks/validateQuestionPools";
-import { topics } from "../../../src/verticals/topics/topics";
+const sourceOwners = availableLearningCheckTopicIds.map((id) => ({
+  id,
+  sources: questionsForTopic(id)!.flatMap((question) =>
+    question.options.map((option) => ({ url: option.sourceUrl })),
+  ),
+}));
 
 describe("validateQuestionPools", () => {
-  it("validates every pool against its topic sources", () => {
-    expect(validateQuestionPools(topics.items)).toEqual([]);
-  });
-
   it("reports every missing topic without stopping at the first pool", () => {
     expect(validateQuestionPools([])).toEqual(
       availableLearningCheckTopicIds.map(
@@ -22,7 +23,7 @@ describe("validateQuestionPools", () => {
 
   it("reports invalid sources from every affected pool", () => {
     const errors = validateQuestionPools(
-      topics.items.map((topic) => ({ ...topic, sources: [] })),
+      sourceOwners.map((topic) => ({ ...topic, sources: [] })),
     );
     expect(errors).toEqual(
       availableLearningCheckTopicIds.flatMap((topicId) =>

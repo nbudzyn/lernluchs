@@ -27,9 +27,26 @@ Pflichtlektüren: [Index](../INDEX.md).
 - Eine Vertikale verläuft von oben nach unten: Sie verantwortet ihre eigenen
   Daten und deren Anzeige. `src/app` komponiert Vertikalen nur und enthält
   keine fachliche Anzeige- oder Datenlogik.
-- Entwirf schmale Schnittstellen zwischen Vertikalen ausdrücklich. Vertikalen
-  verbergen interne Daten, Hilfen und Implementierungsdetails (Data Hiding).
-  Andere Vertikalen dürfen nur den kleinen öffentlichen Vertrag nutzen.
+- App importiert Vertikalen ausschließlich über deren öffentliche Einstiegspunkte
+  index.ts (UI) und optional data.ts (UI-freie Daten/Validierung) und darf Shared nutzen.
+  Vertikalen importieren nur eigene Module, Shared und externe Bibliotheken;
+  andere Vertikalen und App bleiben ausgeschlossen, auch für Typimporte.
+  Shared importiert innerhalb der Anwendung nur Shared.
+- Vertikalen verbergen interne Daten, Hilfen und Implementierungsdetails.
+  Benötigte schmale Props, Callbacks und JSX-Eingaben gehören zur konsumierenden
+  Vertikale; App verbindet die öffentlichen Verträge durch explizite Komposition.
+- Statische Imports und dynamische Imports mit festem Pfad sind erlaubt.
+  Berechnete Modulpfade, CommonJS-Modulverbindungen, eval/Function und automatische
+  Modulregistrierung über Dateisuche sind im Produktcode ausgeschlossen.
+  import.meta.env bleibt für explizite Umgebungskonfiguration erlaubt.
+  Typabhängigkeiten in Produktcode und Tests werden als statische import type-
+  Deklarationen geschrieben; Inline-Formen wie type T = import("...").T sind
+  ausgeschlossen, damit alle Typabhängigkeiten statisch geprüft werden.
+  Die statische Prüfung ist eine Entwicklungsleitplanke, keine Sicherheitsgrenze
+  gegen absichtlich verschleierten Code.
+- Farben, Schriftrollen und Grundstile gelten gemeinsam. Layout und Komponentenstile
+  bleiben lokal; Vertikal-CSS greift nicht auf Klassen anderer Vertikalen zu.
+  Übergebene Inhalte erhalten Breiten und Positionierung über eigene Container.
 - Architekturelle Ausnahmen benötigen eine eigene Spec, eine Begründung und
   zusätzliche automatisierte Architekturtests.
 - Öffentliche und stabile Verträge werden klein gehalten. Gemeinsamer Code

@@ -1,3 +1,5 @@
+import { fingerprint } from "../../shared/fingerprint";
+import { learningPaths } from "../../../src/verticals/topics/learningPaths";
 import { describe, expect, it } from "vitest";
 
 import { topics } from "../../../src/verticals/topics/topics";
@@ -381,4 +383,26 @@ it("provides sourced parallel agent topics in path order", () => {
     );
   }
   expect(validateTopics(topics)).toEqual({ valid: true, errors: [] });
+});
+
+describe("published path regression", () => {
+  it("preserves all path names and merged memberships when new topics are added", async () => {
+    expect(learningPaths).toHaveLength(14);
+    expect(
+      await fingerprint(
+        learningPaths.map((path) => ({
+          ...path,
+          topicIds: path.topicIds
+            .filter(
+              (id) =>
+                ![
+                  "task-based-model-routing",
+                  "ai-content-provenance-and-disclosure",
+                ].includes(id),
+            )
+            .sort(),
+        })),
+      ),
+    ).toBe("4cb98c2f718ebbd53fed95945855e41c27df16b6142b5ce9d58c314381753d42");
+  });
 });

@@ -420,8 +420,7 @@
 }
 
 .topic-browser-detail article,
-.topic-help-content,
-.imprint-content {
+.topic-browser-supplementary {
   max-width: 47rem;
 }
 

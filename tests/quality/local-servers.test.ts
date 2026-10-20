@@ -1,10 +1,11 @@
+import type * as Vite from "vite";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const fixture = vi.hoisted(() => ({
   directory: "tests/quality/fixtures/empty",
 }));
 vi.mock("vite", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("vite")>();
+  const actual = await importOriginal<typeof Vite>();
   return {
     ...actual,
     loadEnv: (mode: string, _directory: string, prefixes: string | string[]) =>

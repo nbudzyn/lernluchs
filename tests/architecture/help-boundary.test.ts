@@ -23,7 +23,7 @@ const imprintFiles = import.meta.glob(
   },
 ) as Record<string, string>;
 
-it("connects topics to public supplementary entrypoints without reverse imports", () => {
+it("keeps supplementary views independent of topics", () => {
   for (const [vertical, files] of [
     ["help", helpFiles],
     ["imprint", imprintFiles],
@@ -34,7 +34,7 @@ it("connects topics to public supplementary entrypoints without reverse imports"
         .map((match) => match[1])
         .filter((specifier) => specifier.startsWith(`../${vertical}`)),
     );
-    expect.soft(imports, vertical).toEqual([`../${vertical}`]);
+    expect.soft(imports, vertical).toEqual([]);
     for (const [path, contents] of Object.entries(files)) {
       expect.soft(contents, path).not.toMatch(/from\s+["']\.\.\//);
     }
