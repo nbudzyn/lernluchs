@@ -7,6 +7,22 @@ jede Story eine eigene Änderungs-Spec unter
 Pro fachlichem Commit gelten höchstens zwei Vertikalen; eine Ausnahme braucht eine eigene Spec mit Begründung und Architekturtests. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Zehn respektable Quellen oder Persönlichkeiten finden, die aktuelle Entwicklungen bei der agentengetriebenen Software-Entwicklung vorantreiben und dokumentieren
+Zehn respektable Quellen oder Persönlichkeiten finden, die aktuelle Entwicklungen bei der agentengetriebenen Software-Entwicklung vorantreiben und dokumentieren.
+Dann jeweils die letzten Entwicklungen (letzte 6 Monate) ermitteln und je Quelle als Stichworte zusammen stellen.
+- Dabei nennen:
+  - neue / geänderte Vorgehensweisen
+  - neue / geänderte Standards
+  - "Rising" Tools, Default-Standard-Tools
+  - veraltetes Vorgehen / Tools
+
+Irrelevant: Herstellerspezifika, neue Modellversionen
+
+Danach auf Themen verteilen. Konkret bleiben. Wenn angebracht, Aktualitätsdaten erhöhen.
+
+Themen die auch danach noch kryptische oder sehr ähnlich sind, zusammenführen (lassen)
+
+
 ## Schärfere Abhängigkeitsregeln
 Schärfere Abhängigkeitsregeln:
 - app darf die Vertikalen und shared referenzieren. (app steckt die Anwendung zusammen.)
@@ -30,9 +46,6 @@ Die Regeln (wie bisher auch schon?) durch ein statisches Tool prüfen lassen (an
 ## Prüfen, dass Hooks auch ohne Einträge im .codex-USER-Verzeichnis funktionieren
 Prüfen, dass Hooks auch ohne Einträge im .codex-USER-Verzeichnis funktionieren
 
-## Code-Review nach jedem GREEN?
-Code-Review nach jedem GREEN (nicht nur nach dem letzten)?
-
 ## Spracheingabe für Codex probieren
 Spracheingabe für Codex probieren
 - Verlässlichkeit, Tokenverbrauch
@@ -48,9 +61,6 @@ Eventuell an zentraler / passender Stelle als Vorgaben notieren
 Content Lists zu Beginn der Guideline-Dateien?
 Vorher abschätzen: Spart Tokens?
 NICHT beim Story-Backlog! (Soll leicht manuell pflegbar bleiben)
-
-## Lernluchs kryptische oder ähnliche Kapitel zusammenführen (lassen)
-Lernluchs kryptische oder ähnliche Kapitel zusammenführen (lassen)
 
 ## Teach Skill von Matt Pocock einbinden und nutzen (JavaScript...)
 Teach Skill von Matt Pocock einbinden und nutzen (JavaScript...)
