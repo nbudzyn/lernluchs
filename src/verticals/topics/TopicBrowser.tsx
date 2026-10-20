@@ -11,6 +11,12 @@ import { TopicHelp } from "../help";
 import { Imprint } from "../imprint";
 import { topics } from "./topics";
 import { useBrowserBack } from "./useBrowserBack";
+import {
+  pathsForFilter,
+  readPathFilter,
+  savePathFilter,
+  type PathFilter,
+} from "./pathFilter";
 import type {
   EditorialStatus,
   LearningPath,
@@ -25,12 +31,6 @@ const editorialStatusLabels: Record<EditorialStatus, string> = {
   archived: "Archiviert",
   replaced: "Ersetzt",
 };
-
-type PathFilter =
-  | { kind: "topic"; id: string }
-  | { kind: "path"; index: number }
-  | { kind: "paths"; indices: number[] }
-  | null;
 
 const listViewPreferenceKey = "lernluchs.topic-list-view.v1";
 
@@ -128,7 +128,12 @@ export function TopicBrowser({
   learningCheck?: { status: "closed" } | { status: "open"; onExit: () => void };
 }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [filter, setFilter] = useState<PathFilter>(null);
+  const [filter, setFilter] = useState<PathFilter>(() => readPathFilter(paths));
+  const [pathFilterNotSaved, setPathFilterNotSaved] = useState(false);
+  function changePathFilter(next: PathFilter) {
+    setFilter(next);
+    setPathFilterNotSaved(!savePathFilter(next, paths));
+  }
   const [quickFilter, setQuickFilter] = useState("");
   const [pathPickerOpen, setPathPickerOpen] = useState(false);
   const filterControlsRef = useRef<HTMLDivElement>(null);
@@ -151,20 +156,12 @@ export function TopicBrowser({
       window.removeEventListener("scroll", fitPicker);
     };
   }, [pathPickerOpen, filter, quickFilter]);
-  const closePathPicker = useCallback(
-    (restoreFocus: boolean) => {
-      setPathPickerOpen(false);
-      setFilter((current) =>
-        current?.kind === "paths" && current.indices.length === paths.length
-          ? null
-          : current,
-      );
-      if (restoreFocus) {
-        pathPickerTriggerRef.current?.focus({ preventScroll: true });
-      }
-    },
-    [paths.length],
-  );
+  const closePathPicker = useCallback((restoreFocus: boolean) => {
+    setPathPickerOpen(false);
+    if (restoreFocus) {
+      pathPickerTriggerRef.current?.focus({ preventScroll: true });
+    }
+  }, []);
   useEffect(() => {
     if (!pathPickerOpen) return;
     const closeOutside = (event: PointerEvent) => {
@@ -230,15 +227,7 @@ export function TopicBrowser({
   const checkIds = new Set(availableLearningCheckTopicIds);
   const pathsFor = (id: string) =>
     paths.filter((path) => path.topicIds.includes(id));
-  const activePaths = filter
-    ? filter.kind === "topic"
-      ? pathsFor(filter.id)
-      : filter.kind === "paths"
-        ? paths.filter((_, index) => filter.indices.includes(index))
-        : paths[filter.index]
-          ? [paths[filter.index]]
-          : []
-    : [];
+  const activePaths = pathsForFilter(filter, paths);
   const pathFilterActive =
     activePaths.length > 0 &&
     !(filter?.kind === "paths" && activePaths.length === paths.length);
@@ -309,7 +298,7 @@ export function TopicBrowser({
       setSelectedId(null);
       setMobileView("list");
     }
-    setFilter(nextFilter);
+    changePathFilter(nextFilter);
   }
 
   function selectPath(index: number) {
@@ -320,7 +309,7 @@ export function TopicBrowser({
       setSelectedId(null);
       setMobileView("list");
     }
-    setFilter({ kind: "path", index });
+    changePathFilter({ kind: "path", index });
   }
 
   function toggleSelectedPath(index: number) {
@@ -339,13 +328,13 @@ export function TopicBrowser({
       setSelectedId(null);
       setMobileView("list");
     }
-    setFilter(next.length ? { kind: "paths", indices: next } : null);
+    changePathFilter(next.length ? { kind: "paths", indices: next } : null);
   }
 
   function resetPathFilter() {
     anchor.current = null;
     scrollToPath.current = false;
-    setFilter(null);
+    changePathFilter(null);
   }
 
   function clearFilter() {
@@ -518,6 +507,12 @@ export function TopicBrowser({
             Kommt mir bekannt vor
           </button>
         </div>
+        {pathFilterNotSaved && (
+          <p role="status">
+            Diese Lernpfadauswahl gilt für diesen Besuch. Dein Browser konnte
+            die Lernpfadauswahl nicht speichern.
+          </p>
+        )}
         {viewPreferenceNotSaved && (
           <p role="status">
             Diese Ansicht gilt für diesen Besuch. Dein Browser konnte die

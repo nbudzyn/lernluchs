@@ -9,7 +9,11 @@ Die Vertikale Themen verantwortet den versionierten, öffentlich lesbaren Bestan
 Quellen und Aktualitätsmetadaten sowie dessen Anzeige, ohne Fragen oder persönlichen
 Lernstand. Die Anzeige besitzt die lokale Listenpräferenz (`lernluchs.topic-list-view.v1`):
 beim ersten Besuch Alltagsanker, danach Wiederherstellung der ausdrücklichen Auswahl.
-Die Präferenz bleibt vom Lernstand getrennt und ausschließlich im Browser gespeichert. Die Themenliste erhält die IDs der
+Die Präferenz bleibt vom Lernstand getrennt und ausschließlich im Browser gespeichert.
+Auch der Lernpfade-Filter gehört zu Themen: `lernluchs.learning-path-filter.v1`
+speichert die gewählten Pfadnamen unabhängig vom Lernstand und der Listenansicht.
+Unbekannte Namen werden ignoriert; ohne gültige Auswahl bleibt die Liste ungefiltert.
+Keine Auswahl und ausdrücklich alle gewählten Pfade bleiben unterscheidbar. Die Themenliste erhält die IDs der
 verfügbaren Lernchecks und der gelernten Themen über ihre öffentliche
 Komponentenschnittstelle. Ihr öffentlicher Einstiegspunkt exportiert die
 Themenliste. Sie verantwortet auch den Browser-Rückweg aus schmalen Themen- und

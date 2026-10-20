@@ -40,6 +40,7 @@ test("opens all paths without adding list height and preserves explicit selectio
   ).toBeVisible();
   await expect(page.getByText("10 / 48 Themen", { exact: true })).toBeVisible();
   await picker.getByRole("button", { name: "Schließen" }).click();
+  await page.reload();
   await trigger.click();
   await expect(picker.locator("input:checked")).toHaveCount(2);
   await page
@@ -81,8 +82,16 @@ test("opens all paths without adding list height and preserves explicit selectio
   await expect(
     page.getByRole("textbox", { name: "Schnellfilter" }),
   ).toHaveValue("Verantwortung");
+  await page.reload();
+  await trigger.click();
+  await expect(picker.locator("input:checked")).toHaveCount(14);
+  await picker.getByRole("button", { name: "Zurücksetzen" }).click();
+  await page.reload();
   await trigger.click();
   await expect(picker.locator("input:checked")).toHaveCount(0);
+  await page
+    .getByRole("textbox", { name: "Schnellfilter" })
+    .fill("Verantwortung");
   await choices.first().check();
   await choices.first().uncheck();
   await expect(picker.locator("input:checked")).toHaveCount(0);

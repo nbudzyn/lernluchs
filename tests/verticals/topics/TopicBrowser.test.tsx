@@ -849,6 +849,111 @@ describe("Lernpfade-Auswahl", () => {
       .filter((checkbox) => (checkbox as HTMLInputElement).checked)
       .map((checkbox) => checkbox.closest("label")?.textContent);
 
+  it("saves every path change and restores names independently of catalog order and learning state", () => {
+    const key = "lernluchs.learning-path-filter.v1";
+    const learned = JSON.stringify({
+      version: 1,
+      learnedTopicIds: [items[0].id],
+    });
+    localStorage.setItem("lernluchs.learning-progress.v1", learned);
+    const mount = (catalog = paths) =>
+      render(
+        <TopicBrowser
+          items={items}
+          paths={catalog}
+          learnedTopicIds={[items[0].id]}
+        />,
+      );
+    mount();
+    const writes = vi.spyOn(Storage.prototype, "setItem");
+    const picker = openPathPicker();
+    for (const name of ["Früher", "Später"]) {
+      fireEvent.click(within(picker).getByRole("checkbox", { name }));
+    }
+    expect(
+      writes.mock.calls.filter(([storageKey]) => storageKey === key),
+    ).toHaveLength(2);
+    cleanup();
+    mount([...paths].reverse());
+    expect(checkedNames(openPathPicker())).toEqual(["Früher", "Später"]);
+    fireEvent.click(screen.getByRole("button", { name: "Schließen" }));
+    fireEvent.click(screen.getByRole("button", { name: "Später" }));
+    cleanup();
+    mount();
+    expect(checkedNames(openPathPicker())).toEqual(["Später"]);
+    fireEvent.click(screen.getByRole("button", { name: "Zurücksetzen" }));
+    cleanup();
+    mount();
+    expect(checkedNames(openPathPicker())).toEqual([]);
+    fireEvent.click(screen.getByRole("button", { name: "Schließen" }));
+    fireEvent.click(
+      screen.getByRole("button", { name: "Lernpfade von Menüthema 1 filtern" }),
+    );
+    cleanup();
+    mount();
+    expect(checkedNames(openPathPicker())).toEqual(["Früher", "Später"]);
+    expect(localStorage.getItem("lernluchs.learning-progress.v1")).toBe(
+      learned,
+    );
+    expect(localStorage.getItem(viewPreferenceKey)).toBe("topics");
+  });
+
+  it("ignores missing paths and falls back safely for absent or invalid stored filters without writing", () => {
+    const key = "lernluchs.learning-path-filter.v1";
+    const cases: [string | null, string[]][] = [
+      [null, []],
+      ["{", []],
+      [JSON.stringify({ version: 2, pathNames: ["Früher"] }), []],
+      [JSON.stringify({ version: 1, pathNames: [5] }), []],
+      [JSON.stringify({ version: 1, pathNames: [] }), []],
+      [JSON.stringify({ version: 1, pathNames: ["Entfernt"] }), []],
+      [
+        JSON.stringify({ version: 1, pathNames: ["Entfernt", "Früher"] }),
+        ["Früher"],
+      ],
+    ];
+    for (const [stored, expected] of cases) {
+      if (stored === null) localStorage.removeItem(key);
+      else localStorage.setItem(key, stored);
+      const writes = vi.spyOn(Storage.prototype, "setItem");
+      render(<TopicBrowser items={items} paths={paths} />);
+      expect(checkedNames(openPathPicker()), stored ?? "missing").toEqual(
+        expected,
+      );
+      expect(writes).not.toHaveBeenCalled();
+      cleanup();
+      writes.mockRestore();
+    }
+  });
+
+  it("keeps path filtering usable with blocked storage and reports unsuccessful saves until a retry succeeds", () => {
+    const read = vi
+      .spyOn(Storage.prototype, "getItem")
+      .mockImplementation(() => {
+        throw new Error("blocked");
+      });
+    render(<TopicBrowser items={items} paths={paths} />);
+    const picker = openPathPicker();
+    expect(checkedNames(picker)).toEqual([]);
+    read.mockRestore();
+    const write = vi
+      .spyOn(Storage.prototype, "setItem")
+      .mockImplementation(() => {
+        throw new Error("blocked");
+      });
+    fireEvent.click(within(picker).getByRole("checkbox", { name: "Früher" }));
+    expect(checkedNames(picker)).toEqual(["Früher"]);
+    expect(screen.getByRole("status").textContent).toContain(
+      "Lernpfadauswahl nicht speichern",
+    );
+    write.mockRestore();
+    fireEvent.click(within(picker).getByRole("checkbox", { name: "Später" }));
+    expect(screen.queryByRole("status")).toBeNull();
+    cleanup();
+    render(<TopicBrowser items={items} paths={paths} />);
+    expect(checkedNames(openPathPicker())).toEqual(["Früher", "Später"]);
+  });
+
   it("filters immediately by a union, keeps the search and closes hidden details", () => {
     render(<TopicBrowser items={items} paths={paths} />);
     fireEvent.click(screen.getByRole("button", { name: "Menüthema 0" }));
@@ -894,7 +999,7 @@ describe("Lernpfade-Auswahl", () => {
     ).toHaveLength(4);
   });
 
-  it("keeps a full selection while open and normalizes it only on closing", () => {
+  it("keeps a full selection after closing and remounting", () => {
     render(<TopicBrowser items={items} paths={paths} />);
     fireEvent.change(screen.getByRole("textbox", { name: "Schnellfilter" }), {
       target: { value: "Menüthema 0" },
@@ -919,7 +1024,18 @@ describe("Lernpfade-Auswahl", () => {
         }) as HTMLInputElement
       ).value,
     ).toBe("Menüthema 0");
-    expect(checkedNames(openPathPicker())).toEqual([]);
+    expect(checkedNames(openPathPicker())).toEqual([
+      "Früher",
+      "Später",
+      "Viertes",
+    ]);
+    cleanup();
+    render(<TopicBrowser items={items} paths={paths} />);
+    expect(checkedNames(openPathPicker())).toEqual([
+      "Früher",
+      "Später",
+      "Viertes",
+    ]);
   });
 
   it("restores icon and single-path selections and closes with Escape or outside click", () => {

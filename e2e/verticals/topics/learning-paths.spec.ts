@@ -204,6 +204,10 @@ const pathCases = [
 test("shows paths with sourced topics and a learning check", async ({
   page,
 }) => {
+  // Independent catalog cases start without the previous case's saved filter.
+  await page.addInitScript(() => {
+    localStorage.removeItem("lernluchs.learning-path-filter.v1");
+  });
   await checkCases(
     pathCases,
     (path) => path.name,
