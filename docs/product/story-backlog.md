@@ -24,6 +24,16 @@ Danach auf Themen verteilen. Konkret bleiben. Wenn angebracht, Aktualitätsdaten
 
 Themen die auch danach noch kryptische oder sehr ähnlich sind, zusammenführen (lassen)
 
+## Prozess schärfen, ggf. vereinfachen
+Prozess schärfen, ggf. vereinfachen
+- Entwickeln immer in dem Workspace, der für die Session gewählt wurde?
+- Vorher immer den aktuellen Stand holen?
+- Immer in einem separaten Branch entwickeln?
+- Nach dem manuellen Test (also am Ende) den Branch auf origin/main rebasen / mergen?
+- Am Ende automatisch nach origin/main pushen?
+  - Noch einmal Tests laufen lassen, falls rebaset oder speziell gemergt wurde?
+  - Sicherstellen, dass auch bei mehreren parellel laufenden Sessions der Push nichts überschreibt?
+- Workspace des Entwicklers immer unangetastet lassen?
 
 ## Schärfere Abhängigkeitsregeln
 Schärfere Abhängigkeitsregeln:
