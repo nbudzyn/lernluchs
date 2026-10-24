@@ -18,7 +18,7 @@ Die in [der abgeschlossenen Beauftragungsstory](../changes/implemented/0075-five
 
 Zuerst die vorbereiteten Folgen zu Modell-Routing und Modellwechsel/API-Lebenszyklen beauftragen. Die drei bereits beauftragten Folgen zu Spec-Driven Development, Evals und Traces sowie MCP/A2A/ACP auf Fertigstellung prüfen. Vorhandene lokale Auftragszuordnungen und Prompts wiederverwenden; bestehende Aufträge nicht erneut generieren.
 
-Alle fünf fertigen deutschen Audios mit tatsächlichem Titel, Dauer und öffentlichem Audio-Link prüfen. Downloads lokal außerhalb von Git aufbewahren; öffentliche Hosting- oder Distributionsrechte vor einer etwaigen Veröffentlichung der Dateien klären. Geprüfte öffentliche Audio-Links als erste Sekundärquellen ihrer Themen einbinden und vorhandene Podcasts erhalten. Persönlichen Status und Kontodaten nicht versionieren. TDD, einmaliges Subagentenreview, Pflichtprüfungen und manuellen App-Test gemäß Projektablauf durchführen.
+Alle fünf fertigen deutschen Audios mit tatsächlichem Titel, Dauer und öffentlichem Audio-Link prüfen. Downloads lokal außerhalb von Git aufbewahren; öffentliche Distributionsrechte vor einer etwaigen Veröffentlichung der Dateien klären. Geprüfte öffentliche Audio-Links als erste Sekundärquellen ihrer Themen einbinden und vorhandene Podcasts erhalten. Persönlichen Status und Kontodaten nicht versionieren. TDD, einmaliges Subagentenreview, Pflichtprüfungen und manuellen App-Test gemäß Projektablauf durchführen.
 
 ## Weitere NotebookLM-Podcasts aus den Primärquellen erzeugen
 Weitere NotebookLM-Podcasts aus den Primärquellen erzeugen
