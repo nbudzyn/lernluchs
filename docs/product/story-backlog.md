@@ -8,9 +8,6 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Zwei weitere NotebookLM-Podcasts aus den Primärquellen erzeugen und in die Anwendung einbinden
-Zwei weitere NotebookLM-Podcasts aus den Primärquellen erzeugen und in die Anwendung einbinden
-- Beachten, dass die automatischen Tests keinen sichtbaren Browser öffnen, nicht auf das Internet zugreifen und auch in der GitHub-CI laufen.
 
 ## Weitere NotebookLM-Podcasts aus den Primärquellen erzeugen
 Weitere NotebookLM-Podcasts aus den Primärquellen erzeugen

@@ -18,7 +18,7 @@ const expectedEditorialDatesByTopic: Record<string, readonly [string, string]> =
     "ears-requirements": ["2026-09-26", "2027-03-20"],
     "research-plan-tasks": ["2026-10-21", "2026-12-20"],
     "context-selection-and-reset": ["2026-10-20", "2027-01-20"],
-    "java-ai-applications": ["2026-10-07", "2027-01-07"],
+    "java-ai-applications": ["2026-10-24", "2027-01-24"],
     "task-based-model-routing": ["2026-10-09", "2027-01-09"],
     "ai-content-provenance-and-disclosure": ["2026-10-09", "2027-01-09"],
     "web-security-baseline": ["2026-09-27", "2026-12-27"],
@@ -431,7 +431,7 @@ it("publishes current development topics with distinct concepts and sources", ()
         "LangChain4j",
         "Quarkus",
         "SDK",
-        "2.0.1",
+        "2.0.2",
         "2.1.0-M1",
         "angekündigt",
       ],
@@ -669,6 +669,36 @@ describe("public content topics", () => {
       expect.soft(newest?.duration).toMatch(/^(?:\d+:)?\d{1,2}:[0-5]\d$/);
       expect.soft(earlier.map((source) => source.url)).toContain(oldUrl);
     }
+  });
+  it("offers architecture and Spring implementation podcasts before the earlier Java audio", () => {
+    const topic = topics.items.find(
+      (item) => item.id === "java-ai-applications",
+    );
+    const secondary =
+      topic?.sources.filter((source) => source.origin === "secondary") ?? [];
+    const audio = secondary.filter((source) => source.mediaType === "audio");
+    expect.soft(audio).toHaveLength(3);
+    expect
+      .soft(secondary[2]?.url)
+      .toBe("https://notebooklm.link.google/u0T0goRCcnks");
+    // Redaktionelle Abnahme der Zweiteilung; die inhaltliche Abgrenzung wird
+    // zusätzlich am erzeugten Audio/Transkript geprüft, nicht durch Netzaufrufe.
+    for (const [index, title] of [
+      /Architektur|Konzepte/i,
+      /Spring AI/i,
+    ].entries()) {
+      const source = secondary[index];
+      expect.soft(source, `Java-KI-Podcast ${index + 1}`).toMatchObject({
+        title: expect.stringMatching(title),
+        type: "audio-summary",
+        mediaType: "audio",
+        origin: "secondary",
+        language: "de",
+        checkedAt: "2026-10-24",
+        duration: expect.stringMatching(/^(?:\d+:)?\d{1,2}:[0-5]\d$/),
+      });
+    }
+    expect.soft(new Set(audio.map((source) => source.url)).size).toBe(3);
   });
   it("includes an independent research and planning practice as a textual primary source", () => {
     const topic = topics.items.find(

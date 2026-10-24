@@ -148,6 +148,8 @@ describe("responsive NotebookLM controls", () => {
     const page = await browser.newPage();
     page.setDefaultTimeout(500);
     try {
+      // Favicon-URLs sind hier nur Testdaten für den Quellenabgleich.
+      await page.route("**/*", (route) => route.abort());
       await page.setContent(`<button onclick="window.imports=(window.imports||0)+1">Quelle hinzufügen</button>
         <input type="checkbox" checked aria-label="Alle Quellen auswählen">
         ${topic.sourceUrls.map((url, index) => `<div class="single-source-container"><button class="source-stretched-button">Quelle ${index}</button><img class="favicon-icon" src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(url)}"><input type="checkbox" checked aria-label="Quelle ${index}"></div>`).join("")}`);

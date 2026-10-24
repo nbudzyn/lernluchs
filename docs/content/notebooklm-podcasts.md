@@ -21,7 +21,7 @@ node scripts/notebooklm-podcasts.mjs login
 # Genau einen neuen Auftrag vorbereiten und nach vollständigem Import beauftragen:
 node scripts/notebooklm-podcasts.mjs start --topic research-plan-tasks
 
-# Später vorhandene Aufträge prüfen und fertige Audio-Metadaten abholen:
+# Erst auf Fortsetzungssignal des Entwicklers vorhandene Aufträge prüfen:
 node scripts/notebooklm-podcasts.mjs check
 
 # Weitere Themen ausdrücklich auswählen; höchstens zwei davon bearbeiten:
@@ -40,6 +40,17 @@ Browser und beendet den Aufruf. Auch nach zehn Minuten oder länger verwendet
 `check` denselben gespeicherten Auftrag. Dauert der Quellenimport länger als
 das begrenzte Importfenster, setzt ein erneutes `start` denselben Auftrag fort.
 Ein unklar gebliebener Erzeugungsstart wird nicht automatisch erneut abgesendet.
+
+Nach bestätigtem Erteilen der Audio-Aufträge den Entwickler unmittelbar
+informieren und eine grobe Zeitschätzung bis zur Fertigstellung nennen. Bei
+deutlich unterschiedlichen erwarteten Fertigstellungszeiten beide getrennt
+angeben. Die Schätzung anhand der sichtbaren Warteschlange beziehungsweise
+bisheriger Erzeugungszeiten einordnen; sie ist keine zugesicherte Dauer.
+
+Danach löst ausschließlich der Entwickler die Fortsetzung aus. Bis zu seinem
+Signal keine automatischen Statusprüfungen, Polling-Schleifen, Watcher oder
+geplanten Wiederaufnahmen starten. Unabhängige Arbeiten derselben Story dürfen
+währenddessen fortgesetzt werden; gespeicherte Aufträge erhalten.
 
 `check` prüft fertige Audio-Links zusätzlich in einem nicht angemeldeten Kontext.
 `ready-podcasts.json` im lokalen Statusverzeichnis enthält nur die zur Übernahme
