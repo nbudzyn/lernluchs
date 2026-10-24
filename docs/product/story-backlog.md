@@ -19,6 +19,32 @@ Für jedes tatsächlich fertige Audio Originalquellen-Zuordnung, deutsche Ausgab
 
 Die drei Folgen zu Spec-Driven Development, Evals/Traces und MCP/A2A/ACP sind bereits integriert und gehören nicht zum offenen Umfang. Für die beiden verbleibenden Integrationen eigene aktive Spec, RED → GREEN mit erweitertem bestehendem Katalogtest, genau ein Subagentenreview, Pflichtsuite und lokalen App-Browsernachweis durchführen. Manueller Nutzertest und ausdrückliche Commit-Freigabe bleiben erforderlich.
 
+## Lokale KI im Browser zur Suche einbinden
+Über dem Suchfeld gibt es im Browser links vor "Lernpfade" einen neuen Link "Suche mit KI".
+
+Der Link öffnet ein kleines Eingabefenster (grafisch wie das Lernpfade-Fenster), wo der Lernende einen (potenziell mehrzeiligen) Text eingeben kann (z.B. "Ich möchte eine Altanwendung von Cobol automatisiert nach Java migrieren" oder "Ich suche Ideen für die Integration von Java in eine Webanwendung" oder "Was ist besser, Ponytail oder MCP?").
+  - Auch Fragen wie "Was weißt du über Spec-driven-Development" sind möglich.
+  - Auch Stichwörter wie "Effizienz" sind möglich.
+- Das Fenster entspricht der grafischen Gestaltung der restlichen Oberfläche. Professionelle, verlässliche Darstellung ist gewünscht!
+- Kein "1/14 Lernpfade" in diesem Fenster
+
+In den Fenster gibt es Zurücksetzen und Schließen wie beim Lernpfadefenster - und ein Textfeld für die Texteingabe (dort ist der Cursor).
+  - Return löst das "SChließen" aus.
+- Die Filterung wird bei Schließen übernommen (bzw. ausgeschaltet, wenn das Textfeld dann leer ist). Der Text wird über den Lernpfaden im Gefiltert-nach-Dialog angzeigt.
+- Während der Agent nachdenkt wird das in der Themenliste entsprechend markiert - Wartekreisel o.Ä.
+- Nachdem der Agent ein Ergebnis gefunden hat, aktualisiert er die Themenliste: Sie wird auf alle Themen gefiltert, die die Frage des Lernenden "beantworten" - also in deren Bereich die Antwort auf die Frage fällt. Der Gedanke ist: Wenn der Lernende sich mit diesen Themen beschäftigt, wird er die gestellte Frage beantworten oder das gestellte Problem lösen können.
+- Schnellfilter und Lernpfade filtern zusätzlich.
+- Ggf. (Z.B. "Wie backt man einen Pfannkuchen?") wird die Themenliste leer ("Keine Themen gefunden")
+- Dem Lernenden wird keine textuelle Antwort auf die Frage angezeigt (abgesehen von den Themen).
+- Die Beantwortung der Frage sollte nicht länger als 5 Sekunden dauern.
+- Öffnet der User die KI-Suche erneut, ist sie mit dem Filtertext vorausgefüllt.
+- "Filter aufheben" hebt auch den KI-Filter auf.
+- In der Hilfe ergänzen (nur eine prägnante Zeile)
+
+Die KI zur Beantwortung läuft lokal im Browser (auf jeden Fall Firefox und Chrome, gern auch Safari).
+- Keine Sicherheitslücken
+- Die KI im Browser kann keine Funktionen auslösen.
+
 ## Spracheingabe für Codex probieren
 Spracheingabe für Codex probieren
 - Verlässlichkeit, Tokenverbrauch
