@@ -10,7 +10,7 @@
 
 `primary` bezeichnet den festen Arbeitsort, keinen Git-Branch. Der dauerhafte Worktree ist manuell mit Git angelegt und gehört nicht zur automatischen Bereinigung temporärer Codex-Worktrees. Zusätzlich ist er mit `git worktree lock` gegen versehentliches Entfernen und Pruning geschützt; das ist unabhängig von der Schreibsperre je Chat. Chats können beendet oder archiviert werden, während dieser Ordner bestehen bleibt. Zusätzliche verwaltete Worktrees können dagegen von Codex bereinigt werden.
 
-Arbeitsdateien und Git-Index sind getrennt; Historie und Branch-Referenzen werden gemeinsam genutzt. Git erlaubt einen Branch regulär nur in einem Worktree. Kein `--force`, um diese Sperre zu umgehen. **Push führt ausschließlich der Entwickler aus.** Die Commit- und manuellen Freigabeschranken aus [AGENTS.md](../../AGENTS.md) gelten weiter.
+Arbeitsdateien und Git-Index sind getrennt; Historie und Branch-Referenzen werden gemeinsam genutzt. Git erlaubt einen Branch regulär nur in einem Worktree. Kein `--force`, um diese Sperre zu umgehen. Codex verändert den Entwickler-Worktree nicht und verschiebt auch dessen ausgecheckten lokalen Branch nicht über gemeinsame Referenzen. Ein Auftrag zum Merge oder Push nach `origin/main` ändert diese Grenze nicht. Push durch Codex nur auf ausdrücklichen Auftrag und aus dem eigenen Worktree. Die Commit- und manuellen Freigabeschranken aus [AGENTS.md](../../AGENTS.md) gelten weiter.
 
 Ein Worktree begrenzt keine Leserechte. Das tatsächliche Sandbox-Profil bestimmt den Dateizugriff. Ein neuer Projektordner kann eine einmalige Zugriffsfreigabe benötigen; keine globalen Berechtigungen dafür aufweiten.
 
@@ -36,7 +36,7 @@ powershell.exe -NoProfile -File scripts/worktree-guard.ps1 review
 
 Die Ausgabe nennt Pfad, Branch, aktive Spec, Git-Status, Story-Zuordnung, vorhandene Schreibsperre und einen Prüf-Fingerabdruck. Zusätzlich den Diff und die aktive Spec lesen. Ein unveränderter Fingerabdruck schützt vor einer inzwischen geänderten Übernahmegrundlage. Sitzung und Turn stammen aus dem aktuellen Codex-Hook-Ereignis; keine fremden IDs erfinden. Platzhalter in den folgenden Beispielen ersetzen.
 
-- **Neue Story:** sauberer Worktree ohne aktive Spec und ohne fremde oder unterbrochene Schreibsperre; der bisherige Stand muss in `main` enthalten sein. Mit `start` wird ein neuer Aufgabenbranch ab dem lokalen `main` angelegt. Hat ein Tool-Hook bereits die eigene Sperre gesetzt, zusätzlich `-Turn` mit der tatsächlichen Turn-ID aus `review` übergeben. Sitzung und Turn müssen exakt zur Sperre passen; sie bleibt während des Starts erhalten. Ohne Sperre bleibt `-Turn` optional. `main` muss zuvor bewusst auf den gewünschten integrierten Stand gebracht werden. Kein automatisches Pull, Merge oder Verwerfen außerhalb der ausdrücklich freigegebenen lokalen Integration beim Story-Abschluss.
+- **Neue Story:** sauberer Worktree ohne aktive Spec und ohne fremde oder unterbrochene Schreibsperre; der bisherige Stand muss im gewünschten integrierten Ausgangsstand enthalten sein. Das bestehende `start`-Skript prüft und verwendet weiterhin das lokale `main`. Vorher nach `git fetch origin` dessen Verhältnis zu `origin/main` prüfen. Ist das lokale `main` veraltet oder enthält es den bisherigen Stand nicht, anhalten; weder den Entwickler-Worktree noch dessen lokale Branch-Referenz aktualisieren. Die Umstellung des Startskripts auf eine unabhängige Remote-Basis benötigt eine eigene geprüfte Änderung. Hat ein Tool-Hook bereits die eigene Sperre gesetzt, zusätzlich `-Turn` mit der tatsächlichen Turn-ID aus `review` übergeben. Sitzung und Turn müssen exakt zur Sperre passen; sie bleibt während des Starts erhalten. Ohne Sperre bleibt `-Turn` optional. Kein automatisches Verwerfen bestehender Arbeit.
 - **Fortsetzung:** passende bestehende Story und Diff prüfen. Uncommittete Änderungen sind dabei ausdrücklich erlaubt. Ohne Schreibsperre kann `adopt` die geprüfte Story-Zuordnung bestätigen. Bei bereits passender Zuordnung sind normale weitere Turns möglich.
 - **Abbruch / Absturz:** Änderungen bleiben bestehen. Bei Unterbrechung bleibt die Schreibsperre erhalten; beim normalen Turn-Ende wird nur sie freigegeben. Eine neue Sitzung darf bestehende Arbeit nach Prüfung fortsetzen. Kein Zeitlimit löscht eine Sperre. Bei nachweislich beendetem Besitzerprozess erlaubt `recover` die Wiederaufnahme; PID und Prozessstartzeit werden gemeinsam geprüft. Ist die Prozessidentität unbekannt oder lebt sie noch, zuerst den alten Chat und seine Prozesse prüfen und stoppen. Erst danach seine konkrete Sitzungs-ID als inaktiv bestätigen. Kein automatisches Übergehen eines laufenden Chats.
 
@@ -66,14 +66,19 @@ powershell.exe -NoProfile -File scripts/worktree-guard.ps1 checkpoint -Session A
 
 Der Befehl sichert den kombinierten Patch gegen HEAD und nicht ignorierte neue Dateien außerhalb des Repositorys. Er verändert den Arbeitsbaum nicht und erhält nicht die Trennung zwischen gestagten und ungestagten Änderungen. Ignorierte Dateien wie `.env.local`, persönliche IDE-Dateien und gegebenenfalls lokale Daten separat prüfen und sichern. Die Sicherung ist kein Ersatz für ein Backup; nicht automatisch nach Git übernehmen. Erst nach ausdrücklicher Entscheidung Änderungen gezielt bereinigen oder in einem separaten Worktree aufbewahren.
 
-Nach grüner Pflichtsuite und ausdrücklich positivem manuellen Test fragt Codex ausdrücklich nach Freigabe für **Commit und lokale Fast-forward-Integration in `main`**. Nach dieser gemeinsamen Freigabe darf Codex die abgeschlossene Story samt archivierter Spec committen und im sauberen Entwickler-Checkout auf `main` lokal per `--ff-only` integrieren. Eine reine Commit-Freigabe umfasst die Integration nicht. Branch und Arbeitsbaum unmittelbar vor der Integration prüfen; bei Änderungen, anderem Branch oder abweichender Historie anhalten. Push führt ausschließlich der Entwickler aus. Beispiel für eine freigegebene lokale Integration:
+Nach grüner Pflichtsuite und ausdrücklich positivem manuellen Test fragt Codex nach Commit-Freigabe. Die abgeschlossene Story samt archivierter Spec wird im eigenen Worktree committet. Eine reine Commit-Freigabe umfasst keinen Push.
+
+Nur auf ausdrücklichen Auftrag zum Merge oder Push nach `origin/main` den Remote-Stand aktualisieren und den fertigen Story-Branch aus dem eigenen Worktree per Fast-forward veröffentlichen. Unmittelbar vorher Branch, sauberen Arbeitsbaum und Historie prüfen. Bei abweichender Historie anhalten und die weitere Integration klären; kein Force-Push. Der Entwickler-Checkout wird dabei weder betreten, um dort zu schreiben, noch auf einen anderen Stand gebracht. Auch `git branch -f main`, `git update-ref refs/heads/main` oder ein Checkout unter Umgehung der Worktree-Sperre sind dafür ausgeschlossen.
 
 ```powershell
-# Im Entwickler-Checkout auf main:
-git merge --ff-only codex/worktree-workflow
+# Ausschließlich im eigenen Worktree, bei ausgechecktem fertigem Story-Branch:
+git fetch origin
+git merge-base --is-ancestor origin/main HEAD
+# Nur bei Exitcode 0 und ausdrücklicher Veröffentlichungsfreigabe:
+git push origin HEAD:refs/heads/main
 ```
 
-Bei abgelehntem Fast-forward nicht erzwingen, sondern abweichende Commits prüfen. Nach erfolgreicher Integration kann der Entwickler `main` selbst pushen. Den dauerhaften Codex-Ordner anschließend behalten; für die nächste Story einen neuen lokalen Chat mit **New worktree AUS** öffnen und über den geprüften Startablauf den Branch wechseln. Die Freigabe der Schreibsperre erledigt der reguläre Turn-Abschluss; ein Hintergrundprozess zum Story-Start ist nicht erforderlich. Handoff in den Entwickler-Checkout gehört nicht zum Standard dieses festen Zwei-Projekt-Ablaufs.
+Bei abgelehntem Push nicht erzwingen, sondern Ursache und abweichende Commits prüfen. Der Entwickler aktualisiert seinen lokalen Checkout später selbst zu einem passenden Zeitpunkt. Den dauerhaften Codex-Ordner anschließend behalten; für die nächste Story einen neuen lokalen Chat mit **New worktree AUS** öffnen und über den geprüften Startablauf den Branch wechseln. Die Freigabe der Schreibsperre erledigt der reguläre Turn-Abschluss; ein Hintergrundprozess zum Story-Start ist nicht erforderlich. Handoff in den Entwickler-Checkout gehört nicht zum Standard dieses festen Zwei-Projekt-Ablaufs.
 
 ## Parallele App- und Teststarts
 

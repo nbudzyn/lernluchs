@@ -77,7 +77,7 @@ Unsicherheit. Prüfe Aussagen gebündelt; die einschlägigen Inhaltsregeln gelte
 
 Es gelten die Freigabeschranken aus [AGENTS.md](../../AGENTS.md#nicht-verhandelbar).
 Der Implementierungsauftrag allein ist keine manuelle Commit-Freigabe.
-Bei der Abschlussfrage ausdrücklich **Commit und lokale Fast-forward-Integration in `main`** nennen. Eine Freigabe nur für den Commit erlaubt keine Integration. Nach gemeinsamer Freigabe darf Codex im sauberen Entwickler-Checkout auf `main` per `--ff-only` integrieren; Details und Abbruchbedingungen stehen im [Worktree-Ablauf](../quality/worktrees.md#eigene-änderungen-abbruch-und-integration). Push bleibt beim Entwickler.
+Bei der Abschlussfrage die Commit-Freigabe einholen. Eine reine Commit-Freigabe erlaubt keinen Push. Nur auf ausdrücklichen Auftrag nach `origin/main` integrieren beziehungsweise pushen, aus dem eigenen Worktree und nach geprüfter Fast-forward-Voraussetzung. Der Entwickler-Worktree und sein ausgechecktes lokales `main` bleiben dabei unverändert; der Entwickler aktualisiert seinen Arbeitsstand selbst. Details und Abbruchbedingungen stehen im [Worktree-Ablauf](../quality/worktrees.md#eigene-änderungen-abbruch-und-integration).
 
 Prüfe
 unmittelbar vor dem Commit Arbeitsbaum und gestagten Diff auf unerwartete Änderungen

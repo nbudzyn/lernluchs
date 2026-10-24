@@ -161,9 +161,10 @@ prüfen. Wiederholte Aufrufe prüfen diesen Auftrag und erzeugen kein Duplikat.
    prüfen. Im lokalen App-Browser Reihenfolge, Sprache, Laufzeit und Quellenlink
    nachweisen. Den lokalen Auftrag anschließend als integriert markieren.
 
-Manueller Nutzertest sowie Freigabe für Commit und lokale Fast-forward-Integration
-in `main` bleiben gemäß [AGENTS.md](../../AGENTS.md) erforderlich. Push führt
-ausschließlich der Entwickler aus.
+Manueller Nutzertest und Commit-Freigabe bleiben gemäß [AGENTS.md](../../AGENTS.md)
+erforderlich. Ein Push nach `origin/main` braucht einen ausdrücklichen Auftrag
+und erfolgt ausschließlich aus dem eigenen Worktree; der Entwickler-Worktree
+und sein lokales `main` bleiben unverändert.
 
 ## Grundlagen
 
