@@ -5,6 +5,12 @@
 CI für Pull Requests und Pushes auf `main`: `npm ci`, unmittelbar danach
 `npm audit --audit-level=high`; bei Auditfehler endet der Job vor den weiteren Prüfungen.
 
+Die Unit-Suite enthält isolierte NotebookLM-Oberflächentests mit Playwrights
+Chromium. CI und Pages installieren Browser und Systemabhängigkeiten vor dem
+ersten Unit-/Check-Lauf mit `npx playwright install --with-deps chromium`.
+Lokal muss der passende Browser bereits installiert sein; bei Bedarf
+`npx playwright install chromium` vor dem Unit-Lauf ausführen.
+
 1. Prettier für Code, Tests und Konfiguration einschließlich YAML; Markdown ist ausgenommen.
 2. Type-Aware-Oxlint; Warnungen lassen das Gate scheitern.
 3. TypeScript-Typprüfung.

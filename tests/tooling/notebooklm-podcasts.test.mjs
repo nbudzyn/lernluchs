@@ -137,9 +137,10 @@ it("stops offering a podcast only when its audio URL is published under the matc
 
 describe("responsive NotebookLM controls", () => {
   let browser;
+  // Dem begrenzten Browserstart auch auf ausgelasteten CI-Runnern Zeit geben.
   beforeAll(async () => {
-    browser = await chromium.launch({ channel: "chrome", headless: true });
-  });
+    browser = await chromium.launch({ headless: true, timeout: 30_000 });
+  }, 45_000);
   afterAll(async () => {
     await browser?.close();
   });
