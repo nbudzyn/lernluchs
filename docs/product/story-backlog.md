@@ -8,6 +8,17 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Letzte zwei Primärquellen-Podcasts herunterladen und integrieren
+Die beiden bereits beauftragten Folgen nach ausdrücklichem Fortsetzungssignal auf Fertigstellung prüfen, lokal herunterladen und in ihre bestehenden Themen integrieren:
+- Aufgaben mit Modell-Routing an passende Modelle verteilen (`task-based-model-routing`)
+- Modellwechsel und API-Lebenszyklen absichern (`model-and-api-lifecycle`)
+
+Vorhandene lokale Notebook-Zuordnungen, Aufträge und Prompts aus der Beauftragungs- und Integrationsstory wiederverwenden; keine erneute Generierung oder doppelten Notebooks. Beide Folgen sind mit jeweils vier textuellen Primärquellen, Deutsch, detaillierter Analyse und Standardlänge beauftragt. Keine automatische Statusprüfung oder kostenpflichtige Beschleunigung starten.
+
+Für jedes tatsächlich fertige Audio Originalquellen-Zuordnung, deutsche Ausgabe, tatsächlichen Titel, positive Laufzeit und anonym erreichbaren öffentlichen Audio-Artefaktlink prüfen. Audiodateien ausschließlich lokal außerhalb von Git aufbewahren; vor eigener Veröffentlichung der Dateien Distributionsrechte klären. Den geprüften Link als erste Sekundärquelle mit `audio-summary`, `audio`, `secondary`, `de` und tatsächlichem Prüftag ergänzen; vorhandene Podcasts und Quellen erhalten. Persönliche Zuordnungen, Kontodaten und Fehlermeldungen nicht versionieren.
+
+Die drei Folgen zu Spec-Driven Development, Evals/Traces und MCP/A2A/ACP sind bereits integriert und gehören nicht zum offenen Umfang. Für die beiden verbleibenden Integrationen eigene aktive Spec, RED → GREEN mit erweitertem bestehendem Katalogtest, genau ein Subagentenreview, Pflichtsuite und lokalen App-Browsernachweis durchführen. Manueller Nutzertest und ausdrückliche Commit-Freigabe bleiben erforderlich.
+
 ## Spracheingabe für Codex probieren
 Spracheingabe für Codex probieren
 - Verlässlichkeit, Tokenverbrauch
@@ -54,18 +65,6 @@ OWASP Dependency Check einbinden?
 - Bringt uns das was? Oder haben wir schon etwas, das das Problem löst?
 
 - Immer? Nach jeder Änderung von... was? Am Ende vor dem Commit? Vor jedem install...?
-
-## Weitere Primärquellen-Podcasts beauftragen, herunterladen und integrieren
-Die in [der abgeschlossenen Beauftragungsstory](../changes/implemented/0075-five-primary-source-podcasts.md) vorbereiteten Podcasts nach ausdrücklichem Fortsetzungssignal weiterbearbeiten:
-- Spec-Driven Development mit OpenSpec, Spec Kit und Kiro (`spec-driven-development-openspec`)
-- Agenten mit Evals und Traces systematisch prüfen (`agent-evals-and-traces`)
-- Agentensysteme über MCP, A2A und ACP verbinden (`agent-protocol-integration`)
-- Aufgaben mit Modell-Routing an passende Modelle verteilen (`task-based-model-routing`)
-- Modellwechsel und API-Lebenszyklen absichern (`model-and-api-lifecycle`)
-
-Zuerst die vorbereiteten Folgen zu Modell-Routing und Modellwechsel/API-Lebenszyklen beauftragen. Die drei bereits beauftragten Folgen zu Spec-Driven Development, Evals und Traces sowie MCP/A2A/ACP auf Fertigstellung prüfen. Vorhandene lokale Auftragszuordnungen und Prompts wiederverwenden; bestehende Aufträge nicht erneut generieren.
-
-Alle fünf fertigen deutschen Audios mit tatsächlichem Titel, Dauer und öffentlichem Audio-Link prüfen. Downloads lokal außerhalb von Git aufbewahren; öffentliche Distributionsrechte vor einer etwaigen Veröffentlichung der Dateien klären. Geprüfte öffentliche Audio-Links als erste Sekundärquellen ihrer Themen einbinden und vorhandene Podcasts erhalten. Persönlichen Status und Kontodaten nicht versionieren. TDD, einmaliges Subagentenreview, Pflichtprüfungen und manuellen App-Test gemäß Projektablauf durchführen.
 
 ## Weitere NotebookLM-Podcasts aus den Primärquellen erzeugen
 Weitere NotebookLM-Podcasts aus den Primärquellen erzeugen

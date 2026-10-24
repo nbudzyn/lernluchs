@@ -458,9 +458,10 @@ it("publishes current development topics with distinct concepts and sources", ()
       .toBe(true);
     expect
       .soft(
-        topic.sources.every(
-          (source) => source.checkedAt <= topic.editorial.reviewedAt,
-        ),
+        // Ergänzende Sekundärquellen werden unabhängig vom Thementext geprüft.
+        topic.sources
+          .filter((source) => source.origin === "primary")
+          .every((source) => source.checkedAt <= topic.editorial.reviewedAt),
         id,
       )
       .toBe(true);
@@ -641,33 +642,66 @@ describe("public content topics", () => {
         .toBe("https:");
     }
   });
-  it("places the new primary-source podcast first and retains the earlier audio", () => {
-    for (const [id, duration, oldUrl] of [
+  it("places the new primary-source podcasts first and retains the earlier audio", () => {
+    // Bewusste redaktionelle Abnahme der geprüften Laufzeiten und Bestandsquellen.
+    for (const [id, duration, checkedAt, oldUrls] of [
       [
         "agent-skills-and-commands",
         "22:33",
-        "https://notebooklm.link.google/3r54pMvsIYVd",
+        "2026-10-21",
+        ["https://notebooklm.link.google/3r54pMvsIYVd"],
       ],
       [
         "research-plan-tasks",
         "20:03",
-        "https://notebook.google.com/notebook/e8f2213d-6d4e-4a47-a523-fd9163a6a96e/artifact/afab811e-4bd2-4fb2-96fc-59406ac984be",
+        "2026-10-21",
+        [
+          "https://notebook.google.com/notebook/e8f2213d-6d4e-4a47-a523-fd9163a6a96e/artifact/afab811e-4bd2-4fb2-96fc-59406ac984be",
+        ],
       ],
-    ]) {
+      [
+        "spec-driven-development-openspec",
+        "25:28",
+        "2026-10-24",
+        [
+          "https://notebook.google.com/notebook/b660f74e-9aa5-422a-bfca-f4b5935c11c0/artifact/fe6aa068-4945-4013-a02f-52cc1db8b771",
+          "https://notebooklm.link.google/wZfxiPXJMLxP",
+        ],
+      ],
+      [
+        "agent-evals-and-traces",
+        "23:00",
+        "2026-10-24",
+        ["https://notebooklm.link.google/LxibEYMXuVso"],
+      ],
+      [
+        "agent-protocol-integration",
+        "23:44",
+        "2026-10-24",
+        ["https://notebooklm.link.google/fmEZjflpZjTm"],
+      ],
+    ] as const) {
       const topic = topics.items.find((item) => item.id === id);
       const [newest, ...earlier] =
         topic?.sources.filter((source) => source.origin === "secondary") ?? [];
 
-      expect.soft(newest).toMatchObject({
+      expect.soft(newest, id + ": erster Sekundärpodcast").toMatchObject({
         type: "audio-summary",
         mediaType: "audio",
         origin: "secondary",
         language: "de",
-        checkedAt: "2026-10-21",
+        checkedAt,
         duration,
       });
-      expect.soft(newest?.duration).toMatch(/^(?:\d+:)?\d{1,2}:[0-5]\d$/);
-      expect.soft(earlier.map((source) => source.url)).toContain(oldUrl);
+      expect
+        .soft(newest?.duration, id + ": Laufzeit")
+        .toMatch(/^(?:\d+:)?\d{1,2}:[0-5]\d$/);
+      expect
+        .soft(
+          earlier.map((source) => source.url),
+          id + ": bisherige Podcasts",
+        )
+        .toEqual(expect.arrayContaining([...oldUrls]));
     }
   });
   it("offers architecture and Spring implementation podcasts before the earlier Java audio", () => {
