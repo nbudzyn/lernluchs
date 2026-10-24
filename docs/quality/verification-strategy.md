@@ -2,139 +2,104 @@
 
 ## Derzeit ausgeführte CI-Prüfungen
 
-Die CI installiert für Pull Requests und Pushes auf `main` die festgeschriebenen npm-Abhängigkeiten und prüft:
+CI für Pull Requests und Pushes auf `main`: `npm ci`, unmittelbar danach
+`npm audit --audit-level=high`; bei Auditfehler endet der Job vor den weiteren Prüfungen.
 
-Unmittelbar nach `npm ci` läuft `npm audit --audit-level=high`. Ein fehlgeschlagener
-Audit beendet den Job vor den übrigen Prüfungen, insbesondere vor Unit- und
-E2E-Tests sowie dem Produktionsbuild. Der folgende Katalog beschreibt den Umfang.
-
-1. Formatprüfung mit Prettier für Code, Tests und Konfiguration einschließlich YAML-Workflows; Markdown ist ausgenommen.
-2. Type-Aware-Lint mit Oxlint und TypeScript 7; Warnungen lassen das Gate scheitern.
+1. Prettier für Code, Tests und Konfiguration einschließlich YAML; Markdown ist ausgenommen.
+2. Type-Aware-Oxlint; Warnungen lassen das Gate scheitern.
 3. TypeScript-Typprüfung.
-4. Unit- und Komponententests mit Vitest.
-5. Themenvalidierung für eindeutige IDs, vollständige Themen, redaktionelle Metadaten und HTTPS-Quellen sowie Validierung der Fragenpools für jeden vorhandenen Fragenpool mit mindestens 25 Fragen, genau einer richtigen Antwort, Erklärungen und Bezug zu den Quellen des Themas.
-6. Architekturprüfung mit dependency-cruiser, Tests der öffentlichen Vertikal-Einstiegspunkte und der E2E-Ablage sowie Tests der
-   Vertikalzählung.
-7. Lizenzprüfung der festgeschriebenen Abhängigkeiten. Unbekannte, GPL-, AGPL-, SSPL- und nicht quelloffene Lizenzen scheitern; LGPL und MPL brauchen eine dokumentierte Einzelfallfreigabe.
+4. Unit-/Komponententests mit Vitest und Runner-Selbsttests.
+5. Themenvalidierung: eindeutige IDs, vollständige Inhalte/Metadaten und HTTPS-Quellen. Vorhandene Fragenpools: mindestens 25 Fragen, genau eine richtige Antwort, Erklärungen und Bindung an Themenquellen.
+6. dependency-cruiser, Prüfung statischer Modulverbindungen und Tests öffentlicher Einstiegspunkte, E2E-Ablage und Vertikalzählung.
+7. Lizenzprüfung: unbekannte, GPL-, AGPL-, SSPL- und nicht quelloffene Lizenzen scheitern; LGPL/MPL brauchen dokumentierte Einzelfallfreigabe.
 8. Produktionsbuild mit Prüfung der erzeugten Dateien.
-9. Chromium-E2E-Tests für Fragenablauf, Ergebnis, Abbruch und Quellenlink-Ausfall, je zur Hälfte mit Desktop- und Smartphone-Viewport.
-10. `npm audit --audit-level=high` für bekannte Schwachstellen.
-11. Prüfung jedes neuen Commits auf höchstens zwei geänderte Vertikalen. Dazu zählen Dateien unter `src/verticals/`, `tests/verticals/`
-    und `e2e/verticals/`; `app` und `shared` zählen nicht als Vertikalen. Umbenennungen zählen alten und neuen Eigentümer.
+9. Chromium-E2E auf Desktop und Smartphone, unter anderem Fragenablauf, Ergebnis, Abbruch und Quellenlink-Ausfall.
+10. Prüfung jedes neuen Commits: höchstens zwei fachliche Vertikalen unter `src/verticals/`, `tests/verticals/`, `e2e/verticals/`; App/Shared zählen nicht. Umbenennungen zählen alten und neuen Eigentümer.
 
-Bei Push auf `main` baut der GitHub-Pages-Workflow mit `npm run check`, prüft den
-Pages-Basispfad und lädt nur `dist/` hoch. `npm run check` umfasst Punkte 1 bis 8.
-Der Pages-Build prüft bei Push auf `main` vor dem Hochladen auch die Commitgrenze.
-Browser-E2E und Audit laufen separat und sind keine Voraussetzung für den Pages-Deploy-Job.
+`npm run check` umfasst Punkte 1–8; Audit, Browser-E2E und Commitgrenze separat prüfen.
+Der Pages-Workflow baut mit `npm run check`, prüft den Pages-Basispfad und lädt nur
+`dist/` hoch. Bei Push auf `main` prüft er zusätzlich die Commitgrenze.
+Audit und Browser-E2E sind keine Voraussetzung des Pages-Deploy-Jobs.
 
 ## Prüfumfang und Nachweise
 
-- Prüfe während der Umsetzung die betroffenen Bereiche. Führe die vollständige
-  Pflichtsuite nach der letzten produktrelevanten Änderung und vor dem Commit aus.
-  Produktrelevant: Code, Tests, Laufzeitinhalte, App-Konfiguration, Abhängigkeiten
-  und Prüfskripte. Pflichtumfang: [CI-Prüfungen](#derzeit-ausgeführte-ci-prüfungen).
-- Nach dem letzten GREEN jeder Story findet genau ein
-  [Subagentenreview](code-review.md) statt. Der Hauptagent bearbeitet die Vorschläge
-  vor dem abschließenden Testdurchlauf und der Nutzerfreigabe. Der Reviewer führt
-  selbst keine Tests aus. Reviewkorrekturen werden im passenden Umfang geprüft;
-  eine zweite Reviewrunde entfällt. Reine Dokumentations-Stories sind vom Review
-  ausgenommen; es genügen die unten geregelten inhaltlichen Prüfungen.
-- Wiederhole bestandene Prüfungen nur bei relevanter Änderung oder unklarem Stand.
-  Grüne Nachweise gelten auch für den Commit, solange der geprüfte Stand eindeutig
-  und für die Prüfung unverändert ist. Reine Spec-Nachweise und deren Archivierung
-  entwerten sie nicht.
-- Prüfe reine Dokumentations- oder IDE-Änderungen passend zum Inhalt, ohne
-  App-E2E-Tests. Reine Dokumentationsänderungen erfordern keine manuelle Browserprüfung.
-- Prüfe bei produktrelevanten Änderungen den geänderten Ablauf spätestens
-  unmittelbar vor dem Commit lokal im Browser. Lege vorher einen für die Story
-  aussagekräftigen Ablauf fest; Desktop- und Mobiltests prüfen die übrige Breite.
-  Halte Browser, Ablauf und Ergebnis in der Spec fest.
-- Automatisierte Prüfungen ersetzen nicht die ausdrückliche manuelle
-  Commit-Freigabe gemäß [AGENTS.md](../../AGENTS.md#nicht-verhandelbar).
+- Während der Umsetzung gezielt prüfen. Vollständige Pflichtsuite nach letzter produktrelevanter Änderung und vor Commit: [CI-Umfang](#derzeit-ausgeführte-ci-prüfungen). Produktrelevant sind Code, Tests, Laufzeitinhalte, App-Konfiguration, Abhängigkeiten und Prüfskripte.
+- Nach letztem GREEN genau ein [Subagentenreview](code-review.md); Reviewer führt keine Tests aus. Vorschläge vor abschließenden Prüfungen und Nutzerfreigabe bearbeiten; keine zweite Runde. Reine Dokumentations-Stories benötigen kein Subagentenreview.
+- Grüne Nachweise nur bei relevanter Änderung oder unklarem Stand wiederholen. Sie gelten bis zum Commit bei eindeutigem, für die Prüfung unverändertem Stand; reine Spec-Nachweise und Archivierung entwerten sie nicht.
+- Reine Dokumentations-/IDE-Änderungen inhaltlich passend prüfen, ohne App-E2E. Reine Dokumentationsänderungen benötigen keine Browserprüfung; der Nutzer bestätigt stattdessen die manuelle Dokumentenabnahme.
+- Produktrelevante Änderungen spätestens unmittelbar vor Commit lokal im Browser prüfen. Aussagekräftigen Storyablauf vorher festlegen; Desktop-/Mobiltests decken die übrige Breite ab. Browser, Ablauf und Ergebnis in der Spec festhalten. Keine zusätzliche Dokumentenabnahme als Regelschritt für Produktstories.
+- Positive manuelle Nutzerabnahme und ausdrückliche Commit-Freigabe gemäß [AGENTS.md](../../AGENTS.md#nicht-verhandelbar) bleiben erforderlich; automatisierte Prüfungen ersetzen sie nicht.
 
 ## Testorganisation
 
-Bündle Unit-Tests für `X.ts` in `X.test.ts`, Komponententests für `X.tsx` in
-`X.test.tsx` und E2E-Tests je Nutzerablauf oder Funktion (etwa `learning-check.spec.ts`).
-Vertikaltests importieren eigene Interna, Shared und gemeinsame Testhilfen, keine
-andere Vertikale oder App. Fachliche Prüfungen mehrerer Vertikalen gehören nach
-tests/app bzw. e2e/app und nutzen nur öffentliche Vertikal-Einstiegspunkte (index.ts, für UI-freie
-Daten/Validierung data.ts). Inline-Typimporte sind zugunsten statischer import type-
-Deklarationen ausgeschlossen.
-tests/architecture prüft Strukturregeln und deren Negativbeispiele; fachliche
-Datenregressionen bleiben bei ihrem Besitzer. Gemeinsame Testhilfen importieren
-keine Vertikalen. Architektur-Dateisuche per Glob ist für die Codeprüfung erlaubt.
+Unit-Tests für `X.ts` in `X.test.ts`, Komponententests für `X.tsx` in `X.test.tsx`;
+E2E je Nutzerablauf/Funktion, etwa `learning-check.spec.ts`.
+Vertikaltests importieren eigene Interna, Shared und gemeinsame Testhilfen,
+keine andere Vertikale oder App. Fachliche Integrationstests gehören nach
+`tests/app` bzw. `e2e/app` und nutzen nur öffentliche Einstiegspunkte
+(`index.ts`, für UI-freie Daten/Validierung `data.ts`).
+Typabhängigkeiten verwenden statische `import type`-Deklarationen, keine Inline-Typimporte.
 
-Prüfe dieselbe Anforderung mit verschiedenen Daten in einem Test über alle
-betreffenden Datensätze. Unterschiedliche Anforderungen behalten eigene Tests.
-Fehler nennen Datenkennungen und verletzte Regeln. Prüfe unabhängige Datensätze
-auch nach Fehlern weiter, etwa mit Vitest-Soft-Assertions oder E2E-Fehlersammlung.
-Prüfe vor neuen Tests in RED zuerst, ob ein bestehender Test erweiterbar oder verallgemeinerbar ist.
-Neue Tests nur für bisher nicht abgedeckte, eigenständige Anforderungen anlegen.
+`tests/architecture` prüft Strukturregeln und Negativbeispiele; fachliche
+Datenregressionen bleiben beim Besitzer. Gemeinsame Testhilfen importieren keine
+Vertikalen. Glob-Dateisuche ist für Architekturprüfungen erlaubt.
+
+Dieselbe Anforderung über alle betreffenden Datensätze in einem Test prüfen;
+verschiedene Anforderungen behalten eigene Tests. Fehler nennen Datenkennung und
+verletzte Regel. Unabhängige Datensätze auch nach Fehlern weiterprüfen, etwa mit
+Vitest-Soft-Assertions oder E2E-Fehlersammlung.
+Vor neuen RED-Tests prüfen, ob bestehende Tests erweiterbar/verallgemeinerbar sind;
+neue Tests nur für bisher nicht abgedeckte eigenständige Anforderungen.
 
 ## Lokale Testaufrufe und Ausgabe
 
-**Jeder Unit-/Komponenten- und E2E-Einmallauf verwendet verbindlich die
-Silent-Runner aus [AGENTS.md](../../AGENTS.md#prüfaufwand-begrenzen).**
-Sie rufen `scripts/test-runner.mjs` auf.
-`npm run --silent` unterdrückt zusätzlich die npm-Aufrufbanner. Der Runner
-benötigt weder RTK noch zusätzliche Abhängigkeiten und startet den installierten
-Testprozess genau einmal. `npm run check` verwendet ihn ebenfalls; die
-Runner-Selbsttests gehören zur Pflichtsuite.
+**Jeder Unit-/Komponenten- und E2E-Einmallauf verwendet die Silent-Runner aus
+[AGENTS.md](../../AGENTS.md#prüfaufwand-begrenzen).** Sie starten den installierten
+Testprozess über `scripts/test-runner.mjs` genau einmal; `--silent` entfernt npm-Banner.
+Auch `npm run check` nutzt den Runner; dessen Selbsttests gehören zur Pflichtsuite.
 
 | Auswahl | Unit / Komponenten | E2E |
 | --- | --- | --- |
-| Alle Tests des Typs | `npm run --silent test:unit` | `npm run --silent test:e2e` |
-| Alle Tests einer Vertikale | `npm run --silent test:unit -- --vertical topics` | `npm run --silent test:e2e -- --vertical topics` |
-| Eine Datei | `npm run --silent test:unit -- tests/verticals/topics/topics.test.ts` | `npm run --silent test:e2e -- e2e/verticals/topics/quick-filter.spec.ts` |
-| Ein Testname in einer Datei | `npm run --silent test:unit -- tests/verticals/topics/topics.test.ts -t "provides audio sources"` | `npm run --silent test:e2e -- e2e/verticals/topics/quick-filter.spec.ts --grep "filters immediately" --project=desktop-chromium` |
+| Alle | `npm run --silent test:unit` | `npm run --silent test:e2e` |
+| Vertikale | `npm run --silent test:unit -- --vertical topics` | `npm run --silent test:e2e -- --vertical topics` |
+| Datei | `npm run --silent test:unit -- tests/verticals/topics/topics.test.ts` | `npm run --silent test:e2e -- e2e/verticals/topics/quick-filter.spec.ts` |
+| Testname in Datei | `npm run --silent test:unit -- tests/verticals/topics/topics.test.ts -t "provides audio sources"` | `npm run --silent test:e2e -- e2e/verticals/topics/quick-filter.spec.ts --grep "filters immediately" --project=desktop-chromium` |
 
-Weitere native Filter, etwa `--project` bei Playwright, werden weitergereicht.
-Dateifilter wählen Testdateinamen, Namensfilter sind native reguläre Ausdrücke.
-Runner-Reporter und Einmallauf nicht überschreiben. `npm test` bleibt für
-ausdrücklich gewünschte interaktive Vitest-Watch-Sitzungen verfügbar.
+Native Filter werden weitergereicht: Dateifilter wählen Dateinamen, Namensfilter
+sind reguläre Ausdrücke. Reporter und Einmallauf nicht überschreiben.
+`npm test` bleibt für ausdrücklich gewünschte interaktive Watch-Sitzungen.
 
-Erfolg: eine Zeile mit Anzahl, Laufzeit und Exitcode. Übersprungene Tests separat
-zählen; bei ausschließlich übersprungenen Tests `SKIP` melden. Flaky E2E-Läufe
-melden `WARN` mit Diagnose, auch nach erfolgreichen nativen Playwright-Retries.
-Der Runner wiederholt keine Tests. Fehler behalten Diagnose, Soll/Ist, Stack,
-Quellstellen und Artefaktpfade. Nur erkannte Erfolgs-Fortschrittszeilen und
-Farbsteuerzeichen entfernen; unbekannte Ausgaben nicht abschneiden.
+- Erfolg: eine Zeile mit Anzahl, Laufzeit und Exitcode; übersprungene Tests separat, ausschließlich übersprungen als `SKIP`.
+- Flaky E2E: `WARN` mit Diagnose, auch nach erfolgreichen nativen Playwright-Retries. Der Runner selbst wiederholt keine Tests.
+- Fehler: Diagnose, Soll/Ist, Stack, Quellstellen und Artefaktpfade vollständig erhalten. Nur erkannte Erfolgs-Fortschrittszeilen und Farbsteuerzeichen entfernen; unbekannte Ausgaben nicht abschneiden.
+- Native Exitcodes erhalten. Bei Exitcode 0 ohne gültigen, nichtleeren, widerspruchsfreien Bericht: Exitcode 2. Prozessfehler bleiben Fehler trotz bestandener Einzeltests.
 
-Native Exitcodes erhalten. Bei Exitcode 0 und fehlendem, ungültigem, leerem oder
-widersprüchlichem Bericht meldet der Runner Exitcode 2. Prozessfehler bleiben
-Fehler, auch bei bestandenen Einzeltests.
-
-Jeder Lauf speichert Rohtext, stdout/stderr, JSON-Bericht und Größenmessung in einem
-neuen Betriebssystem-Temp-Verzeichnis. Fehler nennen den Rohprotokollpfad.
-`--log-dir ABSOLUTER_PFAD` kann für Messungen ein neues Verzeichnis außerhalb des
-Repositorys festlegen. Protokolle nicht einchecken oder an externe Dienste senden.
-Fehlerausgabe nicht nochmals kürzen. Lies bei Bedarf vorhandene Protokolle;
-Tests nicht allein zur Wiederherstellung von Details erneut ausführen.
+Jeder Lauf speichert Rohtext, stdout/stderr, JSON-Bericht und Größenmessung in
+einem neuen Betriebssystem-Temp-Verzeichnis; Fehler nennen den Pfad.
+`--log-dir ABSOLUTER_PFAD` erlaubt ein neues Messverzeichnis außerhalb des Repositorys.
+Protokolle bleiben lokal, außerhalb von Git und externen Diensten.
+Fehlerausgabe nicht nochmals kürzen; vorhandene Protokolle lesen, Tests nicht nur zum Wiederherstellen von Details wiederholen.
 
 ### Lange Browserläufe diagnostizieren
 
-Der Runner meldet das Ergebnis erst nach Prozessende. Eine stille Konsole
-belegt keinen Stillstand. Bündle Statusabfragen mit sinnvollen Warteabständen.
-Prüfe bei ungewöhnlich langer Laufzeit früh das Temp-Protokoll des laufenden
-Prozesses. Testanzahl und letzte Aktualisierung unterscheiden laufende Tests
-von einem hängenden Prozessabschluss.
+Der Runner meldet erst nach Prozessende; stille Ausgabe belegt keinen Stillstand.
+Statusabfragen bündeln und mit Abstand ausführen. Bei ungewöhnlicher Dauer früh
+das Temp-Protokoll prüfen: Testanzahl und Aktualisierung zeigen Fortschritt oder hängenden Abschluss.
 
-Ermittle zunächst lokal nur Kennzahlen. Gib eine kompakte Zeile aus: erwartete,
-abgeschlossene und fehlgeschlagene Tests, letzte Aktualisierung und vorhandener
-Abschlussbericht. Zähle Reporter-Statusmarker; „failed“ in Testtiteln ist kein Fehler.
-Keine erfolgreichen Testzeilen, vollständigen Protokolle oder unveränderten
-Zwischenstände ausgeben. Lies Details nur zur konkreten offenen Frage.
-Überlasse Fehlerdetails dem Runner-Abschluss. Fehlt er dauerhaft, gib nur
-betroffene Fehlerblöcke vollständig aus. Bereits erhaltene Details nicht erneut ausgeben.
+Nur eine kompakte Zeile mit erwarteten, abgeschlossenen, fehlgeschlagenen Tests,
+letzter Aktualisierung und vorhandenem Abschlussbericht ausgeben.
+Reporter-Statusmarker zählen; „failed“ im Testtitel ist kein Fehler.
+Keine Erfolgszeilen, Vollprotokolle oder unveränderten Zwischenstände ausgeben.
+Details nur zur offenen Frage lesen; vollständige Fehlerdetails dem Runner-Abschluss
+überlassen. Fehlt er dauerhaft, nur betroffene Fehlerblöcke vollständig ausgeben,
+bereits erhaltene Details nicht wiederholen.
 
-Fehlt nach abgeschlossenen Testfällen der Bericht, prüfe gezielt Kindprozesse
-und Testserver. Beende einen festhängenden Testserver nur bei eindeutiger Zuordnung
-zum eigenen Lauf und bestätigtem Ende der Testfälle. Lass danach den ursprünglichen
-Runner abschließen. Sein Bericht und Exitcode bestimmen den Prüfstatus;
-erfolgreiche Einzelzeilen sind kein vollständiger grüner Nachweis. Wiederhole
-Tests nicht allein wegen eines hängenden Prozessabschlusses.
+Nach abgeschlossenen Fällen ohne Bericht Kindprozesse/Testserver prüfen.
+Festhängenden Server nur bei eindeutiger Zuordnung zum eigenen Lauf und bestätigtem
+Ende der Testfälle beenden; dann ursprünglichen Runner abschließen lassen.
+Nur sein Bericht und Exitcode belegen den Prüfstatus, keine Einzelzeilen.
+Tests nicht allein wegen hängenden Prozessabschlusses wiederholen.
 
 ## Änderungsnachweis
 
-Spec-Aufbau, TDD und Abschluss regelt der [Änderungs-Workflow](../changes/README.md).
+Spec, TDD und Abschluss: [Änderungs-Workflow](../changes/README.md).

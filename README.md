@@ -1,55 +1,34 @@
 # Lernluchs
 
-Lernluchs ist eine öffentliche, statische Lernanwendung rund um KI.
-
-Öffentlich erreichbar unter https://nbudzyn.github.io/lernluchs/.
+Öffentliche, statische Lernanwendung für KI-unterstützte Java- und Webentwicklung:
+[Anwendung öffnen](https://nbudzyn.github.io/lernluchs/).
 
 ## Einstieg
 
-1. [Dokumentationsindex](docs/INDEX.md) – welches Dokument für welche Frage gelesen werden muss.
-2. [Produktstand](docs/product/vision-and-scope.md) – für den aktuellen Funktionsumfang.
-3. [Dauerhafte Vorgaben](docs/governance/durable-rules.md) – gelten bei jeder Änderung.
-4. [Änderungs-Workflow](docs/changes/README.md) – für jedes neue Teil-Feature.
+- [Dokumentationsindex](docs/INDEX.md): Pflichtlektüre passend zum Auftrag.
+- [Produktstand](docs/product/vision-and-scope.md): bestehender Funktionsumfang.
+- [Dauerhafte Vorgaben](docs/governance/durable-rules.md): verbindliche Projektregeln; die benötigten Abschnitte bestimmt der Index.
+- [Änderungs-Workflow](docs/changes/README.md): Story-Arbeit und Freigaben.
 
-Der eigene Code erhält die Lizenz [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0). Für fremde Quellen, Videos und Markenzeichen
-werden keine Lizenzrechte beansprucht; sie werden nur korrekt referenziert.
+Eigener Code: [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0).
+Fremde Quellen, Videos und Markenzeichen werden referenziert; dafür werden keine Lizenzrechte beansprucht.
 
 ## Lokal ausführen
 
-Verwende für reproduzierbare lokale Prüfungen Node **24.15.x**. Die aktuellen Entwicklungswerkzeuge unterstützen Node 25 nicht durchgängig
-und können dort Engine-Warnungen ausgeben.
+Node **24.15.x** für reproduzierbare Prüfungen verwenden; Node 25 wird von den
+Entwicklungswerkzeugen nicht durchgängig unterstützt.
 
 ```powershell
-npm install
+npm ci
 npm run dev
 ```
 
-Vor einem Commit wird mindestens `npm run check` ausgeführt und die geänderte Anwendung anschließend lokal im Browser geprüft.
+Für Worktree-Einrichtung und parallele Starts gilt der [Worktree-Ablauf](docs/quality/worktrees.md).
+Prüfumfang und manuelle Abnahme vor einem Commit richten sich nach der
+[Qualitätsstrategie](docs/quality/verification-strategy.md#prüfumfang-und-nachweise);
+reine Dokumentationsänderungen brauchen keine App-Browserprüfung.
 
 ## Formatieren in IntelliJ IDEA
 
-Die projektbezogene `.idea/prettier.xml` aktiviert Prettier beim Speichern und
-bei „Reformat Code“. IntelliJ verwendet das lokale Paket aus `node_modules`
-und dieselben Dateien und Regeln wie `npm run format:check`.
-`.prettierrc.json` und `.editorconfig` halten die Formatierung gemeinsam fest.
-
-Nach Übernahme der Einstellungen das Projekt erneut öffnen. Die Plugins
-„JavaScript and TypeScript“ und „Prettier“ müssen aktiviert sein. Unter
-**Languages & Frameworks → JavaScript → Prettier** müssen **Automatic Prettier
-configuration** und **Run on save** aktiv sein. Unter **Tools → Actions on Save**
-die zusätzlichen Aktionen **Reformat code**, **Optimize imports** und
-**Code cleanup** deaktivieren; diese Optionen speichert IntelliJ pro Benutzer
-in der nicht versionierten `.idea/workspace.xml`.
-Zum Speichern genügt **Run Prettier**. **Reformat code → Changed lines** ist
-eine zusätzliche IDE-Formatierung und bleibt ausgeschaltet. Prettier prüft und
-formatiert beim Speichern die gesamte geänderte Datei.
-
-Für **Run for files** gilt dieses Muster ohne verschachtelte Gruppen:
-
-```text
-{src/**/*.ts,src/**/*.tsx,tests/**/*.ts,tests/**/*.tsx,e2e/**/*.ts,scripts/**/*.mjs,.github/workflows/*.yml,*.json,*.ts,*.cjs}
-```
-
-Zur Kontrolle eine TypeScript-Datei absichtlich anders einrücken, speichern
-(`Ctrl+S`) und anschließend `npm run format:check` ausführen. Die genaue Ausgabe
-erzeugt Prettier; die eingebauten IDE-Code-Stile allein garantieren sie nicht.
+Projektbezogene Prettier-Konfiguration und erforderliche lokale IDE-Einstellungen:
+[IntelliJ-Formatierung](docs/quality/intellij-formatting.md).

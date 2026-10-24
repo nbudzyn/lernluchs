@@ -3,9 +3,8 @@
 ## Zeitpunkt und Verantwortung
 
 Nach dem letzten GREEN jeder Story beauftragt der Hauptagent genau einen eigenen
-Subagenten mit einem fokussierten Review. Das ist die dauerhafte Projektvorgabe
-und ersetzt den bisherigen eigenständigen REFACTOR-Schritt. Reine
-Dokumentations-Stories sind von dieser Reviewpflicht ausgenommen. Danach bearbeitet der
+Subagenten mit einem fokussierten Review. Reine Dokumentations-Stories sind
+ausgenommen. Danach bearbeitet der
 Hauptagent die Vorschläge, führt die abschließenden Prüfungen gemäß
 [Qualitätsstrategie](verification-strategy.md#prüfumfang-und-nachweise) durch und
 holt die ausdrückliche Nutzerfreigabe ein. Eine zweite Reviewrunde entfällt auch
@@ -30,8 +29,8 @@ Der Reviewer darf von diesen Änderungen aus gezielt den Zusammenhang in den
 genannten Vertikalen sowie `app` und `shared` lesen, etwa um Duplikate zu erkennen.
 Kein allgemeines Bestandsreview und kein Durchsuchen weiterer Vertikalen.
 Tests, CSS, HTML/Templates und technische Konfiguration zählen bei konkretem Bezug
-zur Änderung dazu. Bei reinen Dokumentations-Stories entfällt das Subagentenreview;
-der Hauptagent prüft die geänderten Vorgaben, Verweise und ihre Konsistenz selbst.
+zur Änderung dazu. Reine Dokumentations-Stories prüft der Hauptagent auf Inhalt,
+Verweise und Konsistenz.
 
 Gesucht sind konkrete Verbesserungen für Wartbarkeit, Lesbarkeit, lokales
 Verständnis und einfache Konzepte:

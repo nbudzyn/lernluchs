@@ -1,78 +1,68 @@
 # Vertikalen und Grenzen
 
-Vertikalen begrenzen fachliche Verantwortung und Änderungen. dependency-cruiser
-meldet Verletzungen bestehender Importregeln als Buildfehler.
+Fachliche Verantwortung bleibt beim Besitzer; dependency-cruiser meldet
+Importregelverletzungen als Buildfehler.
 
 ## Bestehende Vertikale: Themen
 
-Die Vertikale Themen verantwortet den versionierten, öffentlich lesbaren Bestand aus Themen,
-Quellen und Aktualitätsmetadaten sowie dessen Anzeige, ohne Fragen oder persönlichen
-Lernstand. Die Anzeige besitzt die lokale Listenpräferenz (`lernluchs.topic-list-view.v1`):
-beim ersten Besuch Alltagsanker, danach Wiederherstellung der ausdrücklichen Auswahl.
-Die Präferenz bleibt vom Lernstand getrennt und ausschließlich im Browser gespeichert.
-Auch der Lernpfade-Filter gehört zu Themen: `lernluchs.learning-path-filter.v1`
-speichert die gewählten Pfadnamen unabhängig vom Lernstand und der Listenansicht.
-Unbekannte Namen werden ignoriert; ohne gültige Auswahl bleibt die Liste ungefiltert.
-Keine Auswahl und ausdrücklich alle gewählten Pfade bleiben unterscheidbar. Die Themenliste erhält die IDs der
-verfügbaren Lernchecks und der gelernten Themen über ihre öffentliche
-Komponentenschnittstelle. Ihr öffentlicher Einstiegspunkt exportiert die
-Themenliste und topicReferences: eine unveränderliche Ansicht aus IDs, Titeln und
-Quellen-URLs für die Verbindung zu Lernchecks und die übergreifende Inhaltsprüfung.
-Der UI-freie öffentliche Einstiegspunkt data.ts bietet dieselben Themenreferenzen
-für Node-basierte Prüfungen ohne CSS-/React-Abhängigkeit.
-Die Themenliste erhält Hilfe/Impressum über supplementaryViews als JSX-Eingaben. Sie verantwortet auch den Browser-Rückweg aus schmalen Themen- und
-Hilfe- und Impressumansichten. Für Lernchecks erhält sie von `app` den expliziten Vertrag
+Themen besitzt öffentliche versionierte Themen, Quellen, Aktualitätsmetadaten
+und deren Anzeige, keine Fragen oder persönlichen Lernstände.
+Lokale Präferenzen bleiben vom Lernstand getrennt:
+- `lernluchs.topic-list-view.v1`: zuerst Alltagsanker, danach ausdrückliche Auswahl wiederherstellen.
+- `lernluchs.learning-path-filter.v1`: gewählte Pfadnamen; unbekannte ignorieren, ohne gültige Auswahl ungefiltert. Keine Auswahl und bewusste Vollauswahl unterscheiden.
+
+Öffentlicher `index.ts` exportiert Themenliste und unveränderliche `topicReferences`
+(IDs, Titel, Quellen-URLs) zur Check-Verbindung und Inhaltsprüfung.
+`data.ts` bietet dieselben Referenzen ohne CSS-/React-Abhängigkeit.
+Verfügbare Check-IDs und gelernte Themen-IDs kommen über die Komponentenschnittstelle.
+
+Hilfe/Impressum kommen als `supplementaryViews`-JSX. Themen steuert deren Ansicht
+und Browser-Rückweg aus schmalen Themen-/Hilfe-/Impressumansichten.
+Für Checks liefert App explizit
 `learningCheck: { status: "closed" } | { status: "open"; onExit: () => void }`;
-ohne Angabe ist der Check geschlossen. Der Browser-Rückweg zeigt bei offenem Check
-bei jeder Breite die Liste und beendet ihn über `onExit`. Einzelne Fragen erzeugen keine eigenen
-Verlaufseinträge. Der Vorwärtsbutton behält sein natives Verhalten.
+fehlend bedeutet geschlossen. Bei offenem Check zeigt Browser-Zurück in jeder
+Breite die Liste und ruft `onExit` auf. Einzelne Fragen erzeugen keine
+Verlaufseinträge, Browser-Vorwärts bleibt nativ.
 
 ## Bestehende Vertikale: Hilfe
 
-Die Vertikale Hilfe besitzt die knappe Einführung zu Symbolen, Alltagsankern, Listenumschaltung, Schnellfilter und Lernpfad-Filterung.
-Ihr öffentlicher Einstiegspunkt exportiert `TopicHelp` als präsentierende Komponente ohne Themen-Daten oder Rückrufvertrag.
-App bindet Hilfe über index.ts ein und übergibt sie als JSX an Themen.
-Themen steuert die rechte oder mobile Ansicht und den Rückweg zur Liste, ohne
-Hilfe zu importieren. Hilfe-Tests liegen unter tests/verticals/help/ und e2e/verticals/help/.
+Hilfe besitzt die Einführung zu Symbolen, Alltagsankern, Listenumschaltung,
+Schnellfilter und Pfadfilter. Öffentlich: präsentierendes `TopicHelp` ohne
+Themen-Daten/Rückrufvertrag. App importiert über `index.ts` und übergibt JSX an Themen;
+Themen steuert Ansicht/Rückweg, ohne Hilfe zu importieren.
+Tests: `tests/verticals/help/`, `e2e/verticals/help/`.
 
 ## Bestehende Vertikale: Impressum
 
-Die Vertikale Impressum (`imprint`) besitzt die abgestimmten Autor- und Projekthinweise und deren Präsentation.
-Ihr öffentlicher Einstiegspunkt exportiert Imprint ohne Themen-Daten oder Rückrufvertrag.
-App übergibt die Komponente als JSX an Themen. Positionierung, Ansichtswechsel,
-Scrollwiederherstellung und Rückweg liegen bei Themen. Inhaltstests bleiben unter
-Impressum, gemeinsame Navigationsabläufe unter e2e/app/.
+`imprint` besitzt abgestimmte Autor-/Projekthinweise und Präsentation.
+Öffentlich: `Imprint` ohne Themen-Daten/Rückrufvertrag; App übergibt JSX an Themen.
+Positionierung, Ansichtswechsel, Scrollwiederherstellung und Rückweg liegen bei Themen.
+Inhaltstests beim Impressum, gemeinsame Navigation unter `e2e/app/`.
 
 ## Bestehende Vertikale: Lernchecks
 
-Die Vertikale Lernchecks besitzt quellengebundene Fragenpools und ihre Validierung. Der öffentliche
-Einstiegspunkt bietet verfügbare Themen-IDs, eine Fragenabfrage nach dauerhafter
-Themen-ID und die Validierung von Fragenpools gegen übergebene Themen-Quellen.
-Diese Daten-/Validierungsverträge sind zusätzlich über data.ts ohne UI-Abhängigkeit
-für Node-basierte Prüfungen verfügbar. Der Check wählt fünf verschiedene Fragen, mischt Optionen und verwaltet
-Antworten und Ergebnis flüchtig. Nach fünf richtigen Antworten meldet er das Bestehen
-über einen kleinen Speichervertrag an Lernstand und zeigt dessen Erfolg oder Fehlschlag.
-Lernchecks importiert keine internen Themen-Daten. Die Poolvalidierung erhält
-Themen-IDs und Quellen als schmale Eingabe.
+Lernchecks besitzt quellengebundene Fragenpools/Validierung. Öffentliche Verträge:
+verfügbare Themen-IDs, Fragenabfrage je dauerhafter Themen-ID und Poolvalidierung
+gegen übergebene Themen-Quellen; zusätzlich UI-frei über `data.ts` für Node-Prüfungen.
+Keine internen Themen-Daten importieren; IDs/Quellen sind schmale Eingaben.
+
+Ein Check wählt fünf verschiedene Fragen, mischt Optionen und hält Antworten/Ergebnis
+flüchtig. Fünf richtige Antworten melden Bestehen über einen kleinen Speichervertrag
+an Lernstand; Speichererfolg oder -fehler wird angezeigt.
 
 ## Bestehende Vertikale: Lernstand
 
-Die Vertikale Lernstand (`learning-state`) besitzt den persönlichen, lokal gespeicherten Lernstand:
-gelernte Themen mit dauerhaften IDs in einem eigenen, versionierten `localStorage`-Eintrag.
-Die App erhält gelernte IDs, eine Funktion zum Speichern eines Bestehens und Hinweise
-auf beschädigte Daten. Ungültige Lernstandsdaten nur in diesem Eintrag zurücksetzen;
-andere lokale Daten erhalten. Fehlgeschlagene Speicherung erzeugt keinen neuen
-gespeicherten Bestehensstand.
+`learning-state` besitzt gelernte Themen-IDs in einem eigenen versionierten
+`localStorage`-Eintrag. App erhält gelernte IDs, Speicherfunktion für Bestehen und
+Hinweise auf beschädigte Daten. Ungültige Daten nur im eigenen Eintrag zurücksetzen;
+andere lokale Daten erhalten. Fehlgeschlagene Speicherung erzeugt keinen neuen gespeicherten Bestehensstand.
 
 ## Übergreifende Grenzen
 
-Die [Architekturregeln](../governance/durable-rules.md#architektur-und-änderungen)
-bestimmen die öffentlichen Verträge und den zulässigen gemeinsamen Code.
-
-Ein Architekturtest und dependency-cruiser verhindern direkte App-Importe aus
-internen Dateien der Vertikalen. Öffentlich sind index.ts für UI und optional
-data.ts für UI-freie Daten/Validierung. `src/app` verbindet die öffentlichen
-Einstiegspunkte, indem es IDs verfügbarer Checks an die Themenliste gibt und beim
-Start Fragen anhand der gewählten ID abfragt. Die App hält den aktuellen
-Lerncheck, ohne Fragenlogik zu übernehmen. Weitere Vertikalen werden im
-[Story-Backlog](../product/story-backlog.md) geplant.
+[Architekturregeln](../governance/durable-rules.md#architektur-und-änderungen)
+bestimmen öffentliche Verträge und gemeinsamen Code. Architekturtest und
+dependency-cruiser verhindern App-Importe aus Vertikal-Interna.
+Öffentlich: `index.ts` für UI, optional `data.ts` für UI-freie Daten/Validierung.
+App gibt verfügbare Check-IDs an die Liste, fragt beim Start Fragen nach gewählter
+ID ab und hält den aktuellen Check, ohne Fragenlogik zu übernehmen.
+Weitere Vertikalen werden im [Backlog](../product/story-backlog.md) geplant.

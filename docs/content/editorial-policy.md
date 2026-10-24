@@ -2,61 +2,52 @@
 
 ## Gemeinsame Inhaltsregeln
 
-Pflege Themen, Quellen und Metadaten in `src/verticals/topics/topics.ts`; die Eintragsreihenfolge bestimmt die Themenliste.
-Lernpfade stehen in `src/verticals/topics/learningPaths.ts` und referenzieren stabile Themen-IDs in Listenreihenfolge.
-Auswahl und „Gefiltert nach“ verwenden dieselbe Sortierung: Die Themen-IDs zweier Pfade werden positionsweise anhand der gemeinsamen Themenliste verglichen; die erste unterschiedliche Position entscheidet. Bei gleichem Anfang steht der kürzere Pfad zuerst, bei identischer Folge bleibt die Definitionsreihenfolge erhalten. Die Anzeige berechnet diese Ordnung einmal pro unverändertem Katalogbestand. Neue Pfade und Änderungen ihrer Themenfolge werden so automatisch eingeordnet.
-IDs bei Textänderungen erhalten. Quellenprüfdaten nur je Quelle ändern, nicht pauschal für andere Quellen.
-Fragen bleiben in der Lernchecks-Vertikale. Bewusste Testbindungen an redaktionelle Texte sind an deren Definition kommentiert.
+Themen, Quellen und Metadaten: `src/verticals/topics/topics.ts`;
+Eintragsreihenfolge bestimmt die Liste. Lernpfade: `src/verticals/topics/learningPaths.ts`,
+mit stabilen Themen-IDs in Listenreihenfolge.
 
-Anwendung und Inhalte sind deutsch. Etablierte englische Fachbegriffe wie „Worktree“, „Spec-Driven Development“ oder „Context
-Engineering“ bleiben unübersetzt.
+Auswahl und „Gefiltert nach“ sortieren Pfade nach den Positionen ihrer Themen in
+der gemeinsamen Liste: erste abweichende Position entscheidet; bei gleichem
+Anfang der kürzere Pfad, bei identischer Folge die Definitionsreihenfolge.
+Pro unverändertem Bestand einmal berechnen; neue/geänderte Pfade automatisch einordnen.
 
-Vor jeder Integration zusätzlich die [fachliche Qualitätsprüfung](#fachliche-qualitätsprüfung) beachten.
+IDs bei Textänderungen erhalten. Quellenprüfdaten nur für tatsächlich geprüfte Quellen ändern.
+Fragen gehören zu Lernchecks. Bewusste Testbindungen an redaktionelle Texte an deren Definition kommentieren.
+App und Inhalte sind deutsch; etablierte englische Fachbegriffe bleiben unübersetzt.
+Vor Integration die [fachliche Qualitätsprüfung](#fachliche-qualitätsprüfung) anwenden.
 
 ## Sprache und Stil
 
-Themen sind knapp, konkret und anwendungsnah; sie ersetzen keine langen Originaldokumentationen.
+Themen sind knapp und anwendungsnah: Problem, Kernkonzept, Java-/Web-Einsatz und
+wichtige Grenze/Gegenbeispiel. Vom konkreten Problem zur Lösung führen, den
+Geltungsbereich eingrenzen. Titel betonen die Lösung, Alltagsanker den Bedarf.
+Prüfung/Abwägung unterstützt Anwendung und Grenzen; bei Technologie-/Lösungsthemen
+ist sie nicht Hauptgegenstand. Bestehende Test-, Review- und Eval-Themen behalten ihren Prüfgegenstand.
 
-Jedes Thema erklärt mindestens: gelöstes Problem, Kernkonzept, Einsatz in Java-/Web-Entwicklung und wichtige Grenze oder Gegenbeispiel.
+Architekturbeispiele zeigen fachliche vertikale Module, öffentliche Schnittstellen
+und kontrollierte Abhängigkeiten.
 
-Gehe vom konkreten Problem aus und zeige die passende Lösung. Grenze den Problemkontext ein, wenn die Lösung nur in bestimmten Fällen
-sinnvoll ist. Titel stellen die Lösung, Alltagsanker den Bedarf heraus. Prüfung und Abwägung unterstützen die Anwendung oder erklären
-Grenzen; sie sind nicht Hauptgegenstand eines Technologie- oder Lösungsthemas. Bestehende Themen über Tests, Reviews oder Evals behalten
-ihren fachlichen Prüfgegenstand.
-
-Architekturbeispiele stellen fachliche vertikale Module mit öffentlichen Schnittstellen und kontrollierten Abhängigkeiten in den Vordergrund.
-
-Jedes Thema hat einen festen Alltagsanker (`everydayAnchor`, siehe
-[Glossar](../product/glossary.md#alltagsanker)): konkrete Alltagssituation aus
-Lernendensicht, umgangssprachlich, ohne vorweggenommene Lösung, mit Punkt am Satzende.
-Er bleibt am Thema in `topics.ts`, ist keine persönliche Eingabe und wird in beiden
-Listenansichten vom Schnellfilter durchsucht.
+Jedes Thema hat einen festen [Alltagsanker](../product/glossary.md#alltagsanker)
+(`everydayAnchor`): konkrete Alltagssituation aus Lernendensicht, umgangssprachlich,
+ohne vorweggenommene Lösung, mit Punkt am Satzende. Er bleibt in `topics.ts`,
+ist keine persönliche Eingabe und wird in beiden Listenansichten durchsucht.
 
 ## Pflichtmetadaten
 
-Jeder veröffentlichte Inhalt besitzt eine dauerhafte ID und mindestens:
-
-- Veröffentlichungsdatum.
-- Datum der letzten fachlichen Prüfung.
-- Termin, zu dem eine erneute Prüfung fällig ist.
-- Quellen mit Typ und Sprache.
-- Status: aktiv, beobachten, archiviert oder ersetzt.
-
-Der Status macht den veröffentlichten Stand kenntlich. Fachliche Inhaltsversionen werden erst mit der dafür vorgesehenen Story eingeführt.
+Jeder veröffentlichte Inhalt hat eine dauerhafte ID, Veröffentlichungsdatum,
+letzten fachlichen Prüftag, Wiedervorlage, Quellen mit Typ/Sprache und Status
+(aktiv, beobachten, archiviert oder ersetzt).
+Fachliche Inhaltsversionen erst mit der dafür vorgesehenen Story einführen.
 
 ## Fachliche Qualitätsprüfung
 
-Prüfe Aussagen vor jeder Integration gegen aktuelle, möglichst primäre Quellen. Beziehe Konkurrenztechnologien ein, wenn sie die
-Einordnung verändern könnten. Dokumentiere Quelle, Datum, Unsicherheiten und gegebenenfalls bewusste Auslassungen.
+Vor Integration Aussagen gegen aktuelle, möglichst primäre Quellen prüfen;
+Konkurrenztechnologien berücksichtigen, soweit sie die Einordnung verändern.
+Quelle, Datum, Unsicherheit und bewusste Auslassungen dokumentieren.
 
-Für Auswahl, Ergänzung und Ersatz von Quellen gelten die
-[Quellenregeln](source-selection.md). Jedes bestehende und neue Thema erhält kuratiert ausgewählte Quellen nach diesen Regeln.
-
-Die Quellenregeln beschreiben auch [geeignete Quellentypen](source-selection.md#welche-quellen-helfen),
-das [Finden prägender Personen](source-selection.md#wie-findet-man-die-personen)
-und das [gezielte Aktualisieren von Themen](source-selection.md#themen-gezielt-aktualisieren).
-Persönliche Empfehlungen, belegte Änderungen und Popularitätssignale getrennt einordnen.
-
-Für neue quellengebundene Fragen gelten die
-[Regeln zur Fragenerstellung und Prüfung](question-authoring.md). 42 der 48 aktuellen Themen besitzen Fragen; die drei bisherigen Integrationsthemen,
-Evals und Traces sowie Modell-Routing und Herkunft/Kennzeichnung von KI-Inhalten zunächst nicht.
+Für jedes Thema gelten die [Quellenregeln](source-selection.md):
+[Quellentypen](source-selection.md#welche-quellen-helfen),
+[Recherchewege](source-selection.md#wie-findet-man-die-personen) und
+[gezielte Aktualisierung](source-selection.md#themen-gezielt-aktualisieren).
+Persönliche Empfehlungen, belegte Änderungen und Popularitätssignale auseinanderhalten.
+Fragen nach den [Fragenregeln](question-authoring.md) erstellen, ändern und prüfen.

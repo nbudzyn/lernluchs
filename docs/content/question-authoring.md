@@ -16,8 +16,8 @@ Zusätzlich gelten die [Quellenregeln](source-selection.md) bei Quellenwahl oder
 
 ## Frage und Antworten formulieren
 
-- Jede Frage hat genau eine eindeutig richtige Antwort und drei bis fünf plausible Optionen. Falsche Optionen sollen nicht offensichtlich
-  unsinnig sein und dürfen nicht ebenfalls richtig sein. Sie sollen kein "nur", "ausschließlich", "immer", "nie" o.Ä. enthalten.
+- Jede Frage hat genau eine eindeutig richtige Antwort und drei bis fünf plausible Optionen. Falsche Optionen sind plausibel und eindeutig
+  falsch; „nur“, „ausschließlich“, „immer“, „nie“ und vergleichbare verräterische Absolutformulierungen sind darin verboten.
 - Erkläre je Option kurz, warum sie richtig oder falsch ist, mit konkretem Quellenbezug. Verlinke möglichst den tragenden Originalabschnitt;
   nutze die Seiten-URL, wenn kein verlässlicher Abschnittslink möglich ist.
 - Quellenlinks erst nach bewusster Nutzeraktion öffnen. Unerreichbare externe Links dürfen Lesen und Beantworten nicht verhindern.
@@ -41,13 +41,16 @@ Zusätzlich gelten die [Quellenregeln](source-selection.md) bei Quellenwahl oder
    sinnvoll oder wahr sein; als Antwort auf diese Frage muss sie eindeutig falsch sein. Verwirf oder überarbeite mehrdeutige Kandidaten und
    präzisiere nötigenfalls erneut die Frage.
 6. Wähle fachlich unterschiedliche Distraktoren und gleiche Antwortart, Konkretionsgrad und sprachliche Form aller Optionen an. Entferne
-   Hinweise durch Grammatik, auffällige Länge oder aus der Frage nur in der richtigen Antwort wiederholte Wörter. Absolute Wörter wie
-   „immer“, „nie“ oder „ausschließlich“ dürfen eine Falschantwort nicht schon ohne Fachwissen entlarven.
+   Hinweise durch Grammatik, auffällige Länge oder aus der Frage nur in der richtigen Antwort wiederholte Wörter.
+   Das Verbot verräterischer Absolutformulierungen gilt auch hier.
 7. Dokumentiere je Distraktor vermuteten Denkfehler, Reiz, eindeutigen Ausschlussgrund und tragenden Quellenbezug. Lasse fachliche
    Richtigkeit, Mehrdeutigkeit und Plausibilität unabhängig prüfen. Bei freiwilligen Probeläufen anschließend tatsächliche Optionswahl
    prüfen und schwache Distraktoren überarbeiten. Eigene Plausibilitätsvermutungen ersetzen diesen Nachweis nicht.
 
 ## Unabhängig prüfen und validieren
+
+Diese externe fachliche Prüfung führt der Nutzer aus. Sie ist vom einmaligen
+Code-Subagentenreview getrennt; korrigierte Fragen werden weiterhin erneut geprüft.
 
 1. Prüfe jede Frage samt Lösung, allen Optionen, Erklärungen und Quellenbezügen gegen die Originalquellen. Dokumentiere Prüftag, Quellen,
    Unsicherheiten, bewusste Auslassungen und begründete Quellenänderungen in der Spec.

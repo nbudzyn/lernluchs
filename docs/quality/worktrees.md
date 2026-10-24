@@ -4,41 +4,43 @@
 
 | Zweck | Ordner | Git-Branch |
 | --- | --- | --- |
-| Entwickler / bisheriges IntelliJ-Projekt | `C:\projects\2026\lernluchs\workspace\lernluchs` | normalerweise `main`, eigene Arbeit auf eigenem Branch |
-| Dauerhafter Codex-Arbeitsplatz / zweites IntelliJ-Projekt | `C:\projects\2026\lernluchs\workspace-codex-primary\lernluchs` | wechselnd `codex/<story>` |
-| Zusätzliche parallele Entwicklung | eigener temporärer Codex-Worktree; tatsächlichen Pfad nennen | eigener `codex/<story>`-Branch |
+| Entwickler | `C:\projects\2026\lernluchs\workspace\lernluchs` | normalerweise `main`, eigene Arbeit auf eigenem Branch |
+| Dauerhafter Codex-Arbeitsplatz | `C:\projects\2026\lernluchs\workspace-codex-primary\lernluchs` | wechselnd `codex/<story>` |
+| Parallele Entwicklung | eigener temporärer Codex-Worktree; tatsächlichen Pfad nennen | eigener `codex/<story>`-Branch |
 
-`primary` bezeichnet den festen Arbeitsort, keinen Git-Branch. Der dauerhafte Worktree ist manuell mit Git angelegt und gehört nicht zur automatischen Bereinigung temporärer Codex-Worktrees. Zusätzlich ist er mit `git worktree lock` gegen versehentliches Entfernen und Pruning geschützt; das ist unabhängig von der Schreibsperre je Chat. Chats können beendet oder archiviert werden, während dieser Ordner bestehen bleibt. Zusätzliche verwaltete Worktrees können dagegen von Codex bereinigt werden.
+Der dauerhafte Codex-Worktree bleibt auch nach Story oder Chat-Archivierung bestehen.
+Er ist manuell angelegt und mit `git worktree lock` gegen Entfernen/Pruning geschützt;
+das ist unabhängig von der Schreibsperre je Chat. Temporäre verwaltete Worktrees können bereinigt werden.
 
-Arbeitsdateien und Git-Index sind getrennt; Historie und Branch-Referenzen werden gemeinsam genutzt. Git erlaubt einen Branch regulär nur in einem Worktree. Kein `--force`, um diese Sperre zu umgehen. Codex verändert den Entwickler-Worktree nicht und verschiebt auch dessen ausgecheckten lokalen Branch nicht über gemeinsame Referenzen. Ein Auftrag zum Merge oder Push nach `origin/main` ändert diese Grenze nicht. Push durch Codex nur auf ausdrücklichen Auftrag und aus dem eigenen Worktree. Die Commit- und manuellen Freigabeschranken aus [AGENTS.md](../../AGENTS.md) gelten weiter.
-
-Ein Worktree begrenzt keine Leserechte. Das tatsächliche Sandbox-Profil bestimmt den Dateizugriff. Ein neuer Projektordner kann eine einmalige Zugriffsfreigabe benötigen; keine globalen Berechtigungen dafür aufweiten.
+Entwickler-Worktree und dessen ausgecheckte Branch-Referenz bleiben unverändert,
+auch bei Integrationsaufträgen. Kein `--force` zum Umgehen der Branch-Belegung.
+Worktrees ersetzen keine Sandbox; Zugriffsrechte nicht global aufweiten.
 
 ## Einmalige Einrichtung und neue Chats
 
-1. In Codex den dauerhaften Ordner als eigenes **lokales Projekt** hinzufügen, beispielsweise mit dem Anzeigenamen „Lernluchs – Codex Primary“. Das bisherige Entwickler-Projekt bleibt bestehen. Das Hinzufügen des Projekts und das Vertrauen seiner Hooks erfolgen bewusst durch den Entwickler; die Einrichtung im Dateisystem erledigt diese App-Schritte nicht automatisch.
-2. `.codex/hooks.json`, `scripts/worktree-guard.ps1` und `scripts/worktree-guard.mjs` prüfen. Die Hook-Definitionen über die angebotene Vertrauensprüfung freigeben; die CLI bietet `/hooks`. Änderungen an Definitionen erneut prüfen. Ohne aktive, vertraute Hooks gibt es nur den dokumentierten Agentenablauf, keine automatische Schreibsperre. Die tatsächliche Ausführung in einem neuen Chat gehört zur manuellen Abnahme.
-3. Den dauerhaften Ordner in IntelliJ als **zweites Projekt in einem neuen Fenster** öffnen. Dieses Fenster kann dauerhaft bestehen bleiben.
-4. Reguläre neue Chats im Projekt „Codex Primary“ auf **Dieser Computer**, **New worktree AUS** starten. Der Ordner ist bereits ein Worktree. Der Agent prüft Arbeitsort, Branch und aktive Spec vor Änderungen.
-5. Für **gleichzeitige unabhängige Entwicklung** einen neuen Chat mit **New worktree EIN** und bewusst gewähltem Ausgangsbranch starten. Dort eigene Installation, Branch und Portpaar verwenden. Nicht zwei schreibende Chats auf denselben dauerhaften Ordner ansetzen.
-
-Je neuem Worktree `npm ci` ausführen; falls der passende Chromium fehlt: `npx playwright install chromium`. Installationen und Ausgaben bleiben getrennt.
-
-`.idea/workspace.xml` bleibt durch `.idea/.gitignore` lokal. Die Datei mit Projekt-ID und persönlichen IDE-Einstellungen weder kopieren noch versionieren. IntelliJ erzeugt sie je Projekt selbst. Gemeinsame versionierte IDE-Einstellungen bleiben erhalten; neue Projekte benötigen eigene Indizes.
+Für Projektanlage, bewusstes Hook-Vertrauen und IDE-Einrichtung die
+[Einrichtungsanleitung](worktree-setup.md#einrichtung-und-chats) lesen.
+Reguläre Chats im dauerhaften Projekt mit **New worktree AUS**, parallele
+unabhängige Entwicklung in eigenem temporären Worktree mit eigenem Branch.
+Kein zweiter schreibender Chat auf demselben Arbeitsordner.
 
 ## Start, Fortsetzung und Wiederaufnahme
 
-Der Agent beginnt mit dem folgenden Befehl im zugeordneten Worktree:
+Im zugeordneten Worktree beginnen:
 
 ```powershell
 powershell.exe -NoProfile -File scripts/worktree-guard.ps1 review
 ```
 
-Die Ausgabe nennt Pfad, Branch, aktive Spec, Git-Status, Story-Zuordnung, vorhandene Schreibsperre und einen Prüf-Fingerabdruck. Zusätzlich den Diff und die aktive Spec lesen. Ein unveränderter Fingerabdruck schützt vor einer inzwischen geänderten Übernahmegrundlage. Sitzung und Turn stammen aus dem aktuellen Codex-Hook-Ereignis; keine fremden IDs erfinden. Platzhalter in den folgenden Beispielen ersetzen.
+Pfad, Branch, aktive Spec, Diff, Story-Zuordnung und Schreibsperre prüfen.
+Der Fingerabdruck muss für eine Übernahme unverändert sein.
+Sitzung und Turn aus dem aktuellen Hook-Ereignis verwenden; keine IDs erfinden.
 
-- **Neue Story:** sauberer Worktree ohne aktive Spec und ohne fremde oder unterbrochene Schreibsperre; der bisherige Stand muss im gewünschten integrierten Ausgangsstand enthalten sein. Das bestehende `start`-Skript prüft und verwendet weiterhin das lokale `main`. Vorher nach `git fetch origin` dessen Verhältnis zu `origin/main` prüfen. Ist das lokale `main` veraltet oder enthält es den bisherigen Stand nicht, anhalten; weder den Entwickler-Worktree noch dessen lokale Branch-Referenz aktualisieren. Die Umstellung des Startskripts auf eine unabhängige Remote-Basis benötigt eine eigene geprüfte Änderung. Hat ein Tool-Hook bereits die eigene Sperre gesetzt, zusätzlich `-Turn` mit der tatsächlichen Turn-ID aus `review` übergeben. Sitzung und Turn müssen exakt zur Sperre passen; sie bleibt während des Starts erhalten. Ohne Sperre bleibt `-Turn` optional. Kein automatisches Verwerfen bestehender Arbeit.
-- **Fortsetzung:** passende bestehende Story und Diff prüfen. Uncommittete Änderungen sind dabei ausdrücklich erlaubt. Ohne Schreibsperre kann `adopt` die geprüfte Story-Zuordnung bestätigen. Bei bereits passender Zuordnung sind normale weitere Turns möglich.
-- **Abbruch / Absturz:** Änderungen bleiben bestehen. Bei Unterbrechung bleibt die Schreibsperre erhalten; beim normalen Turn-Ende wird nur sie freigegeben. Eine neue Sitzung darf bestehende Arbeit nach Prüfung fortsetzen. Kein Zeitlimit löscht eine Sperre. Bei nachweislich beendetem Besitzerprozess erlaubt `recover` die Wiederaufnahme; PID und Prozessstartzeit werden gemeinsam geprüft. Ist die Prozessidentität unbekannt oder lebt sie noch, zuerst den alten Chat und seine Prozesse prüfen und stoppen. Erst danach seine konkrete Sitzungs-ID als inaktiv bestätigen. Kein automatisches Übergehen eines laufenden Chats.
+- **Neue Story:** sauber, keine aktive Spec, keine fremde oder unterbrochene Sperre. Nach `git fetch origin` das lokale `main` mit `origin/main` vergleichen. `start` verwendet das lokale `main`; ist es veraltet oder enthält es den bisherigen Stand nicht, anhalten. Weder Entwickler-Checkout noch dessen Branch-Referenz aktualisieren. Eine Umstellung auf Remote-Basis braucht eine eigene geprüfte Änderung. Besteht bereits die eigene Sperre, `-Turn` mit dem tatsächlichen Turn aus `review` übergeben; Sitzung und Turn müssen exakt passen. Ohne Sperre ist `-Turn` optional.
+- **Fortsetzung:** passende Story und Diff prüfen; uncommittete Arbeit erhalten. Ohne Sperre kann `adopt` die geprüfte Zuordnung bestätigen. Bei passender Zuordnung sind normale weitere Turns möglich.
+- **Abbruch/Absturz:** Sperre und Änderungen erhalten. `recover` nur nach Prüfung des bisherigen Besitzers: PID und Prozessstartzeit gemeinsam, keine Altersheuristik. Bei lebendem oder unbekanntem Prozess zuerst alten Chat samt Servern/Tests prüfen und stilllegen; erst danach dessen konkrete Sitzung als inaktiv bestätigen. Keine laufende Sitzung übergehen.
+
+Alternativen je Situation; Platzhalter ersetzen:
 
 ```powershell
 powershell.exe -NoProfile -File scripts/worktree-guard.ps1 start -Session AKTUELLE_SITZUNG -Turn AKTUELLER_TURN -Branch codex/neue-story
@@ -48,90 +50,80 @@ powershell.exe -NoProfile -File scripts/worktree-guard.ps1 recover -Session AKTU
 powershell.exe -NoProfile -File scripts/worktree-guard.ps1 recover -Session AKTUELLE_SITZUNG -Review FINGERABDRUCK -ConfirmInactive ALTE_SITZUNG
 ```
 
-Die Befehle sind Alternativen je Situation, keine gemeinsam auszuführende Befehlsfolge. Bei geändertem Fingerabdruck erneut prüfen. Der Windows-Mutex serialisiert die Schutzoperationen; dauerhaft gespeicherter Zustand liegt unter `%LOCALAPPDATA%\Lernluchs\codex-worktrees\<Pfad-Hash>`. Beschädigter Status wird nicht überschrieben. Sitzungsdaten, Sicherungen und Fehlermeldungen gehören nicht nach Git oder an externe Dienste.
+Geänderter Fingerabdruck verlangt erneute Prüfung. Ein Windows-Mutex serialisiert
+Schutzoperationen. Status liegt unter `%LOCALAPPDATA%\Lernluchs\codex-worktrees\<Pfad-Hash>`;
+beschädigten Status nicht überschreiben. Sitzungsdaten, Sicherungen und Fehlermeldungen
+bleiben lokal außerhalb von Git.
 
-Die Hooks schützen unterstützte Codex-Werkzeugaufrufe zusätzlich zu den Agentenanweisungen. Sie sind keine vollständige Sicherheitsgrenze für beliebige Shellbefehle, externe Programme, bereits laufende Hintergrundprozesse oder eigene IntelliJ-Änderungen. Vor einer Wiederaufnahme auch gestartete Server und Tests berücksichtigen. Ein Interrupt-Hook kann bei einem harten Prozessabbruch ausfallen; die zuvor gespeicherte Schreibsperre bleibt dann maßgeblich.
-
-`Stop` läuft beim regulären Ende eines Agenten-Turns, also nach einer abschließenden Antwort; der Chat muss dafür nicht geschlossen oder archiviert werden. `SessionEnd` gibt ebenfalls nur die passende Sperre frei. Die Story-Zuordnung bleibt erhalten. Nach einer Unterbrechung geben diese Ereignisse die Sperre absichtlich nicht frei; dann gilt der geprüfte Wiederaufnahmeablauf. Die Schreibsperre reserviert den Worktree für eine Sitzung und einen Turn und weist konkurrierende, vom Hook geschützte Werkzeugaufrufe ab. Manche lesenden oder umhüllenden Tool-Aufrufe können sie ebenfalls setzen; sie ist keine Dateisystemsperre und verhindert keine externen Änderungen.
+Hooks schützen unterstützte Werkzeugaufrufe, keine beliebigen externen Änderungen.
+Auch lesende/umhüllende Aufrufe können eine Schreibsperre setzen.
+`Stop` am regulären Turn-Ende und `SessionEnd` geben nur die passende Sperre frei;
+die Story-Zuordnung bleibt. Nach Unterbrechung bleibt die Sperre bis zur geprüften
+Wiederaufnahme erhalten, auch wenn ein Interrupt-Hook beim Absturz ausfällt.
 
 ## Eigene Änderungen, Abbruch und Integration
 
-Code und Diff direkt im passenden IntelliJ-Projekt ansehen. Eigene Korrekturen an der laufenden Story dort vornehmen, nachdem der Agent seinen Turn beendet hat; danach den Agenten über die Änderungen informieren. Unabhängige eigene Entwicklung bleibt im Entwickler-Checkout auf eigenem Branch. Gleichzeitige Änderungen desselben Dokuments können später Mergekonflikte erzeugen.
+Eigene Korrekturen im zugeordneten Projekt nach Ende des Agenten-Turns vornehmen
+und danach mitteilen. Unabhängige Entwicklerarbeit bleibt im Entwickler-Checkout.
 
-Eine Story ganz abzubrechen bedeutet zunächst nur, die Arbeit anzuhalten. Nichts automatisch löschen, zurücksetzen oder auf eine neue Story umschalten. Vor einer später ausdrücklich beauftragten Bereinigung lokal sichern:
+Abbruch verwirft nichts und wechselt keine Story. Vor ausdrücklich beauftragter
+Bereinigung lokal sichern:
 
 ```powershell
 powershell.exe -NoProfile -File scripts/worktree-guard.ps1 checkpoint -Session AKTUELLE_SITZUNG
 ```
 
-Der Befehl sichert den kombinierten Patch gegen HEAD und nicht ignorierte neue Dateien außerhalb des Repositorys. Er verändert den Arbeitsbaum nicht und erhält nicht die Trennung zwischen gestagten und ungestagten Änderungen. Ignorierte Dateien wie `.env.local`, persönliche IDE-Dateien und gegebenenfalls lokale Daten separat prüfen und sichern. Die Sicherung ist kein Ersatz für ein Backup; nicht automatisch nach Git übernehmen. Erst nach ausdrücklicher Entscheidung Änderungen gezielt bereinigen oder in einem separaten Worktree aufbewahren.
+Checkpoint sichert Patch gegen HEAD und nicht ignorierte neue Dateien außerhalb
+des Repositorys, ohne den Arbeitsbaum zu ändern. Gestagt/ungestagt bleibt nicht getrennt.
+Ignorierte Dateien wie `.env.local`, IDE-Daten und lokale Zustände separat sichern;
+kein automatisches Bereinigen oder Übernehmen der Sicherung nach Git.
 
-Nach grüner Pflichtsuite und ausdrücklich positivem manuellen Test fragt Codex nach Commit-Freigabe. Die abgeschlossene Story samt archivierter Spec wird im eigenen Worktree committet. Eine reine Commit-Freigabe umfasst keinen Push.
-
-Nur auf ausdrücklichen Auftrag zum Merge oder Push nach `origin/main` den Remote-Stand aktualisieren und den fertigen Story-Branch aus dem eigenen Worktree per Fast-forward veröffentlichen. Unmittelbar vorher Branch, sauberen Arbeitsbaum und Historie prüfen. Bei abweichender Historie anhalten und die weitere Integration klären; kein Force-Push. Der Entwickler-Checkout wird dabei weder betreten, um dort zu schreiben, noch auf einen anderen Stand gebracht. Auch `git branch -f main`, `git update-ref refs/heads/main` oder ein Checkout unter Umgehung der Worktree-Sperre sind dafür ausgeschlossen.
+Nach grüner Pflichtsuite und positiver manueller Abnahme Commit-Freigabe einholen;
+sie erlaubt keinen Push. Nur auf ausdrücklichen Integrations-/Push-Auftrag aus dem
+eigenen fertigen Story-Branch unmittelbar vorher sauberen Arbeitsbaum, Branch und
+Historie prüfen:
 
 ```powershell
-# Ausschließlich im eigenen Worktree, bei ausgechecktem fertigem Story-Branch:
 git fetch origin
 git merge-base --is-ancestor origin/main HEAD
 # Nur bei Exitcode 0 und ausdrücklicher Veröffentlichungsfreigabe:
 git push origin HEAD:refs/heads/main
 ```
 
-Bei abgelehntem Push nicht erzwingen, sondern Ursache und abweichende Commits prüfen. Der Entwickler aktualisiert seinen lokalen Checkout später selbst zu einem passenden Zeitpunkt. Den dauerhaften Codex-Ordner anschließend behalten; für die nächste Story einen neuen lokalen Chat mit **New worktree AUS** öffnen und über den geprüften Startablauf den Branch wechseln. Die Freigabe der Schreibsperre erledigt der reguläre Turn-Abschluss; ein Hintergrundprozess zum Story-Start ist nicht erforderlich. Handoff in den Entwickler-Checkout gehört nicht zum Standard dieses festen Zwei-Projekt-Ablaufs.
+Bei abweichender Historie oder abgelehntem Push anhalten, kein Force-Push.
+Kein Checkout/Schreiben im Entwickler-Worktree, kein `branch -f main`,
+`update-ref refs/heads/main` oder Umgehen der Worktree-Sperre.
+Der Entwickler aktualisiert seinen Checkout selbst. Dauerhaften Codex-Ordner behalten;
+nächste Story im neuen lokalen Chat mit **New worktree AUS** über den Startablauf.
+Kein Hintergrundprozess zum Story-Start, kein Handoff in den Entwickler-Checkout.
 
 ## Parallele App- und Teststarts
 
-Im jeweiligen Worktree eine **nicht versionierte** `.env.local` anlegen. Für den festen Checkout reichen ohne Datei die Standardports; zusätzliche Worktrees erhalten andere Paare, zum Beispiel:
-
-| Arbeitsort | App-Port | E2E-Port |
-| --- | --- | --- |
-| Fester Checkout | 5173 | 4173 |
-| Aufgabe A | 5273 | 4273 |
-| Aufgabe B | 5373 | 4373 |
-
-Beispiel `.env.local` für Aufgabe A:
-
-```dotenv
-LERNLUCHS_DEV_PORT=5273
-LERNLUCHS_E2E_PORT=4273
-```
-
-```powershell
-npm run dev
-npm run --silent test:unit
-npm run --silent test:e2e
-```
-
-Explizite Shell-Variablen haben Vorrang vor den Env-Dateien. Ein nur für die laufende PowerShell gewählter E2E-Port geht so:
-
-```powershell
-$env:LERNLUCHS_E2E_PORT = '4274'
-npm run --silent test:e2e -- e2e/verticals/topics/learning-videos.spec.ts
-Remove-Item Env:LERNLUCHS_E2E_PORT
-```
-
-Beide Werte müssen ganze Dezimalzahlen von 1 bis 65535 und innerhalb eines Worktrees verschieden sein. Für parallelen Betrieb müssen auch die Portpaare verschiedener Worktrees frei und unterschiedlich sein. Das Betriebssystem entscheidet, welche Ports tatsächlich verfügbar sind. Es gibt keine automatische Portsuche: Vite bricht bei Kollision ab. Playwright startet seinen eigenen Server und übernimmt keinen vorhandenen Server. Die App kann währenddessen auf ihrem anderen Port geöffnet bleiben. CLI-Optionen wie Vites `--port` bleiben möglich; vorzugsweise die dokumentierten Variablen verwenden.
-
-App-URL, Test-URL und vorgegebene Testpräferenz verwenden dieselbe konfigurierte E2E-Origin. Der vorhandene Datenschutztest erkennt lokale Requests anhand dieser Origin. Unterschiedliche App-Ports bedeuten getrennten Browser-localStorage; Lernstand und Präferenzen werden weder kopiert noch synchronisiert. E2E verwendet eigene Browserkontexte. Mehrere Testläufe im selben Worktree nicht gleichzeitig starten, weil sie lokale Artefaktpfade teilen.
-
-Die versionierte .gitattributes legt für Textdateien LF fest, passend zur Formatprüfung. Dadurch liefern neue Windows-Worktrees auch bei globalem core.autocrlf=true passende Zeilenenden. Keine globale Git-Einstellung ändern. Bereits vorhandene CRLF-Checkouts werden dadurch nicht rückwirkend umgeschrieben.
+Vor Installation oder parallelen Starts die
+[Port-, Installations- und Speicherregeln](worktree-setup.md#parallele-app--und-teststarts) lesen.
+Alle Edits und Tests bleiben im zugeordneten Worktree.
 
 ## Speicherplatz und Aufwand
 
-Jeder installierte Worktree hat eigene `node_modules`, Vite-Caches, `dist` und ignorierte Testartefakte. Diese Verzeichnisse nicht per Symlink, Junction oder Kopplung teilen: `npm ci` bereinigt die Installation, und verschiedene Branches können andere Abhängigkeiten benötigen. Gemeinsam bleiben Git-Historie, der npm-Downloadcache und die versionierten Playwright-Browser-Binaries im Benutzer-Cache. Browserprofile und persönlicher Lernzustand werden nicht geteilt.
-
-Als Größenordnung bei Einführung: versionierte Dateien etwa 2,8 MiB, Installation etwa 174 MiB, Build etwa 1 MiB; zusammen ungefähr 178 MiB pro zusätzlich installiertem Worktree. Dateisystem-Overhead, IDE-Indizes, weitere Caches und Testartefakte kommen hinzu. Die Werte sind Momentaufnahmen, keine Platzgarantie. Parallele Tests benötigen außerdem mehr CPU und RAM; bei knappen Ressourcen nacheinander testen.
+Installationen, Caches, Build- und Testartefakte sind je Worktree getrennt.
+Keine Symlinks, Junctions oder Kopplung von `node_modules`; Details in der [Einrichtung](worktree-setup.md#installation-und-lokale-dateien).
 
 ## Worktrees sicher entfernen
 
-Zuerst eigene Server und IDE-Fenster schließen, Git-Status prüfen und benötigte lokale Dateien sichern. Dazu gehören auch ignorierte Dateien, die ein Git-Status ohne weitere Optionen nicht zeigt. Die letzte `git worktree list` zeigt Pfad und zugehörigen Branch beziehungsweise detached HEAD.
+Eigene Server/IDE schließen, Git-Status und ignorierte Dateien prüfen und sichern.
+`git worktree list` zeigt Pfad und Branch/detached HEAD.
 
-- **Codex-verwaltet:** Die zugehörige Worktree-Archivierung in Codex verwenden. Sie sichert wiederherstellbaren Git-Zustand und entfernt den Checkout. Benötigte ignorierte Dateien vorher separat sichern; nicht als durch den Snapshot geschützt annehmen. Die App kann verwaltete Worktrees auch automatisch bereinigen. Ein dauerhaft eingerichteter Worktree wird nicht automatisch bereinigt.
-- **Dauerhafter Codex-Arbeitsplatz:** behalten. Nur nach ausdrücklicher Entscheidung, Stilllegung und Sicherung zuerst mit `git worktree unlock 'C:\projects\2026\lernluchs\workspace-codex-primary\lernluchs'` entsperren und danach regulär entfernen.
-- **Andere manuell angelegte Worktrees:** Aus einem anderen Checkout `git worktree remove 'ABSOLUTER_WORKTREE_PFAD'` verwenden. Kein `--force` als Standard; zuerst die Ursache eines abgelehnten Entfernens klären. Einen Aufgabenbranch danach nur gesondert und bei gesicherter Integration löschen.
-- **Niemals** einen Worktree-Ordner einfach im Explorer oder per rekursivem Dateisystem-Löschbefehl entfernen. `git worktree prune --dry-run` dient bei bereits fehlenden Ordnern zur Diagnose, nicht zum regulären Entfernen. Den festen Hauptcheckout erhalten.
+- **Codex-verwaltet:** Codex-Archivierung verwenden; sie sichert Git-Zustand, nicht benötigte ignorierte Dateien.
+- **Dauerhafter Codex-Arbeitsplatz:** behalten. Nur nach ausdrücklicher Entscheidung, Stilllegung und Sicherung erst `git worktree unlock 'C:\projects\2026\lernluchs\workspace-codex-primary\lernluchs'`, dann regulär entfernen.
+- **Andere manuelle Worktrees:** aus einem anderen Checkout `git worktree remove 'ABSOLUTER_WORKTREE_PFAD'`. Kein `--force` als Standard; Ablehnungsgrund klären. Branch nur gesondert und bei gesicherter Integration löschen.
+
+Nie Worktree-Ordner rekursiv löschen. `git worktree prune --dry-run` dient nur zur
+Diagnose bereits fehlender Ordner. Festen Hauptcheckout erhalten.
 
 ## Quellen
 
-Geprüft am 18.10.2026: [Git](https://git-scm.com/docs/git-worktree), [Codex](https://learn.chatgpt.com/docs/environments/git-worktrees), [Codex-Hooks](https://learn.chatgpt.com/docs/hooks), [Codex-Sandbox](https://learn.chatgpt.com/docs/windows/windows-sandbox), [IntelliJ](https://www.jetbrains.com/help/idea/use-git-worktrees.html), [npm ci](https://docs.npmjs.com/cli/v11/commands/npm-ci/), [Vite](https://vite.dev/config/server-options#server-port), [Playwright-Webserver](https://playwright.dev/docs/test-webserver) und [Browser-Cache](https://playwright.dev/docs/browsers#managing-browser-binaries). Bedienbezeichnungen können zwischen App-/IDE-Versionen abweichen; maßgeblich bleiben der tatsächliche Arbeitsordner und das effektive Berechtigungsprofil.
+[Git-Worktrees](https://git-scm.com/docs/git-worktree),
+[Codex-Worktrees](https://learn.chatgpt.com/docs/environments/git-worktrees),
+[Hooks](https://learn.chatgpt.com/docs/hooks),
+[Windows-Sandbox](https://learn.chatgpt.com/docs/windows/windows-sandbox).
+Maßgeblich sind tatsächlicher Arbeitsordner und effektives Berechtigungsprofil.

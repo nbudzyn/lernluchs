@@ -8,12 +8,6 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Guardrails prüfen: Enthalten sie Allgemeinwissen?
-Guardrails prüfen: Enthalten sie Allgemeinwissen? - Dann das Allgemeinwissen entfernen, so dass der Fokus auf den projektspezifischen Besonderheiten liegt.
-Ziel: Kontext sparen - bei gleichbleibender Code-Ergebnis-Qualität und gleicher oder vielleicht sogar kürzerer Entwicklungszeit
-- Weniger spezielle Vorgaben -> weniger Entwicklungszeit?
-  Eventuell an zentraler / passender Stelle als Vorgaben notieren
-
 ## Spracheingabe für Codex probieren
 Spracheingabe für Codex probieren
 - Verlässlichkeit, Tokenverbrauch

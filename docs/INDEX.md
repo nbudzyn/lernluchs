@@ -1,14 +1,16 @@
 # Dokumentationsindex
 
-Die Kernregeln in [AGENTS.md](../AGENTS.md) gelten durchgehend. Vor jeder Handlung
-alle passenden Tabellenzeilen bestimmen: Ihre Vorgaben sind Pflichtlektüre.
-Mehrere Auslöser gelten gemeinsam. Lies nur benötigte Abschnitte und verwende
-bereits gelesene, unveränderte Vorgaben wieder.
+Die Kernregeln in [AGENTS.md](../AGENTS.md) gelten durchgehend. Alle passenden
+Tabellenzeilen bestimmen gemeinsam die Pflichtlektüre; nur benötigte Abschnitte
+lesen, unverändert Gelesenes wiederverwenden. Die dauerhaften Projektregeln bleiben
+verbindlich; der Index steuert den Leseumfang, er erlaubt keine Regelverletzung.
 
 | Wenn du … | lies zuerst |
 | --- | --- |
 | zu Beginn einer Session den Entwicklungsablauf klären willst | [Entwicklungsablauf im Überblick](changes/development-flow.md) |
-| Implementierungsaufgaben beginnst, Arbeitsorte oder parallele lokale Starts einrichtest | [Worktree-Ablauf](quality/worktrees.md) |
+| Implementierungsaufgaben beginnst oder bestehende Arbeit fortsetzt | [Worktree-Ablauf](quality/worktrees.md) |
+| Worktrees, Hook-Vertrauen oder parallele lokale Starts einrichtest | [Worktree-Ablauf](quality/worktrees.md) und [Einrichtung und Ports](quality/worktree-setup.md) |
+| IntelliJ-Formatierung einrichtest oder änderst | [IntelliJ-Formatierung](quality/intellij-formatting.md) |
 | den aktuellen Funktionsumfang verstehen willst | [Produktstand](product/vision-and-scope.md) |
 | den aktuellen Aufbau oder Architekturgrenzen brauchst | [Architektur und Leitplanken](architecture/target-architecture.md) |
 | einen Begriff nachschlagen willst | [Glossar](product/glossary.md) |
@@ -20,6 +22,7 @@ bereits gelesene, unveränderte Vorgaben wieder.
 | bestehende Thementexte, Titel oder Alltagsanker änderst | [Sprache und Stil](content/editorial-policy.md#sprache-und-stil) |
 | redaktionelle Metadaten bearbeitest | [Pflichtmetadaten](content/editorial-policy.md#pflichtmetadaten) |
 | fachliche Aussagen oder Quellen prüfst oder änderst | [Fachliche Qualitätsprüfung](content/editorial-policy.md#fachliche-qualitätsprüfung) und [Quellenregeln](content/source-selection.md) |
+| neue Entwicklungen recherchierst | [Rechercheablauf](product/latest-developments.md) und [Quellenregeln](content/source-selection.md) |
 | ein neues Thema anlegst | die vollständige [redaktionelle Richtlinie](content/editorial-policy.md) und [Quellenregeln](content/source-selection.md) |
 | Fragen erstellst, änderst oder prüfst | [Regeln für Fragen](content/question-authoring.md) |
 | Tests anlegst oder änderst | [Testorganisation](quality/verification-strategy.md#testorganisation) |

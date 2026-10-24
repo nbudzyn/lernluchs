@@ -1,94 +1,48 @@
 # Quellen auswählen und ergänzen
 
-Diese Regeln gelten für jedes Thema, auch bei Stories zu einzelnen Themen. [Primärquelle und Sekundärquelle](../product/glossary.md) sind im Glossar definiert.
+Gilt für jedes Thema, auch bei Einzelthemen-Stories.
+[Primär-/Sekundärquelle](../product/glossary.md#primärquelle) sind im Glossar definiert.
 
-- Wähle Quellen nach den **Aspekten des Themas**, nicht nach Zielanzahl. Problem, Kernkonzept, Java-/Web-Einsatz und Grenzen sollen fachlich abgedeckt sein. Eine Quelle kann genügen; bloße Doppelungen vermeiden.
-- Jedes Thema hat mindestens **eine Primärquelle** und höchstens **zwanzig Quellen** über alle Medientypen. Sekundärquellen sind optional. Ordne Quellen nach ihrer Herkunft für die gestützte Aussage ein, nicht allein nach Metadaten. Begründe unklare Einordnungen.
-- Prüfe vor der Übernahme die Originalseite: fachliche Autorität, Aktualität, Erreichbarkeit und ob sie die Aussage tatsächlich trägt. Bevorzuge hochwertige, aktuelle Quellen; bei gleicher Eignung knappe Quellen mit hoher Inhaltsdichte.
-- Ergänze Quellen für fehlende Aspekte oder passende neue Perspektiven, die spätere Fragen tragen können. Passe den Thementext bei Bedarf gezielt an; halte Themenschwerpunkte getrennt.
-- Ersetze eine Quelle, wenn eine andere ihre Aufgabe besser erfüllt; halte den Grund fest. Dokumentiere je geprüfter Quelle Prüftag, gestützte Aspekte, Unsicherheiten und bewusste Auslassungen. Bei deutlichem Widerspruch hat die Primärquelle Vorrang.
-- Quellen dürfen deutsch oder englisch sein. In den Themen werden Herkunftsgruppe und Sprache erfasst; in der Anzeige stehen Primärquellen vor optionalen Sekundärquellen. Sichtbar sind Gruppe und verlinkter Titel, bei deutschen Quellen mit ` [DE]`.
-- Deutschsprachige Videos sind im Original deutschsprachig; KI-Synchronisationen werden nicht als deutsche Lernquellen aufgenommen.
-  Bei der Auswahl neuer Videos die Originalsprache prüfen. Englische Originalvideos bleiben möglich.
-- Videoquellen tragen den Typ `learning-video`, den Medientyp `video` und ihre Gesamtlänge. Ein optionaler empfohlener Lernabschnitt wird getrennt angegeben und liegt innerhalb der Gesamtlänge. Das zugängliche Videosymbol und die Laufzeit ergänzen den verlinkten Titel; es werden keine Player oder Vorschaubilder eingebettet.
+- Nach Themenaspekten auswählen: Problem, Kernkonzept, Java-/Web-Einsatz und Grenzen abdecken. Keine Zielanzahl; eine Quelle kann genügen, bloße Doppelungen vermeiden.
+- Mindestens eine Primärquelle, höchstens zwanzig Quellen über alle Medien; Sekundärquellen optional. Herkunft für die gestützte Aussage prüfen, nicht nur Metadaten übernehmen; unklare Einordnung begründen.
+- Originalseite auf Autorität, Aktualität, Erreichbarkeit und tatsächliche Aussage prüfen. Hochwertige aktuelle Quellen bevorzugen, bei gleicher Eignung hohe Inhaltsdichte.
+- Fehlende Aspekte/neue Perspektiven gezielt ergänzen; besseren Ersatz und nötige Themenkorrekturen begründen. Themenschwerpunkte getrennt halten. Je geprüfter Quelle Prüftag, gestützte Aspekte, Unsicherheiten und Auslassungen dokumentieren. Bei deutlichem Widerspruch hat die Primärquelle Vorrang.
+- Deutsch/Englisch zulässig; Herkunftsgruppe und Sprache erfassen. Anzeige: Primär- vor Sekundärquellen, Gruppe und verlinkter Titel, Deutsch mit ` [DE]`.
+- Deutsche Videos müssen original deutschsprachig sein; keine KI-Synchronisation als deutsche Lernquelle. Originalsprache neuer Videos prüfen; englische Originale bleiben möglich.
+- Videos: `learning-video`, `mediaType: "video"`, Gesamtlänge. Optionalen Lernabschnitt getrennt und innerhalb der Gesamtlänge angeben. Zugängliches Videosymbol und Laufzeit am Link, keine eingebetteten Player/Vorschaubilder.
 
 ## Welche Quellen helfen?
 
-Für agentengetriebene Softwareentwicklung mehrere Perspektiven verbinden:
+Mehrere Perspektiven zur agentengetriebenen Softwareentwicklung verbinden:
 
-- **Prägende Praktiker:** Menschen, die eigene Werkzeuge, Skills, Arbeitsweisen
-  oder Projekte entwickeln und ihre Erfahrungen öffentlich nachvollziehbar machen.
-  Persönliche Blogs, Release Notes, ausführliche Community-Beiträge und
-  Vorträge können hierfür Primärquellen sein. Ein großer Name allein genügt nicht.
-- **Originalprojekte und Standards:** Spezifikation, Changelog, Migration Guide,
-  Repository und dokumentierte Experimente zeigen, was tatsächlich existiert,
-  geändert, entfernt oder nur vorgeschlagen wurde.
-- **Forschung und Evaluation:** Versuchsaufbau, Aufgaben, Vergleichsmaßstab und
-  Grenzen helfen, Wirksamkeit einzuordnen. Einen Benchmarkwert nicht ungeprüft
-  auf andere Aufgaben, Teams oder den Produktbetrieb übertragen.
-- **Interne Erfahrungsberichte von Herstellern:** Auch Veröffentlichungen von
-  Anthropic, OpenAI oder anderen Anbietern können konkrete Entwicklungsabläufe,
-  Engpässe und Fehlversuche zeigen. Sie bleiben interessengeleitete Selbstauskünfte.
-  Werbeversprechen, Mergezahlen und behauptete Zeitgewinne sind keine unabhängigen
-  Qualitäts- oder Produktivitätsnachweise. Übertragbare Verfahren herausarbeiten;
-  herstellerspezifische Bedienung und Modellneuheiten nur bei thematischem Bedarf.
-- **Betrieb und Gegenpositionen:** Erfahrungen mit Wartung, Sicherheit,
-  Systemverständnis und gescheiterten Ansätzen ergänzen Erfolgsgeschichten.
-  Widersprüche erhalten und ihren jeweiligen Problemkontext erklären.
+- **Praktiker:** eigene Werkzeuge, Verfahren, Projekte und nachvollziehbare Experimente. Blogs, Release Notes, Community-Beiträge oder Vorträge können Primärquellen sein; Bekanntheit allein genügt nicht.
+- **Originalprojekte/Standards:** Spezifikationen, Changelogs, Migration Guides, Repositorys und Experimente für tatsächliche Änderungen, entfernte Funktionen und Vorschläge.
+- **Forschung/Evaluation:** Versuchsaufbau, Aufgaben, Vergleich und Grenzen prüfen; Benchmarks nicht ungeprüft auf andere Aufgaben oder Produktbetrieb übertragen.
+- **Herstellerberichte:** konkrete Verfahren, Engpässe und Fehlschläge herausarbeiten. Interessengeleitete Selbstauskünfte, Werbeversprechen, Mergezahlen und Zeitgewinne nicht als unabhängige Qualitäts-/Produktivitätsnachweise darstellen. Produktspezifische Bedienung/Modellneuheiten nur bei thematischem Bedarf.
+- **Betrieb/Gegenpositionen:** Wartung, Sicherheit, Systemverständnis und gescheiterte Ansätze; Widersprüche samt Problemkontext erhalten.
 
 ## Wie findet man die Personen?
 
-Bei konkreten Verfahren und funktionierenden Projekten beginnen: Wer hat sie
-entwickelt, wer dokumentiert eigene Versuche, und wer erklärt Änderungen samt
-Nachteilen? Von dort Credits, zitierte Beiträge, öffentliche Diskussionen,
-Projektmitwirkende, Interviews und gemeinsame Veranstaltungen verfolgen.
-So entsteht eine nachvollziehbare Auswahl über mehrere unabhängige Kreise,
-Fachrichtungen und Arbeitsumgebungen hinweg. Nicht immer dieselbe bekannte
-Website oder deren Autoren als Ausgangspunkt verwenden.
+Von konkreten Verfahren/Projekten und deren Urhebern ausgehen; dokumentierte
+Versuche, Nachteile, Credits, Zitate, Diskussionen, Mitwirkende und Interviews
+verfolgen. Mehrere unabhängige Kreise, Fachrichtungen und Arbeitsumgebungen einbeziehen, nicht
+immer dieselbe Website/Autorengruppe als Ausgangspunkt verwenden.
 
-Blogs/RSS, GitHub, Reddit und andere Community-Plattformen, Konferenzprogramme
-und Podcasts sind Suchorte. Bei Reddit die Urheberschaft, eigene Erfahrung
-und verlinkte Artefakte prüfen; ein Pseudonym allein ist kein Ausschlussgrund.
-Zwischen ausdrücklich übernommener Idee, Empfehlung, Zusammenarbeit, Kritik und
-bloßer Erwähnung unterscheiden. Ein einzelner Verweis belegt keine Rangliste
-der wichtigsten oder häufigsten Empfehlungen.
+Blogs/RSS, GitHub, Community-Plattformen, Konferenzen und Podcasts sind Suchorte.
+Bei Community-Beiträgen Urheberschaft, eigene Erfahrung und Artefakte prüfen;
+Pseudonyme sind kein Ausschlussgrund. Übernommene Idee, Empfehlung, Zusammenarbeit,
+Kritik und Erwähnung unterscheiden; ein einzelner Verweis belegt keine Rangliste.
 
-GitHub Trending, Sterneentwicklung, Community-Aufmerksamkeit und Google Trends
-sind **Signale unter mehreren**, keine Qualitätsfilter. Suchbegriff, Zeitraum,
-Region, Mehrdeutigkeit und Datenzugang nennen, wenn Trenddaten verwendet werden.
-Suchinteresse ist keine Nutzung; Sterne sind kein Beleg für Reife oder Sicherheit.
-Nach einem Fund Originalquellen und reale Projektänderungen prüfen. Bei fehlenden
-oder nicht auswertbaren Daten keine Zahlen, Kurven oder Trendbehauptungen erfinden.
+Trending, Sterne, Aufmerksamkeit und Google Trends sind Signale, keine Qualitätsfilter.
+Bei Trenddaten Begriff, Zeitraum, Region, Mehrdeutigkeit und Zugang nennen.
+Suchinteresse ist keine Nutzung, Sterne belegen weder Reife noch Sicherheit.
+Originalquellen und reale Änderungen nachprüfen; bei fehlenden/unauswertbaren Daten keine Zahlen, Kurven oder Trendbehauptungen erfinden.
 
 ## Themen gezielt aktualisieren
 
-1. **Frage und Zeitraum festlegen.** Welche fachlichen Aspekte könnten sich
-   geändert haben? Bei einer Recherche zu den letzten sechs Monaten die konkreten
-   Grenzen nennen. Veröffentlichungsdatum, letzte inhaltliche Änderung und heutiges
-   Prüfdatum unterscheiden; eine neu gefundene ältere Idee ist keine neue Entwicklung.
-2. **Veränderung belegen.** Für jeden relevanten Fund knapp festhalten:
-   bisheriger Ansatz → aktueller Ansatz, Originalquelle und Datum, betroffene
-   Vorgehensweise, Standard oder Tool, Anwendungsfall und verbleibende Unsicherheit.
-   Gibt die Quelle keinen belastbaren Vorher-Zustand her, nur den aktuellen
-   Vorschlag beschreiben und keine Entwicklungsgeschichte ergänzen.
-3. **Status präzise benennen.** Eine entfernte Funktion, formale Abkündigung,
-   persönliche Abkehr und polemische Veraltungsbehauptung sind unterschiedliche
-   Befunde. Revisionsnummern, stabile und experimentelle Fähigkeiten sowie
-   tatsächliche SDK-Unterstützung auseinanderhalten. Neue Tools nicht ohne
-   belastbaren Verbreitungsnachweis als Default-Standard ausgeben.
-4. **Gegenprüfen und einordnen.** Eigene Erfahrung der Quelle von Studien,
-   Herstellerangaben und redaktioneller Übertragung unterscheiden. Gegenbeispiele
-   und abweichende Verfahren prüfen; Empfehlungen auf ihren Kontext begrenzen.
-   Nicht jede neue Quelle muss zu einer Änderung am Thema führen.
-5. **In Lerninhalte übersetzen.** Konkreten Nutzen für Java-/Webentwicklung,
-   Kernkonzept und Grenze ergänzen. Namenlisten und Toolwerbung ersetzen keine
-   Erklärung. Erkenntnisse passenden Themen zuordnen; kryptische oder sehr ähnliche
-   Themen auf Überschneidung prüfen. Zusammenführungen erst mit geklärtem Umfang
-   und unter Erhalt beziehungsweise bewusster Behandlung von IDs, Lernpfaden,
-   Fragenbezügen und lokalem Lernstand umsetzen.
-6. **Nachweise und Metadaten pflegen.** Auswahl, gestützte Aussagen, bewusste
-   Auslassungen, Konflikte und Grenzen in der aktiven Spec festhalten. Nur tatsächlich
-   geprüfte Quellen neu datieren. Themenprüfdatum und Wiedervorlage nach Umfang und
-   Änderungsrisiko setzen; ungeprüfte Quellen nicht pauschal als aktuell kennzeichnen.
-   Quellenbindungen der Fragen und die geltenden Implementierungs-, Prüf- und
-   Freigaberegeln weiter beachten.
+1. **Frage/Zeitraum:** betroffene Aspekte und konkrete Zeitgrenzen festlegen. Veröffentlichung, inhaltliche Änderung und Prüftag unterscheiden; ein alter neu entdeckter Ansatz ist keine neue Entwicklung.
+2. **Änderung belegen:** bisheriger → aktueller Ansatz, Originalquelle/Datum, betroffenes Verfahren/Tool/Standard, Anwendungsfall und Unsicherheit. Ohne belastbaren Vorher-Beleg nur den aktuellen Vorschlag beschreiben.
+3. **Status:** Entfernung, formale Abkündigung, persönliche Abkehr und polemische Veraltungsbehauptung unterscheiden; Revision, stable/experimentell und tatsächliche SDK-Unterstützung angeben. Kein „Default-Standard“ ohne Verbreitungsbeleg.
+4. **Gegenprüfung:** eigene Erfahrung, Studien, Herstellerangaben und redaktionelle Übertragung trennen; Gegenbeispiele prüfen, Empfehlungen eingrenzen. Ein Fund muss keine Themenänderung auslösen.
+5. **Lerninhalt:** Java-/Web-Nutzen, Kernkonzept und Grenze erklären statt Namenlisten/Toolwerbung. Passend zuordnen; kryptische/ähnliche Themen auf Überschneidung prüfen. Zusammenführung erst bei geklärtem Umfang und bewusster Behandlung von IDs, Pfaden, Fragenbezügen und lokalem Lernstand.
+6. **Nachweise/Metadaten:** Auswahl, gestützte Aussagen, Auslassungen, Konflikte und Grenzen in der aktiven Spec festhalten. Nur geprüfte Quellen neu datieren; Themenprüfdatum/Wiedervorlage nach Umfang und Risiko. Quellenbindungen der Fragen sowie Implementierungs-, Prüf- und Freigaberegeln beachten.
