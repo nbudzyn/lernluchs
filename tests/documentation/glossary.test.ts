@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 import { describe, expect, it } from "vitest";
 
-import glossary from "../../../docs/product/glossary.md?raw";
+import glossary from "../../docs/product/glossary.md?raw";
 
 describe("topic glossary", () => {
   it("defines the agreed German and English terms without using their synonyms", () => {

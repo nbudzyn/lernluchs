@@ -26,9 +26,24 @@ Audit und Browser-E2E sind keine Voraussetzung des Pages-Deploy-Jobs.
 - Während der Umsetzung gezielt prüfen. Vollständige Pflichtsuite nach letzter produktrelevanter Änderung und vor Commit: [CI-Umfang](#derzeit-ausgeführte-ci-prüfungen). Produktrelevant sind Code, Tests, Laufzeitinhalte, App-Konfiguration, Abhängigkeiten und Prüfskripte.
 - Nach letztem GREEN genau ein [Subagentenreview](code-review.md); Reviewer führt keine Tests aus. Vorschläge vor abschließenden Prüfungen und Nutzerfreigabe bearbeiten; keine zweite Runde. Reine Dokumentations-Stories benötigen kein Subagentenreview.
 - Grüne Nachweise nur bei relevanter Änderung oder unklarem Stand wiederholen. Sie gelten bis zum Commit bei eindeutigem, für die Prüfung unverändertem Stand; reine Spec-Nachweise und Archivierung entwerten sie nicht.
+- Geänderte Testeingaben entwerten die betroffenen grünen Nachweise auch bei unverändertem Testcode. Dazu gehören importierte Dokumentation, Fixtures und geprüfte Konfiguration; ein Vergleich nur von Produkt- und Testdateien genügt dann nicht.
 - Reine Dokumentations-/IDE-Änderungen inhaltlich passend prüfen, ohne App-E2E. Reine Dokumentationsänderungen benötigen keine Browserprüfung; der Nutzer bestätigt stattdessen die manuelle Dokumentenabnahme.
 - Produktrelevante Änderungen spätestens unmittelbar vor Commit lokal im Browser prüfen. Aussagekräftigen Storyablauf vorher festlegen; Desktop-/Mobiltests decken die übrige Breite ab. Browser, Ablauf und Ergebnis in der Spec festhalten. Keine zusätzliche Dokumentenabnahme als Regelschritt für Produktstories.
 - Positive manuelle Nutzerabnahme und ausdrückliche Commit-Freigabe gemäß [AGENTS.md](../../AGENTS.md#nicht-verhandelbar) bleiben erforderlich; automatisierte Prüfungen ersetzen sie nicht.
+
+## Dokumentationstests
+
+Bei Dokumentationsänderungen `npm run --silent test:docs` ausführen; weitere
+inhaltliche Prüfungen richten sich nach den betroffenen Dokumenten.
+Für die Gültigkeit bereits erbrachter Nachweise gilt
+[Prüfumfang und Nachweise](#prüfumfang-und-nachweise).
+Der Aufruf nutzt den vorhandenen Silent-Runner und wählt `tests/documentation/`.
+Diese Tests bleiben auch im vollständigen Unit-Lauf und damit in CI enthalten.
+
+Hier liegen ausschließlich Tests mit Repository-Dokumentation als Prüfgegenstand,
+derzeit der Glossartest. Tests von Code, Laufzeitinhalten, Konfiguration oder
+Skriptverhalten bleiben bei ihren bisherigen Besitzern, auch wenn sie Rohtext
+oder Markdown-Dateinamen verwenden. Der Testbereich ist keine fachliche Vertikale.
 
 ## Testorganisation
 
@@ -64,6 +79,21 @@ Auch `npm run check` nutzt den Runner; dessen Selbsttests gehören zur Pflichtsu
 | Vertikale | `npm run --silent test:unit -- --vertical topics` | `npm run --silent test:e2e -- --vertical topics` |
 | Datei | `npm run --silent test:unit -- tests/verticals/topics/topics.test.ts` | `npm run --silent test:e2e -- e2e/verticals/topics/quick-filter.spec.ts` |
 | Testname in Datei | `npm run --silent test:unit -- tests/verticals/topics/topics.test.ts -t "provides audio sources"` | `npm run --silent test:e2e -- e2e/verticals/topics/quick-filter.spec.ts --grep "filters immediately" --project=desktop-chromium` |
+
+Gezielte Aufrufe für alle bestehenden Vertikalen:
+
+| Vertikale | Unit / Komponenten | Vorhandene E2E-Abläufe |
+| --- | --- | --- |
+| Themen | `npm run --silent test:unit -- --vertical topics` | `npm run --silent test:e2e -- --vertical topics` |
+| Hilfe | `npm run --silent test:unit -- --vertical help` | `npm run --silent test:e2e -- --vertical help` |
+| Impressum | `npm run --silent test:unit -- --vertical imprint` | `npm run --silent test:e2e -- --vertical imprint` |
+| Lernchecks | `npm run --silent test:unit -- --vertical learning-checks` | `npm run --silent test:e2e -- e2e/app/learning-check.spec.ts` |
+| Lernstand | `npm run --silent test:unit -- --vertical learning-state` | `npm run --silent test:e2e -- e2e/app/learning-state.spec.ts` |
+
+Lerncheck- und Lernstand-E2E prüfen die App-Komposition und bleiben unter
+`e2e/app/`; dafür existieren keine eigenen E2E-Vertikalverzeichnisse.
+Weitere übergreifende App-Abläufe bei entsprechendem Änderungsumfang ergänzen.
+Für Dokumentation separat `npm run --silent test:docs` verwenden.
 
 Native Filter werden weitergereicht: Dateifilter wählen Dateinamen, Namensfilter
 sind reguläre Ausdrücke. Reporter und Einmallauf nicht überschreiben.

@@ -13,6 +13,7 @@
     "lint": "oxlint --type-aware --deny-warnings src tests e2e scripts local-servers.ts vite.config.ts playwright.config.ts dependency-cruiser.cjs",
     "test": "vitest",
     "test:unit": "node scripts/test-runner.mjs unit",
+    "test:docs": "node scripts/test-runner.mjs unit tests/documentation",
     "test:e2e": "node scripts/test-runner.mjs e2e",
     "test:runner": "node --test scripts/test-runner.node.mjs",
     "validate:content": "node scripts/test-runner.mjs unit tests/verticals/topics/topics.test.ts tests/verticals/learning-checks/questionPools.test.ts tests/verticals/learning-checks/validateQuestionPools.test.ts tests/app/questionPools.test.ts",

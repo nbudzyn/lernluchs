@@ -30,7 +30,8 @@ verbindlich; der Index steuert den Leseumfang, er erlaubt keine Regelverletzung.
 | Tests lokal ausführen willst | [Verbindliche Silent-Runner und Ausgabe](quality/verification-strategy.md#lokale-testaufrufe-und-ausgabe) |
 | einen ungewöhnlich langen Browserlauf untersuchst | [Lange Browserläufe diagnostizieren](quality/verification-strategy.md#lange-browserläufe-diagnostizieren) |
 | Code, Tests, Laufzeitinhalte, App-Konfiguration, Abhängigkeiten oder Prüfskripte änderst | [Produkt und Datenschutz](governance/durable-rules.md#produkt-und-datenschutz), [Prüfumfang und Nachweise](quality/verification-strategy.md#prüfumfang-und-nachweise) und [Pflichtprüfungen](quality/verification-strategy.md#derzeit-ausgeführte-ci-prüfungen) |
-| nur Dokumentation oder IDE-Einstellungen änderst | [Prüfumfang und Nachweise](quality/verification-strategy.md#prüfumfang-und-nachweise) |
+| Dokumentation änderst | [Dokumentationstests](quality/verification-strategy.md#dokumentationstests) und [Prüfumfang und Nachweise](quality/verification-strategy.md#prüfumfang-und-nachweise) |
+| nur IDE-Einstellungen änderst | [Prüfumfang und Nachweise](quality/verification-strategy.md#prüfumfang-und-nachweise) |
 | Abhängigkeiten änderst | [Abhängigkeiten und Sicherheit](governance/durable-rules.md#abhängigkeiten-und-sicherheit) |
 | die erste Story verfeinerst oder aktivierst | [Erste Backlog-Story vorbereiten](changes/README.md#erste-backlog-story-vorbereiten) |
 | eine Story vollständig umsetzen willst | [Eine Backlog-Story vollständig umsetzen](changes/README.md#eine-backlog-story-vollständig-umsetzen) |
