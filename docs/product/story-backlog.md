@@ -8,6 +8,59 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Guardrails prüfen: Enthalten sie Allgemeinwissen?
+Guardrails prüfen: Enthalten sie Allgemeinwissen? - Dann das Allgemeinwissen entfernen, so dass der Fokus auf den projektspezifischen Besonderheiten liegt.
+Ziel: Kontext sparen - bei gleichbleibender Code-Ergebnis-Qualität und gleicher oder vielleicht sogar kürzerer Entwicklungszeit
+- Weniger spezielle Vorgaben -> weniger Entwicklungszeit?
+  Eventuell an zentraler / passender Stelle als Vorgaben notieren
+
+## Spracheingabe für Codex probieren
+Spracheingabe für Codex probieren
+- Verlässlichkeit, Tokenverbrauch
+- Separates Tool ("Whisper")?
+
+## Prüfen, dass Hooks auch ohne Einträge im .codex-USER-Verzeichnis funktionieren
+Prüfen, dass Hooks auch ohne Einträge im .codex-USER-Verzeichnis funktionieren
+
+## Content Lists zu Beginn aller Guideline-Dateien?
+List of Contents am Beginn aller Guideline-Dateien?
+- Oder nur bei solchen, die (absehbar) eine bestimmte Größe überschreiten (werden)?
+- Vorher abschätzen: Spart Tokens?
+- NICHT beim Story-Backlog! (Soll leicht manuell pflegbar bleiben)
+
+## Risiken bei Verwendung von nmp möglichst auf 0 reduzieren
+Verwendung von nmp prüfen, ggf. regulieren
+Welche Risiken bestehen? Wie können wir effizient arbeiten und trotzdem den Risiken begegnen?
+
+## Redaktionelle Metadaten ausdünnen
+Status in den redaktionellen Metadaten eines jeden Themas entfernen - auch aus der Anwendung insgesamt.
+- Oder wird der Status aktuell fachlich verwendet?
+
+"Wiedervorlage" intern erhalten - aber aus der Themen-Detailanzeige entfernen.
+
+Anzeige von veröffentlicht und fachlich geprüft ändern: "September 2026".
+
+Der Entwickler hat außerdem alle Podcast-Links am 11.10.2026 geprüft (manuell - NICHT erneut prüfen!) - setze das Prüfdatum (checkedAt) auf diesen Tag (wenn es nicht schon auf später steht).
+
+## NF: Akteure klar benennen
+
+Statt User oder Benutzer oder Nutzer wollen wir zukünftig differenzieren:
+
+- Der Lernende: Der Nutzer der installierten Anwendung
+- Der Entwickler: Der menschliche User, der die Entwicklung dieser Anwendung steuert
+- Die KI: Das LLM, hier in der Regel Codex, die große Teile der Entwicklung durchführt
+
+Bezeichnungen überall IN DER DOKUMENTATION umbenennen. Auch ins glossar eintragen, auch mit englischen Übersetzungen.
+- NICHT in der Oberfläche umbenennen!
+- NICHTS in den bereits umgesetzten Stories umbenennen!
+
+## OWASP Dependency Check einbinden
+
+OWASP Dependency Check einbinden?
+- Bringt uns das was? Oder haben wir schon etwas, das das Problem löst?
+
+- Immer? Nach jeder Änderung von... was? Am Ende vor dem Commit? Vor jedem install...?
+
 ## Weitere Primärquellen-Podcasts beauftragen, herunterladen und integrieren
 Die in [der abgeschlossenen Beauftragungsstory](../changes/implemented/0075-five-primary-source-podcasts.md) vorbereiteten Podcasts nach ausdrücklichem Fortsetzungssignal weiterbearbeiten:
 - Spec-Driven Development mit OpenSpec, Spec Kit und Kiro (`spec-driven-development-openspec`)
@@ -36,7 +89,6 @@ Prozess schärfen, ggf. vereinfachen
 - Workspace des Entwicklers immer unangetastet lassen?
 
 ## Visuelle Gestaltung über Vertikalen vereinheitlichen
-
 Nach visueller Bestandsaufnahme gemeinsame Farben, Schriftrollen,
 Überschriften-Zeilenhöhen, Fokusmarkierungen und wiederkehrende Bedienelemente
 vereinheitlichen. Aufgabenbezogene Layouts und Abstände bewusst erhalten.
@@ -44,50 +96,22 @@ Zentrale Gestaltungsvorgaben mit lokalen Komponentenstilen verwenden.
 Mindestens Themen, Hilfe, Impressum und Lernchecks prüfen; Umfang vor Aktivierung
 abstimmen und die Grenze von zwei Vertikalen je Commit einhalten.
 
-## Prüfen, dass Hooks auch ohne Einträge im .codex-USER-Verzeichnis funktionieren
-Prüfen, dass Hooks auch ohne Einträge im .codex-USER-Verzeichnis funktionieren
-
-## Spracheingabe für Codex probieren
-Spracheingabe für Codex probieren
-- Verlässlichkeit, Tokenverbrauch
-- Separates Tool ("Whisper")?
-
-## Guardrails prüfen: Enthalten sie Allgemeinwissen?
-Guardrails prüfen: Enthalten sie Allgemeinwissen? - Dann entfernen
-Ziel: Kontext sparen - bei gleichbleibender Code-Ergebnis-Qualität
-Keine Liste aller Dateien mit Funden als Zwischenschritt erstellen (ich kann später einzeln prüfen)
-Eventuell an zentraler / passender Stelle als Vorgaben notieren
-
-## Content Lists zu Beginn der Guideline-Dateien? 
-Content Lists zu Beginn der Guideline-Dateien?
-Vorher abschätzen: Spart Tokens?
-NICHT beim Story-Backlog! (Soll leicht manuell pflegbar bleiben)
-
-## Teach Skill von Matt Pocock einbinden und nutzen (JavaScript...)
-Teach Skill von Matt Pocock einbinden und nutzen (JavaScript...)
+## Teach Skill von Matt Pocock einbinden und nutzen
+Teach Skill von Matt Pocock einbinden und nutzen
 
 ## Vor dem Refinement: Explore-Phase
-Vor dem Refinement: Explore-Phase (in separatem Agenten, um im Tokens zu sparen und Context Rot im Hauptagenten zu vermeiden?
+Vor dem Refinement: Explore-Phase? (In separatem Agenten, um im Tokens zu sparen und Context Rot im Hauptagenten zu vermeiden?)
 - Die Explore Phase soll liefern, wie es gerade ist. (Sofern überhaupt nötig.)
 - Die Ermittlung von Vorschlägen und der Blick auf die Projektvorgaben liegt beim Hauptagenten.
-- 
+
 Abwägung: Um wieviel erhöht sich der Gesamtaufwand?
 - Wenn der Subagent alle Projektvorgaben erneut lesen muss - oder wenn der Hauptagent ohnehin alles lesen muss - dann wäre das eher eine Verschlechterung?
 
-## Redaktionelle Metadaten ausdünnen
-Status in den redaktionellen Metadaten eines jeden Themas entfernen - auch aus der Anwendung insgesamt.
-- Oder ist wird der Status aktuell fachlich verwendet?
-
-"Wiedervorlage" intern erhalten - aber aus der Themen-Detailanzeige entfernen.
-
-Anzeige von veröffentlicht und fachlich geprüft ändern: "September 2026".
-
-Der Entwickler hat außerdem alle Podcast-Links am 11.10.2026 geprüft (manuell - NICHT erneut prüfen!) - setze das Prüfdatum (checkedAt) auf diesen Tag.
-
 ## Node 24 für Entwicklung und CI vereinheitlichen
-
 Die derzeit verwendete Node-Version `25.9.0` liegt außerhalb der unterstützten Versionen mehrerer Entwicklungsabhängigkeiten.
 Entwicklung und CI sollen eine einheitliche, unterstützte Node-24-Version verwenden; die derzeitigen Engine-Anforderungen verlangen mindestens `24.15.0`.
+- WO INSTALLIEREN? IM PROJEKT-CONTEXT (in jedem Workspace)?
+- Die zentrale Einstellung 25.9.0 soll nicht geändert werden, um keine anderen Software zu stören.
 
 - Vor der Umsetzung eine eigene Änderungs-Spec anlegen und eine aktuelle, unterstützte Node-24-Patchversion festlegen.
 - Lokale Versionsvorgaben, Projektkonfiguration, CI und Entwicklungsdokumentation auf diese Version abstimmen.
@@ -97,16 +121,6 @@ Entwicklung und CI sollen eine einheitliche, unterstützte Node-24-Version verwe
 ## Generell Subagenten für Kontextintensive Aufgaben einsetzen, wenn danach weitergearbeitet werden soll - oder für klar eingegrenzte Aufgaben, die Fokus brauchen
 Generell Subagenten für Kontextintensive Aufgaben einsetzen, wenn danach weitergearbeitet werden soll - oder für klar eingegrenzte Aufgaben, die Fokus brauchen
 - Zusätzlichen Context-Bedarf reduzieren.
-
-## Verwendung von nmp prüfen, ggf. regulieren
-
-Verwendung von nmp prüfen, ggf. regulieren
-
-## OWASP Dependency Check einbinden
-
-OWASP Dependency Check einbinden
-
-- Immer? Nach jeder Änderung von... was? Am Ende vor dem Commit? Vor jedem install...?
 
 ## OKF einführen?
 OKF prüfen (welche Vor- und Nachteile; Tokenverbrauch), ggf. Einführen
@@ -136,16 +150,6 @@ Regelmäßig nachfragen:
 - Können wir ein gecodetes kleines Tool gebrauchen, dass dir beim nächsten Mal bei Aufgabe X hilft?
 - Würde uns ein eigener Skill helfen?
 - Sollte man die Doku fürs nächste Mal anpassen, um Zeit / Tokens zu sparen?
-
-## NF: Akteure klar benennen
-
-Statt User oder Benutzer oder Nutzer wollen wir zukünftig differenzieren:
-
-- Der Lernende: Der Nutzer der installierten Anwendung
-- Der Entwickler: Der menschliche User, der die Entwicklung dieser Anwendung steuert
-- Die KI: Das LLM, hier in der Regel Codex, die große Teile der Entwicklung durchführt
-
-Bezeichnungen überall umbenennen. Auch ins glossar eintragen, auch mit englischen Übersetzungen.
 
 ## Initial in einem Projekt angewendet / umfassend in einem Projekt umgesetzt
 
