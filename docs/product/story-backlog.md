@@ -8,17 +8,6 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Letzte zwei Primärquellen-Podcasts herunterladen und integrieren
-Die beiden bereits beauftragten Folgen nach ausdrücklichem Fortsetzungssignal auf Fertigstellung prüfen, lokal herunterladen und in ihre bestehenden Themen integrieren:
-- Aufgaben mit Modell-Routing an passende Modelle verteilen (`task-based-model-routing`)
-- Modellwechsel und API-Lebenszyklen absichern (`model-and-api-lifecycle`)
-
-Vorhandene lokale Notebook-Zuordnungen, Aufträge und Prompts aus der Beauftragungs- und Integrationsstory wiederverwenden; keine erneute Generierung oder doppelten Notebooks. Beide Folgen sind mit jeweils vier textuellen Primärquellen, Deutsch, detaillierter Analyse und Standardlänge beauftragt. Keine automatische Statusprüfung oder kostenpflichtige Beschleunigung starten.
-
-Für jedes tatsächlich fertige Audio Originalquellen-Zuordnung, deutsche Ausgabe, tatsächlichen Titel, positive Laufzeit und anonym erreichbaren öffentlichen Audio-Artefaktlink prüfen. Audiodateien ausschließlich lokal außerhalb von Git aufbewahren; vor eigener Veröffentlichung der Dateien Distributionsrechte klären. Den geprüften Link als erste Sekundärquelle mit `audio-summary`, `audio`, `secondary`, `de` und tatsächlichem Prüftag ergänzen; vorhandene Podcasts und Quellen erhalten. Persönliche Zuordnungen, Kontodaten und Fehlermeldungen nicht versionieren.
-
-Die drei Folgen zu Spec-Driven Development, Evals/Traces und MCP/A2A/ACP sind bereits integriert und gehören nicht zum offenen Umfang. Für die beiden verbleibenden Integrationen eigene aktive Spec, RED → GREEN mit erweitertem bestehendem Katalogtest, genau ein Subagentenreview, Pflichtsuite und lokalen App-Browsernachweis durchführen. Manueller Nutzertest und ausdrückliche Commit-Freigabe bleiben erforderlich.
-
 ## Lokale KI im Browser zur Suche einbinden
 Über dem Suchfeld gibt es im Browser links vor "Lernpfade" einen neuen Link "Suche mit KI".
 
@@ -44,6 +33,17 @@ In den Fenster gibt es Zurücksetzen und Schließen wie beim Lernpfadefenster - 
 Die KI zur Beantwortung läuft lokal im Browser (auf jeden Fall Firefox und Chrome, gern auch Safari).
 - Keine Sicherheitslücken
 - Die KI im Browser kann keine Funktionen auslösen.
+
+## Letzte zwei Primärquellen-Podcasts herunterladen und integrieren
+Die beiden bereits beauftragten Folgen nach ausdrücklichem Fortsetzungssignal auf Fertigstellung prüfen, lokal herunterladen und in ihre bestehenden Themen integrieren:
+- Aufgaben mit Modell-Routing an passende Modelle verteilen (`task-based-model-routing`)
+- Modellwechsel und API-Lebenszyklen absichern (`model-and-api-lifecycle`)
+
+Vorhandene lokale Notebook-Zuordnungen, Aufträge und Prompts aus der Beauftragungs- und Integrationsstory wiederverwenden; keine erneute Generierung oder doppelten Notebooks. Beide Folgen sind mit jeweils vier textuellen Primärquellen, Deutsch, detaillierter Analyse und Standardlänge beauftragt. Keine automatische Statusprüfung oder kostenpflichtige Beschleunigung starten.
+
+Für jedes tatsächlich fertige Audio Originalquellen-Zuordnung, deutsche Ausgabe, tatsächlichen Titel, positive Laufzeit und anonym erreichbaren öffentlichen Audio-Artefaktlink prüfen. Audiodateien ausschließlich lokal außerhalb von Git aufbewahren; vor eigener Veröffentlichung der Dateien Distributionsrechte klären. Den geprüften Link als erste Sekundärquelle mit `audio-summary`, `audio`, `secondary`, `de` und tatsächlichem Prüftag ergänzen; vorhandene Podcasts und Quellen erhalten. Persönliche Zuordnungen, Kontodaten und Fehlermeldungen nicht versionieren.
+
+Die drei Folgen zu Spec-Driven Development, Evals/Traces und MCP/A2A/ACP sind bereits integriert und gehören nicht zum offenen Umfang. Für die beiden verbleibenden Integrationen eigene aktive Spec, RED → GREEN mit erweitertem bestehendem Katalogtest, genau ein Subagentenreview, Pflichtsuite und lokalen App-Browsernachweis durchführen. Manueller Nutzertest und ausdrückliche Commit-Freigabe bleiben erforderlich.
 
 ## Spracheingabe für Codex probieren
 Spracheingabe für Codex probieren
