@@ -12,6 +12,11 @@ Pflichtlektüren: [Index](../INDEX.md).
 - Persönlicher Zustand bleibt bis zu einer eigens spezifizierten,
   nutzergesteuerten Synchronisation auf dem jeweiligen Gerät. Die App schreibt
   persönliche Daten nicht nach Git.
+- Persönliche Konto-, Tarif-, Budget-, Kontingent- und Rücksetzangaben externer
+  Dienste bleiben ebenso wie Anmeldedaten, Browserprofile, private Zuordnungen
+  und Fehlermeldungen lokal außerhalb von Git. Auch Specs, Backlog, Committexte
+  und andere öffentliche Arbeitsnachweise enthalten nur fachliche Ergebnisse
+  und offene Aufgaben, keine Rückschlüsse auf diese persönlichen Angaben.
 - Es gibt keine Analytics, Tracker, Cookies zu Analyse- oder Marketingzwecken,
   Telemetrie, externen Fonts oder extern nachgeladenen Laufzeit-Skripte.
 - Externe Quellen und Videos werden nur nach einer bewussten Nutzeraktion

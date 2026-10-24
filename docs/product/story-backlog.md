@@ -8,11 +8,17 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Fünf weitere NotebookLM-Podcasts für die Primärquellen beauftragen
-Fünf weitere NotebookLM-Podcasts für die Primärquellen beauftragen (soweit ich bei Google noch Budget habe).
-- Themen, wo es noch keine Primärquellen-Podcasts gibt
-- Praxisnahe Themen rund um die Entwicklung mit KI oder die Integration von KI in (Java-)Anwendungen
-- Fürs Herunterladen und Integrieren der Podcast eigene Story anlegen und oben ins Backlog schieben!
+## Weitere Primärquellen-Podcasts beauftragen, herunterladen und integrieren
+Die in [der abgeschlossenen Beauftragungsstory](../changes/implemented/0075-five-primary-source-podcasts.md) vorbereiteten Podcasts nach ausdrücklichem Fortsetzungssignal weiterbearbeiten:
+- Spec-Driven Development mit OpenSpec, Spec Kit und Kiro (`spec-driven-development-openspec`)
+- Agenten mit Evals und Traces systematisch prüfen (`agent-evals-and-traces`)
+- Agentensysteme über MCP, A2A und ACP verbinden (`agent-protocol-integration`)
+- Aufgaben mit Modell-Routing an passende Modelle verteilen (`task-based-model-routing`)
+- Modellwechsel und API-Lebenszyklen absichern (`model-and-api-lifecycle`)
+
+Zuerst die vorbereiteten Folgen zu Modell-Routing und Modellwechsel/API-Lebenszyklen beauftragen. Die drei bereits beauftragten Folgen zu Spec-Driven Development, Evals und Traces sowie MCP/A2A/ACP auf Fertigstellung prüfen. Vorhandene lokale Auftragszuordnungen und Prompts wiederverwenden; bestehende Aufträge nicht erneut generieren.
+
+Alle fünf fertigen deutschen Audios mit tatsächlichem Titel, Dauer und öffentlichem Audio-Link prüfen. Downloads lokal außerhalb von Git aufbewahren; öffentliche Hosting- oder Distributionsrechte vor einer etwaigen Veröffentlichung der Dateien klären. Geprüfte öffentliche Audio-Links als erste Sekundärquellen ihrer Themen einbinden und vorhandene Podcasts erhalten. Persönlichen Status und Kontodaten nicht versionieren. TDD, einmaliges Subagentenreview, Pflichtprüfungen und manuellen App-Test gemäß Projektablauf durchführen.
 
 ## Weitere NotebookLM-Podcasts aus den Primärquellen erzeugen
 Weitere NotebookLM-Podcasts aus den Primärquellen erzeugen
