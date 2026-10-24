@@ -4,6 +4,10 @@
 
 Die CI installiert für Pull Requests und Pushes auf `main` die festgeschriebenen npm-Abhängigkeiten und prüft:
 
+Unmittelbar nach `npm ci` läuft `npm audit --audit-level=high`. Ein fehlgeschlagener
+Audit beendet den Job vor den übrigen Prüfungen, insbesondere vor Unit- und
+E2E-Tests sowie dem Produktionsbuild. Der folgende Katalog beschreibt den Umfang.
+
 1. Formatprüfung mit Prettier für Code, Tests und Konfiguration einschließlich YAML-Workflows; Markdown ist ausgenommen.
 2. Type-Aware-Lint mit Oxlint und TypeScript 7; Warnungen lassen das Gate scheitern.
 3. TypeScript-Typprüfung.
