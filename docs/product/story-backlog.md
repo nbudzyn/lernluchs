@@ -8,31 +8,34 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Lokale KI im Browser zur Suche einbinden
-Über dem Suchfeld gibt es im Browser links vor "Lernpfade" einen neuen Link "Suche mit KI".
+## Lösungsweg je Thema sichtbar machen
 
-Der Link öffnet ein kleines Eingabefenster (grafisch wie das Lernpfade-Fenster), wo der Lernende einen (potenziell mehrzeiligen) Text eingeben kann (z.B. "Ich möchte eine Altanwendung von Cobol automatisiert nach Java migrieren" oder "Ich suche Ideen für die Integration von Java in eine Webanwendung" oder "Was ist besser, Ponytail oder MCP?").
-  - Auch Fragen wie "Was weißt du über Spec-driven-Development" sind möglich.
-  - Auch Stichwörter wie "Effizienz" sind möglich.
-- Das Fenster entspricht der grafischen Gestaltung der restlichen Oberfläche. Professionelle, verlässliche Darstellung ist gewünscht!
-- Kein "1/14 Lernpfade" in diesem Fenster
+Die Themendetails zeigen zwischen „Problem“ und „Kernkonzept“ einen neuen
+Unterpunkt „Lösung“. Ein bis zwei prägnante deutsche Sätze beschreiben den
+konkreten Lösungsweg zum genannten Problem; das folgende Kernkonzept erläutert
+Methode, Zusammenhang und Grenzen. Keine bloße Wiederholung des Problems oder
+allgemeine Lernziel-Floskel.
 
-In den Fenster gibt es Zurücksetzen und Schließen wie beim Lernpfadefenster - und ein Textfeld für die Texteingabe (dort ist der Cursor).
-  - Return löst das "SChließen" aus.
-- Die Filterung wird bei Schließen übernommen (bzw. ausgeschaltet, wenn das Textfeld dann leer ist). Der Text wird über den Lernpfaden im Gefiltert-nach-Dialog angzeigt.
-- Während der Agent nachdenkt wird das in der Themenliste entsprechend markiert - Wartekreisel o.Ä.
-- Nachdem der Agent ein Ergebnis gefunden hat, aktualisiert er die Themenliste: Sie wird auf alle Themen gefiltert, die die Frage des Lernenden "beantworten" - also in deren Bereich die Antwort auf die Frage fällt. Der Gedanke ist: Wenn der Lernende sich mit diesen Themen beschäftigt, wird er die gestellte Frage beantworten oder das gestellte Problem lösen können.
-- Schnellfilter und Lernpfade filtern zusätzlich.
-- Ggf. (Z.B. "Wie backt man einen Pfannkuchen?") wird die Themenliste leer ("Keine Themen gefunden")
-- Dem Lernenden wird keine textuelle Antwort auf die Frage angezeigt (abgesehen von den Themen).
-- Die Beantwortung der Frage sollte nicht länger als 5 Sekunden dauern.
-- Öffnet der User die KI-Suche erneut, ist sie mit dem Filtertext vorausgefüllt.
-- "Filter aufheben" hebt auch den KI-Filter auf.
-- In der Hilfe ergänzen (nur eine prägnante Zeile)
+- Die bei der lokalen KI-Suche entstandenen kurzen Suchbeschreibungen dienen als
+  Ausgangspunkt. Alle Themen erhalten redaktionell geprüfte Lösungssätze; reine
+  Suchformulierungen werden vor der Anzeige auf ihre neue Rolle überarbeitet.
+- Beispiel: Das Verhalten einer undokumentierten Altanwendung mit Beispielanfragen
+  und Charakterisierungstests erfassen, bevor Code ersetzt wird. Keine unbelegten
+  Fähigkeiten von Werkzeugen versprechen.
+- Die Lösung wird als regulärer Themeninhalt beim Themenbesitzer gepflegt. Anzeige
+  und KI-Suchindex verwenden dieselbe Textquelle; keine zweite parallel gepflegte
+  Sammlung derselben Sätze.
+- Gestaltung und Lesereihenfolge bleiben in Desktop- und Mobilansicht konsistent:
+  Problem → Lösung → Kernkonzept → weitere bestehende Abschnitte.
+- Suchrepräsentationen und vorberechnete Themenvektoren werden aus den überarbeiteten
+  Inhalten neu erzeugt. Algorithmische Tests und echte KI-Qualitätsprüfung bleiben
+  getrennt; die Änderung darf die vereinbarte Trefferqualität nicht verschlechtern.
+- Abnahme: Jedes Thema zeigt eine passende, kurze Lösung an der vereinbarten Stelle;
+  die Texte sind fachlich aus dem jeweiligen Thema und seinen Quellen gedeckt,
+  Inhalte und KI-Suche bleiben konsistent, keine duplizierte Textpflege.
 
-Die KI zur Beantwortung läuft lokal im Browser (auf jeden Fall Firefox und Chrome, gern auch Safari).
-- Keine Sicherheitslücken
-- Die KI im Browser kann keine Funktionen auslösen.
+Betroffene Vertikale voraussichtlich: `topics`. Bei der Umsetzung reguläres
+Refinement, aktive Spec, RED → GREEN, einmaliges Subagentenreview und Pflichtsuite.
 
 ## Letzte zwei Primärquellen-Podcasts herunterladen und integrieren
 Die beiden bereits beauftragten Folgen nach ausdrücklichem Fortsetzungssignal auf Fertigstellung prüfen, lokal herunterladen und in ihre bestehenden Themen integrieren:

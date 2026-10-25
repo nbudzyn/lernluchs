@@ -35,6 +35,7 @@ module.exports = {
       severity: "error",
       from: { path: "^(?:tests|e2e)/verticals/([^/]+)/" },
       to: {
+        dependencyTypesNot: ["core"],
         pathNot:
           "^(?:(?:src|tests|e2e)/verticals/$1/|src/shared/|(?:tests|e2e)/shared/|docs/|node_modules/)",
       },
@@ -43,7 +44,10 @@ module.exports = {
       name: "shared-test-helpers-stay-independent",
       severity: "error",
       from: { path: "^(?:tests|e2e)/shared/" },
-      to: { pathNot: "^(?:src/shared/|(?:tests|e2e)/shared/|node_modules/)" },
+      to: {
+        dependencyTypesNot: ["core"],
+        pathNot: "^(?:src/shared/|(?:tests|e2e)/shared/|node_modules/)",
+      },
     },
     {
       name: "architecture-tests-do-not-import-domain-data",
@@ -52,5 +56,12 @@ module.exports = {
       to: { path: "^src/" },
     },
   ],
-  options: { doNotFollow: { path: "node_modules" }, parser: "swc" },
+  options: {
+    doNotFollow: { path: "node_modules" },
+    parser: "swc",
+    enhancedResolveOptions: {
+      exportsFields: ["exports"],
+      conditionNames: ["import", "browser", "default"],
+    },
+  },
 };

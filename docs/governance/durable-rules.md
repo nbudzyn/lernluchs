@@ -12,7 +12,11 @@ Handlungsschranken: [AGENTS.md](../../AGENTS.md); Pflichtlektüre je Aufgabe: [I
 - Keine Analytics, Tracker, Analyse-/Marketing-Cookies, Telemetrie, externen Fonts oder extern nachgeladenen Laufzeit-Skripte.
 - Externe Quellen und Videos öffnen sich nur nach bewusster Nutzeraktion.
 - Öffentliche Inhalte und persönlicher Zustand bleiben getrennt. Themen sind nur lesbar; Benutzereingaben ändern sie nicht.
-- Die App enthält keinen KI-Schlüssel und ruft kein KI-Modell auf.
+- Die App enthält keinen KI-Schlüssel. Ausschließlich die Themensuche darf ein
+  lokal im Browser laufendes Embeddingmodell aufrufen; Eingaben bleiben auf dem
+  Gerät. Modell und Laufzeitdateien werden von derselben Website ausgeliefert,
+  keine Cloudinferenz oder externen Laufzeit-Skripte. Das Modell erzeugt keine
+  Antworten und kann keine Funktionen auslösen.
 
 ## Architektur und Änderungen
 

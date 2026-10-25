@@ -17,7 +17,7 @@ const unitReport = {
   success: true,
 };
 
-test("selects a unit vertical and forwards an individual test name", () => {
+void test("selects a unit vertical and forwards an individual test name", () => {
   const result = parseArguments([
     "unit",
     "--vertical",
@@ -34,7 +34,7 @@ test("selects a unit vertical and forwards an individual test name", () => {
   ]);
 });
 
-test("selects E2E files, a project and a test name without a shell", () => {
+void test("selects E2E files, a project and a test name without a shell", () => {
   const result = parseArguments([
     "e2e",
     "e2e/verticals/topics/quick-filter.spec.ts",
@@ -54,7 +54,7 @@ test("selects E2E files, a project and a test name without a shell", () => {
   ]);
 });
 
-test("rejects unknown types, unsafe verticals and reporter/watch overrides", () => {
+void test("rejects unknown types, unsafe verticals and reporter/watch overrides", () => {
   for (const args of [
     [],
     ["other"],
@@ -70,7 +70,7 @@ test("rejects unknown types, unsafe verticals and reporter/watch overrides", () 
   }
 });
 
-test("reports passed and skipped tests separately in one successful line", () => {
+void test("reports passed and skipped tests separately in one successful line", () => {
   const result = summarizeResult("unit", unitReport, 0, 1250);
   assert.equal(result.exitCode, 0);
   assert.equal(result.showDetails, false);
@@ -81,7 +81,7 @@ test("reports passed and skipped tests separately in one successful line", () =>
   assert.match(result.summary, /1,25 s; Exitcode 0$/);
 });
 
-test("never describes a completely skipped suite as passed", () => {
+void test("never describes a completely skipped suite as passed", () => {
   const result = summarizeResult(
     "unit",
     {
@@ -95,14 +95,14 @@ test("never describes a completely skipped suite as passed", () => {
   assert.match(result.summary, /^SKIP /);
 });
 
-test("keeps a process failure even when the report contains only passing tests", () => {
+void test("keeps a process failure even when the report contains only passing tests", () => {
   const result = summarizeResult("unit", unitReport, 7, 20);
   assert.equal(result.exitCode, 7);
   assert.equal(result.showDetails, true);
   assert.match(result.summary, /^FAIL /);
 });
 
-test("fails closed on absent, inconsistent or malformed successful reports", () => {
+void test("fails closed on absent, inconsistent or malformed successful reports", () => {
   for (const report of [
     null,
     {},
@@ -117,7 +117,7 @@ test("fails closed on absent, inconsistent or malformed successful reports", () 
   assert.equal(summarizeResult("unit", null, 1, 1).exitCode, 1);
 });
 
-test("shows E2E flaky attempts and global errors even with exitcode zero", () => {
+void test("shows E2E flaky attempts and global errors even with exitcode zero", () => {
   const report = {
     stats: { expected: 2, unexpected: 0, skipped: 1, flaky: 1 },
     errors: [],
@@ -136,7 +136,7 @@ test("shows E2E flaky attempts and global errors even with exitcode zero", () =>
   assert.equal(globalError.showDetails, true);
 });
 
-test("keeps unhandled errors, console output, code frames and progress-like failure text", () => {
+void test("keeps unhandled errors, console output, code frames and progress-like failure text", () => {
   const raw = [
     "Running 2 tests using 1 worker",
     "  ✓  1 [desktop] › passing.spec.ts:3:1 › passes (2ms)",
@@ -162,12 +162,12 @@ test("keeps unhandled errors, console output, code frames and progress-like fail
   }
 });
 
-test("does not truncate long or unfamiliar error output", () => {
+void test("does not truncate long or unfamiliar error output", () => {
   const raw = "UNKNOWN_SETUP_FAILURE\n" + "x".repeat(120_000) + "\nLAST_DETAIL";
   assert.equal(removeSuccessProgress(raw), raw);
 });
 
-test("removes colored success progress but keeps colored failure text", () => {
+void test("removes colored success progress but keeps colored failure text", () => {
   const output = removeSuccessProgress(
     "\u001b[36m RUN \u001b[0m v5.0.1\n\u001b[32m ✓ passing.test.ts (1 test) 2ms\u001b[0m\n\u001b[31mError: LAST_DETAIL\u001b[0m",
   );

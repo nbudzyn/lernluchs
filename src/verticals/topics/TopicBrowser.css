@@ -280,6 +280,65 @@
   gap: 0.5rem;
 }
 
+.topic-filter-links {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.ai-search-picker > label {
+  display: block;
+  margin: 0.9rem 0 0.4rem;
+}
+
+.ai-search-picker textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 7rem;
+  padding: 0.65rem;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 0.2rem;
+  background: var(--surface);
+  color: var(--body-ink);
+  font: inherit;
+}
+
+.ai-search-hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--muted-ink);
+}
+
+.ai-filter-query {
+  margin: 0.7rem 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.ai-search-status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.ai-search-spinner {
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 2px solid var(--line);
+  border-top-color: var(--ink);
+  border-radius: 50%;
+  animation: ai-search-spin 0.9s linear infinite;
+}
+
+@keyframes ai-search-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .ai-search-spinner { animation: none; } }
+
 .topic-filter-labels .learning-path-picker-trigger {
   position: relative;
   padding: 0;

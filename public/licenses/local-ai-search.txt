@@ -1,0 +1,21 @@
+Local semantic topic search
+
+Model: intfloat/multilingual-e5-base
+Original: https://huggingface.co/intfloat/multilingual-e5-base
+License: MIT, as declared by the original model card (onnxruntime-LICENSE).
+Official E5 project copyright notice: Copyright (c) Microsoft Corporation.
+This copyright notice is from the official E5 project license, not a separately
+published model LICENSE file:
+https://github.com/microsoft/unilm/blob/31c5b904ca1bf2afb4c234a6675c683a4e5fc7cd/LICENSE
+Quantized ONNX conversion: Xenova/multilingual-e5-base
+Revision: 1ec9243030a27d1a115d5c340572074c125b58b2
+https://huggingface.co/Xenova/multilingual-e5-base
+Attention-mask mean pooling, L2 normalization, 512-token input limit.
+E5 input prefixes: query: for search, passage: for indexed topic descriptions.
+
+Tokenizer: @huggingface/tokenizers 0.2.0, Hugging Face, Apache-2.0 (tokenizers-LICENSE).
+Runtime: onnxruntime-web 1.30.0, Microsoft, MIT (onnxruntime-LICENSE).
+Model weights and tokenizer files are fetched at build preparation from the
+pinned revision and verified against committed SHA256 hashes. Runtime binaries
+come from the npm-lockfile-pinned ONNX Runtime Web package.
+The browser downloads all assets from the application site; no cloud inference.

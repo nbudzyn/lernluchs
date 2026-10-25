@@ -11,11 +11,19 @@ grünem Haken. Reload und späteres Nichtbestehen erhalten den Status.
 Bei Speicherfehlern bleibt der Check nutzbar und meldet fehlende dauerhafte Speicherung.
 
 Die Themenliste bietet Themen-/Alltagsankeransicht, sofortigen Schnellfilter und
-kombinierbare Lernpfadfilter ohne doppelte Themen. Listenansicht und Pfadauswahl
-werden lokal gespeichert; Suchtext bleibt flüchtig.
+kombinierbare Lernpfadfilter ohne doppelte Themen. „Suche mit KI“ ergänzt einen
+semantischen Filter mit lokalem Embeddingmodell im Browser. Fragen und Stichwörter
+filtern die Liste in fester Reihenfolge; es entstehen keine Textantworten.
+Schnellfilter, Pfade und KI-Filter bilden eine Schnittmenge. Die Auswahl bevorzugt
+Vollständigkeit, kann aber zusätzliche Themen und einzelne fachfremde Treffer
+enthalten. Modell- und Laufzeitdateien kommen von derselben Website.
+Listenansicht und Pfadauswahl werden lokal gespeichert; Suchtexte bleiben flüchtig.
 Lernpfadauswahl zeigt Auswahl-/Themenzähler; keine Auswahl zeigt alle Themen,
 bewusste Vollauswahl bleibt erhalten. Reihenfolge entspricht „Gefiltert nach“.
-„Zurücksetzen“ leert nur Pfade und lässt die Auswahl offen; „Filter aufheben“ leert beide Filter.
+„Zurücksetzen“ leert nur den jeweiligen Filterentwurf und lässt die Auswahl offen;
+„Filter aufheben“ leert alle drei Filter. Im KI-Editor übernimmt Enter die Eingabe,
+Umschalt+Enter fügt eine neue Zeile ein. Ladefehler oder zu langsame Inferenz
+lassen die übrigen Filter nutzbar; Abbruch und erneuter Versuch sind möglich.
 
 Ausgefiltertes ausgewähltes Thema schließt, rechts erscheint Hilfe.
 Escape schließt zuerst die Pfadauswahl und fokussiert deren Einstieg; sonst leert

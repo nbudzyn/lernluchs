@@ -12,7 +12,7 @@ import {
   verticalsFromPaths,
 } from "./check-vertical-scope.mjs";
 
-test("counts a vertical once across source, unit and E2E files", () => {
+void test("counts a vertical once across source, unit and E2E files", () => {
   assert.deepEqual(
     verticalsFromPaths([
       "src/verticals/topics/TopicBrowser.tsx",
@@ -25,7 +25,7 @@ test("counts a vertical once across source, unit and E2E files", () => {
   );
 });
 
-test("rejects a third distinct vertical", () => {
+void test("rejects a third distinct vertical", () => {
   assert.throws(
     () =>
       assertCommitScope("0123456789abcdef", [
@@ -37,7 +37,7 @@ test("rejects a third distinct vertical", () => {
   );
 });
 
-test("counts both owners of a cross-vertical rename", () => {
+void test("counts both owners of a cross-vertical rename", () => {
   const changes = parseNameStatus(
     "R100\0e2e/verticals/topics/old.spec.ts\0e2e/verticals/learning-checks/new.spec.ts\0M\0src/app/App.tsx\0",
   );
@@ -48,7 +48,7 @@ test("counts both owners of a cross-vertical rename", () => {
   ]);
 });
 
-test("checks each commit in a real Git range", () => {
+void test("checks each commit in a real Git range", () => {
   const directory = mkdtempSync(join(tmpdir(), "lernluchs-scope-"));
   const script = fileURLToPath(
     new URL("./check-vertical-scope.mjs", import.meta.url),

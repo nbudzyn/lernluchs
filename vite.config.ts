@@ -78,6 +78,10 @@ export default defineConfig(({ mode }) => {
   return {
     server: { host: "127.0.0.1", port: devPort, strictPort: true },
     base: pagesBasePath || "/",
+    worker: { format: "es" },
+    optimizeDeps: {
+      include: ["@huggingface/tokenizers", "onnxruntime-web/wasm"],
+    },
     plugins: [react(), questionPoolModules()],
     build: {
       rolldownOptions: {
@@ -101,7 +105,11 @@ export default defineConfig(({ mode }) => {
     },
     test: {
       environment: "jsdom",
-      exclude: [...configDefaults.exclude, "e2e/**"],
+      exclude: [
+        ...configDefaults.exclude,
+        "e2e/**",
+        ...(process.env.LERNLUCHS_AI_TESTS === "1" ? [] : ["**/*.ai.test.ts"]),
+      ],
     },
   };
 });

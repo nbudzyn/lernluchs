@@ -22,6 +22,7 @@ it("renders its guidance without topic data or callbacks", () => {
     "„Kommt mir bekannt vor“ zeigt Situationen aus deinem Alltag als Randnotiz beim Thema",
     "Über der Liste wechselst du zwischen Themen und „Kommt mir bekannt vor“",
     "Mit „Lernpfade“ am Schnellfilter wählst du einen oder mehrere Lernpfade aus",
+    "„Suche mit KI“ findet passende Themen zu deiner Frage – lokal auf deinem Gerät",
   ]) {
     expect.soft(screen.queryByText(text), text).not.toBeNull();
   }

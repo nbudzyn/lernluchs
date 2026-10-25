@@ -15,9 +15,11 @@ test("opens all paths without adding list height and preserves explicit selectio
     button.style.display = "none";
   });
   const withoutTrigger = await navigation.boundingBox();
-  await page.locator(".learning-path-picker-trigger").evaluate((button) => {
-    button.style.display = "";
-  });
+  await page
+    .locator('[aria-controls="learning-path-picker"]')
+    .evaluate((button) => {
+      button.style.display = "";
+    });
   expect(
     start && withoutTrigger && Math.abs(start.y - withoutTrigger.y),
   ).toBeLessThan(1);

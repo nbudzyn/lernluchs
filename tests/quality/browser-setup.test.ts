@@ -6,16 +6,26 @@ import pagesWorkflow from "../../.github/workflows/pages.yml?raw";
 
 describe("browser prerequisites in GitHub workflows", () => {
   it.each([
-    { name: "CI", workflow: ciWorkflow, gate: "npm run --silent test:unit" },
-    { name: "Pages", workflow: pagesWorkflow, gate: "npm run check" },
+    {
+      name: "CI",
+      workflow: ciWorkflow,
+      gate: "npm run --silent test:unit",
+      browsers: "chromium firefox",
+    },
+    {
+      name: "Pages",
+      workflow: pagesWorkflow,
+      gate: "npm run check",
+      browsers: "chromium",
+    },
   ])(
-    "installs Chromium once before the browser-dependent gate in $name",
-    ({ name, workflow, gate }) => {
+    "installs the required browsers once before the browser-dependent gate in $name",
+    ({ name, workflow, gate, browsers }) => {
       const commands = Array.from(
         workflow.matchAll(/^\s+- run: ([^\r\n]+)$/gm),
         (match) => match[1],
       );
-      const installation = "npx playwright install --with-deps chromium";
+      const installation = `npx playwright install --with-deps ${browsers}`;
       const installIndex = commands.indexOf(installation);
       const gateIndex = commands.indexOf(gate);
 

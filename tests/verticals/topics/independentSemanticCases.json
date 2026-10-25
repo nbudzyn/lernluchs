@@ -1,0 +1,462 @@
+{
+  "cases": [
+    {
+      "id": "positive-ai-decision-owner",
+      "query": "Wenn unser KI-Assistent eine falsche Empfehlung abgibt: Wer muss sie prüfen und wer trägt im Betrieb die Verantwortung?",
+      "mandatory": ["human-ai-responsibility"],
+      "optional": [
+        "llm-fallibility-and-counterchecks",
+        "review-and-accept-ai-generated-changes"
+      ],
+      "rationale": "Die Zuständigkeit und menschliche Entscheidungskontrolle beim KI-Einsatz stehen im Mittelpunkt; Ergebnisprüfung ergänzt dies."
+    },
+    {
+      "id": "positive-vague-feature-acceptance",
+      "query": "Unser Ticket sagt nur 'Suche komfortabler machen'. Wie finden wir heraus, was die Nutzer wirklich brauchen, grenzen die Änderung ein und schreiben daraus eindeutige Wenn-dann-Abnahmekriterien?",
+      "mandatory": [
+        "problem-understanding-and-change-boundaries",
+        "ears-requirements"
+      ],
+      "optional": ["research-plan-tasks", "spec-driven-development-openspec"],
+      "rationale": "Sowohl Bedarf und Umfang als auch bedingungsbezogene, prüfbare Anforderungsformulierungen werden ausdrücklich verlangt."
+    },
+    {
+      "id": "positive-one-business-word",
+      "query": "Im Vertrieb heißt derselbe Vorgang Reservierung, im Code Buchung. Wie schaffen wir gemeinsame Begriffe, ohne dafür erst ein riesiges Abstraktionsgerüst einzubauen?",
+      "mandatory": ["domain-language-and-complexity"],
+      "optional": [
+        "module-boundaries-and-public-interfaces",
+        "project-documentation-and-checklists"
+      ],
+      "rationale": "Gesucht sind gemeinsame Fachsprache und eine bewusst kleine Lösung; Schnittstellen und Dokumentation können unterstützen."
+    },
+    {
+      "id": "positive-old-calculation-replacement",
+      "query": "Wir ersetzen eine alte Rabattberechnung, deren Regeln niemand vollständig kennt. Wie halten wir das beobachtete Verhalten fest und entwickeln die neue Berechnung Schritt für Schritt mit zuerst roten Tests?",
+      "mandatory": [
+        "design-and-legacy-specification",
+        "tdd-for-domain-behavior"
+      ],
+      "optional": [
+        "problem-understanding-and-change-boundaries",
+        "review-and-accept-ai-generated-changes"
+      ],
+      "rationale": "Die Anfrage verbindet die Ermittlung unbekannten Altverhaltens mit testgetriebener Neuentwicklung."
+    },
+    {
+      "id": "positive-explain-project-prohibitions",
+      "query": "Bei uns werden immer weitere Projektregeln verboten oder vorgeschrieben, aber niemand kennt den Grund. Wie legen wir fest, welche Vorgaben für unseren Einsatz tatsächlich nötig und überprüfbar sind?",
+      "mandatory": ["standards-and-constraint-rationale"],
+      "optional": [
+        "project-documentation-and-checklists",
+        "deterministic-agent-verification-gates"
+      ],
+      "rationale": "Die Auswahl und Begründung verbindlicher Anforderungen nach Zweck und Geltungsbereich ist der direkte Gegenstand."
+    },
+    {
+      "id": "positive-confident-wrong-answer",
+      "query": "Die KI erklärt mir denselben Fehler auch nach meiner Korrektur wieder sehr überzeugend. Wie kann ich ihre Behauptung unabhängig widerlegen oder bestätigen?",
+      "mandatory": ["llm-fallibility-and-counterchecks"],
+      "optional": [
+        "versioned-library-docs-with-context7",
+        "agent-evals-and-traces"
+      ],
+      "rationale": "Gefragt ist eine Gegenprüfung plausibler Modellbehauptungen; versionsbezogene Quellen und systematische Fehleranalyse sind mögliche Hilfen."
+    },
+    {
+      "id": "positive-team-done-agent-rules",
+      "query": "Neue Kollegen und Coding-Agenten fragen ständig nach denselben Testbefehlen. Wo halten wir die verbindlichen Repo-Regeln und die Kriterien für 'fertig' knapp und auffindbar fest?",
+      "mandatory": ["project-documentation-and-checklists", "agents-md"],
+      "optional": [
+        "agent-skills-and-commands",
+        "deterministic-agent-verification-gates"
+      ],
+      "rationale": "Die allgemeine Projektdokumentation samt Fertigkriterien und die dauerhaften Anweisungen für Agenten sind beide direkt angesprochen."
+    },
+    {
+      "id": "positive-sourced-domain-notes",
+      "query": "OKF YAML Quellen: Ich möchte unsere verstreuten fachlichen Aussagen als kleine verlinkte Markdown-Einheiten mit Herkunft pflegen.",
+      "mandatory": ["open-knowledge-format"],
+      "optional": ["project-documentation-and-checklists"],
+      "rationale": "Markdown-Wissenseinheiten mit Metadaten und Quellenbezug entsprechen dem beschriebenen Wissensformat."
+    },
+    {
+      "id": "positive-investigate-before-task-list",
+      "query": "Der Agent implementiert schon, obwohl wir noch nicht wissen, welche Schnittstelle der Fremddienst hat. Wie trennen wir Fakten sammeln, Entscheidungen und kleine Arbeitspakete sauber?",
+      "mandatory": ["research-plan-tasks"],
+      "optional": [
+        "problem-understanding-and-change-boundaries",
+        "spec-driven-development-openspec"
+      ],
+      "rationale": "Die explizite Trennung von Recherche, Planung und Umsetzung ist der benötigte Ablauf."
+    },
+    {
+      "id": "positive-fresh-agent-transfer",
+      "query": "Der Chat ist voller überholter Ansätze. Ich will mit einem frischen Coding-Agenten weitermachen: Was sollte ich aussortieren und welche belegten Ergebnisse, Entscheidungen und offenen Tests muss ich ihm mitgeben?",
+      "mandatory": ["context-selection-and-reset", "agent-context-handoffs"],
+      "optional": [
+        "project-documentation-and-checklists",
+        "coding-harness-design"
+      ],
+      "rationale": "Sowohl die Bereinigung des Kontexts als auch die gezielte Übergabe eines geprüften Zwischenstands werden verlangt."
+    },
+    {
+      "id": "positive-java-document-assistant",
+      "query": "Wir haben einen Spring-Dienst und wollen darin einen Assistenten für unsere Handbücher anbieten, mit Quellen und kontrollierten Werkzeugaufrufen. Was bieten Spring AI und LangChain4j dafür?",
+      "mandatory": ["java-ai-applications"],
+      "optional": [
+        "agent-protocol-integration",
+        "agent-tool-and-mcp-permissions",
+        "web-security-baseline"
+      ],
+      "rationale": "Die Integration dokumentengestützter Antworten und Tools in einen Java-Webdienst ist unmittelbar gefordert."
+    },
+    {
+      "id": "positive-route-and-replace-models",
+      "query": "Standardfragen sollen günstig beantwortet werden, schwierige Fälle vom stärkeren Modell. Wie verteilen wir das zuverlässig, und wie prüfen wir einen Ersatz, wenn einer der Anbieter das bisherige Modell abschaltet?",
+      "mandatory": ["task-based-model-routing", "model-and-api-lifecycle"],
+      "optional": ["agent-evals-and-traces", "java-ai-applications"],
+      "rationale": "Aufgabengerechte Modellwahl und abgesicherter Austausch bei Abschaltung sind zwei ausdrücklich verlangte Teilprobleme."
+    },
+    {
+      "id": "positive-generated-image-origin",
+      "query": "Wir veröffentlichen synthetische Pressebilder. Wie zeigen wir Lesern die KI-Beteiligung und halten die Entstehung auch nach Weiterbearbeitung nachvollziehbar?",
+      "mandatory": ["ai-content-provenance-and-disclosure"],
+      "optional": [
+        "human-ai-responsibility",
+        "standards-and-constraint-rationale"
+      ],
+      "rationale": "Sichtbare Offenlegung und technische Herkunftsnachweise veröffentlichter KI-Inhalte sind der Kern."
+    },
+    {
+      "id": "positive-web-baseline-and-html-input",
+      "query": "Ich brauche einen Sicherheitscheck für unsere Webanwendung: Welche OWASP-Grundlagen passen, und wie verhindern wir konkret, dass ein eingegebener Kommentar beim Anzeigen als Script läuft?",
+      "mandatory": ["web-security-baseline", "web-xss-and-safe-dom"],
+      "optional": [
+        "dependency-security-assessment",
+        "playwright-for-web-flows"
+      ],
+      "rationale": "Neben der Auswahl allgemeiner Web-Sicherheitsprüfungen ist der konkrete XSS-Ausgabekontext direkt gefragt."
+    },
+    {
+      "id": "positive-hostile-ticket-restricted-tools",
+      "query": "Ein Coding-Agent liest fremde Tickets. Wie verhindern wir, dass ein darin versteckter Befehl zum Auftrag wird, und begrenzen seine Schreib- und MCP-Rechte technisch auf das Nötige?",
+      "mandatory": [
+        "coding-agent-context-and-trust-boundaries",
+        "agent-tool-and-mcp-permissions"
+      ],
+      "optional": [
+        "coding-harness-design",
+        "protect-secrets-and-sensitive-data-with-ai"
+      ],
+      "rationale": "Vertrauensgrenzen gegen fremde Anweisungen und technische Werkzeugbegrenzung werden gemeinsam und ausdrücklich verlangt."
+    },
+    {
+      "id": "positive-safe-debug-material",
+      "query": "In unserem Fehlerprotokoll stehen Kundennamen und Zugangstoken. Was müssen wir entfernen, bevor wir es dem KI-Codinghelfer geben, und wo sollten die echten Schlüssel liegen?",
+      "mandatory": ["protect-secrets-and-sensitive-data-with-ai"],
+      "optional": [
+        "agent-tool-and-mcp-permissions",
+        "coding-agent-context-and-trust-boundaries"
+      ],
+      "rationale": "Datenminimierung und sichere Aufbewahrung von Geheimnissen beim KI-Einsatz sind die direkte Aufgabe."
+    },
+    {
+      "id": "positive-local-stack-components",
+      "query": "Qwen, Hermes, Bionic – sind das überhaupt dieselben Arten von Bausteinen? Wir wollen intern hosten und vorab Hardwarebedarf, Wartung und Datenwege ausprobieren.",
+      "mandatory": ["local-model-stack-evaluation"],
+      "optional": [
+        "protect-secrets-and-sensitive-data-with-ai",
+        "coding-harness-design"
+      ],
+      "rationale": "Die Unterscheidung von Modell, Harness und Plattform sowie eine lokale Pilotierung sind ausdrücklich angesprochen."
+    },
+    {
+      "id": "positive-terminal-ide-cloud-choice",
+      "query": "Für unser Team: Codinghelfer direkt in IntelliJ, im Terminal oder asynchron in der Cloud? Ich möchte die Unterschiede bei Eingriffsmöglichkeiten, Codezugriff und Kosten verstehen.",
+      "mandatory": ["coding-agent-interface-selection"],
+      "optional": [
+        "agent-tool-and-mcp-permissions",
+        "protect-secrets-and-sensitive-data-with-ai"
+      ],
+      "rationale": "Die Auswahl der Agentenarbeitsumgebung anhand konkreter Betriebs- und Kontrollunterschiede steht im Zentrum."
+    },
+    {
+      "id": "positive-spec-tool-comparison",
+      "query": "OpenSpec oder Spec Kit für eine größere Änderung: Wie bleiben Anforderung, Entwurf und erledigte Aufgaben versioniert verbunden, damit man später den Code gegen die Vereinbarung abgleichen kann?",
+      "mandatory": ["spec-driven-development-openspec"],
+      "optional": [
+        "research-plan-tasks",
+        "ears-requirements",
+        "review-and-accept-ai-generated-changes"
+      ],
+      "rationale": "Die Anfrage zielt auf den Spec-gestützten Ablauf und den Abgleich der Implementierung mit versionierten Anforderungen."
+    },
+    {
+      "id": "positive-reusable-migration-procedure",
+      "query": "Unser Agent vergisst bei jeder seltenen Framework-Migration andere Prüfschritte. Kann ich die erprobte Anleitung samt Vorbereitung und Abbruchfällen bei Bedarf per Slash-Befehl laden lassen?",
+      "mandatory": ["agent-skills-and-commands"],
+      "optional": ["agents-md", "refactorings-and-migrations-with-openrewrite"],
+      "rationale": "Ein bedarfsgerecht geladener, wiederverwendbarer Entwicklungsablauf ist die beschriebene Skill-Aufgabe."
+    },
+    {
+      "id": "positive-service-callers-and-routes",
+      "query": "Ich verliere mich in unserem Monorepo. Wie finde ich alle Aufrufer einer Java-Methode und die davon betroffenen HTTP-Routen, statt nur Dateien mit ähnlichen Wörtern zu bekommen?",
+      "mandatory": ["codegraphs-for-large-repos"],
+      "optional": [
+        "context-selection-and-reset",
+        "module-boundaries-and-public-interfaces"
+      ],
+      "rationale": "Symbolbeziehungen und Auswirkungen im Repository erfordern die im Thema behandelte strukturelle Codeerschließung."
+    },
+    {
+      "id": "positive-component-states-design",
+      "query": "Buttons sehen in jedem Bereich anders aus, Lade- und Fehlerzustände fehlen im Entwurf. Wie verbinden wir Penpot mit einer Komponentenübersicht und prüfen Lesbarkeit, Bedienung und Barrierefreiheit?",
+      "mandatory": ["ui-design-system-workflow"],
+      "optional": ["playwright-for-web-flows"],
+      "rationale": "Konsistente Entwurfskomponenten, implementierte Zustände und visuelles Frontend-Review werden direkt angefragt."
+    },
+    {
+      "id": "positive-module-contract-and-enforcement",
+      "query": "Bestellung greift dauernd auf interne Versandklassen zu. Wie schneiden wir kleine öffentliche Modulverträge und lassen verbotene Zugriffe sowie Zyklen in Java automatisch fehlschlagen?",
+      "mandatory": [
+        "module-boundaries-and-public-interfaces",
+        "archunit-for-java-architecture"
+      ],
+      "optional": [
+        "domain-language-and-complexity",
+        "deterministic-agent-verification-gates"
+      ],
+      "rationale": "Die Gestaltung von Modulverträgen und ihre automatisierte Architekturabsicherung sind beide direkt nötig."
+    },
+    {
+      "id": "positive-worthwhile-automation-approval",
+      "query": "Welche unserer wiederkehrenden Entwicklungsaufgaben lohnt sich überhaupt zu automatisieren, und an welchen Zustandswechseln sollten Pflichtprüfungen oder menschliche Freigaben sitzen?",
+      "mandatory": ["automation-value-and-gates"],
+      "optional": [
+        "deterministic-agent-verification-gates",
+        "coding-harness-design",
+        "human-ai-responsibility"
+      ],
+      "rationale": "Nutzenbasierte Auswahl und Kontrollpunkte eines automatisierten Ablaufs sind der explizite Suchzweck."
+    },
+    {
+      "id": "positive-parallel-work-decision-and-ownership",
+      "query": "Sind drei Coding-Agenten für unseren Auftrag wirklich schneller als einer? Wie vergleichen wir Qualität, Kosten und Reviewzeit fair, und wie verteilen wir bei paralleler Arbeit Dateien und Entscheidungen ohne Überschneidungen?",
+      "mandatory": [
+        "compare-parallel-and-serial-agent-work",
+        "parallel-agent-task-boundaries"
+      ],
+      "optional": [
+        "git-worktrees-for-isolated-changes",
+        "agent-context-handoffs",
+        "agent-evals-and-traces"
+      ],
+      "rationale": "Die Anfrage verlangt sowohl eine belastbare Ablaufentscheidung als auch klare Zuständigkeiten bei Delegation."
+    },
+    {
+      "id": "positive-isolated-branches-selective-staging",
+      "query": "Ich bearbeite gleichzeitig einen Hotfix und eine unfertige Funktion. Wie bekomme ich getrennte Arbeitsordner fürs selbe Git-Repo und stelle später nur die zusammengehörigen Änderungen in kleine Commits?",
+      "mandatory": [
+        "git-worktrees-for-isolated-changes",
+        "focused-git-commits"
+      ],
+      "optional": [
+        "parallel-agent-task-boundaries",
+        "review-and-accept-ai-generated-changes"
+      ],
+      "rationale": "Isolierte Checkouts und gezielte Auswahl logisch zusammengehöriger Commit-Inhalte werden direkt angefragt."
+    },
+    {
+      "id": "positive-api-example-version-mismatch",
+      "query": "Context7 passende Version: Der Agent schlägt ständig Bibliotheksmethoden vor, die unsere installierte Version noch gar nicht hat.",
+      "mandatory": ["versioned-library-docs-with-context7"],
+      "optional": [
+        "llm-fallibility-and-counterchecks",
+        "technical-documentation-generation"
+      ],
+      "rationale": "Die Anfrage betrifft versionsbezogene Dokumentationssuche und die Prüfung von API-Beispielen gegen die tatsächliche Version."
+    },
+    {
+      "id": "positive-cheaper-long-agent-session",
+      "query": "RTK oder Headroom? Unsere Agentensitzungen verbrauchen mit Terminalausgaben und wiederholtem Kontext viele Tokens; zusätzlich sind Antworten und erzeugter Code unnötig lang.",
+      "mandatory": ["token-efficiency-tools"],
+      "optional": [
+        "context-selection-and-reset",
+        "domain-language-and-complexity"
+      ],
+      "rationale": "Mehrere Stellen der Token- und Umfangsreduktion sowie der Werkzeugvergleich sind direkt Gegenstand des Effizienzthemas."
+    },
+    {
+      "id": "positive-editor-agent-tool-protocols",
+      "query": "Wir müssen einen Editor an einen Coding-Agenten anbinden, dem Agenten Werkzeuge anbieten und Aufträge an einen zweiten Agenten schicken. Welcher Teil gehört zu ACP, MCP oder A2A, und worauf kommt es bei den Versionen an?",
+      "mandatory": ["agent-protocol-integration"],
+      "optional": ["agent-tool-and-mcp-permissions", "java-ai-applications"],
+      "rationale": "Die Unterscheidung der drei Protokollzwecke und passender Revisionen wird ausdrücklich benötigt."
+    },
+    {
+      "id": "positive-done-without-tests-block",
+      "query": "Der Coding-Agent behauptet 'fertig', obwohl er den Build gar nicht gestartet hat. Wie erzwingen wir Tests und Exitcodes außerhalb seiner bloßen Selbstauskunft und blockieren die Übernahme bei Fehlern?",
+      "mandatory": ["deterministic-agent-verification-gates"],
+      "optional": [
+        "coding-harness-design",
+        "project-documentation-and-checklists",
+        "review-and-accept-ai-generated-changes"
+      ],
+      "rationale": "Verbindliche technische Prüfungen und maschinell überprüfte Pflichtstatus sind die unmittelbare Lösungskategorie."
+    },
+    {
+      "id": "positive-agent-quality-regressions",
+      "query": "Derselbe Agent behebt ein ähnliches Ticket einmal gut und einmal mit neuem Fehler. Wie testen wir seine Zuverlässigkeit wiederholt und finden im Verlauf der Werkzeugaufrufe heraus, wo er falsch abgebogen ist?",
+      "mandatory": ["agent-evals-and-traces"],
+      "optional": [
+        "llm-fallibility-and-counterchecks",
+        "deterministic-agent-verification-gates"
+      ],
+      "rationale": "Wiederholte repräsentative Aufgaben und Diagnose über Ausführungsspuren sind unmittelbar gefragt."
+    },
+    {
+      "id": "positive-library-upgrade-recipes-and-risks",
+      "query": "Beim Bibliotheksupgrade müssen hundert ähnliche API-Stellen und Builddateien angepasst werden. Wie erledigen wir das mit wiederholbaren Rezepten und entscheiden zugleich, welche gemeldeten Sicherheitslücken und Lizenzrisiken des Updates relevant sind?",
+      "mandatory": [
+        "refactorings-and-migrations-with-openrewrite",
+        "dependency-security-assessment"
+      ],
+      "optional": [
+        "versioned-library-docs-with-context7",
+        "agent-skills-and-commands",
+        "review-and-accept-ai-generated-changes"
+      ],
+      "rationale": "Die Anfrage enthält explizit konsistente Migrationstransformationen und risikobasierte Abhängigkeitsbewertung."
+    },
+    {
+      "id": "positive-browser-flow-beyond-components",
+      "query": "Unsere Komponententests sind grün, aber nach dem Login landet man im Browser auf der falschen Seite. Wie prüfen wir diesen sichtbaren Ablauf einschließlich Navigation automatisch?",
+      "mandatory": ["playwright-for-web-flows"],
+      "optional": [
+        "ui-design-system-workflow",
+        "deterministic-agent-verification-gates"
+      ],
+      "rationale": "Der Fehler entsteht im Zusammenspiel von Browser und Navigation; ein automatisierter sichtbarer Webablauf ist direkt nötig."
+    },
+    {
+      "id": "positive-public-api-contract-docs",
+      "query": "Javadoc HTML Links prüfen: Die Nutzer unserer Java-Bibliothek kennen Voraussetzungen und Randfälle der öffentlichen Methoden nicht. Wie erzeugen und kontrollieren wir die passende API-Doku?",
+      "mandatory": ["technical-documentation-generation"],
+      "optional": [
+        "module-boundaries-and-public-interfaces",
+        "project-documentation-and-checklists"
+      ],
+      "rationale": "Öffentliche Java-API-Verträge und die Prüfung der erzeugten Dokumentation bilden den unmittelbaren Gegenstand."
+    },
+    {
+      "id": "positive-ticket-to-reviewed-patch",
+      "query": "Ein Agent soll aus eingehenden Bugtickets PRs vorbereiten. Wie schließen wir Duplikate aus, reproduzieren den Fehler mit Regressionstest und prüfen den erzeugten Diff fachlich und auf Sicherheitslücken vor der Übernahme?",
+      "mandatory": [
+        "bug-triage-and-pr-automation",
+        "review-and-accept-ai-generated-changes"
+      ],
+      "optional": [
+        "tdd-for-domain-behavior",
+        "automation-value-and-gates",
+        "focused-git-commits"
+      ],
+      "rationale": "Die Anfrage umfasst die Ticket-Triage und den begrenzten PR-Ablauf ebenso wie die ausdrückliche Prüfung generierter Änderungen."
+    },
+    {
+      "id": "positive-resume-budgeted-agent-run",
+      "query": "Nach einer Stunde Agentenarbeit bricht die Verbindung ab. Wie speichern wir den Ablauf so, dass er kontrolliert weitergeht, Aktionen nicht blind doppelt ausführt und bei Stillstand oder ausgeschöpftem Kostenbudget stoppt?",
+      "mandatory": ["coding-harness-design"],
+      "optional": [
+        "agent-context-handoffs",
+        "deterministic-agent-verification-gates",
+        "agent-tool-and-mcp-permissions"
+      ],
+      "rationale": "Zustand, Wiederaufnahme, begrenzte Ausführung und Abbruchkriterien langer Agentenläufe sind die zentrale Harness-Aufgabe."
+    },
+    {
+      "id": "null-balcony-herb-soil",
+      "query": "Welche Erde und wie viel Wasser brauchen Basilikum und Rosmarin auf einem sonnigen Südbalkon?",
+      "mandatory": [],
+      "optional": [],
+      "rationale": "Gartenpflege ohne Bezug zu den Entwicklungs- und KI-Themen des Katalogs."
+    },
+    {
+      "id": "null-sourdough-recipe-migration",
+      "query": "Wie rechne ich mein Sauerteigrezept von Weizen auf Roggen um, ohne dass das Brot zu dicht wird?",
+      "mandatory": [],
+      "optional": [],
+      "rationale": "Ein Backrezept ist trotz der möglichen Wortnähe zu Transformationsrezepten fachfremd."
+    },
+    {
+      "id": "null-hermes-parcel-status",
+      "query": "Mein Hermes-Paket steht seit drei Tagen auf angekündigt. Was bedeutet dieser Status und wen kann ich wegen der Lieferung kontaktieren?",
+      "mandatory": [],
+      "optional": [],
+      "rationale": "Hermes bezeichnet hier eindeutig den Paketdienst und kein Agentensystem."
+    },
+    {
+      "id": "null-railway-model-routing",
+      "query": "Bei meiner Modelleisenbahn entgleist der lange Personenwagen an derselben Weiche. Wie finde ich die Ursache?",
+      "mandatory": [],
+      "optional": [],
+      "rationale": "Die Modell- und Routenähnlichkeit ist rein sprachlich; gefragt ist mechanischer Modelleisenbahnbetrieb."
+    },
+    {
+      "id": "null-tree-branch-cut",
+      "query": "Wann darf ich die großen Äste unseres Apfelbaums zurückschneiden, damit die Krone wieder Licht bekommt?",
+      "mandatory": [],
+      "optional": [],
+      "rationale": "Baumpflege ist fachfremd; Äste und Schneiden beziehen sich nicht auf Git oder Code."
+    },
+    {
+      "id": "null-boardgame-token-supply",
+      "query": "Wie viele Ressourcen-Token brauche ich für einen Brettspielabend mit sechs Personen, wenn jeder bis zu zwölf Münzen sammeln kann?",
+      "mandatory": [],
+      "optional": [],
+      "rationale": "Materielle Spielmarker haben keinen Bezug zu Sprachmodell-Tokens oder Agentenbudgets."
+    },
+    {
+      "id": "null-literature-context-analysis",
+      "query": "Wie ordne ich ein Gedicht der Romantik in seinen historischen Kontext ein und belege meine Interpretation am Text?",
+      "mandatory": [],
+      "optional": [],
+      "rationale": "Kontext und Belege werden hier für literarische Interpretation gesucht, nicht für Software- oder Agentenarbeit."
+    },
+    {
+      "id": "null-flat-viewing-checklist",
+      "query": "Ich besichtige morgen eine Mietwohnung. Welche Checkliste hilft mir bei Feuchtigkeit, Nebenkosten und Lärm?",
+      "mandatory": [],
+      "optional": [],
+      "rationale": "Die allgemeine Form einer Checkliste macht das Wohnungsanliegen nicht zu Projektdokumentation."
+    },
+    {
+      "id": "null-bird-migration-observation",
+      "query": "Warum sammeln sich Kraniche im Herbst auf abgeernteten Feldern, und wann beginnt ihr Zug nach Süden?",
+      "mandatory": [],
+      "optional": [],
+      "rationale": "Tierwanderung ist vom Katalogthema Softwaremigration fachlich unabhängig."
+    },
+    {
+      "id": "null-theatre-role-responsibilities",
+      "query": "Welche Aufgaben haben Regie, Inspizienz und Bühnenleitung bei einer Theateraufführung, und wer gibt das Startsignal?",
+      "mandatory": [],
+      "optional": [],
+      "rationale": "Rollen und Zuständigkeiten betreffen ausschließlich Theaterbetrieb und keine KI-Verantwortung."
+    },
+    {
+      "id": "null-sewing-pattern-adjustment",
+      "query": "Wie passe ich ein Schnittmuster an schmale Schultern an, ohne dass der Ärmel anschließend spannt?",
+      "mandatory": [],
+      "optional": [],
+      "rationale": "Die Anpassung betrifft Kleidung und kein Softwaredesign oder technische Schnittstellen."
+    },
+    {
+      "id": "null-ceramic-glaze-test",
+      "query": "Meine Keramikglasur bekommt nach dem Brennen kleine Risse. Wie lege ich eine Testreihe mit verschiedenen Brenntemperaturen an?",
+      "mandatory": [],
+      "optional": [],
+      "rationale": "Eine handwerkliche Testreihe ist trotz Prüfbegriffen kein Softwaretest und kein Agenten-Eval."
+    }
+  ]
+}

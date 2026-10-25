@@ -19,6 +19,10 @@ export function TopicHelp() {
           Lernpfade aus
         </li>
         <li>
+          „Suche mit KI“ findet passende Themen zu deiner Frage – lokal auf
+          deinem Gerät
+        </li>
+        <li>
           {/* Lucide route; ISC-Lizenz: public/licenses/lucide-route.txt */}
           <svg aria-hidden="true" viewBox="0 0 24 24">
             <circle cx="6" cy="19" r="3" />

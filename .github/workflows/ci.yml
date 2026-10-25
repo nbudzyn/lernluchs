@@ -21,6 +21,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm audit --audit-level=high
+      - run: npm run --silent prepare:ai
       - run: npm run check:vertical-scope -- "$BASE_SHA" "$HEAD_SHA"
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
@@ -29,8 +30,11 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run test:runner
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium firefox
       - run: npm run --silent test:unit
+      - run: npm run --silent test:unit -- tests/verticals/topics/semanticModel.ai.test.ts tests/verticals/topics/independentSemanticQuality.ai.test.ts
+        env:
+          LERNLUCHS_AI_TESTS: "1"
       - run: npm run --silent validate:content
       - run: npm run check:architecture
       - run: npm run check:licenses

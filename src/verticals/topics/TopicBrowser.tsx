@@ -23,6 +23,8 @@ import type {
   TopicSource,
 } from "./topicContract";
 import "./TopicBrowser.css";
+import { AiSearchPicker } from "./AiSearchPicker";
+import { useSemanticFilter } from "./useSemanticFilter";
 
 const editorialStatusLabels: Record<EditorialStatus, string> = {
   active: "Aktiv",
@@ -136,6 +138,19 @@ export function TopicBrowser({
     setPathFilterNotSaved(!savePathFilter(next, paths));
   }
   const [quickFilter, setQuickFilter] = useState("");
+  const aiFilter = useSemanticFilter();
+  const [aiPickerOpen, setAiPickerOpen] = useState(false);
+  const [aiDraft, setAiDraft] = useState("");
+  const aiTrigger = useRef<HTMLButtonElement>(null);
+  function applyAiSearch(query: string, restoreFocus = true) {
+    setAiPickerOpen(false);
+    if (
+      query.trim() !== aiFilter.state.query ||
+      aiFilter.state.status === "error"
+    )
+      aiFilter.apply(query);
+    if (restoreFocus) aiTrigger.current?.focus({ preventScroll: true });
+  }
   const [pathPickerOpen, setPathPickerOpen] = useState(false);
   const filterControlsRef = useRef<HTMLDivElement>(null);
   const pathPickerTriggerRef = useRef<HTMLButtonElement>(null);
@@ -236,9 +251,18 @@ export function TopicBrowser({
   const pathItems = items.filter(
     (item) => !pathFilterActive || activeIds.has(item.id),
   );
-  const visibleItems = pathItems.filter((item) =>
-    matchesQuickFilter(item, quickFilter),
+  const visibleItems = pathItems.filter(
+    (item) =>
+      matchesQuickFilter(item, quickFilter) &&
+      (aiFilter.state.status !== "ready" ||
+        aiFilter.state.ids.includes(item.id)),
   );
+  useLayoutEffect(() => {
+    if (selectedId && !visibleItems.some((item) => item.id === selectedId)) {
+      setSelectedId(null);
+      setMobileView("list");
+    }
+  }, [selectedId, visibleItems]);
   const sortedPaths = orderedPaths.filter((path) => activePaths.includes(path));
   useLayoutEffect(() => {
     if (scrollToPath.current) {
@@ -291,14 +315,6 @@ export function TopicBrowser({
       filter?.kind === "topic" && filter.id === id
         ? null
         : { kind: "topic", id };
-    if (
-      selectedId &&
-      nextFilter &&
-      !pathsFor(id).some((path) => path.topicIds.includes(selectedId))
-    ) {
-      setSelectedId(null);
-      setMobileView("list");
-    }
     changePathFilter(nextFilter);
   }
 
@@ -306,10 +322,6 @@ export function TopicBrowser({
     if (filter?.kind === "path" && filter.index === index) return;
     anchor.current = null;
     scrollToPath.current = true;
-    if (selectedId && !paths[index].topicIds.includes(selectedId)) {
-      setSelectedId(null);
-      setMobileView("list");
-    }
     changePathFilter({ kind: "path", index });
   }
 
@@ -320,15 +332,6 @@ export function TopicBrowser({
       : [...indices, index];
     anchor.current = null;
     scrollToPath.current = false;
-    if (
-      selectedId &&
-      next.length > 0 &&
-      next.length < paths.length &&
-      !next.some((current) => paths[current].topicIds.includes(selectedId))
-    ) {
-      setSelectedId(null);
-      setMobileView("list");
-    }
     changePathFilter(next.length ? { kind: "paths", indices: next } : null);
   }
 
@@ -350,17 +353,13 @@ export function TopicBrowser({
     }
     resetPathFilter();
     setQuickFilter("");
+    aiFilter.clear();
   }
 
   function changeQuickFilter(value: string) {
     setQuickFilter(value);
-    const selected = items.find((item) => item.id === selectedId);
-    if (selected && !matchesQuickFilter(selected, value)) {
-      setSelectedId(null);
-      setMobileView("list");
-    }
   }
-  const selectedItem = items.find((item) => item.id === selectedId);
+  const selectedItem = visibleItems.find((item) => item.id === selectedId);
   const supplementaryView = mobileView === "help" || mobileView === "imprint";
   useLayoutEffect(() => {
     const narrow = window.matchMedia?.("(max-width: 799px)");
@@ -456,7 +455,8 @@ export function TopicBrowser({
             <h2>Themen</h2>
             {!pathFilterActive && (
               <p className="topic-list-count">
-                {quickFilter && `${visibleItems.length} / `}
+                {(quickFilter || aiFilter.state.query) &&
+                  `${visibleItems.length} / `}
                 {items.length} Themen
               </p>
             )}
@@ -532,22 +532,43 @@ export function TopicBrowser({
         >
           <div className="topic-filter-labels">
             <label htmlFor="topic-quick-filter">Schnellfilter</label>
-            {paths.length > 0 && (
+            <div className="topic-filter-links">
               <button
                 type="button"
                 className="learning-path-picker-trigger"
-                ref={pathPickerTriggerRef}
-                aria-expanded={pathPickerOpen}
-                aria-controls="learning-path-picker"
+                ref={aiTrigger}
+                aria-expanded={aiPickerOpen}
+                aria-controls="ai-search-picker"
                 onClick={() => {
-                  if (pathPickerOpen) closePathPicker(true);
-                  else setPathPickerOpen(true);
+                  if (aiPickerOpen) applyAiSearch(aiDraft);
+                  else {
+                    closePathPicker(false);
+                    setAiDraft(aiFilter.state.query);
+                    setAiPickerOpen(true);
+                  }
                 }}
               >
-                Lernpfade{" "}
-                <span aria-hidden="true">{pathPickerOpen ? "▴" : "▾"}</span>
+                Suche mit KI{" "}
+                <span aria-hidden="true">{aiPickerOpen ? "▴" : "▾"}</span>
               </button>
-            )}
+              {paths.length > 0 && (
+                <button
+                  type="button"
+                  className="learning-path-picker-trigger"
+                  ref={pathPickerTriggerRef}
+                  aria-expanded={pathPickerOpen}
+                  aria-controls="learning-path-picker"
+                  onClick={() => {
+                    if (aiPickerOpen) applyAiSearch(aiDraft, false);
+                    if (pathPickerOpen) closePathPicker(true);
+                    else setPathPickerOpen(true);
+                  }}
+                >
+                  Lernpfade{" "}
+                  <span aria-hidden="true">{pathPickerOpen ? "▴" : "▾"}</span>
+                </button>
+              )}
+            </div>
           </div>
           <input
             id="topic-quick-filter"
@@ -561,10 +582,18 @@ export function TopicBrowser({
               }
             }}
           />
-          {quickFilter && !pathFilterActive && (
+          {quickFilter && !pathFilterActive && !aiFilter.state.query && (
             <button type="button" onClick={clearFilter}>
               Filter aufheben
             </button>
+          )}
+          {aiPickerOpen && (
+            <AiSearchPicker
+              draft={aiDraft}
+              onDraftChange={setAiDraft}
+              trigger={aiTrigger}
+              onApply={applyAiSearch}
+            />
           )}
           {pathPickerOpen && (
             <section
@@ -607,10 +636,10 @@ export function TopicBrowser({
             </section>
           )}
         </div>
-        {pathFilterActive && (
+        {(pathFilterActive || aiFilter.state.query) && (
           <section
             className="path-filter-summary"
-            aria-label="Aktive Lernpfade"
+            aria-label={pathFilterActive ? "Aktive Lernpfade" : "KI-Filter"}
           >
             <div className="path-filter-heading">
               <div>
@@ -623,6 +652,37 @@ export function TopicBrowser({
                 Filter aufheben
               </button>
             </div>
+            {aiFilter.state.query && (
+              <p className="ai-filter-query">{aiFilter.state.query}</p>
+            )}
+            {aiFilter.state.status === "loading" && (
+              <div className="ai-search-status" role="status">
+                <span className="ai-search-spinner" aria-hidden="true" />
+                <span>
+                  {aiFilter.state.phase === "loading"
+                    ? "Lokale KI wird geladen. Beim ersten Mal kann das länger dauern."
+                    : "KI sucht passende Themen …"}
+                </span>
+                <button type="button" onClick={aiFilter.clear}>
+                  Abbrechen
+                </button>
+              </div>
+            )}
+            {aiFilter.state.status === "error" && (
+              <div className="ai-search-status" role="alert">
+                <span>
+                  Die lokale KI-Suche ist auf diesem Gerät gerade nicht
+                  verfügbar oder hat zu lange gedauert. Schnellfilter und
+                  Lernpfade bleiben nutzbar.
+                </span>
+                <button
+                  type="button"
+                  onClick={() => aiFilter.apply(aiFilter.state.query)}
+                >
+                  Erneut versuchen
+                </button>
+              </div>
+            )}
             <div className="path-filter-options">
               {sortedPaths.map((path) => (
                 <button
@@ -640,8 +700,11 @@ export function TopicBrowser({
             </div>
           </section>
         )}
-        <nav aria-label="Themen">
-          {visibleItems.length === 0 && (
+        <nav
+          aria-label="Themen"
+          aria-busy={aiFilter.state.status === "loading"}
+        >
+          {visibleItems.length === 0 && aiFilter.state.status !== "loading" && (
             <p role="status">Keine Themen gefunden.</p>
           )}
           <ul className="topic-list">

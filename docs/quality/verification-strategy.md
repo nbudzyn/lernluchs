@@ -9,7 +9,9 @@ Die Unit-Suite enthält isolierte NotebookLM-Oberflächentests mit Playwrights
 Chromium. CI und Pages installieren Browser und Systemabhängigkeiten vor dem
 ersten Unit-/Check-Lauf mit `npx playwright install --with-deps chromium`.
 Lokal muss der passende Browser bereits installiert sein; bei Bedarf
-`npx playwright install chromium` vor dem Unit-Lauf ausführen.
+`npx playwright install chromium` vor dem Unit-Lauf ausführen. Die KI-E2E prüfen
+zusätzlich Firefox; CI installiert dafür Chromium und Firefox. Pages baut ohne
+Browser-E2E und benötigt nur Chromium für die Unit-Suite.
 
 1. Prettier für Code, Tests und Konfiguration einschließlich YAML; Markdown ist ausgenommen.
 2. Type-Aware-Oxlint; Warnungen lassen das Gate scheitern.
@@ -21,6 +23,15 @@ Lokal muss der passende Browser bereits installiert sein; bei Bedarf
 8. Produktionsbuild mit Prüfung der erzeugten Dateien.
 9. Chromium-E2E auf Desktop und Smartphone, unter anderem Fragenablauf, Ergebnis, Abbruch und Quellenlink-Ausfall.
 10. Prüfung jedes neuen Commits: höchstens zwei fachliche Vertikalen unter `src/verticals/`, `tests/verticals/`, `e2e/verticals/`; App/Shared zählen nicht. Umbenennungen zählen alten und neuen Eigentümer.
+
+Algorithmische Suchtests verwenden feste Vektoren, Oberflächen- und Worker-Tests
+simulieren den Embedder. Echte Modelltests (`*.ai.test.ts`) laufen getrennt:
+CI setzt `LERNLUCHS_AI_TESTS=1` und wählt `semanticModel.ai.test.ts` sowie
+`independentSemanticQuality.ai.test.ts` unter `tests/verticals/topics/` ausdrücklich
+aus. Forschungs- und Kalibrierungsläufe benötigen eigene Artefaktziele außerhalb
+des Repositorys und gehören nicht zu dieser CI-Auswahl. Die Modellartefakte werden
+zuvor mit `npm run prepare:ai` vorbereitet. Bekannte rote Modellprüfungen bleiben
+sichtbar; grüne algorithmische Tests ersetzen keine Qualitätsabnahme.
 
 `npm run check` umfasst Punkte 1–8; Audit, Browser-E2E und Commitgrenze separat prüfen.
 Der Pages-Workflow baut mit `npm run check`, prüft den Pages-Basispfad und lädt nur

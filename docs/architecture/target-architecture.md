@@ -21,6 +21,22 @@ Vertikaltests gehören zum Besitzer, fachliche Integration nach App und nur an
 unter `e2e/shared/`. Gemeinsame Farben/Grundstile ergänzen lokale Komponentenstile;
 übergebene Inhalte werden ohne fremde CSS-Klassen im eigenen Container positioniert.
 
+## Lokale Themensuche
+
+`topics` besitzt die semantische Filterung einschließlich Editor, flüchtigem
+Suchzustand und Web Worker. Ein gepinntes E5-Embeddingmodell berechnet lokal mit
+CPU/WASM einen Vektor für die vollständige Eingabe. Vorbereitete Themenvektoren
+gehören zu sachlichen deutschen Suchabsätzen; die Ergebnisliste behält ihre
+Katalogreihenfolge. Modell, Tokenizer und Runtime liegen als beim Build geprüfte
+statische Dateien auf derselben Website. Öffentliche Modellartefakte dürfen
+gecacht werden, Suchtexte und Ergebnisse werden nicht gespeichert oder übertragen.
+Die Suche erzeugt keine Antworten und erhält keine Werkzeuge. Der Worker wird
+bei Abbruch, Fehler, Zeitüberschreitung oder längerer Inaktivität freigegeben.
+Modell-, Tokenizer-, Runtime- oder Pooling-Wechsel benötigen eine neue versionierte
+Assetadresse sowie passende Qualitätsprüfungen. Die
+[Such-Spec](../changes/implemented/0080-local-ai-search.md) dokumentiert die
+Auswahlregel und die akzeptierten Grenzen der Trefferqualität.
+
 ## Dauerhafte Leitplanken
 
 Verbindlich: [Produkt/Datenschutz](../governance/durable-rules.md#produkt-und-datenschutz)

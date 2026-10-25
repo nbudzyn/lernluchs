@@ -18,6 +18,7 @@ verbindlich; der Index steuert den Leseumfang, er erlaubt keine Regelverletzung.
 | Code oder Laufzeitverhalten änderst | [Architekturregeln](governance/durable-rules.md#architektur-und-änderungen) |
 | in einer Vertikalen implementierst | die passende Änderungs-Spec, [übergreifende Grenzen](architecture/verticals-and-boundaries.md#übergreifende-grenzen) und die Abschnitte der betroffenen Vertikalen |
 | Themen, Quellen, Lernpfade oder Fragen bearbeitest oder prüfst | [Gemeinsame Inhaltsregeln](content/editorial-policy.md#gemeinsame-inhaltsregeln) |
+| Suchtexte für die lokale KI erzeugst oder vergleichst | [Erzeugungsprompts und Trennung von Testfragen](content/semantic-search-prompts.md) sowie die aktive Such-Spec |
 | NotebookLM-Podcasts aus Primärquellen beauftragst, prüfst oder übernimmst | [Podcast-Ablauf](content/notebooklm-podcasts.md) |
 | bestehende Thementexte, Titel oder Alltagsanker änderst | [Sprache und Stil](content/editorial-policy.md#sprache-und-stil) |
 | redaktionelle Metadaten bearbeitest | [Pflichtmetadaten](content/editorial-policy.md#pflichtmetadaten) |

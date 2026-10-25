@@ -1,0 +1,19 @@
+{
+  "id": "Xenova/multilingual-e5-base",
+  "revision": "1ec9243030a27d1a115d5c340572074c125b58b2",
+  "directory": "ai-search/e5-base-v1/",
+  "files": {
+    "model_quantized.onnx": {
+      "source": "onnx/model_quantized.onnx",
+      "sha256": "df7a9a29309e3ad491e1783adf8baee710262cc06079c7cbab63c630277fac94"
+    },
+    "tokenizer.json": {
+      "source": "tokenizer.json",
+      "sha256": "62c24cdc13d4c9952d63718d6c9fa4c287974249e16b7ade6d5a85e7bbb75626"
+    },
+    "tokenizer_config.json": {
+      "source": "tokenizer_config.json",
+      "sha256": "efb5c0d09722e5fe59a462cd2a9976ee216d55b037597d997cd3fe833216da15"
+    }
+  }
+}
