@@ -48,6 +48,10 @@ Für jedes tatsächlich fertige Audio Originalquellen-Zuordnung, deutsche Ausgab
 
 Die drei Folgen zu Spec-Driven Development, Evals/Traces und MCP/A2A/ACP sind bereits integriert und gehören nicht zum offenen Umfang. Für die beiden verbleibenden Integrationen eigene aktive Spec, RED → GREEN mit erweitertem bestehendem Katalogtest, genau ein Subagentenreview, Pflichtsuite und lokalen App-Browsernachweis durchführen. Manueller Nutzertest und ausdrückliche Commit-Freigabe bleiben erforderlich.
 
+## Bug: Suche mit KI funktioniert nicht unter Android
+Android (Samsung-Browser):
+Beim Auslösen der Suche über KI (nach Eingabe des Textes auf "Schließen") kommt sofort: "Die lokale KI-Suche ist auf diesem Gerät...". Erneut versuchen erzeugt sofort dasselbe.
+
 ## Spracheingabe für Codex probieren
 Spracheingabe für Codex probieren
 - Verlässlichkeit, Tokenverbrauch
