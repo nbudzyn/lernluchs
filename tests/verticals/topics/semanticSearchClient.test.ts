@@ -50,7 +50,7 @@ it("stops initialization and slow inference at their separate time limits", asyn
   const worker = new FakeWorker();
   const client = createSemanticSearchClient(() => worker as unknown as Worker);
   const loading = client.search("laden", vi.fn(), new AbortController().signal);
-  const loadingFailure = expect(loading).rejects.toThrow();
+  const loadingFailure = expect(loading).rejects.toThrow(/180 Sekunden/);
   vi.advanceTimersByTime(180_001);
   await loadingFailure;
   const searching = client.search(
@@ -58,9 +58,78 @@ it("stops initialization and slow inference at their separate time limits", asyn
     vi.fn(),
     new AbortController().signal,
   );
-  const searchFailure = expect(searching).rejects.toThrow();
+  const searchFailure = expect(searching).rejects.toThrow(/20 Sekunden/);
   worker.send({ type: "phase", phase: "searching" });
   vi.advanceTimersByTime(20_001);
   await searchFailure;
   expect(worker.terminate).toHaveBeenCalledTimes(2);
+});
+
+it("preserves the actual cause and step of worker and model failures", async () => {
+  for (const failure of [
+    "startup",
+    "event",
+    "message",
+    "inference",
+    "transfer",
+    "send",
+  ] as const) {
+    const worker = new FakeWorker();
+    if (failure === "send")
+      worker.postMessage.mockImplementation(() => {
+        throw new DOMException("synthetic send failure", "DataCloneError");
+      });
+    const factory = () => {
+      if (failure === "startup")
+        throw new Error("synthetic worker creation failed");
+      return worker as unknown as Worker;
+    };
+    const client = createSemanticSearchClient(factory);
+    const result = client.search(
+      "Frage",
+      vi.fn(),
+      new AbortController().signal,
+    );
+    const expected = {
+      startup: /Worker starten: Error: synthetic worker creation failed/,
+      event: /Worker ausführen: synthetic script failed.*worker.js:12:3/,
+      message: /KI-Modell laden: TypeError: synthetic model failed/,
+      inference: /Themensuche berechnen: TypeError: synthetic inference failed/,
+      transfer: /Worker-Nachricht lesen/,
+      send: /Worker-Nachricht senden: DataCloneError: synthetic send failure/,
+    }[failure];
+    const rejection = expect.soft(result, failure).rejects.toThrow(expected);
+    if (failure === "event") {
+      (worker as unknown as Worker).onerror?.call(
+        worker as unknown as Worker,
+        new ErrorEvent("error", {
+          message: "synthetic script failed",
+          filename: "worker.js",
+          lineno: 12,
+          colno: 3,
+          cancelable: true,
+        }),
+      );
+    } else if (failure === "message") {
+      worker.send({
+        type: "error",
+        message: "TypeError: synthetic model failed",
+      });
+    } else if (failure === "inference") {
+      worker.send({ type: "phase", phase: "searching" });
+      worker.send({
+        type: "error",
+        message: "TypeError: synthetic inference failed",
+      });
+    } else if (failure === "transfer") {
+      (worker as unknown as Worker).onmessageerror?.call(
+        worker as unknown as Worker,
+        new MessageEvent("messageerror"),
+      );
+    }
+    await rejection;
+    expect
+      .soft(worker.terminate)
+      .toHaveBeenCalledTimes(failure === "startup" ? 0 : 1);
+  }
 });

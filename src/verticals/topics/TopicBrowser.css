@@ -336,6 +336,14 @@
   animation: ai-search-spin 0.9s linear infinite;
 }
 
+.ai-search-error-details {
+  flex-basis: 100%;
+  min-width: 0;
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 @keyframes ai-search-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .ai-search-spinner { animation: none; } }
 

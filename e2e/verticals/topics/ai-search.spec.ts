@@ -29,7 +29,7 @@ test("runs local inference, combines filters and rejects an unrelated question",
   await query.fill("Was weißt du über Spec-driven-Development?");
   await query.press("Shift+Enter");
   await expect(page.getByRole("dialog")).toBeVisible();
-  await query.press("Enter");
+  await page.getByRole("button", { name: "Schließen", exact: true }).click();
   await expect(page.locator(".ai-filter-query")).toHaveText(
     "Was weißt du über Spec-driven-Development?",
   );
@@ -99,7 +99,9 @@ test("keeps normal filters available when model loading fails and allows retry",
   page,
 }) => {
   test.setTimeout(90_000);
-  await page.route("**/ai-search/**", (route) => route.abort());
+  await page.route("**/ai-search/**", (route) =>
+    route.fulfill({ status: 503, body: "synthetic unavailable asset" }),
+  );
   await page.goto("/");
   const trigger = page.getByRole("button", {
     name: "Suche mit KI",
@@ -114,6 +116,9 @@ test("keeps normal filters available when model loading fails and allows retry",
   await expect(page.getByRole("alert")).toContainText(
     "Schnellfilter und Lernpfade bleiben nutzbar",
     { timeout: 20_000 },
+  );
+  await expect(page.getByRole("alert")).toContainText(
+    "KI-Modell laden: Error: tokenizer.json: HTTP 503",
   );
   const quick = page.getByRole("textbox", { name: "Schnellfilter" });
   await quick.fill("OpenSpec");

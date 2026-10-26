@@ -5,6 +5,7 @@ import {
 import { searchSemanticTopics } from "./semanticSearch";
 import { readSemanticIndex } from "./semanticIndex";
 import manifest from "./semanticModel.json";
+import { semanticSearchError } from "./semanticSearchError";
 
 const scope = globalThis as unknown as {
   location: Location;
@@ -29,7 +30,7 @@ async function asset(name: string) {
   }
   if (!response) {
     response = await fetch(url, { credentials: "omit", redirect: "error" });
-    if (!response.ok) throw new Error("Missing local model asset");
+    if (!response.ok) throw new Error(`${name}: HTTP ${response.status}`);
     try {
       await cache?.put(url, response.clone());
     } catch {
@@ -56,7 +57,7 @@ async function initialize() {
     cache: "no-cache",
     redirect: "error",
   });
-  if (!index.ok) throw new Error("Missing local topic index");
+  if (!index.ok) throw new Error(`index.json: HTTP ${index.status}`);
   const entries = readSemanticIndex(await index.json());
   return { model, entries };
 }
@@ -75,13 +76,13 @@ scope.onmessage = async ({ data }) => {
     scope.postMessage({ type: "phase", phase: "searching" });
     const ids = await searchSemanticTopics(data.query, entries, model.embed);
     scope.postMessage({ type: "result", ids });
-  } catch {
+  } catch (error) {
     ready = undefined;
     try {
       await caches.delete(cacheName);
     } catch {
       /* Only optional public model assets are cached. */
     }
-    scope.postMessage({ type: "error" });
+    scope.postMessage({ type: "error", message: semanticSearchError(error) });
   }
 };

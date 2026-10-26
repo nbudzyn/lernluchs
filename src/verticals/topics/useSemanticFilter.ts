@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createSemanticSearchClient } from "./semanticSearchClient";
 import type { SearchPhase, SemanticSearchClient } from "./semanticSearchClient";
+import { semanticSearchError } from "./semanticSearchError";
 
 type SemanticFilterState =
   | { status: "idle"; query: "" }
   | { status: "loading"; query: string; phase: SearchPhase }
   | { status: "ready"; query: string; ids: string[] }
-  | { status: "error"; query: string };
+  | { status: "error"; query: string; details: string };
 
 export function useSemanticFilter(createClient = createSemanticSearchClient) {
   const client = useRef<SemanticSearchClient | null>(null);
@@ -46,8 +47,13 @@ export function useSemanticFilter(createClient = createSemanticSearchClient) {
           if (request.current === current)
             setState({ status: "ready", query, ids });
         })
-        .catch(() => {
-          if (request.current === current) setState({ status: "error", query });
+        .catch((error: unknown) => {
+          if (request.current === current)
+            setState({
+              status: "error",
+              query,
+              details: semanticSearchError(error),
+            });
         });
     },
     [clear, createClient],

@@ -681,6 +681,9 @@ export function TopicBrowser({
                 >
                   Erneut versuchen
                 </button>
+                <p className="ai-search-error-details">
+                  <strong>Fehlerdetails:</strong> {aiFilter.state.details}
+                </p>
               </div>
             )}
             <div className="path-filter-options">

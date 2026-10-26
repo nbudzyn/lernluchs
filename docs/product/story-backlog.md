@@ -52,6 +52,12 @@ Die drei Folgen zu Spec-Driven Development, Evals/Traces und MCP/A2A/ACP sind be
 Android (Samsung-Browser):
 Beim Auslösen der Suche über KI (nach Eingabe des Textes auf "Schließen") kommt sofort: "Die lokale KI-Suche ist auf diesem Gerät...". Erneut versuchen erzeugt sofort dasselbe.
 
+Die [Diagnoseversion](../changes/implemented/0081-android-ai-search-diagnostics.md)
+zeigt die tatsächliche Fehlermeldung und den betroffenen Verarbeitungsschritt.
+Nach dem Gerätetest diese Angaben zur gezielten Ursachenklärung und Korrektur
+verwenden. Der ursprüngliche Android-Fehler ist noch offen; für die Korrektur
+eine neue aktive Spec mit Regressionstest anlegen.
+
 ## Spracheingabe für Codex probieren
 Spracheingabe für Codex probieren
 - Verlässlichkeit, Tokenverbrauch

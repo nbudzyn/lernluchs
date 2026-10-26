@@ -104,8 +104,39 @@ it("ignores late results after reset or replacement and keeps errors retryable",
   expect(result.current.state).toEqual({
     status: "error",
     query: "Fehlerfall",
+    details: "Error: synthetic unavailable model",
   });
   expect(client.dispose).toHaveBeenCalled();
+});
+
+it("shows real failure details as text after closing and clears them on retry", async () => {
+  const details =
+    "KI-Modell laden: TypeError: <script>synthetic failure</script>";
+  service.search.mockRejectedValueOnce(new Error(details));
+  service.search.mockResolvedValue([]);
+  render(
+    <TopicBrowser
+      supplementaryViews={{ help: <p>Hilfe</p>, imprint: <p>Impressum</p> }}
+    />,
+  );
+  fireEvent.click(screen.getByRole("button", { name: "Suche mit KI" }));
+  fireEvent.change(
+    screen.getByRole("textbox", { name: "Deine Frage oder Stichwörter" }),
+    {
+      target: { value: "synthetische Frage" },
+    },
+  );
+  await act(async () =>
+    fireEvent.click(screen.getByRole("button", { name: "Schließen" })),
+  );
+  const alert = screen.getByRole("alert");
+  expect(alert.textContent).toContain(details);
+  expect(alert.querySelector("script")).toBeNull();
+  await act(async () =>
+    fireEvent.click(screen.getByRole("button", { name: "Erneut versuchen" })),
+  );
+  expect(screen.queryByRole("alert")).toBeNull();
+  expect(screen.queryByText(details)).toBeNull();
 });
 
 it("opens a focused AI editor before learning paths without a path count", () => {

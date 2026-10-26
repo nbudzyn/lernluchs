@@ -15,6 +15,56 @@ afterEach(() => {
   vi.resetModules();
 });
 
+it.each([
+  [
+    new TypeError("synthetic network failure"),
+    "TypeError: synthetic network failure",
+  ],
+  ["synthetic plain failure", "synthetic plain failure"],
+  [123, "123"],
+  [undefined, "Unbekannter Fehler ohne weitere Angaben"],
+])(
+  "reports model download failure %s to the browser",
+  async (failure, message) => {
+    const messages = vi.fn();
+    vi.stubGlobal("postMessage", messages);
+    vi.stubGlobal("caches", undefined);
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(failure));
+    await import("../../../src/verticals/topics/semanticSearch.worker");
+    await globalThis.onmessage?.call(
+      window,
+      new MessageEvent("message", {
+        data: { query: "synthetische Suchfrage" },
+      }),
+    );
+    expect(messages).toHaveBeenLastCalledWith({
+      type: "error",
+      message,
+    });
+  },
+);
+
+it("identifies missing local assets by file and HTTP status", async () => {
+  const messages = vi.fn();
+  vi.stubGlobal("postMessage", messages);
+  vi.stubGlobal("caches", undefined);
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue(new Response("", { status: 404 })),
+  );
+  await import("../../../src/verticals/topics/semanticSearch.worker");
+  await globalThis.onmessage?.call(
+    window,
+    new MessageEvent("message", {
+      data: { query: "synthetische Suchfrage" },
+    }),
+  );
+  expect(messages).toHaveBeenLastCalledWith({
+    type: "error",
+    message: "Error: tokenizer.json: HTTP 404",
+  });
+});
+
 it("searches locally even when the public-asset cache is unavailable or full", async () => {
   const entries = Object.entries(searchDescriptions).map(([id, text]) => ({
     id,

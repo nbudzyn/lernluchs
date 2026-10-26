@@ -10,6 +10,19 @@ Der Entwickler-Worktree `C:\projects\2026\lernluchs\workspace\lernluchs` wird vo
 
 Implementierungsaufgaben standardmäßig im dauerhaften Codex-Worktree `C:\projects\2026\lernluchs\workspace-codex-primary\lernluchs` bearbeiten; der feste Entwickler-Checkout `C:\projects\2026\lernluchs\workspace\lernluchs` bleibt beim Entwickler. Parallele unabhängige Arbeit bekommt eigene temporäre Worktrees und Branches. Vor dem ersten Edit den [Worktree-Ablauf](docs/quality/worktrees.md) lesen, tatsächlichen Arbeitsort, Branch, aktive Spec und Schreibbesitzer prüfen. Alle Edits und Tests im zugeordneten Worktree ausführen. Bestehende Story-Arbeit darf uncommittet fortgesetzt werden; niemals wegen einer neuen Sitzung verwerfen. Neue Story nur im sauberen Worktree ohne aktive Spec und ohne fremde oder unterbrochene Schreibsperre starten; eine eigene Sperre muss exakt zur aktuellen Sitzung und zum aktuellen Turn passen. Wiederaufnahme nach Abbruch nur mit geprüfter Übernahme. Schutzstatus und Sicherungen bleiben lokal außerhalb von Git. Hooks erst nach bewusster Vertrauensprüfung verwenden; sie ersetzen nicht den sicheren Ablauf. Fremde Änderungen nicht übernehmen oder stagen. Push durch Codex nur auf ausdrücklichen Auftrag und aus dem eigenen Worktree. Den dauerhaften Worktree nach einer Story oder Chat-Archivierung behalten. Temporäre Worktrees über Codex beziehungsweise `git worktree remove` entfernen, nie durch Löschen des Ordners.
 
+## Node-Laufzeit
+
+Für Installation, Skripte, Tests und Builds die bereits vorhandene Node-24-Laufzeit
+verwenden. Keine weitere Node-Version installieren und die globale Node-Einstellung
+nicht ändern. Die Laufzeit nur für den jeweiligen Prozess auswählen und vor dem
+ersten Lauf mit `node --version` prüfen.
+
+Vorhandener Node-24-Pfad:
+`C:\Users\nbudzyn\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe`.
+Unter PowerShell das zugehörige `bin`-Verzeichnis dem Prozess-`PATH` voranstellen.
+Falls `npm`/`npx` über einen Wrapper neben der globalen Node-Version laufen, deren
+JavaScript-Einstieg mit der Node-24-Executable starten. Keine globalen Wrapper ändern.
+
 ## Vor jedem Lesen und Tool-Aufruf
 
 - Bei „erste Story“ nur bis zur nächsten gleichrangigen Backlog-Überschrift lesen.
