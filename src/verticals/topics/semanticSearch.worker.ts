@@ -13,7 +13,7 @@ const scope = globalThis as unknown as {
   onmessage: (event: MessageEvent<{ query: string }>) => void;
 };
 const base = new URL(
-  `${import.meta.env.BASE_URL}${manifest.directory}`,
+  `${import.meta.env.BASE_URL.replace(/\/$/, "")}/${manifest.directory}`,
   scope.location.origin,
 );
 const cacheName = "lernluchs.ai-search.assets.v1";

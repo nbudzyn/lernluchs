@@ -12,6 +12,7 @@ const previousHandler = globalThis.onmessage;
 afterEach(() => {
   globalThis.onmessage = previousHandler;
   vi.unstubAllGlobals();
+  vi.unstubAllEnvs();
   vi.resetModules();
 });
 
@@ -65,53 +66,64 @@ it("identifies missing local assets by file and HTTP status", async () => {
   });
 });
 
-it("searches locally even when the public-asset cache is unavailable or full", async () => {
-  const entries = Object.entries(searchDescriptions).map(([id, text]) => ({
-    id,
-    text: `passage: ${text}`,
-    vector: [1, 0],
-  }));
-  for (const cache of [
-    undefined,
-    { open: () => Promise.reject(new Error("storage disabled")) },
-    {
-      open: () =>
-        Promise.resolve({
-          match: () => Promise.resolve(undefined),
-          put: () => Promise.reject(new Error("quota exceeded")),
-        }),
-    },
-  ]) {
-    vi.resetModules();
-    const messages = vi.fn();
-    const fetchAsset = vi.fn((url: string | URL) =>
-      Promise.resolve(
-        new Response(
-          String(url).endsWith("index.json")
-            ? JSON.stringify({ revision: manifest.revision, entries })
-            : "{}",
+it.each([
+  ["/", "/ai-search/e5-base-v1/"],
+  ["/lernluchs", "/lernluchs/ai-search/e5-base-v1/"],
+  ["/lernluchs/", "/lernluchs/ai-search/e5-base-v1/"],
+])(
+  "searches locally below base %s even without a usable asset cache",
+  async (basePath, expectedDirectory) => {
+    vi.stubEnv("BASE_URL", basePath);
+    const entries = Object.entries(searchDescriptions).map(([id, text]) => ({
+      id,
+      text: `passage: ${text}`,
+      vector: [1, 0],
+    }));
+    for (const cache of [
+      undefined,
+      { open: () => Promise.reject(new Error("storage disabled")) },
+      {
+        open: () =>
+          Promise.resolve({
+            match: () => Promise.resolve(undefined),
+            put: () => Promise.reject(new Error("quota exceeded")),
+          }),
+      },
+    ]) {
+      vi.resetModules();
+      const messages = vi.fn();
+      const fetchAsset = vi.fn((url: string | URL) =>
+        Promise.resolve(
+          new Response(
+            String(url).endsWith("index.json")
+              ? JSON.stringify({ revision: manifest.revision, entries })
+              : "{}",
+          ),
         ),
-      ),
-    );
-    vi.stubGlobal("postMessage", messages);
-    vi.stubGlobal("caches", cache);
-    vi.stubGlobal("fetch", fetchAsset);
-    await import("../../../src/verticals/topics/semanticSearch.worker");
-    await globalThis.onmessage?.call(
-      window,
-      new MessageEvent("message", {
-        data: { query: "synthetische Suchfrage" },
-      }),
-    );
-    expect.soft(messages.mock.calls.map(([message]) => message)).toEqual([
-      { type: "phase", phase: "loading" },
-      { type: "phase", phase: "searching" },
-      { type: "result", ids: entries.map((entry) => entry.id) },
-    ]);
-    expect.soft(fetchAsset).toHaveBeenCalledTimes(4);
-    for (const [url] of fetchAsset.mock.calls) {
-      expect.soft(new URL(url).origin).toBe(location.origin);
-      expect.soft(String(url)).not.toContain("synthetische");
+      );
+      vi.stubGlobal("postMessage", messages);
+      vi.stubGlobal("caches", cache);
+      vi.stubGlobal("fetch", fetchAsset);
+      await import("../../../src/verticals/topics/semanticSearch.worker");
+      await globalThis.onmessage?.call(
+        window,
+        new MessageEvent("message", {
+          data: { query: "synthetische Suchfrage" },
+        }),
+      );
+      expect.soft(messages.mock.calls.map(([message]) => message)).toEqual([
+        { type: "phase", phase: "loading" },
+        { type: "phase", phase: "searching" },
+        { type: "result", ids: entries.map((entry) => entry.id) },
+      ]);
+      expect.soft(fetchAsset).toHaveBeenCalledTimes(4);
+      for (const [url] of fetchAsset.mock.calls) {
+        expect.soft(new URL(url).origin).toBe(location.origin);
+        expect
+          .soft(new URL(url).pathname)
+          .toBe(expectedDirectory + new URL(url).pathname.split("/").at(-1));
+        expect.soft(String(url)).not.toContain("synthetische");
+      }
     }
-  }
-});
+  },
+);
