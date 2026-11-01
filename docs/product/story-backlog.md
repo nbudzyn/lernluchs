@@ -8,12 +8,6 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## "Meta": Für alle Themen prüfen (von oben nach unten): Sind sie für die Weiterentwicklung von Lernluchs relevant?
-"Meta": Für alle Themen prüfen (von oben nach unten):
-- Sind sie für die Weiterentwicklung von Lernluchs relevant?
-- Wie könnten die Lösungsansätze / Kernideen die Weiterentwicklung von Lernluchs erleichtern / verbessern?
-- Ergebnisse priorisieren und als .md-Datei speichern
-
 ## Erzeugte Primärquellen-Podcasts herunterladen und integrieren
 Ale bereits beauftragten Folgen nach ausdrücklichem Fortsetzungssignal auf Fertigstellung prüfen, lokal herunterladen und in ihre bestehenden Themen integrieren:
 - Aufgaben mit Modell-Routing an passende Modelle verteilen (`task-based-model-routing`)

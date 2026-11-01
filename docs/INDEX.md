@@ -12,6 +12,7 @@ verbindlich; der Index steuert den Leseumfang, er erlaubt keine Regelverletzung.
 | Worktrees, Hook-Vertrauen oder parallele lokale Starts einrichtest | [Worktree-Ablauf](quality/worktrees.md) und [Einrichtung und Ports](quality/worktree-setup.md) |
 | IntelliJ-Formatierung einrichtest oder änderst | [IntelliJ-Formatierung](quality/intellij-formatting.md) |
 | den aktuellen Funktionsumfang verstehen willst | [Produktstand](product/vision-and-scope.md) |
+| den Nutzen der Lernthemen für die Weiterentwicklung von Lernluchs bewerten willst | [Meta-Auswertung und priorisierte Empfehlungen](product/meta-development-opportunities.md) |
 | den aktuellen Aufbau oder Architekturgrenzen brauchst | [Architektur und Leitplanken](architecture/target-architecture.md) |
 | einen Begriff nachschlagen willst | [Glossar](product/glossary.md) |
 | die Reihenfolge geplanter Stories brauchst | [Story-Backlog](product/story-backlog.md) |
