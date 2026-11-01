@@ -8,49 +8,26 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Ausstehende NotebookLM-Podcasts aus den Primärquellen erzeugen
-- Ausstehende NotebookLM-Podcasts aus den Primärquellen erzeugen
+## "Meta": Für alle Themen prüfen (von oben nach unten): Sind sie für die Weiterentwicklung von Lernluchs relevant?
+"Meta": Für alle Themen prüfen (von oben nach unten):
+- Sind sie für die Weiterentwicklung von Lernluchs relevant?
+- Wie könnten die Lösungsansätze / Kernideen die Weiterentwicklung von Lernluchs erleichtern / verbessern?
+- Ergebnisse priorisieren und als .md-Datei speichern
 
-## Lösungsweg je Thema sichtbar machen
-
-Die Themendetails zeigen zwischen „Problem“ und „Kernkonzept“ einen neuen
-Unterpunkt „Lösung“. Ein bis zwei prägnante deutsche Sätze beschreiben den
-konkreten Lösungsweg zum genannten Problem; das folgende Kernkonzept erläutert
-Methode, Zusammenhang und Grenzen. Keine bloße Wiederholung des Problems oder
-allgemeine Lernziel-Floskel.
-
-- Die bei der lokalen KI-Suche entstandenen kurzen Suchbeschreibungen dienen als
-  Ausgangspunkt. Alle Themen erhalten redaktionell geprüfte Lösungssätze; reine
-  Suchformulierungen werden vor der Anzeige auf ihre neue Rolle überarbeitet.
-- Beispiel: Das Verhalten einer undokumentierten Altanwendung mit Beispielanfragen
-  und Charakterisierungstests erfassen, bevor Code ersetzt wird. Keine unbelegten
-  Fähigkeiten von Werkzeugen versprechen.
-- Die Lösung wird als regulärer Themeninhalt beim Themenbesitzer gepflegt. Anzeige
-  und KI-Suchindex verwenden dieselbe Textquelle; keine zweite parallel gepflegte
-  Sammlung derselben Sätze.
-- Gestaltung und Lesereihenfolge bleiben in Desktop- und Mobilansicht konsistent:
-  Problem → Lösung → Kernkonzept → weitere bestehende Abschnitte.
-- Suchrepräsentationen und vorberechnete Themenvektoren werden aus den überarbeiteten
-  Inhalten neu erzeugt. Algorithmische Tests und echte KI-Qualitätsprüfung bleiben
-  getrennt; die Änderung darf die vereinbarte Trefferqualität nicht verschlechtern.
-- Abnahme: Jedes Thema zeigt eine passende, kurze Lösung an der vereinbarten Stelle;
-  die Texte sind fachlich aus dem jeweiligen Thema und seinen Quellen gedeckt,
-  Inhalte und KI-Suche bleiben konsistent, keine duplizierte Textpflege.
-
-Betroffene Vertikale voraussichtlich: `topics`. Bei der Umsetzung reguläres
-Refinement, aktive Spec, RED → GREEN, einmaliges Subagentenreview und Pflichtsuite.
-
-## Letzte Primärquellen-Podcasts herunterladen und integrieren
-Die bereits beauftragten Folgen nach ausdrücklichem Fortsetzungssignal auf Fertigstellung prüfen, lokal herunterladen und in ihre bestehenden Themen integrieren:
+## Erzeugte Primärquellen-Podcasts herunterladen und integrieren
+Ale bereits beauftragten Folgen nach ausdrücklichem Fortsetzungssignal auf Fertigstellung prüfen, lokal herunterladen und in ihre bestehenden Themen integrieren:
 - Aufgaben mit Modell-Routing an passende Modelle verteilen (`task-based-model-routing`)
 - Modellwechsel und API-Lebenszyklen absichern (`model-and-api-lifecycle`)
-- Haben wir noch weitere?
+- Und alle weiteren
 
-Vorhandene lokale Notebook-Zuordnungen, Aufträge und Prompts aus der Beauftragungs- und Integrationsstory wiederverwenden; keine erneute Generierung oder doppelten Notebooks. Beide Folgen sind mit jeweils vier textuellen Primärquellen, Deutsch, detaillierter Analyse und Standardlänge beauftragt. Keine automatische Statusprüfung oder kostenpflichtige Beschleunigung starten.
+Vorhandene lokale Notebook-Zuordnungen, Aufträge und Prompts aus der Beauftragungs- und Integrationsstory wiederverwenden; keine erneute Generierung oder doppelten Notebooks. Keine automatische Statusprüfung oder kostenpflichtige Beschleunigung starten.
 
 Für jedes tatsächlich fertige Audio Originalquellen-Zuordnung, deutsche Ausgabe, tatsächlichen Titel, positive Laufzeit und anonym erreichbaren öffentlichen Audio-Artefaktlink prüfen. Audiodateien ausschließlich lokal außerhalb von Git aufbewahren; vor eigener Veröffentlichung der Dateien Distributionsrechte klären. Den geprüften Link als erste Sekundärquelle mit `audio-summary`, `audio`, `secondary`, `de` und tatsächlichem Prüftag ergänzen; vorhandene Podcasts und Quellen erhalten. Persönliche Zuordnungen, Kontodaten und Fehlermeldungen nicht versionieren.
 
-Die drei Folgen zu Spec-Driven Development, Evals/Traces und MCP/A2A/ACP sind bereits integriert und gehören nicht zum offenen Umfang. Für die beiden verbleibenden Integrationen eigene aktive Spec, RED → GREEN mit erweitertem bestehendem Katalogtest, genau ein Subagentenreview, Pflichtsuite und lokalen App-Browsernachweis durchführen. Manueller Nutzertest und ausdrückliche Commit-Freigabe bleiben erforderlich.
+Die drei Folgen zu Spec-Driven Development, Evals/Traces und MCP/A2A/ACP sind bereits integriert und gehören nicht zum offenen Umfang. Für die verbleibenden Integrationen aktive Spec, RED → GREEN mit erweitertem bestehendem Katalogtest, genau ein Subagentenreview, Pflichtsuite und lokalen App-Browsernachweis durchführen. Manueller Nutzertest und ausdrückliche Commit-Freigabe bleiben erforderlich.
+
+## Ausstehende NotebookLM-Podcasts aus den Primärquellen erzeugen
+- Ausstehende NotebookLM-Podcasts aus den Primärquellen erzeugen
 
 ## Spracheingabe für Codex probieren
 Spracheingabe für Codex probieren
