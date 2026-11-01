@@ -8,6 +8,18 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
+## Weitere NotebookLM-Podcasts aus den Primärquellen erzeugen, bis das kostenfreie Google-Budget erschöpft ist
+- Weitere NotebookLM-Podcasts aus den Primärquellen beauftragen, bis das kostenfreie Google-Budget erschöpft ist
+- Wo es noch keine Primärquellen-NotebookLM-Podcasts gibt.
+  - Vorrangig Themen, die mit der Integration von KI in Java-Anwendung sowie mit der Modernisierung von Altanwendungen zu tun haben 
+- Vorgaben sollten klar sein (Guardrails?)
+
+Nur beauftragen, nicht downloaden.
+- Wir haben bereits noch andere ausstehende Podcasts, die downzuloaden zu integrieren sind - machen wir dann später alles in einem Schwung.
+
+## Ausstehende NotebookLM-Podcasts aus den Primärquellen erzeugen
+- Ausstehende NotebookLM-Podcasts aus den Primärquellen erzeugen
+
 ## Lösungsweg je Thema sichtbar machen
 
 Die Themendetails zeigen zwischen „Problem“ und „Kernkonzept“ einen neuen
@@ -37,26 +49,17 @@ allgemeine Lernziel-Floskel.
 Betroffene Vertikale voraussichtlich: `topics`. Bei der Umsetzung reguläres
 Refinement, aktive Spec, RED → GREEN, einmaliges Subagentenreview und Pflichtsuite.
 
-## Letzte zwei Primärquellen-Podcasts herunterladen und integrieren
-Die beiden bereits beauftragten Folgen nach ausdrücklichem Fortsetzungssignal auf Fertigstellung prüfen, lokal herunterladen und in ihre bestehenden Themen integrieren:
+## Letzte Primärquellen-Podcasts herunterladen und integrieren
+Die bereits beauftragten Folgen nach ausdrücklichem Fortsetzungssignal auf Fertigstellung prüfen, lokal herunterladen und in ihre bestehenden Themen integrieren:
 - Aufgaben mit Modell-Routing an passende Modelle verteilen (`task-based-model-routing`)
 - Modellwechsel und API-Lebenszyklen absichern (`model-and-api-lifecycle`)
+- Haben wir noch weitere?
 
 Vorhandene lokale Notebook-Zuordnungen, Aufträge und Prompts aus der Beauftragungs- und Integrationsstory wiederverwenden; keine erneute Generierung oder doppelten Notebooks. Beide Folgen sind mit jeweils vier textuellen Primärquellen, Deutsch, detaillierter Analyse und Standardlänge beauftragt. Keine automatische Statusprüfung oder kostenpflichtige Beschleunigung starten.
 
 Für jedes tatsächlich fertige Audio Originalquellen-Zuordnung, deutsche Ausgabe, tatsächlichen Titel, positive Laufzeit und anonym erreichbaren öffentlichen Audio-Artefaktlink prüfen. Audiodateien ausschließlich lokal außerhalb von Git aufbewahren; vor eigener Veröffentlichung der Dateien Distributionsrechte klären. Den geprüften Link als erste Sekundärquelle mit `audio-summary`, `audio`, `secondary`, `de` und tatsächlichem Prüftag ergänzen; vorhandene Podcasts und Quellen erhalten. Persönliche Zuordnungen, Kontodaten und Fehlermeldungen nicht versionieren.
 
 Die drei Folgen zu Spec-Driven Development, Evals/Traces und MCP/A2A/ACP sind bereits integriert und gehören nicht zum offenen Umfang. Für die beiden verbleibenden Integrationen eigene aktive Spec, RED → GREEN mit erweitertem bestehendem Katalogtest, genau ein Subagentenreview, Pflichtsuite und lokalen App-Browsernachweis durchführen. Manueller Nutzertest und ausdrückliche Commit-Freigabe bleiben erforderlich.
-
-## Bug: Suche mit KI funktioniert nicht unter Android
-Android (Samsung-Browser):
-Beim Auslösen der Suche über KI (nach Eingabe des Textes auf "Schließen") kommt sofort: "Die lokale KI-Suche ist auf diesem Gerät...". Erneut versuchen erzeugt sofort dasselbe.
-
-Die [Diagnoseversion](../changes/implemented/0081-android-ai-search-diagnostics.md)
-zeigt die tatsächliche Fehlermeldung und den betroffenen Verarbeitungsschritt.
-Nach dem Gerätetest diese Angaben zur gezielten Ursachenklärung und Korrektur
-verwenden. Der ursprüngliche Android-Fehler ist noch offen; für die Korrektur
-eine neue aktive Spec mit Regressionstest anlegen.
 
 ## Spracheingabe für Codex probieren
 Spracheingabe für Codex probieren
@@ -104,10 +107,6 @@ OWASP Dependency Check einbinden?
 - Bringt uns das was? Oder haben wir schon etwas, das das Problem löst?
 
 - Immer? Nach jeder Änderung von... was? Am Ende vor dem Commit? Vor jedem install...?
-
-## Weitere NotebookLM-Podcasts aus den Primärquellen erzeugen
-Weitere NotebookLM-Podcasts aus den Primärquellen erzeugen
-- Wo es noch keine Primärquellen-NotebookLM-Podcasts gibt.
 
 ## Prozess schärfen, ggf. vereinfachen
 Prozess schärfen, ggf. vereinfachen
