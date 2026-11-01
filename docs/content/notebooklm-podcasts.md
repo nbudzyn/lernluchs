@@ -4,6 +4,13 @@ Auf ausdrücklichen Auftrag lokal deutsche Audio-Zusammenfassungen aus Primärqu
 bestehender Themen erzeugen und öffentliche Audio-Links übernehmen.
 Die statische App erhält weder Google-Anmeldung noch KI-Zugriff.
 
+## Auftrag und Stoppkriterium
+
+- **Nur beauftragen:** keine Downloads oder Integration bereits fertiger Audios. Bestand nur zur Duplikatvermeidung prüfen.
+- **Alles aktuell kostenlos Mögliche beauftragen:** sowohl sofortige als auch spätere Erzeugung ausschöpfen. Nach jedem bestätigten Auftrag das nächste geeignete Thema bearbeiten. Ein erschöpfter Sofortmodus, eine volle Warteschlange oder eine Nutzungswarnung allein beendet den Auftrag nicht.
+- Erst stoppen, wenn die aktuelle Oberfläche **keinen der beiden kostenlosen Wege mehr anbietet**, alle geeigneten Themen bereits beauftragt sind oder ein konkretes Hindernis die Fortsetzung verhindert. Verbleibendes Hindernis benennen; keine feste Auftragszahl annehmen.
+- Keine Abos, Testabos, Upgrades, Cloud-Abrechnung oder kostenpflichtigen APIs aktivieren. Nicht auf eine Rücksetzung warten und keine automatische Wiederaufnahme einrichten.
+
 ## Lokales Skript
 
 Nach `npm ci` nutzt das Skript installiertes Google Chrome und semantische
@@ -28,7 +35,8 @@ Verzeichnisse außerhalb des Repositorys. Angemeldetes getrenntes Profil darf
 wiederverwendet werden, gleichzeitig geöffnetes nicht übernehmen.
 Fenstergröße etwa mit `--viewport 800x650`.
 
-Kein Hintergrunddienst: Nach Erzeugungsstart Browser schließen und Aufruf beenden.
+Kein Hintergrunddienst: Nach dem beauftragten Lauf Browser schließen und Aufruf
+beenden, ohne auf fertige Audios zu warten. Ein Sammelauftrag darf mehrere Themen umfassen.
 Auch bei langer Wartezeit nutzt `check` den gespeicherten Auftrag. Überschreitet
 Quellenimport sein Zeitfenster, setzt erneutes `start` denselben Auftrag fort.
 Unklaren Erzeugungsstart nicht automatisch erneut absenden.
@@ -36,8 +44,10 @@ Unklaren Erzeugungsstart nicht automatisch erneut absenden.
 Nach bestätigter Beauftragung sofort informieren und grobe Fertigstellungsschätzung
 anhand sichtbarer Warteschlange/bisheriger Zeiten nennen; deutlich verschiedene
 Erwartungen getrennt angeben, keine zugesicherte Dauer behaupten.
-Danach ausschließlich auf Entwickler-Fortsetzungssignal warten:
-kein automatisches Polling, Watcher oder geplante Wiederaufnahme.
+Für Fertigstellungsprüfung, Download und Integration danach auf ein
+Entwickler-Fortsetzungssignal warten: kein automatisches Polling, Watcher oder
+geplante Wiederaufnahme. Weitere vom Nutzer freigegebene Themen dürfen währenddessen
+vorbereitet und abgesendet werden; bei einem Sammelauftrag gilt das Stoppkriterium oben.
 Unabhängige Storyarbeit darf weitergehen; Aufträge erhalten.
 
 `check` prüft Audio-Links auch unangemeldet. `ready-podcasts.json` enthält nur
@@ -49,10 +59,17 @@ Auftrag; neuer Monat/geänderte URLs eine neue Zuordnung. Quellenprüfung und
 wesentliche Importlücken redaktionell bewerten. Geänderte Google-Oberfläche kann
 Anpassung erfordern; Kontingente nicht durch Upgrade/Zahlung erweitern.
 
+### Bei geänderter Oberfläche
+
+1. Nach dem ersten Oberflächenfehler lokale Diagnose und aktuellen UI-Zustand prüfen. Den unverändert fehlschlagenden Skriptweg nicht für jedes weitere Thema wiederholen; vorhandene lokale Helfer im Statusverzeichnis prüfen und einen verifizierten Ablauf wiederverwenden.
+2. Bei einem npm-/npx-Wrapper neben der globalen Node-Version den JavaScript-Einstieg der bereits vorhandenen CLI direkt mit Node 24 starten, wie in [AGENTS.md](../../AGENTS.md#node-laufzeit) vorgegeben. Das vermeidet zusätzlich fehlerhafte Weitergabe mehrzeiliger CLI-Argumente unter Windows.
+3. Freigabedialog vollständig laden lassen. „Kopien zulassen“ kann erst nach Auswahl des Linkzugriffs erscheinen. Speichern abwarten und den gespeicherten Linkzugriff samt deaktivierter Kopieroption erneut prüfen; ein anfänglich angezeigter Standardwert ist kein Nachweis.
+4. Erzeugungsschaltflächen können „Jetzt generieren“, „Erstellen“ oder „Später generieren“ heißen. Sichtbarkeit und Aktivierung beider kostenlosen Wege prüfen. Nur ein abgesendeter und anschließend sichtbar bestätigter Start oder geplanter Auftrag zählt; bei unklarem Ergebnis denselben Auftrag prüfen, nicht erneut absenden.
+
 ## Wiederaufnahme und Auswahl
 
 1. Arbeitsort, Branch, Spec und Schreibbesitz nach [Worktree-Ablauf](../quality/worktrees.md) prüfen. Produktänderungen benötigen aktive Spec und RED → GREEN.
-2. Lokalen Status und passende vorhandene Notebooks prüfen: zuerst fertige, nicht integrierte Podcasts übernehmen, dann laufende prüfen, erst danach neue beauftragen.
+2. Lokalen Status und passende vorhandene Notebooks gemeinsam prüfen; Monatswechsel oder eine fehlende lokale Zuordnung rechtfertigen allein keinen Doppelauftrag. Wenn Übernahme zum Auftrag gehört, zuerst fertige, nicht integrierte Podcasts übernehmen, dann laufende prüfen, erst danach neue beauftragen. Bei „nur beauftragen“ gilt die Ausnahme oben.
 3. Themen nach Nutzerauftrag auswählen, nicht nach persönlichem Lernstand öffentlich priorisieren. Priorisierung, Notebook-Zuordnung, Profile, Kontingente und Fehler bleiben lokal außerhalb von Git.
 4. Nur `primary`-Quellen mit `mediaType: "text"` aus `src/verticals/topics/topics.ts` verwenden, keine Podcasts, Sekundärquellen oder Lernluchs-Zusammenfassungen. Nach [Quellenregeln](source-selection.md) prüfen; wesentliche Lücken/einseitige Abdeckung gezielt ergänzen.
 
@@ -86,11 +103,10 @@ Monat/Jahr bei jedem Auftrag neu bestimmen:
 
 Themenschwerpunkte ergänzen; Prompt ist Erzeugungsanweisung, keine Notebook-Quelle.
 
-Kostenlose Nutzung und sichtbare Limits beachten; keine feste Auftragszahl oder
-Rücksetzzeit unterstellen. Keine Abos, Testabos, Cloud-Abrechnung oder kostenpflichtigen
-APIs aktivieren. Bei erschöpftem Kontingent gegebenenfalls angebotene Hintergrundwarteschlange
-nutzen und lokal festhalten. Nach „Jetzt generieren“/„Später generieren“ Auftragsstatus
-prüfen; Wiederaufnahme prüft denselben Auftrag statt Duplikate zu erzeugen.
+Kostenlose Wege nach dem [Stoppkriterium](#auftrag-und-stoppkriterium) nutzen.
+Nach dem Absenden die unmittelbare Start- oder Planungsbestätigung prüfen und lokal
+festhalten; das ist keine Fertigstellungsabfrage. Konto-, Nutzungs-, Limit-, Rücksetz-
+und Warteschlangendaten einschließlich der Abbruchnachweise bleiben außerhalb von Git.
 
 ## Fertiges Audio übernehmen
 

@@ -8,15 +8,6 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Weitere NotebookLM-Podcasts aus den Primärquellen erzeugen, bis das kostenfreie Google-Budget erschöpft ist
-- Weitere NotebookLM-Podcasts aus den Primärquellen beauftragen, bis das kostenfreie Google-Budget erschöpft ist
-- Wo es noch keine Primärquellen-NotebookLM-Podcasts gibt.
-  - Vorrangig Themen, die mit der Integration von KI in Java-Anwendung sowie mit der Modernisierung von Altanwendungen zu tun haben 
-- Vorgaben sollten klar sein (Guardrails?)
-
-Nur beauftragen, nicht downloaden.
-- Wir haben bereits noch andere ausstehende Podcasts, die downzuloaden zu integrieren sind - machen wir dann später alles in einem Schwung.
-
 ## Ausstehende NotebookLM-Podcasts aus den Primärquellen erzeugen
 - Ausstehende NotebookLM-Podcasts aus den Primärquellen erzeugen
 
