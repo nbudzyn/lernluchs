@@ -275,9 +275,10 @@ it("publishes current development topics with distinct concepts and sources", ()
     expect.soft(topic.everydayAnchor, id).not.toMatch(/prüfen|verstehen/i);
     expect
       .soft(
-        topic.sources.every(
-          (source) => source.checkedAt <= topic.editorial.reviewedAt,
-        ),
+        // Ergänzte Podcasts datieren keine fachliche Prüfung des Thementexts um.
+        topic.sources
+          .filter((source) => source.mediaType !== "audio")
+          .every((source) => source.checkedAt <= topic.editorial.reviewedAt),
         id,
       )
       .toBe(true);
@@ -679,6 +680,156 @@ describe("public content topics", () => {
         "23:44",
         "2026-10-24",
         ["https://notebooklm.link.google/fmEZjflpZjTm"],
+      ],
+      [
+        "task-based-model-routing",
+        "23:30",
+        "2026-11-03",
+        [
+          "https://notebooklm.link.google/cMwKUNuKYShC",
+          "https://www.ibm.com/think/topics/agent-gateway",
+          "https://www.youtube.com/watch?v=cdvNTmDIvec",
+        ],
+      ],
+      [
+        "model-and-api-lifecycle",
+        "14:37",
+        "2026-11-03",
+        [
+          "https://notebooklm.link.google/dJnOZfMw39BC",
+          "https://martinfowler.com/articles/gen-ai-patterns/",
+        ],
+      ],
+      [
+        "refactorings-and-migrations-with-openrewrite",
+        "23:39",
+        "2026-11-03",
+        [
+          "https://notebooklm.link.google/koj4x9y1KFDR",
+          "https://www.youtube.com/watch?v=e4R6AZHpAD8",
+          "https://www.youtube.com/watch?v=6LGL64AwEEY",
+          "https://www.youtube.com/watch?v=50mhP1SBTis",
+        ],
+      ],
+      [
+        "design-and-legacy-specification",
+        "18:01",
+        "2026-11-03",
+        [
+          "https://notebooklm.link.google/FkCKFPc1qhmF",
+          "https://www.youtube.com/watch?v=3wPZGfSiWYw",
+          "https://www.youtube.com/watch?v=2q5PdGdlL8Y",
+          "https://www.youtube.com/watch?v=P_6eDL1aqtA&t=411s",
+          "https://www.youtube.com/watch?v=UiU6khrBuV8",
+        ],
+      ],
+      [
+        "codegraphs-for-large-repos",
+        "13:32",
+        "2026-11-03",
+        [
+          "https://notebooklm.link.google/he847C693xb5",
+          "https://www.youtube.com/watch?v=3GuP8gdE2Fk",
+          "https://www.youtube.com/watch?v=5kAJ7CA7ZB4",
+          "https://www.youtube.com/watch?v=Xr2MjfirjqA",
+          "https://www.dsebastien.net/jetbrains-context/",
+        ],
+      ],
+      [
+        "coding-agent-context-and-trust-boundaries",
+        "23:45",
+        "2026-11-03",
+        [
+          "https://notebook.google.com/notebook/b48701c3-1b7f-47f7-9725-242e0a8f22e8/artifact/eb2c1bae-2423-483a-b5ad-2289bd1afca4",
+          "https://www.youtube.com/watch?v=sPQfn_nGr30",
+          "https://www.youtube.com/watch?v=5ZA1lTxTH3c",
+          "https://www.youtube.com/watch?v=jrHRe9lSqqA",
+          "https://www.youtube.com/watch?v=NH0plIdqDMk",
+        ],
+      ],
+      [
+        "archunit-for-java-architecture",
+        "27:55",
+        "2026-11-03",
+        [
+          "https://notebooklm.link.google/mNsAbcCSJbuy",
+          "https://www.youtube.com/watch?v=hcT2yZRxRvg",
+          "https://www.youtube.com/watch?v=FAykZTP4Aa4",
+          "https://www.youtube.com/watch?v=ef0lUToWxI8",
+          "https://www.youtube.com/watch?v=sGmhaizFcEA",
+        ],
+      ],
+      [
+        "module-boundaries-and-public-interfaces",
+        "25:06",
+        "2026-11-03",
+        [
+          "https://notebooklm.link.google/3gLdqqbwL36m",
+          "https://www.youtube.com/watch?v=6PuLzd5rvAc",
+          "https://www.youtube.com/watch?v=3KP5YiKLkeo",
+          "https://www.youtube.com/watch?v=MGX-JfMl9-Y",
+          "https://www.youtube.com/watch?v=89tplxrXJTU",
+        ],
+      ],
+      [
+        "web-security-baseline",
+        "18:44",
+        "2026-11-03",
+        [
+          "https://notebooklm.link.google/XF3Q0l2PVblq",
+          "https://www.youtube.com/watch?v=R1KSXSd_lmk",
+          "https://www.youtube.com/watch?v=qzvfKXynk-I",
+          "https://www.youtube.com/watch?v=soFWS8NBcSU",
+          "https://www.youtube.com/watch?v=5ZA1lTxTH3c",
+        ],
+      ],
+      [
+        "protect-secrets-and-sensitive-data-with-ai",
+        "15:07",
+        "2026-11-03",
+        [
+          "https://notebook.google.com/notebook/ffcf3f8a-7112-4ece-a5d0-7ca0440b8eda/artifact/eb19995d-ec09-4d27-8736-7f5266fd741d",
+          "https://www.youtube.com/watch?v=yS0rEzcXfm4",
+          "https://www.youtube.com/watch?v=BqekRTA6VCs",
+          "https://www.youtube.com/watch?v=kyJ1vd7yEPc",
+          "https://www.youtube.com/watch?v=LyfG7SGRiZA",
+        ],
+      ],
+      [
+        "local-model-stack-evaluation",
+        "19:06",
+        "2026-11-03",
+        [
+          "https://notebooklm.link.google/ecxzpX9FMo7r",
+          "https://www.youtube.com/watch?v=M1j_uRqKMKI",
+          "https://www.youtube.com/watch?v=i96JY0zzEZg",
+          "https://www.youtube.com/watch?v=UtSSMs6ObqY",
+          "https://www.youtube.com/watch?v=MAZUI4jGlU8",
+        ],
+      ],
+      [
+        "dependency-security-assessment",
+        "19:17",
+        "2026-11-03",
+        [
+          "https://notebooklm.link.google/HEqpUp9TtMsa",
+          "https://www.youtube.com/watch?v=2cEKEEJraDk",
+          "https://www.youtube.com/watch?v=7IoXciSucw4",
+          "https://www.youtube.com/watch?v=ee-jtLAmGnI",
+          "https://www.youtube.com/watch?v=WqvCJLpwExY",
+        ],
+      ],
+      [
+        "llm-fallibility-and-counterchecks",
+        "22:09",
+        "2026-11-03",
+        [
+          "https://notebooklm.link.google/oHeFwonSdM7H",
+          "https://www.youtube.com/watch?v=-ttJuqi8Rho",
+          "https://www.youtube.com/watch?v=cfqtFvWOfg0",
+          "https://www.youtube.com/watch?v=bNRhppHct54",
+          "https://www.youtube.com/watch?v=005JLRt3gXI",
+        ],
       ],
     ] as const) {
       const topic = topics.items.find((item) => item.id === id);

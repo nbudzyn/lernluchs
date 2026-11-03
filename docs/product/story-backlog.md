@@ -8,17 +8,6 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Erzeugte Primärquellen-Podcasts herunterladen und integrieren
-Ale bereits beauftragten Folgen nach ausdrücklichem Fortsetzungssignal auf Fertigstellung prüfen, lokal herunterladen und in ihre bestehenden Themen integrieren:
-- Aufgaben mit Modell-Routing an passende Modelle verteilen (`task-based-model-routing`)
-- Modellwechsel und API-Lebenszyklen absichern (`model-and-api-lifecycle`)
-- Und alle weiteren
-
-Vorhandene lokale Notebook-Zuordnungen, Aufträge und Prompts aus der Beauftragungs- und Integrationsstory wiederverwenden; keine erneute Generierung oder doppelten Notebooks. Keine automatische Statusprüfung oder kostenpflichtige Beschleunigung starten.
-
-Für jedes tatsächlich fertige Audio Originalquellen-Zuordnung, deutsche Ausgabe, tatsächlichen Titel, positive Laufzeit und anonym erreichbaren öffentlichen Audio-Artefaktlink prüfen. Audiodateien ausschließlich lokal außerhalb von Git aufbewahren; vor eigener Veröffentlichung der Dateien Distributionsrechte klären. Den geprüften Link als erste Sekundärquelle mit `audio-summary`, `audio`, `secondary`, `de` und tatsächlichem Prüftag ergänzen; vorhandene Podcasts und Quellen erhalten. Persönliche Zuordnungen, Kontodaten und Fehlermeldungen nicht versionieren.
-
-Die drei Folgen zu Spec-Driven Development, Evals/Traces und MCP/A2A/ACP sind bereits integriert und gehören nicht zum offenen Umfang. Für die verbleibenden Integrationen aktive Spec, RED → GREEN mit erweitertem bestehendem Katalogtest, genau ein Subagentenreview, Pflichtsuite und lokalen App-Browsernachweis durchführen. Manueller Nutzertest und ausdrückliche Commit-Freigabe bleiben erforderlich.
 
 ## Ausstehende NotebookLM-Podcasts aus den Primärquellen erzeugen
 - Ausstehende NotebookLM-Podcasts aus den Primärquellen erzeugen

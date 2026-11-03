@@ -23,7 +23,10 @@ test("shows the curated sources of topics outside the foundation path", async ({
           sourceTitle("web-security-baseline", 5),
           sourceTitle("coding-agent-context-and-trust-boundaries", 1),
         ],
-        sourceTitle("coding-agent-context-and-trust-boundaries", 2),
+        sourceByUrl(
+          "coding-agent-context-and-trust-boundaries",
+          "https://notebook.google.com/notebook/b48701c3-1b7f-47f7-9725-242e0a8f22e8/artifact/eb2c1bae-2423-483a-b5ad-2289bd1afca4",
+        ).title,
       ],
       [
         topicTitle("module-boundaries-and-public-interfaces"),
@@ -76,12 +79,9 @@ test("shows the curated sources of topics outside the foundation path", async ({
       expect(
         (await article.getByRole("link").allTextContents()).slice(
           0,
-          expectedLinks.length + (audioTitle ? 1 : 0),
+          expectedLinks.length,
         ),
-      ).toEqual([
-        ...expectedLinks,
-        ...(audioTitle ? [`${audioTitle} [DE]`] : []),
-      ]);
+      ).toEqual([...expectedLinks]);
       if (audioTitle) {
         const audioRow = article.locator("li").filter({ hasText: audioTitle });
         await expect(audioRow).toContainText(`${audioTitle} [DE] 23:50`);
@@ -102,4 +102,10 @@ function topicTitle(id: string) {
 }
 function sourceTitle(id: string, index: number) {
   return topics.items.find((item) => item.id === id)!.sources[index].title;
+}
+
+function sourceByUrl(id: string, url: string) {
+  return topics.items
+    .find((item) => item.id === id)!
+    .sources.find((source) => source.url === url)!;
 }
