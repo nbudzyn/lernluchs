@@ -8,14 +8,6 @@ Pro fachlichem Commit gelten höchstens zwei Vertikalen. Architekturausnahmen
 brauchen eine eigene Spec mit Begründung und Architekturtests und heben diese Commitgrenze nicht auf. Zentrale
 Dokumente werden erst mit der jeweiligen Umsetzung knapp um die dann geltenden Entscheidungen und nachgewiesenen Prüfungen ergänzt.
 
-## Einige ausstehende NotebookLM-Podcasts aus den Primärquellen erzeugen
-- So lange Ausstehende NotebookLM-Podcasts aus den Primärquellen erzeugen, bis das kostenfreie Kontingent ausgeschöpft ist.
-- Prüfen, welche Podcasts bereits beauftragt sind.
-- Nur dort, wo es noch keine Primärquellen-Podcasts gibt.
-- Prio: Solche Themen, die für die Einbindung einer KI in eine Java-Software relevant sind
-- NICHT abwarten, sondern nur beantragen (wir laden später en bloc herunter)
-- Bei Fragen: Fragen!
-
 ## Erzeugte Primärquellen-Podcasts herunterladen und integrieren
 Ale bereits beauftragten Folgen nach ausdrücklichem Fortsetzungssignal auf Fertigstellung prüfen, lokal herunterladen und in ihre bestehenden Themen integrieren:
 - Aufgaben mit Modell-Routing an passende Modelle verteilen (`task-based-model-routing`)
